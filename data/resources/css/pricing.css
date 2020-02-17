@@ -1,0 +1,277 @@
+@charset "utf-8";
+/* MINDsLab. UX/UI 2019.07.09 mrs */ 
+@import url(notosankr.css);
+/* Loading */ 
+.page_loading {position:fixed; top:0; left:0; width:100%; height:100%; background:#192a39; z-index:9999;}
+.loading_itemBox {display:block; position:absolute; top:50%; left:50%; width:80px; height:80px; margin:-40px 0 0 -40px;}
+.loading_itemBox span {position:absolute; top:33px; width:13px; height:13px; border-radius:50%; background:#fff;opacity: 0.2; animation-timing-function:cubic-bezier(0, 1, 1, 0);}
+.loading_itemBox span:nth-child(1) {left:8px;  animation:loading_item1 0.6s infinite;}
+.loading_itemBox span:nth-child(2) {left:8px;  animation:loading_item2 0.6s infinite;}
+.loading_itemBox span:nth-child(3) {left:32px; animation:loading_item2 0.6s infinite;}
+.loading_itemBox span:nth-child(4) {left:56px; animation:loading_item3 0.6s infinite;}
+
+@keyframes loading_item1 {
+  0% {transform:scale(0);}
+100% {transform:scale(1);}
+}
+@keyframes loading_item3 {
+  0% {transform:scale(1);}
+100% {transform:scale(0);}
+}
+@keyframes loading_item2 {
+  0% {transform:translate(0, 0);}
+100% {transform:translate(24px, 0);}
+}
+.pageldg_hide {-webkit-animation-duration:1s; animation-duration:1s; -webkit-animation-fill-mode:both; animation-fill-mode:both; -webkit-animation-name:pageldg_hide; animation-name:pageldg_hide;}
+
+@-webkit-keyframes pageldg_hide {
+0% {opacity:1;}
+100% {opacity:0;}
+}
+
+@keyframes pageldg_hide {
+0% {opacity:1;}
+100% {opacity:0;}
+}
+html,body {font-family: 'Noto Sans KR', sans-serif;}
+#wrap {min-width:1280px; height:100%;}
+
+body {}
+
+
+/* Login */ 
+.header_box {width:1220px; margin:0 auto; height: 100%;background: #fff;} 
+.common_header {height:70px;  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);  background-color: rgba(254, 254, 255, 0); position: fixed; width: 100%; top: 0;z-index: 100;}
+.common_header h1 {display: inline-block;margin:25px 0 0 50px;}
+.common_header h1 > a {width:100%; height:100%; display: inline-block;}
+.common_header h1 span {font-size:12px;color:#0080df;font-weight: normal; float: right; margin: 0 0 0 13px;}
+.common_header a.go_price {float: right; width:173px; height:32px; margin:23px 46px 0 0 ; text-align: center; line-height: 32px; border-radius: 28px; border:1px solid #0080df;color:#0080df; box-sizing: border-box;font-weight: bold;font-size:14px;}
+
+
+.common_footer {width:100%;margin:0 auto 20px;text-align: center;}
+.common_footer p {color:#002b49;line-height: 19px; font-size: 11px;}
+.common_footer p strong {margin:0 10px 0 0;}
+
+/*Scroll Bar Style*/
+::-webkit-scrollbar{width:5px;border-radius:3px;height:6px;}/* 스크롤바의 width */
+::-webkit-scrollbar-track{background-color:transparent;}/* 스크롤바의 전체 배경색 */
+::-webkit-scrollbar-thumb{background-color:rgba(25, 42, 57, 0.3);border-radius:3px;}/* 스크롤바 색 */
+::-webkit-scrollbar-button{display:none;}/* 위 아래 버튼 (버튼 없애기를 함) */
+
+/* Pricing(리뉴얼) */
+.price_cont {background: #fff;}
+.priceBox { margin: 0 auto 300px;}
+.priceBox .btn_try  {display: block;margin: 0 auto 30px; width: 196px; height: 50px; border-radius: 50px; border: 2px solid #2575f9;background: #fff; color: #2575f9; line-height: 50px;font-size: 20px; text-align: center;font-weight: bold; font-family: 'Roboto', sans-serif;}
+.price_stn {position:relative; max-width: 1200px;margin: 0 auto;}
+.priceBox h1 {font-size:28px; text-align: center;color: #000;line-height:54px;max-width: 1200px; margin: 170px auto 60px;}
+.priceBox h1 span {display: block; font-size: 1.3rem; color:#2575f9; height: 20px;line-height: 22px;font-weight:400;margin: 5px 0 0 0;}
+.priceBox table.tbl_lst { margin: 0 auto; color:#000;}
+.priceBox table th { height:80px;min-height: 120px; font-size:20px;color:#000;font-weight:bold;}
+.priceBox table th:nth-child(4), .priceBox table td:nth-child(4) {background: #eff6fb;}
+.priceBox table td {height:30px;font-size:16px;text-align: center;}
+.priceBox table td:first-child{text-align: left;}
+.priceBox table th .buybtn, .priceBox table .buybtn {display: block; margin: 30px auto 5px;background: #2575f9;border: none; height: 48px; color: rgb(255, 255, 255); letter-spacing: -0.4px; font-size: 18px; width: 160px;border-radius: 28px; cursor: pointer;line-height: 48px;}
+.priceBox table a.buylink {height:48px;line-height: 48px; border:1px solid #2575f9; background: #fff; color: #2575f9;font-weight: bold; box-sizing: border-box;}
+.priceBox table th .requestbtn {background: #fff;color:#2575f9; border:1px solid #2575f9; font-weight: 400;box-sizing: border-box;}
+.priceBox table tr.row_1 {text-align: center;line-height: 30px; border-bottom: 2px solid #979797;}
+.priceBox table td.price {padding: 0 35px;font-size:14px; text-align: left; vertical-align: middle; position: relative;height: 170px;}
+.priceBox table td.price p {position:absolute; top:0;left:0;}
+.priceBox table td.price_1 button {height: 28px;line-height: 25px;width: 120px; border-radius: 24px;display: block; background: #0080df;color:#fff; border: 1px solid #0080df;font-size: 14px; margin: 10px auto 0; box-sizing: border-box;}
+.priceBox table td.price_1 {font-size:20px;position: relative;}
+.priceBox table td.price_1 p {display: block; position: absolute; top: 0;left: 0;width: 100%; height: 30px;}
+.priceBox table td.price_1 em, .priceBox table td.price em {height: 40px; font-size: 13px; line-height: normal;display: block;position: absolute; width: 100%;top: 50px;left: 0;}
+.priceBox table td.price_1 em strong {display: block;text-indent: 27px;font-weight: 400;}
+.priceBox table td.price_1 span {font-size:28px;display: inline-block;}
+.priceBox table td.price_1 a {width:143px; margin: 0 auto;border-radius: 50px;text-align: center; display: block;font-size:18px;color:#000; font-weight: 500; line-height: 23px;}
+.priceBox table td span em {color:#000; margin:0 0 0 15px;}
+.priceBox table td em {color:#2575f9;margin:0 7px 0 0;}
+.priceBox table td div { position: absolute; bottom: 30px; height: 30px; width: 100%;line-height:30px; }
+.priceBox table td div a.more {font-size: 13px;color: #2575f9;  font-weight: 500; transition: all 0.3s ease-out;border:1px solid transparent;}
+.priceBox table td div a.more:hover {border:1px solid #2575f9;border-radius: 30px;}
+.priceBox table td div a small{font-size:10px; height:10px;display: block;color: #2575f9; line-height: 10px;font-weight: 300;}
+.priceBox table td div a.email{color: #2575f9;font-size:15px;font-weight: 500;}
+.priceBox table td.center_txt {text-align: center; padding: 0 20px;}
+.priceBox table td.td_border {border-bottom: 1px solid #979797; }
+.priceBox table td span.span_border {border-bottom: 1px solid #979797;width: 100%; display: block;height: 51px;line-height: 51px;}
+.priceBox table td ul {width: 122px; margin: 0 auto;}
+.priceBox table td ul.ul_txt  {width:160px; padding:0 0 0 25px;}
+.priceBox table td ul li {position:relative; border-bottom:1px solid #979797;height:50px ;line-height: 50px; text-align: center; font-size: 13px;}
+.priceBox table td ul li a{color:#0080df;}
+.priceBox table td ul li img {vertical-align: middle;}
+.priceBox table td ul.ul_txt li{ text-align: left;}
+.priceBox table td ul .li_df {height:60px;}
+.priceBox table td ul .li_df span {display: block;position: absolute; top: 28px;}
+.priceBox table td ul.ul_txt li span {margin: 0;font-weight: 400;line-height: 28px;}
+.priceBox table td ul.or_txt li {border:none;}
+.priceBox table td ul.or_txt li:after {content: '또는'; position:absolute; bottom: -10px;left:60px;color:#2575f9;height: 25px;line-height: 25px;}
+.priceBox table td ul.or_txt li:last-child:after {display: none;}
+.priceBox table td ul li:last-child{border:none;}
+.priceBox table td ul li img{vertical-align: middle; width: 26px;}
+.priceBox table td ul li span.plus {position:absolute; right:0; color:#2575f9; font-size:16px; width: 80px;top: 10px;height: 43px;}
+.priceBox table .border_add {border-bottom:2px solid #979797;}
+.priceBox table tr.one_row { height:50px;line-height: 50px; border-bottom: 2px solid #979797;}
+.priceBox table tr.one_row td span{line-height: 20px; font-size: 13px; display: block;height: 20px;text-align: left; font-weight: bold; cursor: pointer;}
+.priceBox table tr.one_row td:nth-child(4){background: #fff;}
+.priceBox table tr.lst_row {border-bottom:2px solid #979797;}
+.priceBox table tr.btn_row td{background: #fff;}
+.priceBox table tr.lst_row td {height:130px; }
+.priceBox table tr.lst_row td span{line-height: 20px; font-size: 13px; display: block;height: 20px;text-align: left; margin: 20px 0 0 0; font-weight: bold;}
+.priceBox table tr:last-child{text-align: center;}
+.priceBox table .form {display: inline-block;vertical-align: middle;margin:20px auto ;}
+
+
+.failure_box {max-width: calc(955px - 120px); margin: 0 auto 20px; padding: 0 60px;}
+.failure_box h1 {color:#2c3f51; font-size:20px; padding:30px;border-top:1px solid rgba(61, 70, 92, 0.1); border-bottom:1px solid rgba(61, 70, 92, 0.1); text-align: center;}
+.failure_box .failure_tb {margin:50px 0 0 0;border-top:3px solid #697992;font-size:14px;color:#576068;}
+.failure_box .failure_tb tr { min-height: 55px;border-bottom: 1px solid rgba(61, 70, 92, 0.1);}
+.failure_box .failure_tb tr th {width:20%;background: #f5f6fa;clear: both; line-height: 50px;text-align: center;padding: 10px 0;font-size: 16px;font-weight: 500; border: none;color:#33516b;}
+.failure_box .failure_tb tr td {width:calc(80% - 40px);padding: 8px 20px;color:#33516b;text-align: left;}
+.failure_box .failure_tb tr td span {display: block; font-size:14px; margin: 5px 0 0 0;color:#89929a;}
+.failure_box a {clear: both;  display: block;background: #2575f9; margin: 10px auto 5px;width: 104px; height: 40px;line-height: 40px;color: rgb(255, 255, 255);letter-spacing: -0.4px;font-size: 14px; border-radius: 5px; text-align: center;}
+
+.pricingBox_m {display: none;}
+
+.payresult p {text-align:center; font-size:18px; margin:20px 0 10px;color:#33516b;}
+.payresult a.linkto {color:#2575f9;background: #fff; width:auto;height:30px; line-height:30px; margin:0 0 80px 0;font-size:18px;}
+
+/*더알아보기 팝업 basic*/
+.lyrmore {display:none; position: absolute; top:0; left:0; width:100%; height:100%; z-index:200;}
+.lyrmore .lyr_bg {position:absolute; top:0; left:0; width:100%; height:100%; }
+.lyrmore .lyrBox {overflow:hidden; position:absolute; top:125px; left:50%; width: 450px; margin:0 0 0 -340px; border-radius:10px; background:#f0f4fb; box-shadow: 4px 4px 5px 0 rgba(0, 0, 0, 0.5);}
+.lyrmore .lyr_top {display:block; padding:7px 20px;text-align: center;}
+.lyrmore .lyr_top h3 {margin:15px 0 9px 0;  color: #000; font-size: 23px;}
+.lyrmore .lyr_mid {padding: 0 32px;}
+.lyrmore .lyr_mid .tbl_view {width:100%;}
+.lyrmore .lyr_mid .tbl_view tr {border-bottom:1px solid #979797;}
+.lyrmore .lyr_mid .tbl_view tr:first-child {border-bottom: 3px solid #979797; border-top: 3px solid #979797;}
+.lyrmore .lyr_mid .tbl_view th {text-align: left;font-size:14px;height: 50px;}
+.lyrmore .lyr_mid .tbl_view td {height:40px;font-size: 14px;text-align: left; font-weight: 400;}
+.lyrmore .lyr_btm {text-align: center;}
+.lyrmore .lyr_btm  li {display: inline-block; width: 30px; height: 30px; border: 1px solid #4a8dfc;border-radius: 32px; margin: 20px 0;}
+.lyrmore .lyr_btm .btn_lyr_close {overflow:hidden;width: 31px;height: 31px; text-indent:-99px; border:none;  background:url(../images/btn_legacy_close_p.png) 50% 50% no-repeat; background-size: 13px;  cursor:pointer; transition:all 0.3s ease-out;}
+.lyrmore .lyr_btm .btn_lyr_close:hover, .lyrWrap .lyrBox .lyr_top .btn_lyr_close:focus {opacity:1.0; transition:all 0.3s ease-out;transform: rotate(180deg);}
+.delay-1 {animation-delay: 0.5s;}
+
+#lyr_more_premium {display: none; margin: 0 0 0 -225px;letter-spacing: -0.5px;font-weight: 500;}
+
+
+
+/* Mobile Layout */ 
+@media screen and (max-width:760px) {
+	
+	#wrap {width:100%; min-width: 100%;}
+	.loginWrap {overflow: auto;}
+	.header_box {width:100%;}
+	.common_header {height: 70px; box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);position: fixed;width: 100%; background: #fff;z-index: 100;}
+	.common_header h1 { margin: 27px 10px 0;}
+	.common_header h1 > a {width:100%;height:100%;display: block;}
+	.common_header h1 span {display: none;}
+	.common_header a.go_price {width: 75px; height: 22px;line-height: 22px; border-radius: 28px;background: #ffffff; margin: 30px 10px 0 0; font-size: 11px; text-align: center;}
+	.common_header a span {display: none;}
+	
+/*	footer*/
+	.common_footer {margin: 0 auto; position: unset;}
+	.common_footer p {padding:10px 10px 16px; font-size: 10px;}	
+	.common_footer p strong{display: block;}
+	.common_footer p span{display: block;}
+
+	
+
+
+	/*	pricing*/
+	.priceBox {display: none;}
+	.pricingBox_m {display: block; clear: both;overflow: hidden; position: relative; background: #fff;width: 90%; margin: 70px auto;}	
+	.pricingBox_m h1 {font-size:20px; text-align: center;color: #000;line-height:38px;max-width: 1200px; margin: 20px auto 30px;}
+	.pricingBox_m h1 span {display: block; font-size: 11px; color:#2575f9; height: 20px;line-height: 22px;font-weight:400;}
+	.pricingBox_m h1 span strong{display: block;}
+	.price_cont .sub_titleArea {height:250px; padding:0 15px;}
+	/* Style the tab */
+	.pricingBox_m .price_tab .tab {overflow: hidden; background-color: #fff;}
+	/* Style the buttons inside the tab */
+	.pricingBox_m .price_tab .tab button {position: relative; background-color: inherit;width: 50%; height: 50px;float: left;border: none;outline: none;cursor: pointer; padding: 14px 5px; transition: 0.3s; font-size: 12px;font-weight: 600;border-bottom: 3px solid #eee;}
+	.pricingBox_m .price_tab .tab button.enterprise {font-size:12px; line-height: 12px; height: 50px;}
+	/* Create an active/current tablink class */
+	.pricingBox_m .price_tab .tab button.active {border-bottom: 3px solid #4a8dfc; color: #4a8dfc;}
+	.pricingBox_m .price_tab .tab button.active:after {content: ''; width:100%; position:absolute;left:50%; bottom:0; height:3px ;color:pink;animation: lineEffect 1s; }
+	/* Go from zero to full opacity */
+	@keyframes lineEffect {
+	  from {width: 0;}
+	  to {width: 100%;}
+	}
+	/* Style the tab content */
+	.pricingBox_m .price_tab .tabcontent { display: none; padding: 0 0 60px; border-top: none;animation: fadeEffect 1s;}
+	/* Go from zero to full opacity */
+	@keyframes fadeEffect {
+	  from {opacity: 0;}
+	  to {opacity: 1;}
+	}
+	.pricingBox_m .price_tab .tbl_lst_m {width:100%; color: #000;}
+	.pricingBox_m .price_tab .tbl_lst_m tr {border-bottom:1px solid #979797;height: 60px;}
+	.pricingBox_m .price_tab .tbl_lst_m tr:first-child {height:40px;border: none;}
+	.pricingBox_m .price_tab .tbl_lst_m tr:nth-child(6) {border:none;}
+	.pricingBox_m .price_tab .tbl_lst_m td {width:63%;height: 40px;font-size: 13px;}
+	.pricingBox_m .price_tab .tbl_lst_m td .em {font-size: 11px;}
+	.pricingBox_m .price_tab .tbl_lst_m td .em i {color:#2575f9;margin: 0 5px 0 0;}
+	.pricingBox_m .price_tab .tbl_lst_m td div {margin:5px 0 0 0;}
+	.pricingBox_m .price_tab .tbl_lst_m td div a {color:#2575f9;}
+	.pricingBox_m .price_tab .tbl_lst_m td ul li { position: relative; height:40px;line-height: 40px;font-size:12px; border-bottom: 1px solid #979797;}
+	.pricingBox_m .price_tab .tbl_lst_m td ul li:last-child {border-bottom:none;}
+	.pricingBox_m .price_tab .tbl_lst_m td ul li a {color:#2575f9;font-weight: 600;}
+	.pricingBox_m .price_tab .tbl_lst_m td ul li span.brtxt { display: block; text-align: center;line-height: 12px; font-size: 10px;position: absolute;top: 27px;
+    width: 100%;}
+	.pricingBox_m .price_tab .tbl_lst_m td ul .li_df { height: 45px; line-height: 30px;}
+	.pricingBox_m .price_tab .tbl_lst_m td ul .li_df span {display: block;position: absolute; top: 12px;font-size: 12px;font-weight: 400;}
+	.pricingBox_m .price_tab .tbl_lst_m td ul.or_txt li {border:none;}
+	.pricingBox_m .price_tab .tbl_lst_m td ul.or_txt li:after {content: '또는'; position:absolute; bottom: -10px;left:55px;color:#2575f9;height: 25px;line-height: 25px;}
+	.pricingBox_m .price_tab .tbl_lst_m td ul.or_txt li:last-child:after {display: none;}
+	.pricingBox_m .price_tab .tbl_lst_m td ul li img{vertical-align: middle;width: 20px;}
+	.pricingBox_m .price_tab .tbl_lst_m td ul li span.plus {position: absolute; right: 10px;top: 0;color:#4a8dfc; font-size:13px;}
+	.pricingBox_m .price_tab .tbl_lst_m td.price_1 {position: relative; text-align: center;font-size: 10px; font-weight: bold;}
+	.pricingBox_m .price_tab .tbl_lst_m td.price_1 a {width:100%;display: block; margin: 0 auto; border-radius: 20px; padding: 5px;color:#4a8dfc;font-weight: 500;}
+	.pricingBox_m .price_tab .tbl_lst_m td.price_1 a small {display: block;font-weight: 300;}
+	.pricingBox_m .price_tab .tbl_lst_m td.price_1 a.more{border:none;position:absolute; font-size:12px;left: 10px;bottom: -2px;}
+	.pricingBox_m .price_tab .tbl_lst_m td.price_1 span {font-size:16px;}
+	.pricingBox_m .price_tab .tbl_lst_m td.center_txt {text-align: center;}
+	.pricingBox_m .price_tab .tbl_lst_m td.center_txt a {color:#4a8dfc;}
+	.pricingBox_m .price_tab .tbl_lst_m td.point_txt {font-size:17px;}
+	.pricingBox_m .price_tab .tbl_lst_m tr.lst_row span {font-size: 12px;font-weight: 600; display: block;height: 40px;line-height: 40px;text-align: left;}
+	.lst_row  {text-align: center;}
+	.lst_row ul { padding: 0 10px;}
+	.lst_row .ul_txt li {text-align: left;}
+	
+	.pricingBox_m table .form_td{text-align: center;}
+	.pricingBox_m table .form {display: inline-block;vertical-align: middle;margin: 20px auto 0;}
+	.pricingBox_m table .form input {width:140px;}
+	.pricingBox_m table label{display:inline-block; overflow:hidden;height:35px; position:relative; padding-left:20px; color:#576068; line-height:21px; cursor:pointer; -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; vertical-align: middle;margin: 0 0 0 20px;}
+	.pricingBox_m table label:before{position:absolute;top:0;left:0;content:''; float:left; overflow:hidden; width:20px; height:21px; line-height:21px; text-align:center; vertical-align:middle; background:#fff; border:1px solid #b1bed5; border-radius:50%; box-sizing:border-box; transition:all 0.3s ease-out;}
+	.pricingBox_m table label:after{position:absolute;top:5px;left:5px;content:''; overflow:hidden; width:10px; height:11px; line-height:21px; text-align:center; vertical-align:middle; background:#fff; border:none; border-radius:50%; box-sizing:border-box; transition:all 0.3s ease-out;}
+	.pricingBox_m table .form_td .buybtn {display: block; margin: 10px auto 5px;background: #2575f9;border: none; height: 35px; line-height: 35px; color: rgb(255, 255, 255); letter-spacing: -0.4px; font-size: 14px;border-radius: 5px; width: 104px;cursor: pointer;}
+	.failure_box {width:100%;padding: 0;}
+	.failure_box .failure_tb tr th {font-size:13px;}
+	.failure_box .failure_tb {margin:30px 0 0 0;}
+	.failure_box a {margin:20px auto;}
+
+	/*더알아보기 팝업 basic*/
+	.lyrmore {display:none; position: absolute; top:0; left:0; width:100%; height:100%; z-index:200;}
+	.lyrmore .lyr_bg {position:absolute; top:0; left:0; width:100%; height:100%; }
+	.lyrmore .lyrBox { overflow: hidden; position: absolute; top: 0; width: 99%;  margin: 0px 0 0 -50%;border-radius: 10px;background: #f0f4fb;box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.4);}
+	.lyrmore .lyr_top {display:block; padding:7px 20px;text-align: center;}
+	.lyrmore .lyr_top h3 {margin:10px 0 9px 0;  color: #000; font-size: 20px;}
+	.lyrmore .lyr_mid {padding: 0 15px;}
+	.lyrmore .lyr_mid .tbl_view {width:100%; color: #000;}
+	.lyrmore .lyr_mid .tbl_view tr {border-bottom:1px solid #979797;}
+	.lyrmore .lyr_mid .tbl_view tr:first-child {border-bottom: 3px solid #979797; border-top: 3px solid #979797;}	
+	.lyrmore .lyr_mid .tbl_view th {text-align: left;font-size:12px;height: 50px;}
+	.lyrmore .lyr_mid .tbl_view td {height:40px;font-size: 12px;}
+	.lyrmore .lyr_btm {text-align: center;}
+	.lyrmore .lyr_btm  li {display: inline-block; width: 30px; height: 30px; border: 1px solid #4a8dfc;border-radius: 32px; margin: 10px 0;}
+	.lyrmore .lyr_btm .btn_lyr_close {overflow:hidden;width: 31px;height: 31px; text-indent:-99px; border:none;  background:url(../images/btn_legacy_close_p.png) 50% 50% no-repeat; background-size: 13px;  cursor:pointer; transition:all 0.3s ease-out;}
+	.lyrmore .lyr_btm .btn_lyr_close:hover, .lyrWrap .lyrBox .lyr_top .btn_lyr_close:focus {opacity:1.0; transition:all 0.3s ease-out;transform: rotate(180deg);}
+
+	#lyr_more_premium {display: none;    margin: 0 0 0 130px;}
+	
+}
+
+
+
+

@@ -1,0 +1,215 @@
+@charset "utf-8";
+/* MINDsLab. UX/UI Team. */ 
+
+/* Loading */ 
+.page_loading {position:fixed; top:0; left:0; width:100%; height:100%; background:#192a39; z-index:9999;}
+.loading_itemBox {display:block; position:absolute; top:50%; left:50%; width:80px; height:80px; margin:-40px 0 0 -40px;}
+.loading_itemBox span {position:absolute; top:33px; width:13px; height:13px; border-radius:50%; background:#fff;opacity: 0.2; animation-timing-function:cubic-bezier(0, 1, 1, 0);}
+.loading_itemBox span:nth-child(1) {left:8px;  animation:loading_item1 0.6s infinite;}
+.loading_itemBox span:nth-child(2) {left:8px;  animation:loading_item2 0.6s infinite;}
+.loading_itemBox span:nth-child(3) {left:32px; animation:loading_item2 0.6s infinite;}
+.loading_itemBox span:nth-child(4) {left:56px; animation:loading_item3 0.6s infinite;}
+
+@keyframes loading_item1 {
+  0% {transform:scale(0);}
+100% {transform:scale(1);}
+}
+@keyframes loading_item3 {
+  0% {transform:scale(1);}
+100% {transform:scale(0);}
+}
+@keyframes loading_item2 {
+  0% {transform:translate(0, 0);}
+100% {transform:translate(24px, 0);}
+}
+.pageldg_hide {-webkit-animation-duration:1s; animation-duration:1s; -webkit-animation-fill-mode:both; animation-fill-mode:both; -webkit-animation-name:pageldg_hide; animation-name:pageldg_hide;}
+
+@-webkit-keyframes pageldg_hide {
+0% {opacity:1;}
+100% {opacity:0;}
+}
+
+@keyframes pageldg_hide {
+0% {opacity:1;}
+100% {opacity:0;}
+}
+html,body {font-family: 'Noto Sans KR', sans-serif;}
+#wrap {min-width:1280px; height:100%;}
+
+body {    overflow: hidden;}
+
+/* IE 지원 브리우저 안내메세지 */ 
+/*
+.legacy_browser {position:fixed; top:0; left:0; width:100%; height:100%; background:url(../images/bg_legacy_browser.png) 0 0 repeat; z-index:9999;}
+.legacy_browser .legacyBox {overflow:hidden; position:absolute; top:50px; left:50%; width:400px; margin:0 0 0 -200px; border-radius:5px; box-shadow:0 0 30px rgba(0,0,0,0.5); background:#fff;}
+.legacy_browser .legacyBox .tit {clear:both; overflow:hidden; padding:10px 20px; background:#183554;}
+.legacy_browser .legacyBox .tit h1 {float:left;}
+.legacy_browser .legacyBox .tit h1 img {width:120px;}
+.legacy_browser .legacyBox .tit .btn_legacy_close {overflow:hidden; float:right; width:30px; height:30px; text-indent:-999px; border:none; background:url(../images/btn_legacy_close_w.png) 50% 50% no-repeat; opacity:0.3; cursor:pointer;}
+.legacy_browser .legacyBox .txt {display:block; padding:20px; color:#333; font-size:15px; line-height:24px; word-break:keep-all;}
+.legacy_browser .legacyBox .txt a {color:#007eff;}
+.legacy_browser .legacyBox .txt a:hover, .legacy_browser .legacyBox .txt a:focus {text-decoration:underline;}
+
+
+*/
+
+/* Login */ 
+.loginWrap {overflow:hidden; width:100%; height:100%;background: #fff;}
+.loginWrap::after{content: "";position: absolute;left: 0; top: 0; width: 100%; height: 100%;background-size: cover;opacity: 0.9 ; animation: anim 25s linear infinite;}
+.login_box {text-align: center;position: absolute;top: 60%;left: 50%;transform: translate(-50%,-50%);z-index: 1; width: 100%;}
+.login_box .txt_box {height:274px;margin: 50px 0 0 0;}
+.login_box .txt_box p{font-size:18px; color:#192a39;height: 34px;line-height: 34px;animation-fill-mode: unset;font-weight: bold;}
+.login_box .txt_box .link_box {position: relative; margin: 0 auto;}
+.login_box .txt_box .link_box span {position: absolute; left:160px; top:-60px; display: block; width: 90px; height:50px; line-height: 50px; font-size:25px; color:#fff;font-family: 'roboto'; letter-spacing: -1px;}
+.login_box .txt_box .btn_sign {display: block; width:253px; height:40px; border-radius: 44px; background:#fff url(../images/logo_google.png) 26px 50% no-repeat;background-size: 20px;line-height: 39px;font-size:16px;font-weight: bold;color: #192a39;border:1px solid #192a39;  margin: 20px auto 0;text-align: left;text-indent: 63px;transition:all 0.3s ease-out;}
+.login_box .txt_box .btn_sign:hover {box-shadow:0 4px 16px 0 rgba(0,0,0,0.1), 0 10px 30px 0 rgba(0,0,0,0.1); transition:all 0.3s ease-out;}
+.login_box .txt_box .link_box p {margin:22px 0 0 0; font-size:20px; font-weight: bold; height:41px; line-height: 41px;color:#fefc05;}
+.delay-1 {animation-delay: 0.5s;}
+.delay-2 {animation-delay: 1s;}
+
+.google-loader {display: block;margin: 0 0 10px 0}
+.google-loader span {display: inline-block;margin-top: 10px;height: 20px;width: 20px;border-radius: 50%;}
+.google-loader span:not(:first-child) {margin-left: 10px;}
+.google-loader span:nth-child(1) { background: #1277f7; animation: move 1s ease-in-out -0.25s infinite alternate;}
+.google-loader span:nth-child(2) { background: #eb636d; animation: move 1s ease-in-out -0.5s infinite alternate; width: 30px; height: 30px;}
+.google-loader span:nth-child(3) {background: #2cb8c4; animation: move 1s ease-in-out -0.75s infinite alternate; width: 40px; height: 40px;}
+.google-loader span:nth-child(4) {background: #ffdd17; animation: move 1s ease-in-out -1s infinite alternate;}
+.google-loader span:nth-child(5) {background: #9361a6; animation: move 1s ease-in-out -1.25s infinite alternate; width: 10px; height: 10px;}
+
+@keyframes move {
+  from {
+    transform: translateY(-60px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/*로그인수정*/
+.loginWrap .link_box ul{ width:383px; margin:0 auto;padding:20px 0;}
+.loginWrap .link_box ul li {text-align: center;height: 38px;}
+.loginWrap .link_box ul li input[type="checkbox"] {position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0}
+.loginWrap .link_box ul li input[type="checkbox"] + label { overflow:hidden; position:relative;font-size:16px; color:#fff; cursor:pointer; -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; line-height: 38px;}
+.loginWrap .link_box ul li input[type="checkbox"] + label:before {content:''; display: inline-block; overflow:hidden; width:20px; height:20px; line-height:20px; margin:0 12px 0 0; text-align:center;  transition:all 0.3s ease-out;border:3px solid #fff; box-sizing: border-box;vertical-align: sub;}
+.loginWrap .link_box ul li input[type="checkbox"]:checked + label:before {content:'\2714'; color: #2575f9; font-size:13px; box-shadow:inset 2px 2px 3px rgba(0,0,0,0);  background: #fff; border: 2px solid #2575f9; transition:all 0.3s ease-out;line-height: 13px;}
+
+.alertbox {width: 410px; padding: 5px 0;margin: 0 auto; background: rgba(24,73,150,0.5) url(../images/ico_alert.png) 90px 3px no-repeat;;border-radius: 5px;}
+.alertbox p {color:#f7f54f;font-size:13px;text-align: left;width:280px; margin-left:110px;}
+
+
+
+.checkBox {text-align: center;display: inline-block; margin: 20px auto;}
+.checkBox input[type="checkbox"] {position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0}
+.checkBox input[type="checkbox"] + label { overflow:hidden; position:relative;font-size:14px; color:#697784; cursor:pointer; -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; line-height: 15px;}
+.checkBox em a {text-decoration: underline;font-weight:400;color:#1277f7;font-size: 14px; margin: 0 0 0 5px;}
+.checkBox input[type="checkbox"] + label:before {content:''; float:left; overflow:hidden; width:16px; height:16px; line-height:14px; text-align:center; vertical-align:middle; background:#fff;  border-radius:5px;transition:all 0.3s ease-out;border:1px solid #c2d3e7;}
+.checkBox input[type="checkbox"]:checked + label:before {content:'\2714'; color:#fff; font-size:10px; box-shadow:inset 2px 2px 3px rgba(0,0,0,0);  background:#1277f7; transition:all 0.3s ease-out;line-height: 13px; border: 1px solid #1277f7;}
+
+
+.signupLink{margin: 20px auto;text-align: center;color:#697784;font-size:14px;font-weight: 500;}
+.signupLink .signUp {color:#1277f7;}
+
+/*lyr_term_kr*/
+.lyr_term_kr {display:none; overflow:hidden; position:fixed; bottom:0; left:0; width:100%; height:100%; text-align:center; z-index:1000;}
+.lyr_term_kr .lyr_bg_sign {position:absolute; top:0; left:0; width:100%; height:100%; background: #101113; opacity: 0.4; z-index: -10;}
+.lyr_term_kr .lyrWrap {position:relative; width:818px; height:700px; border-radius:5px; margin:65px auto 0 auto;background: #fff;}
+.lyr_term_kr .lyr_hd .btn_lyrWrap_close {overflow:hidden; position:absolute; top:25px; right:15px; width:22px; height:22px; margin:-11px 0 0 0;line-height: 100px; border:none; background:none; opacity:0.5; cursor:pointer; transition:all 0.3s ease-out;}
+.lyr_term_kr .lyr_hd .btn_lyrWrap_close:hover, .lyrWrap .btn_lyrWrap_close:focus {opacity:1.0; transition:all 0.3s ease-out;}
+.lyr_term_kr .lyr_hd .btn_lyrWrap_close:before {content:'';  position:absolute; top:10px; left:50%; width:22px; height:2px; margin:-1px 0 0 -11px; background:#6e7275; transform:rotate(45deg);}
+.lyr_term_kr .lyr_hd .btn_lyrWrap_close:after {content:'';  position:absolute; top:10px; left:50%; width:22px; height:2px; margin:-1px 0 0 -11px; background:#6e7275; transform:rotate(-45deg);}
+.lyr_term_kr .lyr_hd{display:block; height:50px;  text-align: center; background:#192a39;border-radius: 5px 5px 0 0;}
+.lyr_term_kr .lyr_hd h3 {color:#fff; font-size:20px;line-height: 50px;font-weight:400;}
+.lyr_term_kr .lyr_bd {background:rgba(255,255,255,1.0);height: 100%;clear: both;border-radius: 5px;padding: 20px 30px 10px; font-size: 13px;line-height: 22px; overflow: auto;text-align: left;color:#000;}
+.lyr_term_kr .lyr_bd table {width:100%;border:1px solid #e7e7e7;border-collapse: collapse;}
+.lyr_term_kr .lyr_bd table tr {height:35px;}
+.lyr_term_kr .lyr_bd table th {text-align: center;background: #f8f7f8;border:1px solid #e7e7e7;}
+.lyr_term_kr .lyr_bd table td {border:1px solid #e7e7e7;  text-indent: 10px;}
+.lyr_term_kr .lyr_bd dl {width:350px; margin: 0 auto;overflow: hidden;}
+.lyr_term_kr .lyr_bd dl dt {width:100px;height: 30px;  float: left;background: #fff; line-height: 30px;}
+.lyr_term_kr .lyr_bd dl dd {height: 30px;  background: #f4f9ff;width: 250px;  margin: 0 0 10px 0;float: left; border-radius: 5px; }
+.lyr_term_kr .lyr_bd dl dd .agree_check {display: inline-block; margin: 3px 0 0 30px;}
+.lyr_term_kr .lyr_bd dl dd input[type="checkbox"] {position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0}
+.lyr_term_kr .lyr_bd dl dd input[type="checkbox"] + label { overflow:hidden; position:relative;font-size:14px; color:#697784; cursor:pointer; -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; line-height: 15px;}
+.lyr_term_kr .lyr_bd dl dd input[type="checkbox"] + label:before {content:''; float:left; overflow:hidden; width:16px; height:16px; line-height:14px; margin:3px 5px 0 0; text-align:center; vertical-align:middle; background:#fff; border-radius:5px;transition:all 0.3s ease-out;border:1px solid #2575f9;}
+.lyr_term_kr .lyr_bd dl dd input[type="checkbox"]:checked + label:before {content:'\2714'; color:#fff; font-size:10px; box-shadow:inset 2px 2px 3px rgba(0,0,0,0);  background:#2575f9; transition:all 0.3s ease-out;line-height: 13px;}
+.lyr_term_kr .lyr_bd b {clear: both; display: block; width:100%;text-align: center;}
+.lyr_term_kr .lyr_bd a {display: block; width:104px; height:40px; color:#8a9aa8; border:1px solid #cfd5eb; border-radius: 25px; line-height: 40px;font-size:14px;font-weight: 500; margin: 20px auto;text-align: center; background: #f5f6fa; }
+.lyr_term_kr .lyr_bd a.btn_ok{background: #2575f9;color:#fff; } 
+
+
+
+/*lyr_policy*/
+.lyr_policy {display:none; overflow:hidden; position:fixed; bottom:0; left:0; width:100%; height:100%; text-align:center; z-index:1000;}
+.lyr_policy .lyr_bg_sign {position:absolute; top:0; left:0; width:100%; height:100%; background: #101113; opacity: 0.4; z-index: -10;}
+.lyr_policy .lyrWrap {position:relative; width:820px; height:720px; border-radius:5px; margin:65px auto 0 auto;background: #fff; overflow-x: unset;}
+.lyr_policy .lyr_hd .btn_lyrWrap_close {overflow:hidden; position:absolute; top:25px; right:15px; width:22px; height:22px; margin:-11px 0 0 0;line-height: 100px; border:none; background:none; opacity:0.5; cursor:pointer; transition:all 0.3s ease-out;}
+.lyr_policy .lyr_hd .btn_lyrWrap_close:hover, .lyrWrap .btn_lyrWrap_close:focus {opacity:1.0; transition:all 0.3s ease-out;}
+.lyr_policy .lyr_hd .btn_lyrWrap_close:before {content:'';  position:absolute; top:10px; left:50%; width:22px; height:2px; margin:-1px 0 0 -11px; background:#6e7275; transform:rotate(45deg);}
+.lyr_policy .lyr_hd .btn_lyrWrap_close:after {content:'';  position:absolute; top:10px; left:50%; width:22px; height:2px; margin:-1px 0 0 -11px; background:#6e7275; transform:rotate(-45deg);}
+.lyr_policy .lyr_hd{display:block; height:50px;  text-align: center; background:#192a39;border-radius: 5px 5px 0 0;}
+.lyr_policy .lyr_hd h3 {color:#fff; font-size:20px;line-height: 50px;font-weight:400;}
+.lyr_policy .lyr_bd {height:100%; background:rgba(255,255,255,1.0);clear: both;border-radius: 5px;padding: 20px 30px ; font-size: 13px;line-height: 22px; overflow: auto; text-align: left;color: #000;}
+.lyr_policy .lyr_bd b {font-size:14px;}
+.lyr_policy .lyr_bd h4 {height:80px;background:url(../images/ico_event.png) 50% 90% no-repeat;}
+.lyr_policy .lyr_bd p.notice { margin: 20px 0 0 0;font-size:20px; color:#192a39; line-height: 25px;font-weight: 600;letter-spacing: -1px;}
+.lyr_policy .lyr_bd p.notice_desc { font-size:16px; color:#5a7288; line-height: 20px; width:100%; padding:10px 0 ;letter-spacing: -1px;}
+.lyr_policy .lyr_bd p.notice_desc span {color:#2575f9;}
+.lyr_policy .lyr_bd a {display: inline-block; width:104px; height:40px; color:#8a9aa8; border:1px solid #cfd5eb; border-radius: 5px; line-height: 40px;font-size:14px;font-weight: 500; margin: 10px 10px 36px 0;text-align: center; background: #f5f6fa; }
+.lyr_policy .lyr_bd a.btn_close{background: #2575f9;color:#fff; margin-right:0;} 
+
+
+
+/* Mobile Layout */ 
+@media screen and (max-width:760px) {
+	#wrap {width:100%;min-width: auto;}
+	#header {background: #192a39;height:50px;}
+	#header h1 { width: 120px;height:50px;border-bottom:none;}	
+	#header h1 a {padding:15px 0 0 0;}
+	#header .etcmenu {display: none;}
+
+	#header .sta { width: calc(100% - 120px);}
+	.titArea {display: none;}
+	.snb {display: none;}
+	
+	.btn_header_ham {display:block;position:fixed;}
+	
+	#container {display: block;margin: 0 ;width: 100%; height: 100%;}
+	.contents {width:100%; display: block; position: relative;height: auto; min-height: 100%;}
+	.content { padding: 66px 0 30px;}
+	.content > h1 {font-size:25px; text-indent: 10px; margin: 10px 0 10px 0;}
+	.content .demobox {width: calc(100% - 50px); padding: 15px;margin: 0 auto 20px;}
+	.content .demobox > p {font-size:14px;line-height: 25px;}
+	
+	
+/*	progress */
+	.demobox .progress li {margin:20px 0 0 0;font-size: 13px;}
+	.demobox .progress li:before {width: calc(100% - 20px);left: -39%;}
+	.demobox .progress_txt > li p {font-size:10px; line-height: 17px;}
+	
+/*	login_box */
+	.login_box {margin:30px auto;}
+	.login_box .txt_box {padding: 0 10px;}
+	.login_box .txt_box p {font-size:15px;line-height: 25px;height: auto;}	
+	.login_box .txt_box .btn_sign {width: 80%;height: 40px;line-height: 39px; background: #fff url(../images/logo_google.png) 20px 50% no-repeat;     font-size: 15px;text-indent: 20px; background-size: 20px;text-align: center;}
+	.login_box .txt_box .link_box p{font-size:15px;}
+	.loginWrap .link_box ul {width:100%;margin:0 auto;    padding: 10px 0;}
+	.loginWrap .link_box ul li input[type="checkbox"] + label:before {width:20px; height:20px; vertical-align: middle;}
+	.loginWrap .link_box ul li input[type="checkbox"] + label {font-size:13px; font-weight:400; line-height: 20px;}
+	.lyr_term_kr .lyr_bd dl dd input[type="checkbox"] + label {font-size:12px;}
+	.loginWrap .link_box ul li input[type="checkbox"]:checked + label:before {font-size:12px; line-height: 14px;}
+	.lyr_term_kr .lyrWrap {width:90%;height: 340px;}
+	.lyr_term_kr .lyr_hd{height:40px;}
+	.lyr_term_kr .lyr_hd h3{line-height: 40px;font-size:15px;}
+	.lyr_term_kr .lyr_hd .btn_lyrWrap_close {top:22px;}
+	.lyr_term_kr .lyr_bd {padding: 10px 10px 20px; font-size: 12px;}
+	.lyr_term_kr .lyr_bd table th {width:20%;}
+	.lyr_term_kr .lyr_bd dl {width:100%;}	
+	.lyr_term_kr .lyr_bd dl dd{width:100%;}	
+	
+	
+
+}
+
+
+
+
