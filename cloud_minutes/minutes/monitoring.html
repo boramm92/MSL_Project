@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<!-- Cache reset -->		
+<meta http-equiv="Expires" content="Mon, 06 Jan 2016 00:00:01 GMT">
+<meta http-equiv="Expires" content="-1">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<!-- icon_favicon -->
+<link rel="shortcut icon" type="image/x-icon" href="resources/images/ico_favicon_60x60.png"><!-- 윈도우즈 사이트 아이콘, HiDPI/Retina 에서 Safari 나중에 읽기 사이드바 -->
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/font.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/all.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/bootstrap-datetimepicker.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/common.css" />
+	
+<title>서버 모니터링 ll 회의록시스템</title>
+</head>
+<body>
+<!-- .page_loading -->
+<div id="page_loading">
+	<div class="page_ldg">
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+</div>
+<!-- //.page_loading -->
+	
+<!-- #wrap -->
+<div id="wrap">
+    <!-- #skipNav -->
+    <div id="skipNav">
+		<a href="#gnb">주메뉴 메인메뉴</a>
+		<a href="#contents">본문 바로가기</a>
+	</div>
+    <!-- //#skipNav -->
+	<!-- #header -->
+	<div id="header">
+		<h1><a href="#">회의록 시스템</a></h1>
+		<!-- .etc -->
+		<div class="etc">
+			<ul>
+				<li><a href="#">로그아웃</a></li>
+			</ul>
+		</div>
+		<!-- //.etc -->
+	</div>
+	<!-- //#header -->
+	<form name="mainFrm" class="mainFrm" method="post" action="sel_script">
+	<!-- #container -->
+	<div id="container" class="div_normal">
+		<div id="gnb" class="div_left">
+			<ul class="nav">
+				<li><a href="index.html"><span class="fas fa-calendar-alt"></span>회의 현황</a></li>
+				<li><a href="result_list.html"><span class="fas fa-calendar-check"></span>회의 결과</a></li>
+                <li><a href="minutes_supervision.html"><span class="fas fa-calendar-check"></span>회의록 관리</a></li>
+                <li><a href="minutes_write.html"><span class="fas fa-calendar-check"></span>회의록 작성</a></li>
+				<li><span class="fas fa-shield-alt"></span>관리자 설정</li>
+				<li><a href="#none"><span class="fas fa-cog"></span>시스템 관리</a>
+                    <ul class="sub">
+                        <li><a href="systemManagement_site.html"><span class="fas fa-user"></span>사이트 관리</a></li>
+                        <li><a href="systemManagement_user.html"><span class="fas fa-user-cog"></span>사용자 관리</a></li>
+                        <li><a href="systemManagement_model.html"><span class="fas fa-user"></span>모델 관리</a></li>
+                        <li><a href="systemManagement_minutes.html"><span class="fas fa-clipboard-list"></span>회의록 관리</a></li>
+                    </ul>
+                </li>
+				<li class="active"><a href="monitoring.html"><span class="fas fa-laptop"></span>서버 모니터링</a></li>
+				<li><a href="dictionary.html"><span class="fas fa-book"></span>치환 사전</a></li>
+				<li><a href="management.html"><span class="far fa-id-card"></span>직원 관리</a></li>
+			</ul>
+		</div>
+		
+		<!-- #contents -->
+		<div id="contents">
+			<!-- .content -->
+			<div class="content">
+				<!-- .titArea -->
+				<div class="titArea">
+					<h3>서버 모니터링</h3>
+				</div>
+				<!-- //.titArea -->
+				
+				<!-- .tblBox -->
+				<div class="tblBox">
+					<table class="tblType01">
+						<caption class="hide">서버 목록</caption>
+						<colgroup>
+							<col><col><col><col><col>
+							<col>
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col">장비명</th>
+								<th scope="col">IP</th>
+								<th scope="col">CPU(%)</th>
+								<th scope="col">RAM(%)</th>
+								<th scope="col">HDD(%)</th>
+								<th scope="col">Server Status</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td scope="row" class="al_l">VMware Virtual Platform</td>
+								<td>http://127.0.0.1:50100/</td>
+								<td>
+									<span class="gauge">
+										<!-- [D] 퍼센트값을 <em>에 width값으로 넣어주세요. -->
+										<em style="width:80%"></em>
+										<strong>80%</strong>
+									</span>
+								</td>
+								<td>
+									<span class="gauge">
+										<!-- [D] 퍼센트값을 <em>에 width값으로 넣어주세요. -->
+										<em style="width:50%"></em>
+										<strong>50%</strong>
+									</span>
+								</td>
+								<td>
+									<span class="gauge">
+										<!-- [D] 퍼센트값을 <em>에 width값으로 넣어주세요. -->
+										<em style="width:5%"></em>
+										<strong>5%</strong>
+									</span>
+								</td>
+								<td>
+									<span class="ico_circle onLine">on-line</span>
+								</td>
+							</tr>
+							<tr>
+								<td scope="row" class="al_l">440BX Desktop Reference Platform</td>
+								<td>http://127.0.0.1:80100/</td>
+								<td>
+									<span class="gauge">
+										<!-- [D] 퍼센트값을 <em>에 width값으로 넣어주세요. -->
+										<em style="width:80%"></em>
+										<strong>80%</strong>
+									</span>
+								</td>
+								<td>
+									<span class="gauge">
+										<!-- [D] 퍼센트값을 <em>에 width값으로 넣어주세요. -->
+										<em style="width:50%"></em>
+										<strong>50%</strong>
+									</span>
+								</td>
+								<td>
+									<span class="gauge">
+										<!-- [D] 퍼센트값을 <em>에 width값으로 넣어주세요. -->
+										<em style="width:5%"></em>
+										<strong>5%</strong>
+									</span>
+								</td>
+								<td>
+									<span class="ico_circle offLine">off-line</span>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="6" scope="row">등록된 서버 상태가 없습니다.</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<!-- //.tblBox -->
+				
+				<!-- .titArea -->
+				<div class="titArea">
+					<h4>서버 모니터링</h4>
+					<div class="selType01">
+						<label for="select01">서울지점</label>
+						<select id="select01" name="sel_site_id">
+							<option value="1" selected>서울지점</option>
+							<option value="2" >분당지점</option>
+							<option value="3" >대전지점</option>
+							<option value="4" >부산지점</option>
+							<option value="5" >광주지점</option>
+						</select>
+					</div>
+				</div>
+				<!-- //.titArea -->
+				
+
+			</div>
+			<!-- //.content -->
+		</div>
+		<!-- //#contents -->
+	</div>
+	<!-- //#container -->
+	</form>
+</div>
+<!-- //#wrap -->	
+</body>
+
+<script type="text/javascript" src="resources/js/jquery-1.11.2.min.js"></script>
+	
+<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>	
+<script type="text/javascript" src="resources/js/bootstrap-datetimepicker.js"></script>		
+<script type="text/javascript" src="resources/js/moment.min.js"></script>	
+<script type="text/javascript" src="resources/js/bootstrap-datetimepicker.js"></script>		
+<script type="text/javascript" src="resources/js/ko.js"></script>	
+<script type="text/javascript" src="resources/js/all.js"></script>
+<script type="text/javascript" src="resources/js/common.js"></script>
+<script type="text/javascript">   
+$(window).load(function() {    
+	$('#page_loading').addClass('pageldg_hide').delay(300).queue(function() { $(this).remove(); });
+}); 
+</script>  
+<script type="text/javascript">
+$(document).ready(function (){
+
+	$('.fromDate').datetimepicker({
+		language : 'ko', // 화면에 출력될 언어를 한국어로 설정한다.
+		pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략한다.
+		defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력한다. 기본값을 해제하려면 defaultDate 옵션을 생략한다.
+		autoclose: 1,
+	});
+
+	$('.toDate').datetimepicker({
+		language : 'ko',
+		pickTime : false,
+		defalutDate : new Date(),
+		autoclose: 1,
+	});
+	
+	// DateTimePicker 위젯은 기본적으로 TextBox이므로 아래와 같은 일반적인 방법으로 사용자가 입력한 날짜를 획득할 수 있다.
+	var fromDate = $('.fromDate').val(); // '2014.01.01'
+	var toDate = $('.toDate').val(); // '2014.12.31'
+
+	// Sugar 라이브러리가 제공하는 Date 확장 메써드를 사용하여 간편하게 날짜 형식을 변경할 수 있다. MySQL에서 바로 쿼리 조회가 가능한 문자열 형식으로 변경해보자. Moment.js를 사용해도 된다.
+	var fromDate = Date.create($('.fromDate').val()).format('{yyyy}-{MM}-{dd}'); // '2014-01-01'
+
+	// Sugar 라이브러리를 이용하여 날짜를 변경하는 것도 가능하다. 역시 Moment.js를 사용해도 된다.
+	var toDate = Date.create($('.toDate').val()).addDays(1).format('{yyyy}-{MM}-{dd}'); // '2015-01-01'	
+	
+});
+	
+
+	
+	
+</script>
+
+
+</html>

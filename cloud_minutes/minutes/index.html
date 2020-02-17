@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<!-- Cache reset -->		
+<meta http-equiv="Expires" content="Mon, 06 Jan 2016 00:00:01 GMT">
+<meta http-equiv="Expires" content="-1">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<!-- icon_favicon -->
+<link rel="shortcut icon" type="image/x-icon" href="resources/images/ico_favicon_60x60.png"><!-- 윈도우즈 사이트 아이콘, HiDPI/Retina 에서 Safari 나중에 읽기 사이드바 -->
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="resources/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/font.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/all.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/common.css" />
+	
+<title>회의현황 ll 회의록시스템</title>
+</head>
+<body>
+<!-- .page_loading -->
+<div id="page_loading">
+	<div class="page_ldg">
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+</div>
+<!-- //.page_loading -->
+	
+<!-- layerPopup -->
+<div class="layerPop">
+	<!-- 실시간회의록 -->
+	<div class="layerBox">
+		<div class="layer_top">
+			<h2>실시간 회의록</h2>
+			<button class="layer_close">닫기</button>
+		</div>
+		<div class="layer_mid">
+			<div class="tbl_cell">
+				<div class="tbl_cell_tit">
+					<h3>실시간 회의록</h3>
+				</div>
+				<div class="tbl_cell_cont">
+					<div class="btnBox">
+						<button type="button">
+							<em class="ico_record"></em>
+							<span>실시간 <br>녹음용</span>
+						</button>
+						<button type="button">
+							<em class="ico_scissors"></em>
+							<span>실시간 <br>편집용</span>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="tbl_cell">
+				<div class="tbl_cell_tit">
+					<h3>회의록 재생</h3>
+				</div>
+				<div class="tbl_cell_cont">
+					<div class="btnBox">
+						<button type="button">
+							<em class="ico_headset"></em>
+							<span>재생 <br>청취용</span>
+						</button>
+						<button type="button">
+							<em class="ico_filmEdit"></em>
+							<span>재생 <br>편집용</span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="layer_btm">
+			<button type="button">취소</button>
+		</div>
+	</div>
+	<!-- //회의록재생 -->
+</div>
+<!-- //layerPopup -->
+	
+<!-- #wrap -->
+<div id="wrap">
+    <!-- #skipNav -->
+    <div id="skipNav">
+		<a href="#gnb">주메뉴 메인메뉴</a>
+		<a href="#contents">본문 바로가기</a>
+	</div>
+    <!-- //#skipNav -->
+	<!-- #header -->
+	<div id="header">
+		<h1><a href="#">회의록 시스템</a></h1>
+		<!-- .etc -->
+		<div class="etc">
+			<ul>
+				<li><a href="#">로그아웃</a></li>
+			</ul>
+		</div>
+		<!-- //.etc -->
+	</div>
+	<!-- //#header -->
+	<form name="mainFrm" class="mainFrm" method="post" action="sel_script">
+	<!-- #container -->
+	<div id="container" class="div_normal">
+		<div id="gnb" class="div_left">
+			<ul class="nav">
+				<li class="active"><a href="index.html"><span class="fas fa-calendar-alt"></span>회의 현황</a></li>
+				<li><a href="result_list.html"><span class="fas fa-calendar-check"></span>회의 결과</a></li>
+                <li><a href="minutes_supervision.html"><span class="fas fa-calendar-check"></span>회의록 관리</a></li>
+                <li><a href="minutes_write.html"><span class="fas fa-calendar-check"></span>회의록 작성</a></li>
+				<li><span class="fas fa-shield-alt"></span>관리자 설정</li>
+				<li><a href="#none"><span class="fas fa-cog"></span>시스템 관리</a>
+                    <ul class="sub">
+                        <li><a href="systemManagement_site.html"><span class="fas fa-user"></span>사이트 관리</a></li>
+                        <li><a href="systemManagement_user.html"><span class="fas fa-user-cog"></span>사용자 관리</a></li>
+                        <li><a href="systemManagement_model.html"><span class="fas fa-user"></span>모델 관리</a></li>
+                        <li><a href="systemManagement_minutes.html"><span class="fas fa-clipboard-list"></span>회의록 관리</a></li>
+                    </ul>
+                </li>
+				<li><a href="monitoring.html"><span class="fas fa-laptop"></span>서버 모니터링</a></li>
+				<li><a href="dictionary.html"><span class="fas fa-book"></span>치환 사전</a></li>
+				<li><a href="management.html"><span class="far fa-id-card"></span>직원 관리</a></li>
+			</ul>
+		</div>
+		
+		<!-- #contents -->
+		<div id="contents">
+			<!-- .content -->
+			<div class="content">
+				<!-- .titArea -->
+				<div class="titArea">
+					<h3>회의현황</h3>
+					<div class="selType01">
+						<label for="select01">서울지점</label>
+						<select id="select01" name="sel_site_id">
+							<option value="1" selected>서울지점</option>
+							<option value="2" >분당지점</option>
+							<option value="3" >대전지점</option>
+							<option value="4" >부산지점</option>
+							<option value="5" >광주지점</option>
+						</select>
+					</div>
+				</div>
+				<!-- //.titArea -->
+				
+				<!-- .section -->
+				<div class="stn">
+					<div class="roomBox">
+						<ul>
+							<li class="room_item">
+								<span class="room">
+									<em class="room_top">
+										<strong>1 회의실</strong>
+									</em>
+									<em class="room_mid">
+										<button type="button"><strong class="fas fa-cog"></strong>회의실 설정</button>
+										<button type="button"><strong class="fas fa-info-circle"></strong>회의실 현황</button>
+									</em>
+									<em class="room_btm">
+										<button type="button"><strong class="far fa-calendar-check"></strong>예약</button>
+									</em>
+								</span>
+							</li>
+							<li class="room_item">
+								<span class="room">
+									<em class="room_top">
+										<strong>2 회의실</strong>
+									</em>
+									<em class="room_mid">
+										<button type="button"><strong class="fas fa-cog"></strong>회의실 설정</button>
+										<button type="button"><strong class="fas fa-info-circle"></strong>회의실 현황</button>
+									</em>
+									<em class="room_btm">
+										<button type="button" disabled><strong class="far fa-calendar-check"></strong>예약</button>
+									</em>
+								</span>
+							</li>
+							<li class="room_item">
+								<span class="room">
+									<em class="room_top">
+										<strong>3 회의실</strong>
+									</em>
+									<em class="room_mid">
+										<button type="button"><strong class="fas fa-cog"></strong>회의실 설정</button>
+										<button type="button"><strong class="fas fa-info-circle"></strong>회의실 현황</button>
+									</em>
+									<em class="room_btm">
+										<button type="button"><strong class="far fa-calendar-check"></strong>예약</button>
+									</em>
+								</span>
+							</li>
+							<li class="room_item">
+								<span class="room">
+									<em class="room_top">
+										<strong>4 회의실</strong>
+									</em>
+									<em class="room_mid">
+										<button type="button"><strong class="fas fa-cog"></strong>회의실 설정</button>
+										<button type="button"><strong class="fas fa-info-circle"></strong>회의실 현황</button>
+									</em>
+									<em class="room_btm">
+										<button type="button"><strong class="far fa-calendar-check"></strong>예약</button>
+									</em>
+								</span>
+							</li>
+							<li class="room_item">
+								<span class="room">
+									<em class="room_top">
+										<strong>5 회의실</strong>
+									</em>
+									<em class="room_mid">
+										<button type="button"><strong class="fas fa-cog"></strong>회의실 설정</button>
+										<button type="button"><strong class="fas fa-info-circle"></strong>회의실 현황</button>
+									</em>
+									<em class="room_btm">
+										<button type="button" disabled><strong class="far fa-calendar-check"></strong>예약</button>
+									</em>
+								</span>
+							</li>
+						</ul>
+						<ul>
+							<li class="room_item">
+								<span class="room">
+									<em class="room_top">
+										<strong>1 회의실</strong>
+									</em>
+									<em class="room_mid">
+										<button type="button"><strong class="fas fa-cog"></strong>회의실 설정</button>
+										<button type="button"><strong class="fas fa-info-circle"></strong>회의실 현황</button>
+									</em>
+									<em class="room_btm">
+										<button type="button"><strong class="far fa-calendar-check"></strong>예약</button>
+									</em>
+								</span>
+							</li>
+							<li class="room_item">
+								<span class="room">
+									<em class="room_top">
+										<strong>2 회의실</strong>
+									</em>
+									<em class="room_mid">
+										<button type="button"><strong class="fas fa-cog"></strong>회의실 설정</button>
+										<button type="button"><strong class="fas fa-info-circle"></strong>회의실 현황</button>
+									</em>
+									<em class="room_btm">
+										<button type="button" disabled><strong class="far fa-calendar-check"></strong>예약</button>
+									</em>
+								</span>
+							</li>
+							<li class="room_item">
+								<span class="room">
+									<em class="room_top">
+										<strong>3 회의실</strong>
+									</em>
+									<em class="room_mid">
+										<button type="button"><strong class="fas fa-cog"></strong>회의실 설정</button>
+										<button type="button"><strong class="fas fa-info-circle"></strong>회의실 현황</button>
+									</em>
+									<em class="room_btm">
+										<button type="button"><strong class="far fa-calendar-check"></strong>예약</button>
+									</em>
+								</span>
+							</li>
+							<li class="room_item">
+								<span class="room">
+									<em class="room_top">
+										<strong>4 회의실</strong>
+									</em>
+									<em class="room_mid">
+										<button type="button"><strong class="fas fa-cog"></strong>회의실 설정</button>
+										<button type="button"><strong class="fas fa-info-circle"></strong>회의실 현황</button>
+									</em>
+									<em class="room_btm">
+										<button type="button"><strong class="far fa-calendar-check"></strong>예약</button>
+									</em>
+								</span>
+							</li>
+							<li class="room_item">
+								<span class="room">
+									<em class="room_top">
+										<strong>5 회의실</strong>
+									</em>
+									<em class="room_mid">
+										<button type="button"><strong class="fas fa-cog"></strong>회의실 설정</button>
+										<button type="button"><strong class="fas fa-info-circle"></strong>회의실 현황</button>
+									</em>
+									<em class="room_btm">
+										<button type="button" disabled><strong class="far fa-calendar-check"></strong>예약</button>
+									</em>
+								</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- //.section -->
+				
+				<!-- .tblBox -->
+				<div class="tblBox">
+					<table class="tblType01">
+						<caption class="hide">회의현황 목록</caption>
+						<colgroup>
+							<col><col><col><col><col>
+							<col><col>
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col">회의명</th>
+								<th scope="col">회의룸</th>
+								<th scope="col">참석인수</th>
+								<th scope="col">시작시간</th>
+								<th scope="col">종료시간</th>
+								<th scope="col">상태</th>
+								<th scope="col">시작/종료</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td scope="row" class="al_l"><a class="link" href="timeline.html">테스트_서울_1회의룸_2</a></td>
+								<td>1 회의실</td>
+								<td>
+									<span class="txt">3</span>
+									<span class="preveal">
+										<em class="fas fa-search"></em>
+										<em class="item">홍길삼, 홍길사, 홍길오 홍길삼, 홍길사, 홍길오</em>
+									</span>
+								</td>
+								<td>2019-08-16 18:21:13</td>
+								<td>2019-08-16 18:24:09</td>
+								<td>C</td>
+								<td>
+									<span class="btn">
+										<button type="button" class="btn_tbl"><span class="fas fa-play"></span>시작</button>
+										<button type="button" class="btn_tbl active"><span class="fas fa-stop"></span>종료</button>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td scope="row" class="al_l"><a class="link" href="timeline.html">테스트_서울_1회의룸_2</a></td>
+								<td>1 회의실</td>
+								<td>
+									<span class="txt">3</span>
+									<span class="preveal">
+										<em class="fas fa-search"></em>
+										<em class="item">홍길삼, 홍길사, 홍길오 홍길삼, 홍길사, 홍길오</em>
+									</span>
+								</td>
+								<td>2019-08-16 18:21:13</td>
+								<td>2019-08-16 18:24:09</td>
+								<td>C</td>
+								<td>
+									<span class="btn">
+										<button type="button" class="btn_tbl"><span class="fas fa-play"></span>시작</button>
+										<button type="button" class="btn_tbl active"><span class="fas fa-stop"></span>종료</button>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td scope="row" class="al_l"><a class="link" href="timeline.html">테스트_서울_1회의룸_2</a></td>
+								<td>1 회의실</td>
+								<td>
+									<span class="txt">3</span>
+									<span class="preveal">
+										<em class="fas fa-search"></em>
+										<em class="item">홍길삼, 홍길사, 홍길오 홍길삼, 홍길사, 홍길오</em>
+									</span>
+								</td>
+								<td>2019-08-16 18:21:13</td>
+								<td>2019-08-16 18:24:09</td>
+								<td>C</td>
+								<td>
+									<span class="btn">
+										<button type="button" class="btn_tbl"><span class="fas fa-play"></span>시작</button>
+										<button type="button" class="btn_tbl active"><span class="fas fa-stop"></span>종료</button>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td scope="row" class="al_l"><a class="link" href="timeline.html">테스트_서울_1회의룸_2</a></td>
+								<td>1 회의실</td>
+								<td>
+									<span class="txt">3</span>
+									<span class="preveal">
+										<em class="fas fa-search"></em>
+										<em class="item">홍길삼, 홍길사, 홍길오 홍길삼, 홍길사, 홍길오</em>
+									</span>
+								</td>
+								<td>2019-08-16 18:21:13</td>
+								<td>2019-08-16 18:24:09</td>
+								<td>C</td>
+								<td>
+									<span class="btn">
+										<button type="button" class="btn_tbl"><span class="fas fa-play"></span>시작</button>
+										<button type="button" class="btn_tbl active"><span class="fas fa-stop"></span>종료</button>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td scope="row" class="al_l"><a class="link" href="timeline.html">테스트_서울_1회의룸_2</a></td>
+								<td>1 회의실</td>
+								<td>
+									<span class="txt">3</span>
+									<span class="preveal">
+										<em class="fas fa-search"></em>
+										<em class="item">홍길삼, 홍길사, 홍길오 홍길삼, 홍길사, 홍길오</em>
+									</span>
+								</td>
+								<td>2019-08-16 18:21:13</td>
+								<td>2019-08-16 18:24:09</td>
+								<td>C</td>
+								<td>
+									<span class="btn">
+										<button type="button" class="btn_tbl"><span class="fas fa-play"></span>시작</button>
+										<button type="button" class="btn_tbl active"><span class="fas fa-stop"></span>종료</button>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td scope="row" class="al_l"><a class="link" href="timeline.html">테스트_서울_1회의룸_2</a></td>
+								<td>1 회의실</td>
+								<td>
+									<span class="txt">3</span>
+									<span class="preveal">
+										<em class="fas fa-search"></em>
+										<em class="item">홍길삼, 홍길사, 홍길오 홍길삼, 홍길사, 홍길오</em>
+									</span>
+								</td>
+								<td>2019-08-16 18:21:13</td>
+								<td>2019-08-16 18:24:09</td>
+								<td>C</td>
+								<td>
+									<span class="btn">
+										<button type="button" class="btn_tbl"><span class="fas fa-play"></span>시작</button>
+										<button type="button" class="btn_tbl active"><span class="fas fa-stop"></span>종료</button>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td scope="row" class="al_l"><a class="link" href="timeline.html">테스트_서울_1회의룸_2</a></td>
+								<td>1 회의실</td>
+								<td>
+									<span class="txt">3</span>
+									<span class="preveal">
+										<em class="fas fa-search"></em>
+										<em class="item">홍길삼, 홍길사, 홍길오 홍길삼, 홍길사, 홍길오</em>
+									</span>
+								</td>
+								<td>2019-08-16 18:21:13</td>
+								<td>2019-08-16 18:24:09</td>
+								<td>C</td>
+								<td>
+									<span class="btn">
+										<button type="button" class="btn_tbl"><span class="fas fa-play"></span>시작</button>
+										<button type="button" class="btn_tbl active"><span class="fas fa-stop"></span>종료</button>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td scope="row" class="al_l"><a class="link" href="timeline.html">테스트_서울_1회의룸_2</a></td>
+								<td>1 회의실</td>
+								<td>
+									<span class="txt">3</span>
+									<span class="preveal">
+										<em class="fas fa-search"></em>
+										<em class="item">홍길삼, 홍길사, 홍길오 홍길삼, 홍길사, 홍길오</em>
+									</span>
+								</td>
+								<td>2019-08-16 18:21:13</td>
+								<td>2019-08-16 18:24:09</td>
+								<td>C</td>
+								<td>
+									<span class="btn">
+										<button type="button" class="btn_tbl"><span class="fas fa-play"></span>시작</button>
+										<button type="button" class="btn_tbl active"><span class="fas fa-stop"></span>종료</button>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td scope="row" class="al_l"><a class="link" href="#">테스트_서울_1회의룸_2 </a></td>
+								<td>1 회의실</td>
+								<td>
+									<span class="txt">3</span>
+									<span class="preveal">
+										<em class="fas fa-search"></em>
+										<em class="item">홍길삼, 홍길사, 홍길오 홍길삼, 홍길사, 홍길오</em>
+									</span>
+								</td>
+								<td>2019-08-16 18:21:13</td>
+								<td>2019-08-16 18:24:09</td>
+								<td>C</td>
+								<td>
+									<span class="btn">
+										<button type="button" class="btn_tbl"><span class="fas fa-play"></span>시작</button>
+										<button type="button" class="btn_tbl active"><span class="fas fa-stop"></span>종료</button>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td scope="row" class="al_l"><a class="link" href="timeline.html">테스트_서울_1회의룸_2</a></td>
+								<td>1 회의실</td>
+								<td>
+									<span class="txt">3</span>
+									<span class="preveal">
+										<em class="fas fa-search"></em>
+										<em class="item">홍길삼, 홍길사, 홍길오 홍길삼, 홍길사, 홍길오</em>
+									</span>
+								</td>
+								<td>2019-08-16 18:21:13</td>
+								<td>2019-08-16 18:24:09</td>
+								<td>C</td>
+								<td>
+									<span class="btn">
+										<button type="button" class="btn_tbl"><span class="fas fa-play"></span>시작</button>
+										<button type="button" class="btn_tbl active"><span class="fas fa-stop"></span>종료</button>
+									</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<!-- //.tblBox -->
+				
+				<!-- .paging_wrap -->
+				<div class="paging_wrap">
+					<div class="paging">
+						<a class="btn_paging_first" href="javascript:goPage('1')"><span class="fas fa-angle-double-left"><em>처음페이지</em></span></a>
+						<a class="btn_paging_prev" href="javascript:goPage('1')"><span class="fas fa-angle-left"><em>이전페이지</em></span></a>
+						<strong>1</strong>
+						<a href="javascript:goPage('2')">2</a>
+						<a href="javascript:goPage('3')">3</a>
+						<a class="btn_paging_next" href="javascript:goPage('2')"><span class="fas fa-angle-right"><em>다음페이지</em></span></a>
+						<a class="btn_paging_end" href="javascript:goPage('3')"><span class="fas fa-angle-double-right"><em>마지막페이지</em></span></a>
+					</div>
+				</div>
+				<!-- //.paging_wrap -->
+			</div>
+			<!-- //.content -->
+		</div>
+		<!-- //#contents -->
+	</div>
+	<!-- //#container -->
+	</form>
+</div>
+<!-- //#wrap -->	
+</body>
+
+<script type="text/javascript" src="resources/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="resources/js/all.js"></script>
+<script type="text/javascript" src="resources/js/common.js"></script>
+<script type="text/javascript">   
+$(window).load(function() {    
+	$('#page_loading').addClass('pageldg_hide').delay(300).queue(function() { $(this).remove(); });
+}); 
+</script>  
+<script type="text/javascript">
+var ws;
+
+$(document).ready(function() {
+    conn_ws();
+});
+
+//websocket main function
+function conn_ws(){
+    let cur_micId = "";
+    let new_micId = "";
+
+    // ws = new WebSocket( 'ws://127.0.0.1:34990' );
+    ws = new WebSocket( 'ws://10.122.66.73:8200/callsocket' );
+    ws.onmessage = function(e){
+        let rcv_data = JSON.parse(e.data);
+        console.log("### rcv_data:" + rcv_data.toString());
+    };
+    ws.onopen = function(){
+        console.log("==> Socket Opened");
+        let sendMsg = '{"EventType":"CONFERENCE", "Event":"subscribe"}';
+        ws.send(sendMsg);
+        console.log("==> Sent opening message : subscribe : sendMsg : " + sendMsg);
+        // sendMsg = '{"EventType":"STT", "Event":"START", "Caller":"' + getd_cust_tel_no + '", "Agent":"' + getd_cust_op_id + '", "contractNo":"' + getd_contract_no + '", "campaignId":"' + getd_campaign_id + '"}';
+        // sendMsgRestful(sendMsg);
+    }
+}
+
+//회의룸 설정 pop up
+function confPop(rser, mrnm){
+    let popSize = "width=750,height=550";
+    let popOption = "titlebar=no,toolbar=no,menubar=no,location=no,directories=no,status=no,scrollbars=no";
+    pop1 = window.open("/setUpConf?site_ser=1&room_ser=" + rser, "pop1", popSize + "," + popOption);
+}
+
+//회의 상세정보
+function confDetail(rser){
+    location.href="detailView?room_ser=" + rser;
+}
+
+//실시간/녹음된 스크립트 보기 이동
+function goScript(ser, status){
+    // if( status < 2 ){
+    //     alert("회의상태가 예약중인 회의입니다. 열람/편집할 회의록이 없습니다.");
+    //     return false;
+    // }
+
+    location.href="sel_script?meta_ser=" + ser;
+}
+
+//조회
+function goSch(){
+    mainFrm.method = "POST";
+    mainFrm.action = "/dashboard";
+    mainFrm.submit();
+}
+
+//페이지 이동
+function goPage(num){
+    $('#currentPage').val(num);
+
+    goSch();
+}
+
+// 시작 / 종료 버튼 클릭
+function meetingStatus(ser, status){
+    $.ajax({
+        url : "meetingStatusUpdate",
+        data : {meta_ser:ser, meetStatus:status},
+        type : "POST"
+    }).done(function(data){
+        console.log("### SUCC : " + data);
+
+        let rcv_data = JSON.parse(data);
+
+        let sendMsg = '';
+        if( status == 1 ) {
+            sendMsg = '{"EventType":"COMMAND", "Event":"start", "rec_id":"' + ser + '", "mic_ip":"' + rcv_data[0] + '", "mic_port1":"' + rcv_data[1] + '", "mic_port2":"' + rcv_data[2] + '", "mic_port3":"' + rcv_data[3] + '", "mic_port4":"' + rcv_data[4] + '", "mic_port5":"' + rcv_data[5] + '", "mic_port6":"' + rcv_data[6] + '", "mic_port7":"' + rcv_data[7] + '", "mic_port8":"' + rcv_data[8] + '"}';
+        }else{
+            sendMsg = '{"EventType":"COMMAND", "Event":"stop", "rec_id":"' + ser + '", "mic_ip":"' + rcv_data[0] + '", "mic_port1":"' + rcv_data[1] + '", "mic_port2":"' + rcv_data[2] + '", "mic_port3":"' + rcv_data[3] + '", "mic_port4":"' + rcv_data[4] + '", "mic_port5":"' + rcv_data[5] + '", "mic_port6":"' + rcv_data[6] + '", "mic_port7":"' + rcv_data[7] + '", "mic_port8":"' + rcv_data[8] + '"}';
+        }
+        ws.send(sendMsg);
+        console.log("### sent message : " + sendMsg);
+        location.reload();
+    }).fail(function(data){
+        console.log("### FAIL : " + data);
+        location.reload();
+    });
+}
+</script>
+
+
+</html>

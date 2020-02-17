@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<!-- Cache reset -->		
+<meta http-equiv="Expires" content="Mon, 06 Jan 2016 00:00:01 GMT">
+<meta http-equiv="Expires" content="-1">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<!-- icon_favicon -->
+<link rel="shortcut icon" type="image/x-icon" href="resources/images/ico_favicon_60x60.png"><!-- 윈도우즈 사이트 아이콘, HiDPI/Retina 에서 Safari 나중에 읽기 사이드바 -->
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="resources/css/font.css">
+<link rel="stylesheet" type="text/css" href="resources/css/reset.css">
+<link rel="stylesheet" type="text/css" href="resources/css/all.css">
+<link rel="stylesheet" type="text/css" href="resources/css/login.css">
+    
+<!--[if lte IE 9]>
+<script src="resources/js/html5shiv.min.js"></script>
+<script src="resources/js/respond.min.js"></script>
+
+<div class="lyrWrap"> 
+    <div class="lyr_bg ie9"></div>
+    <div class="lyrBox">
+        <div class="lyr_top">
+            <h3>브라우저 업데이트 안내</h3>
+         </div> 
+        <div class="lyr_mid"> 
+            <div class="legacy-browser">
+현재 사용중인 브라우저는 지원이 중단된 브라우저입니다.<br>
+원활한 온라인 서비스를 위해 브라우저를 <a href="http://windows.microsoft.com/ko-kr/internet-explorer/ie-11-worldwide-languages" target="_blank">최신 버전</a>으로 업그레이드 해주세요.
+            </div>
+        </div> 
+        <div class="lyr_btm">
+            <div class="btnBox sz_small">
+                <button class="btn_win_close">창 닫기</button>
+            </div>
+        </div> 
+    </div> 
+</div>
+<![endif]-->
+<title>로그인 &gt; AICC</title>
+</head>
+
+<body class="gcsLoginWrap">
+    
+<div class="main_tit">
+	<h1>회의록시스템</h1>
+</div>
+<div class="loginContainer">
+	<form class="loginWrap" name="form-login">
+		<fieldset>
+			<legend>Login</legend>
+			<div class="loginBox">
+				<div class="fl"><img src="resources/images/ico_login.png" alt="login"></div>
+				<div class="fr">
+					<span>
+						<input type="text" name="userId" id="ipt_id" class="ipt_txt" placeholder="E-mail" autocomplete="off">
+					</span>
+					<span>
+						<input type="password" name="passwd" id="ipt_pw" class="ipt_txt" placeholder="Password" autocomplete="off">
+					</span>
+					<span class="checkBox">
+						<input type="checkbox" name="ipt_check" id="ipt_check" class="ipt_check">
+                    	<label for="ipt_check">아이디 저장</label>
+					</span>
+					<span>
+						<em class="txt_error">아이디 또는 비밀번호가 일치하지 않습니다.<br>오류 시 관리자에게 문의 하세요.</em>
+						<button type="button" name="btn_login" id="btn_login" class="btn_login">Login</button>
+					</span>
+					<span>
+						<button type="button" class="btn_pw_inquire btn_lyr_open">비밀번호 요청</button>
+					</span>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+</div>
+<div class="copyRight"><span>MINDsLab &copy; 2019</span></div>
+
+<!-- lyrWrap -->    
+<div class="lyrWrap">
+    <div class="lyr_bg"></div>
+    <!-- 사용자 프로필 -->  
+    <div class="lyrBox lyr_profile">
+        <div class="lyr_top">
+            <h3>비밀번호 요청</h3>
+            <button class="btn_lyr_close">닫기</button>
+         </div>
+        <div class="lyr_mid">
+아이디 또는 비밀번호를 잃어버리셨나요?<br>
+[MINUTES_COMMON:ADMIN_EMAIL]로 ID/PW 변경 요청 메일 부탁드립니다.
+        </div>
+        <div class="lyr_btm">
+            <div class="btnBox sz_small">
+                <button class="btn_lyr_close">확인</button>
+            </div>
+        </div>
+    </div>
+    <!-- //사용자 프로필 -->  
+</div>
+<!-- //lyrWrap-->  
+    
+<!-- 공통 script -->
+<script type="text/javascript" src="resources/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="resources/js/all.js"></script>
+<script type="text/javascript" src="resources/js/common.js"></script>
+<script type="text/javascript">
+jQuery.event.add(window,"load",function(){
+	$(document).ready(function (){
+        //Layer popup open 
+        $('.btn_lyr_open').on('click',function(){
+            $('.lyr_profile').show();  
+        });	  
+        
+	});
+});	
+</script>
+</body>
+</html>

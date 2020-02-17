@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<!-- Cache reset -->		
+<meta http-equiv="Expires" content="Mon, 06 Jan 2016 00:00:01 GMT">
+<meta http-equiv="Expires" content="-1">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<!-- icon_favicon -->
+<link rel="shortcut icon" type="image/x-icon" href="resources/images/ico_favicon_60x60.png"><!-- 윈도우즈 사이트 아이콘, HiDPI/Retina 에서 Safari 나중에 읽기 사이드바 -->
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="resources/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/font.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/all.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/bootstrap-datetimepicker.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/popup.css" />
+	
+<title>회의설정 ll 회의록시스템</title>
+</head>
+<body>	
+<!-- #pop_wrap -->
+<div id="pop_wrap">
+	<!-- .pop_top -->
+	<div class="pop_top">
+		<h1>회의실 예약</h1>
+		<button type="button" class="pop_close">닫기</button>
+	</div>
+	<!-- //.pop_top -->
+	<!-- .pop_mid -->
+	<div class="pop_mid">
+		<!-- .pop_stn -->
+		<div class="pop_stn">
+			<div class="pop_stn_tit">
+				<h2>예약정보</h2>				
+			</div>
+			<!-- .pop_stn_cont -->
+			<div class="pop_stn_cont">
+				<dl>
+					<dt>회의명</dt>
+					<dd><input type="text" class="ipt_txt"></dd>
+				</dl>
+				<dl>
+					<dt>회의시간</dt>
+					<dd><input type="text" class="ipt_date fromDate"></dd>
+				</dl>
+				<dl>
+					<dt>안건</dt>
+					<dd><input type="text" class="ipt_txt"></dd>
+				</dl>
+				<dl>
+					<dt>참석자</dt>
+					<dd>
+						<input type="text" class="ipt_txt">
+						<div class="personSrch">
+							<div class="srchSetting">
+								<div class="selType01">
+									<label for="select01">선택</label>
+									<select id="select01">
+										<option value="">영업</option>
+										<option value="">관리</option>
+										<option value="">기획</option>
+										<option value="">R&nbsp;D</option>
+									</select>
+								</div>
+								<input type="text" class="ipt_txt">
+								<button type="button" class="btn_tbl">검색</button>
+							</div>
+							<div class="tblBox">
+								<table class="tblType01">
+									<caption class="hide">직원 목록</caption>
+									<colgroup>
+										<col><col><col><col><col>
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col"></th>
+											<th scope="col">이름</th>
+											<th scope="col">부서</th>
+											<th scope="col">직급</th>
+											<th scope="col">사번</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td scope="row">
+												<div class="checkBox"> 
+													<input type="checkbox" id="ipt_check01"> 
+													<label for="ipt_check01"></label>
+												</div>
+											</td>
+											<td>이주일</td>
+											<td>자재</td>
+											<td>과장</td>
+											<td>12</td>
+										</tr>
+										<tr>
+											<td scope="row">
+												<div class="checkBox"> 
+													<input type="checkbox" id="ipt_check02"> 
+													<label for="ipt_check02"></label>
+												</div>
+											</td>
+											<td>김경이</td>
+											<td>자재</td>
+											<td>과장</td>
+											<td>12</td>
+										</tr>
+										<tr>
+											<td scope="row">
+												<div class="checkBox"> 
+													<input type="checkbox" id="ipt_check03"> 
+													<label for="ipt_check03"></label>
+												</div>
+											</td>
+											<td>고두삼</td>
+											<td>자재</td>
+											<td>과장</td>
+											<td>12</td>
+										</tr>
+										<tr>
+											<td scope="row" colspan="5">데이터가 없습니다.</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!-- .paging_wrap -->
+							<div class="paging_wrap">
+								<div class="paging">
+									<a class="btn_paging_first" href="javascript:goPage('1')"><span class="fas fa-angle-double-left"><em>처음페이지</em></span></a>
+									<a class="btn_paging_prev" href="javascript:goPage('1')"><span class="fas fa-angle-left"><em>이전페이지</em></span></a>
+									<strong>1</strong>
+									<a href="javascript:goPage('2')">2</a>
+									<a href="javascript:goPage('3')">3</a>
+									<a class="btn_paging_next" href="javascript:goPage('2')"><span class="fas fa-angle-right"><em>다음페이지</em></span></a>
+									<a class="btn_paging_end" href="javascript:goPage('3')"><span class="fas fa-angle-double-right"><em>마지막페이지</em></span></a>
+								</div>
+							</div>
+							<!-- //.paging_wrap -->
+						</div>
+					</dd>
+				</dl>
+			</div>
+			<!-- .pop_stn_cont -->
+			<div class="btnBox">
+				<button type="button">완료</button>
+			</div>
+		</div>
+		<!-- //.pop_stn -->
+
+		<!-- .pop_stn -->
+		<div class="pop_stn" style="display:block;">
+			<div class="pop_stn_tit">
+				<h2>마이크 사용자<span>마이크 사용자 및 마이크 활성화 여부를 설정해 주세요.</span></h2>				
+			</div>
+			<!-- .pop_stn_cont -->
+			<div class="pop_stn_cont">
+				<div class="lst_mic">
+					<ul>
+						<li>
+							<span>
+								<div class="selType02">
+									<label for="slt_mic01">1번 마이크</label>
+									<select id="slt_mic01">
+										<option value="">1번 마이크</option>
+										<option value="">참석자1</option>
+										<option value="">참석자2</option>
+										<option value="">참석자3</option>
+									</select>
+								</div>
+								<div class="switchBox">
+									<input type="checkbox" id="switch01"> 
+									<label for="switch01"></label>
+								</div>
+							</span>
+						</li>
+						<li>
+							<span>
+								<div class="selType02">
+									<label for="slt_mic02">2번 마이크</label>
+									<select id="slt_mic02">
+										<option value="">2번 마이크</option>
+										<option value="">참석자1</option>
+										<option value="">참석자2</option>
+										<option value="">참석자3</option>
+									</select>
+								</div>
+								<div class="switchBox">
+									<input type="checkbox" id="switch02"> 
+									<label for="switch02"></label>
+								</div>
+							</span>									
+						</li>
+						<li>
+							<span>
+								<div class="selType02">
+									<label for="slt_mic03">3번 마이크</label>
+									<select id="slt_mic03">
+										<option value="">3번 마이크</option>
+										<option value="">참석자1</option>
+										<option value="">참석자2</option>
+										<option value="">참석자3</option>
+									</select>
+								</div>
+								<div class="switchBox">
+									<input type="checkbox" id="switch03"> 
+									<label for="switch03"></label>
+								</div>
+							</span>
+						</li>
+						<li>
+							<span>
+								<div class="selType02">
+									<label for="slt_mic04">4번 마이크</label>
+									<select id="slt_mic04">
+										<option value="">4번 마이크</option>
+										<option value="">참석자1</option>
+										<option value="">참석자2</option>
+										<option value="">참석자3</option>
+									</select>
+								</div>
+								<div class="switchBox">
+									<input type="checkbox" id="switch04"> 
+									<label for="switch04"></label>
+								</div>
+							</span>
+						</li>
+					</ul>
+					<ul>
+						<li>
+							<span>
+								<div class="selType02">
+									<label for="slt_mic05">5번 마이크</label>
+									<select id="slt_mic05">
+										<option value="">5번 마이크</option>
+										<option value="">참석자1</option>
+										<option value="">참석자2</option>
+										<option value="">참석자3</option>
+									</select>
+								</div>
+								<div class="switchBox">
+									<input type="checkbox" id="switch05"> 
+									<label for="switch05"></label>
+								</div>
+							</span>
+						</li>
+						<li>
+							<span>
+								<div class="selType02">
+									<label for="slt_mic06">6번 마이크</label>
+									<select id="slt_mic06">
+										<option value="">6번 마이크</option>
+										<option value="">참석자1</option>
+										<option value="">참석자2</option>
+										<option value="">참석자3</option>
+									</select>
+								</div>
+								<div class="switchBox">
+									<input type="checkbox" id="switch06"> 
+									<label for="switch06"></label>
+								</div>
+							</span>
+						</li>
+						<li>
+							<span>
+								<div class="selType02">
+									<label for="slt_mic07">7번 마이크</label>
+									<select id="slt_mic07">
+										<option value="">7번 마이크</option>
+										<option value="">참석자1</option>
+										<option value="">참석자2</option>
+										<option value="">참석자3</option>
+									</select>
+								</div>
+								<div class="switchBox">
+									<input type="checkbox" id="switch07"> 
+									<label for="switch07"></label>
+								</div>
+							</span>
+						</li>
+						<li>
+							<span>
+								<div class="selType02">
+									<label for="slt_mic08">8번 마이크</label>
+									<select id="slt_mic08">
+										<option value="">8번 마이크</option>
+										<option value="">참석자1</option>
+										<option value="">참석자2</option>
+										<option value="">참석자3</option>
+									</select>
+								</div>
+								<div class="switchBox">
+									<input type="checkbox" id="switch08"> 
+									<label for="switch08"></label>
+								</div>
+							</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- .pop_stn_cont -->
+		</div>
+		<!-- //.pop_stn -->
+		
+	</div>
+	<!-- //.pop_mid -->
+	<!-- .pop_btm -->
+	<div class="pop_btm">
+		<button type="button" class="btn_point">예약</button>
+		<button type="button">취소</button>		
+	</div>
+	<!-- //.pop_btm -->
+</div>
+<!-- //#pop_wrap -->
+</body>
+	
+<script type="text/javascript" src="resources/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>	
+<script type="text/javascript" src="resources/js/bootstrap-datetimepicker.js"></script>		
+<script type="text/javascript" src="resources/js/moment.min.js"></script>	
+<script type="text/javascript" src="resources/js/bootstrap-datetimepicker.js"></script>		
+<script type="text/javascript" src="resources/js/ko.js"></script>	
+<script type="text/javascript" src="resources/js/all.js"></script>	
+<script type="text/javascript">
+$(document).ready(function (){
+
+	$('.fromDate').datetimepicker({
+		language : 'ko', // 화면에 출력될 언어를 한국어로 설정한다.
+		pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략한다.
+		defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력한다. 기본값을 해제하려면 defaultDate 옵션을 생략한다.
+		autoclose: 1,
+	});
+	
+	// DateTimePicker 위젯은 기본적으로 TextBox이므로 아래와 같은 일반적인 방법으로 사용자가 입력한 날짜를 획득할 수 있다.
+	var fromDate = $('.fromDate').val(); // '2014.01.01'
+
+	// Sugar 라이브러리가 제공하는 Date 확장 메써드를 사용하여 간편하게 날짜 형식을 변경할 수 있다. MySQL에서 바로 쿼리 조회가 가능한 문자열 형식으로 변경해보자. Moment.js를 사용해도 된다.
+	var fromDate = Date.create($('.fromDate').val()).format('{yyyy}-{MM}-{dd}'); // '2014-01-01'
+	
+});
+</script>
+</html>

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<!-- Cache reset -->		
+<meta http-equiv="Expires" content="Mon, 06 Jan 2016 00:00:01 GMT">
+<meta http-equiv="Expires" content="-1">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<!-- icon_favicon -->
+<link rel="shortcut icon" type="image/x-icon" href="resources/images/ico_favicon_60x60.png"><!-- 윈도우즈 사이트 아이콘, HiDPI/Retina 에서 Safari 나중에 읽기 사이드바 -->
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="resources/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/font.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/all.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/bootstrap-datetimepicker.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/common.css" />
+	
+<title>회의결과 ll 회의록시스템</title>
+</head>
+<body>
+<!-- .page_loading -->
+<div id="page_loading">
+	<div class="page_ldg">
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+</div>
+<!-- //.page_loading -->
+	
+<!-- #wrap -->
+<div id="wrap">
+    <!-- #skipNav -->
+    <div id="skipNav">
+		<a href="#gnb">주메뉴 메인메뉴</a>
+		<a href="#contents">본문 바로가기</a>
+	</div>
+    <!-- //#skipNav -->
+	<!-- #header -->
+	<div id="header">
+		<h1><a href="#">회의록 시스템</a></h1>
+		<!-- .etc -->
+		<div class="etc">
+			<ul>
+				<li><a href="#">로그아웃</a></li>
+			</ul>
+		</div>
+		<!-- //.etc -->
+	</div>
+	<!-- //#header -->
+	<form name="mainFrm" class="mainFrm" method="post" action="sel_script">
+	<!-- #container -->
+	<div id="container" class="div_normal">
+		<div id="gnb" class="div_left">
+			<ul class="nav">
+				<li><a href="index.html"><span class="fas fa-calendar-alt"></span>회의 현황</a></li>
+				<li class="active"><a href="result_list.html"><span class="fas fa-calendar-check"></span>회의 결과</a></li>
+                <li><a href="minutes_supervision.html"><span class="fas fa-calendar-check"></span>회의록 관리</a></li>
+                <li><a href="minutes_write.html"><span class="fas fa-calendar-check"></span>회의록 작성</a></li>
+				<li><span class="fas fa-shield-alt"></span>관리자 설정</li>
+				<li><a href="#none"><span class="fas fa-cog"></span>시스템 관리</a>
+                    <ul class="sub">
+                        <li><a href="systemManagement_site.html"><span class="fas fa-user"></span>사이트 관리</a></li>
+                        <li><a href="systemManagement_user.html"><span class="fas fa-user-cog"></span>사용자 관리</a></li>
+                        <li><a href="systemManagement_model.html"><span class="fas fa-user"></span>모델 관리</a></li>
+                        <li><a href="systemManagement_minutes.html"><span class="fas fa-clipboard-list"></span>회의록 관리</a></li>
+                    </ul>
+                </li>
+				<li><a href="monitoring.html"><span class="fas fa-laptop"></span>서버 모니터링</a></li>
+				<li><a href="dictionary.html"><span class="fas fa-book"></span>치환 사전</a></li>
+				<li><a href="management.html"><span class="far fa-id-card"></span>직원 관리</a></li>
+			</ul>
+		</div>
+		
+		<!-- #contents -->
+		<div id="contents">
+			<!-- .content -->
+			<div class="content">
+				<!-- .titArea -->
+				<div class="titArea">
+					<h3>회의결과</h3>
+				</div>
+				<!-- //.titArea -->
+				
+				<!-- .section -->
+				<div class="stn">
+					<div class="srchBox">
+						<dl>
+							<dt>회의명</dt>
+							<dd><input type="text" class="ipt_txt"></dd>
+						</dl>
+						<dl>
+							<dt>회의룸</dt>
+							<dd><input type="text" class="ipt_txt"></dd>
+						</dl>
+						<dl>
+							<dt>회의일자</dt>
+							<dd>
+								<input type="text" class="ipt_date fromDate">
+								<span>-</span>
+								<input type="text" class="ipt_date toDate">
+							</dd>
+						</dl>
+						<dl>
+							<dt>참석자</dt>
+							<dd><input type="text" class="ipt_txt"></dd>
+						</dl>
+						<dl>
+							<dt>메모내용</dt>
+							<dd><input type="text" class="ipt_txt"></dd>
+						</dl>
+						<dl>
+							<dt>선택추가</dt>
+							<dd><input type="text" class="ipt_txt"></dd>
+						</dl>
+						<p>
+							<button type="button"><span class="fas fa-search"></span>조회</button>
+						</p>
+					</div>
+				</div>
+				<!-- //.section -->
+				
+				<!-- .tblBox -->
+				<div class="tblBox">
+					<table class="tblType01">
+						<caption class="hide">회의결과 목록</caption>
+						<colgroup>
+							<col><col><col><col><col>
+							<col><col><col>
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col">회의명</th>
+								<th scope="col">회의룸</th>
+								<th scope="col">참석인수</th>
+								<th scope="col">회의일</th>
+								<th scope="col">예약시간</th>
+								<th scope="col">녹음시간</th>
+								<th scope="col">녹음길이</th>
+								<th scope="col">회의록 내용</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td scope="row" class="al_l"><a class="link" href="#">주간회의 8월 3주</a></td>
+								<td>1 회의실</td>
+								<td>
+									<span class="txt">3</span>
+									<span class="preveal">
+										<em class="fas fa-search"></em>
+										<em class="item">홍길삼, 홍길사, 홍길오 홍길삼, 홍길사, 홍길오</em>
+									</span>
+								</td>
+								<td>2019-08-29</td>
+								<td>18:00:00 ~ 19:00:00</td>
+								<td>18:21:13 ~ 18:24:09</td>
+								<td>442</td>
+								<td>
+									<span class="btn">
+										<button type="button" class="btn_tbl"><span class="fas fa-play"></span>시작</button>
+										<button type="button" class="btn_tbl"><span class="fas fa-edit"></span>편집</button>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td scope="row" class="al_l"><a class="link" href="#">주간회의 8월 2주</a></td>
+								<td>1 회의실</td>
+								<td>
+									<span class="txt">3</span>
+									<span class="preveal">
+										<em class="fas fa-search"></em>
+										<em class="item">홍길삼, 홍길사, 홍길오 홍길삼, 홍길사, 홍길오</em>
+									</span>
+								</td>
+								<td>2019-08-29</td>
+								<td>18:00:00 ~ 19:00:00</td>
+								<td>18:21:13 ~ 18:24:09</td>
+								<td>87</td>
+								<td>
+									<span class="btn">
+										<button type="button" class="btn_tbl"><span class="fas fa-play"></span>시작</button>
+										<button type="button" class="btn_tbl"><span class="fas fa-edit"></span>편집</button>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td scope="row" class="al_l"><a class="link" href="#">주간회의 8월 1주</a></td>
+								<td>1 회의실</td>
+								<td>
+									<span class="txt">3</span>
+									<span class="preveal">
+										<em class="fas fa-search"></em>
+										<em class="item">홍길삼, 홍길사, 홍길오 홍길삼, 홍길사, 홍길오</em>
+									</span>
+								</td>
+								<td>2019-08-29</td>
+								<td>18:00:00 ~ 19:00:00</td>
+								<td>18:21:13 ~ 18:24:09</td>
+								<td> </td>
+								<td>
+									<span class="btn">
+										<button type="button" class="btn_tbl"><span class="fas fa-play"></span>시작</button>
+										<button type="button" class="btn_tbl"><span class="fas fa-edit"></span>편집</button>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td scope="row" class="al_l"><a class="link" href="#">회의록 개발자 회의 3차</a></td>
+								<td>1 회의실</td>
+								<td>
+									<span class="txt">3</span>
+									<span class="preveal">
+										<em class="fas fa-search"></em>
+										<em class="item">홍길삼, 홍길사, 홍길오 홍길삼, 홍길사, 홍길오</em>
+									</span>
+								</td>
+								<td>2019-08-29</td>
+								<td>18:00:00 ~ 19:00:00</td>
+								<td>18:21:13 ~ 18:24:09</td>
+								<td>166</td>
+								<td>
+									<span class="btn">
+										<button type="button" class="btn_tbl"><span class="fas fa-play"></span>시작</button>
+										<button type="button" class="btn_tbl"><span class="fas fa-edit"></span>편집</button>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td scope="row" class="al_l"><a class="link" href="#">회의록 개발자 회의 2차</a></td>
+								<td>1 회의실</td>
+								<td>
+									<span class="txt">3</span>
+									<span class="preveal">
+										<em class="fas fa-search"></em>
+										<em class="item">홍길삼, 홍길사, 홍길오 홍길삼, 홍길사, 홍길오</em>
+									</span>
+								</td>
+								<td>2019-08-29</td>
+								<td>18:00:00 ~ 19:00:00</td>
+								<td>18:21:13 ~ 18:24:09</td>
+								<td></td>
+								<td>
+									<span class="btn">
+										<button type="button" class="btn_tbl"><span class="fas fa-play"></span>시작</button>
+										<button type="button" class="btn_tbl"><span class="fas fa-edit"></span>편집</button>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td scope="row" class="al_l"><a class="link" href="#">주간회의 8월 3주</a></td>
+								<td>1 회의실</td>
+								<td>
+									<span class="txt">3</span>
+									<span class="preveal">
+										<em class="fas fa-search"></em>
+										<em class="item">홍길삼, 홍길사, 홍길오 홍길삼, 홍길사, 홍길오</em>
+									</span>
+								</td>
+								<td>2019-08-29</td>
+								<td>18:00:00 ~ 19:00:00</td>
+								<td>18:21:13 ~ 18:24:09</td>
+								<td>442</td>
+								<td>
+									<span class="btn">
+										<button type="button" class="btn_tbl"><span class="fas fa-play"></span>시작</button>
+										<button type="button" class="btn_tbl"><span class="fas fa-edit"></span>편집</button>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td scope="row" class="al_l"><a class="link" href="#">주간회의 8월 2주</a></td>
+								<td>1 회의실</td>
+								<td>
+									<span class="txt">3</span>
+									<span class="preveal">
+										<em class="fas fa-search"></em>
+										<em class="item">홍길삼, 홍길사, 홍길오 홍길삼, 홍길사, 홍길오</em>
+									</span>
+								</td>
+								<td>2019-08-29</td>
+								<td>18:00:00 ~ 19:00:00</td>
+								<td>18:21:13 ~ 18:24:09</td>
+								<td>87</td>
+								<td>
+									<span class="btn">
+										<button type="button" class="btn_tbl"><span class="fas fa-play"></span>시작</button>
+										<button type="button" class="btn_tbl"><span class="fas fa-edit"></span>편집</button>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td scope="row" class="al_l"><a class="link" href="#">주간회의 8월 1주</a></td>
+								<td>1 회의실</td>
+								<td>
+									<span class="txt">3</span>
+									<span class="preveal">
+										<em class="fas fa-search"></em>
+										<em class="item">홍길삼, 홍길사, 홍길오 홍길삼, 홍길사, 홍길오</em>
+									</span>
+								</td>
+								<td>2019-08-29</td>
+								<td>18:00:00 ~ 19:00:00</td>
+								<td>18:21:13 ~ 18:24:09</td>
+								<td> </td>
+								<td>
+									<span class="btn">
+										<button type="button" class="btn_tbl"><span class="fas fa-play"></span>시작</button>
+										<button type="button" class="btn_tbl"><span class="fas fa-edit"></span>편집</button>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td scope="row" class="al_l"><a class="link" href="#">회의록 개발자 회의 3차</a></td>
+								<td>1 회의실</td>
+								<td>
+									<span class="txt">3</span>
+									<span class="preveal">
+										<em class="fas fa-search"></em>
+										<em class="item">홍길삼, 홍길사, 홍길오 홍길삼, 홍길사, 홍길오</em>
+									</span>
+								</td>
+								<td>2019-08-29</td>
+								<td>18:00:00 ~ 19:00:00</td>
+								<td>18:21:13 ~ 18:24:09</td>
+								<td>166</td>
+								<td>
+									<span class="btn">
+										<button type="button" class="btn_tbl"><span class="fas fa-play"></span>시작</button>
+										<button type="button" class="btn_tbl"><span class="fas fa-edit"></span>편집</button>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td scope="row" class="al_l"><a class="link" href="#">회의록 개발자 회의 2차</a></td>
+								<td>1 회의실</td>
+								<td>
+									<span class="txt">3</span>
+									<span class="preveal">
+										<em class="fas fa-search"></em>
+										<em class="item">홍길삼, 홍길사, 홍길오 홍길삼, 홍길사, 홍길오</em>
+									</span>
+								</td>
+								<td>2019-08-29</td>
+								<td>18:00:00 ~ 19:00:00</td>
+								<td>18:21:13 ~ 18:24:09</td>
+								<td></td>
+								<td>
+									<span class="btn">
+										<button type="button" class="btn_tbl"><span class="fas fa-play"></span>시작</button>
+										<button type="button" class="btn_tbl"><span class="fas fa-edit"></span>편집</button>
+									</span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<!-- //.tblBox -->
+				
+				<!-- .paging_wrap -->
+				<div class="paging_wrap">
+					<div class="paging">
+						<a class="btn_paging_first" href="javascript:goPage('1')"><span class="fas fa-angle-double-left"><em>처음페이지</em></span></a>
+						<a class="btn_paging_prev" href="javascript:goPage('1')"><span class="fas fa-angle-left"><em>이전페이지</em></span></a>
+						<strong>1</strong>
+						<a href="javascript:goPage('2')">2</a>
+						<a href="javascript:goPage('3')">3</a>
+						<a class="btn_paging_next" href="javascript:goPage('2')"><span class="fas fa-angle-right"><em>다음페이지</em></span></a>
+						<a class="btn_paging_end" href="javascript:goPage('3')"><span class="fas fa-angle-double-right"><em>마지막페이지</em></span></a>
+					</div>
+				</div>
+				<!-- //.paging_wrap -->
+			</div>
+			<!-- //.content -->
+		</div>
+		<!-- //#contents -->
+	</div>
+	<!-- //#container -->
+	</form>
+</div>
+<!-- //#wrap -->	
+</body>
+
+<script type="text/javascript" src="resources/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>	
+<script type="text/javascript" src="resources/js/bootstrap-datetimepicker.js"></script>		
+<script type="text/javascript" src="resources/js/moment.min.js"></script>			
+<script type="text/javascript" src="resources/js/ko.js"></script>	
+<script type="text/javascript" src="resources/js/all.js"></script>	
+<script type="text/javascript" src="resources/js/common.js"></script>
+<script type="text/javascript">   
+$(window).load(function() {    
+	$('#page_loading').addClass('pageldg_hide').delay(300).queue(function() { $(this).remove(); });
+}); 
+</script>  
+<script type="text/javascript">
+$(document).ready(function (){
+
+	$('.fromDate').datetimepicker({
+		language : 'ko', // 화면에 출력될 언어를 한국어로 설정한다.
+		pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략한다.
+		defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력한다. 기본값을 해제하려면 defaultDate 옵션을 생략한다.
+		autoclose: 1,
+	});
+
+	$('.toDate').datetimepicker({
+		language : 'ko',
+		pickTime : false,
+		defalutDate : new Date(),
+		autoclose: 1,
+	});
+	
+});
+</script>
+
+
+</html>
