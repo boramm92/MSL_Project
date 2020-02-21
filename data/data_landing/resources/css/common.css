@@ -2,12 +2,23 @@
 /* MINDsLab. NBR. 20200218 */
 
 /* -------------------- common -------------------- */
+/* popup */
+.popup {display: none; overflow: hidden; position: fixed; bottom: 0; left: 0; width: 100%; height: 100%; text-align: center; z-index: 20;}
+.popup .pop_bg {position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,38,62,0.5);}
+.popup .pop_cont {display: inline-block; position: relative; top: 50%; width: 306px; height: 245px; margin: -200px 0 0 0; border-radius: 4px; box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2); background: #fff;}
+.popup .pop_cont > a {display: inline-block;  float: right; margin: 8px 14px; color: #808aab; font-size: 14px; text-align: right;}
+.popup .pop_cont > span {display: block; margin: 0 0 16px 0; color: #506df5; font-size: 20px;}
+.popup .pop_cont > p {margin: 0 0 8px 0; color: #2c3f51; font-size: 14px; letter-spacing: -0.4px;}
+.popup .pop_cont .btn_box {display: inline-block; margin: 14px 0 0 0; width: 68px; height: 40px;}
+
 /* layout */
 #wrap {width: 100%; min-width: 1250px;}
-.header_box {position: relative; width: 1220px; height: 100%; margin: 0 auto; padding: 0 15px;}
+.header_box {position: relative; width: 1220px; height: 100%; margin: 0 auto;}
 .cont_box {position: relative; width: 1070px; height: 100%; margin: 0 auto;}
 .cont_box .cont_left {float: left;}
 .cont_box .cont_right {float: right;}
+.cont_box .cont_left > div,
+.cont_box .cont_right > div {padding: 24px 0 0 48px;}
 
 /* select box */
 .select_box {position: relative;}
@@ -16,6 +27,7 @@
 
 /* button box */
 .btn_box button {width: 100%; height: 100%; border-radius: 4px; background: #506df5; color: #fff; font-size: 14px; font-weight: 500; letter-spacing: -0.2px;}
+.btn_box a {display: inline-block; width: 100%; height: 100%; border-radius: 4px; background: #506df5; color: #fff; font-size: 14px; font-weight: 500; letter-spacing: -0.2px; text-align: center;}
 
 /* header */
 #header {position: relative; width: 100%; height: 70px; box-sizing: border-box; box-shadow: 0 1px 4px 0 rgba(44, 63, 81, 0.1); background: #fff;}
@@ -35,11 +47,11 @@
 
 /* stn_training */
 .stn_training {height: 360px;}
-.stn_training .txt {position: absolute; top: 50%; left: 48px; transform: translate(0, -50%);}
+.stn_training .txt {position: absolute; top: 50%; left: 0; transform: translate(0, -50%);}
 .stn_training .txt img {width: 216px;}
 .stn_training .txt p {margin: 18px 0 0 0; color: #2c3f51; font-size: 25px; font-weight: 400; line-height: 37px; letter-spacing: -0.8px;}
-.stn_training .txt > span {margin: 0 10px 0 0; color: #5c688c; font-size: 15px; line-height: 1.4; letter-spacing: -0.5px;}
-.stn_training .txt .btn_box {width: 258px; height: 50px; margin: 28px 0 0 0;}
+.stn_training .txt em {margin: 0 10px 0 0; color: #5c688c; font-size: 15px; line-height: 1.4; letter-spacing: -0.5px;}
+.stn_training .txt .btn_box {width: 258px; height: 50px; margin: 28px 0 0 0; line-height: 48px;}
 .stn_training .txt .btn_box button span {margin: 0 0 3px 3px; font-size: 11px; vertical-align: middle;}
 .stn_training .img {position: absolute; top: 14px; right: -8px; width: 414px; z-index: 5;}
 .stn_training .img img {width: 100%;}
@@ -47,7 +59,7 @@
 /* stn_user */
 .stn_user {height: 432px; background: #506df5;}
 .stn_user .ex_area h3 {color: #fff;}
-.stn_user .ex_area .ex_lst {width: 420px; margin: 24px 0 0 48px;}
+.stn_user .ex_area .ex_lst {width: 420px;}
 .stn_user .ex_area .ex_lst li {position: relative; width: 100%; height: 82px; border: 1px solid rgba(255,255,255,0.4); border-radius: 4px; box-sizing: border-box; box-shadow: 1px 1px 4px 0 rgba(0,38,62,0.4); background: rgba(80,109,245,0.4); color: #fff;}
 .stn_user .ex_area .ex_lst li + li {margin: 10px 0 0 0;}
 .stn_user .ex_area .ex_lst li:hover {box-shadow: 1px 1px 4px 0 rgba(0,38,62,0.8); background: #506df5; cursor: pointer; transition: box-shadow 0.3s;}
@@ -60,49 +72,60 @@
 .stn_user .ex_area .ex_lst li .work_type_txt span {display: block; font-weight: 700;}
 .stn_user .ex_area .ex_lst li:after {content: '\f054'; position: absolute; top: 50%; right: 24px; font-family: 'Font Awesome 5 Free'; color: #fff; font-size: 11px; font-weight: 900; transform: translate(0, -50%);}
 
-.stn_user .login_area {width: 360px; height: 265px; margin: 105px 0 0 0; border-radius: 4px; box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2); background: #fff; text-align: center;}
-.stn_user .login_area > div {display: inline-block; width: 260px; padding: 0 14px; box-sizing: border-box;}
-.stn_user .login_area .data_sign {padding: 20px 14px 0 14px; border-bottom: 1px dotted #cfd5eb;}
-.stn_user .login_area .data_sign .ipt_box {position: relative; width: 230px; height: 35px;}
-.stn_user .login_area .data_sign .ipt_box input {display: block; position: absolute; left: 0; bottom: 0; width: 100%; height: 100%; padding: 0 0 0 23px; border-bottom: 1px solid rgba(44,63,81,0.6); box-sizing: border-box; color: #2c3f51; font-size: 15px; vertical-align: bottom;}
-.stn_user .login_area .data_sign .ipt_box span {position: absolute; bottom: 8px; left: 0; margin: 0 10px 0 0; color: #2c3f51; font-size: 15px; z-index: 5; opacity: 0.5;}
-.stn_user .login_area .data_sign .ipt_box label {position: absolute; left: 0; bottom: 8px; padding: 0 0 0 23px; color: #2c3f51; font-size: 15px; letter-spacing: -0.5px; opacity: 0.5;}
-.stn_user .login_area .data_sign .ipt_box label:hover {cursor: text;}
-.stn_user .login_area .data_sign .ipt_box input:focus {border-color: #506df5;}
+.stn_user .login_area {width: 360px; height: 265px; margin: 107px 0 0 0; border-radius: 4px; box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2); background: #fff; text-align: center;}
+.stn_user .login_area > div {display: none; width: 100%; height: 100%; padding: 10px 0 0 0; box-sizing: border-box;}
+.stn_user .login_area > div.on {display: block;}
+.stn_user .login_area .sign_in > div {display: inline-block; width: 260px; padding: 0 14px; box-sizing: border-box;}
+.stn_user .login_area .top_sign {padding: 20px 14px 0 14px; border-bottom: 1px dotted #cfd5eb;}
+.stn_user .login_area .top_sign .ipt_box {position: relative; width: 230px; height: 43px;}
+.stn_user .login_area .top_sign .ipt_box input {display: block; position: absolute; left: 0; bottom: 0; width: 100%; padding: 0 0 4px 23px; border-bottom: 1px solid rgba(44,63,81,0.6); box-sizing: border-box; color: #2c3f51; font-size: 15px; vertical-align: bottom;}
+.stn_user .login_area .top_sign .ipt_box span {position: absolute; bottom: 8px; left: 0; margin: 0 10px 0 0; color: #2c3f51; font-size: 15px; z-index: 5; opacity: 0.5;}
+.stn_user .login_area .top_sign .ipt_box label {position: absolute; left: 0; bottom: 8px; padding: 0 0 0 23px; color: #2c3f51; font-size: 15px; letter-spacing: -0.5px; opacity: 0.5;}
+.stn_user .login_area .top_sign .ipt_box label:hover {cursor: text;}
+.stn_user .login_area .top_sign .ipt_box input:focus {border-color: #506df5;}
 
-.stn_user .login_area .data_sign .chk_box {position: relative; margin: 8px 0 14px 0;}
-.stn_user .login_area .data_sign .chk_box input {position: absolute; overflow: hidden; width: 1px; height: 1px; padding: 0; margin: -1px; border: 0;}
-.stn_user .login_area .data_sign .chk_box label {position: relative; display: inline-block; position: absolute; left: 0; margin: 0 10px 0 0; padding: 0 0 0 20px; color: rgba(44,63,81,0.5); font-size: 12px; line-height: 14px; letter-spacing: -0.4px; cursor: pointer;}
-.stn_user .login_area .data_sign .chk_box input + label:before {content: ''; position: absolute; top: 0; left: 0; width: 14px; height: 14px; border: 1px solid rgba(44,63,81,0.5); box-sizing: border-box; opacity: 0.5;}
-.stn_user .login_area .data_sign .chk_box input:checked + label {color: #2c3f51; opacity: 1; transition: all 0.2s ease-out;}
-.stn_user .login_area .data_sign .chk_box input:checked + label:before {content: '\f00c'; font-family: 'Font Awesome 5 Free'; font-size: 10px; font-weight: 900; color: #506df5; border-color: #506df5; background: #fff; line-height: 12px; opacity: 1;}
+.stn_user .login_area .top_sign .chk_box {position: relative; margin: 8px 0 0 0;}
+.stn_user .login_area .top_sign .chk_box input {position: absolute; overflow: hidden; width: 1px; height: 1px; padding: 0; margin: -1px; border: 0;}
+.stn_user .login_area .top_sign .chk_box label {position: relative; display: inline-block; position: absolute; left: 0; margin: 0 10px 0 0; padding: 0 0 0 20px; color: rgba(44,63,81,0.5); font-size: 12px; line-height: 14px; letter-spacing: -0.4px; cursor: pointer;}
+.stn_user .login_area .top_sign .chk_box input + label:before {content: ''; position: absolute; top: 0; left: 0; width: 14px; height: 14px; border: 1px solid rgba(44,63,81,0.5); box-sizing: border-box; opacity: 0.5;}
+.stn_user .login_area .top_sign .chk_box input:checked + label {color: #2c3f51; opacity: 1; transition: all 0.2s ease-out;}
+.stn_user .login_area .top_sign .chk_box input:checked + label:before {content: '\f00c'; font-family: 'Font Awesome 5 Free'; font-size: 10px; font-weight: 900; color: #506df5; border-color: #506df5; background: #fff; line-height: 12px; opacity: 1;}
 .stn_user .login_area .btn_box {width: 230px; height: 40px;}
-.stn_user .login_area .data_sign .btn_box {margin: 36px 0 12px 0;}
-.stn_user .login_area .google_sign .btn_box {position: relative; margin: 12px 0 0 0;}
-.stn_user .login_area .google_sign .btn_box button {border: solid 1px rgba(128, 138, 171, 0.4); background: #fff; color: #2c3f51;}
-.stn_user .login_area .google_sign .btn_box img {display: inline-block; position: absolute; left: 11px; width: 18px;}
+.stn_user .login_area .top_sign .btn_box {display: inline-block; margin: 30px 0 12px 0;}
+
+.stn_user .login_area .btm_sign .btn_box {display: inline-block; position: relative; margin: 12px 0 0 0;}
+.stn_user .login_area .btm_sign .btn_box button {border: solid 1px rgba(128, 138, 171, 0.4); background: #fff; color: #2c3f51;}
+.stn_user .login_area .btm_sign .btn_box img {display: inline-block; position: absolute; left: 11px; width: 18px;}
+
+.stn_user .login_area .sign_out {padding: 41px 0 0 0;}
+.stn_user .login_area .sign_out .top_sign .btn_box {margin: 0 0 12px 0; line-height: 38px;}
+.stn_user .login_area .sign_out > div {display: inline-block; padding: 0 14px; box-sizing: border-box;}
+.stn_user .login_area .sign_out .my_account {margin: 0 0 0 4px; text-align: left;}
+.stn_user .login_area .sign_out .my_account > span {margin: 0 18px 0 0; font-size: 37px; color: #506df5; opacity: 0.6;}
+.stn_user .login_area .sign_out .my_account p {display: inline-block; color: rgba(44,63,81,0.8); font-size: 15px;}
+.stn_user .login_area .sign_out .my_account p span {display: inline-block; overflow: hidden; width: 148px; margin: 0 8px 0 0; color: #2c3f51; text-overflow:ellipsis; white-space:nowrap;}
+.stn_user .login_area .sign_out .my_account > a {display: block; margin: 20px 0 13px 0; color: #2c3f51; font-size: 15px; letter-spacing: -0.5px;}
 
 /* stn_info */ 
 .stn_info {height: 400px;}
-.stn_info .lank_area .tab_box {position: relative; width: 422px; height: 232px; margin: 24px 0 0 48px;}
+.stn_info .lank_area .tab_box {position: relative; width: 422px; height: 232px;}
 .stn_info .lank_area .tab_box .tab_btn {position: absolute; top: -35px; right: 5px; z-index: 5;}
 .stn_info .lank_area .tab_box .tab_btn li {float: left; width: 70px; height: 35px; border: solid 1px #cfd5eb; border-bottom: none; border-radius: 4px 4px 0 0;  box-sizing: border-box; box-shadow: 0 -1px 3px 0 rgba(0, 0, 0, 0.1); background: #f7f8fc; color: rgba(44,63,81,0.8); font-size:15px; line-height: 35px; letter-spacing: -0.5px; text-align: center; cursor: pointer;}
 .stn_info .lank_area .tab_box .tab_btn li + li {margin: 0 0 0 5px;}
 .stn_info .lank_area .tab_box .tab_btn li.active {height: 36px; background: #fff; color: #506df5; font-weight: 500;}
 
-.stn_info .lank_area .tab_box .tab_cont {position: relative; width: 100%; height: 100%; border-radius: 4px; border: solid 1px #cfd5eb; box-sizing: border-box; box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1); background: #fff;}
-.stn_info .lank_area .tab_box .tab_cont > ul {position: absolute; top: 0; left: 0; width: 100%; height: 100%; padding: 10px 28px; box-sizing: border-box;}
-.stn_info .lank_area .tab_box .tab_cont .lank_lst li {width: 100%; height: 35px; border-bottom: 1px dotted #cfd5eb; font-size: 14px; clear: both;}
-.stn_info .lank_area .tab_box .tab_cont .lank_lst li p {display: inline-block; line-height: 39px; letter-spacing: -0.4px;}
-.stn_info .lank_area .tab_box .tab_cont .lank_lst .lank_num {margin: 0 8px; color: #506df5;}
-.stn_info .lank_area .tab_box .tab_cont .lank_lst .user_id,
-.stn_info .lank_area .tab_box .tab_cont .lank_lst .payment {color: #2c3f51;}
-.stn_info .lank_area .tab_box .tab_cont .lank_lst .payment {float: right; position: relative; margin: 0 8px 0 0;}
-.stn_info .lank_area .tab_box .tab_cont .lank_lst .payment:before {content: ''; display: block; position: absolute; top: 50%; left: -22px; width: 17px; height: 17px; margin: -9px 0 0 0; background: url('../images/ico_point.svg')50% 50% no-repeat;}
-.stn_info .lank_area .tab_box .tab_cont .lank_lst .payment img {vertical-align: middle;}
-.stn_info .lank_area .tab_box .tab_cont .week_lst {display: none;}
+.stn_info .lank_area .tab_box .tab_cont {width: 100%; height: 100%; padding: 10px 28px; border-radius: 4px; border: solid 1px #cfd5eb; box-sizing: border-box; box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1); background: #fff;}
+.stn_info .lank_area .tab_box .tab_cont li {width: 100%; height: 35px; border-bottom: 1px dotted #cfd5eb; font-size: 14px; clear: both;}
+.stn_info .lank_area .tab_box .tab_cont li p {display: inline-block; line-height: 39px; letter-spacing: -0.4px;}
+.stn_info .lank_area .tab_box .tab_cont .lank_num {margin: 0 8px; color: #506df5;}
+.stn_info .lank_area .tab_box .tab_cont .user_id,
+.stn_info .lank_area .tab_box .tab_cont .payment {color: #2c3f51;}
+.stn_info .lank_area .tab_box .tab_cont .payment {float: right; position: relative; margin: 0 8px 0 0;}
+.stn_info .lank_area .tab_box .tab_cont .payment:before {content: ''; display: block; position: absolute; top: 50%; left: -22px; width: 17px; height: 17px; margin: -9px 0 0 0; background: url('../images/ico_point.svg')50% 50% no-repeat;}
+.stn_info .lank_area .tab_box .tab_cont .payment img {vertical-align: middle;}
 
-.stn_info .service_area .use_process {overflow: hidden; width: 480px; margin: 0 0 0 28px; padding: 24px 0 0 0; clear: both;}
+.stn_info .service_area > div {overflow: hidden;  padding: 24px 0 0 24px;}
+.stn_info .service_area .use_process {width: 480px; clear: both;}
 .stn_info .service_area .use_process li {float: left; position: relative; width: 140px; height: 92px; margin: 0 0 46px 20px; border: solid 1px #cfd5eb; border-radius: 4px; box-sizing: border-box; box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1); background: #fff; text-align: center;}
 .stn_info .service_area .use_process li em {display: inline-block; position: absolute; top: -10px; left: 50%; color: #506df5; font-size: 13px; font-weight: 500; line-height: 20px; letter-spacing: -0.4px; transform: translate(-50%, 0);}
 .stn_info .service_area .use_process li em:before {content: ''; display: block; position: absolute; top: 0; left: 50%; width: 18px; height: 18px; border: 1px solid #506df5; border-radius: 50%; background: #fff; transform: translate(-50%, 0); z-index: -5;}
@@ -130,14 +153,15 @@
 #footer .btm_menu .menu_area .contact > a:nth-child(2) {margin-right: 10px;}
 #footer .btm_menu .menu_area .contact > a span {margin: 0 4px 0 0;}
 #footer .btm_menu .menu_area .contact .info_box a {position: relative; font-size: 13px; opacity: 0.7;}
+#footer .btm_menu .menu_area .contact .info_box a:hover {text-decoration: underline;}
 #footer .btm_menu .menu_area .contact .info_box a + a {margin: 0 0 0 20px;}
 #footer .btm_menu .menu_area .service {font-size: 13px; letter-spacing: -0.4px;}
 #footer .btm_menu .menu_area .service > div {clear: both;}
 #footer .btm_menu .menu_area .service > div + div {margin: 10px 0 0 0;}
-#footer .btm_menu .menu_area .service p {float: left; position: relative; margin: 0 30px 0 0; font-weight: 700;}
-#footer .btm_menu .menu_area .service p:after {content: ''; display: block; position: absolute; top: 4px; right: -16px; width: 1px; height: 12px; background: rgba(255,255,255,0.5);}
-#footer .btm_menu .menu_area .service a {font-size: 13px;}
-#footer .btm_menu .menu_area .service a + a {margin: 0 0 0 15px;}
+#footer .btm_menu .menu_area .service p {float: left; position: relative; width: 68px; font-weight: 700;}
+#footer .btm_menu .menu_area .service p:after {content: ''; display: block; position: absolute; top: 4px; right: 0; width: 1px; height: 12px; background: rgba(255,255,255,0.5);}
+#footer .btm_menu .menu_area .service a {margin: 0 0 0 14px; font-size: 13px;}
+#footer .btm_menu .menu_area .service a:hover {text-decoration: underline;}
 #footer .btm_menu .menu_area .contact .info_box a + a:before {content: ''; display: block; position: absolute; top: 4px; left: -11px; width: 1px; height: 13px; background: #fff; opacity: 0.7;}
 
 #footer .copyright {width: 100%; height: 40px; background: #001c2e; text-align: center;}
