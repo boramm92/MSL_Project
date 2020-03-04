@@ -240,7 +240,7 @@
                                 <label for="txt"><span class="fas fa-file-alt"></span>문의내용</label>
                             </div>
 
-                            <button type="submit" class="btn_inquiry">작업 문의하기</button>
+                            <button type="submit" id="sendMailToHello" class="btn_inquiry">작업 문의하기</button>
                         </div>
                     </div>
                     <!-- //.cont_box -->
@@ -302,6 +302,31 @@
         <!-- //#footer -->
     </div>
     <!-- //#wrap -->
+
+    <!-- 2 .pop_confirm -->
+    <div class="pop_confirm" id="mail_success">
+    	<div class="pop_bg"></div>
+    	<!-- .popWrap -->
+    	<div class="popWrap">
+    		<!-- .pop_bd -->
+    		<div class="pop_bd">
+
+    			<!--내용 부분-->
+    			<p>문의내용이 접수되었습니다.<br>
+    				담당자가 빠른 시일 내에<br>
+    				답변 드리도록 하겠습니다.</p>
+    		</div>
+    		<!-- //.pop_bd -->
+    		<!--창닫기 버튼 -->
+    		<div class="btn">
+    			<button class="btn_close" >확인</button>
+    		</div>
+    		<!--창닫기 버튼 -->
+    	</div>
+    	<!-- //.popWrap -->
+    </div>
+    <!-- //.pop_confirm -->
+
     <script type="text/javascript" src="../../assets/js/jquery-1.11.2.min.js"></script>
     <script type="text/javascript" src="../../assets/js/common.js"></script>
 
@@ -324,6 +349,59 @@
         $('.btn_inquiry').on('click', function(){
             $('html, body').animate({ scrollTop: $(document).height()},800);
         });
+
+
+        //문의하기 버튼 클릭 - input 내용 유, 무에 따라 alert 발생
+        $('#sendMailToHello').on('click', function(){
+
+    		var title = $("#name").val() + " (" + $("#phone").val() + ") 님의 문의 사항입니다.";
+    		var msg = "이름 : " + $("#name").val() + "\n연락처 : " + $("#phone").val() + "\n문의 내용 : " + $("#txt").val();
+
+    		var formData = new FormData();
+
+    		formData.append('fromaddr', $('#mail').val());
+    		formData.append('toaddr', 'hello@mindslab.ai');
+    		formData.append('subject', title);
+    		formData.append('message', msg);
+    		formData.append($("#key").val(), $("#value").val());
+
+    		if($('.my_info input').val()==='' || $('.my_txt textarea').val()==='') {
+
+    			alert("내용을 모두 입력해야 이메일을 전달할 수 있어요!")
+
+    		}else{
+
+    			$.ajax({
+    				type 	: 'POST',
+    				async   : true,
+    				url  	: '/support/sendContactMail',
+    				dataType : 'text',
+    				data: formData,
+    				processData: false,
+    				contentType: false,
+    				success : function(obj) {
+    					$("#name").val('');
+    					$("#office").val('');
+    					$("#phone").val('');
+    					$("#txt").val('');
+    					$("#mail").val('');
+    					var placeholderLabel = $('.inquiry_box input, .inquiry_box textarea');
+
+
+    					placeholderLabel.siblings('label').show();
+
+
+
+    					$('#mail_success').fadeIn();
+    				},
+    				error 	: function(xhr, status, error) {
+    					console.log("error");
+    					alert("Contact Us 메일발송 요청 실패하였습니다.");
+    					window.location.href = "/login/loginForm";
+    				}
+    			});
+    		}
+	    });
     });
     </script>
 </body>
