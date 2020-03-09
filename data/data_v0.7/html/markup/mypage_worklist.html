@@ -118,29 +118,34 @@
 						<div class="sort_group">
 							<div class="select_box">
 								<select id="work_type">
-									<option selected></option>
+									<option selected>종류</option>
 									<option value="voice">Voice</option>
 									<option value="text">Text</option>
 									<option value="image">Image</option>
 								</select>
-								<label for="work_type">종류</label>
 							</div>
 
 							<div class="date_box">
-								<input type="text" class="ipt_date fromDate" placeholder="작업기간(시작)">
+								<form action="">
+									<input type="text" class="ipt_date fromDate" placeholder="작업기간(시작)">
+								</form>
 								<span class="fas fa-calendar-alt"></span>
 								<em>~</em>
 							</div>
 
 							<div class="date_box">
-								<input type="text" class="ipt_date toDate" placeholder="작업기간(종료)">
+								<form action="">
+									<input type="text" class="ipt_date toDate" placeholder="작업기간(종료)">
+								</form>
 								<span class="fas fa-calendar-alt"></span>
 							</div>
 
 							<div class="srch_box">
-								<input type="text" id="project">
-								<label for="project">프로젝트명</label>
-								<button type="submit"><span class="fas fa-search"></span></button>
+								<form action="">
+									<input type="text" id="project">
+									<label for="project">프로젝트명</label>
+									<button type="submit"><span class="fas fa-search"></span></button>
+								</form>
 							</div>
 						</div>
 
@@ -355,7 +360,8 @@
 <!-- //#wrap -->
 <script type="text/javascript" src="../../assets/js/jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="../../assets/js/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="../../assets/js/jquery-ui-1.8.18.min.js"></script>
+<!-- <script type="text/javascript" src="../../assets/js/jquery-ui-1.8.18.min.js"></script> -->
+<script type="text/javascript" src="../../assets/js/jquery-ui-1.11.4.min.js"></script>
 <script type="text/javascript" src="../../assets/js/common.js"></script>
 
 <script type="text/javascript">
@@ -405,17 +411,6 @@ jQuery.event.add(window,"load",function(){
 	placeholderLabel.on('focusout', function(){
 	    if($(this).val() === ''){
 	        $(this).siblings('label').show();
-	    }
-    });
-
-	//select box 라벨
-	var selectLabel = $('select, option');
-
-	selectLabel.on('click', function(){
-	    if($(this).val() === ''){
-	        $(this).siblings('label').show();
-	    }else {
-	    	$(this).siblings('label').hide();
 	    }
     });
 });

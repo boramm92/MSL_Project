@@ -109,31 +109,34 @@
 						<button type="button">본인인증</button>
 					</div>
 					<div class="ipt_box">
-						<input type="text" id="name">
-						<label for="name">본인명의</label>
+						<form action="">
+							<input type="text" id="name">
+							<label for="name">본인명의</label>
+						</form>
 					</div>
 				</div>
 				<div>
 					은행명
 					<div class="select_box">
 						<select id="bank_slt">
-							<option selected></option>
+							<option selected>은행선택</option>
 						</select>
-						<label for="bank_slt">은행선택</label>
 					</div>
 				</div>
 				<div>
 					계좌번호
 					<div class="ipt_box">
-						<input type="number" id="bank_account">
-						<label for="bank_account">숫자만 입력</label>
+						<form action="">
+							<input type="number" id="bank_account">
+							<label for="bank_account">숫자만 입력</label>
+						</form>
 					</div>
 				</div>
 				<div>
 					주민등록번호
 					<div class="ipt_box">
-						<input type="number" id="id_num">
-						<label for="id_num">숫자만 입력</label>
+						<form action=""><input type="number" id="id_num">
+						<label for="id_num">숫자만 입력</label></form>
 					</div>
 				</div>
 			</div>
@@ -262,9 +265,11 @@
 
 							<div class="my_cases mypoint_box common_box">
 								<div class="cost_box">
-                                    <input type="number" id="request_cost">
-									<label for="request_cost">신청금액을 입력하세요.</label>
-                                    <button type="button">신청</button>
+									<form action="">
+										<input type="number" id="request_cost">
+										<label for="request_cost">신청금액을 입력하세요.</label>
+	                                    <button type="button">신청</button>
+									</form>
                                 </div>
 								<p class="payment_info">신청 가능 최대 금액은 <span>6,000</span> 입니다.</p>
 							</div>
@@ -300,29 +305,34 @@
 						<div class="sort_group">
 							<div class="select_box">
 								<select id="work_type">
-									<option selected></option>
+									<option selected>종류</option>
 									<option value="voice">Voice</option>
 									<option value="text">Text</option>
 									<option value="image">Image</option>
 								</select>
-								<label for="work_type">종류</label>
 							</div>
 
 							<div class="date_box">
-								<input type="text" class="ipt_date fromDate" placeholder="작업기간(시작)">
+								<form action="">
+									<input type="text" class="ipt_date fromDate" placeholder="작업기간(시작)">
+								</form>
 								<span class="fas fa-calendar-alt"></span>
 								<em>~</em>
 							</div>
 
 							<div class="date_box">
-								<input type="text" class="ipt_date toDate" placeholder="작업기간(종료)">
+								<form action="">
+									<input type="text" class="ipt_date toDate" placeholder="작업기간(종료)">
+								</form>
 								<span class="fas fa-calendar-alt"></span>
 							</div>
 
 							<div class="srch_box">
-								<input type="text" id="project">
-								<label for="project">프로젝트명</label>
-								<button type="submit"><span class="fas fa-search"></span></button>
+								<form action="">
+									<input type="text" id="project">
+									<label for="project">프로젝트명</label>
+									<button type="submit"><span class="fas fa-search"></span></button>
+								</form>
 							</div>
 						</div>
 
@@ -524,7 +534,8 @@
 <!-- //#wrap -->
 <script type="text/javascript" src="../../assets/js/jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="../../assets/js/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="../../assets/js/jquery-ui-1.8.18.min.js"></script>
+<!-- <script type="text/javascript" src="../../assets/js/jquery-ui-1.8.18.min.js"></script> -->
+<script type="text/javascript" src="../../assets/js/jquery-ui-1.11.4.min.js"></script>
 <script type="text/javascript" src="../../assets/js/common.js"></script>
 
 <script type="text/javascript">
@@ -574,17 +585,6 @@ jQuery.event.add(window,"load",function(){
 	placeholderLabel.on('focusout', function(){
 	    if($(this).val() === ''){
 	        $(this).siblings('label').show();
-	    }
-    });
-
-	//select box 라벨
-	var selectLabel = $('select');
-
-	selectLabel.on('click', function(){
-	    if($(this).val() === ''){
-	        $(this).siblings('label').show();
-	    }else {
-	    	$(this).siblings('label').hide();
 	    }
     });
 });
