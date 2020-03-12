@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="format-detection" content="telephone=no" />
+
+<title>수익금 신청 ll 마이페이지</title>
+<!-- resources -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+<link rel="stylesheet" type="text/css" href="../../assets/css/jquery-ui-1.8.18.css" />
+<link rel="stylesheet" type="text/css" href="../../assets/css/common-data.css" />
+<!-- //resources -->
+</head>
+<body id="edit_tool" class="mypage payment">
+
+<!-- .page loading -->
+<div id="page_ldWrap" class="page_loading">
+	<div class="loading_itemBox">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+<!-- //.page loading -->
+
+<!-- 2 .pop_simple -->
+<div class="pop_simple check_agree" id="pop_2">
+	<div class="pop_bg"></div>
+	<!-- .popWrap -->
+	<div class="popWrap">
+		<div class="pop_hd">
+			<em class="fas fa-times ico_close"></em>
+			<h6>세금 확인 및 동의</h6>
+		</div>
+
+		<!-- .pop_bd -->
+		<div class="pop_bd">
+			<p>3.3% 사업소득세가 차감된 금액이 지급되며, 월간 누적 세금이 1000원 미만일 경우 익월 10일경에 환급됩니다.</p>
+		</div>
+		<!-- //.pop_bd -->
+		<div class="btn">
+			<button class="cancel">취소</button>
+			<button class="save">확인</button>
+		</div>
+	</div>
+	<!-- //.popWrap -->
+</div>
+<!-- //.pop_simple -->
+
+<!-- 2 .pop_simple -->
+<div class="pop_simple request account" id="pop_2">
+	<div class="pop_bg"></div>
+	<!-- .popWrap -->
+	<div class="popWrap">
+		<div class="pop_hd">
+			<em class="fas fa-times ico_close"></em>
+			<h6>포인트를 수익금으로 지급신청</h6>
+		</div>
+
+		<!-- .pop_bd -->
+		<div class="pop_bd">
+			<div class="my_point">
+				<p>보유 포인트 <span>25,223,400</span></p>
+				<p>신청 금액 <span class="blue">5,000</span></p>
+				<p>이번달 총 신청 금액 <span>5,000</span></p>
+				<p>예상 지급 세금 <span>130</span></p>
+			</div>
+			<em>월 총 지급 신청 금액 33,000원 초과시 총 신청금액의<br>3.3% 사업소득세 차감이 이루어 집니다.</em>
+			<div class="my_account">
+				<p>입금 계좌 정보</p>
+				<div class="register">
+					<div class="btn">
+						<button type="button">입금계좌 등록하기</button>
+					</div>
+					<em>입금계좌 정보를 등록해주세요.<br>등록 계좌가 있어야 지급 신청이 가능합니다.</em>
+				</div>
+			</div>
+		</div>
+		<!-- //.pop_bd -->
+		<div class="btn">
+			<button class="cancel" disabled>취소</button>
+			<button class="save" disabled><span>3,550</span>p 신청</button>
+		</div>
+	</div>
+	<!-- //.popWrap -->
+</div>
+<!-- //.pop_simple -->
+
+<!-- 2 .pop_simple -->
+<div class="pop_simple account_admin" id="pop_2">
+	<div class="pop_bg"></div>
+	<!-- .popWrap -->
+	<div class="popWrap">
+		<div class="pop_hd">
+			<em class="fas fa-times ico_close"></em>
+			<h6>입금 계좌 관리</h6>
+		</div>
+
+		<!-- .pop_bd -->
+		<div class="pop_bd">
+			<em>입금계좌는 본인 명의 계좌만 등록/변경 가능합니다.<br>예금주 명과 회원정보의 성명이 다른 경우는 등록/<br>변경되지 않습니다.</em>
+			<div class="my_account">
+				<div>입금 계좌 정보</div>
+				<div class="account_holder">
+					예금주
+					<div class="btn on">
+						<button type="button">본인인증</button>
+					</div>
+					<div class="ipt_box">
+						<form action="">
+							<input type="text" id="name">
+							<label for="name">본인명의</label>
+						</form>
+					</div>
+				</div>
+				<div>
+					은행명
+					<div class="select_box">
+						<select id="bank_slt">
+							<option selected>은행선택</option>
+						</select>
+					</div>
+				</div>
+				<div>
+					계좌번호
+					<div class="ipt_box">
+						<form action="">
+							<input type="number" id="bank_account">
+							<label for="bank_account">숫자만 입력</label>
+						</form>
+					</div>
+				</div>
+				<div>
+					주민등록번호
+					<div class="ipt_box">
+						<form action=""><input type="number" id="id_num">
+						<label for="id_num">숫자만 입력</label></form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- //.pop_bd -->
+		<div class="btn">
+			<button class="cancel">취소</button>
+			<button class="save">등록</button>
+		</div>
+	</div>
+	<!-- //.popWrap -->
+</div>
+<!-- //.pop_simple -->
+
+<!-- 2 .pop_simple -->
+<div class="pop_simple request" id="pop_2">
+	<div class="pop_bg"></div>
+	<!-- .popWrap -->
+	<div class="popWrap">
+		<div class="pop_hd">
+			<em class="fas fa-times ico_close"></em>
+			<h6>포인트를 수익금으로 지급신청</h6>
+		</div>
+
+		<!-- .pop_bd -->
+		<div class="pop_bd">
+			<div class="my_point">
+				<p>보유 포인트 <span>25,223,400</span></p>
+				<p>신청 금액 <span class="blue">5,000</span></p>
+				<p>이번달 총 신청 금액 <span>5,000</span></p>
+				<p>예상 지급 세금 <span>130</span></p>
+			</div>
+			<em>월 총 지급 신청 금액 33,000원 초과시 총 신청금액의<br>3.3% 사업소득세 차감이 이루어 집니다.</em>
+			<div class="my_account">
+				<p>입금 계좌 정보</p>
+				<p>은행 <span>우리은행</span></p>
+				<p>예금주 <span>김마인</span></p>
+				<p>계좌번호 <span>1002-22-222322</span></p>
+			</div>
+		</div>
+		<!-- //.pop_bd -->
+		<div class="btn">
+			<button class="cancel">취소</button>
+			<button class="save"><span>3,550</span>p 신청</button>
+		</div>
+	</div>
+	<!-- //.popWrap -->
+</div>
+<!-- //.pop_simple -->
+
+<!-- 1 .pop_simple -->
+<div class="pop_simple complate" id="pop_1">
+	<div class="pop_bg"></div>
+	<!-- .popWrap -->
+	<div class="popWrap">
+		<div class="pop_hd">
+			<em class="fas fa-times ico_close"></em>
+			<h6>신청 완료</h6>
+		</div>
+
+		<!-- .pop_bd -->
+		<div class="pop_bd">
+			<p>포인트의 수익금 신청이 완료되었습니다. 진행<br>사항은 <em>마이페이지 > 수익금 신청</em>에서 확인할<br>수 있어요.</p>
+		</div>
+		<!-- //.pop_bd -->
+		<div class="btn">
+			<button class="save">확인</button>
+		</div>
+	</div>
+	<!-- //.popWrap -->
+</div>
+<!-- //.pop_simple -->
+
+<!-- wrap -->
+<div id="wrap">
+	<!-- #header -->
+	<div id="header">
+        <h1><a target="_self" href="#none"><img src="../../assets/images/img_maumdata_logo.svg" alt="logo"></a></h1>
+    	<h2>마이페이지</h2>
+		<!-- .etcmenu -->
+		<div class="etcmenu mypage">
+            <div class="userBox">
+				<span class="my_point">4,600</span>
+				<div class="btn_box">
+					<a href="#none"><span class="fas fa-chalkboard"></span>워크스페이스</a>
+				</div>
+            </div>
+			<div class="outBox">
+				<a target="_self" href="#none">Sign out <em class="fas fa-sign-out-alt"></em></a>
+            </div>
+		</div>
+		<!-- //.etcmenu -->
+	</div>
+	<!-- //#header -->
+
+	<!-- #container -->
+	<div id="container">
+		<!-- .snb -->
+		<div class="snb">
+			<ul class="nav">
+				<li>
+					<a target="_self" href="mypage_worklist.html">작업내역</a>
+                </li>
+				<li>
+					<a target="_self" href="mypage_point.html">포인트 내역</a>
+                </li>
+				<li class="active">
+					<a target="_self" href="mypage_payment.html">수익금 신청</a>
+				</li>
+				<li>
+					<a target="_self" href="mypage_myinfo.html">내 정보 관리</a>
+				</li>
+			</ul>
+		</div>
+		<!-- //.snb -->
+
+		<!-- .contents -->
+		<div class="contents">
+            <!-- .content -->
+            <div class="content">
+				<!-- .work_space -->
+				<div class="work_space">
+					<div class="mypage_stn">
+						<div class="payment_box my_box">
+							<h3>수익금 신청</h3>
+
+							<div class="my_cases mypoint_box common_box">
+								<div class="cost_box">
+									<form action="">
+										<input type="number" id="request_cost">
+										<label for="request_cost">신청금액을 입력하세요.</label>
+	                                    <button type="button">신청</button>
+									</form>
+                                </div>
+								<p class="payment_info">신청 가능 최대 금액은 <span>6,000</span> 입니다.</p>
+							</div>
+						</div>
+
+
+						<div class="point_info">
+                            <div class="fl">
+                                <p><span class="fas fa-caret-right"></span> 입금계좌 관리는 내정보관리 > 입금계좌관리를 이용하세요.</p>
+    							<p><span class="fas fa-caret-right"></span> 포인트를 현금으로 지급받기 위해서는 반드시 실명인증을 거쳐야합니다.</p>
+                                <p><span class="fas fa-caret-right"></span> 지급신청은 5,000포인트 이상 부터 가능하며, 1,000원 단위로 신청하실 수 있습니다.</p>
+                                <p><span class="fas fa-caret-right"></span> 3.3%의 사업소득세가 차감된 금액이 지급되며,</p>
+    							<p>&nbsp;&nbsp;월간 누적 세금이 1,000원 미만일 경우 익월 10일 경에 환급됩니다.</p>
+                            </div>
+                            <div class="fl">
+                                <p><span class="fas fa-caret-right"></span> 일주일에 1회만 지급신청 할 수 있으며, 수익금 신청내역에서 상태를 확인하실 수 있습니다.</p>
+    							<p><span class="fas fa-caret-right"></span> 수익금은 매주 목요일 14시까지 신청 가능하며, 해당 건에 대하여 금요일 14시에 입금됩니다.</p>
+                                <p>&nbsp;&nbsp;(*목요일 14시 이후 신청한 경우, 다음 주 금요일 지급 대상자가 됩니다.)</p>
+                                <p><span class="fas fa-caret-right"></span> 수익금 신청 불가 시간 (시스템 점검) : 매주 목요일 14시 01분 ~ 15시 00분</p>
+                                <p><span class="fas fa-caret-right"></span> 수익금 지급 프로세스 : 본인확인 > 수익금 지급신청 > (지급대기) > 지급승인 > 지급완료</p>
+    							<p><span class="fas fa-caret-right"></span> 신규신청은 지급대기 상태가 없는 경우에만 가능합니다.</p>
+                            </div>
+						</div>
+					</div>
+				</div>
+				<!-- //.work_space -->
+
+				<!-- .work_space -->
+				<div class="work_space">
+					<!-- .stn -->
+					<div class="mypage_stn">
+						<h3 class="working_lst">포인트 내역</h3>
+						<div class="sort_group">
+							<div class="select_box">
+								<select id="work_type">
+									<option selected>종류</option>
+									<option value="voice">Voice</option>
+									<option value="text">Text</option>
+									<option value="image">Image</option>
+								</select>
+							</div>
+
+							<div class="date_box">
+								<form action="">
+									<input type="text" class="ipt_date fromDate" placeholder="작업기간(시작)">
+								</form>
+								<span class="fas fa-calendar-alt"></span>
+								<em>~</em>
+							</div>
+
+							<div class="date_box">
+								<form action="">
+									<input type="text" class="ipt_date toDate" placeholder="작업기간(종료)">
+								</form>
+								<span class="fas fa-calendar-alt"></span>
+							</div>
+
+							<div class="srch_box">
+								<form action="">
+									<input type="text" id="project">
+									<label for="project">프로젝트명</label>
+									<button type="submit"><span class="fas fa-search"></span></button>
+								</form>
+							</div>
+						</div>
+
+						<div class="work_lst common_box">
+							<table>
+								<caption class="hide">포인트 내역 리스트</caption>
+								<colgroup>
+									<col width="6%"><col width="13%"><col width="14%"><col width="15%"><col width="10%">
+									<col width="10%"><col width="10%"><col width="10%"><col width="12%">
+								</colgroup>
+								<thead>
+									<tr>
+										<th>번호</th>
+										<th>금액 (신청금액 &middot; 세금)</th>
+										<th>은행명</th>
+										<th>계좌번호</th>
+										<th>예금주</th>
+                                        <th>상태</th>
+                                        <th>신청일</th>
+                                        <th>지급일</th>
+										<th>지급불가 사유</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="num">1</td>
+										<td class="cost"><span>15,000</span>원</td>
+										<td class="bank_name">우리은행</td>
+										<td class="account_num">1003-04-234567</td>
+										<td class="account_holder">김마인</td>
+                                        <td class="status">처리중</td>
+                                        <td class="report_date">2020.02.29</td>
+                                        <td class="payment_date">2020.02.29</td>
+										<td class="unpayment_reason">계좌번호 오류</td>
+									</tr>
+                                    <tr>
+										<td class="num">1</td>
+										<td class="cost"><span>15,000</span>원</td>
+										<td class="bank_name">우리은행</td>
+										<td class="account_num">1003-04-234567</td>
+										<td class="account_holder">김마인</td>
+                                        <td class="status">처리중</td>
+                                        <td class="report_date">2020.02.29</td>
+                                        <td class="payment_date">2020.02.29</td>
+										<td class="unpayment_reason">-</td>
+									</tr>
+                                    <tr>
+										<td class="num">1</td>
+										<td class="cost"><span>15,000</span>원</td>
+										<td class="bank_name">우리은행</td>
+										<td class="account_num">1003-04-234567</td>
+										<td class="account_holder">김마인</td>
+                                        <td class="status">처리중</td>
+                                        <td class="report_date">2020.02.29</td>
+                                        <td class="payment_date">2020.02.29</td>
+										<td class="unpayment_reason">계좌번호 오류</td>
+									</tr>
+                                    <tr>
+										<td class="num">1</td>
+										<td class="cost"><span>15,000</span>원</td>
+										<td class="bank_name">우리은행</td>
+										<td class="account_num">1003-04-234567</td>
+										<td class="account_holder">김마인</td>
+                                        <td class="status">처리중</td>
+                                        <td class="report_date">2020.02.29</td>
+                                        <td class="payment_date">2020.02.29</td>
+										<td class="unpayment_reason">계좌번호 오류</td>
+									</tr>
+                                    <tr>
+										<td class="num">1</td>
+										<td class="cost"><span>15,000</span>원</td>
+										<td class="bank_name">우리은행</td>
+										<td class="account_num">1003-04-234567</td>
+										<td class="account_holder">김마인</td>
+                                        <td class="status">처리중</td>
+                                        <td class="report_date">2020.02.29</td>
+                                        <td class="payment_date">2020.02.29</td>
+										<td class="unpayment_reason">계좌번호 오류</td>
+									</tr>
+                                    <tr>
+										<td class="num">1</td>
+										<td class="cost"><span>15,000</span>원</td>
+										<td class="bank_name">우리은행</td>
+										<td class="account_num">1003-04-234567</td>
+										<td class="account_holder">김마인</td>
+                                        <td class="status">처리중</td>
+                                        <td class="report_date">2020.02.29</td>
+                                        <td class="payment_date">2020.02.29</td>
+										<td class="unpayment_reason">계좌번호 오류</td>
+									</tr>
+                                    <tr>
+										<td class="num">1</td>
+										<td class="cost"><span>15,000</span>원</td>
+										<td class="bank_name">우리은행</td>
+										<td class="account_num">1003-04-234567</td>
+										<td class="account_holder">김마인</td>
+                                        <td class="status">처리중</td>
+                                        <td class="report_date">2020.02.29</td>
+                                        <td class="payment_date">2020.02.29</td>
+										<td class="unpayment_reason">계좌번호 오류</td>
+									</tr>
+                                    <tr>
+										<td class="num">1</td>
+										<td class="cost"><span>15,000</span>원</td>
+										<td class="bank_name">우리은행</td>
+										<td class="account_num">1003-04-234567</td>
+										<td class="account_holder">김마인</td>
+                                        <td class="status">처리중</td>
+                                        <td class="report_date">2020.02.29</td>
+                                        <td class="payment_date">2020.02.29</td>
+										<td class="unpayment_reason">계좌번호 오류</td>
+									</tr>
+                                    <tr>
+										<td class="num">1</td>
+										<td class="cost"><span>15,000</span>원</td>
+										<td class="bank_name">우리은행</td>
+										<td class="account_num">1003-04-234567</td>
+										<td class="account_holder">김마인</td>
+                                        <td class="status">처리중</td>
+                                        <td class="report_date">2020.02.29</td>
+                                        <td class="payment_date">2020.02.29</td>
+										<td class="unpayment_reason">계좌번호 오류</td>
+									</tr>
+                                    <tr>
+										<td class="num">1</td>
+										<td class="cost"><span>15,000</span>원</td>
+										<td class="bank_name">우리은행</td>
+										<td class="account_num">1003-04-234567</td>
+										<td class="account_holder">김마인</td>
+                                        <td class="status">처리중</td>
+                                        <td class="report_date">2020.02.29</td>
+                                        <td class="payment_date">2020.02.29</td>
+										<td class="unpayment_reason">계좌번호 오류</td>
+									</tr>
+                                    <tr>
+										<td class="num">1</td>
+										<td class="cost"><span>15,000</span>원</td>
+										<td class="bank_name">우리은행</td>
+										<td class="account_num">1003-04-234567</td>
+										<td class="account_holder">김마인</td>
+                                        <td class="status">처리중</td>
+                                        <td class="report_date">2020.02.29</td>
+                                        <td class="payment_date">2020.02.29</td>
+										<td class="unpayment_reason">계좌번호 오류</td>
+									</tr>
+                                    <tr>
+										<td class="num">1</td>
+										<td class="cost"><span>15,000</span>원</td>
+										<td class="bank_name">우리은행</td>
+										<td class="account_num">1003-04-234567</td>
+										<td class="account_holder">김마인</td>
+                                        <td class="status">처리중</td>
+                                        <td class="report_date">2020.02.29</td>
+                                        <td class="payment_date">2020.02.29</td>
+										<td class="unpayment_reason">계좌번호 오류</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+						<div class="btm_info">
+							<div class="paging">
+								<a class="btn_paging_prev" href="#none" >이전 페이지로 이동</a>
+								<span class="list">
+									<a href="#none" class="on">1</a>
+									<a href="#none">2</a>
+									<a href="#none">3</a>
+									<a href="#none">4</a>
+									<a href="#none">5</a>
+								</span>
+								<a class="btn_paging_next" href="#none">다음 페이지로 이동</a>
+							</div>
+						</div>
+					</div>
+					<!-- //.stn -->
+				</div>
+				<!-- //.work_space -->
+            </div>
+            <!-- //.content -->
+		</div>
+		<!-- //.contents -->
+	</div>
+	<!-- //#container -->
+
+    <!-- #footer -->
+	<div id="footer">
+		<div class="copyright">
+			<div class="cont_box">
+				<span>&copy; Copyright 2020</span>
+				<span class="company"><a href="https://maum.ai/login/loginForm?lang=ko" target="_self" title="maum.ai로 이동하기">(주)마인즈랩</a></span>
+				<span>경기도 성남시 분당구 대왕판교로644번길 49 다산타워 6층</span>
+				<span>대표 유태준</span>
+				<span>사업자 등록번호 314-86-55446</span>
+			</div>
+		</div>
+	</div>
+	<!-- //#footer -->
+</div>
+<!-- //#wrap -->
+<script type="text/javascript" src="../../assets/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="../../assets/js/jquery-1.7.1.min.js"></script>
+<!-- <script type="text/javascript" src="../../assets/js/jquery-ui-1.8.18.min.js"></script> -->
+<script type="text/javascript" src="../../assets/js/jquery-ui-1.11.4.min.js"></script>
+<script type="text/javascript" src="../../assets/js/common.js"></script>
+
+<script type="text/javascript">
+$(window).load(function() {
+	$('.page_loading').addClass('pageldg_hide').delay(300).queue(function() {
+		$(this).remove();
+	});
+});
+</script>
+
+<script type="text/javascript">
+jQuery.event.add(window,"load",function(){
+	$(function() {
+		var dates = $('.fromDate, .toDate').datepicker({
+			prevText: '이전 달',
+			nextText: '다음 달',
+			// monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+			// monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+			// dayNames: ['일','월','화','수','목','금','토'],
+			// dayNamesShort: ['일','월','화','수','목','금','토'],
+			// dayNamesMin: ['일','월','화','수','목','금','토'],
+			dateFormat: 'yy-mm-dd',
+			// showMonthAfterYear: true,
+			// yearSuffix: '년',
+			onSelect: function (date) {
+				var endDate = $('.toDate');
+				var startDate = $(this).datepicker('getDate');
+				var minDate = $(this).datepicker('getDate');
+				endDate.datepicker('setDate', minDate);
+				startDate.setDate(startDate.getDate() + 365);
+				endDate.datepicker('option', 'maxDate', startDate);
+				endDate.datepicker('option', 'minDate', minDate);
+	  		}
+		});
+	});
+});
+</script>
+
+<script type="text/javascript">
+jQuery.event.add(window,"load",function(){
+	// 인풋 라벨
+    var placeholderLabel = $('input[type="text"], input[type="number"]');
+
+    placeholderLabel.on('focus', function(){
+    	$(this).siblings('label').hide();
+    });
+	placeholderLabel.on('focusout', function(){
+	    if($(this).val() === ''){
+	        $(this).siblings('label').show();
+	    }
+    });
+});
+</script>
+
+<script type="text/javascript">
+jQuery.event.add(window,"load",function(){
+	//수익금신청 - 세금 확인 및 동의
+	$('.cost_box button').on('click',function(){
+		$('.check_agree').fadeIn(100);
+	});
+	$('.ico_close, .cancel').on('click',function(){
+		$('.pop_simple').fadeOut(100);
+	});
+
+	//수익금 지급신청 - 입금계좌 등록 안된 경우
+	$('.check_agree .save').on('click',function(){
+		$('.check_agree').fadeOut(100);
+		$('.request.account').fadeIn(100);
+	});
+
+	//입금 계좌 관리
+	$('.register .btn').on('click',function(){
+		$('.request.account').fadeOut(100);
+		$('.account_admin').fadeIn(100);
+	});
+	$('.account_holder .btn').on('click',function(){
+		$('.account_holder .btn').removeClass('on');
+		$('.account_holder .ipt_box').addClass('on');
+	});
+
+	//수익금 지급신청 - 입금계좌 등록 된 경우
+	$('.account_admin .save').on('click',function(){
+		$('.account_admin').fadeOut(100);
+		$('.request').fadeIn(100);
+	});
+	$('.request .save').on('click',function(){
+		$('.request').fadeOut(100);
+		$('.complate').fadeIn(100);
+	});
+
+	//신청 완료
+	$('.complate .save').on('click',function(){
+		$('.complate').fadeOut(100);
+	});
+});
+</script>
+</body>
+</html>
