@@ -185,7 +185,7 @@
     <!-- //.pop_simple -->
 
     <!-- 1 .pop_simple 교육 신청 변경 완료 -->
-	<div class="pop_simple change_cancel_complete" id="pop_1">
+	<div class="pop_simple change_complete" id="pop_1">
 		<div class="pop_bg"></div>
 		<!-- .popWrap -->
 		<div class="popWrap">
@@ -208,7 +208,7 @@
 	<!-- //.pop_simple -->
 
     <!-- 1 .pop_simple 교육 신청 취소 완료 -->
-	<div class="pop_simple" id="pop_1">
+	<div class="pop_simple cancel_complete" id="pop_1">
 		<div class="pop_bg"></div>
 		<!-- .popWrap -->
 		<div class="popWrap">
@@ -502,16 +502,24 @@
 
 <script>
     $(document).ready(function(){
-        //로그인오류 팝업
+        //팝업
         $('.btn_box .train_request').on('click',function(){
             $('.sign_in').fadeIn(100);
         });
 		$('.txt .change_cancel').on('click',function(){
-            $('.request_train').fadeIn(100);
+            $('.pop_simple.change_cancel').fadeIn(100);
         });
 		$('.btn .request').on('click',function(){
 			$('.request_train').fadeOut(100);
             $('.request_complete').fadeIn(100);
+        });
+		$('.change_cancel .request_cancel').on('click',function(){
+			$('.pop_simple.change_cancel').fadeOut(100);
+            $('.cancel_complete').fadeIn(100);
+        });
+		$('.change_cancel .request_change').on('click',function(){
+			$('.pop_simple.change_cancel').fadeOut(100);
+            $('.change_complete').fadeIn(100);
         });
 
         $('.ico_close, .close, .cancel').on('click',function(){
