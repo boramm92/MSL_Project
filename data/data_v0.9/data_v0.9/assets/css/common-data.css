@@ -195,7 +195,7 @@ button.btn_pop {display: inline-block; width: 120px; height: 34px; margin: 0 20p
 /* select */
 .select_box {display: inline-block; position: relative;}
 .select_box:after {content: '\f0d7'; font-family: 'Font Awesome 5 Free'; color: #697992; font-size: 15px; font-weight: 900; display: block; position: absolute; top: 50%; right: 12px; transform: translate(0, -50%);}
-.select_box select {width: 100%; height: 100%; padding: 0 10px; border: 1px solid #cfd5eb; border-radius: 4px; box-sizing: border-box; background: #f7f8fc; color: #2c3f51; font-size: 14px; letter-spacing: -0.5px;}
+.select_box select {width: 100%; height: 100%; padding: 0 10px; border: 1px solid #cfd5eb; border-radius: 5px; box-sizing: border-box; background: #f7f8fc; color: #2c3f51; font-size: 14px; letter-spacing: -0.5px;}
 .select_box label {position: absolute; top: 0; left: 10px; color: #697992; font-size: 12px; cursor: pointer;}
 /* //select */
 
@@ -285,7 +285,7 @@ button.btn_pop {display: inline-block; width: 120px; height: 34px; margin: 0 20p
 #edit_tool .snb ul.nav li:first-child a em {margin: 0 6px 0 0;}
 #edit_tool .snb ul.nav li a:hover {color: #fff; transition: all 0.3s ease-out; opacity: 1;}
 #edit_tool .snb ul.nav li.active {background: rgba(255,255,255,0.2); color: #fff; cursor: default;}
-#edit_tool .snb ul.nav li.active > a {color: #fff; opacity: 1; cursor: default;}
+#edit_tool .snb ul.nav li.active > a {color: #fff; opacity: 1; pointer-events: none;}
 #edit_tool .snb ul.nav li.active > a:before {content:''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: #fff;}
 
 /* contents */
@@ -511,16 +511,25 @@ p.timer_fr {position: absolute; right: -32px; top: -6px; margin: 0; color: #5760
 .data_script .fl .script_stn {opacity: 0.5;}
 
 /* image */
-.image_tool .data_script .fl .image_box {overflow: hidden; float: left; width: calc(100% - 7.5px); height: calc(100% - 32px); margin: 0 0 20px 0; clear: both;}
+.image_tool .content {position: relative;}
+.image_tool .data_script .fl .image_box {overflow: hidden; float: left; width: calc(100% - 7.5px); height: 100%; margin: 0 0 20px 0; clear: both;}
 .image_tool .data_script .fl .image_box .work_img {overflow: hidden; position: relative; height: calc(100% - 100px); padding: 10px; box-sizing: border-box; background: #000;}
 .image_tool .data_script .fl .image_box .work_img img {max-width: 100%; max-height: 100%;}
 .image_tool .data_script .fl .image_box .tool_guide {height: 40px; background: #f7f8fc; color: #506df5; font-size: 14px; letter-spacing: -0.2px;}
 .image_tool .data_script .fl .image_box .tool_guide span {margin: 0 5px 0 0; line-height: 40px;}
-.image_tool .data_script .fl .image_box .size_control {display: inline-block; width: 80%;}
+.image_tool .data_script .fl .image_box .size_control {position: relative;}
+.image_tool .data_script .fl .image_box .size_control > span {display: inline-block; width: 30px; height: 30px; margin: 15px 6px 0 0; border: 1px solid #cfd5eb; border-radius: 4px; box-sizing: border-box; background: #f7f8fc; color: #2c3f51; font-size: 16px; line-height: 28px; cursor: pointer;}
+.image_tool .data_script .fl .image_box .size_control .size_guide {position: absolute; top: 11px; right: 20px; text-align: left;}
+.image_tool .data_script .fl .image_box .size_control .size_guide span {display: inline-block; float: left; color: #697992; font-size: 13px; letter-spacing: -0.3px;}
+.image_tool .data_script .fl .image_box .size_control .size_guide span:nth-child(1) {margin: 8px 8px 0 0; font-size: 20px;}
+.image_tool .data_script .fl .image_box .size_control .size_guide span:nth-child(2) {line-height: 1.4;}
+/* 이미지 사이즈 조절부분 초안 css */
+/* .image_tool .data_script .fl .image_box .size_control {display: inline-block; width: 80%;}
 .image_tool .data_script .fl .image_box .size_control span {display: inline-block; margin: 20px 14px; color: #2c3f51; font-size: 20px; cursor: pointer;}
 .image_tool .data_script .fl .image_box .size_control .controlbar {display: inline-block; position: relative; top: -4px; width: calc(100% - 100px); height: 6px; border-radius: 1px; background: #cfd5eb;}
 .image_tool .data_script .fl .image_box .size_control .controlbar em {position: absolute; top: 0; left: 0; display: inline-block; width: 100%; height: 100%; border-radius: 1px; background: #2c3f51;}
-.image_tool .data_script .fl .image_box .size_control .controlbar em:after {content: ''; display: block; position: absolute; top: -10px; right: -13px; width: 26px; height: 26px; border: 1px solid #cfd5eb; border-radius: 50%; box-shadow: 1px 2px 2px 0 rgba(125, 125, 125, 0.3); box-sizing: border-box; background: #fff; cursor: pointer;}
+.image_tool .data_script .fl .image_box .size_control .controlbar em:after {content: ''; display: block; position: absolute; top: -10px; right: -13px; width: 26px; height: 26px; border: 1px solid #cfd5eb; border-radius: 50%; box-shadow: 1px 2px 2px 0 rgba(125, 125, 125, 0.3); box-sizing: border-box; background: #fff; cursor: pointer;} */
+.image_tool .data_script .fr .script_box {height: 100%;}
 .image_tool .data_script .fr .script_box .tbl_top span:nth-child(2) {width:40%;}
 .image_tool .data_script .fr .script_box .tbl_top span:nth-child(3) {width:40%}
 .image_tool .data_script .fr .script_box .tbl_top span:nth-child(4) {width:10%}
@@ -539,6 +548,8 @@ p.timer_fr {position: absolute; right: -32px; top: -6px; margin: 0; color: #5760
 .image_tool .data_script .fr .script_box .tbl_box tbody .ipt_box input::-webkit-input-placeholder {color: rgba(53,56,77,0.7); font-size: 13px;}
 .image_tool .data_script .fr .script_box .tbl_box tbody .ipt_box input:-ms-input-placeholder {color: rgba(53,56,77,0.7); font-size: 13px;}
 .image_tool .data_script .fr .script_box .tbl_box tbody .ipt_box input::-ms-input-placeholder {color: rgba(53,56,77,0.7); font-size: 13px;}
+.image_tool .cropper-container.cropper-bg {width: auto !important;}
+.image_tool .content .reject_box {position: relative; top: 30px;}
 
 /* ---------- //작업자 ---------- */
 
@@ -700,7 +711,7 @@ p.timer_fr {position: absolute; right: -32px; top: -6px; margin: 0; color: #5760
 .work_space .btm_info .list a {margin: 0 6px;}
 .work_space .btm_info .list a:hover,
 .work_space .btm_info .list a:focus {color: #5e77ff;}
-.work_space .btm_info .list a.on {color: #5e77ff; font-weight: 700;}
+.work_space .btm_info .list a.on {color: #5e77ff; font-weight: 700; pointer-events: none;}
 
 /* mypage_payment */
 /* popup */
@@ -817,6 +828,43 @@ p.timer_fr {position: absolute; right: -32px; top: -6px; margin: 0; color: #5760
 .reviewer_image .data_script .fr .script_box .tbl_top span:nth-child(3) {width: 45%;}
 /* ---------- //검수자 ---------- */
 
+/* ---------- ADMIN ---------- */
+/* common */
+#edit_tool.project #header .etcmenu .outBox {border-left: 1px solid #dde2f3;}
+#edit_tool.project .snb ul.nav li {height: auto; line-height: 17px;}
+#edit_tool.project .snb ul.nav li:nth-child(2) {line-height: 20px;}
+#edit_tool.project .snb ul.nav li a {padding: 14px 0; text-indent: 20px;}
+#edit_tool.project  #container .content > div:first-child .admin_stn {overflow: hidden; border-bottom: 1px dotted #cfd5eb;}
+#edit_tool.project .admin_stn {padding: 0 0 30px 0;}
+
+/* contents */
+.admin.project .admin_stn h3 {margin: 0 0 10px 0;}
+.admin.project .admin_stn .cases_box {overflow: hidden; text-align: left;}
+.admin.project .admin_stn .cases_box .common_box {float: left; min-width: 260px; height: 86px; margin: 0 10px 20px 0; padding: 20px 30px;}
+.admin.project .admin_stn .cases_box .common_box p {color: #35384d; font-size: 15px; font-weight: 500; line-height: 46px;}
+.admin.project .admin_stn .cases_box .common_box p em {color: #35384d; font-size: 15px; font-weight: 500; line-height: 45px;}
+.admin.project .admin_stn .cases_box .common_box p em.fl {float: left; margin: 0 10px 0 0;}
+.admin.project .admin_stn .cases_box .common_box p em.fr {display: flex; float: right;}
+.admin.project .admin_stn .cases_box .payment_request em.fl {line-height: 23px;}
+.admin.project .admin_stn .cases_box .common_box p span {display: inline-block; height: 45px; margin: 0 6px 0 0; padding: 0 30px; border-radius: 23px; background: #f7f8fc; color: #506df5; font-size: 25px; font-weight: 500; line-height: 45px;}
+.admin.project .admin_stn .btn_box {float: left; width: 260px; height: 46px;}
+.admin.project .admin_stn .btn_box a {font-size: 17px; line-height: 46px;}
+.admin.project .admin_stn .btn_box a span {margin: 0 10px 0 0;}
+.admin.project .work_space .sort_group .select_box {margin: 0 0 0 14px;}
+.admin.project .work_space .work_lst table tbody td.status span {color: #506df5;}
+
+.admin.worker_reviewer .admin_stn .cases_box .common_box {margin: 0 10px 0 0;}
+.admin.worker_reviewer .admin_stn .character li {float: left; padding: 0 30px; border: 1px solid #cfd5eb; border-radius: 4px; background: #fff; color: #697992; font-size: 15px; font-weight: 500; line-height: 40px; cursor: pointer;}
+.admin.worker_reviewer .admin_stn .character li:nth-child(1) {border-right: none; border-top-right-radius: 0; border-bottom-right-radius: 0;}
+.admin.worker_reviewer .admin_stn .character li:nth-child(2) {border-left: none; border-top-left-radius: 0; border-bottom-left-radius: 0;}
+.admin.worker_reviewer .admin_stn .character li.active {background: #506df5; color: #fff;}
+
+.admin.worker_reviewer .work_space .work_lst table thead {font-weight: 500 !important;}
+.admin.worker_reviewer .work_space .work_lst table thead th {word-wrap: break-word; word-break: keep-all;}
+.admin.worker_reviewer .work_space .work_lst table tbody {font-size: 13px;}
+.admin.worker_reviewer .work_space .work_lst table tbody td {padding: 5px 10px 5px 0; line-height: 22px; word-wrap: break-word;}
+.admin.worker_reviewer .work_space .work_lst table tbody td .select_box {width: 86px; height: 30px;}
+
 /* -------------------- //content [tool] -------------------- */
 
 /* ------------------------- common [maum_data] ------------------------- */
@@ -917,6 +965,7 @@ p.timer_fr {position: absolute; right: -32px; top: -6px; margin: 0; color: #5760
 /* stn_training */
 .stn_training {height: 360px;}
 .stn_training .txt {position: absolute; top: 50%; left: 0; transform: translate(0, -50%);}
+.stn_training .txt > div {padding: 0 !important;}
 .stn_training .txt img {width: 216px;}
 .stn_training .txt p {margin: 18px 0 0 0; color: #2c3f51; font-size: 25px; font-weight: 400; line-height: 37px; letter-spacing: -0.8px;}
 .stn_training .txt em {margin: 0 10px 0 0; color: #5c688c; font-size: 15px; line-height: 1.4; letter-spacing: -0.5px;}
@@ -1017,6 +1066,10 @@ p.timer_fr {position: absolute; right: -32px; top: -6px; margin: 0; color: #5760
 #maum_data.en #footer .btm_menu .menu_area .service p:after {right: -7px;}
 #maum_data.en #footer .copyright span {font-size: 10px;}
 
+.index.en .pop_work .popWrap .pop_bd .tab_btn {left: 278px;}
+.index.en #text_work .data_script .fr .question_box .question.minibox1 .addblock a.addbtn {display: inline-block; width: auto; height: 27px; padding: 0 14px; font-size: 11px; line-height: 27px;}
+.index.en #text_work .data_script .fr .question_box .question.minibox2 {height: 155px; font-size: 12px;}
+.index.en #text_work .data_script .fr .question_box .question.minibox3 {height: 155px; font-size: 12px;}
 .index.en .stn_info .lank_area .tab_box .tab_btn li {width: auto; padding: 0 20px;}
 .index.en .stn_info .service_area .use_process .workspace_img {width: 45px; height: 40px;}
 .index.en .stn_info .service_area .use_process .inspect_img {width: 40px; height: 35px;}
