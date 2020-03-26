@@ -629,8 +629,8 @@ p.timer_fr {position: absolute; right: -32px; top: -6px; margin: 0; color: #5760
 
 /* ---------- 마이페이지  ---------- */
 /* date box */
-.date_box {display: inline-block; position: relative; height: 40px; text-align: left;}
-.date_box input {width: 100%; height: 100%; padding: 0 10px; border: 1px solid #cfd5eb; box-sizing: border-box; border-radius: 5px; background: #fff; color: #2c3f51; font-size: 14px;}
+.date_box {display: inline-block; position: relative; height: 40px; border-radius: 5px; background: #fff; text-align: left;}
+.date_box input {position: relative; width: 100%; height: 100%; padding: 0 10px; border: 1px solid #cfd5eb; box-sizing: border-box; border-radius: 5px; background: transparent; color: #2c3f51; font-size: 14px; z-index: 5;}
 .date_box input::placeholder {color: #697992; font-size: 12px;}
 .date_box input::-webkit-input-placeholder {color: #697992; font-size: 12px;}
 .date_box input:-ms-input-placeholder {color: #697992; font-size: 12px;}
@@ -732,8 +732,10 @@ p.timer_fr {position: absolute; right: -32px; top: -6px; margin: 0; color: #5760
 .mypage .request .pop_bd .my_point p span {display: inline-block; height: 28px; margin: 3px 0 0 0; padding: 0 15px; border-radius: 14px; box-sizing: border-box; background: #f7f8fc; font-weight: 500; line-height: 27px;}
 .mypage .request .pop_bd .my_point p span.blue {color: #506df5;}
 .mypage .pop_simple .pop_bd em {display: block; margin: 5px 0 16px; color: #2c3f51; font-size: 13px; text-align: left; letter-spacing: -0.4px; opacity: 0.7;}
-.mypage .request .pop_bd .my_account {margin: 0 0 4px 0;}
-.mypage .request .pop_bd .my_account .register {padding: 15px 0 11px; border-bottom: 1px solid #cfd5eb;}
+.mypage .request .pop_bd .my_account {position: relative; width: 100%; height: 144px; margin: 0 0 4px 0;}
+.mypage .request .pop_bd .my_account > div {display: none;}
+.mypage .request .pop_bd .my_account > div.on {display: block;}
+.mypage .request .pop_bd .my_account .register {position: absolute; top: 36px; width: 100%; padding: 15px 0 11px; border-bottom: 1px solid #cfd5eb;}
 .mypage .request .pop_bd .my_account .register .btn_box {width: 142px; height: 40px;}
 .mypage .request .pop_bd .my_account .register em {margin: 5px 0 0 0; text-align: center;}
 .mypage .request.account .popWrap > .btn button {opacity: 0.5;}
@@ -845,7 +847,7 @@ p.timer_fr {position: absolute; right: -32px; top: -6px; margin: 0; color: #5760
 #edit_tool.admin .snb ul.nav li a {padding: 14px 0; text-indent: 20px;}
 #edit_tool.admin  #container .content > div:first-child .admin_stn {overflow: hidden; border-bottom: 1px dotted #cfd5eb;}
 #edit_tool.admin .admin_stn {padding: 0 0 30px 0;}
-.admin.project_set .admin_stn input[type=text],
+.admin.project_set .admin_stn .ipt_box input[type=text],
 .admin.project_set .admin_stn select {background: #fff;}
 .admin.project_set .admin_stn select {color: #697992;}
 
@@ -976,6 +978,7 @@ p.timer_fr {position: absolute; right: -32px; top: -6px; margin: 0; color: #5760
 
 .project_state .content > div:last-child {text-align: center !important;}
 .project_state .admin_stn {text-align: center !important;}
+.project_state .admin_stn .work_cont .select_box {opacity: 0.8;}
 .project_state .admin_stn .work_cont .select_group:not(:first-child):before,
 .project_state .admin_stn .work_cont .select_group span {opacity: 0.7 !important;}
 .project_state .admin_stn .btn_box {margin: 20px 0 0 0 !important;}

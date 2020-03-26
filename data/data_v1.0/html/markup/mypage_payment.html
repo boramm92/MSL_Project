@@ -70,11 +70,16 @@
 			<em>월 총 지급 신청 금액 33,000원 초과시 총 신청금액의<br>3.3% 사업소득세 차감이 이루어 집니다.</em>
 			<div class="my_account">
 				<p>입금 계좌 정보</p>
-				<div class="register">
+				<div class="register on">
 					<div class="btn">
 						<button type="button">입금계좌 등록하기</button>
 					</div>
 					<em>입금계좌 정보를 등록해주세요.<br>등록 계좌가 있어야 지급 신청이 가능합니다.</em>
+				</div>
+				<div class="register_info">
+					<p>은행 <span>우리은행</span></p>
+					<p>예금주 <span>김마인</span></p>
+					<p>계좌번호 <span>1002-22-222322</span></p>
 				</div>
 			</div>
 		</div>
@@ -145,42 +150,6 @@
 		<div class="btn">
 			<button class="cancel">취소</button>
 			<button class="save">등록</button>
-		</div>
-	</div>
-	<!-- //.popWrap -->
-</div>
-<!-- //.pop_simple -->
-
-<!-- 2 .pop_simple -->
-<div class="pop_simple request" id="pop_2">
-	<div class="pop_bg"></div>
-	<!-- .popWrap -->
-	<div class="popWrap">
-		<div class="pop_hd">
-			<em class="fas fa-times ico_close"></em>
-			<h6>포인트를 수익금으로 지급신청</h6>
-		</div>
-
-		<!-- .pop_bd -->
-		<div class="pop_bd">
-			<div class="my_point">
-				<p>보유 포인트 <span>25,223,400</span></p>
-				<p>신청 금액 <span class="blue">5,000</span></p>
-				<p>이번달 총 신청 금액 <span>5,000</span></p>
-				<p>예상 지급 세금 <span>130</span></p>
-			</div>
-			<em>월 총 지급 신청 금액 33,000원 초과시 총 신청금액의<br>3.3% 사업소득세 차감이 이루어 집니다.</em>
-			<div class="my_account">
-				<p>입금 계좌 정보</p>
-				<p>은행 <span>우리은행</span></p>
-				<p>예금주 <span>김마인</span></p>
-				<p>계좌번호 <span>1002-22-222322</span></p>
-			</div>
-		</div>
-		<!-- //.pop_bd -->
-		<div class="btn">
-			<button class="cancel">취소</button>
-			<button class="save"><span>3,550</span>p 신청</button>
 		</div>
 	</div>
 	<!-- //.popWrap -->
@@ -606,12 +575,12 @@ jQuery.event.add(window,"load",function(){
 		$('.check_agree').fadeOut(100);
 		$('.request.account').fadeIn(100);
 	});
-
-	//입금 계좌 관리
-	$('.register .btn').on('click',function(){
+	$('.request.account .register button').on('click',function(){
 		$('.request.account').fadeOut(100);
 		$('.account_admin').fadeIn(100);
 	});
+
+	//입금 계좌 관리
 	$('.account_holder .btn').on('click',function(){
 		$('.account_holder .btn').removeClass('on');
 		$('.account_holder .ipt_box').addClass('on');
@@ -620,7 +589,10 @@ jQuery.event.add(window,"load",function(){
 	//수익금 지급신청 - 입금계좌 등록 된 경우
 	$('.account_admin .save').on('click',function(){
 		$('.account_admin').fadeOut(100);
-		$('.request').fadeIn(100);
+		$('.request.account').fadeIn(100);
+		$('.request.account .my_account > div').removeClass('on');
+		$('.request.account .register_info').addClass('on');
+		$('.request.account .btn button').attr('disabled',false).css({'opacity': '1', 'cursor': 'pointer'});
 	});
 	$('.request .save').on('click',function(){
 		$('.request').fadeOut(100);
