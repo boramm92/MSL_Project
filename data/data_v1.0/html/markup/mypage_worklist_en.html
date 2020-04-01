@@ -5,14 +5,15 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="format-detection" content="telephone=no" />
 
-<title>포인트 내역 ll 마이페이지</title>
+<title>My Tasks ll MY PAGE</title>
+
 <!-- resources -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 <link rel="stylesheet" type="text/css" href="../../assets/css/jquery-ui-1.8.18.css" />
 <link rel="stylesheet" type="text/css" href="../../assets/css/common-data.css" />
 <!-- //resources -->
 </head>
-<body id="edit_tool" class="mypage point">
+<body id="edit_tool" class="mypage worklist en">
 
 <!-- .page loading -->
 <div id="page_ldWrap" class="page_loading">
@@ -30,13 +31,13 @@
 	<!-- #header -->
 	<div id="header">
         <h1><a target="_self" href="#none"><img src="../../assets/images/img_maumdata_logo.svg" alt="logo"></a></h1>
-    	<h2>마이페이지</h2>
+    	<h2>MY PAGE</h2>
 		<!-- .etcmenu -->
-		<div class="etcmenu mypage">
+		<div class="etcmenu">
             <div class="userBox">
 				<span class="my_point">4,600</span>
 				<div class="btn_box">
-					<a href="#none"><span class="fas fa-chalkboard"></span>워크스페이스</a>
+					<a href="#none"><span class="fas fa-chalkboard"></span>Workspace</a>
 				</div>
             </div>
 			<div class="outBox">
@@ -52,17 +53,17 @@
 		<!-- .snb -->
 		<div class="snb">
 			<ul class="nav">
-				<li>
-					<a target="_self" href="mypage_worklist.html">작업내역</a>
-                </li>
 				<li class="active">
-					<a target="_self" href="mypage_point.html">포인트 내역</a>
+					<a target="_self" href="mypage_worklist_en.html">My Tasks</a>
                 </li>
 				<li>
-					<a target="_self" href="mypage_payment.html">수익금 신청</a>
+					<a target="_self" href="mypage_point_en.html">Points<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;History</a>
+                </li>
+				<li>
+					<a target="_self" href="mypage_payment_en.html">Transfer<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Points</a>
 				</li>
 				<li>
-					<a target="_self" href="mypage_myinfo.html">내 정보 관리</a>
+					<a target="_self" href="mypage_myinfo_en.html">My<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Information</a>
 				</li>
 			</ul>
 		</div>
@@ -75,20 +76,35 @@
 				<!-- .work_space -->
 				<div class="work_space">
 					<div class="mypage_stn">
-						<div class="point_box my_box">
-							<h3>내 포인트</h3>
+						<div class="history_box my_box">
+							<h3>Work Status</h3>
 
-							<div class="my_cases mypoint_box common_box">
-								<p>보유포인트 <em class="balance blue">22,222,200</em></p>
-								<p>총 누적포인트 <em>0</em></p>
+							<div class="my_cases common_box">
+								<p>In Progress <em><span class="blue">100</span></em></p>
+								<p>Rejected Tasks <em><span>5</span></em></p>
+								<p>Inspection <em><span>23</span></em></p>
+								<p>Tasks Completed <em><span>100</span></em></p>
+							</div>
+						</div>
+
+						<div class="point_box my_box">
+							<h3>Points</h3>
+
+							<div class="my_cases common_box">
+								<p>Current Points <em class="balance blue">22,222,200</em></p>
+								<p>Transferable Points <em>0</em></p>
+								<p>Cumulative points <em>4,600</em></p>
+
+								<div class="btn_box">
+									<button type="button" onclick="location.href='mypage_payment.html'"><img src="../../assets/images/ico_point.svg" alt="포인트아이콘">&nbsp;Points&nbsp;&nbsp;<span class="fas fa-arrow-right"></span>&nbsp;&nbsp;<span class="fas fa-coins"></span>&nbsp;&nbsp;Cash Out</button>
+								</div>
 							</div>
 						</div>
 
 
 						<div class="point_info">
-							<p><span class="fas fa-caret-right"></span> 검수 과정이 없는 작업은 작업 후 바로 포인트가 지급 됩니다.</p>
-							<p><span class="fas fa-caret-right"></span> 검수 과정이 있는 작업은 최종 검수 승인 후 포인트가 지급 됩니다.</p>
-							<p><span class="fas fa-caret-right"></span> 5,000 포인트 이상부터 1,000 포인트 단위로 수익금전환이 가능합니다.</p>
+							<p><span class="fas fa-caret-right"></span> The minimum point for cashing out is 5,000 points, and the points can be cashed out in 1,000 points.</p>
+							<p><span class="fas fa-caret-right"></span> Cumulative points mean points accumulated since registration.</p>
 						</div>
 					</div>
 				</div>
@@ -98,11 +114,11 @@
 				<div class="work_space">
 					<!-- .stn -->
 					<div class="mypage_stn">
-						<h3 class="working_lst">포인트 내역</h3>
+						<h3 class="working_lst">Tasks in Progress</h3>
 						<div class="sort_group">
 							<div class="select_box">
 								<select id="work_type">
-									<option selected>종류</option>
+									<option selected>Type</option>
 									<option value="voice">Voice</option>
 									<option value="text">Text</option>
 									<option value="image">Image</option>
@@ -111,7 +127,7 @@
 
 							<div class="date_box">
 								<form action="">
-									<input type="text" class="ipt_date fromDate" placeholder="작업기간(시작)">
+									<input type="text" class="ipt_date fromDate" placeholder="From">
 								</form>
 								<span class="fas fa-calendar-alt"></span>
 								<em>~</em>
@@ -119,7 +135,7 @@
 
 							<div class="date_box">
 								<form action="">
-									<input type="text" class="ipt_date toDate" placeholder="작업기간(종료)">
+									<input type="text" class="ipt_date toDate" placeholder="To">
 								</form>
 								<span class="fas fa-calendar-alt"></span>
 							</div>
@@ -127,7 +143,7 @@
 							<div class="srch_box">
 								<form action="">
 									<input type="text" id="project">
-									<label for="project">프로젝트명</label>
+									<label for="project">Name of the Project</label>
 									<button type="submit"><span class="fas fa-search"></span></button>
 								</form>
 							</div>
@@ -135,116 +151,169 @@
 
 						<div class="work_lst common_box">
 							<table>
-								<caption class="hide">포인트 내역 리스트</caption>
+								<caption class="hide">진행중인 작업 리스트</caption>
 								<colgroup>
-									<col width="9%"><col width="20%"><col width="20%"><col width="15%"><col width="18%"><col width="18%">
+									<col width="6%"><col width="16%"><col width="16%"><col width="9%"><col width="6%">
+									<col width="9%"><col width="7%"><col width="7%"><col width="12%"><col width="12%">
 								</colgroup>
 								<thead>
 									<tr>
-										<th>종류</th>
-										<th>프로젝트명</th>
-										<th>작업명</th>
-										<th>작업 완료 건</th>
-										<th>건당 포인트</th>
-										<th>포인트</th>
+										<th>Type</th>
+										<th>Name of the project</th>
+										<th>Name of the task</th>
+										<th>The number of task</th>
+										<th>In progress</th>
+										<th>Inspection</th>
+										<th>Rejected</th>
+										<th>Completed</th>
+										<th>Points</th>
+										<th>Expiry dates</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
 										<td class="type">Voice</td>
-										<td class="project">문장분리_체험하기</td>
-										<td class="work_title">음성 문장단위 분리</td>
-										<td class="complate_cases"><span>100</span>건</td>
-										<td class="unit_cost"><span>5,142,000</span></td>
+										<td class="project">최신신문기사와 음성 읽고 의미 파악 _ AI</td>
+										<td class="work_title">최신신문기사와 음성 읽고 의미 파악 _ AI</td>
+										<td class="total_cases"><span>100</span>건</td>
+										<td class="working_cases"><span>42</span>건</td>
+										<td class="inspect_yet"><span>42</span>건</td>
+										<td class="reject_cases"><span>42</span>건</td>
+										<td class="complate_cases"><span>42</span>건</td>
 										<td class="point"><span>5,142,000</span></td>
+										<td class="expire_date">~<span>2020.04.30</span></td>
 									</tr>
 									<tr>
 										<td class="type">Voice</td>
 										<td class="project">문장분리_체험하기</td>
 										<td class="work_title">음성 문장단위 분리</td>
-										<td class="complate_cases"><span>100</span>건</td>
-										<td class="unit_cost"><span>5,142,000</span></td>
+										<td class="total_cases"><span>100</span>건</td>
+										<td class="working_cases"><span>42</span>건</td>
+										<td class="inspect_yet"><span>42</span>건</td>
+										<td class="reject_cases"><span>42</span>건</td>
+										<td class="complate_cases"><span>42</span>건</td>
 										<td class="point"><span>5,142,000</span></td>
+										<td class="expire_date">~<span>2020.04.30</span></td>
 									</tr>
 									<tr>
 										<td class="type">Voice</td>
 										<td class="project">문장분리_체험하기</td>
 										<td class="work_title">음성 문장단위 분리</td>
-										<td class="complate_cases"><span>100</span>건</td>
-										<td class="unit_cost"><span>5,142,000</span></td>
+										<td class="total_cases"><span>100</span>건</td>
+										<td class="working_cases"><span>42</span>건</td>
+										<td class="inspect_yet"><span>42</span>건</td>
+										<td class="reject_cases"><span>42</span>건</td>
+										<td class="complate_cases"><span>42</span>건</td>
 										<td class="point"><span>5,142,000</span></td>
+										<td class="expire_date">~<span>2020.04.30</span></td>
 									</tr>
 									<tr>
 										<td class="type">Voice</td>
 										<td class="project">문장분리_체험하기</td>
 										<td class="work_title">음성 문장단위 분리</td>
-										<td class="complate_cases"><span>100</span>건</td>
-										<td class="unit_cost"><span>5,142,000</span></td>
+										<td class="total_cases"><span>100</span>건</td>
+										<td class="working_cases"><span>42</span>건</td>
+										<td class="inspect_yet"><span>42</span>건</td>
+										<td class="reject_cases"><span>42</span>건</td>
+										<td class="complate_cases"><span>42</span>건</td>
 										<td class="point"><span>5,142,000</span></td>
+										<td class="expire_date">~<span>2020.04.30</span></td>
 									</tr>
 									<tr>
 										<td class="type">Voice</td>
 										<td class="project">문장분리_체험하기</td>
 										<td class="work_title">음성 문장단위 분리</td>
-										<td class="complate_cases"><span>100</span>건</td>
-										<td class="unit_cost"><span>5,142,000</span></td>
+										<td class="total_cases"><span>100</span>건</td>
+										<td class="working_cases"><span>42</span>건</td>
+										<td class="inspect_yet"><span>42</span>건</td>
+										<td class="reject_cases"><span>42</span>건</td>
+										<td class="complate_cases"><span>42</span>건</td>
 										<td class="point"><span>5,142,000</span></td>
+										<td class="expire_date">~<span>2020.04.30</span></td>
 									</tr>
 									<tr>
 										<td class="type">Voice</td>
 										<td class="project">문장분리_체험하기</td>
 										<td class="work_title">음성 문장단위 분리</td>
-										<td class="complate_cases"><span>100</span>건</td>
-										<td class="unit_cost"><span>5,142,000</span></td>
+										<td class="total_cases"><span>100</span>건</td>
+										<td class="working_cases"><span>42</span>건</td>
+										<td class="inspect_yet"><span>42</span>건</td>
+										<td class="reject_cases"><span>42</span>건</td>
+										<td class="complate_cases"><span>42</span>건</td>
 										<td class="point"><span>5,142,000</span></td>
+										<td class="expire_date">~<span>2020.04.30</span></td>
 									</tr>
 									<tr>
 										<td class="type">Voice</td>
 										<td class="project">문장분리_체험하기</td>
 										<td class="work_title">음성 문장단위 분리</td>
-										<td class="complate_cases"><span>100</span>건</td>
-										<td class="unit_cost"><span>5,142,000</span></td>
+										<td class="total_cases"><span>100</span>건</td>
+										<td class="working_cases"><span>42</span>건</td>
+										<td class="inspect_yet"><span>42</span>건</td>
+										<td class="reject_cases"><span>42</span>건</td>
+										<td class="complate_cases"><span>42</span>건</td>
 										<td class="point"><span>5,142,000</span></td>
+										<td class="expire_date">~<span>2020.04.30</span></td>
 									</tr>
 									<tr>
 										<td class="type">Voice</td>
 										<td class="project">문장분리_체험하기</td>
 										<td class="work_title">음성 문장단위 분리</td>
-										<td class="complate_cases"><span>100</span>건</td>
-										<td class="unit_cost"><span>5,142,000</span></td>
+										<td class="total_cases"><span>100</span>건</td>
+										<td class="working_cases"><span>42</span>건</td>
+										<td class="inspect_yet"><span>42</span>건</td>
+										<td class="reject_cases"><span>42</span>건</td>
+										<td class="complate_cases"><span>42</span>건</td>
 										<td class="point"><span>5,142,000</span></td>
+										<td class="expire_date">~<span>2020.04.30</span></td>
 									</tr>
 									<tr>
 										<td class="type">Voice</td>
 										<td class="project">문장분리_체험하기</td>
 										<td class="work_title">음성 문장단위 분리</td>
-										<td class="complate_cases"><span>100</span>건</td>
-										<td class="unit_cost"><span>5,142,000</span></td>
+										<td class="total_cases"><span>100</span>건</td>
+										<td class="working_cases"><span>42</span>건</td>
+										<td class="inspect_yet"><span>42</span>건</td>
+										<td class="reject_cases"><span>42</span>건</td>
+										<td class="complate_cases"><span>42</span>건</td>
 										<td class="point"><span>5,142,000</span></td>
+										<td class="expire_date">~<span>2020.04.30</span></td>
 									</tr>
 									<tr>
 										<td class="type">Voice</td>
 										<td class="project">문장분리_체험하기</td>
 										<td class="work_title">음성 문장단위 분리</td>
-										<td class="complate_cases"><span>100</span>건</td>
-										<td class="unit_cost"><span>5,142,000</span></td>
+										<td class="total_cases"><span>100</span>건</td>
+										<td class="working_cases"><span>42</span>건</td>
+										<td class="inspect_yet"><span>42</span>건</td>
+										<td class="reject_cases"><span>42</span>건</td>
+										<td class="complate_cases"><span>42</span>건</td>
 										<td class="point"><span>5,142,000</span></td>
+										<td class="expire_date">~<span>2020.04.30</span></td>
 									</tr>
 									<tr>
 										<td class="type">Voice</td>
 										<td class="project">문장분리_체험하기</td>
 										<td class="work_title">음성 문장단위 분리</td>
-										<td class="complate_cases"><span>100</span>건</td>
-										<td class="unit_cost"><span>5,142,000</span></td>
+										<td class="total_cases"><span>100</span>건</td>
+										<td class="working_cases"><span>42</span>건</td>
+										<td class="inspect_yet"><span>42</span>건</td>
+										<td class="reject_cases"><span>42</span>건</td>
+										<td class="complate_cases"><span>42</span>건</td>
 										<td class="point"><span>5,142,000</span></td>
+										<td class="expire_date">~<span>2020.04.30</span></td>
 									</tr>
 									<tr>
 										<td class="type">Voice</td>
 										<td class="project">문장분리_체험하기</td>
 										<td class="work_title">음성 문장단위 분리</td>
-										<td class="complate_cases"><span>100</span>건</td>
-										<td class="unit_cost"><span>5,142,000</span></td>
+										<td class="total_cases"><span>100</span>건</td>
+										<td class="working_cases"><span>42</span>건</td>
+										<td class="inspect_yet"><span>42</span>건</td>
+										<td class="reject_cases"><span>42</span>건</td>
+										<td class="complate_cases"><span>42</span>건</td>
 										<td class="point"><span>5,142,000</span></td>
+										<td class="expire_date">~<span>2020.04.30</span></td>
 									</tr>
 								</tbody>
 							</table>
@@ -279,10 +348,10 @@
 		<div class="copyright">
 			<div class="cont_box">
 				<span>&copy; Copyright 2020</span>
-				<span class="company"><a href="https://maum.ai/login/loginForm?lang=ko" target="_self" title="maum.ai로 이동하기">(주)마인즈랩</a></span>
-				<span>경기도 성남시 분당구 대왕판교로644번길 49 다산타워 6층</span>
-				<span>대표 유태준</span>
-				<span>사업자 등록번호 314-86-55446</span>
+				<span class="company"><a href="https://maum.ai/login/loginForm?lang=ko" target="_self" title="maum.ai로 이동하기">MINDs Lab</a></span>
+				<span>601 Dasan Tower, 49 Daewangpangyo-ro 644beon-gil, Bundang-gu, Seongnam-si, Gyeonggi-do, Republic of Korea</span>
+				<span>CEO Taejoon Yoo</span>
+				<span>Company Registration Number 314-86-55446</span>
 			</div>
 		</div>
 	</div>
