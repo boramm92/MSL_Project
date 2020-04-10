@@ -11,7 +11,7 @@
 
 	<title>IMAGE ll 검수페이지</title>
 </head>
-<body id="edit_tool" class="workspace image_tool reviewer_image">
+<body id="edit_tool" class="image_tool reviewer">
 
 <!-- .page loading -->
 <div id="page_ldWrap" class="page_loading">
@@ -29,7 +29,7 @@
 	<!-- #header -->
 	<div id="header">
         <h1><a target="_self" href="#none"><img src="../../assets/images/img_maumdata_logo.svg" alt="logo"></a></h1>
-    	<h2>워크스페이스</h2>
+    	<h2>WORK SPACE</h2>
 		<!-- .etcmenu -->
 		<div class="etcmenu">
 			<div class="userBox">
@@ -70,9 +70,16 @@
 		<!-- .contents -->
 		<div class="contents">
             <!-- .content -->
-            <div class="content xdc_box">
+            <div class="content">
 				<div class="work_space">
-					<h3 class="work_tit">이미지 라벨링 작업</h3>
+					<div class="project_info_box">
+						<h3 class="work_tit">이미지 라벨링 작업</h3>
+						<div class="progress_cases common_box">
+							<span class="done">done <em>30</em></span>
+							<span class="total">&sol; total <em>100</em></span>
+							<span class="rejected">rejected <em>0</em></span>
+						</div>
+					</div>					
 				</div>
 				<!-- //.work_space -->
 				<!-- .work_space -->
@@ -98,17 +105,10 @@
 										<span>마우스 스크롤<br>이미지 확대 &sol; 축소 가능</span>
 									</div>
                                 </div>
-                                <!-- <div class="size_control">
-                                    <span class="fas fa-minus"></span>
-                                    <div class="controlbar">
-                                        <em style="width: 30%"></em>
-                                    </div>
-                                    <span class="fas fa-plus"></span>
-                                </div> -->
 							</div>
 							<div class="btn_area">
-								<button><em class="fas fa-times"></em>&nbsp; 작업 불가</button>
-							</div>
+    							<button><span class="fas fa-ban"></span>&nbsp; 반려 &amp; 다음파일</button>
+    						</div>
 						</div>
 						<div class="fr">
 							<h4>Results</h4>
@@ -229,8 +229,8 @@
 								</div>
 							</div>
 							<div class="btn_area">
-								<button><i class="fas fa-save"></i>&nbsp; 검수 &amp; 다음 파일  <em class="fas fa-angle-right"></em></button>
-							</div>
+    							<button><i class="fas fa-save"></i>&nbsp; 검수 &amp; 다음파일  <em class="fas fa-angle-right"></em></button>
+    						</div>
 						</div>
 
 					</div>
@@ -284,7 +284,7 @@ jQuery.event.add(window,"load",function(){
 		if (w_height > 800){
 			var percent = w_height * 60/100;
 			console.log(percent);
-			$('.data_script').height(percent);
+			$('.image_box, .script_box').height(percent);
 			$('#container').css("height", "100%");
 		}
 	});
@@ -294,7 +294,7 @@ jQuery.event.add(window,"load",function(){
 		if (w_height > 800){
 			var percent = w_height * 60/100;
 			console.log(percent);
-			$('.data_script').height(percent);
+			$('.image_box, .script_box').height(percent);
 			$('#container').css("height", "100%");
 		}
 
