@@ -237,7 +237,27 @@ $(window).load(function() {
 </script>
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
+	$(document).ready(function (){
+		var w_height = $(window).height();
+		console.log(w_height);
+		if (w_height > 800){
+			var percent = w_height * 80/100;
+			console.log(percent);
+			$('.data_script').height(percent);
+			$('#container').css("height", "100%");
+		}
+	});
+	$(window).resize(function() {
+		var w_height = $(window).height();
+		console.log(w_height);
+		if (w_height > 800){
+			var percent = w_height * 80/100;
+			console.log(percent);
+			$('.data_script').height(percent);
+			$('#container').css("height", "100%");
+		}
 
+	});
 });
 </script>
 </body>

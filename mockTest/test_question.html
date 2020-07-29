@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- css -->
+    <link rel="stylesheet" href="resources/css/mock_test.css">
+    <link rel="stylesheet" href="resources/css/font.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+
+    <title>Test Question | Mock Test</title>
+</head>
+<body>
+    <!-- 제출하기 최종확인 팝업 -->
+    <div class="pop_alert pop_submit">
+    	<div class="pop_bg"></div>
+        
+    	<!-- .popWrap -->
+    	<div class="popWrap">
+    		<div class="pop_hd">
+    			<em class="fas fa-times ico_close"></em>
+    			<h6>제출하기</h6>
+    		</div>    
+    		<!-- .pop_bd -->
+    		<div class="pop_bd">
+    			<p>모든 문항의 답안 작성이 끝나셨나요?<br>정말 제출하시겠습니까?</p>
+    		</div>
+    		<!-- //.pop_bd -->            
+    		<div class="pop_btn">
+    			<button class="cancel">아니요</button>
+    			<button class="save">네</button>
+    		</div>
+    	</div>
+    	<!-- //.popWrap -->
+    </div>
+    <!-- // 제출하기 최종확인 팝업 -->
+    
+    <!-- #wrap -->
+    <div id="wrap">
+        <!-- #header -->
+        <div id="header">
+            <div class="header_box">
+                <h1>온라인 모의 평가 시스템</h1>
+                
+                <!-- [D] 남은 시간 타이머 -->
+                <div class="timer_box">
+                    <span id="minutes">9546</span>
+                    <span id="col">&colon;</span>
+                    <span id="seconds">52</span>
+                </div>
+    
+                <!-- [D] 피평가자 계정 span안에 넣어주기 -->
+                <div class="user_box">
+                    <div class="account_box">
+                        <img src="resources/images/ico_user.png" alt="USER 아이콘">
+                        <span>asd1234@gmail.com</span>
+                    </div>
+                                        
+                    <div class="logout_nav">
+                        <a href="#none">
+                            <img src="resources/images/ico_logout.png" alt="로그아웃 아이콘">로그아웃
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //#header -->
+
+        <!-- #contents -->
+        <div id="contents" class="test_question">
+            <!-- .cont_box -->
+            <div class="cont_box">
+                <h3>2020 한국중학생 물리대회</h3>
+                
+                <!-- .cont_bg -->
+                <div class="cont_bg">
+                    <!-- .question_box -->
+                    <div class="question_box">                        
+                        <img src="resources/images/img_question.png" alt="문제 이미지">
+                    </div>
+                    <!-- //.question_box -->
+                        
+                    <form action="post" name="answer">
+                        <!-- .answer_box -->
+                        <div class="answer_box">
+                            <!-- [D] 문항 1개당 div.answer_item 처리 -->
+                            <div class="answer_item">
+                                <!-- [D] 정답이 복수일 경우 아래 chk_box 넣어주기 -->
+                                <div class="chk_box">
+                                    <!-- [D] <input>의 id와 <label>의 for는 동일하게 넣어야함 -->
+                                    <input type="checkbox" id="mtp_answer1">
+                                    <label for="mtp_answer1">
+                                        <img src="resources/images/img_answer1.png" alt="1번 답변">
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="answer_item">
+                                <div class="chk_box">
+                                    <input type="checkbox" id="mtp_answer2">
+                                    <label for="mtp_answer2">
+                                        <img src="resources/images/img_answer2.png" alt="2번 답변">
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="answer_item">
+                                <div class="chk_box">
+                                    <input type="checkbox" id="mtp_answer3">
+                                    <label for="mtp_answer3">
+                                        <img src="resources/images/img_answer3.png" alt="3번 답변">
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="answer_item">
+                                <!-- [D] 정답이 1개일 경우 아래 radio_box 넣어주기 -->
+                                <div class="radio_box">
+                                    <!-- [D] <input>의 id와 <label>의 for는 동일하게 넣어야함 / name값은 다른 input과 모두 동일하게 넣어야함 -->
+                                    <input type="radio" id="sgl_answer1" name="sgl_answer" value="answer2">
+                                    <label for="sgl_answer1">
+                                        <img src="resources/images/img_answer4.png" alt="4번 답변">
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="answer_item">
+                                <div class="radio_box">
+                                    <input type="radio" id="sgl_answer2" name="sgl_answer" value="answer2">
+                                    <label for="sgl_answer2">
+                                        <img src="resources/images/img_answer5.png" alt="5번 답변">
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="answer_item">
+                                <!-- [D] 주관식 답안일 경우 아래 ipt_box 넣어주기 -->
+                                <div class="ipt_box">
+                                    <input type="numberOnly" placeholder="주관식 답안">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //.answer_box -->
+                    </form>     
+                </div>
+                <!-- //.cont_bg -->
+                
+                <div class="btm_box">
+                    <button type="button" class="btn_prev btn_page">이전 문제</button>
+                    
+                    <div class="slt_box">
+                        <select id="question_slt">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                        <label for="question_slt">문항</label>
+                    </div>
+                    
+                    <button type="button" class="btn_next btn_page">다음 문제</button>
+                    
+                    <button type="button" class="btn_submit">제출하기</button>
+                </div>               
+            </div>
+            <!-- //.cont_box -->
+        </div>
+        <!-- //#contents -->
+    </div>
+    <!-- //#wrap -->
+    
+    <!-- script -->
+    <script type="text/javascript" src="resources/js/jquery-1.11.2.min.js"></script>
+    
+    <script type="text/javascript">
+        /*<![CDATA[*/
+        function submit(page) {
+            document.answer.nextQuestion.value = page;
+            document.answer.submit();
+        }
+        let endTime = new Date() ;
+        endTime = endTime.getTime() + 499724 * 1000;
+
+        function remainTime() {
+            let now = new Date();
+            now = now.getTime();
+            let timeDiff = endTime - now;
+            if (timeDiff < 0) {
+                submit('finish');
+            }
+
+            let seconds = Math.floor(timeDiff / 1000);
+            let minutes = Math.floor(seconds/60);
+            seconds = seconds - minutes * 60;
+
+            if (minutes<10) {
+                minutes = "0"+minutes;
+            }
+            if (seconds<10) {
+                seconds = "0"+seconds;
+            }
+            document.getElementById("minutes").innerText = String(minutes);
+            document.getElementById("seconds").innerText = String(seconds);
+        }
+        window.onload = function() {
+            remainTime();
+            setInterval(remainTime, 1000);
+        }
+        /*]]*/
+    </script>
+    
+    <script type="text/javascript">
+    $(document).ready(function(){
+        // 계정 박스 호버 시 open / close
+        $('.user_box').on('mouseover', function(){
+            $('.logout_nav').addClass('active');    
+        });
+        $('.user_box').on('mouseout', function(){
+            $('.logout_nav').removeClass('active');    
+        });
+        
+        // 팝업창 open / close
+        $('.btn_submit').on('click', function(){
+            $('.pop_submit').fadeIn();
+        });        
+        $('.ico_close, .pop_btn button').on('click', function () {
+            $('.pop_alert').fadeOut(300);
+            $('body').css({
+                'overflow': '',
+            });
+        });
+        
+        // 주관식 답안 숫자만 입력가능
+        $('.ipt_box input').keypress(function(event) {
+            if(event.which < 48 || event.which > 57){
+                event.preventDefault();
+            }
+       });
+       
+       // 제출하기 팝업 확인 시 test_result.html로 경로이동 버튼
+       $('.pop_submit .save').on('click', function(){
+           location.replace('test_result.html');
+       });
+    });
+    </script>
+</body>
+</html>

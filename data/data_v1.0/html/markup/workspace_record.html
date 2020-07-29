@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="format-detection" content="telephone=no" />
+
+<title>Data Editor Tool</title>
+<!-- resources -->
+<link rel="stylesheet" type="text/css" href="../../assets/css/common-data.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />	
+<!-- //resources -->
+</head>
+<body id="edit_tool">
+
+
+<!-- wrap -->
+<div id="wrap"> 
+	<!-- #header -->
+	<div id="header">
+        <h1><a target="_self" href="#none"><img src="../../assets/images/img_maumdata_logo.svg" alt="logo"></a></h1>
+    	<h2>워크스페이스</h2>
+		<!-- .etcmenu -->
+		<div class="etcmenu">            
+            <div class="userBox">
+				<a target="_self" href="#none"><em class="fas fa-user"></em>admin@console.com</a>            	
+            </div>
+			<div class="outBox">
+				<a target="_self" href="#none">Sign out <em class="fas fa-sign-out-alt"></em></a>            	
+            </div>
+		</div>
+		<!-- //.etcmenu -->
+	</div>
+	<!-- //#header -->
+		
+	<!-- #container -->
+	<div id="container">
+		<!-- .snb -->
+		<div class="snb">
+			<ul class="nav">
+				<li class="active">
+					<a target="_self" href="#none"><em class="fas fa-home"></em>Home</a>                	
+                </li>
+				<li>
+					<a target="_self" href="#"><em class="fas fa-file-alt"></em>Text</a>               
+                </li>
+				<li >
+					<a target="_self" href="#"><em class="fas fa-file-image"></em>Image</a>
+				</li>
+				<li>
+					<a target="_self" href="#"><em class="fas fa-file-audio"></em>Voice</a>
+				</li>				
+			</ul>
+		</div>
+		<!-- //.snb -->
+        
+		<!-- .contents -->
+		<div class="contents">   
+            <!-- .content -->
+            <div class="content">	
+				<div class="script_record">
+					<div class="script_record_box">
+						<div class="text_area">자산이 증가하였을때 AI가 해줬으면 하는 대화를 작성하는 자산이 증가하였을때 AI가 해줬으면 하는 대화를 작성하는 프로젝트 자산이 증가하였을때 AI가 해줬으면 하는 대화를 작성하는 프로젝트 입니다.</div>
+						<div class="record_area">
+							<p class="status_tit">녹음 버튼을 클릭하고 스크립트를 따라 읽어주세요.</p>
+							<div class="record_btn">
+								<button type="button">
+									<em class="fas fa-microphone"></em>
+									<em class="fas fa-stop"></em>
+								</button>
+								<span class="status_txt">Record</span>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				<!-- //.work_space -->
+				
+            </div>
+            <!-- //.content -->
+		</div>
+		<!-- //.contents -->
+	</div>
+	<!-- //#container -->
+	<!-- #footer -->
+	<div id="footer">
+		<div class="copyright">
+			<div class="cont_box">
+				<span>&copy; Copyright 2020</span>
+				<span class="company"><a href="https://maum.ai/login/loginForm?lang=ko" target="_self" title="maum.ai로 이동하기">(주)마인즈랩</a></span>
+				<span>경기도 성남시 분당구 대왕판교로644번길 49 다산타워 6층</span>
+				<span>대표 유태준</span>
+				<span>사업자 등록번호 314-86-55446</span>
+			</div>
+		</div>
+	</div>
+	<!-- //#footer -->
+</div>
+<!-- //wrap -->
+<script type="text/javascript" src="../../assets/js/jquery-1.11.0.min.js"></script>	
+<script type="text/javascript">   
+$(window).load(function() {    
+	$('.page_loading').addClass('pageldg_hide').delay(300).queue(function() { 
+		$(this).remove(); 
+	});
+}); 
+</script>
+<script type="text/javascript">
+jQuery.event.add(window,"load",function(){
+	$(document).ready(function (){
+		
+		$('.fa-microphone').on('click', function(){
+			console.log('ddkkd');
+			$(this).hide();
+			$('.status_tit').html('음성을 듣고 있습니다.<br> 정지 버튼을 클릭하시면 녹음을 종료합니다.');
+			$('.fa-stop').css('display','block');
+			$('.status_txt').text('Stop');
+		});
+		$('.fa-stop').on('click', function(){
+			console.log('ddkkd');
+			$(this).hide();
+			$('.status_tit').text('녹음 버튼을 클릭하고 스크립트를 따라 읽어주세요.');
+			$('.fa-microphone').fadeIn();
+			$('.status_txt').text('Record');
+		})
+	});	
+});	
+
+	
+</script>
+</body>
+</html>
