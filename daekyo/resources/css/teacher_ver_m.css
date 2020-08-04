@@ -1,0 +1,131 @@
+@charset "UTF-8";
+/* 공통 */
+body {position: relative; text-align: center;}
+#wrap {overflow: hidden; display: inline-block; min-width: 320px; width: 100%; text-align: left; vertical-align: bottom;}
+
+/* 공통 body_fixed 스크롤이 생기지 않게 도와주는 장치 */
+body.body_fixed {position: fixed; top: 0; left: 0; width: 100%; height: 100%;}
+body.body_fixed #wrap {width: 100%; height: 100%;}
+body.body_fixed #m_container {height: 100%;}
+
+body.body_fixed #fixed_login {height: calc(100% - 70px);}
+body.body_fixed #btn_login {margin: 0;}
+
+/* 공통 header */
+#header {text-align: center; height: 60px;}
+#header .header_bar {position: fixed; top: 0; left: 0; width: 100%; height: 60px; padding: 14px; background: #fff;}
+#header .header_bar h1 {display: inline-block; width: 50px;}
+#header .header_bar .btn_prev, #header .header_bar .gnb_open {padding: 4px;}
+
+#gnb {display: none; overflow: auto; position: fixed; top: 0; left: 100%; width: 260px; height: 100%; transform: translate(0, 0); transition: transform 0.2s; z-index: 20; background: #f4f6f8;}
+#gnb.on {transform: translate(-100%, 0);}
+
+#gnb .gnb_box {margin: 12px 0 0 0; background: #fff;}
+#gnb .gnb_box:first-child {margin: 0;}
+#gnb .gnb_box .primary_text {font-weight: 800;}
+#gnb .gnb_logo {padding: 60px 0; text-align: center;}
+#gnb .gnb_logo .img_box {display: inline-block; width: 96px;}
+#gnb .gnb_card {overflow: hidden; padding: 0 10px;}
+#gnb .gnb_card .primary_text {vertical-align: top;}
+#gnb .gnb_card .card {float: left; width: 80px; height: 80px; padding: 16px 0;}
+#gnb .gnb_card .card img {display: block; width: 24px; margin: 0 auto 12px auto;}
+#gnb .btn_movie {display: block; width: 100%; padding: 16px 0 16px 34px; text-align: left;}
+#gnb .btn_movie img {vertical-align: middle;}
+#gnb .btn_movie .primary_text {padding: 0 0 0 8px; vertical-align: middle;}
+
+/* 공통 important */
+.show {display: block !important;}
+.hide {display: none !important;}
+
+/* 공통 box type */
+.fl {float: left;}
+.fr {float: right;}
+
+.img_box img {width: 100%;}
+
+.dual_box {display: table; table-layout: fixed; width: 100%;}
+.dual_box > div {display: table-cell; width: 100%;}
+.dual_box > div button {display: inline-block; width: 100%; vertical-align: top;}
+
+/* 공통 input */
+.input_txt {display: inline-block; width: 100%; height: 48px; padding: 0 16px; border-bottom: 1px solid #c9d0d8; font-weight: 700;}
+.input_txt::-webkit-input-placeholder {font-size: 14px; color: #c9d0d8;}
+.input_txt:-ms-input-placeholder {font-size: 14px; color: #c9d0d8;}
+.input_txt::-ms-input-placeholder {font-size: 14px; color: #c9d0d8;}
+.input_txt::placeholder {font-size: 14px; color: #c9d0d8;}
+.input_link {display: inline-block; padding: 0 16px; margin: 16px 0; font-size: 12px; font-weight: 700; color: #4b2c7a;}
+
+/* 공통 text */
+.t_warning {color: #fa4730 !important;}
+.t_warning em {color: #fa4730 !important;}
+.info_text_s {font-size: 12px;}
+.info_text {font-weight: 700;}
+.primary_text_xs {font-size: 10px; line-height: 14px;}
+.primary_text_xs a {font-size: 10px;}
+.primary_text_s {font-size: 12px;}
+.primary_text_s em {font-size: 12px; font-weight: 700;}
+.primary_text {color: #616c78;}
+
+/* 공통 btn */
+.btn_primary {border-radius: 4px; background: #e60662; color: #fff;}
+.btn_secondary {border-radius: 4px; background: #4b2c7a; color: #fff;}
+.btn_info {border-radius: 4px; background: #a8b0bc; color: #fff;}
+.btn_cancel {border-radius: 4px; background: #c9d0d8; color: #fff;}
+
+/* 공통 layer */
+body.lyr_backdrop {position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 10;}
+body.lyr_backdrop:after {content: ''; display: block; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.45);}
+body.lyr_backdrop #wrap {overflow: hidden;}
+
+.lyr_box {position: relative; width: 100%; padding: 36px; border-radius: 20px 20px 0 0; background: #fff; z-index: 20; text-align: left;}
+.lyr_box .lyr_cont .title_box .title {display: block; font-size: 16px; font-weight: 800;}
+.lyr_box .lyr_cont .title_box .title_desc {margin: 16px 0 0 0;}
+.lyr_box .lyr_cont .cont_box {margin: 24px 0 0 0;}
+.lyr_box .lyr_cont .cont_box .input_info {display: block; margin: 16px 0 0 0;}
+.lyr_box .lyr_btm {margin: 24px 0 0 0;}
+.lyr_box .lyr_btm .dual_box button {padding: 15px 0; font-size: 16px;}
+.lyr_box .input_txt {padding-top: 3px;}
+.lyr_box .input_txt::-webkit-input-placeholder {line-height: 20px;}
+.lyr_box .input_txt:-ms-input-placeholder {line-height: 20px;}
+.lyr_box .input_txt::-ms-input-placeholder {line-height: 20px;}
+.lyr_box .input_txt::placeholder {line-height: 20px;}
+
+/* 공통 layer 효과 */
+.lyr_slide {display: none; position: fixed; top: 100%; left: 0; max-height: 100%; -webkit-animation-duration: .2s; animation-duration: .2s; -webkit-animation-fill-mode: both; animation-fill-mode: both; -webkit-transform: translate(0, 0); transform: translate(0, 0); -webkit-transition: -webkit-transform 0.2s; transition: -webkit-transform 0.2s; transition: transform 0.2s; transition: transform 0.2s, -webkit-transform 0.2s;}
+.lyr_slide.on {-webkit-transform: translate(0, -100%); transform: translate(0, -100%);}
+
+/* 개별 layer */
+#srch_id .lyr_btm .dual_box > div:first-child {width: 70%; padding: 0 8px 0 0;}
+#srch_id .lyr_btm .dual_box > div:nth-child(2) {padding: 0 0 0 8px;}
+#srch_password .lyr_btm .dual_box > div:first-child {width: 70%; padding: 0 8px 0 0;}
+#srch_password .lyr_btm .dual_box > div:nth-child(2) {padding: 0 0 0 8px;}
+
+/* 공통 text deco */
+.notice {text-align: center;}
+.notice .notice_text {position: relative; display: inline-block; padding: 0 10px; font-size: 10px; color: #a8b0bc;}
+.notice .notice_bg {display: inline-block; background: #f4f6f8; border-radius: 10px;}
+
+/* login page */
+#fixed_login .visual {padding: 70px 0 50px 50px; background: url(../images/bg_visual.svg) no-repeat top -120px right -150px;}
+#fixed_login .visual .visual_logo {width: 170px;}
+#fixed_login .login_area {position: relative; padding: 0 42px; line-height: 18px;}
+#fixed_login .login_area .title {display: block; font-size: 16px; font-weight: 800;}
+#fixed_login .login_area .user_check {margin: 30px 0 0 0;}
+
+#fixed_login .login_area.set_pass {margin: 10px 0 0 0;}
+#fixed_login .login_area.set_pass input[type="password"] {margin-top: 24px;}
+#fixed_login .login_area.set_pass input[type="password"] + input[type="password"] {margin-top: 30px;}
+#fixed_login .login_area.set_pass .user_check {margin: 16px 0 0 0;}
+#btn_login {position: relative; display: block; float: right; width: 180px; height: 70px; margin: 50px 0 0 0; padding: 4px 0 0 0; border-radius: 40px 0 0 0; font-size: 20px; color: #fff; background: #4b2c7a; text-align: center;}
+#btn_login:after {content: ''; display: block; position: absolute; top: 23px; right: 22px; width: 24px; height: 24px; background: url(../images/arr_move_right.svg) no-repeat 0 0; background-size: cover;}
+
+@media screen and (max-height: 600px) {
+  /* login page */
+  body.body_fixed #fixed_login {height: calc(100% - 60px);}
+  body.body_fixed #btn_login {width: 160px; height: 60px; margin: 0;}
+  body.body_fixed #btn_login:after {top: 20px;}
+  #fixed_login .visual {padding: 35px 0 20px 50px; background-size: 200px auto; background-position: top -70px right -90px;}
+  #fixed_login .visual .visual_logo {width: 130px;}
+  #fixed_login .login_area .user_check {margin: 0;}
+  /* //login page */
+}

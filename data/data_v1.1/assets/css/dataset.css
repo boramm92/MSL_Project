@@ -1,0 +1,365 @@
+@charset "UTF-8";
+/* MINDsLab. NBR. 20200224 */
+
+/* -------------------- common [edit_tool / maum_data] -------------------- */
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&display=swap&subset=korean');
+
+/* reset */
+* {font-family: 'Noto Sans KR', sans-serif;}
+html, body {margin: 0; padding: 0; width: 100%; height: 100%; font-family: 'Noto Sans KR', sans-serif; font-size: 12px; line-height: 18px; background: none;}
+div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td, legend, em, span {margin: 0; padding: 0; font-family: 'Noto Sans KR', sans-serif;}
+table {border-spacing: 0; border-collapse: collapse; font-family: 'Noto Sans KR', sans-serif;}
+th, td {word-break: break-all;}
+form, fieldset {display: block;}
+form, fieldset, img {border: none;}
+address, caption, cite, code, dfn, em, th, var {font-style: normal; font-weight: normal;}
+ol, ul, li {list-style: none;}
+abbr, acronym {border: none;}
+hr {display: none;}
+a {text-decoration: none; cursor: pointer; font-family: 'Noto Sans KR', sans-serif;}
+a:link, a:visited {text-decoration: none;}
+a:hover, a:active, a:focus {text-decoration: none;}
+textarea {overflow: auto; resize: none;}
+html:first-child select {min-height: 20px;} /* opera 9 & below fix */
+option {padding-right: 6px;} /* firefox fix */
+legend {position: absolute; top: 0; left: 0; width: 0; height: 0; overflow: hidden; visibility: hidden; font-size: 0; line-height: 0;} /* for screen reader */
+pre {word-wrap: break-word;}
+label {font-family: 'Noto Sans KR', sans-serif;}
+h1, h2, h3, h4, h5, h6 {font-family: 'Noto Sans KR', sans-serif;}
+br {background: none !important;}
+img {vertical-align: top;}
+a:focus, input:focus, textarea:focus, button:focus {outline: none !important;}
+button {border: none; margin: 0; padding: 0; background: transparent; cursor: pointer;}
+
+/* input 기본 스타일 초기화 */
+input, textarea {border: none; -webkit-appearance: none; -moz-appearance: none; appearance: none;}
+
+/* input type number 에서 화살표 제거 */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {margin: 0; -webkit-appearance: none; -moz-appearance: none; appearance: none;}
+input[type=number] {-moz-appearance: textfield;}
+input[type=text]:-ms-clear {display: none;}
+input[type=text]::-ms-clear {display: none;}
+input {filter: none;}
+input:-webkit-autofill {-webkit-box-shadow: 0 0 0 30px none inset; -webkit-text-fill-color: #35384d;}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {transition: background-color 5000s ease-in-out 0s; }
+input:focus {outline: none;}
+select:focus {outline: none;}
+
+/* Select box 스타일 초기화 */
+select {border: none; appearance: none; -webkit-appearance: none; -moz-appearance: none; cursor: pointer;}
+select::-ms-expand {display: none;}
+
+/* Clear */
+.clearfix:before,
+.clearfix:after {content: ""; display: block; clear: both;}
+
+/* Hide */
+.hide {position: absolute; left: -9999px; display: none; font-size: 0; color: transparent;}
+
+/* Float */
+.fl {float: left;}
+.fr {float: right;}
+
+/* form */
+form {height: 100%;}
+/* //reset */
+
+/* scrollbar */
+::-webkit-scrollbar {width: 6px; height: 6px; border-radius: 3px;}/* 스크롤바의 width */
+::-webkit-scrollbar-track {background: transparent;}/* 스크롤바의 전체 배경색 */
+::-webkit-scrollbar-thumb {border-radius: 3px; background: rgba(25, 42, 57, 0.3);}/* 스크롤바 색 */
+::-webkit-scrollbar-button {display: none;}/* 위 아래 버튼 (버튼 없애기를 함) */
+/* //scrollbar */
+
+/* loading */
+.page_loading {position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #EFF1F7; z-index: 9999;}
+.loading_itemBox {display: block; position: absolute; top: 50%; left: 50%; width: 80px; height: 80px; margin: -40px 0 0 -40px;}
+.loading_itemBox span {position: absolute; top: 33px; width: 13px; height: 13px; border-radius: 50%; background: #97a4d6; animation-timing-function: cubic-bezier(0, 1, 1, 0);}
+.loading_itemBox span:nth-child(1) {left: 8px;  animation: loading_item1 0.6s infinite;}
+.loading_itemBox span:nth-child(2) {left: 8px;  animation: loading_item2 0.6s infinite;}
+.loading_itemBox span:nth-child(3) {left: 32px; animation: loading_item2 0.6s infinite;}
+.loading_itemBox span:nth-child(4) {left: 56px; animation: loading_item3 0.6s infinite;}
+
+@keyframes loading_item1 {
+    0% {transform: scale(0);}
+    100% {transform: scale(1);}
+}
+@keyframes loading_item3 {
+    0% {transform: scale(1);}
+    100% {transform: scale(0);}
+}
+@keyframes loading_item2 {
+    0% {transform: translate(0, 0);}
+    100% {transform: translate(24px, 0);}
+}
+.pageldg_hide {-webkit-animation-duration: 1s; animation-duration: 1s; -webkit-animation-fill-mode: both; animation-fill-mode: both; -webkit-animation-name: pageldg_hide; animation-name: pageldg_hide;}
+
+@-webkit-keyframes pageldg_hide {
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+@keyframes pageldg_hide {
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+}
+/* //loading */
+
+/* common box style */
+.common_box {border: 1px solid #cfd5eb; border-radius: 5px; box-sizing: border-box; background: #fff;}
+
+/* 공통 팝업창 스타일 */
+.pop_bg {position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #00263e; opacity: 0.5; z-index: -10;} /*확인*/
+.popWrap {display: inline-block; overflow: auto; position: relative; max-width: 900px; min-width: 306px; min-height: 173px; margin: 200px auto 0 auto; padding: 14px 0 30px; border-radius: 5px; box-sizing: border-box; background: #fff;}
+.pop_close {overflow: hidden; position: absolute; top: 25px; right: 15px; width: 22px; height: 22px; margin: -11px 0 0 0; border: none; background: none; line-height: 100px; transition: all 0.3s ease-out; opacity: 0.5; cursor: pointer;}
+.pop_close:hover,
+.popWrap .pop_common_close:focus {transition: all 0.3s ease-out; opacity: 1.0;}
+.pop_close:before {content: '';  position: absolute; top: 10px; left: 50%; width: 22px; height: 2px; margin: -1px 0 0 -11px; background: #6e7275; transform: rotate(45deg);}
+.pop_close:after {content: '';  position: absolute; top: 10px; left: 50%; width: 22px; height: 2px; margin: -1px 0 0 -11px; background: #6e7275; transform: rotate(-45deg);}
+.btn .btn_blue {display: block; width: 104px; height: 40px; margin: 20px auto; border: none; border-radius: 4px; background: #2575f9; color: #fff; font-size: 14px; font-weight: 500; line-height: 40px; text-align: center; cursor: pointer;}
+.btn .btn_blue:hover {color:#fff;}
+/* 공통 팝업창 스타일 (landing_page) */
+.landing .popWrap {overflow: visible; width: 306px; height: 245px; margin: 300px auto 0 auto; }
+
+/* pop_simple */
+.pop_simple {display: none; overflow: hidden; position: fixed; bottom: 0; left: 0; width: 100%; height: 100%; text-align: center; z-index: 3000;}
+.pop_simple .pop_hd {text-align: center;}
+.pop_simple .pop_hd em {display: block; float: right; margin: 0 14px 0 0; font-size: 14px; transition: all 0.3s ease-out; opacity: 0.5; cursor: pointer;}
+.pop_simple .pop_hd em:hover{transition: all 0.3s ease-out; opacity: 1;}
+.pop_simple .pop_hd h6 {color: #506df5; font-size: 20px; font-weight: 500; line-height: 29px; letter-spacing: -0.6px; clear: both;}
+.pop_simple .pop_bd {height: 100%; padding: 14px 20px 16px; border-radius: 5px; background: rgba(255,255,255,1.0); clear: both;}
+.pop_simple .pop_bd p {width: 100%; color: #2c3f51; font-size: 14px; line-height: 20px;}
+.pop_simple .btn button {height: 40px; margin: 0 auto; padding: 0 20px; border: 1px solid #506DF5; border-radius: 5px; background: #506DF5; color: #fff; font-size: 14px; font-weight: 400; text-align: center; display: block; cursor: pointer;}
+
+#pop_1 {}
+#pop_2 .btn button {display: inline-block;}
+#pop_2 .btn button.cancel {margin: 0 10px 0 0; border: 1px solid #808aab; background: #808aab;}
+#pop_3 .popWrap{min-width: 400px;}
+#pop_4 .pop_bd {padding: 0 50px;}
+#pop_4 .pop_bd p {padding: 10px 0 8px; opacity: 0.7;}
+#pop_4 .pop_bd .input_area {margin: 0 0 20px 0;}
+#pop_4 .pop_bd .input_area .ipt_box {display: block; position: relative; width: 100%; height: 40px; margin: 0 0 10px 0;}
+#pop_4 .pop_bd .input_area .ipt_box input {width: 100%; height: 100%; padding: 0 10px; border-radius: 3px; border: solid 1px #cfd5eb; box-sizing: border-box; background: #f2f4fc; color: #2c3f51; font-size: 13px;}
+#pop_4 .pop_bd .input_area .ipt_box label {position: absolute; top: 0; left: 10px; color: #697992; font-size: 13px; line-height: 40px;}
+#pop_4 .btn button {display: inline-block;}
+#pop_4 .btn button.cancel {margin: 0 10px 0 0; border: 1px solid #808aab; background: #808aab;}
+
+#pop_question .popWrap{overflow: visible; width: 400px; height: 400px;}
+#pop_question .pop_bd {height: auto; padding: 0 30px;}
+#pop_question .popWrap h2 {padding: 0 0 13px 30px; border-bottom: 1px solid rgba(128,138,171,0.5); color: #2c3f51; font-size: 16px; font-weight: 500; text-align: left;}
+#pop_question .pop_bd .input_area input {display: block; width: 100%; height: 34px; margin: 0 0 8px 0; padding: 7px 14px; border: solid 1px #cfd5eb; border-radius: 3px; box-sizing: border-box; background: #f2f4fc; color: #2c3f51;}
+#pop_question .pop_bd .input_area input::placeholder {color: rgba(44,63,81,0.6); font-size: 13px;}
+#pop_question .select_box {width: 100%; height: 34px; margin: 20px auto 15px;}
+#pop_question .select_box select {font-size: 13px;}
+#pop_question .select_box select:hover {border: 1px solid #6b87e0;}
+#pop_question .btn button {margin: 20px auto 30px;}
+
+#pop_certify {display: block;}
+#pop_certify .popWrap {width: 403px; margin: 0; padding: 0; border-radius: 0;}
+#pop_certify .pop_hd {height: 45px; border-bottom: 1px solid #777777;}
+#pop_certify .pop_hd h6 {padding: 0 20px; color: #000; font-size: 17px; line-height: 45px; text-align: left;}
+#pop_certify .pop_bd {padding: 30px 28px 82px;}
+#pop_certify .pop_bd .certify_title span {color: #506df5; font-size: 40px;}
+#pop_certify .pop_bd .certify_title p {margin: 13px 0 0 0; color: #262626; font-size: 15px; letter-spacing: -0.5px; line-height: 22px;}
+#pop_certify .pop_bd .certify_detail {width: 100%; height: 308px; margin: 18px 0 30px 0; padding: 22px 0; border: 1px solid #e7eaf5; box-sizing: border-box; background: #f7f8fc;}
+#pop_certify .pop_bd .certify_detail table {width: 100%; color: #000; font-size: 14px; letter-spacing: -0.5px;}
+#pop_certify .pop_bd .certify_detail table tr {height: 44px; text-align: left;}
+#pop_certify .pop_bd .certify_detail table th {padding: 0 0 0 35px; opacity: 0.7;}
+#pop_certify .pop_bd .certify_detail table td {padding: 0 30px; font-weight: 500;}
+#pop_certify .pop_bd .btn button {width: 100%; height: 44px; border-radius: 0; font-size: 15px;}
+
+/* //popup */
+
+/* paging */
+.btm_info {display: block; text-align: center; clear: both;}
+.paging {display: inline-block; text-align: center; vertical-align: top; clear: both;}
+.paging .selectbox {margin: 0 7px 0 0; vertical-align: top;}
+.paging a {display: inline-block; overflow: hidden; height: 28px; margin: 0 7px 0 0; border-radius: 5px; color: rgba(59,68,91,0.7); font-size: 14px; line-height: 26px; text-decoration: none; vertical-align: top; transition: all 0.3s ease-out;}
+.paging a.btn_paging_prev,
+.paging a.btn_paging_next {width: 30px; height: 30px; margin:0 1px; text-indent:-9999px; box-sizing: border-box; box-shadow: 0 0 2px 0 #a9a9a9; background:#fff;border:1px solid #fff;}
+.paging a.btn_paging_prev {background: #fff url(../images/ico_paging_prev.png)center center no-repeat; background-size: 10px 10px;}
+.paging a.btn_paging_next {background: #fff url(../images/ico_paging_next.png)center center no-repeat; background-size: 10px 10px;}
+.paging a:hover,
+.paging a:focus {color: rgba(59,68,91,1.0); text-decoration: underline; opacity: 1.0; transition: all 0.3s ease-out;}
+.paging a.btn_paging_prev:hover,
+.paging a.btn_paging_next:hover,
+.paging a.btn_paging_prev:focus,
+.paging a.btn_paging_next:focus {border: solid 1px rgba(80, 103, 228, 0.15); transition: all 0.3s ease-out;}
+.paging strong {display: inline-block; overflow: hidden; height: 28px; margin: 0 0 0 7px; color: #506DF5; font-size: 14px; line-height: 26px; vertical-align: top;}
+.paging strong + span {display: inline-block; height: 28px; line-height: 26px; margin: 0 2px 0 0;}
+.paging + .select_type {float: right; width: 95px;}
+.paging + .select_type select {width: 100%;}
+/* //paging */
+
+/* button */
+.btn_box {display: inline-block;}
+.btn_box a {display: inline-block; height: 100%; border: 1px solid #506df5; border-radius: 4px; background: #fff; font-size: 14px; font-weight: 500; text-align: center;}
+/* //button */
+
+/* srch box */
+.srch_box {display: inline-block; position: relative; text-align: left;}
+.srch_box input {width: 100%; height: 100%; padding: 0 10px; border: 1px solid #cfd5eb; border-right: none; box-sizing: border-box; border-radius: 5px 0 0 5px; background: #fff; color: #2c3f51; font-size: 14px;}
+.srch_box label {position: absolute; top: 0; left: 10px; color: #697992; font-size: 12px;}
+.srch_box label:hover {cursor: text;}
+.srch_box button {position: absolute; top: 0; right: -40px; height: 100%; border: 1px solid #506DF5; border-radius: 0 5px 5px 0; background: #506DF5; color: #fff; cursor: pointer;}
+
+/* header */
+#maum_data #header {position: relative; width: 100%; height: 70px; box-sizing: border-box; box-shadow: 0 1px 4px 0 rgba(44, 63, 81, 0.1); background: #fff;}
+#maum_data #header h1 {float: left; width: 144px; margin: 26px 0 0 0; border: none;}
+#maum_data #header h1 img {width: 100%;}
+#maum_data #header .sta {float: right;}
+#maum_data #header .sta .gnb {float: left;}
+#maum_data #header .sta .gnb li {float: left; padding: 28px 34px 0 34px;}
+#maum_data #header .sta .gnb li a {color: #2c3f51; font-size: 15px; font-weight: 500; letter-spacing: -0.5px;}
+#maum_data #header .sta .gnb li a:hover {color: #506df5; transition: all 0.3s ease-out;}
+#maum_data #header .sta .gnb li.active a {color: #506df5; pointer-events: none; cursor: default;}
+#maum_data #header .sta .select_box {float: left; width: 87px; height: 32px; margin: 24px 0 0 34px;}
+#maum_data #header .sta .select_box select {border: none;}
+ 
+/* layout */
+#maum_data #wrap {width: 100%; min-width: 1250px; height: 100%;}
+#maum_data .header_box {position: relative; width: 1220px; height: 100%; margin: 0 auto;}
+
+/* ---------- 데이터셋 ---------- */
+#maum_data.dataset #header h1 {float: none; margin: 0 auto; padding: 26px 0 0 0;}
+.content {background: #eff1f7;}
+.dataset .content {min-height: calc(100% - 290px);}
+.content > div:nth-child(2) {padding: 0 6% 50px 6%;}
+.dataset .content > div:nth-child(1) {padding: 50px 6% 0;}
+.content .dataset_box {padding: 50px 6%; display: block; clear: both; text-align: center;}
+.content .dataset_box .dataset_lst {margin: 0 0 30px 0;}
+.content .dataset_box h3 {color:#35384d; font-size: 17px; font-weight: 500; height:25px; line-height: 25px; text-align: left;}
+.dataset .content .dataset_box h3 {display: inline-block; margin: 0 30px 0 0; color: #00263e; font-size: 20px; font-weight: 400; letter-spacing: -0.4px; text-align: center;}
+.content .dataset_box h3 span {margin: 0 0 3px 10px; min-width: 26px; padding:0 9px; box-sizing: border-box; text-align: center; height:18px; line-height: 18px; border-radius: 9px; background: #f5508b; color:#fff; font-size:12px;}
+.content .dataset_box .srch_box {display: inline-block; position: relative; width: 60%; height: 35px; text-align: left;}
+.dataset .content .dataset_box .srch_box {width: 500px; height: 45px;}
+.content .dataset_box .srch_box input {width: calc(100% - 100px); transition:all 0.3s ease-out;}
+.content .dataset_box .srch_box input:focus {box-shadow: 0 0 4px 1px #cdcccc;}
+.content .dataset_box .srch_box button {right: 0; width: 100px; padding: 0 20px; font-size: 14px;}
+.dataset .content .dataset_box .srch_box button {width: 106px;}
+.dataset .content .dataset_box .srch_box button span {margin: 0 5px 0 0;}
+.content .dataset_box .stn { width: 100%;clear: both;display:table;padding: 50px 0 40px 0; border-bottom: dotted 1px #bfbfbf;}
+.dataset .content .dataset_box .stn {border: none;}
+.content .dataset_box:nth-child(2) .stn {border-bottom: none;}
+.content .dataset_box .stn ul {display: flex;}
+.content .dataset_box .stn ul li {flex: 1; position: relative; min-height:250px; padding: 15px 0; text-align: left; box-sizing: border-box; background: #fff; border-radius: 5px; float: left; border: 1px solid #cfd5eb; transition: all 0.3s ease-out;}
+.dataset .content .dataset_box .stn ul li {height: 165px; text-align: center;}
+.content .dataset_box .stn ul li:hover {border: solid 1px #506df5; box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);}
+.content .dataset_box .stn ul li + li {margin: 0 0 0 10px;}
+.content .dataset_box .stn ul li p.title {display: inline-block; overflow: hidden; padding: 0 15px; color: #506df5; font-size:15px; font-weight:500; line-height: normal; text-overflow: ellipsis; cursor: pointer;}
+.content .dataset_box .stn ul li p.title:hover {text-decoration: underline;}
+.content .dataset_box .stn ul li .title em {margin: 0 10px 0 0;}
+.content .dataset_box .stn ul li .keyword_box {overflow: auto; height: 180px; margin: 15px 0 0 0; padding: 0 15px; text-align: left;}
+.content .dataset_box .stn ul li .keyword_box a {display: inline-block; position: relative; margin: 0 0 10px 0; padding: 0 10px; color: #35384d; font-size: 13px; word-break: keep-all;}
+.dataset .content .dataset_box .stn ul li .keyword_box a {display: block; margin: 0 0 6px 0; padding: 5px 10px; border: 1px solid #cfd5eb; border-radius: 3px; color: #697992; letter-spacing: -0.3px; transition: all 0.3s ease-out;}
+.dataset .content .dataset_box .stn ul li .keyword_box a:hover {color: #506df5; border-color: #506df5;}
+/* .content .dataset_box .stn ul li .keyword_box a:hover {text-decoration: underline;} */
+.content .dataset_box .stn ul li .keyword_box a:before {content: ''; display: block; position: absolute; top: 7px; left: 0; width: 5px; height: 5px; border-radius: 50%; background: #000;}
+.dataset .content .dataset_box .stn ul li .keyword_box a:before {display: none;}
+.content .dataset_box .dataset_item {overflow: hidden; position: relative; width: 100%; padding: 20px 25px 20px 0; border: 1px solid transparent; border-radius: 5px; box-sizing: border-box; box-shadow: 0 2px 4px 0 rgba(197, 197, 197, 0.5); background: #fff; transition:all 0.3s ease-out;}
+.content .dataset_box .dataset_item + .dataset_item {margin: 20px 0 0 0;}
+.content .dataset_box .dataset_item:hover {border: 1px solid rgba(85, 110, 241, 0.4);}
+.content .dataset_box .dataset_item > div {float: left;}
+.content .dataset_box .dataset_item .engine_type {position: relative; width: 150px; height: 80px;}
+.content .dataset_box .dataset_item .engine_type .engine_type_img {position: absolute; left: 50%; width: 40px; height: 40px; transform: translate(-50%,0);}
+.content .dataset_box .dataset_item .engine_type .engine_tts {background: url('../images/ico_spe_1_fold.svg')50% 50% no-repeat; background-size: contain;}
+.content .dataset_box .dataset_item .engine_type .engine_stt {background: url('../images/ico_spe_2_fold.svg')50% 50% no-repeat; background-size: contain;}
+.content .dataset_box .dataset_item .engine_type .engine_den {background: url('../images/ico_spe_3_fold.svg')50% 50% no-repeat; background-size: contain;}		/* denoise */
+.content .dataset_box .dataset_item .engine_type .engine_spd {background: url('../images/ico_spe_4_fold.svg')50% 50% no-repeat; background-size: contain;}		/* speaker division */
+.content .dataset_box .dataset_item .engine_type .engine_vof {background: url('../images/ico_spe_5_fold.svg')50% 50% no-repeat; background-size: contain;}		/* voice filter */
+.content .dataset_box .dataset_item .engine_type .engine_vor {background: url('../images/ico_spe_6_fold.svg')50% 50% no-repeat; background-size: contain;}		/* voice recognition */
+.content .dataset_box .dataset_item .engine_type .engine_trm {background: url('../images/ico_vis_1_fold.svg')50% 50% no-repeat; background-size: contain;}		/* text trim */
+.content .dataset_box .dataset_item .engine_type .engine_tti {background: url('../images/ico_vis_2_fold.svg')50% 50% no-repeat; background-size: contain;}		/* Text to Image */
+.content .dataset_box .dataset_item .engine_type .engine_dia {background: url('../images/ico_vis_3_fold.svg')50% 50% no-repeat; background-size: contain;}		/* 문서 이미지 분석 */
+.content .dataset_box .dataset_item .engine_type .engine_avr {background: url('../images/ico_vis_4_fold.svg')50% 50% no-repeat; background-size: contain;}		/* 도로상 객체인식 */
+.content .dataset_box .dataset_item .engine_type .engine_esr {background: url('../images/ico_vis_5_fold.svg')50% 50% no-repeat; background-size: contain;}		/* ESR */
+.content .dataset_box .dataset_item .engine_type .engine_far {background: url('../images/ico_vis_6_fold.svg')50% 50% no-repeat; background-size: contain;}		/* 얼굴인식 (face recognition) */
+.content .dataset_box .dataset_item .engine_type .engine_hpr {background: url('../images/ico_vis_7_fold.svg')50% 50% no-repeat; background-size: contain;}		/* 인물포즈인식 (hpr) */
+.content .dataset_box .dataset_item .engine_type .engine_fat {background: url('../images/ico_vis_8_fold.svg')50% 50% no-repeat; background-size: contain;}		/* 얼굴추적 fat */
+.content .dataset_box .dataset_item .engine_type .engine_abd {background: url('../images/ico_vis_9_fold.svg')50% 50% no-repeat; background-size: contain;}		/* 이상행동 감지 */
+.content .dataset_box .dataset_item .engine_type .engine_sub {background: url('../images/ico_vis_10_fold.svg')50% 50% no-repeat; background-size: contain;}	    /* 자막인식 */
+.content .dataset_box .dataset_item .engine_type .engine_nlu {background: url('../images/ico_lan_1_fold.svg')50% 50% no-repeat; background-size: contain;}
+.content .dataset_box .dataset_item .engine_type .engine_mrc {background: url('../images/ico_lan_2_fold.svg')50% 50% no-repeat; background-size: contain;}
+.content .dataset_box .dataset_item .engine_type .engine_xdc {background: url('../images/ico_lan_3_fold.svg')50% 50% no-repeat; background-size: contain;}
+.content .dataset_box .dataset_item .engine_type .engine_itf {background: url('../images/ico_lan_4_fold.svg')50% 50% no-repeat; background-size: contain;}
+.content .dataset_box .dataset_item .engine_type .engine_gpt {background: url('../images/ico_lan_5_fold.svg')50% 50% no-repeat; background-size: contain;}
+.content .dataset_box .dataset_item .engine_type .engine_hmd {background: url('../images/ico_lan_6_fold.svg')50% 50% no-repeat; background-size: contain;}
+.content .dataset_box .dataset_item .engine_type .engine_nqa {background: url('../images/ico_bot_1_fold.svg')50% 50% no-repeat; background-size: contain;}
+.content .dataset_box .dataset_item .engine_type span {display: inline-block; position: absolute; bottom: 0; left: 50%; margin: 5px 0 0 0; padding: 8px 10px; border-radius: 5px; color: #fff; font-size: 11px; line-height: 11px; transform: translate(-50%,0); word-break:keep-all;}
+.content .dataset_box .dataset_item .engine_type span.purple {background: #7d71d1;}
+.content .dataset_box .dataset_item .engine_type span.pink {background: #f7778a;}
+.content .dataset_box .dataset_item .engine_type span.green {background: #27b9ba;}
+.content .dataset_box .dataset_item .engine_type span.skyblue {background: #2cace5;}
+.content .dataset_box .dataset_item .engine_type span.blue {background: #5E77FF;}
+.content .dataset_box .dataset_item .engine_type span.yellow {background: #fb9223;}
+.content .dataset_box .dataset_item .dataset_info {width: calc(100% - 175px);}
+.content .dataset_box .dataset_item .dataset_info > div {float: left; text-align: left;}
+.content .dataset_box .dataset_item .dataset_info .desc {width: 70%; color: #35384d;}
+.content .dataset_box .dataset_item .dataset_info .desc h5 {margin: 0 0 10px 0; font-size: 25px;}
+.content .dataset_box .dataset_item .dataset_info .desc p {margin: 0 0 15px 0;}
+.content .dataset_box .dataset_item .dataset_info .desc span a {color: inherit;}
+.content .dataset_box .dataset_item .dataset_info .desc span a:hover {text-decoration: underline;}
+.content .dataset_box .dataset_item .dataset_info .meta {width: 30%;}
+.content .dataset_box .dataset_item .dataset_info .meta p {color: #35384d; font-size: 17px; font-weight: 500;}
+.content .dataset_box .dataset_item .dataset_info .meta p + p {margin: 10px 0 0 0;}
+.content .dataset_box .dataset_item .dataset_info .meta p span {float: right; padding: 0 10px; font-size: 15px; font-weight: 400;}
+
+.dataset .dataset_lst {overflow: hidden; width: 100%; border: 1px solid #cfd5eb; border-radius: 5px;}
+.dataset .dataset_lst table {width: 100%;}
+.dataset .dataset_lst table tr {height: 40px;}
+.dataset .dataset_lst table thead tr {background: #808aab; color: #fff; font-size: 14px; font-weight: 500;}
+.dataset .dataset_lst table tbody tr {background: #fff; color: #2c3f51; font-size: 14px; transition: all 0.3s ease-out;}
+.dataset .dataset_lst table tbody tr:hover {background: rgba(242, 244, 252, 0.4); cursor: pointer;}
+/* .dataset .dataset_lst table tbody tr:nth-child(odd) {background: #fff;}
+.dataset .dataset_lst table tbody tr:nth-child(even) {background: rgba(242, 244, 252, 0.4);} */
+.dataset .dataset_lst table tbody tr + tr {border-top: 1px solid #cfd5eb;}
+
+.dataset .dataset_pop .popWrap {overflow: visible; top: 50%; width: 400px; height: 560px; margin: 0; transform: translate(0, -50%);}
+.dataset .dataset_pop .pop_bd {width: 100%; height: auto; padding: 20px; box-sizing: border-box;}
+.dataset .dataset_pop .pop_bd table {width: 100%; text-align: left; color: #2c3f51; font-size: 14px;}
+.dataset .dataset_pop .pop_bd table tr {height: 34px;}
+.dataset .dataset_pop .pop_bd table tr + tr {border-top: 1px solid #cfd5eb;}
+.dataset .dataset_pop .pop_bd table tr:last-child {border: none;}
+.dataset .dataset_pop .pop_bd table tr th {color: #2c3f51; opacity: 0.7; letter-spacing: -0.5px;}
+.dataset .dataset_pop .pop_bd table tr td {padding: 0 20px;}
+.dataset .dataset_pop .pop_bd table tr:last-child td {padding: 0;}
+.dataset .dataset_pop .pop_bd table tr td textarea {overflow: auto; width: 100%; height: 190px; margin: 5px 0 0 0; padding: 10px; border: 1px solid #cfd5eb; box-sizing: border-box; background: #f7f8fc; color: #2c3f51; font-size: 14px;}
+.dataset .dataset_pop .btn .download {margin: 0 6px 0 0;}
+/* ---------- //데이터셋 ---------- */
+
+/* footer */
+#footer {width: 100%; background: #00263e; color: #fff; font-size: 14px;}
+#footer a {color: #fff; font-size: 14px;}
+#footer .btm_menu {width: 100%; height: 180px;}
+#footer .cont_box {position: relative; width: 1020px; height: 100%; margin: 0 auto;}
+#footer .btm_menu .cont_box >  a {display: inline-block; float: left; width: 125px; margin: 54px 70px 0 0;}
+#footer .btm_menu img {width: 100%;}
+#footer .btm_menu .menu_area {display: inline-block; width: 824px; height: 120px; margin: 30px 0; border-radius: 4px; background: rgba(128,138,171,0.1); clear: both;}
+#footer .btm_menu .menu_area > div {float: left; margin: 22px 0; padding: 0 39px; text-align: left;}
+#footer .btm_menu .menu_area p {font-weight: 700; letter-spacing: -0.4px;}
+#footer .btm_menu .menu_area .contact {border-right: 1px dotted rgba(207,213,235,0.7);}
+#footer .btm_menu .menu_area .contact > a {display: inline-block; margin: 10px 0 10px 0;}
+#footer .btm_menu .menu_area .contact > a:nth-child(2) {margin-right: 10px;}
+#footer .btm_menu .menu_area .contact > a span {margin: 0 4px 0 0;}
+#footer .btm_menu .menu_area .contact .info_box a {position: relative; font-size: 13px; opacity: 0.7;}
+#footer .btm_menu .menu_area .contact .info_box a:hover {text-decoration: underline;}
+#footer .btm_menu .menu_area .contact .info_box a + a {margin: 0 0 0 20px;}
+#footer .btm_menu .menu_area .service {font-size: 13px; letter-spacing: -0.4px;}
+#footer .btm_menu .menu_area .service > div {clear: both;}
+#footer .btm_menu .menu_area .service > div + div {margin: 10px 0 0 0;}
+#footer .btm_menu .menu_area .service p {float: left; position: relative; width: 68px; font-weight: 700;}
+#footer .btm_menu .menu_area .service p:after {content: ''; display: block; position: absolute; top: 4px; right: 0; width: 1px; height: 12px; background: rgba(255,255,255,0.5);}
+#footer .btm_menu .menu_area .service a {margin: 0 0 0 14px; font-size: 13px;}
+#footer .btm_menu .menu_area .service a:hover {text-decoration: underline;}
+#footer .btm_menu .menu_area .contact .info_box a + a:before {content: ''; display: block; position: absolute; top: 4px; left: -11px; width: 1px; height: 13px; background: #fff; opacity: 0.7;}
+#footer .copyright {width: 100%; height: 40px; background: #001c2e; text-align: center;}
+#footer .copyright span {position: relative; padding: 0 2px; font-size: 13px; line-height: 40px; letter-spacing: -0.4px; opacity: 0.8;}
+#footer .copyright span:last-child {padding: 0 0 0 16px;}
+#footer .copyright span:last-child:before {content: ''; display: block; position: absolute; top: 4px; left: 6px; width: 1px; height: 13px; background: #fff; opacity: 0.8;}
+#footer .copyright .company:hover {text-decoration: underline;}
+#footer .m_footer {display: none;}
+/* //footer */
