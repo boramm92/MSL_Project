@@ -17,13 +17,6 @@
     <script type="text/javascript" src="resources/js/jquery-1.11.2.min.js"></script>
     <script type="text/javascript" src="resources/js/main.js"></script> <!-- FullCalendar js -->
     <script type="text/javascript" src="resources/js/moment.min.js"></script>
-    <script type="text/javascript" src="resources/js/ko.js"></script>
-
-    <style>
-        .bg_test {
-            background: rgba(0, 128, 0, 0.2) !important;
-        }
-    </style>
 
     <title>Schedule set</title>
 </head>
@@ -132,8 +125,9 @@
             <h2 class="page_title">스케줄 설정</h2>
 
             <!-- .set_area -->
-            <div class="set_area">
+            <div class="schedule_set_area">
                 <!-- .set_btn_box -->
+                <!-- [D] 선택 시 .set_btn_box li에 addClass 'on' 되며 해당메뉴와 해당화면 활성화됨  -->
                 <ul class="set_btn_box">
                     <li class="on"><a href="#none">방문 가능시간 설정</a></li>
                     <li><a href="#none">방문 불가능일정 설정</a></li>
@@ -145,6 +139,8 @@
                     <!-- .cont_slt_time -->
                     <div class="cont_slt_time">
                         <div class="btn_option_group">
+                            <!-- [D] 체크 시 (#scdl_disable) 팝업 등장 / 해제 시 (#scdl_activate) 팝업 등장 
+                                스케줄을 비활성화 할 수 없는 경우: 매칭완료 및 활동 중인 방문이 있는 경우 (#scdl_disable_ipsb) 팝업 등장-->
                             <div class="btn_scdl_disable btn_option">
                                 <input type="checkbox" id="scd_disable">
                                 <label for="scd_disable">스케줄 비활성화</label>
@@ -155,12 +151,12 @@
                             </div>
                         </div>
 
-                        <!-- .lst_gruop -->
-                        <div class="lst_gruop">
+                        <!-- .lst_group -->
+                        <div class="lst_group">
                             <!-- .week_lst -->
                             <!-- [D] .week_lst li에서 click evnet 시 addClass('on')으로 활성화됨 
                             (선택 요일에 시간 선택 후 저장하지 않고 다른 요일로 넘어갈 경우 
-                            스케줄 초기화 팝업(#schedule_reset)을 띄워 '취소' 시 기존 선택 요일화면 유지,
+                            스케줄 초기화 팝업(#scdl_reset)을 띄워 '취소' 시 기존 선택 요일화면 유지,
                             '확인' 시 저장하지 않은 시간은 초기화되며 다른 요일로 넘어감) -->
                             <ul class="week_lst">
                                 <li><a href="#none">월</a></li>
@@ -404,7 +400,7 @@
                             </ol>
                             <!-- //.time_lst -->
                         </div>
-                        <!-- //.lst_gruop -->
+                        <!-- //.lst_group -->
 
                         <div class="notice">
                             <div class="notice_bg">
@@ -414,7 +410,6 @@
 
                         <div class="btm_box">
                             <button type="button" class="btn_save">
-                                <!-- [D] 선택 요일을 아래 .week에 넣어주기 -->
                                 <span class="week">수</span>요일 스케줄을 저장합니다.
                             </button>
                         </div>
@@ -426,7 +421,7 @@
                         <div class="calendar_box">
                             <!-- [D] .fc-day에서 click evnet 시 addClass('on')으로 활성화됨 
                             (해당 월에 날짜 선택 후 저장하지 않고 다른 월로 넘어갈 경우 
-                            스케줄 초기화 팝업(#schedule_reset)을 띄워 '취소' 시 기존 선택 월과 선택 날짜 유지,
+                            스케줄 초기화 팝업(#scdl_reset)을 띄워 '취소' 시 기존 선택 월과 선택 날짜 유지,
                             '확인' 시 저장하지 않은 날짜는 초기화되며 다른 월로 넘어감) -->
                             
                             <!-- [D] FullCalendar 적용되는 div -->
@@ -441,7 +436,6 @@
 
                         <div class="btm_box">
                             <button type="button" class="btn_save">
-                                <!-- [D] 선택 월을 아래 .month에 넣어주기 -->
                                 <span class="month">8</span>월 방문불가 일정을 저장합니다.
                             </button>
                         </div>
@@ -467,7 +461,7 @@
 
             <div class="cont_box">
                 <span class="cont_desc">선택된 스케줄을 저장 하시려면 <strong>‘취소’</strong>를 눌러 스케줄을 저장한 후 이동해주세요.</span>
-                <span class="cont_desc"><strong>‘확인’</strong>을 누르면 스케줄이 초기화되며 선택한 요일로 이동합니다.</span>
+                <span class="cont_desc"><strong>‘확인’</strong>을 누르면 스케줄이 초기화되며 선택한 스케줄로 이동합니다.</span>
             </div>
         </div>
 
