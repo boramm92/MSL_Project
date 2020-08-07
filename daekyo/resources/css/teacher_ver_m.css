@@ -3,6 +3,8 @@
 body {position: relative; text-align: center;}
 #wrap {overflow: hidden; display: inline-block; min-width: 320px; width: 100%; text-align: left; vertical-align: bottom;}
 
+body.prevent_scroll {overflow: hidden;}
+
 /* 공통 body_fixed 스크롤이 생기지 않게 도와주는 장치 */
 body.body_fixed {position: fixed; top: 0; left: 0; width: 100%; height: 100%;}
 body.body_fixed #wrap {width: 100%; height: 100%;}
@@ -11,10 +13,14 @@ body.body_fixed #m_container {height: 100%;}
 body.body_fixed #fixed_login {height: calc(100% - 70px);}
 body.body_fixed #btn_login {margin: 0;}
 
+/* 공통 body backdrop */
+body.lyr_backdrop {position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 30;}
+body.lyr_backdrop:after {content: ''; display: block; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.45);}
+body.lyr_backdrop #wrap {overflow: hidden;}
+body.lyr_backdrop #header:after {content: ''; display: block; position: fixed; top: 0; left: 0; width: 100%; height: 60px; background: rgba(0,0,0,0.45);}
+
 body.gnb_backdrop {overflow: hidden;}
 body.gnb_backdrop #header:after {content: ''; display: block; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.45);}
-
-body.prevent_scroll {overflow: hidden;}
 
 /* 공통 header */
 #header {position: relative; text-align: center; height: 60px; z-index: 10;}
@@ -88,11 +94,7 @@ body.prevent_scroll {overflow: hidden;}
 .btn_cancel {border-radius: 4px; background: #c9d0d8; color: #fff;}
 
 /* 공통 layer */
-body.lyr_backdrop {position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 10;}
-body.lyr_backdrop:after {content: ''; display: block; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.45);}
-body.lyr_backdrop #wrap {overflow: hidden;}
-
-.lyr_box {position: relative; width: 100%; padding: 36px; border-radius: 20px 20px 0 0; background: #fff; z-index: 20; text-align: left;}
+.lyr_box {position: relative; width: 100%; padding: 36px; border-radius: 20px 20px 0 0; background: #fff; z-index: 40; text-align: left;}
 .lyr_box .lyr_cont .title_box .title {display: block; font-size: 16px; font-weight: 800;}
 .lyr_box .lyr_cont .title_box .title_desc {margin: 16px 0 0 0;}
 .lyr_box .lyr_cont .cont_box {margin: 24px 0 0 0;}
@@ -170,24 +172,59 @@ body.lyr_backdrop #wrap {overflow: hidden;}
 .visit_table .time_schedule .schedule .onetime_visit .student_info {border-bottom: 1px solid #8ed559; background: #8ed559;}
 
 /* visit management page */
-.requested_visit {margin: 24px 0 0 0;}
-.advanced_visit {margin: 24px 0 0 0;}
-.completed_visit {margin: 24px 0 0 0;}
+.management {margin: 24px 0 0 0;}
 
+.management .visit_card {padding: 16px; border-radius: 10px; border: 1px solid #e3e8eb; font-size: 12px;}
+.management .visit_card + .visit_card {margin: 12px 0 0 0;}
+.management .visit_card span {font-size: 12px;}
+.management .visit_card em {font-size: 12px;}
+.management .visit_card button {font-size: 12px;}
+.management .visit_card .card_on_show {display: none;}
 
-.requested_visit .visit_card {padding: 16px; border-radius: 10px; border: 1px solid #e3e8eb;}
-.requested_visit .visit_card .card_on_show {display: none;}
+.management .visit_card.on .card_on_hidden {display: none;}
+.management .visit_card.on .card_on_show {display: block;}
+.management .visit_card.on .flex_box.card_on_show {display: flex;}
 
-.requested_visit .visit_card.on .card_on_hidden {display: none;}
-.requested_visit .visit_card.on .card_on_show {display: block;}
-.requested_visit .visit_card.on .flex_box.card_on_show {display: block;}
+.management .card_info .requested_time {display: inline-block; line-height: 25px; font-size: 10px; color: #a8b0bc;}
+.management .card_info .status_box {float: right; text-align: right;}
 
+.management .card_info .status_box .no_show {padding: 5px 7px; border: 1px solid #fa4730; border-radius: 12px; font-weight: 300; color: #fff; font-weight: 700; color: #fa4730;}
+.management .card_info .status_box .no_show[disabled] {border-color: #e3e8eb; color: #e3e8eb;}
+.management .card_info .status_box .in_progress {padding: 6px 10px; border-radius: 12px 12px 0 12px; background: rgba(56,135,225,1.0); box-shadow: 0 3px 3px 0 rgba(56,135,225,0.16); font-weight: 700; color: #fff;}
+.management .card_info .status_box .complete {padding: 6px 10px; border-radius: 12px 12px 0 12px; background: rgba(254,184,23,1.0); box-shadow: 0 3px 3px 0 rgba(254,184,23,0.16); font-weight: 700; color: #fff;}
+.management .card_info .status_box .scheduled {padding: 6px 10px; border-radius: 12px 12px 0 12px; background: rgba(230,2,98,1.0); box-shadow: 0 3px 3px 0 rgba(230,2,98,0.16); font-weight: 700; color: #fff;}
 
+.management .profile {margin: 6px 0 0 0;}
+.management .profile .visit_type {padding: 2px 8px; border-radius: 8px; background: #999; font-size: 10px; font-weight: 700; color: #fff; vertical-align: middle;}
+.management .profile .visit_type.onetime {background: #8ed559;}
+.management .profile .visit_type.regular {background: #fb7ec1;}
+.management .profile .name {font-size: 16px; font-weight: 700; vertical-align: middle;}
+.management .profile .other {line-height: 14px; color: #616c78; vertical-align: bottom;}
+.management .profile .other span {color: #616c78;}
 
+.management .profile .visit_time {display: inline-block; margin: 12px 0 0 0; font-weight: 700;}
+.management .profile .visit_time span {font-weight: 500;}
+.management .profile .visit_time_info {color: #e60262;}
 
+.management .profile .full_address span {line-height: 16px; font-weight: 700;}
 
+.management .profile .detail_info .title {display: block; margin: 14px 0 0 0; font-weight: 700; color: #616c78;}
+.management .profile .detail_info .detail span {display: inline-block; margin: 6px 10px 0 0; padding: 7px 10px; border-radius: 16px; font-weight: 700; background: #f4f6f8;}
+.management .profile .detail_info .detail .notice_to {overflow: auto; display: block; width: 100%; height: 124px; margin: 6px 0 0 0; padding: 11px 12px; border: none; border-radius: 4px; background: #f4f6f8;}
+.management .profile .detail_info .detail .notice_to > em {color: #a8b0bc;}
 
+.management .profile .btn_box {margin: 16px 0 0 0;}
+.management .profile .btn_box > div {min-width: 82px; width: 30%;}
+.management .profile .btn_box button {width: 100%; padding: 10px 0; border: 1px solid #4b2c7a; border-radius: 4px; font-weight: 700; color: #4b2c7a;}
+.management .profile .btn_box button:active {background: #4b2c7a; color: #fff;}
 
+.management .profile .btn_card_close {width: 100%; margin: 16px 0 0 0; padding: 12px 0; border: 1px solid #c9d0d8; border-radius: 4px; color: #a8b0bc;}
+.management .profile .btn_card_close:active {background: #c9d0d8; color: #fff;}
+
+.requested_visit .profile .btn_box > div:last-child button {border: 1px solid #f80055; color: #e60662;}
+.requested_visit .profile .btn_box > div:last-child button:active {background: #e60662; color: #fff;}
+
+/* max width로 바꿔야함 */
 @media screen and (max-height: 600px) {
   /* login page */
   body.body_fixed #fixed_login {height: calc(100% - 60px);}

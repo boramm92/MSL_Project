@@ -2,8 +2,7 @@
 /* 200730 UX/UI Team NBR */
 
 /* popup */
-.alert_pop {display: none;}
-.alert_pop {position: fixed; top: calc(50% + 50px); left: 50%; width: 272px; min-height: 160px; padding: 0; border-radius: 4px; background: #fff; text-align: center; opacity: 0; transform: translateX(-50%) translateY(calc(-50% + 50px));}
+.alert_pop {display: none; position: fixed; top: calc(50% + 50px); left: 50%; width: 272px; min-height: 160px; padding: 0; border-radius: 4px; background: #fff; text-align: center; opacity: 0; transform: translateX(-50%) translateY(calc(-50% + 50px));}
 .alert_pop.on {top: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); opacity: 1; -webkit-animation-duration: .3s; animation-duration: .3s; -webkit-animation-fill-mode: both; animation-fill-mode: both; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); -webkit-transition: -webkit-transform 0.3s ease-out; transition: -webkit-transform 0.3s ease-out; transition: transform 0.3s ease-out; transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;}
 .alert_pop .lyr_cont {padding: 24px;}
 .alert_pop .lyr_cont .title_box .title {color: #e60461; font-weight: 700;}
@@ -13,9 +12,9 @@
 .alert_pop .lyr_cont .cont_box em {display: block; margin: 14px 0 0; font-size: 12px; font-weight: 700;}
 .alert_pop .lyr_btm {width: 100%; height: 36px; margin: 0;}
 .alert_pop .lyr_btm button {width: 100%; height: 100%; border-radius: 0 0 4px 4px; background: #e60462; color: #fff; font-weight: 700;}
-#schedule_reset .lyr_btm button {float: left; width: 50%;}
-#schedule_reset .lyr_btm button:nth-child(1) {border-radius: 0 0 0 4px; background: #c9d0d8;}
-#schedule_reset .lyr_btm button:nth-child(2) {border-radius: 0 0 4px 0;}
+#scdl_reset .lyr_btm button {float: left; width: 50%;}
+#scdl_reset .lyr_btm button:nth-child(1) {border-radius: 0 0 0 4px; background: #c9d0d8;}
+#scdl_reset .lyr_btm button:nth-child(2) {border-radius: 0 0 4px 0;}
 
 /* option button */
 .btn_option {display: inline-block; position: relative;}
@@ -71,9 +70,9 @@
 .fc .fc-button-primary:not(:disabled):active:focus {box-shadow: none !important;}
 .fc-today-button {display: none !important;}
 .fc-prev-button {margin: 0 12px 0 0 !important; background: #fff url('../images/ico_arw_left_b.svg')50% 50% no-repeat !important;}
-.fc-prev-button.disabled {border-color: #f4f6f8; background: #fff url('../images/ico_arw_left_g.svg')50% 50% no-repeat !important;}
+.fc-prev-button:disabled {border-color: #f4f6f8 !important; background: #fff url('../images/ico_arw_left_g.svg')50% 50% no-repeat !important;}
 .fc-next-button {margin: 0 14px 0 0 !important; background: #fff url('../images/ico_arw_right_b.svg')50% 50% no-repeat !important;}
-.fc-next-button.disabled {border-color: #f4f6f8; background: #fff url('../images/ico_arw_right_g.svg')50% 50% no-repeat !important;}
+.fc-next-button:disabled {border-color: #f4f6f8 !important; background: #fff url('../images/ico_arw_right_g.svg')50% 50% no-repeat !important;}
 .fc .fc-button .fc-icon {display: none;}
 .fc-daygrid a {font-weight: 700;}
 .fc-theme-standard td,
@@ -88,15 +87,15 @@
 .fc .fc-daygrid-day.fc-day-today {background-color: transparent;}
 .fc-day-sun a {color: #f44336;}
 .fc-day-sat a {color: #3f51b5;}
-.fc .fc-day-other .fc-daygrid-day-top {opacity: 1;}
-.fc-day {padding: 4px !important; pointer-events: none; opacity: 0.3;}
+.fc-day-other {pointer-events: none;}
+.fc-day {padding: 4px !important;}
 .fc-day .fc-daygrid-day-frame {position: relative; height: 100%; cursor: pointer;}
 .fc-day.on .fc-daygrid-day-frame {border-radius: 50%; background: #e60462; color: #fff !important;}
 .fc-day .fc-daygrid-day-number {position: absolute; top: 50%; left: 50%; width: 100%; text-align: center; transform: translate(-50%, -50%);}
 .fc-day.on .fc-daygrid-day-number {color: #fff;}
-.fc-day.fc-day-future.active {opacity: 1; pointer-events: visible;} /* 활성화 날짜(오늘날짜 기준 +3일부터 +93일까지)에 addClass('active') */
-.fc-day.fc-day-future.disabled {opacity: 0.3; background: #ebedef; pointer-events: none;}
 .fc-daygrid-day-events {display: none;}
+.fc-day-disabled {background: none !important; pointer-events: none;}
+.slt_disable {width: 100%; color: #e2e3e4 !important; text-align: center;}
 
 /* ---------- media query ---------- */
 @media all and (max-width: 350px) {

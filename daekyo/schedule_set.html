@@ -415,7 +415,7 @@
                         <div class="btm_box">
                             <button type="button" class="btn_save">
                                 <!-- [D] 선택 요일을 아래 .week에 넣어주기 -->
-                                <span class="week">수요일</span> 스케줄을 저장합니다.
+                                <span class="week">수</span>요일 스케줄을 저장합니다.
                             </button>
                         </div>
                     </div>
@@ -456,10 +456,10 @@
     </div>
     <!-- //#wrap -->
 
-    <!-- layer -->
+    <!-- popup -->
     <!-- 선택 스케줄 초기화 -->
     <!-- [D] .alert_pop 에 'on' class가 추가되면 팝업 등장 -->
-    <div id="schedule_reset" class="lyr_box alert_pop">
+    <div id="scdl_reset" class="lyr_box alert_pop">
         <div class="lyr_cont">
             <div class="title_box">
                 <span class="title">선택한 스케줄이 초기화됩니다.</span>
@@ -480,14 +480,14 @@
 
     <!-- 스케줄 설정 비활성화 -->
     <!-- [D] .alert_pop 에 'on' class가 추가되면 팝업 등장 -->
-    <div id="schedule_disable" class="lyr_box alert_pop">
+    <div id="scdl_disable" class="lyr_box alert_pop">
         <div class="lyr_cont">
             <div class="title_box">
                 <span class="title">스케줄 설정이 비활성화 됩니다.</span>
             </div>
 
             <div class="cont_box">
-                <span  class="cont_desc">스케줄 비활성화 모드 작동시,<br>재활성화를 할 때까지 방문활동이 제한됩니다.</span>
+                <span class="cont_desc">스케줄 비활성화 모드 작동시,<br>재활성화를 할 때까지 방문활동이 제한됩니다.</span>
             </div>
         </div>
 
@@ -499,7 +499,7 @@
 
     <!-- 스케줄 설정 활성화 -->
     <!-- [D] .alert_pop 에 'on' class가 추가되면 팝업 등장 -->
-    <div id="schedule_activate" class="lyr_box alert_pop">
+    <div id="scdl_activate" class="lyr_box alert_pop">
         <div class="lyr_cont">
             <div class="title_box">
                 <span class="title">스케줄 설정이 활성화 됩니다.</span>
@@ -519,7 +519,7 @@
 
     <!-- 스케줄 설정 비활성화 불가 -->
     <!-- [D] .alert_pop 에 'on' class가 추가되면 팝업 등장 -->
-    <div id="schedule_activate" class="lyr_box alert_pop">
+    <div id="scdl_disable_ipsb" class="lyr_box alert_pop">
         <div class="lyr_cont">
             <div class="title_box">
                 <span class="title">스케줄을 비활성화 할 수 없습니다.</span>
@@ -540,7 +540,7 @@
 
     <!-- 방문 불가능 일정 설정 불가 -->
     <!-- [D] .alert_pop 에 'on' class가 추가되면 팝업 등장 -->
-    <div id="schedule_activate" class="lyr_box alert_pop">
+    <div id="scdl_visit_ipsb" class="lyr_box alert_pop">
         <div class="lyr_cont">
             <div class="title_box">
                 <span class="title">방문 불가능 일정을 설정할 수 없습니다.</span>
@@ -559,33 +559,32 @@
 
     <!-- script -->
     <script type="text/javascript">
-        $(document).ready(function() {
-            // 공통 gnb 열기/닫기
+        $(document).ready(function() {            
+            // 공통 AMR gnb 열기/닫기
             $('.gnb_open').on('click', function(e) {
                 e.stopPropagation();
                 handleGndClose();
-
-                $('body').addClass('lyr_backdrop');
+                
+                $('body').addClass('gnb_backdrop');
                 $('#gnb').addClass('show');
-
-                setTimeout(function() {
+                setTimeout(function () {
                     $('#gnb').addClass('on');
                 }, 100);
-
-                // gnb 닫기
+            
+                // gnd 닫기
                 function handleGndClose() {
                     // gnb에서 클릭 시 버블링 막기
                     $('#gnb').on('click', function(e) {
                         e.stopPropagation();
                     })
-
+                
                     // gnb를 제외한 body를 클릭
                     $('body').on('click', function(e) {
-                        if ($(this).hasClass('lyr_backdrop')) {
+                        if ($('body').hasClass('gnb_backdrop')) {
                             $('#gnb').removeClass('on');
-                            setTimeout(function() {
+                            setTimeout(function () {
                                 $('#gnb').removeClass('show');
-                                $('body').removeClass('lyr_backdrop');
+                                $('body').removeClass('gnb_backdrop');
                             }, 200);
                         }
                     })
@@ -660,36 +659,37 @@
         });
     </script>
 
-    <!-- script [boram] -->
+    <!-- script UX/UI Team NBR -->
     <script type="text/javascript">
         $(document).ready(function(){
-            // 방문 불가 설정 달력 calendar
+            // 방문 불가 설정 달력 Fullcalendar
+            
             var calendarEl = document.getElementById('calendar');
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
                 initialDate: new Date(),
-                selectable: false,
+                // selectable: false,
                 contentHeight: 'auto',
-                header: {
-                    left: 'title',
-                    right: 'prev, next'
-                },
+                showNonCurrentDates : true,
                 views: {
                     dayGridMonth: {
                         titleFormat: {
                             year: 'numeric',
                             month: 'numeric'
-                        },
-                        visibleRange: {
-                            start: dateStart,
-                            end: dateEnd
-                        }                        
+                        },                      
                     },
                 },
+                validRange: {
+                    start: moment().add("3", "d").format("YYYY-MM-DD"),
+                    end: moment().add("100", "d").format("YYYY-MM-DD"),
+                }             
             });
             calendar.render();
+            
+            // 선택 불가 날짜에 ㆍ 넣어줌
+            $('.fc-day-disabled > div').append('<div class="fc-daygrid-day-top"><a class="slt_disable">&bull;</a></div>')   
 
-            // 요일 한글로 출력 (fomatting이 잘 안되어 html 직접 넣어줌)
+            // 요일 한글로 출력 (Fullcalendar 옵션으로 lang'ko'를 주니 일자도 모두 바뀌어 html 직접 바꿔줌)
             function weekListKo(){
                 // 일요일
                 var weekSun = $('.fc-day-sun .fc-col-header-cell-cushion');
@@ -725,36 +725,26 @@
                 var weekSat = $('.fc-day-sat .fc-col-header-cell-cushion');
                 weekSatKo = weekSat.text().replace('Sat', '토');
                 weekSat.html(weekSatKo);
-            }weekListKo();
-            
-            // 선택가능 일자 제한 (오늘(해당일)기준 +3일부터 +93일까지만)
-            var date = new Date();            
-            var dateStart = moment(date.getTime()).add("3", "d").format("YYYY-MM-DD");
-            var dateEnd = moment(date.getTime()).add("93", "d").format("YYYY-MM-DD");
-            // var dateDay = today.diff(lastWeek, 'days')
-            console.log(dateStart);
-            console.log(dateEnd);
-            
-            var calendarDate = $('.fc-day')
-            calendarDate.each(function(index){
-                var eachDate = $(this).data('date');
-                console.log(eachDate);                
-            });            
+            }weekListKo();           
 
             // 시간, 날짜 선택 박스 width와 동일하게 height 주기
-            function scheduleBoxHeightSet(){
-                // 시간
-                var timeBoxwidth = $('.time_lst li').width();
-                $('.time_lst li').height(timeBoxwidth);
-                // 날짜
-                var dateBoxwidth = $('.fc-daygrid th').width();
-                $('.fc-day').height(dateBoxwidth);
-            }scheduleBoxHeightSet();
+            // 시간
+            var timeBoxwidth = $('.time_lst li').width();
+            $('.time_lst li').height(timeBoxwidth);
+            // 날짜
+            var dateBoxwidth = $('.fc-daygrid th').width();
+            $('.fc-day').height(dateBoxwidth);
 
-            // 요일 선택 시 활성화
-            $('.week_lst li').on('click', function(){
+            // 요일 선택 
+            $('.week_lst li a').on('click', function(){
+                // 선택 날짜 활성화
                 $('.week_lst li').removeClass('on');
-                $(this).addClass('on');
+                $(this).parent('li').addClass('on');
+                
+                // 하단 버튼에 선택 요일명 넣어주기
+                var weekName = $(this).text();
+                var weekSaveBtn = $('.btn_save .week');
+                weekSaveBtn.html(weekName);
             });
 
             // 시간 선택 시 활성화
@@ -762,57 +752,31 @@
                 $(this).toggleClass('on');
             });
 
-            // 시간 선택 박스 터치 좌표  터치가 시작된 영역(startX)부터 터치가 끝난 영역(endX)까지의 .time_lst li에 addClass 'on'
-            function handleScheduleTouchEvent(){
-                var startX, endX;
-
-                $('.time_lst li').on('touchstart', function(e){
-                    startX = e.originalEvent.touches[0].clientX;
-
-                    $(this).addClass('on');
-                    console.log(startX);
-                    // e.preventDefault()
-                    // console.log(document.elementFromPoint(touch.x, touch.y))
-                    // alert('터치시작');
-                });
-
-                $('.time_lst li').on('touchmove touchend', function(e){
-                    $(this).addClass('on');
-
-                    endX = e.originalEvent.changedTouches[0].clientX;
-                    var touchBoxX = $(this).offset().left + $(window).scrollLeft();
-
-                    console.log(endX);
-                    // console.log(touchBoxX);
-
-                    if(endX - startX > 40){
-                        if( touchBoxX ){
-                            $(this).addClass('on');
-                        }
-                    }
-                });
-            }handleScheduleTouchEvent();
-
             // 스케줄 저장 버튼 터치 이벤트
             $('.btm_box button').on('touchstart touchend', function(){
                 $(this).toggleClass('on');
             });
+            
+            // 달력 이동 버튼 클릭 시 해당 월 숫자 하단 버튼에 넣어주기
+            $('.fc-button').on('click', function(){
+                var monthNum = $('.fc-toolbar-month').text();
+                var monthSaveBtn = $('.btn_save .month');
+                monthSaveBtn.html(monthNum);
+            });
 
             // 달력 선택 일자 활성화
-            $('.fc-scrollgrid-sync-table tbody .fc-day').on('click', function(){
-                $(this).toggleClass('on');
-            });
+            $('.fc-scrollgrid-sync-table tbody').on('click', '.fc-day', function(){
+                $(this).toggleClass('on')
+            })
 
             // 달력 넘기기 버튼 클릭 시
             $('.fc-button').on('click', function(){
+                // 선택 불가 날짜에 ㆍ 넣어줌
+                $('.fc-day-disabled > div').append('<div class="fc-daygrid-day-top"><a class="slt_disable">&bull;</a></div>')   
+                
                 // 날짜 선택 박스 width와 동일한 height 주기
                 var dateBoxwidth = $('.fc-daygrid th').width();
                 $('.fc-day').height(dateBoxwidth);
-
-                // 달력 선택 일자 활성화
-                $('.fc-scrollgrid-sync-table tbody .fc-day').on('click', function(){
-                    $(this).addClass('on');
-                });
             });
 
             // 공통 tap list 열기/닫기
@@ -834,27 +798,33 @@
             }handleTapList();
 
             // 스케줄 활성/비활성 버튼 팝업
-            $('.btn_scdl_disable label').on('click', function(){
-                if( $('.btn_scdl_disable input').prop('checked') === true ){
-                    $('body').addClass('lyr_backdrop');
-                    $('#schedule_activate').css('display', 'block');
+            var scdlCheck = false; 
+                       
+        	$('.btn_scdl_disable label').click(function(){
+                $('body').addClass('lyr_backdrop');
+                
+        		if (!scdlCheck) {
+                    $('#scdl_disable').css('display', 'block');
                     setTimeout(function() {
-                        $('#schedule_activate').addClass('on') //레이어 오픈 효과 적용
-                    }, 100);
-                }else{
-                    $('body').addClass('lyr_backdrop');
-                    $('#schedule_disable').css('display', 'block');
+                        $('#scdl_disable').addClass('on') //레이어 오픈 효과 적용
+                    }, 100);                    
+        			scdlCheck=true;
+        		} else {
+                    $('#scdl_activate').css('display', 'block');
                     setTimeout(function() {
-                        $('#schedule_disable').addClass('on') //레이어 오픈 효과 적용
+                        $('#scdl_activate').addClass('on') //레이어 오픈 효과 적용
                     }, 100);
-                };
-            });
-
+        			scdlCheck=false;
+        		}
+        	});
+            
             // 레이어 닫기버튼 클릭
             $('.lyr_close').on('click', function(){
-                $('.alert_pop').css('display', 'none');
                 $('.alert_pop').removeClass('on');
-                $('body').removeClass('lyr_backdrop');
+                setTimeout(function() {
+                    $('.alert_pop').css('display', 'none');
+                    $('body').removeClass('lyr_backdrop');
+                }, 100);
             });
         });
     </script>
