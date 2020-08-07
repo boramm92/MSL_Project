@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi">
+  <!-- (safari) 전화번호 형태로 된 문자열을 전화로 자동호출하지 못하게 함 -->
+  <meta name="format-detection" content="telephone=no">
+
+  <!-- css -->
+  <link rel="stylesheet" href="resources/css/font.css">
+  <link rel="stylesheet" href="resources/css/reset.css">
+  <link rel="stylesheet" href="resources/css/teacher_ver_m.css">
+  <!-- js -->
+  <script type="text/javascript" src="resources/js/jquery-1.11.2.min.js"></script>
+
+  <title>login</title>
+</head>
+<body class="body_fixed">
+  <div id="wrap">
+    <div id="m_container">
+      <!-- fixed_login -->
+      <div id="fixed_login">
+        <!-- visual -->
+        <div class="visual">
+          <img src="resources/images/logo_daekyo_kids.svg" class="visual_logo" alt="대교 상상 키즈 로고">
+        </div>
+        <!-- //visual -->
+
+        <!-- login_area -->
+        <div class="login_area">
+          <input type="number" class="input_txt" placeholder="선생님 코드를 입력하세요.">
+          <a href="#srch_id" class="input_link lyr_open">선생님코드를 잊으셨나요?</a>
+          <input type="password" class="input_txt" placeholder="비밀번호를 입력하세요.">
+          <a href="#srch_password" class="input_link lyr_open">비밀번호를 잊으셨나요?</a>
+
+          <!-- [D] '.user_check'에 'wrong' class가 추가되면 
+            1. p가 보여지고
+            2. 'save_check'에 비활성 디자인(회색)이 적용됩니다. -->
+          <div class="user_check">
+            <p class="primary_text_s t_warning">선생님 코드가 맞지 않거나, 잘못된 비밀번호입니다.</p>
+
+            <div class="save_check">
+              <span class="info_text_s">선생님코드를 저장합니다.<span>
+            </div>
+          </div>
+          <!-- //user_check -->
+        </div>
+        <!-- //login_area -->
+      </div>
+      <!-- //fixed_login -->
+
+      <button type="button" id="btn_login">로그인</button>
+    </div>
+  </div>
+
+  <!-- layer -->
+  <!-- 아이디찾기 -->
+  <!-- [D] .lyr_slide 에 'on' class가 추가되면 하단에서 레이어가 올라옵니다. -->
+  <div id="srch_id" class="lyr_box lyr_slide">
+    <div class="lyr_cont">
+      <div class="title_box">
+        <span class="title">선생님코드 찾기</span>
+        <p class="title_desc">
+          기본정보에 등록한 이름과 이메일을 입력하세요. 해당이메일로 선생님코드를 보내드립니다.
+        </p>
+      </div>
+
+      <div class="cont_box">
+        <input type="text" placeholder="이름" class="input_txt">
+        <input type="email" placeholder="이메일주소" class="input_txt">
+        <span class="primary_text_xs input_info">
+          메일이 도착하지 않으면 스팸함을 확인해보세요. 스팸함에도 메일이 도착하지 않는다면 관리자<a href="tel:080-777-0202">&#40;080–777-0202&#41;</a>에게 문의바랍니다.
+        </span>
+      </div>
+    </div>
+
+    <div class="lyr_btm">
+      <div class="dual_box">
+        <div>
+          <button type="button" class="btn_cancel lyr_close">취소</button>
+        </div>
+        <div>
+          <button type="button" class="btn_primary">이메일 발송</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- //아이디찾기 -->
+  <!-- 패스워드찾기 -->
+  <div id="srch_password" class="lyr_box lyr_slide">
+    <div class="lyr_cont">
+      <div class="title_box">
+        <span class="title">비밀번호 찾기</span>
+        <p class="title_desc">
+          기본정보에 등록한 이름과 선생님코드, 이메일을 입력하세요. 해당 메일로 비밀번호 재설정 링크를 보내드립니다.
+        </p>
+      </div>
+
+      <div class="cont_box">
+        <input type="text" placeholder="이름" class="input_txt">
+        <input type="text" placeholder="선생님코드" class="input_txt">
+        <input type="email" placeholder="이메일주소" class="input_txt">
+        <span class="primary_text_xs input_info">
+          메일이 도착하지 않으면 스팸함을 확인해보세요. 스팸함에도 메일이 도착하지 않는다면 관리자<a href="tel:000-000-0000">&#40;000-000-0000&#41;</a>에게 문의바랍니다.
+        </span>
+      </div>
+    </div>
+
+    <div class="lyr_btm">
+      <div class="dual_box">
+        <div>
+          <button type="button" class="btn_cancel lyr_close">취소</button>
+        </div>
+        <div>
+          <button type="button" class="btn_primary">이메일 발송</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- //패스워드찾기 -->
+  <!-- //layer -->
+
+<script type="text/javascript">
+$(document).ready(function(){
+  // 공통 200723 AMR 레이어 열기/닫기
+  $('.lyr_open').on('click', function(e){
+    var thisHref = $(this).attr('href');
+
+    e.stopPropagation();
+    handleLyrClose(); //레이어 닫기
+
+    $('body').addClass('lyr_backdrop'); //body에 백그라운드 적용
+    $(thisHref).css({'display': 'block'}); //클릭한 a의 href와 동일한 레이어만 block
+
+    setTimeout(function(){
+      $(thisHref).addClass('on') //레이어 오픈 효과 적용
+    }, 100);
+  })
+
+  // 레이어 닫기
+  function handleLyrClose() {
+    // 레이어에서 클릭 시 버블링 막기
+    $('.lyr_box').on('click', function(e){
+      e.stopPropagation()
+    })
+    
+    // 레이어 닫기버튼 클릭
+    $('.lyr_close').on('click', function(){
+      $('.lyr_box').removeClass('on');
+
+      setTimeout(function(){
+        $('body').removeClass('lyr_backdrop');
+      }, 200);
+    })
+
+    // 레이어를 제외한 body를 클릭
+    $('body').on('click', function () {
+      if ($(this).hasClass('lyr_backdrop')) {
+        $('.lyr_box').removeClass('on');
+
+        setTimeout(function () {
+          $('body').removeClass('lyr_backdrop');
+        }, 200);
+      }
+    })
+  }
+
+  // 공통 200728 AMR input이 focus되어 있을 때 input이 아닌 영역에 touch를 하거나, 스크롤을 하면 가상키보드가 닫힘
+
+  // document에서 일어나는 touch 이벤트
+  handleInputKeyboard($('#m_container'), $(document));
+
+  // lyer에서 일어나는 touch 이벤트
+  handleInputKeyboard($('.lyr_box, .lyr_backdrop'), $('.lyr_box, .lyr_backdrop'));
+
+  function handleInputKeyboard(touchStartEl, touchEndEl) {
+    $('input').focus(function () {
+      var $this = $(this);
+
+      touchStartEl.on('touchstart', function (e) {
+        touchEndEl.on('touchmove touchend', function (e) {
+          touchEndEl.off('touchmove touchend');
+          $this.blur();
+        });
+      });
+    });
+  }
+
+  // 개별 200729 AMR 
+  var $body = $('body');
+
+  $('input').on('focus', function(){
+    $body.removeClass('body_fixed');
+  })
+
+  $('input').on('blur', function(){
+    $body.addClass('body_fixed');
+  })
+})
+</script>
+</body>
+</html>
