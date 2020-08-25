@@ -530,7 +530,7 @@ body.gnb_backdrop #header:after {content: ''; display: block; position: fixed; t
 .accordion_lst li .accordion_title.on ~ .accordion_detail {height: auto; padding: 16px; transform: scaleY(1);}
 /* //use information page */
 
-/*  profit detail page - 200824 추가 NBR */
+/*  income details page - 200824 추가 NBR */
 .month_nav {height: 48px; line-height: 48px; text-align: center;}
 .month_nav button {width: 24px; height: 24px; margin: 12px 0; border: 1px solid #e3e8eb; border-radius: 4px;}
 .month_nav button.btn_disabled {border-color: #f4f6f8;}
@@ -545,34 +545,40 @@ body.gnb_backdrop #header:after {content: ''; display: block; position: fixed; t
 .info_box .info_lst li {color: #616c78; font-size: 10px; line-height: 16px;}
 .info_box .info_lst li ul {margin: 0 0 0 10px;}
 .info_box .info_lst li strong {color: #616c78; font-size: 10px; font-weight: 800;}
-.total_profit {height: 48px; margin: 0 0 25px; padding:  0 24px; border: 2px solid #e3e8eb; border-radius: 24px; line-height: 44px;}
-.total_profit > span {float: left; color: #616c78; font-size: 10px; font-weight: 800;}
-.total_profit > span em {color: #616c78; font-size: 10px; font-weight: 800;}
-.total_profit > strong {float: right; color: #e60662; font-size: 12px;}
-.total_profit > strong span {margin: 0 2px 0 0; color: #e60662; font-size: 16px; font-weight: 800;}
-.profit_lst {border-top: 1px solid #e3e8eb;}
-.profit_lst li {border-bottom: 1px solid #e3e8eb;}
-.profit_lst li .profit_title {height: 36px; padding: 0 52px 0 0;}
-.profit_lst li .profit_title.on {height: 36px; min-height: inherit;}
-.profit_lst li .profit_title.on ~ .profit_detail {padding: 12px 24px;}
-.profit_lst li .profit_title > span {display: inline-block; left: 12px; width: auto;}
-.profit_lst li .profit_title > span em {font-size: 12px; font-weight: 800;}
-.profit_lst li .profit_title > em {float: right; font-size: 10px; line-height: 36px;}
-.profit_lst li .profit_title > em strong {margin: 0 2px 0 0; font-size: 14px; font-weight: 800;}
-.profit_lst li.reward .profit_title > span,
-.profit_lst li.reward .profit_title > em,
-.profit_lst li.reward .profit_title > em strong,
-.profit_lst li.penalty .profit_title > span,
-.profit_lst li.penalty .profit_title > em,
-.profit_lst li.penalty .profit_title > em strong {color: #fa4730;}
-.profit_lst li .profit_detail {width: 100%;}
-.profit_lst li .profit_detail .detail_lst li {border: none; color: #616c78; font-size: 12px; line-height: 16px;}
-.profit_lst li .profit_detail .detail_lst li span {color: #616c78; font-size: 12px;}
-.profit_lst li .profit_detail .detail_lst li span em {color: #616c78; font-size: 12px;}
-.profit_lst li .profit_detail .detail_lst li > em {float: right; color: #616c78; font-size: 10px;}
-.profit_lst li .profit_detail .detail_lst li > em strong {margin: 0 2px 0 0; color: #616c78; font-size: 12px;}
-.profit_lst li.reward .profit_detail .detail_lst li > em {float: none; color: #616c78; font-size: 12px;}
-/* // pay detail page */
+.total_income {height: 48px; margin: 0 0 25px; padding:  0 24px; border: 2px solid #e3e8eb; border-radius: 24px; line-height: 44px;}
+.total_income > span {float: left; color: #616c78; font-size: 10px; font-weight: 800;}
+.total_income > span em,
+.total_income > span span {color: #616c78; font-size: 10px; font-weight: 800;}
+.total_income > span.fix span {display: none;}
+.total_income > strong {float: right; color: #e60662; font-size: 12px;}
+.total_income > strong span {margin: 0 2px 0 0; color: #e60662; font-size: 16px; font-weight: 800;}
+.income_lst {border-top: 1px solid #e3e8eb;}
+.income_lst li {border-bottom: 1px solid #e3e8eb;}
+.income_lst li .income_date {height: 36px; padding: 0 52px 0 0;}
+.income_lst li .income_date.on {height: 36px; min-height: inherit;}
+.income_lst li .income_date.on ~ .income_detail {padding: 12px 24px;}
+.income_lst li .income_date > span {display: inline-block; left: 12px; width: auto;}
+.income_lst li .income_date > span em {font-size: 12px; font-weight: 800;}
+.income_lst li .income_date > em {float: right; font-size: 10px; line-height: 35px;}
+.income_lst li .income_date > em strong {margin: 0 2px 0 0; font-size: 14px; font-weight: 800;}
+.income_lst li.reward .income_date > span,
+.income_lst li.reward .income_date > em,
+.income_lst li.reward .income_date > em strong,
+.income_lst li.penalty .income_date > span,
+.income_lst li.penalty .income_date > em,
+.income_lst li.penalty .income_date > em strong {color: #fa4730;}
+.income_lst li.reward .income_date > em strong,
+.income_lst li.penalty .income_date > em strong {position: relative;}
+.income_lst li.reward .income_date > em strong:before {content: '+'; position: absolute; left: -10px; }
+.income_lst li.penalty .income_date > em strong:before {content: '-'; position: absolute; left: -10px; }
+.income_lst li .income_detail {width: 100%;}
+.income_lst li .income_detail .detail_lst li {border: none; color: #616c78; font-size: 12px; line-height: 16px;}
+.income_lst li .income_detail .detail_lst li span {color: #616c78; font-size: 12px;}
+.income_lst li .income_detail .detail_lst li span em {color: #616c78; font-size: 12px;}
+.income_lst li .income_detail .detail_lst li > em {float: right; color: #616c78; font-size: 10px;}
+.income_lst li .income_detail .detail_lst li > em strong {margin: 0 2px 0 0; color: #616c78; font-size: 12px;}
+.income_lst li.reward .income_detail .detail_lst li > em {float: none; color: #616c78; font-size: 12px;}
+/* // income details page */
 
 /* NBR fullcalendar */
 .schedule_set_area .calendar_box {margin: 24px 0 12px;}
