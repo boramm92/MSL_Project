@@ -126,7 +126,7 @@
         <!-- #m_container -->
         <div id="m_container">
             <h2 class="page_title">스케줄 설정</h2>
-            
+
             <!-- .set_area -->
             <div class="set_area">
                 <!-- .set_btn_box -->
@@ -141,7 +141,7 @@
                     <!-- .cont_slt_time -->
                     <div class="cont_slt_time">
                         <div class="option_group">
-                            <div class="btn_option">
+                            <div class="btn_scdl_disable btn_option">
                                 <input type="checkbox" id="scd_disable">
                                 <label for="scd_disable">스케줄 비활성화</label>
                             </div>
@@ -404,7 +404,7 @@
 
                         <div class="btm_box">
                             <button type="button" class="btn_save">수요일 스케줄을 저장합니다.</button>
-                        </div>                        
+                        </div>
                     </div>
                     <!-- //.cont_slt_time -->
 
@@ -413,7 +413,7 @@
                         <div class="calendar_box">
                             <div id="calendar"></div>
                         </div>
-                        
+
                         <div class="notice">
                             <div class="notice_bg">
                                 <span class="notice_text">선택한 날짜를 두번누르면 취소됩니다.</span>
@@ -424,7 +424,7 @@
                             <button type="button" class="btn_save">
                                 <span class="month">8</span>월 방문불가 일정을 저장합니다.
                             </button>
-                        </div> 
+                        </div>
                     </div>
                     <!-- //.cont_slt_date -->
                 </div>
@@ -436,6 +436,66 @@
     </div>
     <!-- //#wrap -->
 
+    <!-- layer -->
+    <!-- 스케줄 설정 비활성화 -->
+    <!-- [D] .lyr_pop 에 'on' class가 추가되면 팝업 등장 -->
+    <div id="schedule_disable" class="lyr_box lyr_pop">
+        <div class="lyr_cont">
+            <div class="title_box">
+                <span class="title">스케줄 설정이 비활성화 됩니다.</span>
+            </div>
+
+            <div class="cont_box">
+                <span  class="cont_desc">스케줄 비활성화 모드 작동시,<br>재활성화를 할 때까지 방문활동이 제한됩니다.</span>
+            </div>
+        </div>
+
+        <div class="lyr_btm">
+            <button type="button" class="btn_cancel lyr_close">확인</button>
+        </div>
+    </div>
+    <!-- //스케줄 설정 비활성화 -->
+
+    <!-- 스케줄 설정 활성화 -->
+    <!-- [D] .lyr_pop 에 'on' class가 추가되면 팝업 등장 -->
+    <div id="schedule_activate" class="lyr_box lyr_pop">
+        <div class="lyr_cont">
+            <div class="title_box">
+                <span class="title">스케줄 설정이 활성화 됩니다.</span>
+            </div>
+
+            <div class="cont_box">
+                <span class="cont_desc">스케줄 설정이 활성 모드로 전환되어,<br>방문활동이 가능해 졌습니다.</span>
+                <em class="cont_ntc">매칭을 위해 스케줄을 다시 설정해주세요!</em>
+            </div>
+        </div>
+
+        <div class="lyr_btm">
+            <button type="button" class="btn_cancel lyr_close">확인</button>
+        </div>
+    </div>
+    <!-- //스케줄 설정 활성화 -->
+
+    <!-- 방문 불가능 일정 설정 불가 -->
+    <!-- [D] .lyr_pop 에 'on' class가 추가되면 팝업 등장 -->
+    <div id="schedule_activate" class="lyr_box lyr_pop">
+        <div class="lyr_cont">
+            <div class="title_box">
+                <span class="title">스케줄 설정이 활성화 됩니다.</span>
+            </div>
+
+            <div class="cont_box">
+                <span class="cont_desc">스케줄 설정이 활성 모드로 전환되어,<br>방문활동이 가능해 졌습니다.</span>
+                <em class="cont_ntc">매칭을 위해 스케줄을 다시 설정해주세요!</em>
+            </div>
+        </div>
+
+        <div class="lyr_btm">
+            <button type="button" class="btn_cancel lyr_close">확인</button>
+        </div>
+    </div>
+    <!-- //방문 불가능 일정 설정 불가 -->
+
     <!-- script -->
     <script type="text/javascript">
         $(document).ready(function() {
@@ -443,21 +503,21 @@
             $('.gnb_open').on('click', function(e) {
                 e.stopPropagation();
                 handleGndClose();
-                
+
                 $('body').addClass('lyr_backdrop');
                 $('#gnb').addClass('show');
-                
+
                 setTimeout(function() {
                     $('#gnb').addClass('on');
                 }, 100);
-                
+
                 // gnb 닫기
                 function handleGndClose() {
                     // gnb에서 클릭 시 버블링 막기
                     $('#gnb').on('click', function(e) {
                         e.stopPropagation();
                     })
-                    
+
                     // gnb를 제외한 body를 클릭
                     $('body').on('click', function(e) {
                         if ($(this).hasClass('lyr_backdrop')) {
@@ -538,20 +598,41 @@
             }
         });
     </script>
-    
+
     <!-- script [boram] -->
     <script type="text/javascript">
         $(document).ready(function(){
             // 시간 선택 박스 width와 동일한 height 주기
-            var timeBoxwidth = $('.time_lst li').width();            
+            var timeBoxwidth = $('.time_lst li').width();
             $('.time_lst li').height(timeBoxwidth);
-                        
+
+            // 스케줄 활성/비활성 버튼 팝업
+            $('.btn_scdl_disable label').on('click', function(){
+                if( $('.btn_scdl_disable input').attr('checked') == true){
+                    $('body').addClass('lyr_backdrop');
+                    $('#schedule_activate').show();
+                }else{
+                    $('#schedule_disable').hide();
+                    $('body').addClass('lyr_backdrop');
+                    $('#schedule_disable').show();
+                }
+            });
+            // 레이어 닫기버튼 클릭
+            $('.lyr_close').on('click', function(){
+                $('.lyr_pop').hide();
+                $('.lyr_box').removeClass('on');
+
+                setTimeout(function(){
+                   $('body').removeClass('lyr_backdrop');
+                }, 200);
+            });
+
             // 요일 선택 시 활성화
             $('.week_lst li').on('click', function(){
                 $('.week_lst li').removeClass('on');
                 $(this).addClass('on');
             });
-            
+
             // 시간 선택 시 활성화
             $('.time_lst li').on('click', function(){
                 $(this).addClass('on');
@@ -559,15 +640,15 @@
             $('.time_lst li').on('touchmove', function(e){
                 e.preventDefault()
                 alert('터치시작');
-                
+
             });
             $('.time_lst li').on('dblclick', function(){
                 if( $(this).hasClass('on') ){
                     $(this).removeClass('on');
                 }
             });
-            
-                        
+
+
             // 스케줄 저장 버튼 터치 이벤트
             $('.btm_box button').on('touchstart', function(){
                 $(this).addClass('on');
@@ -575,7 +656,7 @@
             $('.btm_box button').on('touchend', function(){
                 $(this).removeClass('on');
             });
-                        
+
             // 방문 불가 설정 달력 calendar
             var calendarEl = document.getElementById('calendar');
             var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -583,10 +664,10 @@
                 initialDate: new Date(),
                 selectable: false,
                 contentHeight: 'auto',
-                locale : 'ko',               
+                locale : 'ko',
                 header: {
                     left: 'title',
-                    right: 'prev, next'                
+                    right: 'prev, next'
                 },
                 visibleRange: function(currentDate) {
                     var startDate = new Date(currentDate.getDate())
@@ -599,17 +680,18 @@
                     dayGridMonth: {
                         titleFormat: {
                             year: 'numeric',
-                            month: 'numeric'                         
+                            month: 'numeric'
                         },
                     },
                 },
             });
             calendar.render();
-            
+
             // 일자 선택 박스 width와 동일한 height 주기
             var dateBoxwidth = $('.fc-daygrid th').width();
             $('.fc-day').height(dateBoxwidth);
-            // 달력 넘기기 버튼 클릭 시 
+
+            // 달력 넘기기 버튼 클릭 시
             $('.fc-button').on('click', function(){
                 // 일자 선택 박스 width와 동일한 height 주기
                 var dateBoxwidth = $('.fc-daygrid th').width();
@@ -617,21 +699,22 @@
                 // 달력 선택 일자 활성화
                 $('.fc-scrollgrid-sync-table tbody .fc-day').on('click', function(){
                     $(this).addClass('on');
-                }); 
+                });
+                // 달력 선택 일자 비활성화 (더블터치)
                 $('.fc-scrollgrid-sync-table tbody .fc-day').on('dblclick', function(){
                     if( $(this).hasClass('on') ){
                         $(this).removeClass('on');
                     }
                 });
             });
-            
-            // 스케줄 설정 유형 별 탭버튼, 내용 
+
+            // 스케줄 설정 유형 별 탭버튼, 내용
     		var setBtn = $('.set_btn_box li');
     		var setCont = $('.set_board > div');
-    
+
     		setCont.hide();
-    		setCont.eq(1).show();
-    
+    		setCont.eq(0).show();
+
     		setBtn.on('click',function(){
     			var target = $(this);
     			var index = target.index();
@@ -640,30 +723,27 @@
     			setCont.css('display','none');
     			setCont.eq(index).css('display','block');
     		});
-            
+
             // 달력 선택 일자 활성화
             $('.fc-scrollgrid-sync-table tbody .fc-day').on('click', function(){
                 $(this).addClass('on');
-            }); 
+            });
+            // 달력 선택 일자 활성화 (더블터치)
             $('.fc-scrollgrid-sync-table tbody .fc-day').on('dblclick', function(){
                 if( $(this).hasClass('on') ){
                     $(this).removeClass('on');
                 }
             });
-            
-            $('.fc-day-past').on('click', function(e){
-                e.preventDefault();
-            });
         });
-        
+
         $(window).resize(function(){
             // 시간 선택 박스 width와 동일한 height 주기
-            var timeBoxwidth = $('.time_lst li').width();            
+            var timeBoxwidth = $('.time_lst li').width();
             $('.time_lst li').height(timeBoxwidth);
-            
+
             // 일자 선택 박스 width와 동일한 height 주기
             var dateBoxwidth = $('.fc-daygrid th').width();
-            $('.fc-day').height(dateBoxwidth);   
+            $('.fc-day').height(dateBoxwidth);
         });
     </script>
 </body>

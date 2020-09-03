@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class='dragArea' >
+ <div id='box1' class='dragitem'>
+ </div>
+ <div id='box2' class='dragitem'>
+ </div>
+</div>
+
+<div class='dropArea'></div>
+
+<!-- js -->
+<script type="text/javascript" src="resources/js/jquery-1.11.2.min.js"></script>
+<script>
+var startTouchX = null;
+var startTouchY = null;
+var moveTouchX = null;
+var moveTouchY = null;
+var startPositionX = null;
+var startPositionY = null;
+
+$('.dragitem').bind('touchstart',function(event){
+event.preventDefault();
+var e = event.originalEvent;
+startTouchX = e.targetTouches[0].pageX;
+startTouchY = e.targetTouches[0].pageY;
+startPositionX = $(this).css('left');
+startPositionY = $(this).css('top');
+});
+$('.dragitem').bind('touchmove', function(event){
+event.preventDefault();
+var e = event.originalEvent;
+moveTouchX = e.targetTouches[0].pageX;
+moveTouchY = e.targetTouches[0].pageY;
+$('#movex').text(moveTouchX);
+$('#movey').text(moveTouchY);
+$(this).css({top: (moveTouchY - 50), left: (moveTouchX - 5)});
+});
+$('.dragitem').bind('touchend', function(event){
+$(this).animate({top: startPositionY, left: startPositionX}, 'fast');
+});
+</script>
+</body>
+</html>

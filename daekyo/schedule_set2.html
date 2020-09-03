@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="resources/css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="resources/css/teacher_ver_m.css">
-    <link rel="stylesheet" href="resources/css/teacher_ver_b.css">
+    <link rel="stylesheet" href="resources/css/teacher_ver_b2.css">
     <!-- js -->
     <script type="text/javascript" src="resources/js/jquery-1.11.2.min.js"></script>
     <script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
@@ -25,7 +25,7 @@
         }
     </style>
 
-    <title>Schedule set</title>
+    <title>Schedule set2</title>
 </head>
 
 <body>
@@ -421,7 +421,9 @@
                         </div>
 
                         <div class="btm_box">
-                            <button type="button" class="btn_save">8월 방문불가 일정을 저장합니다.</button>
+                            <button type="button" class="btn_save">
+                                <span class="month">8</span>월 방문불가 일정을 저장합니다.
+                            </button>
                         </div>
                     </div>
                     <!-- //.cont_slt_date -->
@@ -433,6 +435,30 @@
         <!-- //#m_container -->
     </div>
     <!-- //#wrap -->
+
+    <!-- layer -->
+    <!-- 스케줄 설정 비활성화 -->
+    <!-- [D] .lyr_pop 에 'on' class가 추가되면 팝업 등장 -->
+    <div id="srch_id" class="lyr_box lyr_pop">
+      <div class="lyr_cont">
+        <div class="title_box">
+          <span class="title">스케줄 설정이 비활성화 됩니다.</span>
+        </div>
+
+        <div class="cont_box">
+            <span  class="cont_desc">스케줄 비활성화 모드 작동시, 재활성화를 할 때까지 방문활동이 제한됩니다.</span>
+        </div>
+      </div>
+
+      <div class="lyr_btm">
+        <div class="dual_box">
+          <div>
+            <button type="button" class="btn_cancel lyr_close">확인</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- //스케줄 설정 비활성화 -->
 
     <!-- script -->
     <script type="text/javascript">
@@ -564,14 +590,21 @@
             });
 
             // 방문 불가 설정 달력 datePicker
-            $('#datepicker').datepicker();
+            $('#datepicker').datepicker({
+
+            });
+
+            // 달력 월, 일, 버튼 넣어주기
+            var calendarYear = $('.datepicker-years .year.active').text();
+            var calendarMonth = $('.datepicker-months .month.active').text();
+            $('.datepicker-days thead').append('<tr><th colspan="3">' + calendarMonth + calendarYear + '<th class="prev" colspan="4"></th></tr>')
 
             // 스케줄 설정 유형 별 탭버튼, 내용
     		var setBtn = $('.set_btn_box li');
     		var setCont = $('.set_board > div');
 
     		setCont.hide();
-    		setCont.eq(0).show();
+    		setCont.eq(1).show();
 
     		setBtn.on('click',function(){
     			var target = $(this);
@@ -581,16 +614,20 @@
     			setCont.css('display','none');
     			setCont.eq(index).css('display','block');
     		});
-            
+
             // 일자 선택 박스 width와 동일한 height 주기
-            var dateBoxwidth = $('.datepicker table tr td').width();
-            $('.datepicker table tr td').height(dateBoxwidth);
+            var dateBoxwidth = $('.datepicker .day').width();
+            $('.datepicker .day').height(dateBoxwidth);
         });
 
         $(window).resize(function(){
             // 시간 선택 박스 width와 동일한 height 주기
             var timeBoxwidth = $('.time_lst li').width();
             $('.time_lst li').height(timeBoxwidth);
+
+            // 일자 선택 박스 width와 동일한 height 주기
+            var dateBoxwidth = $('.datepicker .day').width();
+            $('.datepicker .day').height(dateBoxwidth);
         });
     </script>
 </body>
