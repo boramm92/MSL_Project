@@ -1,0 +1,74 @@
+@charset "UTF-8";
+/* MINDsLab. NBR. 20200902 */
+
+/* common css file */
+@import url("reset.css");
+@import url("font.css");
+
+/* -------------------- layout -------------------- */
+#wrap {width: 100%; min-width: 1280px;}
+#header {width: 100%; height: 50px; padding: 0 20px; box-sizing: border-box;}
+#container {width: 100%; height: calc(100vh - 50px);}
+#contents {width: 100%; height: 100%; padding: 20px; box-sizing: border-box; background: #E9F1F3;}
+
+/* -------------------- common -------------------- */
+/* color */
+/* background color */
+.bg_blue {background-color: #00829d;}
+.bg_green {background-color: #009583;}
+.bg_gray {background-color: #3f3f3f;}
+
+/* border color */
+.bd_blue {border-color: #00829d;}
+.bd_green {border-color: #009583;}
+.bd_gray {border-color: #3f3f3f;}
+/* //color */
+
+/* float */
+.fl {float: left;}
+.fr {float: right;}
+/* //float */
+
+/* hide */
+.hide {position: absolute; top: 0; left: 0; clear: both; overflow: hidden; width: 0; height: 0; margin: 0; padding: 0; line-height: 0;}
+/* //hide */
+
+/* iptBox */
+.iptBox {display: inline-block; position: relative;}
+.iptBox input {display: inline-block; width: 100%; height: 100%; border: 1px solid #E9F1F3; border-radius: 4px; background: #fff;}
+.iptBox input:focus {border: 1px solid rgba(11,42,74,0.4); box-shadow: 0 2px 3px rgba(11, 42, 74, 0.1); transition: all 0.3s ease-out;}
+.iptBox input label {}
+/* //iptBox */
+
+/* chkBox */
+.chkBox {display: inline-block;}
+.chkBox input[type="checkbox"] {position: absolute; overflow: hidden; width: 1px; height: 1px; margin: -1px; padding: 0; clip: rect(0,0,0,0); border: 0;}
+.chkBox input[type="checkbox"] + label {display: inline-block; position: relative; padding: 0 0 0 23px; font-size: 12px; cursor: pointer;}
+.chkBox input[type="checkbox"] + label:before {content: ''; position: absolute; top: 2px; left: 0; width: 15px; height: 15px; line-height: 15px; text-align: center; border: 1px solid rgba(11,42,74,0.3); border-radius: 3px; background: #fff;}
+.chkBox input[type="checkbox"]:checked + label:before {content: '\2713'; border-color: #00829d; background: #00829d; color: #fff;}
+.chkBox input[type="checkbox"]:checked + label {color: #00829d;}
+/* //chkBox */
+
+/* btnBox */
+.btnBox {display: inline-block;}
+.btnBox a {display: inline-block; width: 100%; height: 100%; text-align: center; vertical-align: middle;}
+/* //btnBox */
+
+/* -------------------- header -------------------- */
+#header h1 {float: left; width: 140px; height: 100%;}
+#header h1 img {display: inline-block; height: 30px; margin: 10px 0;}
+
+#header .gnb {display: flex; width: calc(100% - 140px);}
+#header .gnb > li {flex: 1; float: left; text-align: center; line-height: 50px; cursor: pointer;}
+#header .gnb > li:hover {background: #fff;}
+#header .gnb > li h3 {color: #fff; font-size: 14px;}
+#header .gnb > li:hover h3 {color: #00829d;}
+#header .gnb > li .sub {display: none; position: relative; background: #fff;}
+#header .gnb > li .sub li {width: 100%; padding: 0 20px; box-sizing: border-box; text-align: left; line-height: 40px;}
+#header .gnb > li .sub li.open {background: url('../images/arw_bottom_bk.png')100% 50% no-repeat;}
+#header .gnb > li .sub li:hover {background: #00829d;}
+#header .gnb > li .sub li:hover a {color: #fff;}
+#header .gnb > li .sub li a {display: block;}
+
+/* -------------------- contents -------------------- */
+#contents h4 {font-size: 18px;}
