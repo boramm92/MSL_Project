@@ -50,28 +50,36 @@
 /* //chkBox */
 
 /* btnBox */
-.btnBox {display: inline-block;}
-.btnBox a {display: inline-block; width: 100%; height: 100%; text-align: center; vertical-align: middle;}
+.btnBox {display: block;}
+.btnBox a {display: block; width: 100%; height: 100%; border: 1px solid transparent; border-radius: 4px; box-sizing: border-box; text-align: center; vertical-align: middle;}
+.btnBox a:hover {box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1); transition: all 0.3s ease-out;}
 /* //btnBox */
 
 /* -------------------- header -------------------- */
 #header h1 {float: left; width: 140px; height: 100%;}
 #header h1 img {display: inline-block; height: 30px; margin: 10px 0;}
 
-#header .gnb {display: flex; float: left; position: relative; width: calc(100% - 400px);}
-#header .gnb > li {flex: 1; text-align: center; line-height: 50px;}
-#header .gnb > li:hover {background: rgba(255,255,255,0.2);}
+#header .gnb {display: flex; float: left; position: relative; width: calc(100% - 420px); margin: 0 10px; box-sizing: border-box;}
+#header .gnb > li {flex: 1; text-align: center; line-height: 50px; box-sizing: border-box;}
+#header .gnb > li.active {background: rgba(255,255,255,0.2);}
+#header .gnb > li:hover {box-shadow: 0 -6px 0 0 #205763 inset; transition: all 0.3s ease-out;}
 #header .gnb > li h3 a {display: inline-block; width: 100%; height: 100%; color: #fff; font-size: 14px;}
 #header .gnb .lnb_box {display: none; position: absolute; left: 0; width: 100%; height: 270px; padding: 20px 0 0; box-sizing: border-box; background: #fff;}
+/* #header .gnb .lnb_box {display: none; position: absolute; left: 0; width: 100%; padding: 20px 0 25px; box-sizing: border-box; background: #fff;} */
 #header .gnb .sub {display: none;}
-#header .gnb .sub > li {display: inline-block; margin: 0 20px; vertical-align: top;}
+#header .gnb .sub > li {display: inline-block; margin: 0 30px; vertical-align: top;}
 #header .gnb .sub > li > a {display: inline-block; margin: 0 0 10px; font-size: 14px; font-weight: 700;}
 #header .gnb .sub li {text-align: left; line-height: 2;}
 #header .gnb .sub li.open {background: url('../images/arw_bottom_bk.png')100% 50% no-repeat;}
 #header .gnb .sub li a:hover {color: #00829d; text-decoration: underline;}
 
-#header .etc_box {float: right; width: 260px; height: 100%; text-align: center;}
-#header .etc_box > div {display: inline-block; width: 40%;}
+#header .etc_box {float: right; width: 260px; height: 100%; padding: 10px 0; box-sizing: border-box;}
+#header .etc_box > div {float: left;}
+#header .etc_box .user_act {width: 150px; height: 100%; margin: 0 10px 0 0; padding: 0 5px; border-radius: 4px; box-sizing: border-box; background: rgba(255,255,255,0.5); line-height: 30px;}
+#header .etc_box .btnBox {display: block; width: 100px; height: 30px; line-height: 28px;}
+#header .etc_box .btnBox a {display: block; background: #009583; color: #fff;}
+#header .etc_box .btnBox a:hover {border: 1px solid #E9F1F3;}
+#header .etc_box .btnBox img {vertical-align: middle;}
 
 /* -------------------- contents -------------------- */
 #contents h4 {font-size: 18px;}
