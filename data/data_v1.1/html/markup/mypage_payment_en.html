@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="format-detection" content="telephone=no" />
+
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="../../assets/css/all.css" />
+<link rel="stylesheet" type="text/css" href="../../assets/css/font.css" />
+<link rel="stylesheet" type="text/css" href="../../assets/css/jquery-ui-1.8.18.css" />
+<link rel="stylesheet" type="text/css" href="../../assets/css/common-data.css"/>
+
+<title>Transfer Points ll MY PAGE</title>
+</head>
+<body id="edit_tool" class="mypage payment en">
+
+<!-- .page loading -->
+<div id="page_ldWrap" class="page_loading">
+	<div class="loading_itemBox">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+<!-- //.page loading -->
+
+<!-- 2 .pop_simple -->
+<div class="pop_simple check_agree" id="pop_2">
+	<div class="pop_bg"></div>
+	<!-- .popWrap -->
+	<div class="popWrap">
+		<div class="pop_hd">
+			<em class="fas fa-times ico_close"></em>
+			<h6>Agreement on Business Income Tax</h6>
+		</div>
+
+		<!-- .pop_bd -->
+		<div class="pop_bd">
+			<p>3.3% business income tax will be deducted. If it is less than 1,000 won the amount will be refunded on the 10th of the next month.</p>
+		</div>
+		<!-- //.pop_bd -->
+		<div class="btn">
+			<button class="cancel">Disagree</button>
+			<button class="save">Agree</button>
+		</div>
+	</div>
+	<!-- //.popWrap -->
+</div>
+<!-- //.pop_simple -->
+
+<!-- 2 .pop_simple -->
+<div class="pop_simple request account" id="pop_2">
+	<div class="pop_bg"></div>
+	<!-- .popWrap -->
+	<div class="popWrap">
+		<div class="pop_hd">
+			<em class="fas fa-times ico_close"></em>
+			<h6>Cash Out Points</h6>
+		</div>
+
+		<!-- .pop_bd -->
+		<div class="pop_bd">
+			<div class="my_point">
+				<p>Current Points <span>25,223,400</span></p>
+				<p>Requested Points <span class="blue">5,000</span></p>
+				<p>Requested Points This Month<span>5,000</span></p>
+				<p>Tax <span>130</span></p>
+			</div>
+			<em>When the accumulative requested points exceeds 33,000 won<br>3.3% business income tax will be applied.</em>
+			<div class="my_account">
+				<p>Bank Account Information</p>
+				<div class="register on">
+					<div class="btn">
+						<button type="button">Register Bank Account Information</button>
+					</div>
+					<em>Please register bank account information<br>to request the cashout.</em>
+				</div>
+				<div class="register_info">
+					<p>Bank <span>우리은행</span></p>
+					<p>Account Holder’s Name <span>김마인</span></p>
+					<p>Account Number <span>1002-22-222322</span></p>
+				</div>
+			</div>
+		</div>
+		<!-- //.pop_bd -->
+		<div class="btn">
+			<button class="cancel">Cancel</button>
+			<button class="save" disabled>Cash Out <span>3,550</span>p</button>
+		</div>
+	</div>
+	<!-- //.popWrap -->
+</div>
+<!-- //.pop_simple -->
+
+<!-- 2 .pop_simple -->
+<div class="pop_simple account_admin" id="pop_2">
+	<div class="pop_bg"></div>
+	<!-- .popWrap -->
+	<div class="popWrap">
+		<div class="pop_hd">
+			<em class="fas fa-times ico_close"></em>
+			<h6>Managing Bank Account Information</h6>
+		</div>
+
+		<!-- .pop_bd -->
+		<div class="pop_bd">
+			<em>Bank accounts only match users’ names can be registered.<br>When the account holder’s name and users’ name do not match,<br>the bank account can not be registered.</em>
+			<div class="my_account">
+				<div>Bank Account Information</div>
+				<div class="account_holder">
+					Account Holder’s Name
+					<div class="btn on">
+						<button type="button">Name Authentication</button>
+					</div>
+					<div class="ipt_box">
+						<form action="">
+							<input type="text" id="name">
+							<label for="name">본인명의</label>
+						</form>
+					</div>
+				</div>
+				<div>
+					Bank
+					<div class="select_box">
+						<select id="bank_slt">
+							<option selected>Select Bank</option>
+						</select>
+					</div>
+				</div>
+				<div>
+					Account Number
+					<div class="ipt_box">
+						<form action="">
+							<input type="number" id="bank_account">
+							<label for="bank_account">Type in only in numbers</label>
+						</form>
+					</div>
+				</div>
+				<div>
+					Social Numbers
+					<div class="ipt_box">
+						<form action=""><input type="number" id="id_num">
+						<label for="id_num">Type in only in numbers</label></form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- //.pop_bd -->
+		<div class="btn">
+			<button class="cancel">Cancel</button>
+			<button class="save">Register</button>
+		</div>
+	</div>
+	<!-- //.popWrap -->
+</div>
+<!-- //.pop_simple -->
+
+<!-- 1 .pop_simple -->
+<div class="pop_simple complate" id="pop_1">
+	<div class="pop_bg"></div>
+	<!-- .popWrap -->
+	<div class="popWrap">
+		<div class="pop_hd">
+			<em class="fas fa-times ico_close"></em>
+			<h6>Completed</h6>
+		</div>
+
+		<!-- .pop_bd -->
+		<div class="pop_bd">
+			<p>Cashout request has been completed. To check the status please go to<br><em>My Page > Transfer Points</em></p>
+		</div>
+		<!-- //.pop_bd -->
+		<div class="btn">
+			<button class="save">Okay</button>
+		</div>
+	</div>
+	<!-- //.popWrap -->
+</div>
+<!-- //.pop_simple -->
+
+<!-- wrap -->
+<div id="wrap">
+	<!-- #header -->
+	<div id="header">
+        <h1><a target="_self" href="#none"><img src="../../assets/images/img_maumdata_logo.svg" alt="logo"></a></h1>
+    	<h2>MY PAGE</h2>
+		<!-- .etcmenu -->
+		<div class="etcmenu mypage">
+            <div class="userBox">
+				<span class="my_point">4,600</span>
+				<div class="btn_box">
+					<a href="#none"><span class="fas fa-chalkboard"></span>Workspace</a>
+				</div>
+            </div>
+			<div class="outBox">
+				<a target="_self" href="#none">Sign out <em class="fas fa-sign-out-alt"></em></a>
+            </div>
+		</div>
+		<!-- //.etcmenu -->
+	</div>
+	<!-- //#header -->
+
+	<!-- #container -->
+	<div id="container">
+		<!-- .snb -->
+		<div class="snb">
+			<ul class="nav">
+                <li>
+					<a target="_self" href="mypage_worklist_en.html">My Tasks</a>
+                </li>
+				<li>
+					<a target="_self" href="mypage_point_en.html">Points<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;History</a>
+                </li>
+				<li class="active">
+					<a target="_self" href="mypage_payment_en.html">Transfer<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Points</a>
+				</li>
+				<li>
+					<a target="_self" href="mypage_myinfo_en.html">My<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Information</a>
+				</li>
+			</ul>
+		</div>
+		<!-- //.snb -->
+
+		<!-- .contents -->
+		<div class="contents">
+            <!-- .content -->
+            <div class="content">
+				<!-- .work_space -->
+				<div class="work_space">
+					<div class="mypage_stn">
+						<div class="payment_box my_box">
+							<h3>Transfer Points</h3>
+
+							<div class="my_cases mypoint_box common_box">
+								<div class="cost_box">
+									<form action="">
+										<input type="number" id="request_cost">
+										<label for="request_cost">Please enter the amount.</label>
+	                                    <button type="button">Transfer</button>
+									</form>
+                                </div>
+								<p class="payment_info">The maximum amount for cashing out is <span>6,000</span> points.</p>
+							</div>
+						</div>
+
+
+						<div class="point_info">
+                            <div class="fl">
+                                <p><span class="fas fa-caret-right"></span> To register/amend account information go to My Information > Account Information.</p>
+    							<p><span class="fas fa-caret-right"></span> To cash out points, the name authentication is needed.</p>
+                                <p><span class="fas fa-caret-right"></span> The minimum point for cashing out is 5,000 points, and the points can be cashed out &nbsp;&nbsp;in 1,000 points.</p>
+                                <p><span class="fas fa-caret-right"></span> 3.3% business income tax will be deducted.</p>
+    							<p>&nbsp;&nbsp;If it is less than 1,000 won the amount will be refunded on the 10th of the next month.</p>
+                            </div>
+                            <div class="fl">
+                                <p><span class="fas fa-caret-right"></span> Cashing out is limited to once a week, and you can findthe status on the Transfer &nbsp;&nbsp;Points tab.</p>
+    							<p><span class="fas fa-caret-right"></span> The weekly deadline for cashing out is Thursday 2 pm and the cashing out requests &nbsp;&nbsp;completed before the deadline will be paid on the following Friday at 2 pm (The &nbsp;&nbsp;requests made after Thursday 2 pm will be paid next Friday).</p>
+                                <p><span class="fas fa-caret-right"></span> Cashing out request is unavailable during 14:01 to 15:00 on Thursdays due to system &nbsp;&nbsp;maintenance.</p>
+                                <p><span class="fas fa-caret-right"></span> Cashing out process : name authentication > cashing out request > waiting for &nbsp;&nbsp;payment > payment approval > payment completed</p>
+    							<p><span class="fas fa-caret-right"></span> The new request is available when there is no payment in waiting.</p>
+                            </div>
+						</div>
+					</div>
+				</div>
+				<!-- //.work_space -->
+
+				<!-- .work_space -->
+				<div class="work_space">
+					<!-- .stn -->
+					<div class="mypage_stn">
+						<h3 class="working_lst">Points History</h3>
+						<div class="sort_group">
+							<div class="select_box">
+								<select id="work_type">
+									<option selected>Type</option>
+									<option value="voice">Voice</option>
+									<option value="text">Text</option>
+									<option value="image">Image</option>
+								</select>
+							</div>
+
+							<div class="date_box">
+								<form action="">
+									<input type="text" class="ipt_date fromDate" placeholder="From">
+								</form>
+								<span class="fas fa-calendar-alt"></span>
+								<em>~</em>
+							</div>
+
+							<div class="date_box">
+								<form action="">
+									<input type="text" class="ipt_date toDate" placeholder="To">
+								</form>
+								<span class="fas fa-calendar-alt"></span>
+							</div>
+
+							<div class="srch_box">
+								<form action="">
+									<input type="text" id="project">
+									<label for="project">Name of the Project</label>
+									<button type="submit"><span class="fas fa-search"></span></button>
+								</form>
+							</div>
+						</div>
+
+						<div class="work_lst common_box">
+							<table>
+								<caption class="hide">포인트 내역 리스트</caption>
+								<colgroup>
+									<col width="6%"><col width="13%"><col width="14%"><col width="15%"><col width="10%">
+									<col width="10%"><col width="10%"><col width="10%"><col width="12%">
+								</colgroup>
+								<thead>
+									<tr>
+										<th>Number</th>
+										<th>금액 (신청금액 &middot; 세금)</th>
+										<th>Bank</th>
+										<th>Account Number</th>
+										<th>Account Holder’s Name</th>
+                                        <th>Status</th>
+                                        <th>requested date</th>
+                                        <th>payment date</th>
+										<th>eason for failed transaction</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="num">1</td>
+										<td class="cost"><span>15,000</span>원</td>
+										<td class="bank_name">우리은행</td>
+										<td class="account_num">1003-04-234567</td>
+										<td class="account_holder">김마인</td>
+                                        <td class="status">transaction in progress</td>
+                                        <td class="report_date">2020.02.29</td>
+                                        <td class="payment_date">2020.02.29</td>
+										<td class="unpayment_reason">계좌번호 오류</td>
+									</tr>
+                                    <tr>
+										<td class="num">1</td>
+										<td class="cost"><span>15,000</span>원</td>
+										<td class="bank_name">우리은행</td>
+										<td class="account_num">1003-04-234567</td>
+										<td class="account_holder">김마인</td>
+                                        <td class="status">transaction completed</td>
+                                        <td class="report_date">2020.02.29</td>
+                                        <td class="payment_date">2020.02.29</td>
+										<td class="unpayment_reason">-</td>
+									</tr>
+                                    <tr>
+										<td class="num">1</td>
+										<td class="cost"><span>15,000</span>원</td>
+										<td class="bank_name">우리은행</td>
+										<td class="account_num">1003-04-234567</td>
+										<td class="account_holder">김마인</td>
+                                        <td class="status">transaction failed</td>
+                                        <td class="report_date">2020.02.29</td>
+                                        <td class="payment_date">2020.02.29</td>
+										<td class="unpayment_reason">계좌번호 오류</td>
+									</tr>
+                                    <tr>
+										<td class="num">1</td>
+										<td class="cost"><span>15,000</span>원</td>
+										<td class="bank_name">우리은행</td>
+										<td class="account_num">1003-04-234567</td>
+										<td class="account_holder">김마인</td>
+                                        <td class="status">처리중</td>
+                                        <td class="report_date">2020.02.29</td>
+                                        <td class="payment_date">2020.02.29</td>
+										<td class="unpayment_reason">계좌번호 오류</td>
+									</tr>
+                                    <tr>
+										<td class="num">1</td>
+										<td class="cost"><span>15,000</span>원</td>
+										<td class="bank_name">우리은행</td>
+										<td class="account_num">1003-04-234567</td>
+										<td class="account_holder">김마인</td>
+                                        <td class="status">처리중</td>
+                                        <td class="report_date">2020.02.29</td>
+                                        <td class="payment_date">2020.02.29</td>
+										<td class="unpayment_reason">계좌번호 오류</td>
+									</tr>
+                                    <tr>
+										<td class="num">1</td>
+										<td class="cost"><span>15,000</span>원</td>
+										<td class="bank_name">우리은행</td>
+										<td class="account_num">1003-04-234567</td>
+										<td class="account_holder">김마인</td>
+                                        <td class="status">처리중</td>
+                                        <td class="report_date">2020.02.29</td>
+                                        <td class="payment_date">2020.02.29</td>
+										<td class="unpayment_reason">계좌번호 오류</td>
+									</tr>
+                                    <tr>
+										<td class="num">1</td>
+										<td class="cost"><span>15,000</span>원</td>
+										<td class="bank_name">우리은행</td>
+										<td class="account_num">1003-04-234567</td>
+										<td class="account_holder">김마인</td>
+                                        <td class="status">처리중</td>
+                                        <td class="report_date">2020.02.29</td>
+                                        <td class="payment_date">2020.02.29</td>
+										<td class="unpayment_reason">계좌번호 오류</td>
+									</tr>
+                                    <tr>
+										<td class="num">1</td>
+										<td class="cost"><span>15,000</span>원</td>
+										<td class="bank_name">우리은행</td>
+										<td class="account_num">1003-04-234567</td>
+										<td class="account_holder">김마인</td>
+                                        <td class="status">처리중</td>
+                                        <td class="report_date">2020.02.29</td>
+                                        <td class="payment_date">2020.02.29</td>
+										<td class="unpayment_reason">계좌번호 오류</td>
+									</tr>
+                                    <tr>
+										<td class="num">1</td>
+										<td class="cost"><span>15,000</span>원</td>
+										<td class="bank_name">우리은행</td>
+										<td class="account_num">1003-04-234567</td>
+										<td class="account_holder">김마인</td>
+                                        <td class="status">처리중</td>
+                                        <td class="report_date">2020.02.29</td>
+                                        <td class="payment_date">2020.02.29</td>
+										<td class="unpayment_reason">계좌번호 오류</td>
+									</tr>
+                                    <tr>
+										<td class="num">1</td>
+										<td class="cost"><span>15,000</span>원</td>
+										<td class="bank_name">우리은행</td>
+										<td class="account_num">1003-04-234567</td>
+										<td class="account_holder">김마인</td>
+                                        <td class="status">처리중</td>
+                                        <td class="report_date">2020.02.29</td>
+                                        <td class="payment_date">2020.02.29</td>
+										<td class="unpayment_reason">계좌번호 오류</td>
+									</tr>
+                                    <tr>
+										<td class="num">1</td>
+										<td class="cost"><span>15,000</span>원</td>
+										<td class="bank_name">우리은행</td>
+										<td class="account_num">1003-04-234567</td>
+										<td class="account_holder">김마인</td>
+                                        <td class="status">처리중</td>
+                                        <td class="report_date">2020.02.29</td>
+                                        <td class="payment_date">2020.02.29</td>
+										<td class="unpayment_reason">계좌번호 오류</td>
+									</tr>
+                                    <tr>
+										<td class="num">1</td>
+										<td class="cost"><span>15,000</span>원</td>
+										<td class="bank_name">우리은행</td>
+										<td class="account_num">1003-04-234567</td>
+										<td class="account_holder">김마인</td>
+                                        <td class="status">처리중</td>
+                                        <td class="report_date">2020.02.29</td>
+                                        <td class="payment_date">2020.02.29</td>
+										<td class="unpayment_reason">계좌번호 오류</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+						<div class="btm_info">
+							<div class="paging">
+								<a class="btn_paging_prev" href="#none" >이전 페이지로 이동</a>
+								<span class="list">
+									<a href="#none" class="on">1</a>
+									<a href="#none">2</a>
+									<a href="#none">3</a>
+									<a href="#none">4</a>
+									<a href="#none">5</a>
+								</span>
+								<a class="btn_paging_next" href="#none">다음 페이지로 이동</a>
+							</div>
+						</div>
+					</div>
+					<!-- //.stn -->
+				</div>
+				<!-- //.work_space -->
+            </div>
+            <!-- //.content -->
+		</div>
+		<!-- //.contents -->
+	</div>
+	<!-- //#container -->
+
+    <!-- #footer -->
+	<div id="footer">
+		<div class="copyright">
+			<div class="cont_box">
+				<span>&copy; Copyright 2020</span>
+				<span class="company"><a href="https://maum.ai/login/loginForm?lang=ko" target="_self" title="maum.ai로 이동하기">MINDs Lab</a></span>
+				<span>601 Dasan Tower, 49 Daewangpangyo-ro 644beon-gil, Bundang-gu, Seongnam-si, Gyeonggi-do, Republic of Korea</span>
+				<span>CEO Taejoon Yoo</span>
+				<span>Company Registration Number 314-86-55446</span>
+			</div>
+		</div>
+	</div>
+	<!-- //#footer -->
+</div>
+<!-- //#wrap -->
+<script type="text/javascript" src="../../assets/js/jquery-2.2.0.min.js"></script>
+<script type="text/javascript" src="../../assets/js/all.js"></script>
+<script type="text/javascript" src="../../assets/js/jquery-ui-1.11.4.min.js"></script>
+<script type="text/javascript" src="../../assets/js/common.js"></script>
+
+<script type="text/javascript">
+$(window).load(function() {
+	$('.page_loading').addClass('pageldg_hide').delay(300).queue(function() {
+		$(this).remove();
+	});
+});
+</script>
+
+<script type="text/javascript">
+jQuery.event.add(window,"load",function(){
+	$(function() {
+		var dates = $('.fromDate, .toDate').datepicker({
+			prevText: '이전 달',
+			nextText: '다음 달',
+			// monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+			// monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+			// dayNames: ['일','월','화','수','목','금','토'],
+			// dayNamesShort: ['일','월','화','수','목','금','토'],
+			// dayNamesMin: ['일','월','화','수','목','금','토'],
+			dateFormat: 'yy-mm-dd',
+			// showMonthAfterYear: true,
+			// yearSuffix: '년',
+			onSelect: function (date) {
+				var endDate = $('.toDate');
+				var startDate = $(this).datepicker('getDate');
+				var minDate = $(this).datepicker('getDate');
+				endDate.datepicker('setDate', minDate);
+				startDate.setDate(startDate.getDate() + 365);
+				endDate.datepicker('option', 'maxDate', startDate);
+				endDate.datepicker('option', 'minDate', minDate);
+	  		}
+		});
+		$(".hasDatepicker").attr("autocomplete", "off");
+	});
+});
+</script>
+
+<script type="text/javascript">
+jQuery.event.add(window,"load",function(){
+	// 인풋 라벨
+    var placeholderLabel = $('input[type="text"], input[type="number"]');
+
+    placeholderLabel.on('focus', function(){
+    	$(this).siblings('label').hide();
+    });
+	placeholderLabel.on('focusout', function(){
+	    if($(this).val() === ''){
+	        $(this).siblings('label').show();
+	    }
+    });
+});
+</script>
+
+<script type="text/javascript">
+jQuery.event.add(window,"load",function(){
+	//수익금신청 - 세금 확인 및 동의
+	$('.cost_box button').on('click',function(){
+		$('.check_agree').fadeIn(100);
+	});
+	$('.ico_close, .cancel').on('click',function(){
+		$('.pop_simple').fadeOut(100);
+	});
+
+	//수익금 지급신청 - 입금계좌 등록 안된 경우
+	$('.check_agree .save').on('click',function(){
+		$('.check_agree').fadeOut(100);
+		$('.request.account').fadeIn(100);
+	});
+	$('.request.account .register button').on('click',function(){
+		$('.request.account').fadeOut(100);
+		$('.account_admin').fadeIn(100);
+	});
+
+	//입금 계좌 관리
+	$('.account_holder .btn').on('click',function(){
+		$('.account_holder .btn').removeClass('on');
+		$('.account_holder .ipt_box').addClass('on');
+	});
+
+	//수익금 지급신청 - 입금계좌 등록 된 경우
+	$('.account_admin .save').on('click',function(){
+		$('.account_admin').fadeOut(100);
+		$('.request.account').fadeIn(100);
+		$('.request.account .my_account > div').removeClass('on');
+		$('.request.account .register_info').addClass('on');
+		$('.request.account .btn button').attr('disabled',false).css({'opacity': '1', 'cursor': 'pointer'});
+	});
+	$('.request .save').on('click',function(){
+		$('.request').fadeOut(100);
+		$('.complate').fadeIn(100);
+	});
+
+	//신청 완료
+	$('.complate .save').on('click',function(){
+		$('.complate').fadeOut(100);
+	});
+});
+</script>
+</body>
+</html>

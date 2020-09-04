@@ -6822,7 +6822,11 @@ var FullCalendar = (function (exports) {
         var endMarker = framingRange.end;
         var instanceStarts = [];
         while (dayMarker < endMarker) {
+<<<<<<< HEAD
             var instanceStart
+=======
+            var instanceStart 
+>>>>>>> fa906a381e06361a67bb049fc768c30b6385e8ab
             // if everyday, or this particular day-of-week
             = void 0;
             // if everyday, or this particular day-of-week
@@ -7693,12 +7697,21 @@ var FullCalendar = (function (exports) {
             for (var _i = 0, widgetGroup_1 = widgetGroup; _i < widgetGroup_1.length; _i++) {
                 var widget = widgetGroup_1[_i];
                 var buttonName = widget.buttonName, buttonClick = widget.buttonClick, buttonText = widget.buttonText, buttonIcon = widget.buttonIcon;
+<<<<<<< HEAD
                 var strArrayTitle = props.title.split('/');
                 if (buttonName === 'title') {
                     isOnlyButtons = false;
                     // children.push(createElement("h2", { className: 'fc-toolbar-title' }, props.title));
                     children.push(createElement("strong", { className: 'fc-toolbar-month' }, strArrayTitle[0]));
                     children.push(createElement("span", { className: 'fc-toolbar-year' }, strArrayTitle[1]));
+=======
+                var strArrayTitle = props.title.split('.');
+                if (buttonName === 'title') {
+                    isOnlyButtons = false;
+                    // children.push(createElement("h2", { className: 'fc-toolbar-title' }, props.title)); 
+                    children.push(createElement("strong", { className: 'fc-toolbar-month' }, strArrayTitle[1]));
+                    children.push(createElement("span", { className: 'fc-toolbar-year' }, strArrayTitle[0]));
+>>>>>>> fa906a381e06361a67bb049fc768c30b6385e8ab
                 } else {
                     var ariaAttrs = buttonIcon ? { 'aria-label': buttonName } : {};
                     var buttonClasses = ['fc-' + buttonName + '-button', theme.getClass('button')];

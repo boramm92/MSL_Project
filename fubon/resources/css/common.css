@@ -1,0 +1,85 @@
+@charset "UTF-8";
+/* MINDsLab. NBR. 20200902 */
+
+/* common css file */
+@import url("reset.css");
+@import url("font.css");
+
+/* -------------------- layout -------------------- */
+#wrap {width: 100%; min-width: 1280px;}
+#header {width: 100%; height: 50px; padding: 0 20px; box-sizing: border-box;}
+#container {width: 100%; height: calc(100vh - 50px);}
+#contents {width: 100%; height: 100%; padding: 20px; box-sizing: border-box; background: #E9F1F3;}
+
+/* -------------------- common -------------------- */
+/* color */
+/* background color */
+.bg_blue {background-color: #00829d;}
+.bg_green {background-color: #009583;}
+.bg_gray {background-color: #3f3f3f;}
+
+/* border color */
+.bd_blue {border-color: #00829d;}
+.bd_green {border-color: #009583;}
+.bd_gray {border-color: #3f3f3f;}
+/* //color */
+
+/* float */
+.fl {float: left;}
+.fr {float: right;}
+/* //float */
+
+/* hide */
+.hide {position: absolute; top: 0; left: 0; clear: both; overflow: hidden; width: 0; height: 0; margin: 0; padding: 0; line-height: 0;}
+/* //hide */
+
+/* iptBox */
+.iptBox {display: inline-block; position: relative;}
+.iptBox input {display: inline-block; width: 100%; height: 100%; border: 1px solid #E9F1F3; border-radius: 4px; background: #fff;}
+.iptBox input:focus {border: 1px solid rgba(11,42,74,0.4); box-shadow: 0 2px 3px rgba(11, 42, 74, 0.1); transition: all 0.3s ease-out;}
+.iptBox input label {}
+/* //iptBox */
+
+/* chkBox */
+.chkBox {display: inline-block;}
+.chkBox input[type="checkbox"] {position: absolute; overflow: hidden; width: 1px; height: 1px; margin: -1px; padding: 0; clip: rect(0,0,0,0); border: 0;}
+.chkBox input[type="checkbox"] + label {display: inline-block; position: relative; padding: 0 0 0 23px; font-size: 12px; cursor: pointer;}
+.chkBox input[type="checkbox"] + label:before {content: ''; position: absolute; top: 2px; left: 0; width: 15px; height: 15px; line-height: 15px; text-align: center; border: 1px solid rgba(11,42,74,0.3); border-radius: 3px; background: #fff;}
+.chkBox input[type="checkbox"]:checked + label:before {content: '\2713'; border-color: #00829d; background: #00829d; color: #fff;}
+.chkBox input[type="checkbox"]:checked + label {color: #00829d;}
+/* //chkBox */
+
+/* btnBox */
+.btnBox {display: block;}
+.btnBox a {display: block; width: 100%; height: 100%; border: 1px solid transparent; border-radius: 4px; box-sizing: border-box; text-align: center; vertical-align: middle;}
+.btnBox a:hover {box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1); transition: all 0.3s ease-out;}
+/* //btnBox */
+
+/* -------------------- header -------------------- */
+#header h1 {float: left; width: 140px; height: 100%;}
+#header h1 img {display: inline-block; height: 30px; margin: 10px 0;}
+
+#header .gnb {display: flex; float: left; position: relative; width: calc(100% - 420px); margin: 0 10px; box-sizing: border-box;}
+#header .gnb > li {flex: 1; text-align: center; line-height: 50px; box-sizing: border-box;}
+#header .gnb > li.active {background: rgba(255,255,255,0.2);}
+#header .gnb > li:hover {box-shadow: 0 -6px 0 0 #205763 inset; transition: all 0.3s ease-out;}
+#header .gnb > li h3 a {display: inline-block; width: 100%; height: 100%; color: #fff; font-size: 14px;}
+#header .gnb .lnb_box {display: none; position: absolute; left: 0; width: 100%; height: 270px; padding: 20px 0 0; box-sizing: border-box; background: #fff;}
+/* #header .gnb .lnb_box {display: none; position: absolute; left: 0; width: 100%; padding: 20px 0 25px; box-sizing: border-box; background: #fff;} */
+#header .gnb .sub {display: none;}
+#header .gnb .sub > li {display: inline-block; margin: 0 30px; vertical-align: top;}
+#header .gnb .sub > li > a {display: inline-block; margin: 0 0 10px; font-size: 14px; font-weight: 700;}
+#header .gnb .sub li {text-align: left; line-height: 2;}
+#header .gnb .sub li.open {background: url('../images/arw_bottom_bk.png')100% 50% no-repeat;}
+#header .gnb .sub li a:hover {color: #00829d; text-decoration: underline;}
+
+#header .etc_box {float: right; width: 260px; height: 100%; padding: 10px 0; box-sizing: border-box;}
+#header .etc_box > div {float: left;}
+#header .etc_box .user_act {width: 150px; height: 100%; margin: 0 10px 0 0; padding: 0 5px; border-radius: 4px; box-sizing: border-box; background: rgba(255,255,255,0.5); line-height: 30px;}
+#header .etc_box .btnBox {display: block; width: 100px; height: 30px; line-height: 28px;}
+#header .etc_box .btnBox a {display: block; background: #009583; color: #fff;}
+#header .etc_box .btnBox a:hover {border: 1px solid #E9F1F3;}
+#header .etc_box .btnBox img {vertical-align: middle;}
+
+/* -------------------- contents -------------------- */
+#contents h4 {font-size: 18px;}
