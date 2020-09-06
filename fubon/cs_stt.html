@@ -6,10 +6,13 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 <!-- css -->
+<!-- datetimepicker -->
 <link rel="stylesheet" href="resources/css/bootstrap.css"/>
 <link rel="stylesheet" href="resources/css/bootstrap-datetimepicker.css"/>
+<!-- datatables -->
 <link rel="stylesheet" href="resources/css/datatables.min.css">
 <link rel="stylesheet" href="resources/css/buttons.dataTables.min.css">
+
 <link rel="stylesheet" href="resources/css/common.css">
 <link rel="stylesheet" href="resources/css/stt_tm_qa.css">
 
@@ -24,6 +27,8 @@
 <script src="resources/js/datatables.min.js"></script>
 <script src="resources/js/dataTables.fixedColumns.min.js"></script>
 <script src="resources/js/dataTables.buttons.min.js"></script>
+<script src="resources/js/buttons.html5.min.js"></script>
+<script src="resources/js/jszip.min.js"></script>
 
 <title>CS || 푸본현대생명</title>
 </head>
@@ -1112,7 +1117,7 @@ $(document).ready(function(){
         scrollY: "700px", // 세로 스크롤 허용
         scrollX: true, //가로 스크롤 허용
         scrollCollapse: true,
-        fixedColumns: {leftColumns: 1},
+        // fixedColumns: {leftColumns: 1}, // 왼쪽 1열 고정
         columnDefs: [
             {targets: [0], width: "50px", orderable: false},
             {targets: [1], width: "150px"},
@@ -1132,25 +1137,28 @@ $(document).ready(function(){
             {targets: [15], width: "120px", orderable: false},
             {targets: [16], width: "100px"},
         ],
-        buttons: [
-			{
-				extend: 'excel'
-				,text: 'Excel 다운로드'
-				,filename: '엑셀파일명'
-				,title: '엑셀파일 안에 쓰일 제목'
-			},
-        ],
+        dom: 'Bfrtip',
+        buttons: [{
+            extend: 'excelHtml5',
+            text: 'Excel 다운로드',
+        }],
         lengthMenu: [25, 50, 100],
     });
 
-    // 팝업
-    function showWindowPopup(){
-        window.open('popup_cs_tts.html', 'CS STT 전수', 'width=300, height=300, menubar=no, status=no, toolbar=no');
-    };
-
-    $('.table.dataTable tbody td').dblclick(function(){
-	    showWindowPopup();
+    // 페이징 버튼 text삭제
+    var pagingBtn = $('.paginate_button.first, .paginate_button.previous, .paginate_button.next, .paginate_button.last');
+    pagingBtn.empty();
+    $('.paginate_button').on('click', function(){
+        pagingBtn.empty();
     });
+
+    // CS STT 윈도우 팝업
+    // function showWindowPopup(){
+    //     window.open('popup_cs_stt.html', 'CS STT 전수', 'width=300, height=300, menubar=no, status=no, toolbar=no');
+    // };
+    // $('.table.dataTable tbody td').dblclick(function(){
+	//     showWindowPopup();
+    // });
 });
 </script>
 </body>
