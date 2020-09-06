@@ -73,7 +73,7 @@
 
                 <ul class="sub">
                     <li>
-                        <a href="#none">TTS 대상</a>
+                        <a href="cs_tts.html">TTS 대상</a>
                     </li>
                 </ul>
             </li>
@@ -245,7 +245,7 @@
                             <th>업무구분</th>
                             <td>
                                 <select class="select">
-                                    <option value="" selected>전체</option>
+                                    <option value="">전체</option>
                                     <option value="">상담유형옵션</option>
                                     <option value="">상담유형옵션</option>
                                     <option value="">상담유형옵션</option>
@@ -264,7 +264,7 @@
                             <th>상담유형&lpar;대&rpar;</th>
                             <td>
                                 <select class="select">
-                                    <option value="" selected>전체</option>
+                                    <option value="">전체</option>
                                     <option value="">상담유형옵션</option>
                                     <option value="">상담유형옵션</option>
                                     <option value="">상담유형옵션</option>
@@ -283,7 +283,7 @@
                             <th>상담유형&lpar;중&rpar;</th>
                             <td>
                                 <select class="select">
-                                    <option value="" selected>전체</option>
+                                    <option value="">전체</option>
                                     <option value="">상담유형옵션</option>
                                     <option value="">상담유형옵션</option>
                                     <option value="">상담유형옵션</option>
@@ -302,7 +302,7 @@
                             <th>상담유형&lpar;소&rpar;</th>
                             <td colspan="3">
                                 <select class="select">
-                                    <option value="" selected>전체</option>
+                                    <option value="">전체</option>
                                     <option value="">상담유형옵션</option>
                                     <option value="">상담유형옵션</option>
                                     <option value="">상담유형옵션</option>
@@ -323,7 +323,7 @@
 
                 <div class="btnBox">
                     <a href="#none">조회</a>
-                    <a href="#none">초기화</a>
+                    <a href="#none" class="btn_reset">초기화</a>
                 </div>
             </div>
             <!-- //.srchArea -->
@@ -1077,13 +1077,18 @@ $(document).ready(function(){
     }
     gnbShowSlide();
 
+    // 초기화 버튼 클릭 시 검색조건 초기화
+    $('.btn_reset').on('click', function(){
+        $('.srchArea input').val('');
+        $('.srchArea select').prop('selectedIndex',0);
+    });
+
     // datetimepicker 렌더링
     $('#fromDate').datetimepicker({
         language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
         pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
         defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
         autoclose: 1,
-        pickTime: false,
     });
 
     $('#toDate').datetimepicker({
@@ -1091,21 +1096,19 @@ $(document).ready(function(){
         pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
         defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
         autoclose: 1,
-        pickTime: false,
-        // format: 'YYYY-MM-DD',
     });
 
     // datatable 렌더링
     $('.dataTable').DataTable({
+        responsive: true, // 반응형 허용
         filter: false, // 검색창 미허용
+        ordering: true,
         paging: true, // 페이징 허용
         pagingType: "full_numbers", // 페이징 버튼 구성 (처음, 이전, 페이지숫자, 다음, 마지막)
-        scrollY: "500px", // 세로 스크롤 허용
+        scrollY: "700px", // 세로 스크롤 허용
         scrollX: true, //가로 스크롤 허용
         scrollCollapse: true,
-        fixedColumns: {
-            leftColumns: 1
-        },
+        fixedColumns: {leftColumns: 1},
         columnDefs: [
             {targets: [0], width: "50px", orderable: false},
             {targets: [1], width: "150px"},
@@ -1133,7 +1136,7 @@ $(document).ready(function(){
 				,title: '엑셀파일 안에 쓰일 제목'
 			},
         ],
-        lengthMenu: [20, 50, 75, 100],
+        lengthMenu: [25, 50, 75, 100],
     });
 });
 </script>
