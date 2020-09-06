@@ -6,13 +6,20 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 <!-- css -->
-<link rel="stylesheet" href="resources/css/common.css">
+<link rel="stylesheet" href="resources/css/bootstrap.css"/>
+<link rel="stylesheet" href="resources/css/bootstrap-datetimepicker.css"/>
 <link rel="stylesheet" href="resources/css/datatables.min.css">
+<link rel="stylesheet" href="resources/css/common.css">
 <link rel="stylesheet" href="resources/css/stt_tm_qa.css">
 
 <!-- js -->
 <script src="resources/js/jquery-3.3.1.min.js"></script>
 <script src="resources/js/jquery-migrate-3.3.0.min.js"></script>
+<!-- datetimepicker -->
+<script src="resources/js/bootstrap-datetimepicker.js"></script>
+<script src="resources/js/moment.min.js"></script>
+<script src="resources/js/ko.js"></script>
+<!-- datatables -->
 <script src="resources/js/datatables.min.js"></script>
 <script src="resources/js/datatables.fixedColumns.min.js"></script>
 
@@ -189,18 +196,18 @@
                 <table class="tbl_line_view" summary="상담일시, 고객 전화번호, 고객번호, 무음길이, 사번, 업무구분, 상담유형(대), 상담유형(중), 상담유형(소)으로 구성">
                     <caption class="hide">검색조건</caption>
                     <colgroup>
-                        <col width="70"><col width="320"><col width="90"><col width="150"><col width="90">
+                        <col width="6%"><col width="350"><col width="8%"><col width="10%"><col width="8%"><col width="10%"><col width="8%"><col width="10%"><col width="6%">
                     </colgroup>
 
                     <tbody>
                         <tr>
                             <th>상담일시</th>
                             <td>
-                                <div class="iptBox">
+                                <div id="fromDate" class="iptBox iptDateTime">
                                     <input type="text">
                                 </div>
                                 <span>&hyphen;</span>
-                                <div class="iptBox">
+                                <div id="toDate"  class="iptBox iptDateTime">
                                     <input type="text">
                                 </div>
                             </td>
@@ -239,9 +246,18 @@
                             <td>
                                 <select class="select">
                                     <option value="" selected>전체</option>
-                                    <option value="">업무구분1</option>
-                                    <option value="">업무구분2</option>
-                                    <option value="">업무구분3</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
                                 </select>
                             </td>
 
@@ -249,9 +265,18 @@
                             <td>
                                 <select class="select">
                                     <option value="" selected>전체</option>
-                                    <option value="">상담유형1</option>
-                                    <option value="">상담유형2</option>
-                                    <option value="">상담유형3</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
                                 </select>
                             </td>
 
@@ -259,9 +284,18 @@
                             <td>
                                 <select class="select">
                                     <option value="" selected>전체</option>
-                                    <option value="">상담유형1</option>
-                                    <option value="">상담유형2</option>
-                                    <option value="">상담유형3</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
                                 </select>
                             </td>
 
@@ -269,19 +303,34 @@
                             <td colspan="3">
                                 <select class="select">
                                     <option value="" selected>전체</option>
-                                    <option value="">상담유형1</option>
-                                    <option value="">상담유형2</option>
-                                    <option value="">상담유형3</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
+                                    <option value="">상담유형옵션</option>
                                 </select>
                             </td>
                         </tr>
                     </tbody>
                 </table>
+
+                <div class="btnBox">
+                    <a href="#none">조회</a>
+                    <a href="#none">초기화</a>
+                </div>
             </div>
             <!-- //.srchArea -->
 
             <!-- .dataTableBox -->
             <div class="dataTableBox">
+                <!-- [D] datatables -->
                 <table class="dataTable">
                     <thead>
                         <tr>
@@ -307,99 +356,688 @@
 
                     <tbody>
                         <tr>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
+                            <td>1</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>홍길동</td>
+                            <td>100917026</td>
+                            <td>김영희</td>
+                            <td>86397</td>
+                            <td>IN</td>
+                            <td>내보험찾아줌</td>
+                            <td>개인</td>
+                            <td>보험계약대출</td>
+                            <td>청약철회접수-가족반대</td>
+                            <td>보험계약대출신청</td>
+                            <td>3</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>정상</td>
                         </tr>
                         <tr>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
+                            <td>2</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>홍길옥</td>
+                            <td>3643883</td>
+                            <td>김철수</td>
+                            <td>86397</td>
+                            <td>OUT</td>
+                            <td>당월실효부활안내해피콜</td>
+                            <td>법인</td>
+                            <td>보험계약대출</td>
+                            <td>해지사유_귀국/이민/해외근무</td>
+                            <td>자유납입해지</td>
+                            <td>5</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>오류</td>
                         </tr>
                         <tr>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
+                            <td>3</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>법정상속인</td>
+                            <td>1</td>
+                            <td>이아라</td>
+                            <td>86397</td>
+                            <td>TRS</td>
+                            <td>업무문의</td>
+                            <td>변액</td>
+                            <td>보험계약대출</td>
+                            <td>해지사유_무응답</td>
+                            <td>추가납입문의, 추가납입문의</td>
+                            <td>6</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>정상</td>
                         </tr>
                         <tr>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
+                            <td>4</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>이영희</td>
+                            <td>107390420</td>
+                            <td>정태민</td>
+                            <td>86397</td>
+                            <td>IN</td>
+                            <td>당월실효부활안내해피콜</td>
+                            <td>VIP</td>
+                            <td>보험계약대출</td>
+                            <td>해지사유_상품불만</td>
+                            <td>자동대출신청</td>
+                            <td>3</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>오류</td>
                         </tr>
                         <tr>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
-                            <td>테이블 컨텐츠</td>
+                            <td>5</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>박영미</td>
+                            <td>2026112</td>
+                            <td>권현범</td>
+                            <td>86397</td>
+                            <td>OUT</td>
+                            <td>당월실효부활안내해피콜</td>
+                            <td>BA</td>
+                            <td>보험계약대출</td>
+                            <td>해지사유_타사상품중복</td>
+                            <td>자동대출해지</td>
+                            <td>5</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>정상</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>김영재</td>
+                            <td>103649784</td>
+                            <td>김영</td>
+                            <td>86397</td>
+                            <td>TRS</td>
+                            <td>당월실효부활안내해피콜</td>
+                            <td>개인</td>
+                            <td>신계약/부활/청철/품보</td>
+                            <td>해지사유_귀국/이민/해외근무</td>
+                            <td>납입일시중지신청</td>
+                            <td>6</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>오류</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>이영희</td>
+                            <td>107390420</td>
+                            <td>김만이</td>
+                            <td>86397</td>
+                            <td>IN</td>
+                            <td>당월실효부활안내해피콜</td>
+                            <td>법인</td>
+                            <td>신계약/부활/청철/품보</td>
+                            <td>가입문의</td>
+                            <td>납입일시중지해지</td>
+                            <td>3</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>정상</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>민영애</td>
+                            <td>1</td>
+                            <td>김아리</td>
+                            <td>86397</td>
+                            <td>OUT</td>
+                            <td>당월실효부활안내해피콜</td>
+                            <td>변액</td>
+                            <td>가입문의</td>
+                            <td>카드이체해지</td>
+                            <td>급여이체신청</td>
+                            <td>5</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>오류</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>박영옥</td>
+                            <td>1</td>
+                            <td>김범</td>
+                            <td>86130</td>
+                            <td>OUT</td>
+                            <td>기타아웃바운드안내</td>
+                            <td>BA</td>
+                            <td>가입문의</td>
+                            <td>급여이체신청/변경</td>
+                            <td>자동이체변경, 카드</td>
+                            <td>5</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>오류</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>법정상속인</td>
+                            <td>106241799</td>
+                            <td>이사라</td>
+                            <td>86130</td>
+                            <td>OUT</td>
+                            <td>기타아웃바운드안내</td>
+                            <td>개인</td>
+                            <td>가입문의</td>
+                            <td>급여이체해지</td>
+                            <td>자동이체해지, 카드</td>
+                            <td>5</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>오류</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>장영진</td>
+                            <td>3612944</td>
+                            <td>김희</td>
+                            <td>86130</td>
+                            <td>OUT</td>
+                            <td>기타아웃바운드안내</td>
+                            <td>법인</td>
+                            <td>가입문의</td>
+                            <td>결제일변경</td>
+                            <td>급여이체신청</td>
+                            <td>5</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>오류</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>허영</td>
+                            <td>3510429</td>
+                            <td>홍길동</td>
+                            <td>86130</td>
+                            <td>OUT</td>
+                            <td>기타아웃바운드안내</td>
+                            <td>변액</td>
+                            <td>가입문의</td>
+                            <td>가입문의</td>
+                            <td>급여이체해지</td>
+                            <td>5</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>오류</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>홍길동</td>
+                            <td>100917026</td>
+                            <td>김영희</td>
+                            <td>86397</td>
+                            <td>IN</td>
+                            <td>내보험찾아줌</td>
+                            <td>개인</td>
+                            <td>보험계약대출</td>
+                            <td>청약철회접수-가족반대</td>
+                            <td>보험계약대출신청</td>
+                            <td>3</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>정상</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>홍길옥</td>
+                            <td>3643883</td>
+                            <td>김철수</td>
+                            <td>86397</td>
+                            <td>OUT</td>
+                            <td>당월실효부활안내해피콜</td>
+                            <td>법인</td>
+                            <td>보험계약대출</td>
+                            <td>해지사유_귀국/이민/해외근무</td>
+                            <td>자유납입해지</td>
+                            <td>5</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>오류</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>법정상속인</td>
+                            <td>1</td>
+                            <td>이아라</td>
+                            <td>86397</td>
+                            <td>TRS</td>
+                            <td>업무문의</td>
+                            <td>변액</td>
+                            <td>보험계약대출</td>
+                            <td>해지사유_무응답</td>
+                            <td>추가납입문의, 추가납입문의</td>
+                            <td>6</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>정상</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>이영희</td>
+                            <td>107390420</td>
+                            <td>정태민</td>
+                            <td>86397</td>
+                            <td>IN</td>
+                            <td>당월실효부활안내해피콜</td>
+                            <td>VIP</td>
+                            <td>보험계약대출</td>
+                            <td>해지사유_상품불만</td>
+                            <td>자동대출신청</td>
+                            <td>3</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>오류</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>박영미</td>
+                            <td>2026112</td>
+                            <td>권현범</td>
+                            <td>86397</td>
+                            <td>OUT</td>
+                            <td>당월실효부활안내해피콜</td>
+                            <td>BA</td>
+                            <td>보험계약대출</td>
+                            <td>해지사유_타사상품중복</td>
+                            <td>자동대출해지</td>
+                            <td>5</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>정상</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>김영재</td>
+                            <td>103649784</td>
+                            <td>김영</td>
+                            <td>86397</td>
+                            <td>TRS</td>
+                            <td>당월실효부활안내해피콜</td>
+                            <td>개인</td>
+                            <td>신계약/부활/청철/품보</td>
+                            <td>해지사유_귀국/이민/해외근무</td>
+                            <td>납입일시중지신청</td>
+                            <td>6</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>오류</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>이영희</td>
+                            <td>107390420</td>
+                            <td>김만이</td>
+                            <td>86397</td>
+                            <td>IN</td>
+                            <td>당월실효부활안내해피콜</td>
+                            <td>법인</td>
+                            <td>신계약/부활/청철/품보</td>
+                            <td>가입문의</td>
+                            <td>납입일시중지해지</td>
+                            <td>3</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>정상</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>민영애</td>
+                            <td>1</td>
+                            <td>김아리</td>
+                            <td>86397</td>
+                            <td>OUT</td>
+                            <td>당월실효부활안내해피콜</td>
+                            <td>변액</td>
+                            <td>가입문의</td>
+                            <td>카드이체해지</td>
+                            <td>급여이체신청</td>
+                            <td>5</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>오류</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>박영옥</td>
+                            <td>1</td>
+                            <td>김범</td>
+                            <td>86130</td>
+                            <td>OUT</td>
+                            <td>기타아웃바운드안내</td>
+                            <td>BA</td>
+                            <td>가입문의</td>
+                            <td>급여이체신청/변경</td>
+                            <td>자동이체변경, 카드</td>
+                            <td>5</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>오류</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>법정상속인</td>
+                            <td>106241799</td>
+                            <td>이사라</td>
+                            <td>86130</td>
+                            <td>OUT</td>
+                            <td>기타아웃바운드안내</td>
+                            <td>개인</td>
+                            <td>가입문의</td>
+                            <td>급여이체해지</td>
+                            <td>자동이체해지, 카드</td>
+                            <td>5</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>오류</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>장영진</td>
+                            <td>3612944</td>
+                            <td>김희</td>
+                            <td>86130</td>
+                            <td>OUT</td>
+                            <td>기타아웃바운드안내</td>
+                            <td>법인</td>
+                            <td>가입문의</td>
+                            <td>결제일변경</td>
+                            <td>급여이체신청</td>
+                            <td>5</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>오류</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>허영</td>
+                            <td>3510429</td>
+                            <td>홍길동</td>
+                            <td>86130</td>
+                            <td>OUT</td>
+                            <td>기타아웃바운드안내</td>
+                            <td>변액</td>
+                            <td>가입문의</td>
+                            <td>가입문의</td>
+                            <td>급여이체해지</td>
+                            <td>5</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>오류</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>홍길동</td>
+                            <td>100917026</td>
+                            <td>김영희</td>
+                            <td>86397</td>
+                            <td>IN</td>
+                            <td>내보험찾아줌</td>
+                            <td>개인</td>
+                            <td>보험계약대출</td>
+                            <td>청약철회접수-가족반대</td>
+                            <td>보험계약대출신청</td>
+                            <td>3</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>정상</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>홍길옥</td>
+                            <td>3643883</td>
+                            <td>김철수</td>
+                            <td>86397</td>
+                            <td>OUT</td>
+                            <td>당월실효부활안내해피콜</td>
+                            <td>법인</td>
+                            <td>보험계약대출</td>
+                            <td>해지사유_귀국/이민/해외근무</td>
+                            <td>자유납입해지</td>
+                            <td>5</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>오류</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>법정상속인</td>
+                            <td>1</td>
+                            <td>이아라</td>
+                            <td>86397</td>
+                            <td>TRS</td>
+                            <td>업무문의</td>
+                            <td>변액</td>
+                            <td>보험계약대출</td>
+                            <td>해지사유_무응답</td>
+                            <td>추가납입문의, 추가납입문의</td>
+                            <td>6</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>정상</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>이영희</td>
+                            <td>107390420</td>
+                            <td>정태민</td>
+                            <td>86397</td>
+                            <td>IN</td>
+                            <td>당월실효부활안내해피콜</td>
+                            <td>VIP</td>
+                            <td>보험계약대출</td>
+                            <td>해지사유_상품불만</td>
+                            <td>자동대출신청</td>
+                            <td>3</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>오류</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>박영미</td>
+                            <td>2026112</td>
+                            <td>권현범</td>
+                            <td>86397</td>
+                            <td>OUT</td>
+                            <td>당월실효부활안내해피콜</td>
+                            <td>BA</td>
+                            <td>보험계약대출</td>
+                            <td>해지사유_타사상품중복</td>
+                            <td>자동대출해지</td>
+                            <td>5</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>정상</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>김영재</td>
+                            <td>103649784</td>
+                            <td>김영</td>
+                            <td>86397</td>
+                            <td>TRS</td>
+                            <td>당월실효부활안내해피콜</td>
+                            <td>개인</td>
+                            <td>신계약/부활/청철/품보</td>
+                            <td>해지사유_귀국/이민/해외근무</td>
+                            <td>납입일시중지신청</td>
+                            <td>6</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>오류</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>이영희</td>
+                            <td>107390420</td>
+                            <td>김만이</td>
+                            <td>86397</td>
+                            <td>IN</td>
+                            <td>당월실효부활안내해피콜</td>
+                            <td>법인</td>
+                            <td>신계약/부활/청철/품보</td>
+                            <td>가입문의</td>
+                            <td>납입일시중지해지</td>
+                            <td>3</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>정상</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>민영애</td>
+                            <td>1</td>
+                            <td>김아리</td>
+                            <td>86397</td>
+                            <td>OUT</td>
+                            <td>당월실효부활안내해피콜</td>
+                            <td>변액</td>
+                            <td>가입문의</td>
+                            <td>카드이체해지</td>
+                            <td>급여이체신청</td>
+                            <td>5</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>오류</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>박영옥</td>
+                            <td>1</td>
+                            <td>김범</td>
+                            <td>86130</td>
+                            <td>OUT</td>
+                            <td>기타아웃바운드안내</td>
+                            <td>BA</td>
+                            <td>가입문의</td>
+                            <td>급여이체신청/변경</td>
+                            <td>자동이체변경, 카드</td>
+                            <td>5</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>오류</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>법정상속인</td>
+                            <td>106241799</td>
+                            <td>이사라</td>
+                            <td>86130</td>
+                            <td>OUT</td>
+                            <td>기타아웃바운드안내</td>
+                            <td>개인</td>
+                            <td>가입문의</td>
+                            <td>급여이체해지</td>
+                            <td>자동이체해지, 카드</td>
+                            <td>5</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>오류</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>장영진</td>
+                            <td>3612944</td>
+                            <td>김희</td>
+                            <td>86130</td>
+                            <td>OUT</td>
+                            <td>기타아웃바운드안내</td>
+                            <td>법인</td>
+                            <td>가입문의</td>
+                            <td>결제일변경</td>
+                            <td>급여이체신청</td>
+                            <td>5</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>오류</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td>2020-06-15 10:23</td>
+                            <td>010-1234-5678</td>
+                            <td>허영</td>
+                            <td>3510429</td>
+                            <td>홍길동</td>
+                            <td>86130</td>
+                            <td>OUT</td>
+                            <td>기타아웃바운드안내</td>
+                            <td>변액</td>
+                            <td>가입문의</td>
+                            <td>가입문의</td>
+                            <td>급여이체해지</td>
+                            <td>5</td>
+                            <td>007602f5338c69f6</td>
+                            <td>149860675</td>
+                            <td>오류</td>
                         </tr>
                     </tbody>
                 </table>
@@ -439,11 +1077,51 @@ $(document).ready(function(){
     }
     gnbShowSlide();
 
+    // datetimepicker 렌더링
+    var dates = $('#fromDate, #toDate').datetimepicker({
+        prevText: '이전 달',
+        nextText: '다음 달',
+        dateFormat: 'yy-mm-dd',
+        onSelect: function (date) {
+            var endDate = $('.toDate');
+            var startDate = $(this).datepicker('getDate');
+            var minDate = $(this).datepicker('getDate');
+            endDate.datepicker('setDate', minDate);
+            startDate.setDate(startDate.getDate() + 365);
+            endDate.datepicker('option', 'maxDate', startDate);
+            endDate.datepicker('option', 'minDate', minDate);
+        }
+    });
+
     // datatable 렌더링
     $('.dataTable').DataTable({
-        scrollY: "200px",
-        scrollX: true,
-        scrollCollapse: true
+        filter: false, // 검색창 미허용
+        paging: true, // 페이징 허용
+        scrollY: true, // 세로 스크롤 허용
+        scrollX: true, //가로 스크롤 허용
+        scrollCollapse: true, //
+        fixedColumns: {
+            leftColumns: 1
+        },
+        columnDefs: [
+            {targets: [0], width: "50px"},
+            {targets: [1], width: "100px"},
+            {targets: [2], width: "100px"},
+            {targets: [3], width: "100px"},
+            {targets: [4], width: "100px"},
+            {targets: [5], width: "100px"},
+            {targets: [6], width: "100px"},
+            {targets: [7], width: "100px"},
+            {targets: [8], width: "100px"},
+            {targets: [9], width: "100px"},
+            {targets: [10], width: "100px"},
+            {targets: [11], width: "100px"},
+            {targets: [12], width: "150px"},
+            {targets: [13], width: "100px"},
+            {targets: [14], width: "100px"},
+            {targets: [15], width: "100px"},
+            {targets: [16], width: "100px"},
+        ],
     });
 });
 </script>
