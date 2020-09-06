@@ -73,7 +73,7 @@
 
                 <ul class="sub">
                     <li>
-                        <a href="cs_tts.html">TTS 대상</a>
+                        <a href="cs_stt.html">STT 대상</a>
                     </li>
                 </ul>
             </li>
@@ -82,7 +82,7 @@
 
                 <ul class="sub">
                     <li>
-                        <a href="#none">TTS 대상</a>
+                        <a href="#none">STT 대상</a>
                     </li>
                 </ul>
             </li>
@@ -1100,6 +1100,10 @@ $(document).ready(function(){
 
     // datatable 렌더링
     $('.dataTable').DataTable({
+        language: {
+            info: "계 _TOTAL_ 건&nbsp;&nbsp; _END_ 건 &sol; _TOTAL_ 건",
+            lengthMenu: "_MENU_ 건씩 보기"
+        },
         responsive: true, // 반응형 허용
         filter: false, // 검색창 미허용
         ordering: true,
@@ -1136,7 +1140,16 @@ $(document).ready(function(){
 				,title: '엑셀파일 안에 쓰일 제목'
 			},
         ],
-        lengthMenu: [25, 50, 75, 100],
+        lengthMenu: [25, 50, 100],
+    });
+
+    // 팝업
+    function showWindowPopup(){
+        window.open('popup_cs_tts.html', 'CS STT 전수', 'width=300, height=300, menubar=no, status=no, toolbar=no');
+    };
+
+    $('.table.dataTable tbody td').dblclick(function(){
+	    showWindowPopup();
     });
 });
 </script>
