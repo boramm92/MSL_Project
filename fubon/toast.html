@@ -8,8 +8,7 @@
 <!-- css -->
 <link rel="stylesheet" href="resources/css/bootstrap.css"/>
 <link rel="stylesheet" href="resources/css/bootstrap-datetimepicker.css"/>
-<link rel="stylesheet" href="resources/css/datatables.min.css">
-<link rel="stylesheet" href="resources/css/buttons.dataTables.min.css">
+<link rel="stylesheet" href="https://uicdn.toast.com/tui-grid/latest/tui-grid.css" />
 <link rel="stylesheet" href="resources/css/common.css">
 <link rel="stylesheet" href="resources/css/stt_tm_qa.css">
 
@@ -21,9 +20,7 @@
 <script src="resources/js/moment.min.js"></script>
 <script src="resources/js/ko.js"></script>
 <!-- datatables -->
-<script src="resources/js/datatables.min.js"></script>
-<script src="resources/js/dataTables.fixedColumns.min.js"></script>
-<script src="resources/js/dataTables.buttons.min.js"></script>
+<script src="https://uicdn.toast.com/tui-grid/latest/tui-grid.js"></script>
 
 <title>CS || 푸본현대생명</title>
 </head>
@@ -329,7 +326,7 @@
             <!-- //.srchArea -->
 
             <!-- .dataTableBox -->
-            <div class="dataTableBox">
+            <div id="grid">
                 <!-- [D] datatables -->
                 <table class="dataTable">
                     <thead>
@@ -1096,44 +1093,9 @@ $(document).ready(function(){
     });
 
     // datatable 렌더링
-    $('.dataTable').DataTable({
-        filter: false, // 검색창 미허용
-        paging: true, // 페이징 허용
-        pagingType: "full_numbers", // 페이징 버튼 구성 (처음, 이전, 페이지숫자, 다음, 마지막)
-        scrollY: "500px", // 세로 스크롤 허용
-        scrollX: true, //가로 스크롤 허용
-        scrollCollapse: true,
-        fixedColumns: {
-            leftColumns: 1
-        },
-        columnDefs: [
-            {targets: [0], width: "50px", orderable: false},
-            {targets: [1], width: "150px"},
-            {targets: [2], width: "150px"},
-            {targets: [3], width: "100px", orderable: false},
-            {targets: [4], width: "120px"},
-            {targets: [5], width: "100px", orderable: false},
-            {targets: [6], width: "100px"},
-            {targets: [7], width: "100px", orderable: false},
-            {targets: [8], width: "150px"},
-            {targets: [9], width: "100px", orderable: false},
-            {targets: [10], width: "150px", orderable: false},
-            {targets: [11], width: "150px", orderable: false},
-            {targets: [12], width: "150px", orderable: false},
-            {targets: [13], width: "100px"},
-            {targets: [14], width: "150px", orderable: false},
-            {targets: [15], width: "120px", orderable: false},
-            {targets: [16], width: "100px"},
-        ],
-        buttons: [
-			{
-				extend: 'excel'
-				,text: 'Excel 다운로드'
-				,filename: '엑셀파일명'
-				,title: '엑셀파일 안에 쓰일 제목'
-			},
-        ],
-        lengthMenu: [20, 50, 75, 100],
+    const grid = new Grid({
+        el: document.getElementById('grid'),
+        data: gridData,
     });
 });
 </script>

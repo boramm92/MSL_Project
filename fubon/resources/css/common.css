@@ -51,6 +51,7 @@
 
 /* select */
 .select {display: inline-block; height: 30px; padding: 0 20px 0 5px; font-size: 13px; border: 1px solid #C7D0D3; border-radius: 4px; background: #fff url(../images/arw_bottom_bk.png) right 7px top 50% no-repeat; transition: all 0.3s ease-out;}
+.select:focus {border: 1px solid rgba(11,42,74,0.4); box-shadow: 0 2px 3px rgba(11, 42, 74, 0.1); transition: all 0.3s ease-out;}
 /* //select */
 
 /* btnBox */
@@ -62,7 +63,7 @@
 /* Table(View,Edit) */
 .tbl_line_view {width: 100%; table-layout: fixed;}
 .tbl_line_view tbody th,
-.tbl_line_view tbody td {padding: 5px; color: #3f3f3f; text-align: left; border: 1px solid #E9F1F3; background: #f3f8f9;}
+.tbl_line_view tbody td {padding: 5px; color: #3f3f3f; text-align: left; border: 1px solid #C7D0D3; background: #f3f8f9;}
 .tbl_line_view tbody td {background:#fff;}
 .tbl_line_view tbody tr th:first-child {border-left: none;}
 .tbl_line_view tbody tr td:last-child {border-right: none;}
@@ -70,7 +71,9 @@
 
 /* srchArea */
 .srchArea {width: 100%; margin: 0 0 20px; padding: 10px; border-radius: 4px; box-shadow: 0 1px 4px 0 rgba(44, 63, 81, 0.1); box-sizing: border-box; background: #fff;}
+.srchArea tbody td .iptBox {width: 100%;}
 .srchArea tbody td input {border-color: #C7D0D3;}
+.srchArea tbody td input.iptDateTime {width: 140px; background: url('../images/ico_calendar.png')100% 50% no-repeat; background-size: 20px;}
 .srchArea tbody td select {width: 100%;}
 .srchArea .btnBox {padding: 7px 0 0; text-align: right;}
 .srchArea .btnBox a {margin: 0 2px; padding: 0 20px; background: #009583; color: #fff; line-height: 28px;}
@@ -83,12 +86,25 @@
 /* dataTable */
 table.dataTable {width: 100% !important; table-layout: fixed;}
 .dataTables_wrapper {width: 100%;}
-.dataTables_wrapper .dataTables_info {position: absolute; top: 0; left: 150px; padding: 0 !important;}
-.dataTables_scroll {}
+.dataTables_wrapper .dataTables_info {position: absolute; top: 0; left: 150px; padding: 0;}
 .dataTables_scrollHead,
-table.DTFC_Cloned thead {background: #4e8692 !important; color: #fff;}
-table.dataTable thead th {padding: 10px 0 !important;}
-.dataTables_wrapper .dataTables_paginate {float: none !important; text-align: center !important;}
+table.DTFC_Cloned thead {background: #4e8692; color: #fff;}
+table.dataTable thead th {padding: 10px 0; border-bottom: 1px solid #C7D0D3; text-align: center;}
+table.dataTable thead th:first-child {background-image: none;}
+table.dataTable tbody td {overflow: hidden; border-right: 1px dotted #C7D0D3; border-bottom: 1px dotted #C7D0D3; text-align: center; text-overflow: ellipsis; white-space: nowrap;}
+table.dataTable tbody td:last-child {border-right: none;}
+table.dataTable tbody tr:hover td {background: #E9F1F3;}
+table.dataTable tbody tr:last-child td {border-bottom: none;}
+.dataTables_wrapper.no-footer .dataTables_scrollBody {border-top: 1px solid #C7D0D3; border-bottom: 1px solid #C7D0D3;}
+div.DTFC_LeftWrapper table.dataTable.no-footer {border-bottom: 1px solid transparent;}
+div.DTFC_LeftWrapper table.dataTable.no-footer td {background: #f3f8f9;}
+.dataTables_wrapper .dataTables_paginate {float: none; padding: 10px 0 0; text-align: center;}
+.dataTables_wrapper .dataTables_paginate .paginate_button {border: none;}
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {color: inherit !important; border: none; background: none;}
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {border: none; background: none;}
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {font-weight: 700;}
+
 /* //dataTable */
 
 /* -------------------- header -------------------- */
@@ -108,10 +124,10 @@ table.dataTable thead th {padding: 10px 0 !important;}
 #header .gnb {display: flex; position: relative; width: 100%; z-index: 5;}
 #header .gnb > li {flex: 1;}
 #header .gnb > li h3 {position: relative; color: #174b56; font-size: 14px; text-align: center; line-height: 40px; cursor: pointer; transition: background 0.3s ease-out;}
-#header .gnb > li.active h3 {border: 1px solid #3f3f3f; border-bottom: none; background: #fff; color: #0c2929;}
+#header .gnb > li.active h3 {background: #fff; color: #0c2929;}
 #header .gnb > li.current h3 {background: rgba(233,241,243,0.2);}
 
-#header .gnb .sub {display: none; border: 1px solid #3f3f3f; border-top: none; background: #fff;}
+#header .gnb .sub {display: none; box-shadow: 0 1px 4px 0 rgba(44, 63, 81, 0.1); background: #fff;}
 #header .gnb .sub li a {display: inline-block; width: 100%; height: 100%; padding: 0 20px; box-sizing: border-box; line-height: 40px;}
 #header .gnb .sub li a:hover {color: blue;}
 #header .gnb .sub > li > a {font-weight: 700;}
