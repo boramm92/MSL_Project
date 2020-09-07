@@ -251,18 +251,24 @@
                             <td>
                                 <select class="select">
                                     <option value="">전체</option>
-                                    <option value="">상담유형옵션</option>
-                                    <option value="">상담유형옵션</option>
-                                    <option value="">상담유형옵션</option>
-                                    <option value="">상담유형옵션</option>
-                                    <option value="">상담유형옵션</option>
-                                    <option value="">상담유형옵션</option>
-                                    <option value="">상담유형옵션</option>
-                                    <option value="">상담유형옵션</option>
-                                    <option value="">상담유형옵션</option>
-                                    <option value="">상담유형옵션</option>
-                                    <option value="">상담유형옵션</option>
-                                    <option value="">상담유형옵션</option>
+                                    <option value="">X-SELL</option>
+                                    <option value="">기타 아웃바운드 안내</option>
+                                    <option value="">내 보험 찾아줌</option>
+                                    <option value="">당월 미납안내</option>
+                                    <option value="">당월 실효부활안내 해피콜</option>
+                                    <option value="">등기 반송안내</option>
+                                    <option value="">만족도조사</option>
+                                    <option value="">반송안내</option>
+                                    <option value="">사전콜</option>
+                                    <option value="">생존&sol;만기</option>
+                                    <option value="">미지급안내</option>
+                                    <option value="">신계약 해피콜</option>
+                                    <option value="">실효예고안내</option>
+                                    <option value="">업무문의</option>
+                                    <option value="">연금도래안내</option>
+                                    <option value="">연금미지급 미신청</option>
+                                    <option value="">연락처 유입오류안내</option>
+                                    <option value="">예약호통화</option>
                                 </select>
                             </td>
 
@@ -270,18 +276,11 @@
                             <td>
                                 <select class="select">
                                     <option value="">전체</option>
-                                    <option value="">상담유형옵션</option>
-                                    <option value="">상담유형옵션</option>
-                                    <option value="">상담유형옵션</option>
-                                    <option value="">상담유형옵션</option>
-                                    <option value="">상담유형옵션</option>
-                                    <option value="">상담유형옵션</option>
-                                    <option value="">상담유형옵션</option>
-                                    <option value="">상담유형옵션</option>
-                                    <option value="">상담유형옵션</option>
-                                    <option value="">상담유형옵션</option>
-                                    <option value="">상담유형옵션</option>
-                                    <option value="">상담유형옵션</option>
+                                    <option value="">개인</option>
+                                    <option value="">법인</option>
+                                    <option value="">변액</option>
+                                    <option value="">VIP</option>
+                                    <option value="">BA</option>
                                 </select>
                             </td>
 
@@ -355,7 +354,7 @@
                             <th>무음길이</th>
                             <th>녹취번호</th>
                             <th>상담번호</th>
-                            <th>STT상태</th>
+                            <th>STT 상태</th>
                         </tr>
                     </thead>
 
@@ -1105,59 +1104,51 @@ $(document).ready(function(){
 
     // datatable 렌더링
     $('.dataTable').DataTable({
-        language: {
+        language: { // 테이블 목록 건수 text 한글 설정
             info: "계 _TOTAL_ 건&nbsp;&nbsp; _END_ 건 &sol; _TOTAL_ 건",
             lengthMenu: "_MENU_ 건씩 보기"
         },
         responsive: true, // 반응형 허용
         filter: false, // 검색창 미허용
-        ordering: true,
+        ordering: [[ 0, 'asc' ], [ 1, 'asc' ]], // 초기 sort 설정
         paging: true, // 페이징 허용
         pagingType: "full_numbers", // 페이징 버튼 구성 (처음, 이전, 페이지숫자, 다음, 마지막)
+        lengthMenu: [25, 50, 100], // 페이지 당 보여질 목록 갯수 select 범위 지정
         scrollY: "700px", // 세로 스크롤 허용
         scrollX: true, //가로 스크롤 허용
         scrollCollapse: true,
-        // fixedColumns: {leftColumns: 1}, // 왼쪽 1열 고정
-        columnDefs: [
-            {targets: [0], width: "50px", orderable: false},
-            {targets: [1], width: "150px"},
-            {targets: [2], width: "150px"},
-            {targets: [3], width: "100px", orderable: false},
-            {targets: [4], width: "120px"},
-            {targets: [5], width: "100px", orderable: false},
-            {targets: [6], width: "100px"},
-            {targets: [7], width: "100px", orderable: false},
-            {targets: [8], width: "150px"},
-            {targets: [9], width: "100px", orderable: false},
-            {targets: [10], width: "150px", orderable: false},
-            {targets: [11], width: "150px", orderable: false},
-            {targets: [12], width: "150px", orderable: false},
-            {targets: [13], width: "100px"},
-            {targets: [14], width: "150px", orderable: false},
-            {targets: [15], width: "120px", orderable: false},
-            {targets: [16], width: "100px"},
+        fixedColumns: {leftColumns: 1}, // 왼쪽 1열 고정
+        columnDefs: [ // 컬럼별 width 지정, 소트 허용여부(false, 미허용)
+            {targets: [0], width: "50px", orderable: false},   // NO
+            {targets: [1], width: "150px"},                    // 상담일시
+            {targets: [2], width: "150px"},                    // 고객 전화번호
+            {targets: [3], width: "100px", orderable: false},  // 상담고객
+            {targets: [4], width: "120px"},                    // 고객번호
+            {targets: [5], width: "100px", orderable: false},  // 상담사
+            {targets: [6], width: "100px"},                    // 사번
+            {targets: [7], width: "100px", orderable: false},  // 상담경로
+            {targets: [8], width: "150px"},                    // 업무구분
+            {targets: [9], width: "100px", orderable: false},  // 상담유형(대)
+            {targets: [10], width: "150px", orderable: false}, // 상담유형(중)
+            {targets: [11], width: "150px", orderable: false}, // 상담유형(소)
+            {targets: [12], width: "150px", orderable: false}, // 상담 키워드
+            {targets: [13], width: "100px"},                   // 무음길이
+            {targets: [14], width: "150px", orderable: false}, // 녹취번호
+            {targets: [15], width: "120px", orderable: false}, // 상담번호
+            {targets: [16], width: "100px"},                   // STT 상태
         ],
-        dom: 'Bfrtip',
+        dom: 'Bfrtip', // 엑셀 다운로드 버튼 추가
         buttons: [{
             extend: 'excelHtml5',
             text: 'Excel 다운로드',
         }],
-        lengthMenu: [25, 50, 100],
     });
 
     // 페이징 버튼 text삭제
-    var pagingBtn = $('.paginate_button.first, .paginate_button.previous, .paginate_button.next, .paginate_button.last');
-    pagingBtn.empty();
-    $('.paginate_button').on('click', function(){
-        pagingBtn.empty();
-    });
-
-    // CS STT 윈도우 팝업
-    // function showWindowPopup(){
-    //     window.open('popup_cs_stt.html', 'CS STT 전수', 'width=300, height=300, menubar=no, status=no, toolbar=no');
-    // };
-    // $('.table.dataTable tbody td').dblclick(function(){
-	//     showWindowPopup();
+    // var pagingBtn = $('.paginate_button.first, .paginate_button.previous, .paginate_button.next, .paginate_button.last');
+    // pagingBtn.empty();
+    // $('.paginate_button').on('click', function(){
+    //     pagingBtn.empty();
     // });
 });
 </script>
