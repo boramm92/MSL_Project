@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi">
+  <!-- (safari) 전화번호 형태로 된 문자열을 전화로 자동호출하지 못하게 함 -->
+  <meta name="format-detection" content="telephone=no">
+  <!-- favicon mobile -->
+  <link rel="apple-touch-icon" sizes="180x180" href="resources/images/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="resources/images/favicon/site.webmanifest">
+  <!-- css -->
+  <link rel="stylesheet" href="resources/css/font.css">
+  <link rel="stylesheet" href="resources/css/reset.css">
+  <link rel="stylesheet" href="resources/css/teacher_ver_m.css">
+  <!-- js -->
+  <script type="text/javascript" src="resources/js/jquery-1.11.2.min.js"></script>
+
+  <title>공지사항</title>
+</head>
+
+<body>
+  <!-- #wrap -->
+  <div id="wrap">
+    <!-- header -->
+    <div id="header">
+      <!-- header_bar -->
+      <div class="header_bar">
+        <div class="fl">
+          <!-- [D] .btn_prev 페이지 뒤로가기 버튼에 class="hide"를 붙히면 display: none이 됩니다 -->
+          <button type="button" class="btn_prev">
+            <img src="resources/images/ico_back.svg" alt="뒤로가기">
+          </button>
+        </div>
+        <h1 class="img_box">
+          <img src="resources/images/logo_daekyo.svg" alt="대교 상상 키즈 로고">
+        </h1>
+        <div class="fr">
+          <button type="button" class="gnb_open">
+            <img src="resources/images/ico_menu.svg" alt="메뉴 열기">
+          </button>
+        </div>
+      </div>
+      <!-- //header_bar -->
+
+      <!-- gnb -->
+      <div id="gnb">
+        <div class="gnb_box gnb_logo">
+          <div class="img_box">
+            <img src="resources/images/logo_daekyo_kids.svg" alt="대교 상상 키즈 로고">
+          </div>
+        </div>
+        <!-- [D] gnb메뉴 중 방문시간표, 방문관리, 정산내역, 마이프로필에 새로 (.scd_disable_menu) 클래스 추가됨 -->
+        <!-- [D] .scd_disable_menu 메뉴에 스케줄 활성여부 옵션에 따라 toggleclass(.disabled)됨  -->
+        <div class="gnb_box gnb_card">
+          <a href="visit_timetable.html" class="card scd_disable_menu">
+            <img src="resources/images/ico_clock.svg" alt="방문시간표">
+            <img src="resources/images/ico_clock_wg.svg" alt="방문시간표 비활성화">
+            <span class="primary_text primary_text_s">
+              방문시간표
+            </span>
+          </a>
+          <a href="visit_management.html" class="card scd_disable_menu">
+            <img src="resources/images/ico_schedule.svg" alt="방문관리">
+            <img src="resources/images/ico_schedule_wg.svg" alt="방문관리 비활성화">
+            <span class="primary_text primary_text_s">
+              방문관리
+            </span>
+          </a>
+          <a href="schedule_set.html" class="card">
+            <img src="resources/images/ico_calendar.svg" alt="스케줄 설정">
+            <span class="primary_text primary_text_s">
+              스케줄 설정
+            </span>
+          </a>
+          <a href="#none" class="card scd_disable_menu">
+            <img src="resources/images/ico_folder.svg" alt="정산내역">
+            <img src="resources/images/ico_folder_wg.svg" alt="정산내역 비활성화">
+            <span class="primary_text primary_text_s">
+              정산내역
+            </span>
+          </a>
+          <a href="notice.html" class="card">
+            <img src="resources/images/ico_list.svg" alt="공지사항">
+            <span class="primary_text primary_text_s">
+              공지사항
+            </span>
+          </a>
+          <a href="use_information.html" class="card">
+            <img src="resources/images/ico_page.svg" alt="자주묻는 질문">
+            <span class="primary_text primary_text_s">
+              자주묻는 질문
+            </span>
+          </a>
+        </div>
+        <div class="gnb_box gnb_card">
+          <a href="profile.html" class="card scd_disable_menu">
+            <img src="resources/images/ico_profile.svg" alt="My 프로필">
+            <img src="resources/images/ico_profile_wg.svg" alt="My 프로필 비활성화">
+            <span class="primary_text primary_text_s">
+              My&nbsp;&nbsp;프로필
+            </span>
+          </a>
+          <a href="#none" class="card">
+            <img src="resources/images/ico_key.svg" alt="비밀번호 변경">
+            <span class="primary_text primary_text_s">
+              비밀번호 변경
+            </span>
+          </a>
+          <a href="login.html" class="card">
+            <img src="resources/images/ico_logout.svg" alt="로그아웃">
+            <span class="primary_text primary_text_s">
+              로그아웃
+            </span>
+          </a>
+        </div>
+        <div class="gnb_box">
+          <a href="resources/video/sample_video.mp4" class="btn_movie">
+            <img src="resources/images/ico_play.svg" alt="영상 바로가기">
+            <span class="primary_text primary_text_s">우동선생님, 이렇게 활동하세요!</span>
+          </a>
+        </div>
+      </div>
+      <!-- //gnb -->
+    </div>
+    <!-- //header -->
+
+    <!-- #m_container -->
+    <div id="m_container">
+      <div class="notice_page">
+        <h2 class="page_title">공지사항</h2>
+
+        <div class="lst_box">
+          <!-- [D] 말머리 option 임의로 들어감 -->
+          <select class="ctgy_slt">
+            <option value="" selected>말머리 선택</option>
+            <option value="">말머리1</option>
+            <option value="">말머리2</option>
+            <option value="">말머리3</option>
+          </select>
+
+          <!-- [D] 공지사항 목록 (.notice_lst li) - 클릭 시 공지사항 보기 화면으로 넘어감 / 신규작성 글은 addClass('.new')해주면 new 아이콘과 목록 오른쪽 화살표 아이콘 추가됨  -->
+          <!-- [D] 리스트는 하단으로 무한로딩 시켜줘야함 -->
+          <!-- [D] 타이틀은 2줄 이상 말줄임 처리됨 -->
+          <ul class="notice_lst">
+            <li class="new">
+              <a href="notice_view.html">
+                <ul class="post_info">
+                  <li class="writer">장민영팀장</li>
+                  <li class="post_time">작성시간 <span>17:14</span></li>
+                  <li class="post_views">조회 <span>54</span></li>
+                  <li class="post_num">글번호 <span>1182</span></li>
+                </ul>
+                <p class="post_title">
+                  <span>[부문공통]</span>
+                  2020년 6월 눈높이 러닝센터 개설 판촉비 지원 안내
+                </p>
+              </a>
+            </li>
+            <li class="new">
+              <a href="notice_view.html">
+                <ul class="post_info">
+                  <li class="writer">박지만팀장</li>
+                  <li class="post_time">작성시간 <span>16:44</span></li>
+                  <li class="post_views">조회 <span>363</span></li>
+                  <li class="post_num">글번호 <span>1181</span></li>
+                </ul>
+                <p class="post_title">
+                  <span>[전사공통]</span>
+                  2020년 본사(대교타워) 건강검진 시행안내 (직원)
+                </p>
+              </a>
+            </li>
+            <li class="new">
+              <a href="notice_view.html">
+                <ul class="post_info">
+                  <li class="writer">박정은팀장</li>
+                  <li class="post_time">작성시간 <span>14:13</span></li>
+                  <li class="post_views">조회 <span>777</span></li>
+                  <li class="post_num">글번호 <span>1180</span></li>
+                </ul>
+                <p class="post_title">
+                  <span>[부문공통]</span>
+                  7월 마케팅 레시피 & 채널 운영가이드 안내7월 마케팅 레시피 & 채널 운영가이드 안내7월 마케팅 레시피 & 채널 운영가이드 안내팅 레시피 & 채널 운영가이드 안내팅 레시피 & 채널
+                  운영가이드 안내
+                </p>
+              </a>
+            </li>
+            <li>
+              <a href="notice_view.html">
+                <ul class="post_info">
+                  <li class="writer">박정은팀장</li>
+                  <li class="post_time">작성시간 <span>08-11</span></li>
+                  <li class="post_views">조회 <span>828</span></li>
+                  <li class="post_num">글번호 <span>1179</span></li>
+                </ul>
+                <p class="post_title">
+                  <span>[부문공통]</span>
+                  2020년 7월 학습 눈높이 창의독서 단계 / 배송지 수정 및 도서목록 안내(11일~18일까지)2020년 7월 학습 눈높이 창의독서 단계 / 배송지 수정 및 도서목록
+                  안내(11일~18일까지)도서목록 안내(11일~18일까지)
+                </p>
+              </a>
+            </li>
+            <li>
+              <a href="notice_view.html">
+                <ul class="post_info">
+                  <li class="writer">박정은팀장</li>
+                  <li class="post_time">작성시간 <span>08-11</span></li>
+                  <li class="post_views">조회 <span>2736</span></li>
+                  <li class="post_num">글번호 <span>1178</span></li>
+                </ul>
+                <p class="post_title">
+                  <span>[부문공통]</span>
+                  제 68회 KP한자검정시험과 MAT수학능력평가 시험 연기 안내
+                </p>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- //#m_container -->
+  </div>
+  <!-- //#wrap -->
+
+<!-- 공통 script -->
+<script type="text/javascript">
+  $(document).ready(function () {
+    // 공통 AMR gnb 열기/닫기
+    $('.gnb_open').on('click', function (e) {
+      e.stopPropagation();
+      handleGndClose();
+
+      $('body').addClass('gnb_backdrop');
+      $('#gnb').addClass('show');
+      setTimeout(function () {
+        $('#gnb').addClass('on');
+      }, 100);
+
+      // gnd 닫기
+      function handleGndClose() {
+        // gnb에서 클릭 시 버블링 막기
+        $('#gnb').on('click', function (e) {
+          e.stopPropagation();
+        })
+
+        // gnb를 제외한 body를 클릭
+        $('body').on('click', function (e) {
+          if ($('body').hasClass('gnb_backdrop')) {
+            $('#gnb').removeClass('on');
+            setTimeout(function () {
+              $('#gnb').removeClass('show');
+              $('body').removeClass('gnb_backdrop');
+            }, 200);
+          }
+        })
+      }
+    });
+  });
+</script>
+<!-- //공통 script -->
+
+<!-- 개별 페이지 script -->
+<script>
+  $(document).ready(function () {
+    // NBR 신규 공지사항 타이틀에 class="new"여부 확인하여 new 아이콘 추가
+    $('.notice_lst li').each(function () {
+      if ($(this).hasClass('new')) {
+        $(this).find('.post_title').append('<img src="resources/images/ico_new.png" alt="new 아이콘">')
+      }
+    });
+  });
+</script>
+<!-- //개별 페이지 script -->
+</body>
+
+</html>

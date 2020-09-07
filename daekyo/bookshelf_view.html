@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi">
+  <!-- (safari) 전화번호 형태로 된 문자열을 전화로 자동호출하지 못하게 함 -->
+  <meta name="format-detection" content="telephone=no">
+  <!-- favicon mobile -->
+  <link rel="apple-touch-icon" sizes="180x180" href="resources/images/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="resources/images/favicon/site.webmanifest">
+  <!-- css -->
+  <link rel="stylesheet" href="resources/css/font.css">
+  <link rel="stylesheet" href="resources/css/reset.css">
+  <link rel="stylesheet" type="text/css" href="resources/css/fullCalendar.min.css">
+  <link rel="stylesheet" href="resources/css/teacher_ver_m.css">
+  <!-- js -->
+  <script type="text/javascript" src="resources/js/jquery-1.11.2.min.js"></script>
+  <script type="text/javascript" src="resources/js/fullCalendar.js"></script>
+  <script type="text/javascript" src="resources/js/fullCalendar_locale_ko.js"></script>
+  <script type="text/javascript" src="resources/js/moment.min.js"></script>
+  <title>책장보기</title>
+</head>
+
+<body>
+  <div id="wrap">
+    <!-- header -->
+    <div id="header">
+      <!-- header_bar -->
+      <div class="header_bar">
+        <div class="fl">
+          <!-- [D] .btn_prev 페이지 뒤로가기 버튼에 class="hide"를 붙히면 display: none이 됩니다 -->
+          <button type="button" class="btn_prev">
+            <img src="resources/images/ico_back.svg" alt="뒤로가기">
+          </button>
+        </div>
+        <h1 class="img_box">
+          <img src="resources/images/logo_daekyo.svg" alt="대교 상상 키즈 로고">
+        </h1>
+        <div class="fr">
+          <button type="button" class="gnb_open">
+            <img src="resources/images/ico_menu.svg" alt="메뉴 열기">
+          </button>
+        </div>
+      </div>
+      <!-- //header_bar -->
+
+      <!-- gnb -->
+      <div id="gnb">
+        <div class="gnb_box gnb_logo">
+          <div class="img_box">
+            <img src="resources/images/logo_daekyo_kids.svg" alt="대교 상상 키즈 로고">
+          </div>
+        </div>
+        <!-- [D] gnb메뉴 중 방문시간표, 방문관리, 정산내역, 마이프로필에 새로 (.scd_disable_menu) 클래스 추가됨 -->
+        <!-- [D] .scd_disable_menu 메뉴에 스케줄 활성여부 옵션에 따라 toggleclass(.disabled)됨  -->
+        <div class="gnb_box gnb_card">
+          <a href="visit_timetable.html" class="card scd_disable_menu">
+            <img src="resources/images/ico_clock.svg" alt="방문시간표">
+            <img src="resources/images/ico_clock_wg.svg" alt="방문시간표 비활성화">
+            <span class="primary_text primary_text_s">
+              방문시간표
+            </span>
+          </a>
+          <a href="visit_management.html" class="card scd_disable_menu">
+            <img src="resources/images/ico_schedule.svg" alt="방문관리">
+            <img src="resources/images/ico_schedule_wg.svg" alt="방문관리 비활성화">
+            <span class="primary_text primary_text_s">
+              방문관리
+            </span>
+          </a>
+          <a href="schedule_set.html" class="card">
+            <img src="resources/images/ico_calendar.svg" alt="스케줄 설정">
+            <span class="primary_text primary_text_s">
+              스케줄 설정
+            </span>
+          </a>
+          <a href="#none" class="card scd_disable_menu">
+            <img src="resources/images/ico_folder.svg" alt="정산내역">
+            <img src="resources/images/ico_folder_wg.svg" alt="정산내역 비활성화">
+            <span class="primary_text primary_text_s">
+              정산내역
+            </span>
+          </a>
+          <a href="notice.html" class="card">
+            <img src="resources/images/ico_list.svg" alt="공지사항">
+            <span class="primary_text primary_text_s">
+              공지사항
+            </span>
+          </a>
+          <a href="use_information.html" class="card">
+            <img src="resources/images/ico_page.svg" alt="자주묻는 질문">
+            <span class="primary_text primary_text_s">
+              자주묻는 질문
+            </span>
+          </a>
+        </div>
+        <div class="gnb_box gnb_card">
+          <a href="profile.html" class="card scd_disable_menu">
+            <img src="resources/images/ico_profile.svg" alt="My 프로필">
+            <img src="resources/images/ico_profile_wg.svg" alt="My 프로필 비활성화">
+            <span class="primary_text primary_text_s">
+              My&nbsp;&nbsp;프로필
+            </span>
+          </a>
+          <a href="#none" class="card">
+            <img src="resources/images/ico_key.svg" alt="비밀번호 변경">
+            <span class="primary_text primary_text_s">
+              비밀번호 변경
+            </span>
+          </a>
+          <a href="login.html" class="card">
+            <img src="resources/images/ico_logout.svg" alt="로그아웃">
+            <span class="primary_text primary_text_s">
+              로그아웃
+            </span>
+          </a>
+        </div>
+        <div class="gnb_box">
+          <a href="resources/video/sample_video.mp4" class="btn_movie">
+            <img src="resources/images/ico_play.svg" alt="영상 바로가기">
+            <span class="primary_text primary_text_s">우동선생님, 이렇게 활동하세요!</span>
+          </a>
+        </div>
+      </div>
+      <!-- //gnb -->
+    </div>
+    <!-- //header -->
+
+    <!-- m_container -->
+    <div id="m_container">
+      <div class="view_book">
+        <h2 class="page_title"><em>김다은</em>의 책장 <span class="primary_text_s">&lpar;<em>60</em>/전체<em>60</em>&rpar;</span></h2>
+
+        <div class="srch_box">
+          <input type="text" placeholder="찾고싶은 책 이름을 입력하세요." class="input_text">
+          <button type="button"><span class="text_invisible">검색하기</span></button>
+        </div>
+
+        <!-- [D] a > span 이 들어가야 체크이미지가 보여집니다 -->
+        <ul class="set_btn_box">
+          <li class="on"><a href="#none"><span>전체보기</span></a></li>
+          <li><a href="#none"><span>읽은 책 보기</span></a></li>
+          <li><a href="#none"><span>읽지않은 책 보기</span></a></li>
+        </ul>
+
+        <div class="set_board">
+          <div>
+            <div class="card_list">
+              <!-- card -->
+              <div class="card">
+                <!-- card_info -->
+                <div class="card_info">
+                  <span class="read_ico">읽은날짜</span>
+                  <span class="requested_date">2020-08-06</span>
+                  <div class="status_box">
+                    <span class="readed">읽었어요</span>
+                  </div>
+                </div>
+                <!-- //card_info -->
+
+                <!-- book_info -->
+                <div class="book_info">
+                  <span class="book_title">무엇이 세상에서 가장 클까요?</span>
+                  <span>대교 소빅스</span>
+                </div>
+                <!-- //book_info -->
+
+                <div class="flex_box btn_box card_on_hidden">
+                  <div><a href="#register_after_reading" class="alert_open bg_effect btn_line_primary">독후활동 등록</a></div>
+                  <div><a href="bookshelf_after.html" class="bg_effect btn_line_primary">독후활동 보기</a></div>
+                </div>
+              </div>
+              <!-- //card -->
+
+              <!-- card -->
+              <!-- [D] 읽지 않은 책은 card[disabled] & .btn_box a[disabled] 를 해야합니다  -->
+              <div class="card" disabled>
+                <!-- card_info -->
+                <div class="card_info">
+                  <span class="read_ico">읽은날짜</span>
+                  <span class="requested_date">-</span>
+                  <div class="status_box">
+                    <span class="readed">읽었어요</span>
+                  </div>
+                </div>
+                <!-- //card_info -->
+
+                <!-- book_info -->
+                <div class="book_info">
+                  <span class="book_title">무엇이 세상에서 가장 클까요?</span>
+                  <span>대교 소빅스</span>
+                </div>
+                <!-- //book_info -->
+
+                <div class="flex_box btn_box card_on_hidden">
+                  <div><a href="#register_after_reading" class="alert_open bg_effect btn_line_primary" disabled>독후활동 등록</a></div>
+                  <div><a href="bookshelf_after.html" class="bg_effect btn_line_primary" disabled>독후활동 보기</a></div>
+                </div>
+              </div>
+              <!-- //card -->
+            </div>
+          </div>
+          <div>
+            <div class="card_list">
+              <!-- card -->
+              <div class="card">
+                <!-- card_info -->
+                <div class="card_info">
+                  <span class="read_ico">읽은날짜</span>
+                  <span class="requested_date">2020-08-06</span>
+                  <div class="status_box">
+                    <span class="readed">읽었어요</span>
+                  </div>
+                </div>
+                <!-- //card_info -->
+
+                <!-- book_info -->
+                <div class="book_info">
+                  <span class="book_title">무엇이 세상에서 가장 클까요?</span>
+                  <span>대교 소빅스</span>
+                </div>
+                <!-- //book_info -->
+
+                <div class="flex_box btn_box card_on_hidden">
+                  <div><a href="#register_after_reading" class="alert_open bg_effect btn_line_primary">독후활동 등록</a></div>
+                  <div><a href="bookshelf_after.html" class="bg_effect btn_line_primary">독후활동 보기</a></div>
+                </div>
+              </div>
+              <!-- //card -->
+            </div>
+          </div>
+          <div>
+            <div class="card_list">
+              <!-- card -->
+              <div class="card" disabled>
+                <!-- card_info -->
+                <div class="card_info">
+                  <span class="read_ico">읽은날짜</span>
+                  <span class="requested_date">-</span>
+                  <div class="status_box">
+                    <span class="readed">읽었어요</span>
+                  </div>
+                </div>
+                <!-- //card_info -->
+
+                <!-- book_info -->
+                <div class="book_info">
+                  <span class="book_title">무엇이 세상에서 가장 클까요?</span>
+                  <span>대교 소빅스</span>
+                </div>
+                <!-- //book_info -->
+
+                <div class="flex_box btn_box card_on_hidden">
+                  <div><a href="#register_after_reading" class="alert_open bg_effect btn_line_primary" disabled>독후활동 등록</a></div>
+                  <div><a href="bookshelf_after.html" class="bg_effect btn_line_primary" disabled>독후활동 보기</a></div>
+                </div>
+              </div>
+              <!-- //card -->
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+    <!-- //m_container -->
+  </div>
+  <!-- //wrap -->
+
+  <!-- layer alert -->
+  <!-- 독후활동등록 -->
+  <div id="register_after_reading" class="alert_box alert_pop">
+    <div class="lyr_cont">
+      <div class="title_box">
+        <span class="title">독후활동 작성하기</span>
+      </div>
+
+      <div class="cont_box">
+        <!-- book_info -->
+        <div class="book_info">
+          <span class="book_title">무엇이 세상에서 가장 클까요?</span>
+          <span>대교 소빅스</span>
+        </div>
+        <!-- //book_info -->
+        <input type="text" placeholder="독후활동 제목을 입력하세요.">
+        <textarea name="" id="" cols="10" rows="7" placeholder="독후활동 내용을 입력하세요."></textarea>
+
+        <div class="upload_box">
+          <div class="upload_file">
+            <!-- [D] 파일을 선택하면 label class에 'on' 이 추가되면서 비활성화 디자인이 됩니다
+              파일은 총 2개 (이미지파일 1개 오디오파일 1개) 만 추가 가능합니다.
+              파일을 추가하면 .upload_list에 표시됩니다.
+            -->
+            <input type="file" accept="image/*" id="file1" class="invisible input_file_image">
+            <label for="file1"><span class="text_invisible">갤러리에서 사진고르기</span></label>
+            <input type="file" accept="image/*" capture="camera" id="file2" class="invisible input_file_image">
+            <label for="file2"><span class="text_invisible">카메라로 사진찍기</span></label>
+            <input type="file" accept="audio/*" capture="microphone" id="file3" class="invisible input_file_voice">
+            <label for="file3"><span class="text_invisible">녹음하기</span></label>
+          </div>
+
+          <div class="upload_list">
+            <div class="image_file"></div>
+            <div class="voice_file"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="lyr_btm">
+      <div class="dual_box">
+        <div>
+          <button type="button" class="alert_close">취소</button>
+        </div>
+        <div>
+          <button type="button" class="alert_close">등록</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- //독후활동등록 -->
+  <!-- //layer alert -->
+
+<script type="text/javascript">
+$(document).ready(function(){
+  // 공통 AMR gnb 열기/닫기
+  $('.gnb_open').on('click', function(e) {
+    e.stopPropagation();
+    handleGndClose();
+
+    $('body').addClass('gnb_backdrop');
+    $('#gnb').addClass('show');
+
+    setTimeout(function () {
+      $('#gnb').addClass('on');
+    }, 100);
+
+    // gnd 닫기
+    function handleGndClose() {
+      // gnb에서 클릭 시 버블링 막기
+      $('#gnb').on('click', function(e) {
+        e.stopPropagation();
+      })
+
+      // gnb를 제외한 body를 클릭
+      $('body').on('click', function(e) {
+        if ($('body').hasClass('gnb_backdrop')) {
+          $('#gnb').removeClass('on');
+          setTimeout(function () {
+            $('#gnb').removeClass('show');
+            $('body').removeClass('gnb_backdrop');
+          }, 200);
+        }
+      })
+    }
+  });
+
+  // 공통 200810 AMR 얼럿 레이어 열기/닫기
+  $('.alert_open').on('click', function(e){
+    var thisHref = $(this).attr('href');
+
+    e.stopPropagation();
+    handleLyrClose(); //레이어 닫기
+
+    $('body').addClass('lyr_backdrop'); //body에 백그라운드 적용
+    $(thisHref).css({'display': 'block'}); //클릭한 a의 href와 동일한 레이어만 block
+
+    setTimeout(function(){
+      $(thisHref).addClass('on') //레이어 오픈 효과 적용
+    }, 100);
+  })
+
+  // 공통 얼럿 레이어 닫기
+  function handleLyrClose() {
+    // 레이어 닫기버튼 클릭
+    $('.alert_close').on('click', function(){
+      $('.alert_box').removeClass('on');
+
+      setTimeout(function(){
+        $('body').removeClass('lyr_backdrop');
+        $('.alert_box').css({'display': 'none'});
+        $('.alert_close').off('click');
+      }, 200);
+    })
+  }
+
+  // 공통 수정 200819 AMR input이 focus되어 있을 때 스크롤을 하면 가상키보드가 닫힘
+  $('input').focus(function(){
+    handleInputKeyboard($('#m_container'), $(document));
+    handleInputKeyboard($('.lyr_box, .alert_box, .lyr_backdrop'), $('.lyr_box, .alert_box, .lyr_backdrop'));
+  });
+
+  function handleInputKeyboard(touchStartEl, touchEndEl) {
+    touchStartEl.on('touchstart', function (e) {
+      touchEndEl.on('touchmove touchend', function (e) {
+        touchEndEl.off('touchmove touchend');
+        $('input').blur();
+      });
+    });
+  }
+
+  // 공통 NBR tap list 열기/닫기
+  function handleTapList() {
+    var setBtn = $('.set_btn_box li');
+    var setCont = $('.set_board > div');
+    setCont.hide();
+    setCont.eq(0).show();
+    setBtn.on('click', function () {
+      var target = $(this);
+      var index = target.index();
+      setBtn.removeClass('on');
+      target.addClass('on');
+      setCont.css('display', 'none');
+      setCont.eq(index).css('display', 'block');
+    });
+  }
+  handleTapList();
+
+  // 공통 AMR 200810 bg_effect를 가진 button과 a가 active되면 background 디자인 적용
+  $('button.bg_effect, a.bg_effect').on('touchstart touchend', function () {
+    $(this).toggleClass('on');
+  });
+
+  //AMR 선택한 파일을 .upload_list에 입력 및 디자인 effect add
+  $('.upload_file input[type="file"]').change(function (e) {
+    var fileName = e.target.files[0].name;
+
+    if ( $(this).hasClass('input_file_image') ) {
+      $('.input_file_image').next('label').addClass('on')
+      $('.upload_list .image_file').html(
+        '<span>'+ fileName +'</span>\n' +
+        '<button type="button"><span class="text_invisible">파일 삭제</span></button>\n'
+      )
+    } else if ( $(this).hasClass('input_file_voice') ) {
+      $('.input_file_voice').next('label').addClass('on')
+      $('.upload_list .voice_file').html(
+        '<span>'+ fileName +'</span>\n' +
+        '<button type="button"><span class="text_invisible">파일 삭제</span></button>\n'
+      )
+    }
+
+    //AMR 파일 x 버튼을 누르면 파일 삭제 및 디자인 effect remove
+    $('.upload_list button').on('click', function(){
+      if ( $(this).parent().hasClass('image_file') ) {
+        $('.input_file_image').val('')
+        $('.input_file_image').next('label').removeClass('on')
+      } else if ( $(this).parent().hasClass('voice_file') ) {
+        $('.input_file_voice').val('')
+        $('.input_file_voice').next('label').removeClass('on')
+      }
+      $(this).parent().html('')
+    })
+  });
+
+})
+</script>
+</body>
+</html>
