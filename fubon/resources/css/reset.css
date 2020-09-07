@@ -33,6 +33,10 @@ input, textarea {border: none; -webkit-appearance: none; -moz-appearance: none; 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {margin: 0; -webkit-appearance: none; -moz-appearance: none; appearance: none;}
 input[type=number] {-moz-appearance: textfield;}
+input[type=number]:-ms-clear {display: none;}
+input[type=number]::-ms-clear {display: none;}
+input[type=numberOnly]:-ms-clear {display: none;}
+input[type=numberOnly]::-ms-clear {display: none;}
 input[type=text]:-ms-clear {display: none;}
 input[type=text]::-ms-clear {display: none;}
 input {filter: none;}
@@ -41,7 +45,11 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {transition: background-color 5000s ease-in-out 0s; }
+input:invalid {box-shadow: none;}
+input::-moz-submit-invalid {box-shadow: none;}
+input::-moz-ui-invalid {box-shadow:none;}
 input:focus {outline: none;}
+select:focus {outline: none;}
 
 /* Select 기본 스타일 초기화 */
 select {border: none; appearance: none; -webkit-appearance: none; -moz-appearance: none; cursor: pointer;}
