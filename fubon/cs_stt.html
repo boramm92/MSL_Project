@@ -249,6 +249,7 @@
                         <tr>
                             <th>업무구분</th>
                             <td>
+                                <!-- [D] 선택박스 옵션 10개까지 보여짐, 그 외 스크롤로 확인가능 -->
                                 <div class="sltBox custom">
                                     <select class="select">
                                         <option value="">전체</option>
@@ -333,8 +334,10 @@
                     </tbody>
                 </table>
 
+                <!-- [D] 조회 버튼(.btn_srch)클릭 시 하단 리스트 오름차순으로 기본 정렬된 상태로 조회되며, 입력된 검색조건 값들은 reset되어야함 -->
+                <!-- [D] 초기화 버튼(.btn_reset)클릭 시 검색조건 테이블 상 입력값들 모두 reset됨 -->
                 <div class="btnBox">
-                    <a href="#none">조회</a>
+                    <a href="#none" class="btn_srch">조회</a>
                     <a href="#none" class="btn_reset">초기화</a>
                 </div>
             </div>
@@ -342,7 +345,7 @@
 
             <!-- .dataTableBox -->
             <div class="dataTableBox">
-                <!-- [D] datatables -->
+                <!-- [D] datatables 라이브러리 영역 -->
                 <table class="dataTable">
                     <thead>
                         <tr>
@@ -366,6 +369,7 @@
                         </tr>
                     </thead>
 
+                    <!-- [D] 조회된 목록(tbody tr) 더블클릭 시 CS STT 전수 팝업 윈도우 팝업으로 등장 -->
                     <tbody>
                         <tr>
                             <td>1</td>
@@ -1065,7 +1069,7 @@
 <!-- script -->
 <script type="text/javascript">
 $(document).ready(function(){
-    // [공통] gnb 메뉴 script
+    // gnb 메뉴 script
     function gnbShowSlide() {
         // 대메뉴 마우스오버 시 중메뉴 슬라이드 다운으로 보여짐
         $('.gnb > li').hover(function(){
@@ -1078,13 +1082,18 @@ $(document).ready(function(){
         if($('.third').length){
             $('.third').parents('li').addClass('down');
         }
+        $('.sub a').on('click', function(e){
+            if($(this).siblings('.third').length){
+                $(this).parents('li').toggleClass('down');
+                $(this).parents('li').toggleClass('up');
+            }
+        });
 
         // 중메뉴 클릭 시 소메뉴 슬라이드 다운으로 보여짐
         $('.sub a').on('click', function(e){
             e.stopPropagation();
             $(this).parents('.sub').css('height', 'auto');
             $(this).next().slideToggle(200);
-            $(this).removeClass('down');
         });
     }
     gnbShowSlide();
@@ -1183,10 +1192,10 @@ $(document).ready(function(){
     // 초기화 버튼 클릭 시 검색조건 초기화
     $('.btn_reset').on('click', function(){
         $('.srchArea input').val('');
-        $('.slt_scroll .list .option').removeClass('selected');
-        $('.slt_scroll .list .option:first-child').addClass('selected');
+        $('.srchArea .slt_scroll .list .option').removeClass('selected');
+        $('.srchArea .slt_scroll .list .option:first-child').addClass('selected');
 
-        var optionSelected = $('.slt_scroll .list .option.selected');
+        var optionSelected = $('.srchArea .slt_scroll .list .option.selected');
         optionSelected.each(function(){
             var optionText = $(this).text();
             $('.current_option').text(optionText);
@@ -1199,20 +1208,26 @@ $(document).ready(function(){
         pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
         defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
         autoclose: 1,
-    });
+    }).datetimepicker("setDate", new Date());
 
     $('#toDate').datetimepicker({
         language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
         pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
         defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
         autoclose: 1,
-    });
+    }).datetimepicker("setDate", new Date());
 
     // datatable 렌더링
     var table = $('.dataTable').DataTable({
         language: { // 테이블 목록 건수 text 한글 설정
             info: "계 _TOTAL_ 건&nbsp;&nbsp; _END_ 건 &sol; _TOTAL_ 건",
-            lengthMenu: "_MENU_ 건씩 보기"
+            lengthMenu: "_MENU_ 건씩 보기",
+            paginate: {
+                first: "",
+                previous: "",
+                next: "",
+                last: ""
+            }
         },
         responsive: true, // 반응형 허용
         filter: false, // 검색창 미허용
@@ -1220,11 +1235,11 @@ $(document).ready(function(){
         paging: true, // 페이징 허용
         pagingType: "full_numbers", // 페이징 버튼 구성 (처음, 이전, 페이지숫자, 다음, 마지막)
         lengthMenu: [25, 50, 100], // 페이지 당 보여질 목록 갯수 select 범위 지정
-        scrollY: "500px", // 세로 스크롤 허용
+        scrollY: "45vh", // 세로 스크롤 허용
         scrollX: true, //가로 스크롤 허용
         scrollCollapse: true,
         columnDefs: [ // 컬럼별 width 지정, 소트 허용여부(false, 미허용)
-            {targets: [0], width: "50px", orderable: false},   // NO
+            {targets: [0], width: "50px", sortable: false},   // NO
             {targets: [1], width: "150px"},                    // 상담일시
             {targets: [2], width: "150px"},                    // 고객 전화번호
             {targets: [3], width: "100px", orderable: false},  // 상담고객
@@ -1242,7 +1257,7 @@ $(document).ready(function(){
             {targets: [15], width: "120px", orderable: false}, // 상담번호
             {targets: [16], width: "100px"},                   // STT 상태
         ],
-        dom: 'Bfrtip', // 엑셀 다운로드 버튼 추가
+        dom: 'Blfrtip', // 엑셀 다운로드 버튼 추가
         buttons: [{
             extend: 'excelHtml5',
             text: 'Excel 다운로드',
@@ -1254,22 +1269,36 @@ $(document).ready(function(){
             leftColumns: 1
         }
     });
-    // new $.fn.dataTable.Buttons(table, {
+
+    // 다른 열에서 sort되어도 1열 순번은 그대로 유지
+    table.on('order.dt search.dt', function(){
+        table.column(0, {search:'applied', order:'applied'}).nodes().each(function (cell, i){
+            cell.innerHTML = i+1;
+        });
+    }).draw();
+
+    // cs stt 전수 윈도우 팝업 - 윈도우 사이즈 기준
+    // $('table.dataTable tbody tr').dblclick(function(e){
+    //     var popupWidth = 200;
+    //     var popupHeight = 300;
     //
+    //     var popupX = (window.screen.width / 2) - (popupWidth / 2);
+    //     // 만들 팝업창 width 크기의 1/2 만큼 보정값으로 빼주었음
+    //
+    //     var popupY= (window.screen.height / 2) - (popupHeight / 2);
+    //     // 만들 팝업창 height 크기의 1/2 만큼 보정값으로 빼주었음
+    //
+    //     window.open('popup_cs_stt.html', 'CS STT 전수팝업', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
     // });
 
-    // 페이징 버튼 text삭제
-    // var pagingBtn = $('.paginate_button.first, .paginate_button.previous, .paginate_button.next, .paginate_button.last');
-    // pagingBtn.empty();
-    // $('.paginate_button').on('click', function(){
-    //     pagingBtn.empty();
-    // });
-
+    // cs stt 전수 윈도우 팝업 - 현재 브라우저 크기 기준
     $('table.dataTable tbody tr').dblclick(function(e){
-        e.preventDefault();
-        //window.open("파일명", "팝업이름", "옵션설정");
-        //옵션 : left, top, width, height, status, toolbar, location, menubar, scrollbars, fullscreen
-        window.open("popup_cs_stt.html","CS STT 전수팝","width=90%, height=90%, left=50%, top=50%, scrollbars=0, toolbar=0, menubar=0");
+        var popupX = (document.body.offsetWidth / 2) - (1250 / 2);
+        // 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
+        var popupY= (window.screen.height / 2) - (750 / 2);
+        // 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
+
+        window.open('popup_cs_stt.html', 'CS STT 전수팝업', 'status=no, height=750, width=1250, left='+ popupX + ', top='+ popupY);
     });
 });
 </script>

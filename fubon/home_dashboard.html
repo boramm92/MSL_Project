@@ -190,7 +190,7 @@
 <!-- script -->
 <script type="text/javascript">
 $(document).ready(function(){
-    // [공통] gnb 메뉴 script
+    // gnb 메뉴 script
     function gnbShowSlide() {
         // 대메뉴 마우스오버 시 중메뉴 슬라이드 다운으로 보여짐
         $('.gnb > li').hover(function(){
@@ -203,13 +203,18 @@ $(document).ready(function(){
         if($('.third').length){
             $('.third').parents('li').addClass('down');
         }
+        $('.sub a').on('click', function(e){
+            if($(this).siblings('.third').length){
+                $(this).parents('li').toggleClass('down');
+                $(this).parents('li').toggleClass('up');
+            }
+        });
 
         // 중메뉴 클릭 시 소메뉴 슬라이드 다운으로 보여짐
         $('.sub a').on('click', function(e){
             e.stopPropagation();
             $(this).parents('.sub').css('height', 'auto');
             $(this).next().slideToggle(200);
-            $(this).removeClass('down');
         });
     }
     gnbShowSlide();
