@@ -45,7 +45,7 @@
             <h2>STT TM_QA</h2>
 
             <div class="etc_box">
-                <!-- [D] 사용자 계정 표시 영역(.user_account span) -->
+                <!-- [D] 사용자 계정 표시 영역(.user_account span) / 임의로 '사용자계정 표시'라고 텍스트 넣어둠 -->
                 <div class="user_account">
                     <span>사용자계정 표시</span>
                 </div>
@@ -60,7 +60,7 @@
         <!-- //.title_box -->
 
         <!-- .gnb -->
-        <!-- [D] 현재 페이지에 해당하는 대메뉴(.gnb > li)에 addclass('current')주면 활성화됨 -->
+        <!-- [D] 현재 페이지에 해당하는 메뉴(.gnb li)에 addclass('current')주면 활성화됨 -->
         <!-- [D] 대메뉴(.gnb > li) 마우스오버 시 중메뉴(.sub) slidedown되며 보여짐 -->
         <!-- [D] 소메뉴(.third)가 존재하는 중메뉴(.snb > li)는 오른쪽에 아래방향 화살표가 추가되며, 클릭 시 소메뉴(.third) slidedown되며 보여짐 -->
         <ul class="gnb">
@@ -77,7 +77,7 @@
                 <h3>CS</h3>
 
                 <ul class="sub">
-                    <li>
+                    <li class="current">
                         <a href="cs_stt.html">STT 대상</a>
                     </li>
                 </ul>
@@ -210,6 +210,7 @@
                         <tr>
                             <th>상담일시</th>
                             <!-- [D] 처음 페이지 들어왔을때의 초기 상담일시는 [전날 날짜, 오전 9시] - [당일 날짜, 미정] 기본 입력 상태여야함 -->
+                            <!-- [D] 시간 초기 기본값 미정으로 비워둠 -->
                             <td>
                                 <div class="iptBox">
                                     <input type="text" id="fromDate" class="iptDateTime">
@@ -230,24 +231,24 @@
                                 <div class="iptBox">
                                     <input type="text" numberOnly>
                                 </div>
-                            </td>                            
+                            </td>
 
-                            <th>무음길이</th>
+                            <th>증권번호</th>
                             <td>
                                 <div class="iptBox">
                                     <input type="text" numberOnly>
                                 </div>
                             </td>
-                            
+
                             <th>사번</th>
                             <td>
                                 <div class="iptBox">
                                     <input type="text" numberOnly>
                                 </div>
-                            </td>                                                        
+                            </td>
                         </tr>
 
-                        <tr>                            
+                        <tr>
                             <th>업무구분</th>
                             <td>
                                 <!-- [D] 선택박스 옵션 10개까지 보여짐, 그 외 스크롤로 확인가능 -->
@@ -335,8 +336,8 @@
                                     </select>
                                 </div>
                             </td>
-                            
-                            <th>증권번호</th>
+
+                            <th>무음길이</th>
                             <td>
                                 <div class="iptBox">
                                     <input type="text" numberOnly>
@@ -360,6 +361,7 @@
                 <!-- [D] datatables 라이브러리 영역 -->
                 <!-- [D] 'Excel 다운로드' 버튼 클릭 시 파일 다운로드됨 -->
                 <!-- [D] 처음 페이지 들어왔을때 목록 순서는 '상담일시'기준으로 오름차순 정렬됨 -->
+                <!-- [D] 실제 테이블데이터로 해피콜, 완전판매여부가 포함되어있지만 브라우저 상에서는 hidden 처리 되어있으며 엑셀 다운로드 하면 함께 노출됨 -->
                 <table class="dataTable">
                     <thead>
                         <tr>
@@ -368,6 +370,7 @@
                             <th>고객 전화번호</th>
                             <th>상담고객</th>
                             <th>고객번호</th>
+                            <th>증권번호</th>
                             <th>상담사</th>
                             <th>사번</th>
                             <th>상담경로</th>
@@ -380,6 +383,9 @@
                             <th>녹취번호</th>
                             <th>상담번호</th>
                             <th>STT 상태</th>
+                            <!-- [D] 실제 테이블데이터로 해피콜, 완전판매여부가 포함되어있지만 브라우저 상에서는 hidden 처리 되어있으며 엑셀 다운로드 하면 함께 노출됨 -->
+                            <th>해피콜</th>
+                            <th>완전판매여부</th>
                         </tr>
                     </thead>
 
@@ -387,19 +393,13 @@
                     <!-- [D] 4번째 상담고객 이름 두번째문자 마스킹 해야함 -->
                     <!-- [D] 13번째 상담키워드는 최대 16글자로 모두 노출되어야함 -->
                     <tbody>
-                        <!-- [D] 조회된 데이터 없을 경우 보여지는 행 -->
-                        <tr class="odd">
-                            <td colspan="17" class="dataTables_empty">
-                                조회된 데이터가 없습니다.
-                            </td>
-                        </tr>
-                        
                         <tr>
-                            <th>1</th>
+                            <td>1</td>
                             <td>2020-06-15 10:23</td>
                             <td>010-1234-5678</td>
                             <td>홍길동</td>
                             <td>100917026</td>
+                            <td>7777777</td>
                             <td>김영희</td>
                             <td>86397</td>
                             <td>IN</td>
@@ -412,13 +412,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>정상</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>2</th>
+                            <td>2</td>
                             <td>2020-06-15 10:20</td>
                             <td>010-1234-5678</td>
                             <td>홍길옥</td>
                             <td>3643883</td>
+                            <td>7777777</td>
                             <td>김철수</td>
                             <td>86397</td>
                             <td>OUT</td>
@@ -431,13 +434,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>오류</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>3</th>
+                            <td>3</td>
                             <td>2020-06-15 10:19</td>
                             <td>010-1234-5678</td>
                             <td>법정상속인</td>
                             <td>1</td>
+                            <td>7777777</td>
                             <td>이아라</td>
                             <td>86397</td>
                             <td>TRS</td>
@@ -450,13 +456,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>정상</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>4</th>
+                            <td>4</td>
                             <td>2020-06-15 10:23</td>
                             <td>010-1234-5678</td>
                             <td>이영희</td>
                             <td>107390420</td>
+                            <td>7777777</td>
                             <td>정태민</td>
                             <td>86397</td>
                             <td>IN</td>
@@ -469,13 +478,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>오류</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>5</th>
+                            <td>5</td>
                             <td>2020-06-15 10:23</td>
                             <td>010-1234-5678</td>
                             <td>박영미</td>
                             <td>2026112</td>
+                            <td>7777777</td>
                             <td>권현범</td>
                             <td>86397</td>
                             <td>OUT</td>
@@ -488,13 +500,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>정상</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>6</th>
+                            <td>6</td>
                             <td>2020-06-15 10:23</td>
                             <td>010-1234-5678</td>
                             <td>김영재</td>
                             <td>103649784</td>
+                            <td>7777777</td>
                             <td>김영</td>
                             <td>86397</td>
                             <td>TRS</td>
@@ -507,13 +522,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>오류</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>7</th>
+                            <td>7</td>
                             <td>2020-06-15 10:23</td>
                             <td>010-1234-5678</td>
                             <td>이영희</td>
                             <td>107390420</td>
+                            <td>7777777</td>
                             <td>김만이</td>
                             <td>86397</td>
                             <td>IN</td>
@@ -526,13 +544,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>정상</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>8</th>
+                            <td>8</td>
                             <td>2020-06-15 10:23</td>
                             <td>010-1234-5678</td>
                             <td>민영애</td>
                             <td>1</td>
+                            <td>7777777</td>
                             <td>김아리</td>
                             <td>86397</td>
                             <td>OUT</td>
@@ -545,13 +566,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>오류</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>9</th>
+                            <td>9</td>
                             <td>2020-06-15 10:23</td>
                             <td>010-1234-5678</td>
                             <td>박영옥</td>
                             <td>1</td>
+                            <td>7777777</td>
                             <td>김범</td>
                             <td>86130</td>
                             <td>OUT</td>
@@ -564,13 +588,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>오류</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>10</th>
+                            <td>10</td>
                             <td>2020-06-15 10:23</td>
                             <td>010-1234-5678</td>
                             <td>법정상속인</td>
                             <td>106241799</td>
+                            <td>7777777</td>
                             <td>이사라</td>
                             <td>86130</td>
                             <td>OUT</td>
@@ -583,13 +610,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>오류</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>11</th>
+                            <td>11</td>
                             <td>2020-06-15 10:23</td>
                             <td>010-1234-5678</td>
                             <td>장영진</td>
                             <td>3612944</td>
+                            <td>7777777</td>
                             <td>김희</td>
                             <td>86130</td>
                             <td>OUT</td>
@@ -602,13 +632,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>오류</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>12</th>
+                            <td>12</td>
                             <td>2020-06-15 10:23</td>
                             <td>010-1234-5678</td>
                             <td>허영</td>
                             <td>3510429</td>
+                            <td>7777777</td>
                             <td>홍길동</td>
                             <td>86130</td>
                             <td>OUT</td>
@@ -621,13 +654,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>오류</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>13</th>
+                            <td>13</td>
                             <td>2020-06-15 10:23</td>
                             <td>010-1234-5678</td>
                             <td>홍길동</td>
                             <td>100917026</td>
+                            <td>7777777</td>
                             <td>김영희</td>
                             <td>86397</td>
                             <td>IN</td>
@@ -640,13 +676,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>정상</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>14</th>
+                            <td>14</td>
                             <td>2020-06-15 10:23</td>
                             <td>010-1234-5678</td>
                             <td>홍길옥</td>
                             <td>3643883</td>
+                            <td>7777777</td>
                             <td>김철수</td>
                             <td>86397</td>
                             <td>OUT</td>
@@ -659,13 +698,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>오류</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>15</th>
+                            <td>15</td>
                             <td>2020-06-15 10:23</td>
                             <td>010-1234-5678</td>
                             <td>법정상속인</td>
                             <td>1</td>
+                            <td>7777777</td>
                             <td>이아라</td>
                             <td>86397</td>
                             <td>TRS</td>
@@ -678,13 +720,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>정상</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>16</th>
+                            <td>16</td>
                             <td>2020-06-15 10:23</td>
                             <td>010-1234-5678</td>
                             <td>이영희</td>
                             <td>107390420</td>
+                            <td>7777777</td>
                             <td>정태민</td>
                             <td>86397</td>
                             <td>IN</td>
@@ -697,13 +742,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>오류</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>17</th>
+                            <td>17</td>
                             <td>2020-06-15 10:23</td>
                             <td>010-1234-5678</td>
                             <td>박영미</td>
                             <td>2026112</td>
+                            <td>7777777</td>
                             <td>권현범</td>
                             <td>86397</td>
                             <td>OUT</td>
@@ -716,13 +764,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>정상</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>18</th>
+                            <td>18</td>
                             <td>2020-06-15 10:23</td>
                             <td>010-1234-5678</td>
                             <td>김영재</td>
                             <td>103649784</td>
+                            <td>7777777</td>
                             <td>김영</td>
                             <td>86397</td>
                             <td>TRS</td>
@@ -735,13 +786,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>오류</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>19</th>
+                            <td>19</td>
                             <td>2020-06-15 10:23</td>
                             <td>010-1234-5678</td>
                             <td>이영희</td>
                             <td>107390420</td>
+                            <td>7777777</td>
                             <td>김만이</td>
                             <td>86397</td>
                             <td>IN</td>
@@ -754,13 +808,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>정상</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>20</th>
+                            <td>20</td>
                             <td>2020-06-15 10:23</td>
                             <td>010-1234-5678</td>
                             <td>민영애</td>
                             <td>1</td>
+                            <td>7777777</td>
                             <td>김아리</td>
                             <td>86397</td>
                             <td>OUT</td>
@@ -773,13 +830,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>오류</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>21</th>
+                            <td>21</td>
                             <td>2020-06-15 10:23</td>
                             <td>010-1234-5678</td>
                             <td>박영옥</td>
                             <td>1</td>
+                            <td>7777777</td>
                             <td>김범</td>
                             <td>86130</td>
                             <td>OUT</td>
@@ -792,13 +852,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>오류</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>22</th>
+                            <td>22</td>
                             <td>2020-06-15 10:23</td>
                             <td>010-1234-5678</td>
                             <td>법정상속인</td>
                             <td>106241799</td>
+                            <td>7777777</td>
                             <td>이사라</td>
                             <td>86130</td>
                             <td>OUT</td>
@@ -811,13 +874,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>오류</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>23</th>
+                            <td>23</td>
                             <td>2020-06-15 10:23</td>
                             <td>010-1234-5678</td>
                             <td>장영진</td>
                             <td>3612944</td>
+                            <td>7777777</td>
                             <td>김희</td>
                             <td>86130</td>
                             <td>OUT</td>
@@ -830,13 +896,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>오류</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>24</th>
+                            <td>24</td>
                             <td>2020-06-15 10:23</td>
                             <td>010-1234-5678</td>
                             <td>허영</td>
                             <td>3510429</td>
+                            <td>7777777</td>
                             <td>홍길동</td>
                             <td>86130</td>
                             <td>OUT</td>
@@ -849,13 +918,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>오류</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>25</th>
+                            <td>25</td>
                             <td>2020-06-15 10:23</td>
                             <td>010-1234-5678</td>
                             <td>홍길동</td>
                             <td>100917026</td>
+                            <td>7777777</td>
                             <td>김영희</td>
                             <td>86397</td>
                             <td>IN</td>
@@ -868,13 +940,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>정상</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>26</th>
+                            <td>26</td>
                             <td>2020-06-15 10:23</td>
                             <td>010-1234-5678</td>
                             <td>홍길옥</td>
                             <td>3643883</td>
+                            <td>7777777</td>
                             <td>김철수</td>
                             <td>86397</td>
                             <td>OUT</td>
@@ -887,13 +962,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>오류</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>27</th>
+                            <td>27</td>
                             <td>2020-06-15 10:23</td>
                             <td>010-1234-5678</td>
                             <td>법정상속인</td>
                             <td>1</td>
+                            <td>7777777</td>
                             <td>이아라</td>
                             <td>86397</td>
                             <td>TRS</td>
@@ -906,13 +984,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>정상</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>28</th>
+                            <td>28</td>
                             <td>2020-06-15 10:23</td>
                             <td>010-1234-5678</td>
                             <td>이영희</td>
                             <td>107390420</td>
+                            <td>7777777</td>
                             <td>정태민</td>
                             <td>86397</td>
                             <td>IN</td>
@@ -925,13 +1006,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>오류</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>29</th>
+                            <td>29</td>
                             <td>2020-06-15 10:23</td>
                             <td>010-1234-5678</td>
                             <td>박영미</td>
                             <td>2026112</td>
+                            <td>7777777</td>
                             <td>권현범</td>
                             <td>86397</td>
                             <td>OUT</td>
@@ -944,13 +1028,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>정상</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>30</th>
+                            <td>30</td>
                             <td>2020-06-15 10:23</td>
                             <td>010-1234-5678</td>
                             <td>김영재</td>
                             <td>103649784</td>
+                            <td>7777777</td>
                             <td>김영</td>
                             <td>86397</td>
                             <td>TRS</td>
@@ -963,13 +1050,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>오류</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>31</th>
+                            <td>31</td>
                             <td>2020-06-15 10:23</td>
                             <td>010-1234-5678</td>
                             <td>이영희</td>
                             <td>107390420</td>
+                            <td>7777777</td>
                             <td>김만이</td>
                             <td>86397</td>
                             <td>IN</td>
@@ -982,13 +1072,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>정상</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>32</th>
+                            <td>32</td>
                             <td>2020-06-15 10:23</td>
                             <td>010-1234-5678</td>
                             <td>민영애</td>
                             <td>1</td>
+                            <td>7777777</td>
                             <td>김아리</td>
                             <td>86397</td>
                             <td>OUT</td>
@@ -1001,13 +1094,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>오류</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>33</th>
+                            <td>33</td>
                             <td>2020-06-15 10:23</td>
                             <td>010-1234-5678</td>
                             <td>박영옥</td>
                             <td>1</td>
+                            <td>7777777</td>
                             <td>김범</td>
                             <td>86130</td>
                             <td>OUT</td>
@@ -1020,13 +1116,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>오류</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>34</th>
+                            <td>34</td>
                             <td>2020-06-15 10:23</td>
                             <td>010-1234-5678</td>
                             <td>법정상속인</td>
                             <td>106241799</td>
+                            <td>7777777</td>
                             <td>이사라</td>
                             <td>86130</td>
                             <td>OUT</td>
@@ -1039,13 +1138,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>오류</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>35</th>
+                            <td>35</td>
                             <td>2020-06-15 10:23</td>
                             <td>010-1234-5678</td>
                             <td>장영진</td>
                             <td>3612944</td>
+                            <td>7777777</td>
                             <td>김희</td>
                             <td>86130</td>
                             <td>OUT</td>
@@ -1058,13 +1160,16 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>오류</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                         <tr>
-                            <th>36</th>
+                            <td>36</td>
                             <td>2020-06-15 10:23</td>
                             <td>010-1234-5678</td>
                             <td>허영</td>
                             <td>3510429</td>
+                            <td>7777777</td>
                             <td>홍길동</td>
                             <td>86130</td>
                             <td>OUT</td>
@@ -1077,6 +1182,8 @@
                             <td>007602f5338c69f6</td>
                             <td>149860675</td>
                             <td>오류</td>
+                            <td>해피콜</td>
+                            <td>완전판매여부</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1105,12 +1212,6 @@ $(document).ready(function(){
         if($('.third').length){
             $('.third').parents('li').addClass('down');
         }
-        $('.sub a').on('click', function(e){
-            if($(this).siblings('.third').length){
-                $(this).parents('li').toggleClass('down');
-                $(this).parents('li').toggleClass('up');
-            }
-        });
 
         // 중메뉴 클릭 시 소메뉴 슬라이드 다운으로 보여짐
         $('.sub a').on('click', function(e){
@@ -1251,6 +1352,8 @@ $(document).ready(function(){
     var table = $('.dataTable').DataTable({
         dom: 'iptlB', // 옵션 위치 지정
         language: { // 테이블 목록 건수 text 한글 설정
+            emptyTable: "조회된 데이터가 없습니다.", // 데이터 없을 경우 노출되는 text 설정
+            infoEmpty: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>_END_</strong> 건 &sol; _TOTAL_ 건&rbrack;",
             info: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>_END_</strong> 건 &sol; _TOTAL_ 건&rbrack;",
             lengthMenu: "_MENU_ 건씩 보기",
             paginate: {
@@ -1258,35 +1361,38 @@ $(document).ready(function(){
                 previous: "",
                 next: "",
                 last: ""
-            }
+            },
         },
         responsive: true, // 반응형 허용
         filter: false, // 검색창 미허용
         order: [[ 1, 'asc' ]], // 초기 sort 설정
         paging: true, // 페이징 허용
         pagingType: "full_numbers", // 페이징 버튼 구성 (처음, 이전, 페이지숫자, 다음, 마지막)
-        lengthMenu: [5, 20, 30, 40, 100], // 페이지 당 보여질 목록 갯수 select 범위 지정
-        scrollY: "40vh", // 세로 스크롤 허용, 사이즈
+        lengthMenu: [25, 50, 100], // 페이지 당 보여질 목록 갯수 select 범위 지정
+        scrollY: true, // 세로 스크롤 허용, 사이즈
         scrollX: true, //가로 스크롤 허용
         scrollCollapse: true,
-        columnDefs: [ // 컬럼별 width 지정, 소트 허용여부(false, 미허용)
-            {targets: [0], width: "50px", sortable: false},   // NO
-            {targets: [1], width: "150px"},                    // 상담일시
-            {targets: [2], width: "150px"},                    // 고객 전화번호
-            {targets: [3], width: "100px", orderable: false},  // 상담고객
-            {targets: [4], width: "120px"},                    // 고객번호
-            {targets: [5], width: "100px", orderable: false},  // 상담사
-            {targets: [6], width: "100px"},                    // 사번
-            {targets: [7], width: "100px", orderable: false},  // 상담경로
-            {targets: [8], width: "150px"},                    // 업무구분
-            {targets: [9], width: "100px", orderable: false},  // 상담유형(대)
-            {targets: [10], width: "150px", orderable: false}, // 상담유형(중)
-            {targets: [11], width: "150px", orderable: false}, // 상담유형(소)
-            {targets: [12], width: "300px", orderable: false}, // 상담 키워드
-            {targets: [13], width: "100px"},                   // 무음길이
-            {targets: [14], width: "150px", orderable: false}, // 녹취번호
-            {targets: [15], width: "120px", orderable: false}, // 상담번호
-            {targets: [16], width: "100px"},                   // STT 상태
+        columnDefs: [ // 컬럼별 width, 옵션 사용 지정
+            {targets: [0], width: "50px", sortable: false},                    // NO
+            {targets: [1], width: "150px"},                                    // 상담일시
+            {targets: [2], width: "150px"},                                    // 고객 전화번호
+            {targets: [3], width: "100px", orderable: false},                  // 상담고객
+            {targets: [4], width: "120px"},                                    // 고객번호
+            {targets: [5], width: "120px"},                                    // 증권번호
+            {targets: [6], width: "100px", orderable: false},                  // 상담사
+            {targets: [7], width: "100px"},                                    // 사번
+            {targets: [8], width: "100px", orderable: false},                  // 상담경로
+            {targets: [9], width: "150px"},                                    // 업무구분
+            {targets: [10], width: "100px", orderable: false},                 // 상담유형(대)
+            {targets: [11], width: "150px", orderable: false},                 // 상담유형(중)
+            {targets: [12], width: "150px", orderable: false},                 // 상담유형(소)
+            {targets: [13], width: "300px", orderable: false},                 // 상담 키워드
+            {targets: [14], width: "100px"},                                   // 무음길이
+            {targets: [15], width: "150px", orderable: false},                 // 녹취번호
+            {targets: [16], width: "120px", orderable: false},                 // 상담번호
+            {targets: [17], width: "100px"},                                   // STT 상태
+            {targets: [18], width: "120px", orderable: false, visible: false}, // 해피콜
+            {targets: [19], width: "120px", orderable: false, visible: false}, // 완전판매여부
         ],
         dom: 'Blfrtip', // 엑셀 다운로드 버튼 추가
         buttons: [{
@@ -1297,7 +1403,8 @@ $(document).ready(function(){
 
     new $.fn.dataTable.FixedColumns(table, {
         fixedColumns: { // 왼쪽 1열 고정
-            leftColumns: 1
+            leftColumns: 1,
+            heightMatch: 'none'
         }
     });
 
@@ -1307,6 +1414,27 @@ $(document).ready(function(){
             cell.innerHTML = i+1;
         });
     }).draw();
+
+    // datatable height 브라우저 height 기준 maxheight 조정
+    function tableResize() {
+        // 전체 테이블
+        $('.DTFC_ScrollWrapper').css({
+            maxHeight: ($(window).height() - 410) + 'px'
+        });
+        // 테이블 바디 (스크롤 포함)
+        $('.DTFC_LeftBodyLiner').css({
+            maxHeight: ($(window).height() - 416 - 40) + 'px'
+        });
+        // 첫번째 열
+        $('.dataTables_scrollBody').css({
+            maxHeight: ($(window).height() - 410 - 40) + 'px'
+        });
+    }
+    tableResize();
+
+    $(window).on('resize', function() {
+        tableResize();
+    });
 });
 </script>
 </body>
