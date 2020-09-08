@@ -353,6 +353,7 @@
             <div class="dataTableBox">
                 <!-- [D] datatables 라이브러리 영역 -->
                 <!-- [D] 'Excel 다운로드' 버튼 클릭 시 파일 다운로드됨 -->
+                <!-- [D] 처음 페이지 들어왔을때 목록이 '상담일시'기준으로 오름차순 정렬 상태여야 함 -->
                 <table class="dataTable">
                     <thead>
                         <tr>
@@ -1292,30 +1293,6 @@ $(document).ready(function(){
             cell.innerHTML = i+1;
         });
     }).draw();
-
-    // cs stt 전수 윈도우 팝업 - 윈도우 사이즈 기준
-    // $('table.dataTable tbody tr').dblclick(function(e){
-    //     var popupWidth = 200;
-    //     var popupHeight = 300;
-    //
-    //     var popupX = (window.screen.width / 2) - (popupWidth / 2);
-    //     // 만들 팝업창 width 크기의 1/2 만큼 보정값으로 빼주었음
-    //
-    //     var popupY= (window.screen.height / 2) - (popupHeight / 2);
-    //     // 만들 팝업창 height 크기의 1/2 만큼 보정값으로 빼주었음
-    //
-    //     window.open('popup_cs_stt.html', 'CS STT 전수팝업', 'status=no, height=' + popupHeight  + ', width=' + popupWidth  + ', left='+ popupX + ', top='+ popupY);
-    // });
-
-    // cs stt 전수 윈도우 팝업 - 현재 브라우저 크기 기준
-    $('table.dataTable tbody tr').dblclick(function(e){
-        var popupX = (document.body.offsetWidth / 2) - (1250 / 2);
-        // 만들 팝업창 좌우 크기의 1/2 만큼 보정값으로 빼주었음
-        var popupY= (window.screen.height / 2) - (750 / 2);
-        // 만들 팝업창 상하 크기의 1/2 만큼 보정값으로 빼주었음
-
-        window.open('popup_cs_stt.html', 'CS STT 전수팝업', 'status=no, height=750, width=1250, left='+ popupX + ', top='+ popupY);
-    });
 });
 </script>
 </body>
