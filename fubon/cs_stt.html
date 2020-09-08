@@ -359,7 +359,7 @@
             <div class="dataTableBox">
                 <!-- [D] datatables 라이브러리 영역 -->
                 <!-- [D] 'Excel 다운로드' 버튼 클릭 시 파일 다운로드됨 -->
-                <!-- [D] 처음 페이지 들어왔을때 목록이 '상담일시'기준으로 오름차순 정렬 상태여야 함 -->
+                <!-- [D] 처음 페이지 들어왔을때 목록 순서는 '상담일시'기준으로 오름차순 정렬됨 -->
                 <table class="dataTable">
                     <thead>
                         <tr>
@@ -408,7 +408,7 @@
                         </tr>
                         <tr>
                             <th>2</th>
-                            <td>2020-06-15 10:23</td>
+                            <td>2020-06-15 10:20</td>
                             <td>010-1234-5678</td>
                             <td>홍길옥</td>
                             <td>3643883</td>
@@ -427,7 +427,7 @@
                         </tr>
                         <tr>
                             <th>3</th>
-                            <td>2020-06-15 10:23</td>
+                            <td>2020-06-15 10:19</td>
                             <td>010-1234-5678</td>
                             <td>법정상속인</td>
                             <td>1</td>
@@ -1242,8 +1242,9 @@ $(document).ready(function(){
 
     // datatable 렌더링
     var table = $('.dataTable').DataTable({
+        dom: 'iptlB', // 옵션 위치 지정
         language: { // 테이블 목록 건수 text 한글 설정
-            info: "계 _TOTAL_ 건&nbsp;&nbsp; _END_ 건 &sol; _TOTAL_ 건",
+            info: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>_END_</strong> 건 &sol; _TOTAL_ 건&rbrack;",
             lengthMenu: "_MENU_ 건씩 보기",
             paginate: {
                 first: "",
@@ -1254,7 +1255,7 @@ $(document).ready(function(){
         },
         responsive: true, // 반응형 허용
         filter: false, // 검색창 미허용
-        ordering: [[ 0, 'asc' ], [ 1, 'asc' ]], // 초기 sort 설정
+        order: [[ 1, 'asc' ]], // 초기 sort 설정
         paging: true, // 페이징 허용
         pagingType: "full_numbers", // 페이징 버튼 구성 (처음, 이전, 페이지숫자, 다음, 마지막)
         lengthMenu: [25, 50, 100], // 페이지 당 보여질 목록 갯수 select 범위 지정

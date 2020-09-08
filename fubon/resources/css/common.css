@@ -5,16 +5,8 @@
 @import url("reset.css");
 @import url("font.css");
 
-/* -------------------- layout -------------------- */
-#wrap {width: 100%; min-width: 1280px;}
-#header {position: relative; width: 100%; height: 90px; box-shadow: 0 1px 4px 0 rgba(44, 63, 81, 0.1);}
-#container {width: 100%; height: 100%;}
-#contents {width: 100%; height: calc(100vh - 90px); padding: 20px; box-sizing: border-box; background: #E9F1F3;}
-#contents.pop {height: 100vh;}
-
 /* -------------------- common -------------------- */
-/* scrollbar */
-html {scrollbar-Track-Color: #fff; scrollbar-base-color: rgba(25, 42, 57, 0.3); scrollbar-arrow-color: #dfdfdf; scrollbar-Face-Color: #dfdfdf; scrollbar-3dLight-Color: #dfdfdf; scrollbar-DarkShadow-Color: #dfdfdf; scrollbar-Highlight-Color: #dfdfdf; scrollbar-Shadow-Color: #dfdfdf;}
+/* scrollbar - chrome만 적용됨 */
 ::-webkit-scrollbar {width: 6px; height: 6px; border-radius: 3px;}  /* 스크롤바의 width */
 ::-webkit-scrollbar-track {background: transparent;}  /* 스크롤바의 전체 배경색 */
 ::-webkit-scrollbar-thumb {border-radius: 3px; background: rgba(25, 42, 57, 0.3);}  /* 스크롤바 색 */
@@ -44,7 +36,7 @@ html {scrollbar-Track-Color: #fff; scrollbar-base-color: rgba(25, 42, 57, 0.3); 
 
 /* iptBox */
 .iptBox {display: inline-block; position: relative;}
-.iptBox input {display: inline-block; width: 100%; height: 30px; padding: 0 5px; border: 1px solid #E9F1F3; border-radius: 4px; box-sizing: border-box; background: #fff;}
+.iptBox input {display: inline-block; width: 100%; height: 30px; padding: 0 5px; border: 1px solid #E9F1F3; border-radius: 3px; box-sizing: border-box; background: #fff;}
 .iptBox input:focus {border: 1px solid rgba(11,42,74,0.4); box-shadow: 0 2px 3px rgba(11, 42, 74, 0.1); transition: all 0.3s ease-out;}
 .iptBox input label {}
 /* //iptBox */
@@ -59,13 +51,13 @@ html {scrollbar-Track-Color: #fff; scrollbar-base-color: rgba(25, 42, 57, 0.3); 
 /* //chkBox */
 
 /* select */
-.select {display: inline-block; height: 30px; padding: 0 20px 0 5px; font-size: 13px; border: 1px solid #C7D0D3; border-radius: 4px; background: #fff url(../images/arw_bottom_bk.png) right 7px top 50% no-repeat; transition: all 0.3s ease-out;}
+.select {display: inline-block; height: 30px; padding: 0 20px 0 5px; font-size: 13px; border: 1px solid #C7D0D3; border-radius: 3px; background: #fff url(../images/arw_bottom_bk.png) right 7px top 50% no-repeat; transition: all 0.3s ease-out;}
 .select:focus {border: 1px solid rgba(11,42,74,0.4); box-shadow: 0 2px 3px rgba(11, 42, 74, 0.1); transition: all 0.3s ease-out;}
 /* //select */
 
 /* scroll select */
 .sltBox.custom select {display: none;}
-.slt_scroll {display: block; position: relative; padding: 0 20px 0 5px; border-radius: 4px; border: 1px solid #C7D0D3; box-sizing: border-box; background: #fff url(../images/arw_bottom_bk.png) right 7px top 50% no-repeat; line-height: 28px; white-space: nowrap; cursor: pointer; outline: none;}
+.slt_scroll {display: block; position: relative; padding: 0 20px 0 5px; border-radius: 3px; border: 1px solid #C7D0D3; box-sizing: border-box; background: #fff url(../images/arw_bottom_bk.png) right 7px top 50% no-repeat; line-height: 28px; white-space: nowrap; cursor: pointer; outline: none;}
 .sltBox.disabled .slt_scroll {background: #f0f0f0; color: #8f8f8f; cursor: default;}
 .slt_scroll:focus {border: 1px solid rgba(11,42,74,0.4); box-shadow: 0 2px 3px rgba(11, 42, 74, 0.1); transition: all 0.3s ease-out;}
 .sltBox.disabled .slt_scroll:focus {border: 1px solid #C7D0D3; box-shadow: none;}
@@ -74,9 +66,9 @@ html {scrollbar-Track-Color: #fff; scrollbar-base-color: rgba(25, 42, 57, 0.3); 
 .slt_scroll.open .list {-webkit-transform: scaleY(1); transform: scaleY(1); opacity: 1; pointer-events: auto;}
 .slt_scroll.open .option {cursor: pointer;}
 .slt_scroll.wide {width: 100%;}
-.slt_scroll .list {overflow: auto; position: absolute; top: 100%; left: 0; width: 100%; max-height: 260px; margin: 4px 0 0; padding: 4px 0; border: 1px solid rgba(11,42,74,0.4); border-radius: 4px; box-shadow: 0 2px 3px rgba(11, 42, 74, 0.1); box-sizing: border-box; background: #fff; transition: transform 0.2s ease-out; -webkit-transform: scaleY(0); transform: scaleY(0); -webkit-transform-origin: 50% 0; transform-origin: 50% 0; opacity: 0; pointer-events: none; z-index: 10;}
+.slt_scroll .list {overflow: auto; position: absolute; top: 100%; left: 0; width: 100%; max-height: 260px; margin: 4px 0 0; padding: 4px 0; border: 1px solid rgba(11,42,74,0.4); border-radius: 3px; box-shadow: 0 2px 3px rgba(11, 42, 74, 0.1); box-sizing: border-box; background: #fff; transition: transform 0.2s ease-out; -webkit-transform: scaleY(0); transform: scaleY(0); -webkit-transform-origin: 50% 0; transform-origin: 50% 0; opacity: 0; pointer-events: none; z-index: 10;}
 .slt_scroll .list:hover .option:not(:hover) {background: transparent;}
-.slt_scroll .option {padding: 0 20px; line-height: 25px; transition: all 0.3s ease-out; outline: none;}
+.slt_scroll .option {padding: 0 10px; line-height: 25px; transition: all 0.3s ease-out; outline: none;}
 .slt_scroll .option:hover,
 .slt_scroll .option:focus {background: #f6f6f6;}
 .slt_scroll .option.selected:focus {background: #f6f6f6;}
@@ -84,7 +76,7 @@ html {scrollbar-Track-Color: #fff; scrollbar-base-color: rgba(25, 42, 57, 0.3); 
 
 /* btnBox */
 .btnBox {display: block;}
-.btnBox a {display: inline-block; border: 1px solid transparent; border-radius: 4px; box-sizing: border-box; text-align: center; vertical-align: middle;}
+.btnBox a {display: inline-block; border: 1px solid transparent; border-radius: 3px; box-sizing: border-box; text-align: center; vertical-align: middle;}
 .btnBox a:hover {box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1); transition: all 0.3s ease-out;}
 /* //btnBox */
 
@@ -98,7 +90,7 @@ html {scrollbar-Track-Color: #fff; scrollbar-base-color: rgba(25, 42, 57, 0.3); 
 /* //Table(View,Edit) */
 
 /* srchArea */
-.srchArea {width: 100%; margin: 0 0 20px; padding: 10px; border-radius: 4px; box-shadow: 0 1px 4px 0 rgba(44, 63, 81, 0.1); box-sizing: border-box; background: #fff;}
+.srchArea {width: 100%; margin: 0 0 20px; padding: 10px; border-radius: 3px; box-shadow: 0 1px 4px 0 rgba(44, 63, 81, 0.1); box-sizing: border-box; background: #fff;}
 .srchArea tbody td .iptBox {width: 100%;}
 .srchArea tbody td input {border-color: #C7D0D3;}
 .srchArea tbody td input.iptDateTime {width: 140px; background: url('../images/ico_calendar.png')100% 50% no-repeat; background-size: 20px;}
@@ -108,15 +100,14 @@ html {scrollbar-Track-Color: #fff; scrollbar-base-color: rgba(25, 42, 57, 0.3); 
 /* //srchArea */
 
 /* dataTable */
-.dataTableBox {width: 100%; margin: 0 0 20px; padding: 10px; border-radius: 4px; box-shadow: 0 1px 4px 0 rgba(44, 63, 81, 0.1); box-sizing: border-box; background: #fff;} /* datatable을 감싸는 박스 추가 */
+.dataTableBox {width: 100%; margin: 0 0 20px; padding: 10px; border-radius: 3px; box-shadow: 0 1px 4px 0 rgba(44, 63, 81, 0.1); box-sizing: border-box; background: #fff;} /* datatable을 감싸는 박스 추가 */
 table.dataTable {width: 100% !important; table-layout: fixed;}
 .dataTables_wrapper {width: 100%; text-align: center;}
-.DTFC_ScrollWrapper {margin: 10px 0 0;}
-.dataTables_wrapper .dataTables_info {position: absolute; top: 10px; left: 0; padding: 0;}
-div.dt-buttons {float: right;}
-button.dt-button, div.dt-button, a.dt-button, button.dt-button:hover:not(.disabled), div.dt-button:hover:not(.disabled), a.dt-button:hover:not(.disabled),button.dt-button:focus:not(.disabled), div.dt-button:focus:not(.disabled), a.dt-button:focus:not(.disabled) {border: none; border-radius: 4px; background: #009583; color: #fff; font-size: 13px;}
-.dataTables_wrapper .dataTables_length {display: inline-block; position: absolute; right: 0; bottom: 10px; float: none;}
-.dataTables_length select {display: inline-block; height: 30px; padding: 0 20px 0 5px; font-size: 13px; border: 1px solid #C7D0D3; border-radius: 4px; background: #fff url(../images/arw_bottom_bk.png) right 7px top 50% no-repeat; transition: all 0.3s ease-out;}
+.dataTables_wrapper .dataTables_info {position: absolute; left: 115px; padding: 10px 0 0; line-height: 31px;}
+div.dt-buttons {position: absolute; right: 0; bottom: 4px; height: 30px;}
+button.dt-button, div.dt-button, a.dt-button, button.dt-button:hover:not(.disabled), div.dt-button:hover:not(.disabled), a.dt-button:hover:not(.disabled),button.dt-button:focus:not(.disabled), div.dt-button:focus:not(.disabled), a.dt-button:focus:not(.disabled) {margin: 0; padding: 5px 15px; border: none; border-radius: 3px; background: #009583; color: #fff; font-size: 13px;}
+.dataTables_wrapper .dataTables_length {position: absolute; left: 0; bottom: 4px;}
+.dataTables_length select {display: inline-block; height: 30px; padding: 0 20px 0 5px; font-size: 13px; border: 1px solid #C7D0D3; border-radius: 3px; background: #fff url(../images/arw_bottom_bk.png) right 7px top 50% no-repeat; transition: all 0.3s ease-out;}
 .dataTables_scrollHead,
 table.DTFC_Cloned thead {background: #4e8692; color: #fff;}
 table.dataTable thead th {padding: 10px 0; border-bottom: 1px solid #C7D0D3; text-align: center;}
@@ -128,7 +119,7 @@ table.dataTable tbody tr:last-child td {border-bottom: none;}
 .dataTables_wrapper.no-footer .dataTables_scrollBody {border-top: 1px solid #C7D0D3; border-bottom: 1px solid #C7D0D3;}
 div.DTFC_LeftWrapper table.dataTable.no-footer {border-bottom: 1px solid transparent;}
 div.DTFC_LeftWrapper table.dataTable.no-footer tbody th {background: #f3f8f9; text-align: center;}
-.dataTables_wrapper .dataTables_paginate {display: inline-block; overflow: hidden; float: none; padding: 10px 0 0; text-align: center;}
+.dataTables_wrapper .dataTables_paginate {display: inline-block; overflow: hidden; float: none; padding: 10px 0 0;}
 .dataTables_wrapper .dataTables_paginate span {display: inline-block; float: left;}
 .dataTables_wrapper .dataTables_paginate .paginate_button {float: left; width: 30px; height: 30px; border: none; color: #174b56 !important;}
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {color: #174b56 !important; border: none; background: none;}
@@ -157,7 +148,7 @@ table.dataTable tbody td:nth-child(4) {}
 
 #header .title_box .etc_box {float: right; width: 260px; height: 100%; padding: 10px 0; box-sizing: border-box;}
 #header .title_box .etc_box > div {float: left;}
-#header .title_box .etc_box .user_account {overflow: hidden; width: 150px; height: 30px; margin: 0 10px 0 0; padding: 0 5px; border-radius: 4px; box-sizing: border-box; background: rgba(255,255,255,0.5); text-overflow: ellipsis; line-height: 30px; white-space: nowrap;}
+#header .title_box .etc_box .user_account {overflow: hidden; width: 150px; height: 30px; margin: 0 10px 0 0; padding: 0 5px; border-radius: 3px; box-sizing: border-box; background: rgba(255,255,255,0.5); text-overflow: ellipsis; line-height: 30px; white-space: nowrap;}
 #header .title_box .etc_box .btn_logout {display: block; width: 100px; height: 30px; line-height: 28px;}
 #header .title_box .etc_box .btn_logout a {display: block; background: #009583; color: #fff;}
 #header .title_box .etc_box .btn_logout a:hover {border: 1px solid #E9F1F3;}
