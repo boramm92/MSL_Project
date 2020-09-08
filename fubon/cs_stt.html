@@ -387,6 +387,13 @@
                     <!-- [D] 4번째 상담고객 이름 두번째문자 마스킹 해야함 -->
                     <!-- [D] 13번째 상담키워드는 최대 16글자로 모두 노출되어야함 -->
                     <tbody>
+                        <!-- [D] 조회된 데이터 없을 경우 보여지는 행 -->
+                        <tr class="odd">
+                            <td colspan="17" class="dataTables_empty">
+                                조회된 데이터가 없습니다.
+                            </td>
+                        </tr>
+                        
                         <tr>
                             <th>1</th>
                             <td>2020-06-15 10:23</td>
@@ -1258,7 +1265,7 @@ $(document).ready(function(){
         order: [[ 1, 'asc' ]], // 초기 sort 설정
         paging: true, // 페이징 허용
         pagingType: "full_numbers", // 페이징 버튼 구성 (처음, 이전, 페이지숫자, 다음, 마지막)
-        lengthMenu: [25, 50, 100], // 페이지 당 보여질 목록 갯수 select 범위 지정
+        lengthMenu: [5, 20, 30, 40, 100], // 페이지 당 보여질 목록 갯수 select 범위 지정
         scrollY: "40vh", // 세로 스크롤 허용, 사이즈
         scrollX: true, //가로 스크롤 허용
         scrollCollapse: true,

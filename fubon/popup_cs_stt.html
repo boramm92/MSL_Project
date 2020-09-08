@@ -93,6 +93,38 @@
                 </table>
             </div>
             <!-- //.customInfo -->
+            
+            <!-- .dataTableBox -->
+            <div class="dataTableBox">
+                <!-- [D] datatables 라이브러리 영역 -->
+                <!-- [D] 'Excel 다운로드' 버튼 클릭 시 파일 다운로드됨 -->
+                <table class="dataTable">
+                    <thead>
+                        <tr>
+                            <th>순번</th>
+                            <th>구분</th>
+                            <th>시작시간</th>
+                            <th>STT 결과</th>
+                            <th>상담키워드</th>
+                            <th>무음</th>
+                            <th>오류수정</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <th>1</th>
+                            <td>상담사</td>
+                            <td>0:00:02</td>
+                            <td>가입설계 체결 위해서 관련 법률에 따라 수집 이용 조회 제공에 동의 얻고자하며 신용등급과 무관하시고 동의 하지 않으실 경우에는 계약상담이 불가능하신데요</td>
+                            <td>신용등급</td>
+                            <td>1</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- //.dataTableBox -->
         </div>
         <!-- //#contents -->
     </div>
@@ -103,7 +135,46 @@
 <!-- script -->
 <script type="text/javascript">
 $(document).ready(function(){
+    // datatable 렌더링
+    var table = $('.dataTable').DataTable({
+        dom: 'iptlB', // 옵션 위치 지정
+        responsive: true, // 반응형 허용
+        filter: true, // 검색창 허용
+        order: [[ 1, 'asc' ]], // 초기 sort 설정
+        paging: false, // 페이징 미허용
+        pagingType: "full_numbers", // 페이징 버튼 구성 (처음, 이전, 페이지숫자, 다음, 마지막)
+        lengthMenu: [25, 50, 100], // 페이지 당 보여질 목록 갯수 select 범위 지정
+        scrollY: false, // 세로 스크롤 미허용, 사이즈
+        scrollX: false, //가로 스크롤 미허용
+        scrollCollapse: true,
+        columnDefs: [ // 컬럼별 width 지정, 소트 허용여부(false, 미허용)
+            {targets: [0], width: "50px", sortable: false},   // 순번
+            {targets: [1], width: "150px"},                    // 구분
+            {targets: [2], width: "150px"},                    // 시작시간
+            {targets: [3], width: "100px", orderable: false},  // STT결과
+            {targets: [4], width: "120px"},                    // 상담키워드
+            {targets: [5], width: "100px", orderable: false},  // 무음
+            {targets: [6], width: "100px"},                    // 사번
+        ],
+        dom: 'Blfrtip', // 엑셀 다운로드 버튼 추가
+        buttons: [{
+            extend: 'excelHtml5',
+            text: 'Excel 다운로드',
+        }]
+    });
 
+    new $.fn.dataTable.FixedColumns(table, {
+        fixedColumns: { // 왼쪽 1열 고정
+            leftColumns: 1
+        }
+    });
+
+    // 다른 열에서 sort되어도 1열 순번은 그대로 유지
+    table.on('order.dt search.dt', function(){
+        table.column(0, {search:'applied', order:'applied'}).nodes().each(function (cell, i){
+            cell.innerHTML = i+1;
+        });
+    }).draw();
 });
 </script>
 </body>
