@@ -5,7 +5,47 @@
 @import url("reset.css");
 @import url("font.css");
 
+/* -------------------- header -------------------- */
+#header .title_box {width: 100%; height: 50px; padding: 0 20px; border-bottom: 1px solid rgba(233,241,243,0.2); box-sizing: border-box;}
+#header .title_box h1 {float: left; width: 140px; height: 100%; border-right: 1px solid rgba(233,241,243,0.2);}
+#header .title_box h1 img {display: inline-block; height: 30px; margin: 10px 0;}
+#header .title_box h2 {display: inline-block; padding: 12px 20px 0; color: #E9F1F3;}
+
+#header .title_box .etc_box {float: right; width: 260px; height: 100%; padding: 10px 0; box-sizing: border-box;}
+#header .title_box .etc_box > div {float: left;}
+#header .title_box .etc_box .user_account {overflow: hidden; width: 150px; height: 30px; margin: 0 10px 0 0; padding: 0 5px; border-radius: 3px; box-sizing: border-box; background: rgba(255,255,255,0.5); text-overflow: ellipsis; line-height: 30px; white-space: nowrap;}
+#header .title_box .etc_box .btn_logout {display: block; width: 100px; height: 30px; line-height: 28px;}
+#header .title_box .etc_box .btn_logout a {display: block; background: #009583; color: #fff;}
+#header .title_box .etc_box .btn_logout a:hover {border: 1px solid #E9F1F3;}
+#header .title_box .etc_box .btn_logout img {margin: -2px 0 0; vertical-align: middle;}
+
+#header .gnb {display: flex; position: relative; width: 100%; z-index: 5;}
+#header .gnb > li {flex: 1;}
+#header .gnb > li h3 {position: relative; color: #174b56; font-size: 14px; text-align: center; line-height: 40px; cursor: pointer; transition: background 0.3s ease-out;}
+#header .gnb > li.active h3 {border-left: 1px solid #C7D0D3; border-right: 1px solid #C7D0D3; background: #fff;}
+#header .gnb li.current h3,
+#header .gnb li.current > a {color: #00829d;}
+
+#header .gnb .sub {display: none; border: 1px solid #C7D0D3; border-top: none; box-shadow: 0 1px 4px 0 rgba(44, 63, 81, 0.1); background: #fff;}
+#header .gnb .sub li a {display: inline-block; width: 100%; height: 100%; padding: 0 20px; box-sizing: border-box; line-height: 40px;}
+/* #header .gnb .sub li a:hover {color: #00829d;} */
+#header .gnb .sub li a:hover {text-decoration: underline;}
+#header .gnb .sub > li > a {font-weight: 700;}
+#header .gnb .sub > li.down > a {background: url('../images/arw_bottom_bk.png')right 20px top 50% no-repeat;}
+#header .gnb .sub > li.up > a {background: url('../images/arw_top_bk.png')right 20px top 50% no-repeat;}
+
+#header .gnb .third {display: none;}
+#header .gnb .third > li {font-size: 12px;}
+#header .gnb .third > li:last-child {padding: 0 0 15px;}
+#header .gnb .third > li a {padding: 0 30px; line-height: 25px;}
+
+/* -------------------- contents -------------------- */
+#contents h4 {margin: 0 0 15px; font-size: 18px;}
+
 /* -------------------- common -------------------- */
+/* layer back dimmed */
+body.lyr_back_dimmed {overflow: hidden; display: block; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.3); z-index: 30;}
+
 /* scrollbar - chrome만 적용됨 */
 ::-webkit-scrollbar {width: 6px; height: 6px; border-radius: 3px;}  /* 스크롤바의 width */
 ::-webkit-scrollbar-track {background: transparent;}  /* 스크롤바의 전체 배경색 */
@@ -33,6 +73,12 @@
 /* hide */
 .hide {position: absolute; top: 0; left: 0; clear: both; overflow: hidden; width: 0; height: 0; margin: 0; padding: 0; line-height: 0;}
 /* //hide */
+
+/* btnBox */
+.btnBox {display: block;}
+.btnBox a {display: inline-block; border: 1px solid transparent; border-radius: 3px; box-sizing: border-box; text-align: center; vertical-align: middle;}
+.btnBox a:hover {box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1); transition: all 0.3s ease-out;}
+/* //btnBox */
 
 /* iptBox */
 .iptBox {display: inline-block; position: relative;}
@@ -74,12 +120,6 @@
 .slt_scroll .option.selected:focus {background: #f6f6f6;}
 /* //scroll select */
 
-/* btnBox */
-.btnBox {display: block;}
-.btnBox a {display: inline-block; border: 1px solid transparent; border-radius: 3px; box-sizing: border-box; text-align: center; vertical-align: middle;}
-.btnBox a:hover {box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1); transition: all 0.3s ease-out;}
-/* //btnBox */
-
 /* Table(View,Edit) */
 .tbl_line_view {width: 100%; table-layout: fixed;}
 .tbl_line_view tbody th,
@@ -107,39 +147,15 @@
 .srchBox .btn_srch img {width: 20px; vertical-align: middle;}
 /* //srchBox */
 
-/* -------------------- header -------------------- */
-#header .title_box {width: 100%; height: 50px; padding: 0 20px; border-bottom: 1px solid rgba(233,241,243,0.2); box-sizing: border-box;}
-#header .title_box h1 {float: left; width: 140px; height: 100%; border-right: 1px solid rgba(233,241,243,0.2);}
-#header .title_box h1 img {display: inline-block; height: 30px; margin: 10px 0;}
-#header .title_box h2 {display: inline-block; padding: 12px 20px 0; color: #E9F1F3;}
+/* layer popup */
+.lyrBox {position: absolute; top: 80px; left: 50%; width: 500px; border-radius: 3px; box-shadow: 0 1px 4px 0 rgba(44, 63, 81, 0.1); background: #fff; transform: translate(-50%, 0);}
+/* //layer popup */
 
-#header .title_box .etc_box {float: right; width: 260px; height: 100%; padding: 10px 0; box-sizing: border-box;}
-#header .title_box .etc_box > div {float: left;}
-#header .title_box .etc_box .user_account {overflow: hidden; width: 150px; height: 30px; margin: 0 10px 0 0; padding: 0 5px; border-radius: 3px; box-sizing: border-box; background: rgba(255,255,255,0.5); text-overflow: ellipsis; line-height: 30px; white-space: nowrap;}
-#header .title_box .etc_box .btn_logout {display: block; width: 100px; height: 30px; line-height: 28px;}
-#header .title_box .etc_box .btn_logout a {display: block; background: #009583; color: #fff;}
-#header .title_box .etc_box .btn_logout a:hover {border: 1px solid #E9F1F3;}
-#header .title_box .etc_box .btn_logout img {margin: -2px 0 0; vertical-align: middle;}
-
-#header .gnb {display: flex; position: relative; width: 100%; z-index: 5;}
-#header .gnb > li {flex: 1;}
-#header .gnb > li h3 {position: relative; color: #174b56; font-size: 14px; text-align: center; line-height: 40px; cursor: pointer; transition: background 0.3s ease-out;}
-#header .gnb > li.active h3 {border-left: 1px solid #C7D0D3; border-right: 1px solid #C7D0D3; background: #fff;}
-#header .gnb li.current h3,
-#header .gnb li.current > a {color: #00829d;}
-
-#header .gnb .sub {display: none; border: 1px solid #C7D0D3; border-top: none; box-shadow: 0 1px 4px 0 rgba(44, 63, 81, 0.1); background: #fff;}
-#header .gnb .sub li a {display: inline-block; width: 100%; height: 100%; padding: 0 20px; box-sizing: border-box; line-height: 40px;}
-/* #header .gnb .sub li a:hover {color: #00829d;} */
-#header .gnb .sub li a:hover {text-decoration: underline;}
-#header .gnb .sub > li > a {font-weight: 700;}
-#header .gnb .sub > li.down > a {background: url('../images/arw_bottom_bk.png')right 20px top 50% no-repeat;}
-#header .gnb .sub > li.up > a {background: url('../images/arw_top_bk.png')right 20px top 50% no-repeat;}
-
-#header .gnb .third {display: none;}
-#header .gnb .third > li {font-size: 12px;}
-#header .gnb .third > li:last-child {padding: 0 0 15px;}
-#header .gnb .third > li a {padding: 0 30px; line-height: 25px;}
-
-/* -------------------- contents -------------------- */
-#contents h4 {margin: 0 0 15px; font-size: 18px;}
+/* context menu */
+.contextMenu {display: none; position: absolute; overflow: hidden; width: 200px; margin: 0; padding: 0; border-radius: 5px; box-shadow: 0 15px 35px rgba(50,50,90,0.1), 0 5px 15px rgba(0,0,0,0.07); background: #fff; z-index: 999;}
+.contextMenu li {border-left: 3px solid transparent; transition: all 0.3s ease-out;}
+.contextMenu li + li {border-top: 1px dashed #4d8691;}
+.contextMenu li a {display: block; padding: 10px; transition: all 0.3s ease-out;}
+.contextMenu li:hover {background: #4d8691; color: #fff;}
+.contextMenu li:hover a {color: #fff;}
+/* //context menu */

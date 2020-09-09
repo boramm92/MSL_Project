@@ -106,28 +106,35 @@
             <!-- .dataTableBox -->
             <div class="dataTableBox">
                 <!-- .player -->
+                <!-- [D] 플레이어에서 재생버튼 클릭 시 상담내용 처음부터 재생되어야 함 -->
+                <!-- [D] tbody의 대화내용 셀 더블클릭 시 해당 내용 재생되며 재생 중인 음성과 텍스트의 싱크 맞춰야 함 / 재생 중인 텍스트(.dataTable tbody tr)에는 addclass('currentPlay')해주면 1~4번째 셀 텍스트 볼드처리 됨 -->
                 <div class="player">
                     <div class="playerBox">
                         <audio preload="auto">
-                            <source src="resources/audio/aekukka.mp3">
+                            <!-- <source src="resources/audio/aekukka.mp3"> -->
                         </audio>
+
                         <div class="player_button" title="Play">
                             <a href="#none" class="btn_player_play">
                                 <span>재생/ 일시정지</span>
                             </a>
                         </div>
+
                         <div class="player_time">
                             <span class="current">00:15</span>
                         </div>
+
                         <div class="player_bar">
                             <span class="player_bar_streaming">
                                 <em class="player_bar_loaded"></em>
                                 <em class="player_bar_played"></em>
                             </span>
                         </div>
+
                         <div class="player_time">
                             <span class="duration">00:51</span>
                         </div>
+
                         <div class="player_volume">
                             <div class="player_bar_button" title="Volume">
                                 <a href="#"></a>
@@ -142,10 +149,13 @@
 
                 <!-- .term_srch_box -->
                 <div class="term_srch_box">
+                    <!-- [D] 입력창(.srchText)에 검색어 입력 후 검색버튼(.btn_srch)이나 엔터키 누르면 아래 테이블 내 검색어와 일치하는 텍스트를 span.srch_term 으로 감싸줘야하며, 검색어 이동버튼(.btnBox a.btn_top / .btnBox a.btn_top)클릭 시 순서대로 포커스 이동되며 해당 순서의 텍스트에 추가로 addclass('focus')를 해주어 백그라운드 하이라이트 효과를 주어야 함  -->
                     <div class="srchBox">
                         <input type="search" class="srchText" placeholder="검색어 입력">
+                        <!-- [D] 검색어에 일치하는 텍스트의 현재 인덱스는 .currentIndex에 넣어주고, 총 인덱스는 .totalIndex에 넣어주어야 함 -->
+                        <!-- [D] 검색어 이동버튼(.btnBox a.btn_top / .btnBox a.btn_top)에 따라 현재 인덱스(.currentIndex) 숫자는 변화되어야 함 -->
                         <span class="txtIndex">
-                            <em class="currentIndex">2</em>&nbsp;&sol;&nbsp;<em class="totalIndex">4</em>
+                            <em class="currentIndex">0</em>&nbsp;&sol;&nbsp;<em class="totalIndex">0</em>
                         </span>
                         <button class="btn_srch">
                             <img src="resources/images/ico_srch_w.png" alt="검색아이콘">
@@ -166,6 +176,8 @@
                 <!-- [D] datatables 라이브러리 영역 -->
                 <!-- [D] 'Excel 다운로드' 버튼 클릭 시 파일 다운로드됨 -->
                 <!-- [D] '구분'(상담사 / 고객) 열의 텍스트가 '고객'일 경우, '구분, 시작시간, STT 결과'에 해당하는 셀 백그라운드컬러 처리됨 -->
+                <!-- [D] '무음'셀 th에 무음길이 숫자입력을 위한 input 추가함, 해당 입력창에 숫자 입력 후 엔터 키 누르면 입력숫자 이상의 셀에 addclass('active')되며
+                          백그라운드 하이라이트됨, 입력숫자 지우면 removeclass('active')되며 백그라운드 하이라이트 사라짐  -->
                 <table class="dataTable">
                     <thead>
                         <tr>
@@ -194,19 +206,20 @@
                             <td>2</td>
                             <td>상담사</td>
                             <td>0:00:02</td>
-                            <!-- [D] 검색어 조회 후 이동버튼으로 포커스 이동 시 해당 검색어에 addclass(.focus)해주면 백그라운드 하이라이트 처리됨 -->
+                            <!-- [D] 검색어 조회 후 이동버튼으로 포커스 이동 시 해당 검색어에 addclass('focus')해주면 백그라운드 하이라이트 처리됨 -->
                             <td>고객님의 개인신용 정보이신 이름 주민번호 연락처 주소 구매내역 등을 <span class="srch_term focus">수집</span> 이용 제공하시는데 동의하십니까</td>
                             <td>개인정보</td>
                             <td>2</td>
                             <td></td>
                         </tr>
-                        <tr>
+                        <!-- [D] 대화내용 셀 더블클릭 시 해당 내용 재생되며 재생 중인 음성과 텍스트의 싱크 맞춰야 함 / 재생 중인 텍스트(.dataTable tbody tr)에는 addclass('currentPlay')해주면 1~4번째 셀 텍스트 볼드처리 됨 -->
+                        <tr class="currentPlay">
                             <td>3</td>
                             <td>고객</td>
                             <td>0:00:07</td>
                             <td>예예</td>
                             <td>개인정보</td>
-                            <td></td>
+                            <td>91</td>
                             <td></td>
                         </tr>
                         <tr>
@@ -427,27 +440,162 @@
 </div>
 <!-- //#wrap -->
 
+<!-- context menu -->
+<ul class="contextMenu">
+  <li><a href="#">복사하기</a></li>
+  <li><a href="#">STT 오류수정</a></li>
+</ul>
+
+<!-- layer popup -->
+<!-- STT 오류수정 -->
+<div id="lyr_stt_edit" class="lyrBox">
+    <div class="lyr_top">
+        <h3>STT 오류수정</h3>
+        <button class="btn_lyr_close">닫기</button>
+     </div>
+    <div class="lyr_mid">
+
+    </div>
+    <div class="lyr_btm">
+        <div class="btnBox">
+            <a href="#none" class="btn_lyr_close">확인</a>
+        </div>
+    </div>
+</div>
+<!-- //STT 오류수정 -->
+
 <!-- script -->
 <script type="text/javascript">
 $(document).ready(function(){
+    //Show contextmenu:
+    $(document).contextmenu(function(e){
+        //Get window size:
+        var winWidth = $(document).width();
+        var winHeight = $(document).height();
+        //Get pointer position:
+        var posX = e.pageX;
+        var posY = e.pageY;
+        //Get contextMenu size:
+        var menuWidth = $(".contextMenu").width();
+        var menuHeight = $(".contextMenu").height();
+        //Security margin:
+        var secMargin = 10;
+        //Prevent page overflow:
+        if(posX + menuWidth + secMargin >= winWidth
+            && posY + menuHeight + secMargin >= winHeight){
+            //Case 1: right-bottom overflow:
+            posLeft = posX - menuWidth - secMargin + "px";
+            posTop = posY - menuHeight - secMargin + "px";
+        }
+        else if(posX + menuWidth + secMargin >= winWidth){
+            //Case 2: right overflow:
+            posLeft = posX - menuWidth - secMargin + "px";
+            posTop = posY + secMargin + "px";
+        }
+        else if(posY + menuHeight + secMargin >= winHeight){
+            //Case 3: bottom overflow:
+            posLeft = posX + secMargin + "px";
+            posTop = posY - menuHeight - secMargin + "px";
+        }
+        else {
+            //Case 4: default values:
+            posLeft = posX + secMargin + "px";
+            posTop = posY + secMargin + "px";
+        };
+        //Display contextmenu:
+        $(".contextMenu").css({
+            "left": posLeft,
+            "top": posTop
+        }).show();
+            //Prevent browser default contextmenu.
+            return false;
+    });
+    //Hide contextmenu:
+    $(document).click(function(){
+        $(".contextMenu").hide();
+    });
+});
+
+
+$(document).ready(function(){
+    // input:text[numberOnly] 숫자만 입력가능
+    $('input:text[numberOnly]').keypress(function(event) {
+        if(event.which < 48 || event.which > 57){
+            event.preventDefault();
+        }
+    });
+
+    // 공통 얼럿 레이어 열기/닫기
+    $('.alert_open').on('click', function(e){
+      var thisHref = $(this).attr('href');
+
+      e.stopPropagation();
+      handleLyrClose(); //레이어 닫기
+
+      $('body').addClass('lyr_backdrop'); //body에 백그라운드 적용
+      $(thisHref).css({'display': 'block'}); //클릭한 a의 href와 동일한 레이어만 block
+
+      setTimeout(function(){
+        $(thisHref).addClass('on') //레이어 오픈 효과 적용
+      }, 100);
+    })
+
+    // 공통 얼럿 레이어 닫기
+    function handleLyrClose() {
+      // 레이어 닫기버튼 클릭
+      $('.alert_close').on('click', function(){
+        $('.alert_box').removeClass('on');
+
+        setTimeout(function(){
+          $('body').removeClass('lyr_backdrop');
+          $('.alert_box').css({'display': 'none'});
+          $('.alert_close').off('click');
+        }, 200);
+      })
+    }
+
+    // 저장 버튼
+    $('.btnBox_consult button').on('click', function(){
+        //save massage
+        $('body').append(' \
+             <div class="lyrWrap moment"> \
+                 <div class="lyr_bg"></div> \
+                 <div class="lyrBox" >\
+                    <div class="lyr_top"> \
+                    </div> \
+                    <div class="lyr_mid"> \
+                        <div class="icoBox"> \
+                            <img src="resources/images/img_save.png" alt="저장완료"> \
+                        </div> \
+                        <p class="massage">상담내용이 저장 되었습니다.</p> \
+                    </div> \
+                </div> \
+            </div> \
+        ');
+        $('.moment, .moment .lyrBox').show();
+        setTimeout(function() {
+            $('.moment').addClass('lyr_hide').delay(300).queue(function() { $(this).remove(); });
+        }, 1000);
+    });
+
     // STT 결과에서 텍스트 검색하기
     function tableTextSearch(){
         var inputText = $('.srchText').val();
         var srchCell = $('.dataTable td:contains('+inputText+')');
         var srchText = $('.dataTable td:contains('+inputText+')').text();
-        console.log(srchText)
+
         $('.txtIndex').show();
         $('.totalIndex').text(srchCell.length);
 
         if(srchText.indexOf(inputText) != -1) {
-            alert("성공!");
+            console.log('검색어가 포함되어 있다')
         }
         else {
-            alert("실패!");
+            console.log('검색어가 포함되어있지 않다')
         }
     }
     // 검색어 입력 후 엔터키 눌렀을 시
-    $('.srchText').keypress(function(e){
+    $('.srchText').keydown(function(e){
         if (e.which == 13){
            tableTextSearch();
         }
@@ -472,13 +620,44 @@ $(document).ready(function(){
             {targets: [2], width: "100px", orderable: false},  // 시작시간
             {targets: [3], width: "", orderable: false},       // STT 결과
             {targets: [4], width: "150px", orderable: false},  // 상담키워드
-            {targets: [5], width: "100px", orderable: false},  // 무음
-            {targets: [6], width: "100px", orderable: false},  // 오류수정
+            {targets: [5], width: "90px", orderable: false},  // 무음
+            {targets: [6], width: "80px", orderable: false},  // 오류수정
         ],
         buttons: [{
             extend: 'excelHtml5',
             text: 'Excel 다운로드',
         }]
+    });
+
+    // 무음길이 검색 input 추가
+    $('.dataTables_scrollHead table.dataTable thead th:nth-child(6)').append('<div class="iptBox"><input type="numberOnly" class="srch_silent_num" placeholder="숫자"></div>');
+
+    // 무음길이 입력 후 엔터치면 입력값 이상 숫자들 백그라운드 하이라이트 처리
+    function largersilentNum(){
+        $('table.dataTable tbody td:nth-child(6)').each(function(){
+            // 테이블에서의 무음 길이
+            var sttSilentText = $(this).text();
+            var sttSilentNum = Number(sttSilentText);
+
+            // 입력값의 무음 길이
+            var srchSilenText = $('.srch_silent_num').val();
+            var srchSilenNum = Number(srchSilenText);
+
+            if(srchSilenNum <= sttSilentNum){
+                $(this).addClass('active');
+            }else{
+                $(this).removeClass('active');
+            }
+        });
+    }
+
+    // 무음 길이 입력 후 엔터키 누를 경우 largersilentNum함수 실행, 백스페이스키 누르고 값이 없을 경우 백그라운드 하이라이트 처리 꺼짐
+    $('.srch_silent_num').keyup(function(e){
+        if(e.which == 13){
+            largersilentNum();
+        }if(e.which == 13 && $('.srch_silent_num').val() == ''){
+            $('table.dataTable tbody td:nth-child(6)').removeClass('active');
+        }
     });
 
     // 구분이 '고객'인 경우 해당하는 '구분, 시작시간, STT 결과'의 td 백그라운드 하이라이트
