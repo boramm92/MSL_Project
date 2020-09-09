@@ -18,7 +18,6 @@
 <script src="resources/js/jquery-migrate-3.3.0.min.js"></script>
 <!-- datatables -->
 <script src="resources/js/datatables.min.js"></script>
-<script src="resources/js/dataTables.fixedColumns.min.js"></script>
 <script src="resources/js/dataTables.buttons.min.js"></script>
 <script src="resources/js/buttons.html5.min.js"></script>
 <script src="resources/js/jszip.min.js"></script>
@@ -106,15 +105,19 @@
 
             <!-- .dataTableBox -->
             <div class="dataTableBox">
+                <!-- .player -->
                 <div class="player">
                     <div class="playerBox">
                         <audio preload="auto">
                             <source src="resources/audio/aekukka.mp3">
                         </audio>
                         <div class="player_button" title="Play">
-                            <button type="button" class="btn_player_play" title="재생/ 일시정지">
+                            <a href="#none" class="btn_player_play">
                                 <span>재생/ 일시정지</span>
-                            </button>
+                            </a>
+                        </div>
+                        <div class="player_time">
+                            <span class="current">00:15</span>
                         </div>
                         <div class="player_bar">
                             <span class="player_bar_streaming">
@@ -123,7 +126,6 @@
                             </span>
                         </div>
                         <div class="player_time">
-                            <span class="current">00:15</span>
                             <span class="duration">00:51</span>
                         </div>
                         <div class="player_volume">
@@ -136,6 +138,30 @@
                         </div>
                     </div>
                 </div>
+                <!-- //.player -->
+
+                <!-- .term_srch_box -->
+                <div class="term_srch_box">
+                    <div class="srchBox">
+                        <input type="search" class="srchText" placeholder="검색어 입력">
+                        <span class="txtIndex">
+                            <em class="currentIndex">2</em>&nbsp;&sol;&nbsp;<em class="totalIndex">4</em>
+                        </span>
+                        <button class="btn_srch">
+                            <img src="resources/images/ico_srch_w.png" alt="검색아이콘">
+                        </button>
+                    </div>
+
+                    <div class="btnBox">
+                        <a href="#none" class="btn_top">
+                            <img src="resources/images/arw_top_gr.png" alt="위로이동 화살표">
+                        </a>
+                        <a href="#none" class="btn_btm">
+                            <img src="resources/images/arw_bottom_gr.png" alt="아래로이동 화살표">
+                        </a>
+                    </div>
+                </div>
+                <!-- //.term_srch_box -->
 
                 <!-- [D] datatables 라이브러리 영역 -->
                 <!-- [D] 'Excel 다운로드' 버튼 클릭 시 파일 다운로드됨 -->
@@ -158,7 +184,7 @@
                             <td>1</td>
                             <td>상담사</td>
                             <td>0:00:02</td>
-                            <!-- [D] 검색어 조회 시 일치내용 span태그 사용하여 볼드처리되며, 검색어 이동시에는 포커스되는 text에 백그라운드 하이라이트 처리됨 -->
+                            <!-- [D] 검색어 조회 시 일치내용 span.srch_term 로 감싸주어 볼드처리 해야함 -->
                             <td>가입설계 체결 위해서 관련 법률에 따라 <span class="srch_term">수집</span> 이용 조회 제공에 동의 얻고자하며 신용등급과 무관하시고 동의 하지 않으실 경우에는 계약상담이 불가능하신데요</td>
                             <td>신용등급</td>
                             <td>1</td>
@@ -168,7 +194,8 @@
                             <td>2</td>
                             <td>상담사</td>
                             <td>0:00:02</td>
-                            <td>고객님의 개인신용 정보이신 이름 주민번호 연락처 주소 구매내역 등을 <span class="srch_term">수집</span> 이용 제공하시는데 동의하십니까</td>
+                            <!-- [D] 검색어 조회 후 이동버튼으로 포커스 이동 시 해당 검색어에 addclass(.focus)해주면 백그라운드 하이라이트 처리됨 -->
+                            <td>고객님의 개인신용 정보이신 이름 주민번호 연락처 주소 구매내역 등을 <span class="srch_term focus">수집</span> 이용 제공하시는데 동의하십니까</td>
                             <td>개인정보</td>
                             <td>2</td>
                             <td></td>
@@ -403,11 +430,37 @@
 <!-- script -->
 <script type="text/javascript">
 $(document).ready(function(){
+    // STT 결과에서 텍스트 검색하기
+    function tableTextSearch(){
+        var inputText = $('.srchText').val();
+        var srchCell = $('.dataTable td:contains('+inputText+')');
+        var srchText = $('.dataTable td:contains('+inputText+')').text();
+        console.log(srchText)
+        $('.txtIndex').show();
+        $('.totalIndex').text(srchCell.length);
+
+        if(srchText.indexOf(inputText) != -1) {
+            alert("성공!");
+        }
+        else {
+            alert("실패!");
+        }
+    }
+    // 검색어 입력 후 엔터키 눌렀을 시
+    $('.srchText').keypress(function(e){
+        if (e.which == 13){
+           tableTextSearch();
+        }
+    });
+    // 검색어 입력 후 검색버튼 클릭 시
+    $('.btn_srch').on('click', function(){
+        tableTextSearch();
+    });
+
     // datatable 렌더링
     var table = $('.dataTable').DataTable({
-        dom: '<"top"f>t<"bottom"B>', // 옵션 위치 지정
+        dom: '<"top">t<"bottom"B>', // 옵션 위치 지정
         responsive: true, // 반응형 허용
-        filter: true, // 검색창 허용
         info: false, // 페이지 정보 미허용
         paging: false, // 페이징 미허용
         scrollY: true, // 세로 스크롤 허용, 사이즈
@@ -428,10 +481,9 @@ $(document).ready(function(){
         }]
     });
 
-    // 고객 스크립트에 하이라이트
+    // 구분이 '고객'인 경우 해당하는 '구분, 시작시간, STT 결과'의 td 백그라운드 하이라이트
     $('table.dataTable tbody td:nth-child(2)').each(function(){
         var speakerType = $(this).text();
-        console.log(speakerType);
 
         if(speakerType == '고객'){
             $(this).css('background', '#E9F1F3');
