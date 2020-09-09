@@ -24,417 +24,413 @@
 
 <title>CS STT 전수 || 푸본현대생명</title>
 </head>
-<body>
+<body class="lyr_bg_dimmed">
 <!-- #wrap -->
 <div id="wrap">
     <!-- #container -->
     <div id="container">
-        <!-- #contents -->
-        <div id="contents">
-            <h1>CS &hyphen; STT 전수</h1>
+        <h1>CS &hyphen; STT 전수</h1>
 
-            <!-- .customInfo -->
-            <div class="customInfo">
-                <table class="tbl_line_view" summary="상담일시, 상담고객, 고객번호, 상담사, 사번, 업무구분, 상담키워드로 구성">
-                    <caption class="hide">검색조건</caption>
-                    <colgroup>
-                        <col width="100"><col width="310"><col width="100"><col width="8%">
-                        <col width="100"><col width="10%"><col width="100"><col width="8%"><col width="100"><col width="8%">
-                    </colgroup>
+        <!-- .customInfo -->
+        <div class="customInfo">
+            <table class="tbl_line_view" summary="상담일시, 상담고객, 고객번호, 상담사, 사번, 업무구분, 상담키워드로 구성">
+                <caption class="hide">검색조건</caption>
+                <colgroup>
+                    <col width="100"><col width="310"><col width="100"><col width="8%">
+                    <col width="100"><col width="10%"><col width="100"><col width="8%"><col width="100"><col width="8%">
+                </colgroup>
 
-                    <!-- [D] 하단 고객정보 입력 input 모두 readonly 처리함 -->
-                    <tbody>
-                        <tr>
-                            <th>상담일시</th>
-                            <td>
-                                <div class="iptBox">
-                                    <input type="text" class="iptDateTime" value="2020-08-03 09:10" readonly>
-                                    <span>&hyphen;</span>
-                                    <input type="text" class="iptDateTime" value="2020-08-03 09:10" readonly>
-                                </div>
-                            </td>
-
-                            <th>상담고객</th>
-                            <td>
-                                <div class="iptBox">
-                                    <input type="text" value="홍길동" readonly>
-                                </div>
-                            </td>
-
-                            <th>고객번호</th>
-                            <td>
-                                <div class="iptBox">
-                                    <input type="text" value="21155" numberOnly readonly>
-                                </div>
-                            </td>
-
-                            <th>상담사</th>
-                            <td>
-                                <div class="iptBox">
-                                    <input type="text" value="김영희" readonly>
-                                </div>
-                            </td>
-
-                            <th>사번</th>
-                            <td>
-                                <div class="iptBox">
-                                    <input type="text" value="20203" numberOnly readonly>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <th>업무구분</th>
-                            <td>
-                                <div class="iptBox">
-                                    <input type="text" value="업무문의" readonly>
-                                </div>
-                            </td>
-
-                            <th>상담키워드</th>
-                            <td colspan="7">
-                                <div class="iptBox">
-                                    <input type="text" value="미정" readonly>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <!-- //.customInfo -->
-
-            <!-- .dataTableBox -->
-            <div class="dataTableBox">
-                <!-- .player -->
-                <!-- [D] 플레이어에서 재생버튼 클릭 시 상담내용 처음부터 재생되어야 함 -->
-                <!-- [D] tbody의 대화내용 셀 더블클릭 시 해당 내용 재생되며 재생 중인 음성과 텍스트의 싱크 맞춰야 함 / 재생 중인 텍스트(.dataTable tbody tr)에는 addclass('currentPlay')해주면 1~4번째 셀 텍스트 볼드처리 됨 -->
-                <div class="player">
-                    <div class="playerBox">
-                        <audio preload="auto">
-                            <!-- <source src="resources/audio/aekukka.mp3"> -->
-                        </audio>
-
-                        <div class="player_button" title="Play">
-                            <a href="#none" class="btn_player_play">
-                                <span>재생/ 일시정지</span>
-                            </a>
-                        </div>
-
-                        <div class="player_time">
-                            <span class="current">00:15</span>
-                        </div>
-
-                        <div class="player_bar">
-                            <span class="player_bar_streaming">
-                                <em class="player_bar_loaded"></em>
-                                <em class="player_bar_played"></em>
-                            </span>
-                        </div>
-
-                        <div class="player_time">
-                            <span class="duration">00:51</span>
-                        </div>
-
-                        <div class="player_volume">
-                            <div class="player_bar_button" title="Volume">
-                                <a href="#"></a>
+                <!-- [D] 하단 고객정보 입력 input 모두 readonly 처리함 -->
+                <tbody>
+                    <tr>
+                        <th>상담일시</th>
+                        <td>
+                            <div class="iptBox">
+                                <input type="text" class="iptDateTime" value="2020-08-03 09:10" readonly>
+                                <span>&hyphen;</span>
+                                <input type="text" class="iptDateTime" value="2020-08-03 09:10" readonly>
                             </div>
-                            <div class="player_bar_adjust">
-                                <span><em style="width: 100%;"></em></span>
+                        </td>
+
+                        <th>상담고객</th>
+                        <td>
+                            <div class="iptBox">
+                                <input type="text" value="홍길동" readonly>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- //.player -->
+                        </td>
 
-                <!-- .term_srch_box -->
-                <div class="term_srch_box">
-                    <!-- [D] 입력창(.srchText)에 검색어 입력 후 검색버튼(.btn_srch)이나 엔터키 누르면 아래 테이블 내 검색어와 일치하는 텍스트를 span.srch_term 으로 감싸줘야하며, 검색어 이동버튼(.btnBox a.btn_top / .btnBox a.btn_top)클릭 시 순서대로 포커스 이동되며 해당 순서의 텍스트에 추가로 addclass('focus')를 해주어 백그라운드 하이라이트 효과를 주어야 함  -->
-                    <div class="srchBox">
-                        <input type="search" class="srchText" placeholder="검색어 입력">
-                        <!-- [D] 검색어에 일치하는 텍스트의 현재 인덱스는 .currentIndex에 넣어주고, 총 인덱스는 .totalIndex에 넣어주어야 함 -->
-                        <!-- [D] 검색어 이동버튼(.btnBox a.btn_top / .btnBox a.btn_top)에 따라 현재 인덱스(.currentIndex) 숫자는 변화되어야 함 -->
-                        <span class="txtIndex">
-                            <em class="currentIndex">0</em>&nbsp;&sol;&nbsp;<em class="totalIndex">0</em>
-                        </span>
-                        <button class="btn_srch">
-                            <img src="resources/images/ico_srch_w.png" alt="검색아이콘">
-                        </button>
-                    </div>
+                        <th>고객번호</th>
+                        <td>
+                            <div class="iptBox">
+                                <input type="text" value="21155" numberOnly readonly>
+                            </div>
+                        </td>
 
-                    <div class="btnBox">
-                        <a href="#none" class="btn_top">
-                            <img src="resources/images/arw_top_gr.png" alt="위로이동 화살표">
-                        </a>
-                        <a href="#none" class="btn_btm">
-                            <img src="resources/images/arw_bottom_gr.png" alt="아래로이동 화살표">
-                        </a>
-                    </div>
-                </div>
-                <!-- //.term_srch_box -->
+                        <th>상담사</th>
+                        <td>
+                            <div class="iptBox">
+                                <input type="text" value="김영희" readonly>
+                            </div>
+                        </td>
 
-                <!-- [D] datatables 라이브러리 영역 -->
-                <!-- [D] 'Excel 다운로드' 버튼 클릭 시 파일 다운로드됨 -->
-                <!-- [D] '구분'(상담사 / 고객) 열의 텍스트가 '고객'일 경우, '구분, 시작시간, STT 결과'에 해당하는 셀 백그라운드컬러 처리됨 -->
-                <!-- [D] '무음'셀 th에 무음길이 숫자입력을 위한 input 추가함, 해당 입력창에 숫자 입력 후 엔터 키 누르면 입력숫자 이상의 셀에 addclass('active')되며
-                          백그라운드 하이라이트됨, 입력숫자 지우면 removeclass('active')되며 백그라운드 하이라이트 사라짐  -->
-                <table class="dataTable">
-                    <thead>
-                        <tr>
-                            <th>순번</th>
-                            <th>구분</th>
-                            <th>시작시간</th>
-                            <th>STT 결과</th>
-                            <th>상담키워드</th>
-                            <th>무음</th>
-                            <th>오류수정</th>
-                        </tr>
-                    </thead>
+                        <th>사번</th>
+                        <td>
+                            <div class="iptBox">
+                                <input type="text" value="20203" numberOnly readonly>
+                            </div>
+                        </td>
+                    </tr>
 
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>상담사</td>
-                            <td>0:00:02</td>
-                            <!-- [D] 검색어 조회 시 일치내용 span.srch_term 로 감싸주어 볼드처리 해야함 -->
-                            <td>가입설계 체결 위해서 관련 법률에 따라 <span class="srch_term">수집</span> 이용 조회 제공에 동의 얻고자하며 신용등급과 무관하시고 동의 하지 않으실 경우에는 계약상담이 불가능하신데요</td>
-                            <td>신용등급</td>
-                            <td>1</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>상담사</td>
-                            <td>0:00:02</td>
-                            <!-- [D] 검색어 조회 후 이동버튼으로 포커스 이동 시 해당 검색어에 addclass('focus')해주면 백그라운드 하이라이트 처리됨 -->
-                            <td>고객님의 개인신용 정보이신 이름 주민번호 연락처 주소 구매내역 등을 <span class="srch_term focus">수집</span> 이용 제공하시는데 동의하십니까</td>
-                            <td>개인정보</td>
-                            <td>2</td>
-                            <td></td>
-                        </tr>
-                        <!-- [D] 대화내용 셀 더블클릭 시 해당 내용 재생되며 재생 중인 음성과 텍스트의 싱크 맞춰야 함 / 재생 중인 텍스트(.dataTable tbody tr)에는 addclass('currentPlay')해주면 1~4번째 셀 텍스트 볼드처리 됨 -->
-                        <tr class="currentPlay">
-                            <td>3</td>
-                            <td>고객</td>
-                            <td>0:00:07</td>
-                            <td>예예</td>
-                            <td>개인정보</td>
-                            <td>91</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>상담사</td>
-                            <td>0:00:07</td>
-                            <td>예 <span class="srch_term">수집</span>목적은 상담 체결 유지 관리 등을 위해서 쓰여지시고 업무 위탁을 받은자 및 법률상의 업무수행 계약목적 등을 위해서 제 삼자에게 제공하시는데 동의하십니까</td>
-                            <td>개인정보</td>
-                            <td>4</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>고객</td>
-                            <td>0:00:11</td>
-                            <td>예예</td>
-                            <td></td>
-                            <td>5</td>
-                            <td>Y</td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>상담사</td>
-                            <td>0:00:13</td>
-                            <td>예 고객님의 고유식별정보를 상기의 목적으로 처리하시는 것에 대해서 동의 해주셨어요 맞으십니까</td>
-                            <td>개인정보</td>
-                            <td>6</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>고객</td>
-                            <td>0:00:17</td>
-                            <td>예예</td>
-                            <td></td>
-                            <td>7</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td>상담사</td>
-                            <td>0:00:19</td>
-                            <td>네 <span class="srch_term">수집</span>한 정보는 삼개월 이용 일년 보유이시며 체결 후에는 거래 종료후 오년 이용 보관하구요 각 제공 대상기관 및 이용목적 구체적인 정보는 롯데손해보험 홈페이지 통해서 확인해 보실 수 있으시고</td>
-                            <td>개인정보</td>
-                            <td>8</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>9</td>
-                            <td>상담사</td>
-                            <td>0:00:23</td>
-                            <td>계약자님 성함하고 주민번호 말씀해 주시면 되시는데 전화받으신 고객님의 성함이 어떻게 되십니까</td>
-                            <td>개인정보</td>
-                            <td>9</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>10</td>
-                            <td>고객</td>
-                            <td>0:00:25</td>
-                            <td>송지영이요</td>
-                            <td></td>
-                            <td>1</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>11</td>
-                            <td>상담사</td>
-                            <td>0:00:26</td>
-                            <td>네 송지영 고객님께서 계약자님</td>
-                            <td></td>
-                            <td>2</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>12</td>
-                            <td>고객</td>
-                            <td>0:00:26</td>
-                            <td>송</td>
-                            <td></td>
-                            <td>3</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>13</td>
-                            <td>고객</td>
-                            <td>0:00:27</td>
-                            <td>송이요</td>
-                            <td></td>
-                            <td>4</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>14</td>
-                            <td>상담사</td>
-                            <td>0:00:28</td>
-                            <td>송 송나라 송</td>
-                            <td></td>
-                            <td>5</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>15</td>
-                            <td>고객</td>
-                            <td>0:00:29</td>
-                            <td>네 송이요</td>
-                            <td></td>
-                            <td>6</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>16</td>
-                            <td>고객</td>
-                            <td>0:00:29</td>
-                            <td>예예</td>
-                            <td></td>
-                            <td>7</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>17</td>
-                            <td>상담사</td>
-                            <td>0:00:31</td>
-                            <td>예 송지영 고객님께서 계약자님으로 들어가시고 고객님 주민등록번호 말씀해 주시면 되십니다</td>
-                            <td></td>
-                            <td>8</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>18</td>
-                            <td>고객</td>
-                            <td>0:00:33</td>
-                            <td>칠하나공칠이사 이삼사오 삼사팔</td>
-                            <td></td>
-                            <td>9</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>19</td>
-                            <td>상담사</td>
-                            <td>0:00:35</td>
-                            <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
-                            <td></td>
-                            <td>2</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>20</td>
-                            <td>상담사</td>
-                            <td>0:00:35</td>
-                            <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
-                            <td></td>
-                            <td>2</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>21</td>
-                            <td>상담사</td>
-                            <td>0:00:35</td>
-                            <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
-                            <td></td>
-                            <td>2</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>22</td>
-                            <td>상담사</td>
-                            <td>0:00:35</td>
-                            <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
-                            <td></td>
-                            <td>2</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>23</td>
-                            <td>상담사</td>
-                            <td>0:00:35</td>
-                            <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
-                            <td></td>
-                            <td>2</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>24</td>
-                            <td>상담사</td>
-                            <td>0:00:35</td>
-                            <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
-                            <td></td>
-                            <td>2</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>25</td>
-                            <td>상담사</td>
-                            <td>0:00:35</td>
-                            <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
-                            <td></td>
-                            <td>2</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>26</td>
-                            <td>상담사</td>
-                            <td>0:00:35</td>
-                            <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
-                            <td></td>
-                            <td>2</td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <!-- //.dataTableBox -->
+                    <tr>
+                        <th>업무구분</th>
+                        <td>
+                            <div class="iptBox">
+                                <input type="text" value="업무문의" readonly>
+                            </div>
+                        </td>
+
+                        <th>상담키워드</th>
+                        <td colspan="7">
+                            <div class="iptBox">
+                                <input type="text" value="미정" readonly>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <!-- //#contents -->
+        <!-- //.customInfo -->
+
+        <!-- .dataTableBox -->
+        <div class="dataTableBox">
+            <!-- .player -->
+            <!-- [D] 플레이어에서 재생버튼 클릭 시 상담내용 처음부터 재생되어야 함 -->
+            <!-- [D] tbody의 대화내용 셀 더블클릭 시 해당 내용 재생되며 재생 중인 음성과 텍스트의 싱크 맞춰야 함 / 재생 중인 텍스트(.dataTable tbody tr)에는 addclass('currentPlay')해주면 1~4번째 셀 텍스트 볼드처리 됨 -->
+            <div class="player">
+                <div class="playerBox">
+                    <audio preload="auto">
+                        <!-- <source src="resources/audio/aekukka.mp3"> -->
+                    </audio>
+
+                    <div class="player_button" title="Play">
+                        <a href="#none" class="btn_player_play">
+                            <span>재생/ 일시정지</span>
+                        </a>
+                    </div>
+
+                    <div class="player_time">
+                        <span class="current">00:15</span>
+                    </div>
+
+                    <div class="player_bar">
+                        <span class="player_bar_streaming">
+                            <em class="player_bar_loaded"></em>
+                            <em class="player_bar_played"></em>
+                        </span>
+                    </div>
+
+                    <div class="player_time">
+                        <span class="duration">00:51</span>
+                    </div>
+
+                    <div class="player_volume">
+                        <div class="player_bar_button" title="Volume">
+                            <a href="#"></a>
+                        </div>
+                        <div class="player_bar_adjust">
+                            <span><em style="width: 100%;"></em></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- //.player -->
+
+            <!-- .term_srch_box -->
+            <div class="term_srch_box">
+                <!-- [D] 입력창(.srchText)에 검색어 입력 후 검색버튼(.btn_srch)이나 엔터키 누르면 아래 테이블 내 검색어와 일치하는 텍스트를 span.srch_term 으로 감싸줘야하며, 검색어 이동버튼(.btnBox a.btn_top / .btnBox a.btn_top)클릭 시 순서대로 포커스 이동되며 해당 순서의 텍스트에 추가로 addclass('focus')를 해주어 백그라운드 하이라이트 효과를 주어야 함  -->
+                <div class="srchBox">
+                    <input type="search" class="srchText" placeholder="검색어 입력">
+                    <!-- [D] 검색어에 일치하는 텍스트의 현재 인덱스는 .currentIndex에 넣어주고, 총 인덱스는 .totalIndex에 넣어주어야 함 -->
+                    <!-- [D] 검색어 이동버튼(.btnBox a.btn_top / .btnBox a.btn_top)에 따라 현재 인덱스(.currentIndex) 숫자는 변화되어야 함 -->
+                    <span class="txtIndex">
+                        <em class="currentIndex">0</em>&nbsp;&sol;&nbsp;<em class="totalIndex">0</em>
+                    </span>
+                    <button class="btn_srch">
+                        <img src="resources/images/ico_srch_w.png" alt="검색아이콘">
+                    </button>
+                </div>
+
+                <div class="btnBox">
+                    <a href="#none" class="btn_top">
+                        <img src="resources/images/arw_top_gr.png" alt="위로이동 화살표">
+                    </a>
+                    <a href="#none" class="btn_btm">
+                        <img src="resources/images/arw_bottom_gr.png" alt="아래로이동 화살표">
+                    </a>
+                </div>
+            </div>
+            <!-- //.term_srch_box -->
+
+            <!-- [D] datatables 라이브러리 영역 -->
+            <!-- [D] 'Excel 다운로드' 버튼 클릭 시 파일 다운로드됨 -->
+            <!-- [D] '구분'(상담사 / 고객) 열의 텍스트가 '고객'일 경우, '구분, 시작시간, STT 결과'에 해당하는 셀 백그라운드컬러 처리됨 -->
+            <!-- [D] '무음'셀 th에 무음길이 숫자입력을 위한 input 추가함, 해당 입력창에 숫자 입력 후 엔터 키 누르면 입력숫자 이상의 셀에 addclass('active')되며
+                      백그라운드 하이라이트됨, 입력숫자 지우면 removeclass('active')되며 백그라운드 하이라이트 사라짐  -->
+            <table class="dataTable">
+                <thead>
+                    <tr>
+                        <th>순번</th>
+                        <th>구분</th>
+                        <th>시작시간</th>
+                        <th>STT 결과</th>
+                        <th>상담키워드</th>
+                        <th>무음</th>
+                        <th>오류수정</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>상담사</td>
+                        <td>0:00:02</td>
+                        <!-- [D] 검색어 조회 시 일치내용 span.srch_term 로 감싸주어 볼드처리 해야함 -->
+                        <td>가입설계 체결 위해서 관련 법률에 따라 <span class="srch_term">수집</span> 이용 조회 제공에 동의 얻고자하며 신용등급과 무관하시고 동의 하지 않으실 경우에는 계약상담이 불가능하신데요</td>
+                        <td>신용등급</td>
+                        <td>1</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>상담사</td>
+                        <td>0:00:02</td>
+                        <!-- [D] 검색어 조회 후 이동버튼으로 포커스 이동 시 해당 검색어에 addclass('focus')해주면 백그라운드 하이라이트 처리됨 -->
+                        <td>고객님의 개인신용 정보이신 이름 주민번호 연락처 주소 구매내역 등을 <span class="srch_term focus">수집</span> 이용 제공하시는데 동의하십니까</td>
+                        <td>개인정보</td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+                    <!-- [D] 대화내용 셀 더블클릭 시 해당 내용 재생되며 재생 중인 음성과 텍스트의 싱크 맞춰야 함 / 재생 중인 텍스트(.dataTable tbody tr)에는 addclass('currentPlay')해주면 1~4번째 셀 텍스트 볼드처리 됨 -->
+                    <tr class="currentPlay">
+                        <td>3</td>
+                        <td>고객</td>
+                        <td>0:00:07</td>
+                        <td>예예</td>
+                        <td>개인정보</td>
+                        <td>91</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>상담사</td>
+                        <td>0:00:07</td>
+                        <td>예 <span class="srch_term">수집</span>목적은 상담 체결 유지 관리 등을 위해서 쓰여지시고 업무 위탁을 받은자 및 법률상의 업무수행 계약목적 등을 위해서 제 삼자에게 제공하시는데 동의하십니까</td>
+                        <td>개인정보</td>
+                        <td>4</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>고객</td>
+                        <td>0:00:11</td>
+                        <td>예예</td>
+                        <td></td>
+                        <td>5</td>
+                        <td>Y</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>상담사</td>
+                        <td>0:00:13</td>
+                        <td>예 고객님의 고유식별정보를 상기의 목적으로 처리하시는 것에 대해서 동의 해주셨어요 맞으십니까</td>
+                        <td>개인정보</td>
+                        <td>6</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>고객</td>
+                        <td>0:00:17</td>
+                        <td>예예</td>
+                        <td></td>
+                        <td>7</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>상담사</td>
+                        <td>0:00:19</td>
+                        <td>네 <span class="srch_term">수집</span>한 정보는 삼개월 이용 일년 보유이시며 체결 후에는 거래 종료후 오년 이용 보관하구요 각 제공 대상기관 및 이용목적 구체적인 정보는 롯데손해보험 홈페이지 통해서 확인해 보실 수 있으시고</td>
+                        <td>개인정보</td>
+                        <td>8</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>상담사</td>
+                        <td>0:00:23</td>
+                        <td>계약자님 성함하고 주민번호 말씀해 주시면 되시는데 전화받으신 고객님의 성함이 어떻게 되십니까</td>
+                        <td>개인정보</td>
+                        <td>9</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>고객</td>
+                        <td>0:00:25</td>
+                        <td>송지영이요</td>
+                        <td></td>
+                        <td>1</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>상담사</td>
+                        <td>0:00:26</td>
+                        <td>네 송지영 고객님께서 계약자님</td>
+                        <td></td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>고객</td>
+                        <td>0:00:26</td>
+                        <td>송</td>
+                        <td></td>
+                        <td>3</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>고객</td>
+                        <td>0:00:27</td>
+                        <td>송이요</td>
+                        <td></td>
+                        <td>4</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>상담사</td>
+                        <td>0:00:28</td>
+                        <td>송 송나라 송</td>
+                        <td></td>
+                        <td>5</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>고객</td>
+                        <td>0:00:29</td>
+                        <td>네 송이요</td>
+                        <td></td>
+                        <td>6</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>16</td>
+                        <td>고객</td>
+                        <td>0:00:29</td>
+                        <td>예예</td>
+                        <td></td>
+                        <td>7</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>17</td>
+                        <td>상담사</td>
+                        <td>0:00:31</td>
+                        <td>예 송지영 고객님께서 계약자님으로 들어가시고 고객님 주민등록번호 말씀해 주시면 되십니다</td>
+                        <td></td>
+                        <td>8</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>18</td>
+                        <td>고객</td>
+                        <td>0:00:33</td>
+                        <td>칠하나공칠이사 이삼사오 삼사팔</td>
+                        <td></td>
+                        <td>9</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>19</td>
+                        <td>상담사</td>
+                        <td>0:00:35</td>
+                        <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
+                        <td></td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>20</td>
+                        <td>상담사</td>
+                        <td>0:00:35</td>
+                        <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
+                        <td></td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>21</td>
+                        <td>상담사</td>
+                        <td>0:00:35</td>
+                        <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
+                        <td></td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>22</td>
+                        <td>상담사</td>
+                        <td>0:00:35</td>
+                        <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
+                        <td></td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>23</td>
+                        <td>상담사</td>
+                        <td>0:00:35</td>
+                        <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
+                        <td></td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>24</td>
+                        <td>상담사</td>
+                        <td>0:00:35</td>
+                        <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
+                        <td></td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>25</td>
+                        <td>상담사</td>
+                        <td>0:00:35</td>
+                        <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
+                        <td></td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>26</td>
+                        <td>상담사</td>
+                        <td>0:00:35</td>
+                        <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
+                        <td></td>
+                        <td>2</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- //.dataTableBox -->
     </div>
     <!-- //#container -->
 </div>
