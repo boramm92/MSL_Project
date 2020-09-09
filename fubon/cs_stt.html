@@ -1431,10 +1431,25 @@ $(document).ready(function(){
         });
     }
     tableResize();
+});
 
-    $(window).on('resize', function() {
-        tableResize();
-    });
+$(document).resize(function(){
+    // datatable height 브라우저 height 기준 maxheight 조정
+    function tableResize() {
+        // 전체 테이블
+        $('.DTFC_ScrollWrapper').css({
+            maxHeight: ($(window).height() - 410) + 'px'
+        });
+        // 테이블 바디 (스크롤 포함)
+        $('.DTFC_LeftBodyLiner').css({
+            maxHeight: ($(window).height() - 416 - 40) + 'px'
+        });
+        // 첫번째 열
+        $('.dataTables_scrollBody').css({
+            maxHeight: ($(window).height() - 410 - 40) + 'px'
+        });
+    }
+    tableResize();
 });
 </script>
 </body>
