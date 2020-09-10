@@ -24,7 +24,7 @@
 
 <title>CS STT 전수 || 푸본현대생명</title>
 </head>
-<body class="lyr_bg_dimmed">
+<body>
 <!-- #wrap -->
 <div id="wrap">
     <!-- #container -->
@@ -438,23 +438,35 @@
 
 <!-- context menu -->
 <ul class="contextMenu">
-  <li><a href="#">복사하기</a></li>
-  <li><a href="#">STT 오류수정</a></li>
+    <li><a href="#none">복사하기</a></li>
+    <li><a href="#lyr_stt_edit" class="btn_lyr_open">STT 오류수정</a></li>
 </ul>
+<!-- //context menu -->
 
 <!-- layer popup -->
 <!-- STT 오류수정 -->
 <div id="lyr_stt_edit" class="lyrBox">
-    <div class="lyr_top">
-        <h3>STT 오류수정</h3>
-        <button class="btn_lyr_close">닫기</button>
+    <div class="lyr_hd">
+        <span class="title">STT 오류수정</span>
+        <a href="#none" class="btn_lyr_close">닫기</a>
      </div>
-    <div class="lyr_mid">
+    <div class="lyr_ct">
+        <div class="textArea_original">
+            <span>STT 원문 <small>문장 전체를 수정해야 합니다.</small></span>
+            <div class="textBox">
+                가입설계 체결 위해서 관련 법률에 따라 수집 이용 조회 제공에 동의 얻고자하며 신용등급과 무관하시고 동의 하지 않으실 경우에는 계약상담이 불가능하신데요
+            </div>
+        </div>
 
+        <div class="textArea_edit">
+            <span>오류 수정</span>
+            <textarea class="textBox"></textarea>
+        </div>
     </div>
-    <div class="lyr_btm">
+    <div class="lyr_ft">
         <div class="btnBox">
-            <a href="#none" class="btn_lyr_close">확인</a>
+            <a href="#none" class="btn_lyr_save">저장</a>
+            <a href="#none" class="btn_lyr_close">취소</a>
         </div>
     </div>
 </div>
@@ -463,114 +475,39 @@
 <!-- script -->
 <script type="text/javascript">
 $(document).ready(function(){
-    //Show contextmenu:
-    $(document).contextmenu(function(e){
-        //Get window size:
-        var winWidth = $(document).width();
-        var winHeight = $(document).height();
-        //Get pointer position:
-        var posX = e.pageX;
-        var posY = e.pageY;
-        //Get contextMenu size:
-        var menuWidth = $(".contextMenu").width();
-        var menuHeight = $(".contextMenu").height();
-        //Security margin:
-        var secMargin = 10;
-        //Prevent page overflow:
-        if(posX + menuWidth + secMargin >= winWidth
-            && posY + menuHeight + secMargin >= winHeight){
-            //Case 1: right-bottom overflow:
-            posLeft = posX - menuWidth - secMargin + "px";
-            posTop = posY - menuHeight - secMargin + "px";
-        }
-        else if(posX + menuWidth + secMargin >= winWidth){
-            //Case 2: right overflow:
-            posLeft = posX - menuWidth - secMargin + "px";
-            posTop = posY + secMargin + "px";
-        }
-        else if(posY + menuHeight + secMargin >= winHeight){
-            //Case 3: bottom overflow:
-            posLeft = posX + secMargin + "px";
-            posTop = posY - menuHeight - secMargin + "px";
-        }
-        else {
-            //Case 4: default values:
-            posLeft = posX + secMargin + "px";
-            posTop = posY + secMargin + "px";
-        };
-        //Display contextmenu:
-        $(".contextMenu").css({
-            "left": posLeft,
-            "top": posTop
-        }).show();
-            //Prevent browser default contextmenu.
-            return false;
-    });
-    //Hide contextmenu:
-    $(document).click(function(){
-        $(".contextMenu").hide();
-    });
-});
+    // 공통 레이어 팝업
+	$('.btn_lyr_open').on('click',function(){
+        var popHref = $(this).attr('href');
 
+        // popup open
+        $('body').addClass('lyr_bg_dim');
+        $(popHref).css({'display': 'block'});
 
-$(document).ready(function(){
-    // input:text[numberOnly] 숫자만 입력가능
-    $('input:text[numberOnly]').keypress(function(event) {
-        if(event.which < 48 || event.which > 57){
-            event.preventDefault();
-        }
+        // popup close
+        $('.btn_lyr_close, .lyr_bg_dimmed').on('click',function(){
+            $('body').removeClass('lyr_bg_dim');
+            $('.lyrBox').css({'display': 'none'});
+        });
     });
 
-    // 공통 얼럿 레이어 열기/닫기
-    $('.alert_open').on('click', function(e){
-      var thisHref = $(this).attr('href');
+    // 공통 저장완료 레이어 팝업
+    $('.btn_lyr_save').on('click',function(){
+        var thisLayer = $(this).parents('.lyrBox').attr('id');
+        var thisLayerHref = $('#' + thisLayer);
+        $(thisLayerHref).css({'display': 'none'});
 
-      e.stopPropagation();
-      handleLyrClose(); //레이어 닫기
-
-      $('body').addClass('lyr_backdrop'); //body에 백그라운드 적용
-      $(thisHref).css({'display': 'block'}); //클릭한 a의 href와 동일한 레이어만 block
-
-      setTimeout(function(){
-        $(thisHref).addClass('on') //레이어 오픈 효과 적용
-      }, 100);
-    })
-
-    // 공통 얼럿 레이어 닫기
-    function handleLyrClose() {
-      // 레이어 닫기버튼 클릭
-      $('.alert_close').on('click', function(){
-        $('.alert_box').removeClass('on');
-
-        setTimeout(function(){
-          $('body').removeClass('lyr_backdrop');
-          $('.alert_box').css({'display': 'none'});
-          $('.alert_close').off('click');
-        }, 200);
-      })
-    }
-
-    // 저장 버튼
-    $('.btnBox_consult button').on('click', function(){
-        //save massage
         $('body').append(' \
-             <div class="lyrWrap moment"> \
-                 <div class="lyr_bg"></div> \
-                 <div class="lyrBox" >\
-                    <div class="lyr_top"> \
-                    </div> \
-                    <div class="lyr_mid"> \
-                        <div class="icoBox"> \
-                            <img src="resources/images/img_save.png" alt="저장완료"> \
-                        </div> \
-                        <p class="massage">상담내용이 저장 되었습니다.</p> \
-                    </div> \
+            <div class="lyrBox alert">\
+                <div class="lyr_ct"> \
+                    <p class="massage">저장 되었습니다.</p> \
                 </div> \
             </div> \
         ');
-        $('.moment, .moment .lyrBox').show();
-        setTimeout(function() {
-            $('.moment').addClass('lyr_hide').delay(300).queue(function() { $(this).remove(); });
+        $('.alert').show();
+
+        setTimeout(function(){
+            $('.alert').addClass('lyr_hide').delay(300).queue(function(){$(this).remove();});
+            $('body').removeClass('lyr_bg_dim');
         }, 1000);
     });
 
@@ -599,6 +536,38 @@ $(document).ready(function(){
     // 검색어 입력 후 검색버튼 클릭 시
     $('.btn_srch').on('click', function(){
         tableTextSearch();
+    });
+
+    // input:text[numberOnly] 숫자만 입력가능
+    $('input:text[numberOnly]').keypress(function(event) {
+        if(event.which < 48 || event.which > 57){
+            event.preventDefault();
+        }
+    });
+
+    // 마우스 우클릭 시 contextmenu 등장
+    $(document).contextmenu(function(e){
+        var $contextMenu = $(".contextMenu");
+
+        // 상담내용 셀 영역에서만 context menu 등장하도록 지정
+        $("body").on("contextmenu", ".dataTable tbody td:nth-child(4)", function(e){
+            $contextMenu.css({
+                display: "block",
+                left: e.pageX,
+                top: e.pageY
+            });
+            return false;
+        });
+
+        $('.dataTable tbody td:nth-child(4)').contextmenu(function(){
+            $('.dataTable tbody td:nth-child(4)').removeClass('active');
+            $(this).toggleClass('active');
+        });
+    });
+
+    // context menu 숨기기
+    $(document).click(function(){
+        $(".contextMenu").hide();
     });
 
     // datatable 렌더링

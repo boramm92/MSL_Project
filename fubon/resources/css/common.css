@@ -11,10 +11,10 @@
 #header .title_box h1 img {display: inline-block; height: 30px; margin: 10px 0;}
 #header .title_box h2 {display: inline-block; padding: 12px 20px 0; color: #E9F1F3;}
 
-#header .title_box .etc_box {float: right; width: 260px; height: 100%; padding: 10px 0; box-sizing: border-box;}
+#header .title_box .etc_box {float: right; height: 100%; padding: 10px 0; box-sizing: border-box;}
 #header .title_box .etc_box > div {float: left;}
 #header .title_box .etc_box .user_account {overflow: hidden; width: 150px; height: 30px; margin: 0 10px 0 0; padding: 0 5px; border-radius: 3px; box-sizing: border-box; background: rgba(255,255,255,0.5); text-overflow: ellipsis; line-height: 30px; white-space: nowrap;}
-#header .title_box .etc_box .btn_logout {display: block; width: 100px; height: 30px; line-height: 28px;}
+#header .title_box .etc_box .btn_logout {display: block; height: 30px; line-height: 28px;}
 #header .title_box .etc_box .btn_logout a {display: block; background: #009583; color: #fff;}
 #header .title_box .etc_box .btn_logout a:hover {border: 1px solid #E9F1F3;}
 #header .title_box .etc_box .btn_logout img {margin: -2px 0 0; vertical-align: middle;}
@@ -73,7 +73,7 @@
 
 /* btnBox */
 .btnBox {display: block;}
-.btnBox a {display: inline-block; border: 1px solid transparent; border-radius: 3px; box-sizing: border-box; text-align: center; vertical-align: middle;}
+.btnBox a {display: inline-block; padding: 0 20px; border: 1px solid transparent; border-radius: 3px; box-sizing: border-box; text-align: center; vertical-align: middle;}
 .btnBox a:hover {box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1); transition: all 0.3s ease-out;}
 /* //btnBox */
 
@@ -144,12 +144,40 @@
 .srchBox .btn_srch img {width: 20px; vertical-align: middle;}
 /* //srchBox */
 
-/* layer bg dimmed */
-body.lyr_bg_dimmed {overflow: hidden; display: block; position: fixed; top: 0; left: 0; background: rgba(0, 0, 0, 0.3); z-index: 30;}
-/* //layer bg dimmed */
-
 /* layer popup */
-.lyrBox {position: absolute; top: 80px; left: 50%; width: 500px; border-radius: 3px; box-shadow: 0 1px 4px 0 rgba(44, 63, 81, 0.1); background: #fff; transform: translate(-50%, 0);}
+.lyr_bg_dim {overflow: hidden;}
+.lyr_bg_dim:after {content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 999;}
+.lyrBox {display: none; overflow: hidden; position: absolute; top: 50%; left: 50%; width: 500px; min-height: 200px; border-radius: 3px; box-shadow: 0 1px 4px 0 rgba(44, 63, 81, 0.1); background: #fff; transform: translate(-50%, -50%); z-index: 9999;}
+.lyrBox .lyr_hd {height: 40px; padding: 0 20px; background: #4d8691; color: #fff; line-height: 40px;}
+.lyrBox .lyr_hd .title {font-size: 16px; font-weight: 700;}
+.lyrBox .lyr_hd .btn_lyr_close {overflow: hidden; float: right; width: 16px; height: 16px; margin: 12px 0 0; background: url(../images/ico_close.png) 50% 50% no-repeat; background-size: contain; text-indent: -999px;}
+.lyrBox .lyr_ct {padding: 10px 20px 0;}
+.lyrBox .lyr_ft {padding: 20px;}
+.lyrBox .lyr_ft .btnBox {text-align: center;}
+.lyrBox .lyr_ft .btnBox a {min-width: 70px; margin: 0 3px; color: #fff; line-height: 30px;}
+.lyrBox .lyr_ft .btnBox a.btn_lyr_save {background: #009583;}
+.lyrBox .lyr_ft .btnBox a.btn_lyr_close {background: #7f8185;}
+.lyrBox.alert {padding: 20px; color: #009583; font-size: 15px; text-align: center;}
+.lyr_hide{-webkit-animation-duration: 0.5s; animation-duration: 0.5s; -webkit-animation-fill-mode: both; animation-fill-mode: both; -webkit-animation-name: lyr_hide; animation-name: lyr_hide;}
+
+/* keyframes */
+@-webkit-keyframes lyr_hide {
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+}
+@keyframes lyr_hide {
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+}
+/* //layer popup */
+
+/* 개별 layer popup */
+#lyr_stt_edit .lyr_ct span {display: block; margin: 0 0 5px; font-size: 14px; font-weight: 700;}
+#lyr_stt_edit .lyr_ct span small {color: #009583;}
+#lyr_stt_edit .lyr_ct > div {}
+#lyr_stt_edit .lyr_ct .textBox {overflow: auto; width: 100%; height: 100px; padding: 5px; border: 1px solid #C7D0D3; border-radius: 3px; box-sizing: border-box;}
+#lyr_stt_edit .lyr_ct .textArea_original div.textBox {background: #f0f0f0;}
+#lyr_stt_edit .lyr_ct .textArea_edit textarea.textBox {display: inline-block; background: #fff;}
 /* //layer popup */
 
 /* context menu */
