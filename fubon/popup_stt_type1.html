@@ -16,6 +16,8 @@
 <!-- js -->
 <script src="resources/js/jquery-3.3.1.min.js"></script>
 <script src="resources/js/jquery-migrate-3.3.0.min.js"></script>
+<!-- player -->
+<script src="resources/js/player.js"></script>
 <!-- datatables -->
 <script src="resources/js/datatables.min.js"></script>
 <script src="resources/js/dataTables.buttons.min.js"></script>
@@ -40,43 +42,44 @@
                     <col width="100"><col width="10%"><col width="100"><col width="8%"><col width="100"><col width="8%">
                 </colgroup>
 
-                <!-- [D] 하단 고객정보 입력 input 모두 readonly 처리함 -->
                 <tbody>
                     <tr>
                         <th>상담일시</th>
                         <td>
-                            <div class="iptBox">
-                                <input type="text" class="iptDateTime" value="2020-08-03 09:10" readonly>
-                                <span>&hyphen;</span>
-                                <input type="text" class="iptDateTime" value="2020-08-03 09:10" readonly>
+                            <div class="custom_info_box consult_time">
+                                <span class="start_time">2020-08-03 09:10</span>
+                            </div>
+                            <span>&hyphen;</span>
+                            <div class="custom_info_box consult_time">
+                                <span class="end_time">2020-08-03 09:10</span>
                             </div>
                         </td>
 
                         <th>상담고객</th>
                         <td>
-                            <div class="iptBox">
-                                <input type="text" value="홍길동" readonly>
+                            <div class="custom_info_box">
+                                <span class="name">홍길동</span>
                             </div>
                         </td>
 
                         <th>고객번호</th>
                         <td>
-                            <div class="iptBox">
-                                <input type="text" value="21155" numberOnly readonly>
+                            <div class="custom_info_box">
+                                <span class="custom_num">21155</span>
                             </div>
                         </td>
 
                         <th>상담사</th>
                         <td>
-                            <div class="iptBox">
-                                <input type="text" value="김영희" readonly>
+                            <div class="custom_info_box">
+                                <span class="consultant">김영희</span>
                             </div>
                         </td>
 
                         <th>사번</th>
                         <td>
-                            <div class="iptBox">
-                                <input type="text" value="20203" numberOnly readonly>
+                            <div class="custom_info_box">
+                                <span class="epy_num">20203</span>
                             </div>
                         </td>
                     </tr>
@@ -84,15 +87,15 @@
                     <tr>
                         <th>업무구분</th>
                         <td>
-                            <div class="iptBox">
-                                <input type="text" value="업무문의" readonly>
+                            <div class="custom_info_box">
+                                <span class="work_type">업무문의</span>
                             </div>
                         </td>
 
                         <th>상담키워드</th>
                         <td colspan="7">
-                            <div class="iptBox">
-                                <input type="text" value="미정" readonly>
+                            <div class="custom_info_box">
+                                <span class="consultant_keyword">미정</span>
                             </div>
                         </td>
                     </tr>
@@ -108,57 +111,31 @@
             <!-- [D] tbody의 대화내용 셀 더블클릭 시 해당 내용 재생되며 재생 중인 음성과 텍스트의 싱크 맞춰야 함 / 재생 중인 텍스트(.dataTable tbody tr)에는 addclass('currentPlay')해주면 1~4번째 셀 텍스트 볼드처리 됨 -->
             <!--player-->
             <div class="player">
-                <audio id="sound" preload="auto">
-                    <source src="resources/audio/aekukka.mp3">
-                </audio>
-
-                <div class="pyr_controls">
-                    <a href="#none" class="btn_pyr_play">
-                        <span>오디오 재생, 일시정지 버튼</span>
-                    </a>
-                </div>
-
-                <div class="pyr_time">
-                    <span id="timer" class="current">00:00</span>
-                </div>
-
-                <div id="slider" class="slider">
-                    <div id="elapsed" class="elapsed"></div>
-                </div>
-
-                <div class="pyr_time">
-                    <span class="total">00:00</span>
-                </div>
-
-                <div class="pyr_volume">
-                    <a href="#none" class="btn_pyr_vol">
-                        <span>볼륨버튼</span>
-                    </a>
-                    <div class="volume_bar">
-                        <div class="volume_set" style="width: 20%"></div>
-                    </div>
-                </div>
-
-                <div class="sltBox pyr_speed">
-                    <select class="select">
-                        <option value="">1.1X</option>
-                        <option value="">1.2X</option>
-                        <option value="">1.5X</option>
-                        <option value="">2X</option>
-                        <option value="">3X</option>
-                    </select>
-                </div>
+               <audio preload="auto" controls>
+                   <source src="resources/audio/aekukka.mp3">
+               </audio>
+               
+               <div class="sltBox pyr_speed">
+                   <select class="select">
+                       <option value="">1.1X</option>
+                       <option value="">1.2X</option>
+                       <option value="">1.5X</option>
+                       <option value="">2X</option>
+                       <option value="">3X</option>
+                   </select>
+               </div>                
             </div>
             <!-- //.player -->
 
             <!-- .term_srch_box -->
+            <!-- [D] 입력창(.srchText)에 검색어 입력 후 검색버튼(.btn_srch)이나 엔터키 누르면 .term_srch_box에 addclass('on')되며 .txtIndex와 .btn_index_move이 보여짐 -->
+            <!-- [D] 검색 시 아래 테이블 내 검색어와 일치하는 텍스트를 span.srch_term 으로 감싸줘야하며, 검색어 이동버튼(.btnBox a.btn_top / .btnBox a.btn_top)클릭 시 순서대로 포커스 이동되며 해당 순서의 텍스트에 추가로 addclass('focus')를 해주어 백그라운드 하이라이트 효과를 주어야 함  -->
             <div class="term_srch_box">
-                <!-- [D] 입력창(.srchText)에 검색어 입력 후 검색버튼(.btn_srch)이나 엔터키 누르면 아래 테이블 내 검색어와 일치하는 텍스트를 span.srch_term 으로 감싸줘야하며, 검색어 이동버튼(.btnBox a.btn_top / .btnBox a.btn_top)클릭 시 순서대로 포커스 이동되며 해당 순서의 텍스트에 추가로 addclass('focus')를 해주어 백그라운드 하이라이트 효과를 주어야 함  -->
                 <div class="srchBox">
                     <input type="search" class="srchText" placeholder="검색어 입력">
                     <!-- [D] .txtIndex의 기본상태는 display:none이고, 검색버튼 또는 엔터 키 눌렀을 때 addclass('on')해주어 display:block 상태로 바꿔주어야함 -->
                     <!-- [D] 검색어에 일치하는 텍스트의 현재 인덱스는 .currentIndex에 넣어주고, 총 인덱스는 .totalIndex에 넣어주어야 함 -->
-                    <span class="txtIndex on">
+                    <span class="txtIndex">
                         <em class="currentIndex">0</em>&nbsp;&sol;&nbsp;<em class="totalIndex">0</em>
                     </span>
                     <a href="#none" class="btn_srch">
@@ -167,7 +144,7 @@
                 </div>
 
                 <!-- [D] 검색어 이동버튼(.btnBox a.btn_top / .btnBox a.btn_top)에 따라 현재 인덱스(.currentIndex) 숫자는 변화되어야 함 -->
-                <div class="btnBox">
+                <div class="btnBox btn_index_move">
                     <a href="#none" class="btn_top">
                         <img src="resources/images/arw_top_gr.png" alt="위로이동 화살표">
                     </a>
@@ -181,8 +158,8 @@
             <!-- [D] datatables 라이브러리 영역 -->
             <!-- [D] 'Excel 다운로드' 버튼 클릭 시 파일 다운로드됨 -->
             <!-- [D] '구분'(상담사 / 고객) 열의 텍스트가 '고객'일 경우, '구분, 시작시간, STT 결과'에 해당하는 셀 백그라운드컬러 처리됨 -->
-            <!-- [D] '무음'셀 th에 무음길이 숫자입력을 위한 input 추가함, 해당 입력창에 숫자 입력 후 엔터 키 누르면 입력숫자 이상의 셀에 addclass('active')되며
-                      백그라운드 하이라이트됨, 입력숫자 지우면 removeclass('active')되며 백그라운드 하이라이트 사라짐  -->
+            <!-- [D] 'STT 결과' 셀의 상담 내용 영역에서 마우스 우클릭 시 contextmenu 등장 -->
+            <!-- [D] '무음'셀 th에 무음길이 숫자입력을 위한 input 추가함, 해당 입력창에 숫자 입력 후 엔터 키 누르면 입력숫자 이상의 셀에 addclass('active')되며 백그라운드 하이라이트됨, 입력숫자 지우면 removeclass('active')되며 백그라운드 하이라이트 사라짐  -->
             <table class="dataTable">
                 <thead>
                     <tr>
@@ -444,6 +421,8 @@
 <!-- //#wrap -->
 
 <!-- context menu -->
+<!-- [D] '복사하기' 클릭 시 해당 영역 text 클립보드  -->
+<!-- [D] 'STT 오류수정' 클릭 시 수정 팝업(#lyr_stt_edit) 등장, 선택 영역의 STT 결과 text가 STT 원문에 반영됨 -->
 <ul class="contextMenu">
     <li><a href="#none" class="btn_clipboard">복사하기</a></li>
     <li><a href="#lyr_stt_edit" class="btn_lyr_open">STT 오류수정</a></li>
@@ -535,52 +514,139 @@ $(document).ready(function(){
     });
 
     //오디오 플레이어
-    var audioSound = document.getElementById('sound');
-    var playhead = document.getElementById('elapsed');
-    var audioSlider = document.getElementById("slider");
-    var timer = document.getElementById("timer");
-    var audioDuration = audioSound.duration;
-    var audioRoundDuration = Math.ceil(audioDuration);
-
-    $('.pyr_time .total').text(createAudioTimeFormat(audioRoundDuration));
-    var timelineWidth = audioSlider.offsetWidth - playhead.offsetWidth;
-
-    audioSound.addEventListener("timeupdate", function(){
-      var audioCurrentTime = audioSound.currentTime;
-      var audioParseCurrentTime = Math.ceil(audioCurrentTime);
-      var playPercent = timelineWidth * (audioSound.currentTime / audioDuration);
-      playhead.style.width = playPercent + "px";
-      $('.pyr_time .current').text(createAudioTimeFormat(audioParseCurrentTime));
+    //player
+    $('audio').audioPlayer();
+    $('.btn_player_play').on('click',function(){  
+        $(this).toggleClass('pause');
     });
+        
+    // var music = document.getElementById("sound");
+    // var playButton = document.getElementById("play");
+    // var pauseButton = document.getElementById("pause");
+    // var playhead = document.getElementById("elapsed");
+    // var timeline = document.getElementById("slider");
+    // var timer = document.getElementById("timer");
+    // var duration;
+    // pauseButton.style.display = "none";
+    // 
+    // var timelineWidth = timeline.offsetWidth - playhead.offsetWidth;
+    // music.addEventListener("timeupdate", timeUpdate, false);
+    // 
+    // function timeUpdate() {
+    // var playPercent = timelineWidth * (music.currentTime / duration);
+    // playhead.style.width = playPercent + "px";
+    // 
+    // var secondsIn = Math.floor(((music.currentTime / duration) / 3.5) * 100);
+    // if (secondsIn <= 9) {
+    // timer.innerHTML = "0:0" + secondsIn;
+    // } else {
+    // timer.innerHTML = "0:" + secondsIn;
+    // }
+    // }
+    // 
+    // playButton.onclick = function() {
+    // music.play();
+    // playButton.style.display = "none";
+    // pause.style.display = "block";
+    // }
+    // 
+    // pauseButton.onclick = function() {
+    // music.pause();
+    // playButton.style.display = "block";
+    // pause.style.display = "none";
+    // }
+    // 
+    // music.addEventListener("canplaythrough", function () {
+    // duration = music.duration;
+    // }, false);
+    // });
+        
+//     function handleAudio(){
+//     var audioSound = document.getElementById('sound');
+//     var playhead = document.getElementById('elapsed');
+//     var audioSlider = document.getElementById("slider");
+//     var timer = document.getElementById("timer");
+//     var audioDuration = audioSound.duration
+//     var audioRoundDuration = Math.ceil(audioDuration);
+//     console.log(audioRoundDuration, audioSound.duration)
+// 
+//     $('.pyr_time .total').text(createAudioTimeFormat(audioRoundDuration));
+//     var timelineWidth = audioSlider.offsetWidth - playhead.offsetWidth;
+// 
+//     audioSound.addEventListener("timeupdate", function(){
+//       var audioCurrentTime = audioSound.currentTime;
+//       var audioParseCurrentTime = Math.ceil(audioCurrentTime);
+//       var playPercent = timelineWidth * (audioSound.currentTime / audioDuration);
+//       playhead.style.width = playPercent + "px";
+//       $('.pyr_time .current').text(createAudioTimeFormat(audioParseCurrentTime));
+//     });
+// 
+//     //오디오가 끝나면 처음 시간으로 돌아감
+//     audioSound.addEventListener('ended', function(){
+//       audioSound.currentTime = 0
+//     });
+// 
+// 
+//     //오디오 총시간/진행된시간 포맷팅
+//     function createAudioTimeFormat(sec){
+//       var minutes = Math.floor(sec/60);
+//       var second = String(sec%60)
+//       if ( second.length === 1 ) {
+//         second = '0' + second;
+//       }
+//       return minutes + ':' + second
+//     }
+// }
+// 
+//     // play 버튼 이벤트
+//     $('.btn_pyr_play').click(function(){
+//         audioSound.play();
+//         $(this).removeClass('btn_pyr_play');
+//         $('.pyr_controls a').addClass('btn_pyr_pause');
+//         handleAudio();
+//     });
+// 
+//     // pause 일시정지 버튼 이벤트
+//     $('.btn_pyr_pause').click(function(){
+//         console.log('일시정지')
+//         audioSound.pause();
+//         $(this).removeClass('btn_pyr_pause');
+//         $('.pyr_controls a').addClass('btn_pyr_play');
+//     });
 
-    //오디오가 끝나면 처음 시간으로 돌아감
-    audioSound.addEventListener('ended', function(){
-      audioSound.currentTime = 0
-    });
+    
+    // STT 결과에서 텍스트 검색하기
+    function tableTextSearch(){
+        var inputText = $('.srchText').val();
+        var srchCell = $('.dataTable td:contains('+inputText+')');
+        var srchText = $('.dataTable td:contains('+inputText+')').text();
 
-    // 오디오 총시간/진행된시간 포맷팅
-    function createAudioTimeFormat(sec){
-      var minutes = Math.floor(sec/60);
-      var second = String(sec%60)
-      if ( second.length === 1 ) {
-        second = '0' + second;
-      }
-      return minutes + ':' + second
+        $('.term_srch_box').addClass('on');
+        
+        $('.totalIndex').text(srchCell.length);
+            
+        if(srchText.indexOf(inputText) != -1) {
+            console.log(srchText, '검색어가 포함되어 있다')
+        }
+        else {
+            console.log('검색어가 포함되어있지 않다')
+        }
     }
-
-    // play 버튼 이벤트
-    $('.btn_pyr_play').click(function(){
-        audioSound.play();
-        $(this).removeClass('btn_pyr_play');
-        $('.pyr_controls a').addClass('btn_pyr_pause');
+    // 검색어 입력 후 엔터키 눌렀을 시
+    $('.srchText').keydown(function(e){
+        if (e.which == 13){
+           tableTextSearch();
+        }
     });
-
-    // pause 일시정지 버튼 이벤트
-    $('.btn_pyr_pause').click(function(){
-        console.log('일시정지')
-        audioSound.pause();
-        $(this).removeClass('btn_pyr_pause');
-        $('.pyr_controls a').addClass('btn_pyr_play');
+    // 검색어 입력 후 검색버튼 클릭 시
+    $('.btn_srch').on('click', function(){
+        tableTextSearch();
+    });
+    // 검색어 없는경우 
+    $('.srchText').keydown(function(e){
+        if (e.keyCode === 8 && $('.srchText').val() == ''){
+           $('.term_srch_box').removeClass('on');
+        }
     });
 
     // input:text[numberOnly] 숫자만 입력가능
@@ -606,7 +672,19 @@ $(document).ready(function(){
     $('.dataTable tbody td:nth-child(4)').contextmenu(function(){
         $('.dataTable tbody td:nth-child(4)').removeClass('active');
         $(this).toggleClass('active');
+        
+        var sttScript = $(this).text(); // 선택한 셀의 상담내용    
+        $('#lyr_stt_edit .textArea_original .textBox').text(sttScript); // 원문수정 팝업에 넣어줌
     });
+    
+    // contextmenu 복사하기(클립보드) 
+    function copyToClipboard(element) {
+        // var $temp = $("<input>");
+        // $("body").append($temp);
+        $temp.val($(element).text()).select();
+        document.execCommand("copy");
+        $temp.remove();
+    }
 
     // context menu 숨기기
     $('body').click(function(){

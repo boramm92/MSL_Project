@@ -36,10 +36,12 @@
                     <tr>
                         <th>상담일시</th>
                         <td>
-                            <div class="iptBox">
-                                <input type="text" class="iptDateTime" value="2020-08-03 09:10" readonly>
-                                <span>&hyphen;</span>
-                                <input type="text" class="iptDateTime" value="2020-08-03 09:10" readonly>
+                            <div class="custom_info_box consult_time">
+                                <span class="start_time">2020-08-03 09:10</span>
+                            </div>
+                            <span>&hyphen;</span>
+                            <div class="custom_info_box consult_time">
+                                <span class="end_time">2020-08-03 09:10</span>
                             </div>
                         </td>
                     </tr>
@@ -47,8 +49,8 @@
                     <tr>
                         <th>상담고객</th>
                         <td>
-                            <div class="iptBox">
-                                <input type="text" value="홍길동" readonly>
+                            <div class="custom_info_box">
+                                <span class="name">홍길동</span>
                             </div>
                         </td>
                     </tr>
@@ -56,8 +58,8 @@
                     <tr>
                         <th>고객번호</th>
                         <td>
-                            <div class="iptBox">
-                                <input type="text" value="21155" numberOnly readonly>
+                            <div class="custom_info_box">
+                                <span class="custom_num">21155</span>
                             </div>
                         </td>
                     </tr>
@@ -65,8 +67,8 @@
                     <tr>
                         <th>상담사</th>
                         <td>
-                            <div class="iptBox">
-                                <input type="text" value="김영희" readonly>
+                            <div class="custom_info_box">
+                                <span class="consultant">김영희</span>
                             </div>
                         </td>
                     </tr>
@@ -74,8 +76,8 @@
                     <tr>
                         <th>사번</th>
                         <td>
-                            <div class="iptBox">
-                                <input type="text" value="20203" numberOnly readonly>
+                            <div class="custom_info_box">
+                                <span class="epy_num">20203</span>
                             </div>
                         </td>
                     </tr>
@@ -252,53 +254,57 @@
 <script type="text/javascript">
 $(document).ready(function(){
     //오디오 플레이어
-    var audioSound = document.getElementById('sound');
-    var playhead = document.getElementById('elapsed');
-    var audioSlider = document.getElementById("slider");
-    var timer = document.getElementById("timer");
-    var audioDuration = audioSound.duration;
-    var audioRoundDuration = Math.ceil(audioDuration);
-
-    $('.pyr_time .total').text(createAudioTimeFormat(audioRoundDuration));
-    var timelineWidth = audioSlider.offsetWidth - playhead.offsetWidth;
-
-    audioSound.addEventListener("timeupdate", function(){
-      var audioCurrentTime = audioSound.currentTime;
-      var audioParseCurrentTime = Math.ceil(audioCurrentTime);
-      var playPercent = timelineWidth * (audioSound.currentTime / audioDuration);
-      playhead.style.width = playPercent + "px";
-      $('.pyr_time .current').text(createAudioTimeFormat(audioParseCurrentTime));
-    });
-
-    //오디오가 끝나면 처음 시간으로 돌아감
-    audioSound.addEventListener('ended', function(){
-      audioSound.currentTime = 0
-    });
-
-    // 오디오 총시간/진행된시간 포맷팅
-    function createAudioTimeFormat(sec){
-      var minutes = Math.floor(sec/60);
-      var second = String(sec%60)
-      if ( second.length === 1 ) {
-        second = '0' + second;
-      }
-      return minutes + ':' + second
-    }
-
-    // play 버튼 이벤트
-    $('.btn_pyr_play').click(function(){
-        audioSound.play();
-        $(this).removeClass('btn_pyr_play');
-        $('.pyr_controls a').addClass('btn_pyr_pause');
-    });
-
-    // pause 일시정지 버튼 이벤트
-    $('.btn_pyr_pause').click(function(){
-        console.log('일시정지')
-        audioSound.pause();
-        $(this).removeClass('btn_pyr_pause');
-        $('.pyr_controls a').addClass('btn_pyr_play');
-    });
+    // var audioSound = document.getElementById('sound');
+    // var playhead = document.getElementById('elapsed');
+    // var audioSlider = document.getElementById("slider");
+    // var timer = document.getElementById("timer");
+    // var audioDuration = audioSound.duration;
+    // var audioRoundDuration = Math.ceil(audioDuration);
+    // 
+    // console.log('hi')
+    // $('.pyr_time .total').text(createAudioTimeFormat(audioRoundDuration));
+    // 
+    // var timelineWidth = audioSlider.offsetWidth - playhead.offsetWidth;
+    // 
+    // audioSound.addEventListener("timeupdate", function(){
+    //   var audioCurrentTime = audioSound.currentTime;
+    //   var audioParseCurrentTime = Math.ceil(audioCurrentTime);
+    //   var playPercent = timelineWidth * (audioSound.currentTime / audioDuration);
+    //   playhead.style.width = playPercent + "px";
+    //   $('.pyr_time .current').text(createAudioTimeFormat(audioParseCurrentTime));
+    // });
+    // 
+    // //오디오가 끝나면 처음 시간으로 돌아감
+    // audioSound.addEventListener('ended', function(){
+    //   audioSound.currentTime = 0
+    // });
+    // 
+    // // 오디오 총시간/진행된시간 포맷팅
+    // function createAudioTimeFormat(sec){
+    //   var minutes = Math.floor(sec/60);
+    //   comsole.log(minutes)
+    //   var second = String(sec%60)
+    //   comsole.log(second)
+    //   if ( second.length === 1 ) {
+    //     second = '0' + second;
+    //   }
+    //   return minutes + ':' + second
+    // }
+    // 
+    // // play 버튼 이벤트
+    // $('.btn_pyr_play').click(function(){
+    //     audioSound.play();
+    //     $(this).removeClass('btn_pyr_play');
+    //     $('.pyr_controls a').addClass('btn_pyr_pause');
+    // });
+    // 
+    // // pause 일시정지 버튼 이벤트
+    // $('.btn_pyr_pause').click(function(){
+    //     console.log('일시정지')
+    //     audioSound.pause();
+    //     $(this).removeClass('btn_pyr_pause');
+    //     $('.pyr_controls a').addClass('btn_pyr_play');
+    // });
 
     // input:text[numberOnly] 숫자만 입력가능
     $('input:text[numberOnly]').keypress(function(event) {
