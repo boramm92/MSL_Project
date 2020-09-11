@@ -160,7 +160,12 @@
                 <!-- [D] datatables 라이브러리 영역 -->
                 <!-- [D] 'Excel 다운로드' 버튼 클릭 시 파일 다운로드됨 -->
                 <!-- [D] '구분'(상담사 / 고객) 열의 텍스트가 '고객'일 경우, '구분, 시작시간, STT 결과'에 해당하는 셀 백그라운드컬러 처리됨 -->
+                
+                <!-- [D] 검색어 조회 시 일치내용 span.srch_term 로 감싸주어 볼드처리됨 -->
+                <!-- [D] 검색어 조회 후 이동버튼으로 포커스 이동 시 해당 검색어에 addclass('focus')해주면 백그라운드 하이라이트 처리됨 -->
+                
                 <!-- [D] 'STT 결과' 셀의 상담 내용 영역에서 마우스 우클릭 시 contextmenu 등장 -->
+                
                 <!-- [D] '무음'셀 th에 무음길이 숫자입력을 위한 input 추가함, 해당 입력창에 숫자 입력 후 엔터 키 누르면 입력숫자 이상의 셀에 addclass('active')되며 백그라운드 하이라이트됨, 입력숫자 지우면 removeclass('active')되며 백그라운드 하이라이트 사라짐  -->
                 <table class="dataTable">
                     <thead>
@@ -180,8 +185,7 @@
                             <td>1</td>
                             <td>상담사</td>
                             <td>0:00:02</td>
-                            <!-- [D] 검색어 조회 시 일치내용 span.srch_term 로 감싸주어 볼드처리 해야함 -->
-                            <td>가입설계 체결 위해서 관련 법률에 따라 <span class="srch_term">수집</span> 이용 조회 제공에 동의 얻고자하며 신용등급과 무관하시고 동의 하지 않으실 경우에는 계약상담이 불가능하신데요</td>
+                            <td>가입설계 체결 위해서 관련 법률에 따라 수집 이용 조회 제공에 동의 얻고자하며 신용등급과 무관하시고 동의 하지 않으실 경우에는 계약상담이 불가능하신데요</td>
                             <td>신용등급</td>
                             <td>1</td>
                             <td></td>
@@ -190,8 +194,7 @@
                             <td>2</td>
                             <td>상담사</td>
                             <td>0:00:02</td>
-                            <!-- [D] 검색어 조회 후 이동버튼으로 포커스 이동 시 해당 검색어에 addclass('focus')해주면 백그라운드 하이라이트 처리됨 -->
-                            <td>고객님의 개인신용 정보이신 이름 주민번호 연락처 주소 구매내역 등을 <span class="srch_term focus">수집</span> 이용 제공하시는데 동의하십니까</td>
+                            <td>고객님의 개인신용 정보이신 이름 주민번호 연락처 주소 구매내역 등을 수집 이용 제공하시는데 동의하십니까</td>
                             <td>개인정보</td>
                             <td>2</td>
                             <td></td>
@@ -210,7 +213,7 @@
                             <td>4</td>
                             <td>상담사</td>
                             <td>0:00:07</td>
-                            <td>예 <span class="srch_term">수집</span>목적은 상담 체결 유지 관리 등을 위해서 쓰여지시고 업무 위탁을 받은자 및 법률상의 업무수행 계약목적 등을 위해서 제 삼자에게 제공하시는데 동의하십니까</td>
+                            <td>예 수집목적은 상담 체결 유지 관리 등을 위해서 쓰여지시고 업무 위탁을 받은자 및 법률상의 업무수행 계약목적 등을 위해서 제 삼자에게 제공하시는데 동의하십니까</td>
                             <td>개인정보</td>
                             <td>4</td>
                             <td></td>
@@ -246,7 +249,7 @@
                             <td>8</td>
                             <td>상담사</td>
                             <td>0:00:19</td>
-                            <td>네 <span class="srch_term">수집</span>한 정보는 삼개월 이용 일년 보유이시며 체결 후에는 거래 종료후 오년 이용 보관하구요 각 제공 대상기관 및 이용목적 구체적인 정보는 롯데손해보험 홈페이지 통해서 확인해 보실 수 있으시고</td>
+                            <td>네 수집한 정보는 삼개월 이용 일년 보유이시며 체결 후에는 거래 종료후 오년 이용 보관하구요 각 제공 대상기관 및 이용목적 구체적인 정보는 롯데손해보험 홈페이지 통해서 확인해 보실 수 있으시고</td>
                             <td>개인정보</td>
                             <td>8</td>
                             <td></td>
@@ -524,21 +527,19 @@ $(document).ready(function(){
     });
     
     // STT 결과에서 텍스트 검색하기
+    $('table.dataTable tbody td:nth-child(4)').addClass('srch_conversation');
+    
     function tableTextSearch(){
         var inputText = $('.srchText').val();
-        var srchCell = $('.dataTable td:contains('+inputText+')');
-        var srchText = $('.dataTable td:contains('+inputText+')').text();
-
-        $('.term_srch_box').addClass('on');
-        
-        $('.totalIndex').text(srchCell.length);
-            
-        if(srchText.indexOf(inputText) != -1) {
-            console.log(srchText, '검색어가 포함되어 있다')
-        }
-        else {
-            console.log('검색어가 포함되어있지 않다')
-        }
+        $('.srch_conversation:contains('+inputText+')').each(function(){
+            $('.term_srch_box').addClass('on');
+            var regex = new RegExp(inputText,'gi');
+            $(this).html($(this).text().replace(regex, "<span class='srch_term'>"+inputText+"</span>"));
+            var resultText = $('.srch_term')   
+            var srchTextIndex = $('.totalIndex').text(resultText.length);
+            console.log(srchTextIndex)            
+            $('.srch_term:first').addClass('focus');
+        });
     }
     // 검색어 입력 후 엔터키 눌렀을 시
     $('.srchText').keydown(function(e){
@@ -553,7 +554,10 @@ $(document).ready(function(){
     // 검색어 없는경우 
     $('.srchText').keydown(function(e){
         if (e.keyCode === 8 && $('.srchText').val() == ''){
-           $('.term_srch_box').removeClass('on');
+           $('.term_srch_box').removeClass('on');           
+           $('.srch_conversation').each(function(){
+              var srchTextReset = $(this).html($(this).text().replace(/<(\/span|span)([^>]*)>/gi,"")); 
+           });           
         }
     });
 
