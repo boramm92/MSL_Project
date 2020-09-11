@@ -22,7 +22,7 @@
 <script src="resources/js/buttons.html5.min.js"></script>
 <script src="resources/js/jszip.min.js"></script>
 
-<title>CS STT 전수 || 푸본현대생명</title>
+<title>CS STT 전수 ver1 || 푸본현대생명</title>
 </head>
 <body>
 <!-- #wrap -->
@@ -103,44 +103,50 @@
 
         <!-- .dataTableBox -->
         <div class="dataTableBox">
-            <!-- .player -->
+            <!-- .playerBox -->
             <!-- [D] 플레이어에서 재생버튼 클릭 시 상담내용 처음부터 재생되어야 함 -->
             <!-- [D] tbody의 대화내용 셀 더블클릭 시 해당 내용 재생되며 재생 중인 음성과 텍스트의 싱크 맞춰야 함 / 재생 중인 텍스트(.dataTable tbody tr)에는 addclass('currentPlay')해주면 1~4번째 셀 텍스트 볼드처리 됨 -->
+            <!--player-->
             <div class="player">
-                <div class="playerBox">
-                    <audio preload="auto">
-                        <!-- <source src="resources/audio/aekukka.mp3"> -->
-                    </audio>
+                <audio id="sound" preload="auto">
+                    <source src="resources/audio/aekukka.mp3">
+                </audio>
 
-                    <div class="player_button" title="Play">
-                        <a href="#none" class="btn_player_play">
-                            <span>재생/ 일시정지</span>
-                        </a>
-                    </div>
+                <div class="pyr_controls">
+                    <a href="#none" class="btn_pyr_play">
+                        <span>오디오 재생, 일시정지 버튼</span>
+                    </a>
+                </div>
 
-                    <div class="player_time">
-                        <span class="current">00:15</span>
-                    </div>
+                <div class="pyr_time">
+                    <span id="timer" class="current">00:00</span>
+                </div>
 
-                    <div class="player_bar">
-                        <span class="player_bar_streaming">
-                            <em class="player_bar_loaded"></em>
-                            <em class="player_bar_played"></em>
-                        </span>
-                    </div>
+                <div id="slider" class="slider">
+                    <div id="elapsed" class="elapsed"></div>
+                </div>
 
-                    <div class="player_time">
-                        <span class="duration">00:51</span>
-                    </div>
+                <div class="pyr_time">
+                    <span class="total">00:00</span>
+                </div>
 
-                    <div class="player_volume">
-                        <div class="player_bar_button" title="Volume">
-                            <a href="#"></a>
-                        </div>
-                        <div class="player_bar_adjust">
-                            <span><em style="width: 100%;"></em></span>
-                        </div>
+                <div class="pyr_volume">
+                    <a href="#none" class="btn_pyr_vol">
+                        <span>볼륨버튼</span>
+                    </a>
+                    <div class="volume_bar">
+                        <div class="volume_set" style="width: 20%"></div>
                     </div>
+                </div>
+
+                <div class="sltBox pyr_speed">
+                    <select class="select">
+                        <option value="">1.1X</option>
+                        <option value="">1.2X</option>
+                        <option value="">1.5X</option>
+                        <option value="">2X</option>
+                        <option value="">3X</option>
+                    </select>
                 </div>
             </div>
             <!-- //.player -->
@@ -150,16 +156,17 @@
                 <!-- [D] 입력창(.srchText)에 검색어 입력 후 검색버튼(.btn_srch)이나 엔터키 누르면 아래 테이블 내 검색어와 일치하는 텍스트를 span.srch_term 으로 감싸줘야하며, 검색어 이동버튼(.btnBox a.btn_top / .btnBox a.btn_top)클릭 시 순서대로 포커스 이동되며 해당 순서의 텍스트에 추가로 addclass('focus')를 해주어 백그라운드 하이라이트 효과를 주어야 함  -->
                 <div class="srchBox">
                     <input type="search" class="srchText" placeholder="검색어 입력">
+                    <!-- [D] .txtIndex의 기본상태는 display:none이고, 검색버튼 또는 엔터 키 눌렀을 때 addclass('on')해주어 display:block 상태로 바꿔주어야함 -->
                     <!-- [D] 검색어에 일치하는 텍스트의 현재 인덱스는 .currentIndex에 넣어주고, 총 인덱스는 .totalIndex에 넣어주어야 함 -->
-                    <!-- [D] 검색어 이동버튼(.btnBox a.btn_top / .btnBox a.btn_top)에 따라 현재 인덱스(.currentIndex) 숫자는 변화되어야 함 -->
-                    <span class="txtIndex">
+                    <span class="txtIndex on">
                         <em class="currentIndex">0</em>&nbsp;&sol;&nbsp;<em class="totalIndex">0</em>
                     </span>
-                    <button class="btn_srch">
-                        <img src="resources/images/ico_srch_w.png" alt="검색아이콘">
-                    </button>
+                    <a href="#none" class="btn_srch">
+                        <span>검색버튼</span>
+                    </a>
                 </div>
 
+                <!-- [D] 검색어 이동버튼(.btnBox a.btn_top / .btnBox a.btn_top)에 따라 현재 인덱스(.currentIndex) 숫자는 변화되어야 함 -->
                 <div class="btnBox">
                     <a href="#none" class="btn_top">
                         <img src="resources/images/arw_top_gr.png" alt="위로이동 화살표">
@@ -438,7 +445,7 @@
 
 <!-- context menu -->
 <ul class="contextMenu">
-    <li><a href="#none">복사하기</a></li>
+    <li><a href="#none" class="btn_clipboard">복사하기</a></li>
     <li><a href="#lyr_stt_edit" class="btn_lyr_open">STT 오류수정</a></li>
 </ul>
 <!-- //context menu -->
@@ -490,6 +497,22 @@ $(document).ready(function(){
         });
     });
 
+    // 공통 클립보드 레이어 팝업
+    $('.btn_clipboard').on('click',function(){
+        $('body').append(' \
+            <div id="lyr_clipboard" class="lyrBox lyr_notify">\
+                <div class="lyr_ct"> \
+                    <p class="massage">복사되었습니다.</p> \
+                </div> \
+            </div> \
+        ');
+        $('#lyr_clipboard').show();
+
+        setTimeout(function(){
+            $('.lyr_notify').addClass('lyr_hide').delay(300).queue(function(){$(this).remove();});
+        }, 400);
+    });
+
     // 공통 저장완료 레이어 팝업
     $('.btn_lyr_save').on('click',function(){
         var thisLayer = $(this).parents('.lyrBox').attr('id');
@@ -497,45 +520,67 @@ $(document).ready(function(){
         $(thisLayerHref).css({'display': 'none'});
 
         $('body').append(' \
-            <div class="lyrBox alert">\
+            <div class="lyrBox lyr_notify">\
                 <div class="lyr_ct"> \
                     <p class="massage">저장 되었습니다.</p> \
                 </div> \
             </div> \
         ');
-        $('.alert').show();
+        $('.lyr_notify').show();
 
         setTimeout(function(){
-            $('.alert').addClass('lyr_hide').delay(300).queue(function(){$(this).remove();});
+            $('.lyr_notify').addClass('lyr_hide').delay(300).queue(function(){$(this).remove();});
             $('body').removeClass('lyr_bg_dim');
-        }, 1000);
+        }, 600);
     });
 
-    // STT 결과에서 텍스트 검색하기
-    function tableTextSearch(){
-        var inputText = $('.srchText').val();
-        var srchCell = $('.dataTable td:contains('+inputText+')');
-        var srchText = $('.dataTable td:contains('+inputText+')').text();
+    //오디오 플레이어
+    var audioSound = document.getElementById('sound');
+    var playhead = document.getElementById('elapsed');
+    var audioSlider = document.getElementById("slider");
+    var timer = document.getElementById("timer");
+    var audioDuration = audioSound.duration;
+    var audioRoundDuration = Math.ceil(audioDuration);
 
-        $('.txtIndex').show();
-        $('.totalIndex').text(srchCell.length);
+    $('.pyr_time .total').text(createAudioTimeFormat(audioRoundDuration));
+    var timelineWidth = audioSlider.offsetWidth - playhead.offsetWidth;
 
-        if(srchText.indexOf(inputText) != -1) {
-            console.log('검색어가 포함되어 있다')
-        }
-        else {
-            console.log('검색어가 포함되어있지 않다')
-        }
+    audioSound.addEventListener("timeupdate", function(){
+      var audioCurrentTime = audioSound.currentTime;
+      var audioParseCurrentTime = Math.ceil(audioCurrentTime);
+      var playPercent = timelineWidth * (audioSound.currentTime / audioDuration);
+      playhead.style.width = playPercent + "px";
+      $('.pyr_time .current').text(createAudioTimeFormat(audioParseCurrentTime));
+    });
+
+    //오디오가 끝나면 처음 시간으로 돌아감
+    audioSound.addEventListener('ended', function(){
+      audioSound.currentTime = 0
+    });
+
+    // 오디오 총시간/진행된시간 포맷팅
+    function createAudioTimeFormat(sec){
+      var minutes = Math.floor(sec/60);
+      var second = String(sec%60)
+      if ( second.length === 1 ) {
+        second = '0' + second;
+      }
+      return minutes + ':' + second
     }
-    // 검색어 입력 후 엔터키 눌렀을 시
-    $('.srchText').keydown(function(e){
-        if (e.which == 13){
-           tableTextSearch();
-        }
+
+    // play 버튼 이벤트
+    $('.btn_pyr_play').click(function(){
+        audioSound.play();
+        $(this).removeClass('btn_pyr_play');
+        $('.pyr_controls a').addClass('btn_pyr_pause');
     });
-    // 검색어 입력 후 검색버튼 클릭 시
-    $('.btn_srch').on('click', function(){
-        tableTextSearch();
+
+    // pause 일시정지 버튼 이벤트
+    $('.btn_pyr_pause').click(function(){
+        console.log('일시정지')
+        audioSound.pause();
+        $(this).removeClass('btn_pyr_pause');
+        $('.pyr_controls a').addClass('btn_pyr_play');
     });
 
     // input:text[numberOnly] 숫자만 입력가능
@@ -546,28 +591,26 @@ $(document).ready(function(){
     });
 
     // 마우스 우클릭 시 contextmenu 등장
-    $(document).contextmenu(function(e){
-        var $contextMenu = $(".contextMenu");
+    var $contextMenu = $('.contextMenu');
 
-        // 상담내용 셀 영역에서만 context menu 등장하도록 지정
-        $("body").on("contextmenu", ".dataTable tbody td:nth-child(4)", function(e){
-            $contextMenu.css({
-                display: "block",
-                left: e.pageX,
-                top: e.pageY
-            });
-            return false;
+    // 상담내용 셀 영역에서만 context menu 등장하도록 지정
+    $('body').on('contextmenu', '.dataTable tbody td:nth-child(4)', function(e){
+        $contextMenu.css({
+            display: 'block',
+            left: e.pageX,
+            top: e.pageY
         });
+        return false;
+    });
 
-        $('.dataTable tbody td:nth-child(4)').contextmenu(function(){
-            $('.dataTable tbody td:nth-child(4)').removeClass('active');
-            $(this).toggleClass('active');
-        });
+    $('.dataTable tbody td:nth-child(4)').contextmenu(function(){
+        $('.dataTable tbody td:nth-child(4)').removeClass('active');
+        $(this).toggleClass('active');
     });
 
     // context menu 숨기기
-    $(document).click(function(){
-        $(".contextMenu").hide();
+    $('body').click(function(){
+        $('.contextMenu').hide();
     });
 
     // datatable 렌더링

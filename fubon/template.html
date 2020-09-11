@@ -58,6 +58,33 @@ $(document).ready(function(){
 
         window.open('popup_cs_stt.html', 'CS STT 전수팝업', 'status=no, height=750, width=1250, left='+ popupX + ', top='+ popupY);
     });
+
+    // STT 결과에서 텍스트 검색하기
+    function tableTextSearch(){
+        var inputText = $('.srchText').val();
+        var srchCell = $('.dataTable td:contains('+inputText+')');
+        var srchText = $('.dataTable td:contains('+inputText+')').text();
+
+        $('.txtIndex').show();
+        $('.totalIndex').text(srchCell.length);
+
+        if(srchText.indexOf(inputText) != -1) {
+            console.log('검색어가 포함되어 있다')
+        }
+        else {
+            console.log('검색어가 포함되어있지 않다')
+        }
+    }
+    // 검색어 입력 후 엔터키 눌렀을 시
+    $('.srchText').keydown(function(e){
+        if (e.which == 13){
+           tableTextSearch();
+        }
+    });
+    // 검색어 입력 후 검색버튼 클릭 시
+    $('.btn_srch').on('click', function(){
+        tableTextSearch();
+    });
 });
 </script>
 </body>
