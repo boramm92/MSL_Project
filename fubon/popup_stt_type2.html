@@ -12,6 +12,8 @@
 <!-- js -->
 <script src="resources/js/jquery-3.3.1.min.js"></script>
 <script src="resources/js/jquery-migrate-3.3.0.min.js"></script>
+<!-- player -->
+<script src="resources/js/player.js"></script>
 
 <title>CS STT 전수 ver2 || 푸본현대생명</title>
 </head>
@@ -20,231 +22,207 @@
 <div id="wrap">
     <!-- #container -->
     <div id="container">
-        <h1>CS &hyphen; STT 전수</h1>
+        <!-- #contents -->
+        <div id="contents" class="pop_stt_type2">
+            <h1>CS &hyphen; STT 전수</h1>
 
-        <!-- .customInfo -->
-        <div class="customInfo">
-            <table class="tbl_line_view" summary="상담일시, 상담고객, 고객번호, 상담사, 사번으로 구성">
-                <caption class="hide">검색조건</caption>
-                <colgroup>
-                    <col width="100"><col>
-                </colgroup>
+            <!-- .customInfo -->
+            <div class="customInfo">
+                <table class="tbl_line_view" summary="상담일시, 상담고객, 고객번호, 상담사, 사번으로 구성">
+                    <caption class="hide">검색조건</caption>
+                    <colgroup>
+                        <col width="100"><col>
+                    </colgroup>
 
-                <!-- [D] 하단 고객정보 입력 input 모두 readonly 처리함 -->
-                <!-- [D] value 값 임의로 넣어둔 상태 -->
-                <tbody>
-                    <tr>
-                        <th>상담일시</th>
-                        <td>
-                            <div class="custom_info_box consult_time">
-                                <span class="start_time">2020-08-03 09:10</span>
-                            </div>
-                            <span>&hyphen;</span>
-                            <div class="custom_info_box consult_time">
-                                <span class="end_time">2020-08-03 09:10</span>
-                            </div>
-                        </td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <th>상담일시</th>
+                            <td>
+                                <div class="custom_info_box consult_time">
+                                    <span class="start_time">2020-08-03 09:10</span>
+                                </div>
+                                <span>&hyphen;</span>
+                                <div class="custom_info_box consult_time">
+                                    <span class="end_time">2020-08-03 09:10</span>
+                                </div>
+                            </td>
+                        </tr>
 
-                    <tr>
-                        <th>상담고객</th>
-                        <td>
-                            <div class="custom_info_box">
-                                <span class="name">홍길동</span>
-                            </div>
-                        </td>
-                    </tr>
+                        <tr>
+                            <th>상담고객</th>
+                            <td>
+                                <div class="custom_info_box">
+                                    <span class="name">홍길동</span>
+                                </div>
+                            </td>
+                        </tr>
 
-                    <tr>
-                        <th>고객번호</th>
-                        <td>
-                            <div class="custom_info_box">
-                                <span class="custom_num">21155</span>
-                            </div>
-                        </td>
-                    </tr>
+                        <tr>
+                            <th>고객번호</th>
+                            <td>
+                                <div class="custom_info_box">
+                                    <span class="custom_num">21155</span>
+                                </div>
+                            </td>
+                        </tr>
 
-                    <tr>
-                        <th>상담사</th>
-                        <td>
-                            <div class="custom_info_box">
-                                <span class="consultant">김영희</span>
-                            </div>
-                        </td>
-                    </tr>
+                        <tr>
+                            <th>상담사</th>
+                            <td>
+                                <div class="custom_info_box">
+                                    <span class="consultant">김영희</span>
+                                </div>
+                            </td>
+                        </tr>
 
-                    <tr>
-                        <th>사번</th>
-                        <td>
-                            <div class="custom_info_box">
-                                <span class="epy_num">20203</span>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <!-- //.customInfo -->
+                        <tr>
+                            <th>사번</th>
+                            <td>
+                                <div class="custom_info_box">
+                                    <span class="epy_num">20203</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- //.customInfo -->
 
-        <!-- .consultBox -->
-        <div class="consultBox">
-            <!-- [D] tbody의 대화내용 셀 더블클릭 시 해당 내용 재생되며 재생 중인 음성과 텍스트의 싱크 맞춰야 함 / 재생 중인 텍스트(.dataTable tbody tr)에는 addclass('currentPlay')해주면 1~4번째 셀 텍스트 볼드처리 됨 -->
-            <!--player-->
-            <div class="player">
-                <audio id="sound" preload="auto">
-                    <source src="resources/audio/aekukka.mp3">
-                </audio>
-
-                <div class="pyr_controls">
-                    <a href="#none" class="btn_pyr_play">
-                        <span>오디오 재생, 일시정지 버튼</span>
-                    </a>
+            <!-- .consultBox -->
+            <div class="consultBox">
+                <!-- [D] tbody의 대화내용 셀 더블클릭 시 해당 내용 재생되며 재생 중인 음성과 텍스트의 싱크 맞춰야 함 / 재생 중인 텍스트(.dataTable tbody tr)에는 addclass('currentPlay')해주면 1~4번째 셀 텍스트 볼드처리 됨 -->
+                <!--player-->
+                <div class="player">
+                   <audio preload="auto" controls>
+                       <source src="resources/audio/aekukka.mp3">
+                   </audio>
+                   
+                   <!-- [D] 배속모드는 현재 지원안됨 -->
+                   <div class="sltBox pyr_speed">
+                       <select class="select">
+                           <option value="">1.1X</option>
+                           <option value="">1.2X</option>
+                           <option value="">1.5X</option>
+                           <option value="">2X</option>
+                           <option value="">3X</option>
+                       </select>
+                   </div>                
                 </div>
+                <!-- //.player -->
 
-                <div class="pyr_time">
-                    <span id="timer" class="current">00:00</span>
-                </div>
+                <!-- .term_srch_box -->
+                <div class="term_srch_box">
+                    <div class="srchBox">
+                        <input type="search" class="srchText" placeholder="검색어 입력">
+                        <!-- [D] .txtIndex의 기본상태는 display:none이고, 검색버튼 또는 엔터 키 눌렀을 때 addclass('on')해주어 display:block 상태로 바꿔주어야함 -->
+                        <!-- [D] 검색어에 일치하는 텍스트의 현재 인덱스는 .currentIndex에 넣어주고, 총 인덱스는 .totalIndex에 넣어주어야 함 -->
+                        <span class="txtIndex">
+                            <em class="currentIndex">0</em>&nbsp;&sol;&nbsp;<em class="totalIndex">0</em>
+                        </span>
+                        <a href="#none" class="btn_srch">
+                            <span>검색버튼</span>
+                        </a>
+                    </div>
 
-                <div id="slider" class="slider">
-                    <div id="elapsed" class="elapsed"></div>
-                </div>
-
-                <div class="pyr_time">
-                    <span class="total">00:00</span>
-                </div>
-
-                <div class="pyr_volume">
-                    <a href="#none" class="btn_pyr_vol">
-                        <span>볼륨버튼</span>
-                    </a>
-                    <div class="volume_bar">
-                        <div class="volume_set" style="width: 20%"></div>
+                    <!-- [D] 검색어 이동버튼(.btnBox a.btn_top / .btnBox a.btn_top)에 따라 현재 인덱스(.currentIndex) 숫자는 변화되어야 함 -->
+                    <div class="btnBox btn_index_move">
+                        <a href="#none" class="btn_top">
+                            <img src="resources/images/arw_top_gr.png" alt="위로이동 화살표">
+                        </a>
+                        <a href="#none" class="btn_btm">
+                            <img src="resources/images/arw_bottom_gr.png" alt="아래로이동 화살표">
+                        </a>
                     </div>
                 </div>
+                <!-- //.term_srch_box -->
 
-                <div class="sltBox pyr_speed">
-                    <select class="select">
-                        <option value="">1.1X</option>
-                        <option value="">1.2X</option>
-                        <option value="">1.5X</option>
-                        <option value="">2X</option>
-                        <option value="">3X</option>
-                    </select>
+                <!-- .conversationBox -->
+                <!-- [D] 텍스트 영역 클릭 시 해당 상담텍스트 부터 재생되어야 함 -->
+                <div class="conversationBox">
+                    <ul>
+                        <li class="fl custom">
+                            <span>02:30</span>
+                            제가 지금 확인중인데 지난 월요일에 제출하셨다는 말씀이시죠?
+                        </li>
+                        <li class="fr counselor">
+                            <span>02:30</span>
+                            네 맞아요.
+                        </li>
+                        <li class="fl custom">
+                            <span>02:30</span>
+                            제가 지금 확인중인데 지난 월요일에 제출하셨다는 말씀이시죠?
+                        </li>
+                        <li class="fl custom">
+                            <span>02:30</span>
+                            제가 지금 확인중인데 지난 월요일에 제출하셨다는 말씀이시죠?
+                        </li>
+                        <li class="fr counselor">
+                            <span>02:30</span>
+                            네 맞아요.
+                        </li>
+                        <li class="fl custom">
+                            <span>02:30</span>
+                            제가 지금 확인중인데 지난 월요일에 제출하셨다는 말씀이시죠?
+                        </li>
+                        <li class="fr counselor">
+                            <span>02:30</span>
+                            네 맞아요.
+                        </li>
+                        <li class="fl custom">
+                            <span>02:30</span>
+                            제가 지금 확인중인데 지난 월요일에 제출하셨다는 말씀이시죠?
+                        </li>
+                        <li class="fr counselor">
+                            <span>02:30</span>
+                            네 맞아요.
+                        </li>
+                        <li class="fl custom">
+                            <span>02:30</span>
+                            제가 지금 확인중인데 지난 월요일에 제출하셨다는 말씀이시죠?
+                        </li>
+                        <li class="fr counselor">
+                            <span>02:30</span>
+                            네 맞아요.
+                        </li>
+                        <li class="fl custom">
+                            <span>02:30</span>
+                            제가 지금 확인중인데 지난 월요일에 제출하셨다는 말씀이시죠?
+                        </li>
+                        <li class="fr counselor">
+                            <span>02:30</span>
+                            네 맞아요.
+                        </li>
+                        <li class="fl custom">
+                            <span>02:30</span>
+                            제가 지금 확인중인데 지난 월요일에 제출하셨다는 말씀이시죠?
+                        </li>
+                        <li class="fr counselor">
+                            <span>02:30</span>
+                            네 맞아요.
+                        </li>
+                        <li class="fl custom">
+                            <span>02:30</span>
+                            제가 지금 확인중인데 지난 월요일에 제출하셨다는 말씀이시죠?
+                        </li>
+                        <li class="fr counselor">
+                            <span>02:30</span>
+                            네 맞아요.
+                        </li>
+                        <li class="fl custom">
+                            <span>02:30</span>
+                            제가 지금 확인중인데 지난 월요일에 제출하셨다는 말씀이시죠?
+                        </li>
+                        <li class="fr counselor">
+                            <span>02:30</span>
+                            네 맞아요.
+                        </li>
+                    </ul>
                 </div>
+                <!-- //.conversationBox -->
             </div>
-            <!-- //.player -->
-
-            <!-- .term_srch_box -->
-            <div class="term_srch_box">
-                <!-- [D] 입력창(.srchText)에 검색어 입력 후 검색버튼(.btn_srch)이나 엔터키 누르면 아래 테이블 내 검색어와 일치하는 텍스트를 span.srch_term 으로 감싸줘야하며, 검색어 이동버튼(.btnBox a.btn_top / .btnBox a.btn_top)클릭 시 순서대로 포커스 이동되며 해당 순서의 텍스트에 추가로 addclass('focus')를 해주어 백그라운드 하이라이트 효과를 주어야 함  -->
-                <div class="srchBox">
-                    <input type="search" class="srchText" placeholder="검색어 입력">
-                    <!-- [D] .txtIndex의 기본상태는 display:none이고, 검색버튼 또는 엔터 키 눌렀을 때 addclass('on')해주어 display:block 상태로 바꿔주어야함 -->
-                    <!-- [D] 검색어에 일치하는 텍스트의 현재 인덱스는 .currentIndex에 넣어주고, 총 인덱스는 .totalIndex에 넣어주어야 함 -->
-                    <span class="txtIndex on">
-                        <em class="currentIndex">0</em>&nbsp;&sol;&nbsp;<em class="totalIndex">0</em>
-                    </span>
-                    <a href="#none" class="btn_srch">
-                        <span>검색버튼</span>
-                    </a>
-                </div>
-
-                <!-- [D] 검색어 이동버튼(.btnBox a.btn_top / .btnBox a.btn_top)에 따라 현재 인덱스(.currentIndex) 숫자는 변화되어야 함 -->
-                <div class="btnBox">
-                    <a href="#none" class="btn_top">
-                        <img src="resources/images/arw_top_gr.png" alt="위로이동 화살표">
-                    </a>
-                    <a href="#none" class="btn_btm">
-                        <img src="resources/images/arw_bottom_gr.png" alt="아래로이동 화살표">
-                    </a>
-                </div>
-            </div>
-            <!-- //.term_srch_box -->
-
-            <!-- .conversationBox -->
-            <div class="conversationBox">
-                <ul>
-                    <li class="fl custom">
-                        <span>02:30</span>
-                        제가 지금 확인중인데 지난 월요일에 제출하셨다는 말씀이시죠?
-                    </li>
-                    <li class="fr counselor">
-                        <span>02:30</span>
-                        네 맞아요.
-                    </li>
-                    <li class="fl custom">
-                        <span>02:30</span>
-                        제가 지금 확인중인데 지난 월요일에 제출하셨다는 말씀이시죠?
-                    </li>
-                    <li class="fl custom">
-                        <span>02:30</span>
-                        제가 지금 확인중인데 지난 월요일에 제출하셨다는 말씀이시죠?
-                    </li>
-                    <li class="fr counselor">
-                        <span>02:30</span>
-                        네 맞아요.
-                    </li>
-                    <li class="fl custom">
-                        <span>02:30</span>
-                        제가 지금 확인중인데 지난 월요일에 제출하셨다는 말씀이시죠?
-                    </li>
-                    <li class="fr counselor">
-                        <span>02:30</span>
-                        네 맞아요.
-                    </li>
-                    <li class="fl custom">
-                        <span>02:30</span>
-                        제가 지금 확인중인데 지난 월요일에 제출하셨다는 말씀이시죠?
-                    </li>
-                    <li class="fr counselor">
-                        <span>02:30</span>
-                        네 맞아요.
-                    </li>
-                    <li class="fl custom">
-                        <span>02:30</span>
-                        제가 지금 확인중인데 지난 월요일에 제출하셨다는 말씀이시죠?
-                    </li>
-                    <li class="fr counselor">
-                        <span>02:30</span>
-                        네 맞아요.
-                    </li>
-                    <li class="fl custom">
-                        <span>02:30</span>
-                        제가 지금 확인중인데 지난 월요일에 제출하셨다는 말씀이시죠?
-                    </li>
-                    <li class="fr counselor">
-                        <span>02:30</span>
-                        네 맞아요.
-                    </li>
-                    <li class="fl custom">
-                        <span>02:30</span>
-                        제가 지금 확인중인데 지난 월요일에 제출하셨다는 말씀이시죠?
-                    </li>
-                    <li class="fr counselor">
-                        <span>02:30</span>
-                        네 맞아요.
-                    </li>
-                    <li class="fl custom">
-                        <span>02:30</span>
-                        제가 지금 확인중인데 지난 월요일에 제출하셨다는 말씀이시죠?
-                    </li>
-                    <li class="fr counselor">
-                        <span>02:30</span>
-                        네 맞아요.
-                    </li>
-                    <li class="fl custom">
-                        <span>02:30</span>
-                        제가 지금 확인중인데 지난 월요일에 제출하셨다는 말씀이시죠?
-                    </li>
-                    <li class="fr counselor">
-                        <span>02:30</span>
-                        네 맞아요.
-                    </li>
-                </ul>
-            </div>
-            <!-- //.conversationBox -->
+            <!-- //.consultBox -->
         </div>
-        <!-- //.consultBox -->
+        <!-- //#contents -->
     </div>
     <!-- //#container -->
 </div>
@@ -254,62 +232,42 @@
 <script type="text/javascript">
 $(document).ready(function(){
     //오디오 플레이어
-    // var audioSound = document.getElementById('sound');
-    // var playhead = document.getElementById('elapsed');
-    // var audioSlider = document.getElementById("slider");
-    // var timer = document.getElementById("timer");
-    // var audioDuration = audioSound.duration;
-    // var audioRoundDuration = Math.ceil(audioDuration);
-    // 
-    // console.log('hi')
-    // $('.pyr_time .total').text(createAudioTimeFormat(audioRoundDuration));
-    // 
-    // var timelineWidth = audioSlider.offsetWidth - playhead.offsetWidth;
-    // 
-    // audioSound.addEventListener("timeupdate", function(){
-    //   var audioCurrentTime = audioSound.currentTime;
-    //   var audioParseCurrentTime = Math.ceil(audioCurrentTime);
-    //   var playPercent = timelineWidth * (audioSound.currentTime / audioDuration);
-    //   playhead.style.width = playPercent + "px";
-    //   $('.pyr_time .current').text(createAudioTimeFormat(audioParseCurrentTime));
-    // });
-    // 
-    // //오디오가 끝나면 처음 시간으로 돌아감
-    // audioSound.addEventListener('ended', function(){
-    //   audioSound.currentTime = 0
-    // });
-    // 
-    // // 오디오 총시간/진행된시간 포맷팅
-    // function createAudioTimeFormat(sec){
-    //   var minutes = Math.floor(sec/60);
-    //   comsole.log(minutes)
-    //   var second = String(sec%60)
-    //   comsole.log(second)
-    //   if ( second.length === 1 ) {
-    //     second = '0' + second;
-    //   }
-    //   return minutes + ':' + second
-    // }
-    // 
-    // // play 버튼 이벤트
-    // $('.btn_pyr_play').click(function(){
-    //     audioSound.play();
-    //     $(this).removeClass('btn_pyr_play');
-    //     $('.pyr_controls a').addClass('btn_pyr_pause');
-    // });
-    // 
-    // // pause 일시정지 버튼 이벤트
-    // $('.btn_pyr_pause').click(function(){
-    //     console.log('일시정지')
-    //     audioSound.pause();
-    //     $(this).removeClass('btn_pyr_pause');
-    //     $('.pyr_controls a').addClass('btn_pyr_play');
-    // });
+    $('audio').audioPlayer();
+    $('.btn_player_play').on('click',function(){  
+        $(this).toggleClass('pause');
+    });
 
-    // input:text[numberOnly] 숫자만 입력가능
-    $('input:text[numberOnly]').keypress(function(event) {
-        if(event.which < 48 || event.which > 57){
-            event.preventDefault();
+    // STT 결과에서 텍스트 검색하기
+    function tableTextSearch(){
+        var inputText = $('.srchText').val();
+        var srchCell = $('.dataTable td:contains('+inputText+')');
+        var srchText = $('.dataTable td:contains('+inputText+')').text();
+
+        $('.term_srch_box').addClass('on');
+        
+        $('.totalIndex').text(srchCell.length);
+            
+        if(srchText.indexOf(inputText) != -1) {
+            console.log(srchText, '검색어가 포함되어 있다')
+        }
+        else {
+            console.log('검색어가 포함되어있지 않다')
+        }
+    }
+    // 검색어 입력 후 엔터키 눌렀을 시
+    $('.srchText').keydown(function(e){
+        if (e.which == 13){
+           tableTextSearch();
+        }
+    });
+    // 검색어 입력 후 검색버튼 클릭 시
+    $('.btn_srch').on('click', function(){
+        tableTextSearch();
+    });
+    // 검색어 없는경우 
+    $('.srchText').keydown(function(e){
+        if (e.keyCode === 8 && $('.srchText').val() == ''){
+           $('.term_srch_box').removeClass('on');
         }
     });
 });
