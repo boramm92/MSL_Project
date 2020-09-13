@@ -23,7 +23,7 @@
     <!-- #container -->
     <div id="container">
         <!-- #contents -->
-        <div id="contents" class="pop_stt_type2">
+        <div class="popup_wrap small">
             <h1>CS &hyphen; STT 전수</h1>
 
             <!-- .customInfo -->
@@ -96,7 +96,7 @@
                    <audio preload="auto" controls>
                        <source src="resources/audio/aekukka.mp3">
                    </audio>
-                   
+
                    <!-- [D] 배속모드는 현재 지원안됨 -->
                    <div class="sltBox pyr_speed">
                        <select class="select">
@@ -106,7 +106,7 @@
                            <option value="">2X</option>
                            <option value="">3X</option>
                        </select>
-                   </div>                
+                   </div>
                 </div>
                 <!-- //.player -->
 
@@ -235,7 +235,7 @@
 $(document).ready(function(){
     //오디오 플레이어
     $('audio').audioPlayer();
-    $('.btn_player_play').on('click',function(){  
+    $('.btn_player_play').on('click',function(){
         $(this).toggleClass('pause');
     });
 
@@ -246,9 +246,9 @@ $(document).ready(function(){
         var srchText = $('.dataTable td:contains('+inputText+')').text();
 
         $('.term_srch_box').addClass('on');
-        
+
         $('.totalIndex').text(srchCell.length);
-            
+
         if(srchText.indexOf(inputText) != -1) {
             console.log(srchText, '검색어가 포함되어 있다')
         }
@@ -266,7 +266,7 @@ $(document).ready(function(){
     $('.btn_srch').on('click', function(){
         tableTextSearch();
     });
-    // 검색어 없는경우 
+    // 검색어 없는경우
     $('.srchText').keydown(function(e){
         if (e.keyCode === 8 && $('.srchText').val() == ''){
            $('.term_srch_box').removeClass('on');

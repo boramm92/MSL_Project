@@ -32,7 +32,7 @@
     <!-- #container -->
     <div id="container">
         <!-- #contents -->
-        <div id="contents" class="pop_stt_type1">
+        <div class="popup_wrap">
             <h1>CS &hyphen; STT 전수</h1>
 
             <!-- .customInfo -->
@@ -556,7 +556,7 @@ $(document).ready(function(){
     //             var i = 0;
     //
     //             $('.btn_index_move .btn_top').off('click').on('click', function () {
-    //                 i++;
+    //                 i--;
     //
     //                 if (i >= $('.srch_term').length) i = 0;
     //
@@ -565,17 +565,13 @@ $(document).ready(function(){
     //             });
     //
     //             $('.btn_index_move .btn_btm').off('click').on('click', function () {
-    //                 i--;
+    //                 i++;
     //
     //                 if (i < 0) i = $('.srch_term').length - 1;
     //
     //                 $('.srch_term').removeClass('focus');
     //                 $('.srch_term').eq(i).addClass('focus');
     //             });
-    //
-    //             if ($('.focus:first').length) { //if srch_term found, scroll to where the first one appears
-    //                 $(window).scrollTop($('.focus:first').position().top);
-    //             }
     //             return true;
     //         }
     //     }
@@ -603,7 +599,6 @@ $(document).ready(function(){
             $(this).html($(this).text().replace(regex, "<span class='srch_term'>"+inputText+"</span>")); // 검색어를 찾아 span으로 감싸줌
             var resultText = $('.srch_term')
             var srchTextIndex = $('.totalIndex').text(resultText.length); // 검색어 갯수 총 인덱스에 넣어줌
-            console.log(srchTextIndex)
             $('.srch_term:first').addClass('focus'); // 검색어의 첫번째 인덱스에 .focus 추가해줌
         });
     }
@@ -629,37 +624,34 @@ $(document).ready(function(){
     });
 
     function srchTextCurrentIndex(){
-        var i = 0;
         $('.btn_index_move .btn_top').on('click', function(){
-            i--;
-            if(i >= $('.srch_term').length) i = 0;
-
-            $('.srch_term').removeClass('focus');
-            $('.srch_term').eq(i).addClass('focus');
-            var index = $('.srch_term').eq(i)
-
-            var srchCurrentIndex = $('.srch_term').index(this);
-            console.log(index)
-            $('.currentIndex').text(index + 1);
+            var currentIndexText = $('srch_term').eq();
+            console.log(currentIndexText)
         });
 
-        $('.btn_index_move .btn_btm').on('click', function(){
-            i++;
-            if(i < 0) i = $('.srch_term').length - 1;
-
-            $('.srch_term').removeClass('focus');
-            $('.srch_term').eq(i).addClass('focus');
-
-            var srchCurrentIndex = $('.srch_term').index(this);
-            console.log(srchCurrentIndex)
-            $('.currentIndex').text(index + 1);
-        });
-
-        $('.srch_term').each(function(){
-            var srchCurrentIndex = $('.srch_term').index(this);
-            console.log(srchCurrentIndex)
-            $('.currentIndex').text(index + 1);
-        });
+        // var i = 0;
+        // $('.btn_index_move .btn_top').on('click', function(){
+        //     i++;
+        //     if(i >= $('.srch_term').length) i = 0;
+        //
+        //     $('.srch_term').removeClass('focus');
+        //     $('.srch_term').eq(i).addClass('focus');
+        //     var index = $('.srch_term').eq(i)
+        //
+        //     var srchCurrentIndex = $('.focus').index();
+        //     $('.currentIndex').text(srchCurrentIndex);
+        // });
+        //
+        // $('.btn_index_move .btn_btm').on('click', function(){
+        //     i--;
+        //     if(i < 0) i = $('.srch_term').length - 1;
+        //
+        //     $('.srch_term').removeClass('focus');
+        //     $('.srch_term').eq(i).addClass('focus');
+        //
+        //     var srchCurrentIndex = $('.focus').index();
+        //     $('.currentIndex').text(srchCurrentIndex);
+        // });
     }
 
     $('.btn_index_move a').on('click', function(){
@@ -775,15 +767,16 @@ $(document).ready(function(){
     function tableResize() {
         // 전체 테이블
         $('.DTFC_ScrollWrapper').css({
-            maxHeight: ($(window).height() - 340) + 'px'
+            height: "100%",
+            maxHeight: ($(window).height() - 510) + 'px'
         });
         // 테이블 바디 (스크롤 포함)
-        $('.DTFC_LeftBodyLiner').css({
-            maxHeight: ($(window).height() - 346 - 40) + 'px'
+        $('.DTFC_LeftBodyWrapper').css({
+            maxHeight: ($(window).height() - 516 - 40) + 'px'
         });
         // 첫번째 열
         $('.dataTables_scrollBody').css({
-            maxHeight: ($(window).height() - 340 - 40) + 'px'
+            maxHeight: ($(window).height() - 510 - 40) + 'px'
         });
     }
     tableResize();
