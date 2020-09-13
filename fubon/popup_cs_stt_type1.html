@@ -117,6 +117,7 @@
                        <source src="resources/audio/aekukka.mp3">
                    </audio>
 
+                    <!-- [D] 배속 기능 추가필요함 -->
                    <div class="sltBox pyr_speed">
                        <select class="select">
                            <option value="">1.1X</option>
@@ -128,6 +129,10 @@
                    </div>
                 </div>
                 <!-- //.player -->
+
+                <!-- .table_clipboard -->
+                <!-- [D] STT 결과 내 우클릭 시 복사하기 기능을 위해 추가한 input으로 실제 브라우저에서 보이지 않음 -->
+                <input type="text" class="table_clipboard">
 
                 <!-- .term_srch_box -->
                 <!-- [D] 입력창(.srchText)에 검색어 입력 후 검색버튼(.btn_srch)이나 엔터키 누르면 .term_srch_box에 addclass('on')되며 .txtIndex와 .btn_index_move이 보여짐 -->
@@ -527,64 +532,67 @@ $(document).ready(function(){
     });
 
     // STT 결과에서 텍스트 검색하기
+    // $('table.dataTable tbody td:nth-child(4)').addClass('srch_conversation'); // 검색할 대상에 .srch_conversation 추가해줌
+    //
     // function searchAndHighlight(searchTerm, selector){
     //     if(searchTerm){
-    //         //var wholeWordOnly = new RegExp("\\g"+searchTerm+"\\g","ig"); //matches whole word only
-    //         //var anyCharacter = new RegExp("\\g["+searchTerm+"]\\g","ig"); //matches any word with any of search chars characters
-    //         var selector = selector || "#realTimeContents"; //use body as selector if none provided
+    //         var selector = selector || ".srch_conversation"; //use body as selector if none provided
     //         var searchTermRegEx = new RegExp(searchTerm, "ig");
     //         var matches = $(selector).text().match(searchTermRegEx);
+    //         if(matches != null && matches.length > 0){
+    //             $('.focus').removeClass('focus'); //Remove old search highlights
     //
-    //         if (matches != null && matches.length > 0) {
-    //             $('.highlighted').removeClass('highlighted'); //Remove old search highlights
     //             //Remove the previous matches
-    //             $span = $('#realTimeContents span');
+    //             $span = $('.srch_conversation span');
     //             $span.replaceWith($span.html());
     //
     //             if (searchTerm === "&") {
     //                 searchTerm = "&amp;";
     //                 searchTermRegEx = new RegExp(searchTerm, "ig");
-    //         }
-    //         $(selector).html($(selector).html().replace(searchTermRegEx, "<span class='match'>" + searchTerm + "</span>"));
-    //         $('.match:first').addClass('highlighted');
+    //             }
+    //             $(selector).html($(selector).html().replace(searchTermRegEx, "<span class='srch_term'>" + searchTerm + "</span>"));
+    //             $('.srch_term:first').addClass('focus');
     //
-    //         var i = 0;
-    //         $('.next_h').off('click').on('click', function () {
-    //             i++;
-    //             if (i >= $('.match').length) i = 0;
-    //             $('.match').removeClass('highlighted');
-    //             $('.match').eq(i).addClass('highlighted');
-    //             $('.ui-mobile-viewport').animate({
-    //             scrollTop: $('.match').eq(i).offset().top
-    //             }, 300);
-    //         });
-    //         $('.previous_h').off('click').on('click', function(){
-    //             i--;
-    //             if (i < 0) i = $('.match').length - 1;
-    //             $('.match').removeClass('highlighted');
-    //             $('.match').eq(i).addClass('highlighted');
-    //             $('.ui-mobile-viewport').animate({
-    //             scrollTop: $('.match').eq(i).offset().top
-    //             }, 300);
-    //         });
-    //         if ($('.highlighted:first').length) { //if match found, scroll to where the first one appears
-    //             $(window).scrollTop($('.highlighted:first').position().top);
-    //         }
-    //         return true;
+    //             var i = 0;
+    //
+    //             $('.btn_index_move .btn_top').off('click').on('click', function () {
+    //                 i++;
+    //
+    //                 if (i >= $('.srch_term').length) i = 0;
+    //
+    //                 $('.srch_term').removeClass('focus');
+    //                 $('.srch_term').eq(i).addClass('focus');
+    //             });
+    //
+    //             $('.btn_index_move .btn_btm').off('click').on('click', function () {
+    //                 i--;
+    //
+    //                 if (i < 0) i = $('.srch_term').length - 1;
+    //
+    //                 $('.srch_term').removeClass('focus');
+    //                 $('.srch_term').eq(i).addClass('focus');
+    //             });
+    //
+    //             if ($('.focus:first').length) { //if srch_term found, scroll to where the first one appears
+    //                 $(window).scrollTop($('.focus:first').position().top);
+    //             }
+    //             return true;
     //         }
     //     }
     //     return false;
     // }
     //
-    //     $(document).on('click', '.searchButtonClickText_h', function (event){
-    //     $(".highlighted").removeClass("highlighted").removeClass("match");
-    //     if (!searchAndHighlight($('.textSearchvalue_h').val())) {
-    //         alert("No results found");
+    // $(document).on('click', '.btn_srch', function(event){
+    //     $('.term_srch_box').addClass('on');
+    //     $(".focus").removeClass("focus").removeClass("srch_term");
+    //     if (!searchAndHighlight($('.srchText').val())) {
+    //     alert("No results found");
     //     }
     // });
 
 
-    // STT 결과에서 텍스트 검색하기
+
+
     $('table.dataTable tbody td:nth-child(4)').addClass('srch_conversation'); // 검색할 대상에 .srch_conversation 추가해줌
 
     function tableTextSearch(){
@@ -620,7 +628,7 @@ $(document).ready(function(){
         }
     });
 
-    // function srchTextCurrentIndex(){
+    function srchTextCurrentIndex(){
         var i = 0;
         $('.btn_index_move .btn_top').on('click', function(){
             i--;
@@ -632,7 +640,7 @@ $(document).ready(function(){
 
             var srchCurrentIndex = $('.srch_term').index(this);
             console.log(index)
-            $('.currentIndex').text(srchCurrentIndex + 1);
+            $('.currentIndex').text(index + 1);
         });
 
         $('.btn_index_move .btn_btm').on('click', function(){
@@ -644,19 +652,19 @@ $(document).ready(function(){
 
             var srchCurrentIndex = $('.srch_term').index(this);
             console.log(srchCurrentIndex)
-            $('.currentIndex').text(srchCurrentIndex + 1);
+            $('.currentIndex').text(index + 1);
         });
 
-        // $('.srch_term').each(function(){
-        //     var srchCurrentIndex = $('.srch_term').index(this);
-        //     console.log(srchCurrentIndex)
-        //     $('.currentIndex').text(srchCurrentIndex + 1);
-        // });
-    // }
+        $('.srch_term').each(function(){
+            var srchCurrentIndex = $('.srch_term').index(this);
+            console.log(srchCurrentIndex)
+            $('.currentIndex').text(index + 1);
+        });
+    }
 
-    // $('.btn_index_move a').on('click', function(){
-    //     srchTextCurrentIndex();
-    // });
+    $('.btn_index_move a').on('click', function(){
+        srchTextCurrentIndex();
+    });
 
     // input:text[numberOnly] 숫자만 입력가능
     $('input:text[numberOnly]').keypress(function(event) {
@@ -684,16 +692,14 @@ $(document).ready(function(){
 
         var sttScript = $(this).text(); // 선택한 셀의 상담내용
         $('#lyr_stt_edit .textArea_original .textBox').text(sttScript); // 원문수정 팝업에 넣어줌
-    });
 
-    // contextmenu 복사하기(클립보드)
-    function copyToClipboard(element) {
-        // var $temp = $("<input>");
-        // $("body").append($temp);
-        $temp.val($(element).text()).select();
-        document.execCommand("copy");
-        $temp.remove();
-    }
+        // contextmenu 복사하기(클립보드)
+        $('.btn_clipboard').on('click', function(){
+            $('.table_clipboard').val(sttScript);
+            $('.table_clipboard').select();
+            document.execCommand('Copy');
+        });
+    });
 
     // context menu 숨기기
     $('body').click(function(){
