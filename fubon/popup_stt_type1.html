@@ -116,7 +116,7 @@
                    <audio preload="auto" controls>
                        <source src="resources/audio/aekukka.mp3">
                    </audio>
-                   
+
                    <div class="sltBox pyr_speed">
                        <select class="select">
                            <option value="">1.1X</option>
@@ -125,7 +125,7 @@
                            <option value="">2X</option>
                            <option value="">3X</option>
                        </select>
-                   </div>                
+                   </div>
                 </div>
                 <!-- //.player -->
 
@@ -160,12 +160,12 @@
                 <!-- [D] datatables 라이브러리 영역 -->
                 <!-- [D] 'Excel 다운로드' 버튼 클릭 시 파일 다운로드됨 -->
                 <!-- [D] '구분'(상담사 / 고객) 열의 텍스트가 '고객'일 경우, '구분, 시작시간, STT 결과'에 해당하는 셀 백그라운드컬러 처리됨 -->
-                
+
                 <!-- [D] 검색어 조회 시 일치내용 span.srch_term 로 감싸주어 볼드처리됨 -->
                 <!-- [D] 검색어 조회 후 이동버튼으로 포커스 이동 시 해당 검색어에 addclass('focus')해주면 백그라운드 하이라이트 처리됨 -->
-                
+
                 <!-- [D] 'STT 결과' 셀의 상담 내용 영역에서 마우스 우클릭 시 contextmenu 등장 -->
-                
+
                 <!-- [D] '무음'셀 th에 무음길이 숫자입력을 위한 input 추가함, 해당 입력창에 숫자 입력 후 엔터 키 누르면 입력숫자 이상의 셀에 addclass('active')되며 백그라운드 하이라이트됨, 입력숫자 지우면 removeclass('active')되며 백그라운드 하이라이트 사라짐  -->
                 <table class="dataTable">
                     <thead>
@@ -522,25 +522,84 @@ $(document).ready(function(){
 
     //오디오 플레이어
     $('audio').audioPlayer();
-    $('.btn_player_play').on('click',function(){  
+    $('.btn_player_play').on('click',function(){
         $(this).toggleClass('pause');
     });
-    
+
     // STT 결과에서 텍스트 검색하기
-    $('table.dataTable tbody td:nth-child(4)').addClass('srch_conversation');
-    
+    // function searchAndHighlight(searchTerm, selector){
+    //     if(searchTerm){
+    //         //var wholeWordOnly = new RegExp("\\g"+searchTerm+"\\g","ig"); //matches whole word only
+    //         //var anyCharacter = new RegExp("\\g["+searchTerm+"]\\g","ig"); //matches any word with any of search chars characters
+    //         var selector = selector || "#realTimeContents"; //use body as selector if none provided
+    //         var searchTermRegEx = new RegExp(searchTerm, "ig");
+    //         var matches = $(selector).text().match(searchTermRegEx);
+    //
+    //         if (matches != null && matches.length > 0) {
+    //             $('.highlighted').removeClass('highlighted'); //Remove old search highlights
+    //             //Remove the previous matches
+    //             $span = $('#realTimeContents span');
+    //             $span.replaceWith($span.html());
+    //
+    //             if (searchTerm === "&") {
+    //                 searchTerm = "&amp;";
+    //                 searchTermRegEx = new RegExp(searchTerm, "ig");
+    //         }
+    //         $(selector).html($(selector).html().replace(searchTermRegEx, "<span class='match'>" + searchTerm + "</span>"));
+    //         $('.match:first').addClass('highlighted');
+    //
+    //         var i = 0;
+    //         $('.next_h').off('click').on('click', function () {
+    //             i++;
+    //             if (i >= $('.match').length) i = 0;
+    //             $('.match').removeClass('highlighted');
+    //             $('.match').eq(i).addClass('highlighted');
+    //             $('.ui-mobile-viewport').animate({
+    //             scrollTop: $('.match').eq(i).offset().top
+    //             }, 300);
+    //         });
+    //         $('.previous_h').off('click').on('click', function(){
+    //             i--;
+    //             if (i < 0) i = $('.match').length - 1;
+    //             $('.match').removeClass('highlighted');
+    //             $('.match').eq(i).addClass('highlighted');
+    //             $('.ui-mobile-viewport').animate({
+    //             scrollTop: $('.match').eq(i).offset().top
+    //             }, 300);
+    //         });
+    //         if ($('.highlighted:first').length) { //if match found, scroll to where the first one appears
+    //             $(window).scrollTop($('.highlighted:first').position().top);
+    //         }
+    //         return true;
+    //         }
+    //     }
+    //     return false;
+    // }
+    //
+    //     $(document).on('click', '.searchButtonClickText_h', function (event){
+    //     $(".highlighted").removeClass("highlighted").removeClass("match");
+    //     if (!searchAndHighlight($('.textSearchvalue_h').val())) {
+    //         alert("No results found");
+    //     }
+    // });
+
+
+    // STT 결과에서 텍스트 검색하기
+    $('table.dataTable tbody td:nth-child(4)').addClass('srch_conversation'); // 검색할 대상에 .srch_conversation 추가해줌
+
     function tableTextSearch(){
-        var inputText = $('.srchText').val();
+        var inputText = $('.srchText').val(); // 검색어
         $('.srch_conversation:contains('+inputText+')').each(function(){
-            $('.term_srch_box').addClass('on');
+            $('.term_srch_box').addClass('on'); // 검색어 인덱스, 순서이동버튼 보여줌
             var regex = new RegExp(inputText,'gi');
-            $(this).html($(this).text().replace(regex, "<span class='srch_term'>"+inputText+"</span>"));
-            var resultText = $('.srch_term')   
-            var srchTextIndex = $('.totalIndex').text(resultText.length);
-            console.log(srchTextIndex)            
-            $('.srch_term:first').addClass('focus');
+            $(this).html($(this).text().replace(regex, "<span class='srch_term'>"+inputText+"</span>")); // 검색어를 찾아 span으로 감싸줌
+            var resultText = $('.srch_term')
+            var srchTextIndex = $('.totalIndex').text(resultText.length); // 검색어 갯수 총 인덱스에 넣어줌
+            console.log(srchTextIndex)
+            $('.srch_term:first').addClass('focus'); // 검색어의 첫번째 인덱스에 .focus 추가해줌
         });
     }
+
     // 검색어 입력 후 엔터키 눌렀을 시
     $('.srchText').keydown(function(e){
         if (e.which == 13){
@@ -551,15 +610,53 @@ $(document).ready(function(){
     $('.btn_srch').on('click', function(){
         tableTextSearch();
     });
-    // 검색어 없는경우 
+    // 검색어 없는경우
     $('.srchText').keydown(function(e){
         if (e.keyCode === 8 && $('.srchText').val() == ''){
-           $('.term_srch_box').removeClass('on');           
+           $('.term_srch_box').removeClass('on');
            $('.srch_conversation').each(function(){
-              var srchTextReset = $(this).html($(this).text().replace(/<(\/span|span)([^>]*)>/gi,"")); 
-           });           
+              var srchTextReset = $(this).html($(this).text().replace(/<(\/span|span)([^>]*)>/gi,""));
+           });
         }
     });
+
+    // function srchTextCurrentIndex(){
+        var i = 0;
+        $('.btn_index_move .btn_top').on('click', function(){
+            i--;
+            if(i >= $('.srch_term').length) i = 0;
+
+            $('.srch_term').removeClass('focus');
+            $('.srch_term').eq(i).addClass('focus');
+            var index = $('.srch_term').eq(i)
+
+            var srchCurrentIndex = $('.srch_term').index(this);
+            console.log(index)
+            $('.currentIndex').text(srchCurrentIndex + 1);
+        });
+
+        $('.btn_index_move .btn_btm').on('click', function(){
+            i++;
+            if(i < 0) i = $('.srch_term').length - 1;
+
+            $('.srch_term').removeClass('focus');
+            $('.srch_term').eq(i).addClass('focus');
+
+            var srchCurrentIndex = $('.srch_term').index(this);
+            console.log(srchCurrentIndex)
+            $('.currentIndex').text(srchCurrentIndex + 1);
+        });
+
+        // $('.srch_term').each(function(){
+        //     var srchCurrentIndex = $('.srch_term').index(this);
+        //     console.log(srchCurrentIndex)
+        //     $('.currentIndex').text(srchCurrentIndex + 1);
+        // });
+    // }
+
+    // $('.btn_index_move a').on('click', function(){
+    //     srchTextCurrentIndex();
+    // });
 
     // input:text[numberOnly] 숫자만 입력가능
     $('input:text[numberOnly]').keypress(function(event) {
@@ -584,12 +681,12 @@ $(document).ready(function(){
     $('.dataTable tbody td:nth-child(4)').contextmenu(function(){
         $('.dataTable tbody td:nth-child(4)').removeClass('active');
         $(this).toggleClass('active');
-        
-        var sttScript = $(this).text(); // 선택한 셀의 상담내용    
+
+        var sttScript = $(this).text(); // 선택한 셀의 상담내용
         $('#lyr_stt_edit .textArea_original .textBox').text(sttScript); // 원문수정 팝업에 넣어줌
     });
-    
-    // contextmenu 복사하기(클립보드) 
+
+    // contextmenu 복사하기(클립보드)
     function copyToClipboard(element) {
         // var $temp = $("<input>");
         // $("body").append($temp);
