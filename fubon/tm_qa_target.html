@@ -916,7 +916,7 @@ $(document).ready(function(){
         },
         responsive: true, // 반응형 허용
         filter: false, // 검색창 미허용
-        // order: [[ 7, 'asc' ]], // 초기 sort 설정
+        order: [[ 7, 'asc' ]], // 초기 sort 설정
         paging: true, // 페이징 허용
         pagingType: "full_numbers", // 페이징 버튼 구성 (처음, 이전, 페이지숫자, 다음, 마지막)
         lengthMenu: [25, 50, 100], // 페이지 당 보여질 목록 갯수 select 범위 지정
@@ -942,14 +942,17 @@ $(document).ready(function(){
             {targets: [15], width: "100px", orderable: false},                 // 번들유무
             {targets: [16], width: "120px", orderable: false},                 // 상품발송안내
         ],
+        fixedColumns: { // 왼쪽 2열 고정
+            leftColumns: 2,
+        },
         dom: 'Blfrtip', // 엑셀 다운로드 버튼 추가
         buttons: [{
             extend: 'excelHtml5',
             text: 'Excel 다운로드',
         }],
-        // select: {
-        //     style: 'multi'
-        // },
+        select: {
+            style: 'multi'
+        },
     });
 
     new $.fn.dataTable.FixedColumns(table, {
