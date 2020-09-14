@@ -24,19 +24,19 @@
         <div class="popup_wrap">
             <h1>QA 대상 지정</h1>
             
+            <!-- .target_setArea -->
             <div class="target_setArea">
                 <h2>
                     QA 대상 지정 
-                    <span>총 <em></em>건</span>
+                    <span>총 <em class="qa_total_case"></em>건</span>
                 </h2>
                 
                 <div class="fl">
                     <dl class="set_condition">
                         <dt>
-                            <span>&lbrack;조건1&rbrack;</span>
                             <div class="iptBox">
                                 <label for="">TMR 지정</label>
-                                <input type="text">
+                                <input type="text" numberOnly>
                                 <em>건</em>                            
                             </div>
                         </dt>
@@ -49,10 +49,10 @@
                             </div>
                             
                             <div class="btnBox">
-                                <a href="#none">
+                                <a href="#none" class="btn_move_right">
                                     <span>선택완료이동</span>
                                 </a>
-                                <a href="#none">
+                                <a href="#none" class="btn_move_left">
                                     <span>선택가능이동</span>
                                 </a>
                             </div>
@@ -67,10 +67,9 @@
                     
                     <dl class="set_condition">
                         <dt>
-                            <span>&lbrack;조건2&rbrack;</span>
                             <div class="iptBox">
                                 <label for="">TA 점수</label>
-                                <input type="text">
+                                <input type="text" numberOnly>
                                 <em>건</em>                            
                             </div>
                         </dt>
@@ -84,10 +83,9 @@
                 <div class="fr">
                     <dl class="set_condition">
                         <dt>
-                            <span>&lbrack;조건3&rbrack;</span>
                             <div class="iptBox">
                                 <label for="">TA 부분&sol;미탐지 구간</label>
-                                <input type="text">
+                                <input type="text" numberOnly>
                                 <em>건</em>                            
                             </div>
                         </dt>
@@ -100,10 +98,10 @@
                             </div>
                             
                             <div class="btnBox">
-                                <a href="#none">
+                                <a href="#none" class="btn_move_right">
                                     <span>선택완료이동</span>
                                 </a>
-                                <a href="#none">
+                                <a href="#none" class="btn_move_left">
                                     <span>선택가능이동</span>
                                 </a>
                             </div>
@@ -118,10 +116,9 @@
                     
                     <dl class="set_condition">
                         <dt>
-                            <span>&lbrack;조건4&rbrack;</span>
                             <div class="iptBox">
                                 <label for="">상품명</label>
-                                <input type="text">
+                                <input type="text" numberOnly>
                                 <em>건</em>                            
                             </div>                            
                         </dt>
@@ -135,13 +132,38 @@
                         </dd>
                     </dl>
                 </div>
+                
+                <div class="btnBox">
+                    <a href="#lyr_qaTarget_save" class="btn_save btn_lyr_open">저장</a>
+                </div>
             </div>
+            <!-- //.target_setArea -->
         </div>
         <!-- //#contents -->
     </div>
     <!-- //#container -->
 </div>
 <!-- //#wrap -->
+
+<!-- layer popup -->
+<!-- QA 대상 지정상태 저장 -->
+<div id="lyr_qaTarget_save" class="lyrBox">
+    <div class="lyr_hd">
+        <span class="title">QA 대상 지정상태 저장</span>
+        <a href="#none" class="btn_lyr_close">닫기</a>
+     </div>
+    <div class="lyr_ct">
+            <p>저장 내용의 반영은 기존결과에 영향을 끼치지 않으며,<br>
+            이후 &lbrack;대상 지정&rbrack; 자동화 처리 시 반영됩니다.</p>
+    </div>
+    <div class="lyr_ft">
+        <div class="btnBox">
+            <a href="#none" class="btn_lyr_save">확인</a>
+            <a href="#none" class="btn_lyr_close">취소</a>
+        </div>
+    </div>
+</div>
+<!-- //QA 대상 지정상태 저장 -->
 
 <!-- script -->
 <script type="text/javascript">
@@ -160,6 +182,45 @@ $(document).ready(function(){
             $('.lyrBox').css({'display': 'none'});
         });
     });
+    
+    // 공통 저장완료 레이어 팝업
+    $('.btn_lyr_save').on('click',function(){
+        var thisLayer = $(this).parents('.lyrBox').attr('id');
+        var thisLayerHref = $('#' + thisLayer);
+        $(thisLayerHref).css({'display': 'none'});
+
+        $('body').append(' \
+            <div class="lyrBox lyr_notify">\
+                <div class="lyr_ct"> \
+                    <p class="massage">저장 되었습니다.</p> \
+                </div> \
+            </div> \
+        ');
+        $('.lyr_notify').show();
+
+        setTimeout(function(){
+            $('.lyr_notify').addClass('lyr_hide').delay(300).queue(function(){$(this).remove();});
+            $('body').removeClass('lyr_bg_dim');
+        }, 600);
+    });
+    
+    // input:text[numberOnly] 숫자만 입력가능
+    $('input:text[numberOnly]').keypress(function(event) {
+        if(event.which < 48 || event.which > 57){
+            event.preventDefault();
+        }
+    });
+    
+    // QA 대상 지정 총 건수 자동 합계
+    // $('.btnBox .btn_lyr_save').on('click', function(){
+    $(document).on('click', function(){
+        var caseSum = 0;
+        $('.target_setArea .set_condition dt .iptBox input').each(function(){
+            caseSum += Number($(this).val());
+            console.log(caseSum); 
+            $('.qa_total_case').text(caseSum);
+        });
+    });    
 });
 </script>
 </body>
