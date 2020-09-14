@@ -19,7 +19,7 @@
 <!-- player -->
 <script src="resources/js/player.js"></script>
 <!-- datatables -->
-<script src="resources/js/datatables.min.js"></script>
+<script src="resources/js/datatables.js"></script>
 <script src="resources/js/dataTables.buttons.min.js"></script>
 <script src="resources/js/buttons.html5.min.js"></script>
 <script src="resources/js/jszip.min.js"></script>
@@ -48,64 +48,47 @@
                         <tr>
                             <th>상담일시</th>
                             <td>
-                                <div class="custom_info_box consult_time">
-                                    <span class="start_time">2020-08-03 09:10</span>
-                                </div>
+                                <span class="consult_time custom_info">2020-08-03 09:10</span>
                                 <span>&hyphen;</span>
-                                <div class="custom_info_box consult_time">
-                                    <span class="end_time">2020-08-03 09:10</span>
-                                </div>
+                                <span class="consult_time custom_info">2020-08-03 09:10</span>
+
                             </td>
 
                             <th>센터</th>
                             <td>
-                                <div class="custom_info_box">
-                                    <span class="name">Upsell 센터</span>
-                                </div>
+                                <span class="name custom_info">Upsell 센터</span>
                             </td>
 
                             <th>실</th>
                             <td>
-                                <div class="custom_info_box">
-                                    <span class="custom_num">2팀</span>
-                                </div>
+                                <span class="custom_num custom_info">2팀</span>
                             </td>
 
                             <th>상담원</th>
                             <td>
-                                <div class="custom_info_box">
-                                    <span class="consultant">김영희</span>
-                                </div>
+                                <span class="consultant custom_info">김영희</span>
                             </td>
 
                             <th>사번</th>
                             <td>
-                                <div class="custom_info_box">
-                                    <span class="epy_num">20203</span>
-                                </div>
+                                <span class="epy_num custom_info">20203</span>
                             </td>
                         </tr>
 
                         <tr>
                             <th>고객명</th>
                             <td>
-                                <div class="custom_info_box">
-                                    <span class="work_type">홍길동</span>
-                                </div>
+                                <span class="work_type custom_info">홍길동</span>
                             </td>
 
                             <th>고객번호</th>
                             <td colspan="3">
-                                <div class="custom_info_box">
-                                    <span class="consultant_keyword">21546</span>
-                                </div>
+                                <span class="consultant_keyword custom_info">21546</span>
                             </td>
 
                             <th>콜키</th>
                             <td colspan="3">
-                                <div class="custom_info_box">
-                                    <span class="consultant_keyword">12345678910</span>
-                                </div>
+                                <span class="consultant_keyword custom_info">12345678910</span>
                             </td>
                         </tr>
                     </tbody>
@@ -142,28 +125,12 @@
                 <input type="text" class="table_clipboard">
 
                 <!-- .term_srch_box -->
-                <!-- [D] 입력창(.srchText)에 검색어 입력 후 검색버튼(.btn_srch)이나 엔터키 누르면 .term_srch_box에 addclass('on')되며 .txtIndex와 .btn_index_move이 보여짐 -->
-                <!-- [D] 검색 시 아래 테이블 내 검색어와 일치하는 텍스트를 span.srch_term 으로 감싸줘야하며, 검색어 이동버튼(.btnBox a.btn_top / .btnBox a.btn_top)클릭 시 순서대로 포커스 이동되며 해당 순서의 텍스트에 추가로 addclass('focus')를 해주어 백그라운드 하이라이트 효과를 주어야 함  -->
+                <!-- [D] 검색 시 아래 테이블 내 검색어와 일치하는 텍스트를 em.findElement 으로 감싸주며, 검색어 이동버튼 클릭 시 순서대로 포커스 이동되며 해당 순서의 텍스트에 추가로 addclass('selected')되어 하이라이트 처리됨  -->
                 <div class="term_srch_box">
-                    <div class="srchBox">
-                        <input type="search" class="srchText" placeholder="검색어 입력">
-                        <!-- [D] .txtIndex의 기본상태는 display:none이고, 검색버튼 또는 엔터 키 눌렀을 때 addclass('on')해주어 display:block 상태로 바꿔주어야함 -->
-                        <!-- [D] 검색어에 일치하는 텍스트의 현재 인덱스는 .currentIndex에 넣어주고, 총 인덱스는 .totalIndex에 넣어주어야 함 -->
-                        <span class="txtIndex">
-                            <em class="currentIndex">0</em>&nbsp;&sol;&nbsp;<em class="totalIndex">0</em>
-                        </span>
+                    <div id="findTxt" class="srchBox">
+                        <input type="search" id="findTxtField" class="srchText" placeholder="검색어 입력">
                         <a href="#none" class="btn_srch">
                             <span>검색버튼</span>
-                        </a>
-                    </div>
-
-                    <!-- [D] 검색어 이동버튼(.btnBox a.btn_top / .btnBox a.btn_top)에 따라 현재 인덱스(.currentIndex) 숫자는 변화되어야 함 -->
-                    <div class="btnBox btn_index_move">
-                        <a href="#none" class="btn_top">
-                            <img src="resources/images/arw_top_gr.png" alt="위로이동 화살표">
-                        </a>
-                        <a href="#none" class="btn_btm">
-                            <img src="resources/images/arw_bottom_gr.png" alt="아래로이동 화살표">
                         </a>
                     </div>
                 </div>
@@ -171,14 +138,9 @@
 
                 <!-- [D] datatables 라이브러리 영역 -->
                 <!-- [D] 'Excel 다운로드' 버튼 클릭 시 파일 다운로드됨 -->
-                <!-- [D] '구분'(상담사 / 고객) 열의 텍스트가 '고객'일 경우, '구분, 시작시간, STT 결과'에 해당하는 셀 백그라운드컬러 처리됨 -->
-
-                <!-- [D] 검색어 조회 시 일치내용 span.srch_term 로 감싸주어 볼드처리됨 -->
-                <!-- [D] 검색어 조회 후 이동버튼으로 포커스 이동 시 해당 검색어에 addclass('focus')해주면 백그라운드 하이라이트 처리됨 -->
+                <!-- [D] '구분'(상담사 / 고객)에 따른 백그라운드 컬러 추가됨 -->
 
                 <!-- [D] 'STT 결과' 셀의 상담 내용 영역에서 마우스 우클릭 시 contextmenu 등장 -->
-
-                <!-- [D] '무음'셀 th에 무음길이 숫자입력을 위한 input 추가함, 해당 입력창에 숫자 입력 후 엔터 키 누르면 입력숫자 이상의 셀에 addclass('active')되며 백그라운드 하이라이트됨, 입력숫자 지운후 엔터 키 누르면 removeclass('active')되며 백그라운드 하이라이트 사라짐  -->
                 <table class="dataTable">
                     <thead>
                         <tr>
@@ -460,138 +422,118 @@ $(document).ready(function(){
     });
 
     // STT 결과에서 텍스트 검색하기
-    // $('table.dataTable tbody td:nth-child(4)').addClass('srch_conversation'); // 검색할 대상에 .srch_conversation 추가해줌
-    //
-    // function searchAndHighlight(searchTerm, selector){
-    //     if(searchTerm){
-    //         var selector = selector || ".srch_conversation"; //use body as selector if none provided
-    //         var searchTermRegEx = new RegExp(searchTerm, "ig");
-    //         var matches = $(selector).text().match(searchTermRegEx);
-    //         if(matches != null && matches.length > 0){
-    //             $('.focus').removeClass('focus'); //Remove old search highlights
-    //
-    //             //Remove the previous matches
-    //             $span = $('.srch_conversation span');
-    //             $span.replaceWith($span.html());
-    //
-    //             if (searchTerm === "&") {
-    //                 searchTerm = "&amp;";
-    //                 searchTermRegEx = new RegExp(searchTerm, "ig");
-    //             }
-    //             $(selector).html($(selector).html().replace(searchTermRegEx, "<span class='srch_term'>" + searchTerm + "</span>"));
-    //             $('.srch_term:first').addClass('focus');
-    //
-    //             var i = 0;
-    //
-    //             $('.btn_index_move .btn_top').off('click').on('click', function () {
-    //                 i++;
-    //
-    //                 if (i >= $('.srch_term').length) i = 0;
-    //
-    //                 $('.srch_term').removeClass('focus');
-    //                 $('.srch_term').eq(i).addClass('focus');
-    //             });
-    //
-    //             $('.btn_index_move .btn_btm').off('click').on('click', function () {
-    //                 i--;
-    //
-    //                 if (i < 0) i = $('.srch_term').length - 1;
-    //
-    //                 $('.srch_term').removeClass('focus');
-    //                 $('.srch_term').eq(i).addClass('focus');
-    //             });
-    //
-    //             if ($('.focus:first').length) { //if srch_term found, scroll to where the first one appears
-    //                 $(window).scrollTop($('.focus:first').position().top);
-    //             }
-    //             return true;
-    //         }
-    //     }
-    //     return false;
-    // }
-    //
-    // $(document).on('click', '.btn_srch', function(event){
-    //     $('.term_srch_box').addClass('on');
-    //     $(".focus").removeClass("focus").removeClass("srch_term");
-    //     if (!searchAndHighlight($('.srchText').val())) {
-    //     alert("No results found");
-    //     }
-    // });
-
-
-
-
-    $('table.dataTable tbody td:nth-child(4)').addClass('srch_conversation'); // 검색할 대상에 .srch_conversation 추가해줌
-
-    function tableTextSearch(){
-        var inputText = $('.srchText').val(); // 검색어
-        $('.srch_conversation:contains('+inputText+')').each(function(){
-            $('.term_srch_box').addClass('on'); // 검색어 인덱스, 순서이동버튼 보여줌
-            var regex = new RegExp(inputText,'gi');
-            $(this).html($(this).text().replace(regex, "<span class='srch_term'>"+inputText+"</span>")); // 검색어를 찾아 span으로 감싸줌
-            var resultText = $('.srch_term')
-            var srchTextIndex = $('.totalIndex').text(resultText.length); // 검색어 갯수 총 인덱스에 넣어줌
-            console.log(srchTextIndex)
-            $('.srch_term:first').addClass('focus'); // 검색어의 첫번째 인덱스에 .focus 추가해줌
-        });
-    }
-
-    // 검색어 입력 후 엔터키 눌렀을 시
-    $('.srchText').keydown(function(e){
-        if (e.which == 13){
-           tableTextSearch();
+    // STT 결과에서 텍스트 검색하기
+    $('table.dataTable tbody td:nth-child(4)').addClass('sttSrchArea');
+    
+    $("#findTxtField").keydown(function(key) {
+        if (key.keyCode == 13) {
+            $('#findTxt .btn_srch').trigger("click");
         }
     });
-    // 검색어 입력 후 검색버튼 클릭 시
-    $('.btn_srch').on('click', function(){
-        tableTextSearch();
-    });
-    // 검색어 없는경우
-    $('.srchText').keydown(function(e){
-        if (e.keyCode === 8 && $('.srchText').val() == ''){
-           $('.term_srch_box').removeClass('on');
-           $('.srch_conversation').each(function(){
-              var srchTextReset = $(this).html($(this).text().replace(/<(\/span|span)([^>]*)>/gi,""));
-           });
+        
+    $('#findTxt .btn_srch').on('click',function(){
+        var findTxtField = $('#findTxtField').val();
+
+        if ( findTxtField != '' ) {
+            $('.pageing').remove();
+
+            $('.sttSrchArea').find('em.findElement').queue(function() {
+                $(this).removeClass('findElement');
+                $(this).attr('id','');
+            });
+
+            //검색 단어 표시
+            $('.sttSrchArea:contains("'+findTxtField+'")').each(function () {
+                var regex = new RegExp(findTxtField,'gi');
+
+                $(this).html(
+                    $(this).text().replace(regex, '<em class="findElement">'+findTxtField+'</em>')
+                );
+                // 검색 단어 ID 선언
+                var findElementlength = $('.findElement').parents('tr').length;
+
+                $(this).parents('tr').attr('id', 'findElement'+findElementlength);
+            });
+
+            //pageing open
+            var findElementAllNum = $('.findElement').length,
+                page_prev_num = 1,
+                page_next_num = 2;
+
+            $('#findTxt').parent().append(' \
+                <div class="pageing"> \
+                    <div class="page"> \
+                        <span class="nowNum">'+ page_prev_num +'</span>/ \
+                        <span class="allNum">'+findElementAllNum+'</span> \
+                    </div> \
+                    <a class="btn_page_prev disabled" href="#findElement'+page_prev_num+'">이전</a> \
+                    <a class="btn_page_next" href="#findElement'+page_next_num+'">다음</a >\
+                </div>  \
+            ');
+
+            //검색 된 1번으로 스크롤 이동
+            $('.stt_scroll').animate({
+                scrollTop: $('#findElement1').offset().top - $('.stt_scroll').offset().top * 2 + $('.stt_scroll').scrollTop() + 100
+            }, 200);
+            $('.findElement').removeClass('selected');
+            $('#findElement1').find('.findElement').addClass('selected');
+
+            //pageing button(next)
+            $('.pageing a.btn_page_next').on('click',function(){
+                if ( findElementAllNum > page_prev_num) {
+                    $('.pageing a').removeClass('disabled').removeAttr('disabled');
+                    page_prev_num++;
+                    page_next_num++;
+
+                    $('.pageing .nowNum').text(page_prev_num);
+                    $('.pageing .btn_page_prev').attr('href', '#findElement'+page_prev_num+'');
+                    $('.pageing .btn_page_next').attr('href', '#findElement'+page_next_num+'');
+
+                    event.preventDefault();
+                    var findElementOffset = $('#findElement'+page_prev_num+'').offset().top,
+                        stt_scrollOffset = $('.stt_scroll').offset().top,
+                        stt_scrollTop = $('.stt_scroll').scrollTop();
+
+                    $('.stt_scroll').animate({
+                        scrollTop: findElementOffset - stt_scrollOffset * 2 + stt_scrollTop + 100
+                    }, 200);
+                    $('.findElement').removeClass('selected');
+                    $('#findElement'+page_prev_num+'').find('.findElement').addClass('selected');
+
+                }
+                if( findElementAllNum == page_prev_num) {
+                    $(this).addClass('disabled').attr('disabled','disabled');
+                }
+            });
+
+            //pageing button(prev)
+            $('.pageing a.btn_page_prev').on('click',function(){
+                if ( 1 < page_prev_num) {
+                    $('.pageing a').removeClass('disabled').removeAttr('disabled');
+                    page_prev_num--;
+                    page_next_num--;
+
+                    $('.pageing .nowNum').text(page_prev_num);
+                    $('.pageing .btn_page_prev').attr('href', '#findElement'+page_prev_num+'');
+                    $('.pageing .btn_page_next').attr('href', '#findElement'+page_next_num+'');
+
+                    event.preventDefault();
+                    var findElementOffset = $('#findElement'+page_prev_num+'').offset().top,
+                        stt_scrollOffset = $('.stt_scroll').offset().top,
+                        stt_scrollTop = $('.stt_scroll').scrollTop();
+
+                    $('.stt_scroll').animate({
+                        scrollTop: findElementOffset - stt_scrollOffset * 2 + stt_scrollTop + 100
+                    }, 200);
+                    $('.findElement').removeClass('selected');
+                    $('#findElement'+page_prev_num+'').find('.findElement').addClass('selected');
+
+                }
+                if( 1 == page_prev_num) {
+                    $(this).addClass('disabled').attr('disabled','disabled');
+                }
+            });
         }
-    });
-
-    function srchTextCurrentIndex(){
-        var i = 0;
-        $('.btn_index_move .btn_top').on('click', function(){
-            i--;
-            if(i >= $('.srch_term').length) i = 0;
-
-            $('.srch_term').removeClass('focus');
-            $('.srch_term').eq(i).addClass('focus');
-            var index = $('.srch_term').eq(i)
-
-            var srchCurrentIndex = $('.srch_term').index(this);
-            console.log(index)
-            $('.currentIndex').text(index + 1);
-        });
-
-        $('.btn_index_move .btn_btm').on('click', function(){
-            i++;
-            if(i < 0) i = $('.srch_term').length - 1;
-
-            $('.srch_term').removeClass('focus');
-            $('.srch_term').eq(i).addClass('focus');
-
-            var srchCurrentIndex = $('.srch_term').index(this);
-            console.log(srchCurrentIndex)
-            $('.currentIndex').text(index + 1);
-        });
-
-        $('.srch_term').each(function(){
-            var srchCurrentIndex = $('.srch_term').index(this);
-            console.log(srchCurrentIndex)
-            $('.currentIndex').text(index + 1);
-        });
-    }
-
-    $('.btn_index_move a').on('click', function(){
-        srchTextCurrentIndex();
     });
 
     // input:text[numberOnly] 숫자만 입력가능
@@ -645,8 +587,8 @@ $(document).ready(function(){
         scrollCollapse: true,
         columnDefs: [ // 컬럼별 width, 옵션 사용 지정
             {targets: [0], width: "50px", orderable: false},   // 순번
-            {targets: [1], width: "100px", orderable: false},  // 구분
-            {targets: [2], width: "100px", orderable: false},  // 시작시간
+            {targets: [1], width: "60px", orderable: false},  // 구분
+            {targets: [2], width: "70px", orderable: false},  // 시작시간
             {targets: [3], width: "", orderable: false},       // STT 결과
         ],
         buttons: [{

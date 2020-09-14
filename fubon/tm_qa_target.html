@@ -369,23 +369,27 @@
 
             <!-- .dataTableBox -->
             <div class="dataTableBox">
+                <!-- [D] 체크박스 선택 시 대상, 취소 버튼에 addclass('on')되며 활성화 -->
+                <!-- [D] 대상(.btn_target)버튼 클릭 시 선택목록들 대상 지정 -->
+                <!-- [D] 취소(.btn_cancel)버튼 클릭 시 취소확인팝업(#lyr_qaTarget_cancel) 등장 -->
+                <!-- [D] 대상설정(.btn_target_set)버튼 클릭 시 대상설정 윈도우 팝업 등장 -->
                 <div class="btnBox">
                     <a href="#none" class="btn_target">대상</a>
-                    <a href="#lyr_qaTarget_cancel" class="btn_cancel btn_lyr_open">취소</a>
+                    <a href="#lyr_qaTarget_cancel" class="btn_cancel btn_lyr_open on">취소</a>
                     <a href="#none" class="btn_target_set">대상설정</a>
                 </div>
                 <!-- [D] datatables 라이브러리 영역 -->
                 <!-- [D] 'Excel 다운로드' 버튼 클릭 시 파일 다운로드됨 -->
-                <!-- [D] 처음 페이지 들어왔을때 목록 순서는 '상담일시'기준으로 오름차순 정렬됨 -->
-                <!-- [D] 실제 테이블데이터로 해피콜, 완전판매여부가 포함되어있지만 브라우저 상에서는 hidden 처리 되어있으며 엑셀 다운로드 하면 함께 노출됨 -->
+                <!-- [D] 처음 페이지 들어왔을때 목록 순서는 '센터'기준으로 오름차순 정렬됨 -->
+                <!-- [D] 페이지 정보(.dataTables_info) [총 19건 0건]에서의 0건 부분은 계약자명 기준으로 중복제거된 건수로 넣어주어야 함 -->
                 <table class="dataTable">
                     <thead>
                         <tr>
                             <th>
-                                <div class="chkBox">
+                                <!-- <div class="chkBox">
                                     <input type="checkbox" id="allChk">
                                     <label for="allChk"></label>
-                                </div>
+                                </div> -->
                             </th>
                             <th>NO</th>
                             <th>청약일자</th>
@@ -406,17 +410,10 @@
                         </tr>
                     </thead>
 
-                    <!-- [D] 조회된 목록(tbody tr) 더블클릭 시 CS STT 전수 팝업 윈도우 팝업으로 등장 -->
-                    <!-- [D] 4번째 상담고객 이름 두번째문자 마스킹 해야함 -->
-                    <!-- [D] 13번째 상담키워드는 최대 16글자로 모두 노출되어야함 -->
+                    <!-- [D] 조회된 목록(tbody tr) 더블클릭 시 심사 상세페이지로 이동 -->
                     <tbody>
                         <tr>
-                            <td>
-                                <div class="chkBox">
-                                    <input type="checkbox" id="chk1">
-                                    <label for="chk1"></label>
-                                </div>
-                            </td>
+                            <td></td>
                             <td>1</td>
                             <td>2020-08-01 0:00</td>
                             <td>ZERO 암보험갱신형</td>
@@ -435,12 +432,7 @@
                             <td></td>
                         </tr>
                         <tr>
-                            <td>
-                                <div class="chkBox">
-                                    <input type="checkbox" id="chk2">
-                                    <label for="chk2"></label>
-                                </div>
-                            </td>
+                            <td></td>
                             <td>2</td>
                             <td>2020-08-01 0:00</td>
                             <td>ZERO 암보험갱신형</td>
@@ -459,12 +451,7 @@
                             <td>Y</td>
                         </tr>
                         <tr>
-                            <td>
-                                <div class="chkBox">
-                                    <input type="checkbox" id="chk3">
-                                    <label for="chk3"></label>
-                                </div>
-                            </td>
+                            <td></td>
                             <td>3</td>
                             <td>2020-08-01 0:00</td>
                             <td>ZERO 암보험갱신형</td>
@@ -483,12 +470,7 @@
                             <td></td>
                         </tr>
                         <tr>
-                            <td>
-                                <div class="chkBox">
-                                    <input type="checkbox" id="chk4">
-                                    <label for="chk4"></label>
-                                </div>
-                            </td>
+                            <td></td>
                             <td>4</td>
                             <td>2020-08-01 0:00</td>
                             <td>ZERO 암보험갱신형</td>
@@ -507,12 +489,7 @@
                             <td>Y</td>
                         </tr>
                         <tr>
-                            <td>
-                                <div class="chkBox">
-                                    <input type="checkbox" id="chk5">
-                                    <label for="chk5"></label>
-                                </div>
-                            </td>
+                            <td></td>
                             <td>5</td>
                             <td>2020-08-01 0:00</td>
                             <td>ZERO 암보험갱신형</td>
@@ -531,12 +508,7 @@
                             <td></td>
                         </tr>
                         <tr>
-                            <td>
-                                <div class="chkBox">
-                                    <input type="checkbox" id="chk6">
-                                    <label for="chk6"></label>
-                                </div>
-                            </td>
+                            <td></td>
                             <td>6</td>
                             <td>2020-08-01 0:00</td>
                             <td>ZERO 암보험갱신형</td>
@@ -555,12 +527,7 @@
                             <td></td>
                         </tr>
                         <tr>
-                            <td>
-                                <div class="chkBox">
-                                    <input type="checkbox" id="chk7">
-                                    <label for="chk7"></label>
-                                </div>
-                            </td>
+                            <td></td>
                             <td>7</td>
                             <td>2020-08-01 0:00</td>
                             <td>ZERO 암보험갱신형</td>
@@ -579,12 +546,7 @@
                             <td>Y</td>
                         </tr>
                         <tr>
-                            <td>
-                                <div class="chkBox">
-                                    <input type="checkbox" id="chk8">
-                                    <label for="chk8"></label>
-                                </div>
-                            </td>
+                            <td></td>
                             <td>8</td>
                             <td>2020-08-01 0:00</td>
                             <td>ZERO 암보험갱신형</td>
@@ -603,12 +565,7 @@
                             <td></td>
                         </tr>
                         <tr>
-                            <td>
-                                <div class="chkBox">
-                                    <input type="checkbox" id="chk9">
-                                    <label for="chk9"></label>
-                                </div>
-                            </td>
+                            <td></td>
                             <td>9</td>
                             <td>2020-08-01 0:00</td>
                             <td>ZERO 암보험갱신형</td>
@@ -627,12 +584,7 @@
                             <td>Y</td>
                         </tr>
                         <tr>
-                            <td>
-                                <div class="chkBox">
-                                    <input type="checkbox" id="chk10">
-                                    <label for="chk10"></label>
-                                </div>
-                            </td>
+                            <td></td>
                             <td>10</td>
                             <td>2020-08-01 0:00</td>
                             <td>ZERO 암보험갱신형</td>
@@ -651,12 +603,7 @@
                             <td></td>
                         </tr>
                         <tr>
-                            <td>
-                                <div class="chkBox">
-                                    <input type="checkbox" id="chk11">
-                                    <label for="chk11"></label>
-                                </div>
-                            </td>
+                            <td></td>
                             <td>11</td>
                             <td>2020-08-01 0:00</td>
                             <td>ZERO 암보험갱신형</td>
@@ -675,12 +622,140 @@
                             <td></td>
                         </tr>
                         <tr>
-                            <td>
-                                <div class="chkBox">
-                                    <input type="checkbox" id="chk12">
-                                    <label for="chk12"></label>
-                                </div>
-                            </td>
+                            <td></td>
+                            <td>12</td>
+                            <td>2020-08-01 0:00</td>
+                            <td>ZERO 암보험갱신형</td>
+                            <td>201905002108</td>
+                            <td>김민정</td>　
+                            <td>김민정</td>　
+                            <td>4 센터</td>
+                            <td>천일우</td>　
+                            <td>99308289</td>
+                            <td>2</td>
+                            <td>Y</td>
+                            <td>TMR</td>
+                            <td>2020-08-01</td>
+                            <td>신계약</td>
+                            <td>Y</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>12</td>
+                            <td>2020-08-01 0:00</td>
+                            <td>ZERO 암보험갱신형</td>
+                            <td>201905002108</td>
+                            <td>김민정</td>　
+                            <td>김민정</td>　
+                            <td>4 센터</td>
+                            <td>천일우</td>　
+                            <td>99308289</td>
+                            <td>2</td>
+                            <td>Y</td>
+                            <td>TMR</td>
+                            <td>2020-08-01</td>
+                            <td>신계약</td>
+                            <td>Y</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>12</td>
+                            <td>2020-08-01 0:00</td>
+                            <td>ZERO 암보험갱신형</td>
+                            <td>201905002108</td>
+                            <td>김민정</td>　
+                            <td>김민정</td>　
+                            <td>4 센터</td>
+                            <td>천일우</td>　
+                            <td>99308289</td>
+                            <td>2</td>
+                            <td>Y</td>
+                            <td>TMR</td>
+                            <td>2020-08-01</td>
+                            <td>신계약</td>
+                            <td>Y</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>12</td>
+                            <td>2020-08-01 0:00</td>
+                            <td>ZERO 암보험갱신형</td>
+                            <td>201905002108</td>
+                            <td>김민정</td>　
+                            <td>김민정</td>　
+                            <td>4 센터</td>
+                            <td>천일우</td>　
+                            <td>99308289</td>
+                            <td>2</td>
+                            <td>Y</td>
+                            <td>TMR</td>
+                            <td>2020-08-01</td>
+                            <td>신계약</td>
+                            <td>Y</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>12</td>
+                            <td>2020-08-01 0:00</td>
+                            <td>ZERO 암보험갱신형</td>
+                            <td>201905002108</td>
+                            <td>김민정</td>　
+                            <td>김민정</td>　
+                            <td>4 센터</td>
+                            <td>천일우</td>　
+                            <td>99308289</td>
+                            <td>2</td>
+                            <td>Y</td>
+                            <td>TMR</td>
+                            <td>2020-08-01</td>
+                            <td>신계약</td>
+                            <td>Y</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>12</td>
+                            <td>2020-08-01 0:00</td>
+                            <td>ZERO 암보험갱신형</td>
+                            <td>201905002108</td>
+                            <td>김민정</td>　
+                            <td>김민정</td>　
+                            <td>4 센터</td>
+                            <td>천일우</td>　
+                            <td>99308289</td>
+                            <td>2</td>
+                            <td>Y</td>
+                            <td>TMR</td>
+                            <td>2020-08-01</td>
+                            <td>신계약</td>
+                            <td>Y</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>12</td>
+                            <td>2020-08-01 0:00</td>
+                            <td>ZERO 암보험갱신형</td>
+                            <td>201905002108</td>
+                            <td>김민정</td>　
+                            <td>김민정</td>　
+                            <td>4 센터</td>
+                            <td>천일우</td>　
+                            <td>99308289</td>
+                            <td>2</td>
+                            <td>Y</td>
+                            <td>TMR</td>
+                            <td>2020-08-01</td>
+                            <td>신계약</td>
+                            <td>Y</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
                             <td>12</td>
                             <td>2020-08-01 0:00</td>
                             <td>ZERO 암보험갱신형</td>
@@ -904,27 +979,20 @@ $(document).ready(function(){
         dom: 'iptlB', // 옵션 위치 지정
         language: { // 테이블 목록 건수 text 한글 설정
             emptyTable: "조회된 데이터가 없습니다.", // 데이터 없을 경우 노출되는 text 설정
-            infoEmpty: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>_END_</strong> 건 &sol; _TOTAL_ 건&rbrack;",
-            info: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>_END_</strong> 건 &sol; _TOTAL_ 건&rbrack;",
-            lengthMenu: "_MENU_ 건씩 보기",
-            paginate: {
-                first: "",
-                previous: "",
-                next: "",
-                last: ""
-            },
+            infoEmpty: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>0</strong> 건&rbrack;",
+            info: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>0</strong> 건&rbrack;",
         },
+        // info: false,
         responsive: true, // 반응형 허용
         filter: false, // 검색창 미허용
         order: [[ 7, 'asc' ]], // 초기 sort 설정
-        paging: true, // 페이징 허용
-        pagingType: "full_numbers", // 페이징 버튼 구성 (처음, 이전, 페이지숫자, 다음, 마지막)
-        lengthMenu: [25, 50, 100], // 페이지 당 보여질 목록 갯수 select 범위 지정
+        paging: false, // 페이징 허용
+        lengthMenu: false, // 페이지 당 보여질 목록 갯수 select 범위 지정
         scrollY: true, // 세로 스크롤 허용, 사이즈
         scrollX: true, //가로 스크롤 허용
         scrollCollapse: true,
         columnDefs: [ // 컬럼별 width, 옵션 사용 지정
-            {targets: [0], width: "50px", sortable: false, orderable: false},  // 체크박스
+            {targets: [0], width: "50px", sortable: false, orderable: false, className: 'select-checkbox'},  // 체크박스
             {targets: [1], width: "50px", orderable: false},                   // NO
             {targets: [2], width: "150px"},                                    // 청약일자
             {targets: [3], width: "150px", orderable: false},                  // 상품명
@@ -942,31 +1010,26 @@ $(document).ready(function(){
             {targets: [15], width: "100px", orderable: false},                 // 번들유무
             {targets: [16], width: "120px", orderable: false},                 // 상품발송안내
         ],
-        fixedColumns: { // 왼쪽 2열 고정
-            leftColumns: 2,
-        },
         dom: 'Blfrtip', // 엑셀 다운로드 버튼 추가
         buttons: [{
             extend: 'excelHtml5',
             text: 'Excel 다운로드',
         }],
         select: {
-            style: 'multi'
+            style: 'multi',
         },
     });
 
     new $.fn.dataTable.FixedColumns(table, {
-        fixedColumns: { // 왼쪽 2열 고정
-            leftColumns: 2,
-        },
+        leftColumns: 2,
     });
 
     // 다른 열에서 sort되어도 1열 순번은 그대로 유지
-    // table.on('order.dt search.dt', function(){
-    //     table.column(1, {search:'applied', order:'applied'}).nodes().each(function (cell, i){
-    //         cell.innerHTML = i+1;
-    //     });
-    // }).draw();
+    table.on('order.dt search.dt', function(){
+        table.column(1, {search:'applied', order:'applied'}).nodes().each(function (cell, i){
+            cell.innerHTML = i+1;
+        });
+    }).draw();
 
     // datatable height 브라우저 height 기준 maxheight 조정
     function tableResize() {
