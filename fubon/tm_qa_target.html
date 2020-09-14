@@ -386,10 +386,10 @@
                     <thead>
                         <tr>
                             <th>
-                                <!-- <div class="chkBox">
+                                <div class="chkBox">
                                     <input type="checkbox" id="allChk">
                                     <label for="allChk"></label>
-                                </div> -->
+                                </div>
                             </th>
                             <th>NO</th>
                             <th>청약일자</th>
@@ -991,8 +991,13 @@ $(document).ready(function(){
         scrollY: true, // 세로 스크롤 허용, 사이즈
         scrollX: true, //가로 스크롤 허용
         scrollCollapse: true,
+        select: true,
+        render: function (data, type, full, meta){
+            return '<input type="checkbox" name="id[]" value="'
+            + $('<div/>').text(data).html() + '">';
+        },
         columnDefs: [ // 컬럼별 width, 옵션 사용 지정
-            {targets: [0], width: "50px", sortable: false, orderable: false, className: 'select-checkbox'},  // 체크박스
+            {targets: [0], width: "50px", orderable: false, sortable: false, className: 'select-checkbox'},  // 체크박스
             {targets: [1], width: "50px", orderable: false},                   // NO
             {targets: [2], width: "150px"},                                    // 청약일자
             {targets: [3], width: "150px", orderable: false},                  // 상품명
@@ -1020,6 +1025,7 @@ $(document).ready(function(){
         },
     });
 
+    // 왼쪽 2열 고정
     new $.fn.dataTable.FixedColumns(table, {
         leftColumns: 2,
     });
@@ -1052,6 +1058,40 @@ $(document).ready(function(){
     $(window).resize(function() {
         tableResize();
     });
+
+    // thead 체크박스 클릭 시 checked 속성 주기 / thead의 체크박스 선택 시 전체선택
+    // $('th.select-checkbox .chkBox').on('click', function(){
+    //     $('#allChk').prop('checked', function(){
+    //         return !$(this).prop('checked');
+    //     });
+    //
+    //     if($('#allChk').prop('checked')){
+    //         $('.DTFC_LeftBodyLiner tbody tr').addClass('selected');
+    //     }else{
+    //         $('.DTFC_LeftBodyLiner tbody tr').removeClass('selected');
+    //     }
+    // });
+
+    //Table all checkBox
+	$('th.select-checkbox .chkBox').on('click',function(){
+        var iptTblAllCheck = $(this).prop('checked');
+        if ( iptTblAllCheck ) {
+            $(this).find('input').prop('checked', true);
+            $(this).parents('table').find('tbody tr').addClass('selected');
+        } else {
+            $(this).find('input').prop('checked', false);
+            $(this).parents('table').find('tbody tr').removeClass('selected');
+        }
+	});
+
+    //checkBox checking
+	// $('.ipt_check').on('click',function(){
+    //     var iptChecking = $(this).is(":checked");
+    //     if ( iptChecking ) {
+    //         $(this).parents('.checking').find('.checkBox input:checkbox').prop('checked', false);
+    //         $(this).prop('checked', true);
+    //     }
+	// });
 });
 </script>
 </body>

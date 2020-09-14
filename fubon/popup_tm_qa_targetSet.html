@@ -23,31 +23,31 @@
         <!-- #contents -->
         <div class="popup_wrap">
             <h1>QA 대상 지정</h1>
-            
+
             <!-- .target_setArea -->
             <div class="target_setArea">
                 <h2>
-                    QA 대상 지정 
+                    QA 대상 지정
                     <span>총 <em class="qa_total_case"></em>건</span>
                 </h2>
-                
+
                 <div class="fl">
                     <dl class="set_condition">
                         <dt>
                             <div class="iptBox">
                                 <label for="">TMR 지정</label>
                                 <input type="text" numberOnly>
-                                <em>건</em>                            
+                                <em>건</em>
                             </div>
                         </dt>
-                        
+
                         <dd>
                             <div class="sltArea fl">
                                 <div class="slt_before treeBox">
-                                    
+
                                 </div>
                             </div>
-                            
+
                             <div class="btnBox">
                                 <a href="#none" class="btn_move_right">
                                     <span>선택완료이동</span>
@@ -56,47 +56,47 @@
                                     <span>선택가능이동</span>
                                 </a>
                             </div>
-                            
+
                             <div class="sltArea fr">
                                 <div class="slt_after treeBox">
-                                    
+
                                 </div>
                             </div>
                         </dd>
                     </dl>
-                    
+
                     <dl class="set_condition">
                         <dt>
                             <div class="iptBox">
                                 <label for="">TA 점수</label>
                                 <input type="text" numberOnly>
-                                <em>건</em>                            
+                                <em>건</em>
                             </div>
                         </dt>
-                        
+
                         <dd>
-                            
+
                         </dd>
                     </dl>
                 </div>
-                
+
                 <div class="fr">
                     <dl class="set_condition">
                         <dt>
                             <div class="iptBox">
                                 <label for="">TA 부분&sol;미탐지 구간</label>
                                 <input type="text" numberOnly>
-                                <em>건</em>                            
+                                <em>건</em>
                             </div>
                         </dt>
-                        
+
                         <dd>
                             <div class="sltArea fl">
                                 <div class="slt_before treeBox">
-                                    
+
                                 </div>
                             </div>
-                            
+
                             <div class="btnBox">
                                 <a href="#none" class="btn_move_right">
                                     <span>선택완료이동</span>
@@ -105,28 +105,28 @@
                                     <span>선택가능이동</span>
                                 </a>
                             </div>
-                            
+
                             <div class="sltArea fr">
                                 <div class="slt_after treeBox">
-                                    
+
                                 </div>
                             </div>
                         </dd>
                     </dl>
-                    
+
                     <dl class="set_condition">
                         <dt>
                             <div class="iptBox">
                                 <label for="">상품명</label>
                                 <input type="text" numberOnly>
-                                <em>건</em>                            
-                            </div>                            
+                                <em>건</em>
+                            </div>
                         </dt>
-                        
+
                         <dd>
                             <div class="sltArea">
                                 <div class="treeBox">
-                                    
+
                                 </div>
                             </div>
                         </dd>
@@ -182,7 +182,7 @@ $(document).ready(function(){
             $('.lyrBox').css({'display': 'none'});
         });
     });
-    
+
     // 공통 저장완료 레이어 팝업
     $('.btn_lyr_save').on('click',function(){
         var thisLayer = $(this).parents('.lyrBox').attr('id');
@@ -203,24 +203,24 @@ $(document).ready(function(){
             $('body').removeClass('lyr_bg_dim');
         }, 600);
     });
-    
+
     // input:text[numberOnly] 숫자만 입력가능
     $('input:text[numberOnly]').keypress(function(event) {
         if(event.which < 48 || event.which > 57){
             event.preventDefault();
         }
     });
-    
+
     // QA 대상 지정 총 건수 자동 합계
     // $('.btnBox .btn_lyr_save').on('click', function(){
     $(document).on('click', function(){
         var caseSum = 0;
         $('.target_setArea .set_condition dt .iptBox input').each(function(){
             caseSum += Number($(this).val());
-            console.log(caseSum); 
+            console.log(caseSum);
             $('.qa_total_case').text(caseSum);
         });
-    });    
+    });
 });
 </script>
 </body>
