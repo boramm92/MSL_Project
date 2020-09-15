@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 <!-- css -->
-<link rel="stylesheet" href="resources/css/jquery.treeSelector.css">
+<link rel="stylesheet" href="resources/css/jquery.tree-multiselect.min.css">
 <link rel="stylesheet" href="resources/css/common.css">
 <link rel="stylesheet" href="resources/css/popup.css">
 <link rel="stylesheet" href="resources/css/popup.css">
@@ -14,7 +14,7 @@
 <!-- js -->
 <script src="resources/js/jquery-3.3.1.min.js"></script>
 <script src="resources/js/jquery-migrate-3.3.0.min.js"></script>
-<script src="resources/js/jquery.treeSelector.js"></script>
+<script src="resources/js/jquery.tree-multiselect.js"></script>
 
 <title>TM QA 대상 지정 || 푸본현대생명</title>
 </head>
@@ -48,7 +48,26 @@
                         </dt>
 
                         <dd>
-                            <div id="treeSelector"></div>
+                            <!-- [D] data-section으로 카테고리 분류 -->
+                            <select id="treeSelector" multiple="multiple">
+                                <option value="1" data-section="전체선택-Upsell 2센터-1팀">홍길동</option>
+                                <option value="2" data-section="전체선택-Upsell 1센터-1팀">김미영</option>
+                                <option value="3" data-section="전체선택-Upsell 1센터-1팀">이정호</option>
+                                <option value="4" data-section="전체선택-Upsell 1센터-1팀">서지연</option>
+                                <option value="5" data-section="전체선택-Upsell 1센터-1팀">신정호</option>
+                                <option value="6" data-section="전체선택-Upsell 1센터-2팀">홍길동</option>
+                                <option value="7" data-section="전체선택-Upsell 1센터-2팀">김미영</option>
+                                <option value="8" data-section="전체선택-Upsell 1센터-2팀">이정호</option>
+                                <option value="9" data-section="전체선택-Upsell 2센터-1팀">신정호</option>
+                                <option value="10" data-section="전체선택-Upsell 2센터-1팀">홍길동</option>
+                                <option value="11" data-section="전체선택-Upsell 2센터-1팀">김미영</option>
+                                <option value="12" data-section="전체선택-Upsell 2센터-1팀">이정호</option>
+                                <option value="13" data-section="전체선택-Upsell 2센터-2팀">이정호</option>
+                                <option value="14" data-section="전체선택-Upsell 2센터-2팀">신정호</option>
+                                <option value="15" data-section="전체선택-Upsell 2센터-2팀">홍길동</option>
+                                <option value="16" data-section="전체선택-Upsell 2센터-2팀">김미영</option>
+                                <option value="17" data-section="전체선택-Upsell 2센터-2팀">이정호</option>
+                            </select>
                         </dd>
                     </dl>
 
@@ -96,7 +115,7 @@
                             </div>
 
                             <div class="sltArea slt_after fr">
-                                
+
                             </div>
                         </dd>
                     </dl>
@@ -112,12 +131,12 @@
 
                         <dd>
                             <div class="sltArea">
-                                
+
                             </div>
                         </dd>
                     </dl>
                 </div>
-                
+
                 <div class="btnBox">
                     <a href="#lyr_qaTarget_save" class="btn_save btn_lyr_open">저장</a>
                 </div>
@@ -202,63 +221,13 @@ $(document).ready(function(){
         caseSum += Number($(this).val());
         $('.qa_total_case').text(caseSum);
     });
-    
-    // tree view 메뉴
-      var rootNode = [{
-        "id": "1",
-        "title": "Node 0",
-        value: 1,
-        "children": [
-          {
-            "id": "11",
-            "title": "Node 11",
-            value: 11,
-            "children": [
-              {
-                "id": "111",
-                "title": "Node 111",
-                value: 111,
-                "children": []
-              },
-              {
-                "id": "112",
-                "title": "Node 112",
-                value: 112,
-                "children": []
-              }
-            ]
-          },
-          {
-            "id": "12",
-            "title": "Node 12",
-            value: 12,
-            "children": [
-            {
-                "id": "121",
-                "title": "Node 121",
-                value: 121,
-                "children": []
-              }
-            ]
-          },
-          {
-            "id": "13",
-            "title": "Node 13",
-            value: 13,
-            "children": []
-          }
-        ]
-      }]
 
-    $('#treeSelector').treeSelector(rootNode, [11, 12], function (e, values) {
-        console.info('onChange', e, values);
-        }, { 
-        checkWithParent: true, 
-        titleWithParent: true,
-        notViewClickParentTitle: true
+    // tree multiselect
+    $('#treeSelector').treeMultiselect({
+        startCollapsed: 'true',
+        sectionDelimiter: '-',
     });
-      
-      $('.treeSelector-container > div').addClass('sltArea');
+    $('.tree-multiselect > div').addClass('sltArea');
 });
 </script>
 </body>
