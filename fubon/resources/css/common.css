@@ -7,9 +7,9 @@
 
 /* -------------------- header -------------------- */
 #header .title_box {width: 100%; height: 50px; padding: 0 20px; border-bottom: 1px solid rgba(233,241,243,0.2); box-sizing: border-box;}
-#header .title_box h1 {float: left; width: 140px; height: 100%; border-right: 1px solid rgba(233,241,243,0.2);}
-#header .title_box h1 img {display: inline-block; height: 30px; margin: 10px 0;}
-#header .title_box h2 {display: inline-block; padding: 12px 20px 0; color: #E9F1F3;}
+#header .title_box h1 {float: left; height: 100%;}
+#header .title_box h1 .logo {display: inline-block; height: 30px; margin: 10px 0;}
+#header .title_box h1 .title {display: inline-block; height: 100%; padding: 12px 20px 0; border-left: 1px solid rgba(233,241,243,0.2); box-sizing: border-box; color: #E9F1F3; font-size: 18px;}
 
 #header .title_box .etc_box {float: right; height: 100%; padding: 10px 0; box-sizing: border-box;}
 #header .title_box .etc_box > div {float: left;}
@@ -39,6 +39,41 @@
 #header .gnb .third > li:last-child {padding: 0 0 15px;}
 #header .gnb .third > li a {padding: 0 30px; line-height: 25px;}
 
+
+/* -------------------- 탭기능 style -------------------- */
+/* -- 추가 200915 AMR 탭메뉴 css/script -- */
+.tab_title {position: relative;}
+.tab_title.dropOn .tab_dropdown {display: block;}
+.tab_title.dropOn .tab_list_wrap {width: calc(100% - 110px);}
+.tab_title li.active {background: #fff;}
+.tab_title .btn_close {display: inline-block; position: relative; width: 20px; height: 20px; margin: 0 0 0 10px; line-height: 40px; vertical-align: middle;}
+.tab_title .btn_close:before {content: ''; position: absolute; top: 4px; left: 12px; width: 2px; height: 12px; border-radius: 1px; background: #3f3f3f; transform: rotate(45deg);}
+.tab_title .btn_close:after {content: ''; position: absolute; top: 4px; left: 12px; width: 2px; height: 12px; border-radius: 1px; background: #3f3f3f; transform: rotate(-45deg);}
+.tab_title .btn_close span {display: inline-block; overflow: hidden; text-indent: -999px;}
+
+.tab_list_wrap {overflow: hidden; position: relative; width: 100%; height: 40px;}
+.tab_list {position: absolute; top: 0; left: 0;}
+.tab_list li {display: inline-block; position: relative; min-width: 80px; height: 40px; margin: 0 10px 0 0; padding: 0 10px; border-radius: 4px 4px 0 0; background: rgb(200 200 200); font-size: 13px; vertical-align: bottom; text-align: center; cursor: pointer;}
+.tab_list li a:first-child {line-height: 40px; vertical-align: middle;}
+.tab_list li.active a:first-child {font-weight: 700;}
+
+.tab_dropdown {display: none;}
+.tab_dropdown .btnBox {position: absolute; top: 5px; right: 0;}
+.tab_dropdown .btnBox .btn_tab_allDlt {margin: 0 6px 6px; background: #009583; color: #fff; line-height: 28px;}
+.tab_dropdown .btn_open {position: relative; width: 25px; height: 30px; margin: 0 0 6px; padding: 0;}
+.tab_dropdown .btn_open span {display: inline-block; overflow: hidden; text-indent: -999px;}
+.tab_dropdown .btn_open em {position: absolute; top: 50%; left: 0; width: 25px; height: 3px; background: #3f3f3f; transform: translate(0, -50%);}
+.tab_dropdown .btn_open em:before {content: ''; position: absolute; top: -10px; left: 0; width: 25px; height: 3px; background: #3f3f3f;}
+.tab_dropdown .btn_open em:after {content: ''; position: absolute; left: 0; bottom: -10px; width: 25px; height: 3px; background: #3f3f3f;}
+.tab_dropdown .dropdown_list {display: none; overflow: auto; position: absolute; top: 100%; right: 0; height: auto; max-height: 500px; border-radius: 3px; box-shadow: 0 15px 35px rgba(50,50,90,0.2), 0 5px 15px rgba(0,0,0,0.07); background: #fff; z-index: 3;}
+.tab_dropdown .dropdown_list.active {display: block;}
+.tab_dropdown .dropdown_list li a {display: inline-block; width: 100%; height: 100%; padding: 0 15px; box-sizing: border-box; font-weight: 700; line-height: 35px;}
+.tab_dropdown .dropdown_list li a:hover {color: #009583;}
+.tab_dropdown .dropdown_list li.active {background: #009583;}
+.tab_dropdown .dropdown_list li.active a {color: #fff; font-weight: 700;}
+.tab_content {padding: 10px; border-radius: 0 3px 3px 3px; box-shadow: 0 1px 4px 0 rgba(44, 63, 81, 0.1); box-sizing: border-box; background: #fff;}
+.tab_content:empty {padding: 0;}
+
 /* -------------------- contents -------------------- */
 #container .tabArea {height: 40px; padding: 0 20px; background: #f9f4f4;}
 #container .tabArea li {display: inline-block; width: 200px; border-radius: 3px 3px 0 0; line-height: 40px;}
@@ -58,12 +93,12 @@
 /* background color */
 .bg_blue {background-color: #00829d;}
 .bg_green {background-color: #009583;}
-.bg_gray {background-color: #3f3f3f;}
+.bg_gray {background-}
 
 /* border color */
 .bd_blue {border-color: #00829d;}
 .bd_green {border-color: #009583;}
-.bd_gray {border-color: #3f3f3f;}
+.bd_gray {border-}
 /* //color */
 
 /* float */
@@ -127,16 +162,17 @@
 /* //scroll select */
 
 /* Table(View,Edit) */
-.tbl_line_view {width: 100%; table-layout: fixed;}
-.tbl_line_view tbody th {border: 1px solid #3f3f3f; background: #c8c8c8; padding: 5px; color: #3f3f3f; text-align: center;}
-.tbl_line_view tbody td {border: 1px solid #3f3f3f; background: #f3f8f9; padding: 0 5px; color: #3f3f3f; text-align: left;}
+.tbl_line_view {width: 100%; table-layout: fixed; border-top: 2px solid #799398; border-bottom: 2px solid #799398;}
+.tbl_line_view tbody th {border: 1px solid #c7d0d3; background: #f3f8f9; padding: 5px;  text-align: center;}
+.tbl_line_view tbody td {border: 1px solid #c7d0d3; background: #f3f8f9; padding: 0 5px;  text-align: left;}
 .tbl_line_view tbody td {background:#fff;}
 .tbl_line_view tbody tr th:first-child {border-left: none;}
 .tbl_line_view tbody tr td:last-child {border-right: none;}
 /* //Table(View,Edit) */
 
 /* srchArea */
-.srchArea {width: 100%; margin: 0 0 20px; padding: 10px; border-radius: 3px; box-shadow: 0 1px 4px 0 rgba(44, 63, 81, 0.1); box-sizing: border-box; background: #fff;}
+/* .srchArea {width: 100%; margin: 0 0 20px; padding: 10px; border-radius: 3px; box-shadow: 0 1px 4px 0 rgba(44, 63, 81, 0.1); box-sizing: border-box; background: pink;} */
+.srchArea {width: 100%; margin: 0 0 20px;}
 .srchArea tbody td {padding: 5px;}
 .srchArea tbody td .iptBox {width: 100%;}
 .srchArea tbody td input {border-color: #C7D0D3;}

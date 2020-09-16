@@ -49,8 +49,8 @@
 
                         <dd>
                             <!-- [D] data-section으로 카테고리 분류 -->
-                            <select id="treeSelector" multiple="multiple">
-                                <option value="1" data-section="전체선택-Upsell 2센터-1팀">홍길동</option>
+                            <select id="treeSelector1" multiple="multiple">
+                                <option value="1" data-section="전체선택-Upsell 1센터-1팀">홍길동</option>
                                 <option value="2" data-section="전체선택-Upsell 1센터-1팀">김미영</option>
                                 <option value="3" data-section="전체선택-Upsell 1센터-1팀">이정호</option>
                                 <option value="4" data-section="전체선택-Upsell 1센터-1팀">서지연</option>
@@ -101,22 +101,26 @@
                         </dt>
 
                         <dd>
-                            <div class="sltArea slt_before fl">
-                                <div id="ta"></div>
-                            </div>
-
-                            <div class="btnBox">
-                                <a href="#none" class="btn_move_right">
-                                    <span>선택완료이동</span>
-                                </a>
-                                <a href="#none" class="btn_move_left">
-                                    <span>선택가능이동</span>
-                                </a>
-                            </div>
-
-                            <div class="sltArea slt_after fr">
-
-                            </div>
+                            <!-- [D] data-section으로 카테고리 분류 -->
+                            <select id="treeSelector2" multiple="multiple">
+                                <option value="1" data-section="전체선택-Upsell 1센터-1팀">홍길동</option>
+                                <option value="2" data-section="전체선택-Upsell 1센터-1팀">김미영</option>
+                                <option value="3" data-section="전체선택-Upsell 1센터-1팀">이정호</option>
+                                <option value="4" data-section="전체선택-Upsell 1센터-1팀">서지연</option>
+                                <option value="5" data-section="전체선택-Upsell 1센터-1팀">신정호</option>
+                                <option value="6" data-section="전체선택-Upsell 1센터-2팀">홍길동</option>
+                                <option value="7" data-section="전체선택-Upsell 1센터-2팀">김미영</option>
+                                <option value="8" data-section="전체선택-Upsell 1센터-2팀">이정호</option>
+                                <option value="9" data-section="전체선택-Upsell 2센터-1팀">신정호</option>
+                                <option value="10" data-section="전체선택-Upsell 2센터-1팀">홍길동</option>
+                                <option value="11" data-section="전체선택-Upsell 2센터-1팀">김미영</option>
+                                <option value="12" data-section="전체선택-Upsell 2센터-1팀">이정호</option>
+                                <option value="13" data-section="전체선택-Upsell 2센터-2팀">이정호</option>
+                                <option value="14" data-section="전체선택-Upsell 2센터-2팀">신정호</option>
+                                <option value="15" data-section="전체선택-Upsell 2센터-2팀">홍길동</option>
+                                <option value="16" data-section="전체선택-Upsell 2센터-2팀">김미영</option>
+                                <option value="17" data-section="전체선택-Upsell 2센터-2팀">이정호</option>
+                            </select>
                         </dd>
                     </dl>
 
@@ -223,7 +227,11 @@ $(document).ready(function(){
     });
 
     // tree multiselect
-    $('#treeSelector').treeMultiselect({
+    $('#treeSelector1').treeMultiselect({
+        startCollapsed: 'true',
+        sectionDelimiter: '-',
+    });
+    $('#treeSelector2').treeMultiselect({
         startCollapsed: 'true',
         sectionDelimiter: '-',
     });
