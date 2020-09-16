@@ -187,15 +187,25 @@ div.tree-multiselect {height: 100%; border: none;}
 .target_setArea .set_condition dd div.tree-multiselect .sltArea {width: 280px;}
 div.tree-multiselect .selections {margin: 0 10px 0 0;}
 div.tree-multiselect div.title {position: relative; padding: 0 0 0 52px; box-sizing: border-box; background: none; color: inherit; line-height: 25px;}
-div.tree-multiselect div.item {line-height: 25px;}
+div.tree-multiselect div.title:before {content: ''; position: absolute; top: 13px; left: 19px; width: 10px; height: 1px; border-top: 1px dotted #000;}
+div.tree-multiselect div.item {line-height: 23px;}
 div.tree-multiselect div.title > span.collapse-section {position: absolute; top: 5px; left: 0;}
-div.tree-multiselect div.title > span.collapse-section:after {content: '\2212'; display: block; width: 17px; height: 17px; border: 1px solid rgba(11,42,74,0.3); border-radius: 3px; box-sizing: border-box; background: #fff; font-size: 14px; font-weight: 700; text-align: center; line-height: 15px; cursor: pointer;}
-div.tree-multiselect div.section.collapsed > div.title span.collapse-section:after {content: '\002B'; display: block; width: 17px; height: 17px; border: 1px solid rgba(11,42,74,0.3); border-radius: 3px; box-sizing: border-box; background: #fff; font-size: 14px; font-weight: 700; text-align: center; line-height: 12px; cursor: pointer;}
+div.tree-multiselect div.title > span.collapse-section:after {content: '\2212'; position: absolute; display: block; width: 17px; height: 17px; border: 1px solid rgba(11,42,74,0.3); border-radius: 3px; box-sizing: border-box; background: #fff; font-size: 14px; font-weight: 700; text-align: center; line-height: 15px; cursor: pointer; z-index: 10;}
+div.tree-multiselect div.title > span.collapse-section:before {content: ''; position: absolute; top: 10px; left: 8px; height: 25px; border: 1px dotted #000; border-top: none; border-right: none;}
+div.tree-multiselect div.title > span.collapse-section:before {}
+div.tree-multiselect div.section.collapsed > div.title span.collapse-section:after {content: '\002B'; position: absolute; display: block; width: 17px; height: 17px; border: 1px solid rgba(11,42,74,0.3); border-radius: 3px; box-sizing: border-box; background: #fff; font-size: 14px; font-weight: 700; text-align: center; line-height: 12px; cursor: pointer;}
 div.tree-multiselect div.section > div.section,
-div.tree-multiselect div.section > div.item {padding-left: 23px;}
+div.tree-multiselect div.section > div.item {position: relative; padding-left: 23px;}
 div.tree-multiselect div.section > div.item {padding: 0 0 0 36px;}
+div.tree-multiselect div.section > div.section:before {content: ''; position: absolute; top: -12px; left: 11px; height: 100%; border: 1px dotted #000; border-top: none; border-right: none;}
+div.tree-multiselect div.section .section:last-child > div.section:last-child:before {content: none;}
 div.tree-multiselect input[type=checkbox] {position: relative; margin: -1px; padding: 0; clip: rect(0,0,0,0); border: 0;}
 div.tree-multiselect input[type=checkbox]:before {content: ''; position: absolute; top: 3px; left: -25px; width: 17px; height: 17px; margin: -1px 0 0 0; line-height: 15px; text-align: center; border: 1px solid rgba(11,42,74,0.3); border-radius: 3px; box-sizing: border-box; background: #fff; cursor: pointer;}
 div.tree-multiselect input[type=checkbox]:checked:before {content: '\2713'; color: #fff; border-color: #009583; background: #009583;}
-div.tree-multiselect span.section-name {margin: 0 10px 0 0; font-style: normal;}
-div.tree-multiselect span.remove-selected {float: right; width: 20px; height: 20px; margin: 0; padding: 0; line-height: 18px; text-align: center;}
+div.tree-multiselect span.section-name {float: none; margin: 0 10px 0 0; font-style: normal;}
+div.tree-multiselect span.remove-selected {float: right; width: 20px; height: 20px; margin: 2px 0 0; padding: 0; line-height: 18px; text-align: center;}
+div.tree-multiselect>div.selected>div.item {background: none;}
+.sltArea .product_list li {line-height: 25px;}
+.sltArea .product_list .chkBox input[type="checkbox"] + label:before {top: 5px;}
+.sltArea .product_list .chkBox input[type="checkbox"] + label {font-size: inherit;}
+.sltArea .product_list .chkBox input[type="checkbox"]:checked + label {color: inherit;}
