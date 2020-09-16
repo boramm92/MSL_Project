@@ -1134,7 +1134,7 @@ exports.createSelected = function (astItem, disableRemoval, showSectionOnSelecte
     class: 'item',
     'data-key': astItem.id,
     'data-value': astItem.value,
-    text: astItem.text
+    // text: astItem.text
   });
 
   if (!disableRemoval && !astItem.disabled) {
@@ -1143,7 +1143,7 @@ exports.createSelected = function (astItem, disableRemoval, showSectionOnSelecte
   }
 
   if (showSectionOnSelected) {
-    var sectionSpan = exports.createNode('span', { class: 'section-name', text: astItem.section });
+    var sectionSpan = exports.createNode('span', { class: 'section-name', text: astItem.section});
     node.appendChild(sectionSpan);
   }
 
