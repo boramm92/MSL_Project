@@ -1134,7 +1134,7 @@ exports.createSelected = function (astItem, disableRemoval, showSectionOnSelecte
     class: 'item',
     'data-key': astItem.id,
     'data-value': astItem.value,
-    // text: astItem.text
+    text: astItem.text
   });
 
   if (!disableRemoval && !astItem.disabled) {
@@ -1143,16 +1143,14 @@ exports.createSelected = function (astItem, disableRemoval, showSectionOnSelecte
   }
 
   if (showSectionOnSelected) {
-    var sectionSpan = exports.createNode('span', { class: 'section-name', text: astItem.section});    
+    var sectionSpan = exports.createNode('span', { class: 'section-name', text: astItem.section});        
     node.appendChild(sectionSpan);
     
-    // 보람 수정
-    var sectionSpanText = sectionSpan.innerText;
-    // console.log(sectionSpanText)
+    // UXUI NBR 수정
+    var sectionSpanText = sectionSpan.innerText;    
     var changeText = sectionSpanText.replace("전체선택-", "");
-    console.log(changeText)
-
-    sectionSpan.innerText = changeText;
+    var labelText = astItem.text;
+    sectionSpan.innerText = changeText; 
   }
 
   return node;
