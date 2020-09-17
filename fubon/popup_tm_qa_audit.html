@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<!-- css -->
+<!-- datatables -->
+<link rel="stylesheet" href="resources/css/datatables.min.css">
+<link rel="stylesheet" href="resources/css/buttons.dataTables.min.css">
+
+<link rel="stylesheet" href="resources/css/common.css">
+<link rel="stylesheet" href="resources/css/popup.css">
+
+<!-- js -->
+<script src="resources/js/jquery-3.3.1.min.js"></script>
+<script src="resources/js/jquery-migrate-3.3.0.min.js"></script>
+<!-- player -->
+<script src="resources/js/player.js"></script>
+<!-- datatables -->
+<script src="resources/js/datatables.js"></script>
+<script src="resources/js/dataTables.fixedColumns.min.js"></script>
+<script src="resources/js/jszip.min.js"></script>
+
+<title>TM QA 심사 || 푸본현대생명</title>
+</head>
+<body>
+<!-- #wrap -->
+<div id="wrap">
+    <!-- #container -->
+    <div id="container">
+        <!-- #contents -->
+        <div class="popup_wrap">
+            <h1>TM_QA 심사</h1>
+
+                <!-- .customInfo -->
+                <div class="customInfo">
+                    <table class="tbl_line_view" summary="상품명, 증권번호, 청약일자, 계약자, 누적심사시간, 총녹취길이로 구성">
+                        <caption class="hide">심사요약정보</caption>
+                        <colgroup>
+                            <col width="70"><col><col width="70"><col><col width="100"><col width="100px"><col width="100"><col width="100"><col width="100px"><col width="100">
+                        </colgroup>
+    
+                        <tbody>
+                            <tr>
+                                <th>상품명</th>
+                                <td>
+                                    <span class="custom_info">ZERO 나를 위한 암보험</span>
+                                </td>
+                                
+                                <th>캠페인명</th>
+                                <td>
+                                    <span class="custom_info">캠페인명캠페인명</span>
+                                </td>
+    
+                                <th>증권번호</th>
+                                <td>
+                                    <span class="custom_info">7777777</span>
+                                </td>
+    
+                                <th>청약일자</th>
+                                <td colspan="3">
+                                    <span class="custom_info">2020-08-03</span>
+                                </td>
+                            </tr>
+                            
+                            <tr>                                
+                                <th>계약자명</th>
+                                <td>
+                                    <span class="custom_info">홍길동</span>
+                                </td>
+                                
+                                <th>주민번호</th>
+                                <td>
+                                    <span class="custom_info">8001011234567</span>
+                                </td>
+                                
+                                <th>피보험자명</th>
+                                <td>
+                                    <span class="custom_info">이정호</span>
+                                </td>
+                                
+                                <th>보험료</th>
+                                <td colspan="3">
+                                    <span class="custom_info">100,940</span>
+                                </td>                                
+                            </tr>
+                            
+                            <tr>
+                                <th>센터</th>
+                                <td>
+                                    <span class="custom_info">1센터</span>
+                                </td>
+                                
+                                <th>실</th>
+                                <td>
+                                    <span class="custom_info">2팀</span>
+                                </td>
+                                
+                                <th>TMR</th>
+                                <td>
+                                    <span class="custom_info">TMR</span>
+                                </td>
+                                    
+                                <th>누적심사시간</th>
+                                <td>
+                                    <span class="custom_info">00:42:11</span>
+                                </td>
+                                
+                                <th>총녹취길이</th>
+                                <td>
+                                    <span class="custom_info">04:36:13</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+    
+                    <div class="btnBox">
+                        <div class="btn_qa_group">
+                            <!-- [D] 해당 건의 질의요청이 있을 경우 질의버튼(.btn_question)에 addclass('on')해주면 보여짐 -->
+                            <!-- [D] 클릭 시 질의응답()팝업 등장 -->
+                            <a href="#lyr_qa_edit" class="btn_lyr_open btn_question on">질의</a>
+                            <!-- [D] 질의응답() 팝업에서 응답결과 저장한 경우 질의 버튼이 응답 버튼으로 변경되어 보여짐 -->
+                            <a href="#none" class="btn_answer">응답</a>
+                        </div>                    
+                        <!-- [D] 심플 화면 링크 연동되어야 함 -->
+                        <a href="#none">기계약 조회</a>
+                        <!-- [D] 하이라이트 화면 링크 연동되어야 함 -->
+                        <a href="#none">청약내용</a>
+                    </div>
+                </div>
+                <!-- //.customInfo -->
+                
+                <!-- .dataTableBox -->
+                <div class="dataTableBox">
+                    <!--player-->
+                    <div class="player">
+                       <audio preload="auto" controls>
+                           <source src="resources/audio/aekukka.mp3">
+                       </audio>
+    
+                        <!-- [D] 배속 기능 추가필요함 -->
+                       <div class="sltBox pyr_speed">
+                           <select class="select">
+                               <option value="">1.1X</option>
+                               <option value="">1.2X</option>
+                               <option value="">1.5X</option>
+                               <option value="">2X</option>
+                               <option value="">3X</option>
+                           </select>
+                       </div>
+                    </div>
+                    <!-- //.player -->
+                    
+                    <!-- .etc_scriptArea -->
+                    <!-- [D] 체크 불가능한 상태(비활성화)로 해당 심사건의 조건에 자동 체크되어있는 상태 -->
+                    <div class="etc_scriptArea">
+                        <div class="chkBox">
+                            <input type="checkbox" id="script_cdt1" disabled checked>
+                            <label for="script_cdt1">CA 캠페인</label>
+                            
+                            <input type="checkbox" id="script_cdt2" disabled>
+                            <label for="script_cdt2">조건2</label>
+                            
+                            <input type="checkbox" id="script_cdt3" disabled>
+                            <label for="script_cdt3">조건3</label>
+                            
+                            <input type="checkbox" id="script_cdt4" disabled>
+                            <label for="script_cdt4">조건4</label>
+                        </div>
+                    </div>
+                    <!-- //.etc_scriptArea -->
+                    
+                    <!-- [D] datatables 라이브러리 영역 -->
+                    <table class="dataTable tbl_counsel_list">
+                        <thead>
+                            <tr>
+                                <th>NO</th>
+                                <th>상담일시</th>
+                                <th>통화시간</th>
+                                <th>상담대분류</th>
+                                <th>상담소분류</th>
+                                <th>상담내용</th>
+                                <th>청약</th>
+                                <th>STT 상태</th>
+                                <th>센터</th>
+                                <th>실</th>
+                                <th>상담원</th>
+                            </tr>
+                        </thead>
+    
+                        <!-- [D] 목록 더블클릭 시 해당 콜상담 전체 플레이되어야 함 -->
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>2017-12-13 16:28:58</td>
+                                <td>0:24:23</td>
+                                <td>하이라이트 기반</td>
+                                <td>하이라이트 기반</td>
+                                <td>하이라이트 기반</td>
+                                <td>Y</td>
+                                <td>정상</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김영희</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>2017-12-13 16:28:58</td>
+                                <td>0:24:23</td>
+                                <td>하이라이트 기반</td>
+                                <td>하이라이트 기반</td>
+                                <td>하이라이트 기반</td>
+                                <td>Y</td>
+                                <td>정상</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김영희</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>2017-12-13 16:28:58</td>
+                                <td>0:24:23</td>
+                                <td>하이라이트 기반</td>
+                                <td>하이라이트 기반</td>
+                                <td>하이라이트 기반</td>
+                                <td>Y</td>
+                                <td>정상</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김영희</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>2017-12-13 16:28:58</td>
+                                <td>0:24:23</td>
+                                <td>하이라이트 기반</td>
+                                <td>하이라이트 기반</td>
+                                <td>하이라이트 기반</td>
+                                <td>Y</td>
+                                <td>정상</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김영희</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>2017-12-13 16:28:58</td>
+                                <td>0:24:23</td>
+                                <td>하이라이트 기반</td>
+                                <td>하이라이트 기반</td>
+                                <td>하이라이트 기반</td>
+                                <td>Y</td>
+                                <td>정상</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김영희</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <!-- .qa_detail -->
+                    <div class="qa_detail">
+                        <div class="fl">
+                            <div class="detail_box">
+                                
+                            </div>
+                            
+                            <div class="detail_box">
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="fr">
+                            <div class="detail_box">
+                                <div class="tbl_hd">
+                                    <table summary="회차, 심사일시, 심사자, 점수, 심사시간, QA결과로 구성">
+                                        <thead>
+                                            <tr>
+                                                <th>회차</th>
+                                                <th>심사일시</th>
+                                                <th>심사자</th>
+                                                <th>점수</th>
+                                                <th>심사시간</th>
+                                                <th>QA결과</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <div class="tbl_bd">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td>1회</td>
+                                                <td>2017-12-14 11:34</td>
+                                                <td>TA</td>
+                                                <td>4</td>
+                                                <td>0</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>1회</td>
+                                                <td>2017-12-15 09:14</td>
+                                                <td>이영화</td>
+                                                <td>9</td>
+                                                <td>0:36:21</td>
+                                                <td>보완</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2회</td>
+                                                <td>2017-12-29 15:10</td>
+                                                <td>이영화</td>
+                                                <td></td>
+                                                <td>0:04:12</td>
+                                                <td>완판</td>
+                                            </tr>
+                                            <tr>
+                                                <td>3회</td>
+                                                <td>2017-12-14 11:34</td>
+                                                <td>이영화</td>
+                                                <td>4</td>
+                                                <td>0</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>1회</td>
+                                                <td>2017-12-14 11:34</td>
+                                                <td>TA</td>
+                                                <td>4</td>
+                                                <td>0</td>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div class="detail_box">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <!-- //.qa_detail -->
+                </div>
+                <!-- //.dataTableBox -->                
+        </div>
+        <!-- //#contents -->
+    </div>
+    <!-- //#container -->
+</div>
+<!-- //#wrap -->
+
+<!-- layer popup -->
+<!-- 질의/응답 팝업 -->
+<div id="lyr_qa_edit" class="lyrBox">
+    <div class="lyr_hd">
+        <span class="title">질의응답</span>
+        <a href="#none" class="btn_lyr_close">닫기</a>
+     </div>
+    <div class="lyr_ct">
+
+    </div>
+    <div class="lyr_ft">
+        <div class="btnBox">
+            <a href="#none" class="btn_lyr_save">저장</a>
+            <a href="#none" class="btn_lyr_close">취소</a>
+        </div>
+    </div>
+</div>
+<!-- //질의/응답 팝업 팝업 -->
+
+<!-- script -->
+<script type="text/javascript">
+$(document).ready(function(){
+    // 공통 레이어 팝업
+	$('.btn_lyr_open').on('click',function(){
+        var popHref = $(this).attr('href');
+
+        // popup open
+        $('body').addClass('lyr_bg_dim');
+        $(popHref).css({'display': 'block'});
+
+        // popup close
+        $('.btn_lyr_close, .lyr_bg_dimmed').on('click',function(){
+            $('body').removeClass('lyr_bg_dim');
+            $('.lyrBox').css({'display': 'none'});
+        });
+    });
+
+    // 공통 클립보드 레이어 팝업
+    $('.btn_clipboard').on('click',function(){
+        $('body').append(' \
+            <div id="lyr_clipboard" class="lyrBox lyr_notify">\
+                <div class="lyr_ct"> \
+                    <p class="massage">복사되었습니다.</p> \
+                </div> \
+            </div> \
+        ');
+        $('#lyr_clipboard').show();
+
+        setTimeout(function(){
+            $('.lyr_notify').addClass('lyr_hide').delay(300).queue(function(){$(this).remove();});
+        }, 400);
+    });
+
+    // 공통 저장완료 레이어 팝업
+    $('.btn_lyr_save').on('click',function(){
+        var thisLayer = $(this).parents('.lyrBox').attr('id');
+        var thisLayerHref = $('#' + thisLayer);
+        $(thisLayerHref).css({'display': 'none'});
+
+        $('body').append(' \
+            <div class="lyrBox lyr_notify">\
+                <div class="lyr_ct"> \
+                    <p class="massage">저장 되었습니다.</p> \
+                </div> \
+            </div> \
+        ');
+        $('.lyr_notify').show();
+
+        setTimeout(function(){
+            $('.lyr_notify').addClass('lyr_hide').delay(300).queue(function(){$(this).remove();});
+            $('body').removeClass('lyr_bg_dim');
+        }, 600);
+    });
+
+    //오디오 플레이어
+    $('audio').audioPlayer();
+    $('.btn_player_play').on('click',function(){
+        $(this).toggleClass('pause');
+    });
+
+    // datatable 렌더링
+    var table = $('.dataTable').DataTable({
+        dom: '<"top">t<"bottom"B>', // 옵션 위치 지정
+        responsive: true, // 반응형 허용
+        order: [[ 1, 'asc' ]], // 초기 sort 설정
+        info: false, // 페이지 정보 미허용
+        paging: false, // 페이징 미허용
+        scrollY: '100px', // 세로 스크롤 허용, 사이즈
+        scrollX: true, //가로 스크롤 허용
+        scrollCollapse: true,
+        ordering: false,
+        columnDefs: [ // 컬럼별 width, 옵션 사용 지정
+            {targets: [0], width: "50px", sortable: false},   // NO
+            {targets: [1], width: "150px"},  // 상담일시
+            {targets: [2], width: "100px"},  // 통화시간
+            {targets: [3], width: "150px"},  // 상담대분류
+            {targets: [4], width: "150px"},  // 상담소분류
+            {targets: [5], width: "400px"},  // 상담내용
+            {targets: [6], width: "50px"},   // 청약
+            {targets: [7], width: "80px"},   // STT 상태
+            {targets: [8], width: "100px"},  // 센터
+            {targets: [9], width: "50px"},   // 실
+            {targets: [10], width: "80px"}  // 상담원
+        ],
+        fixedColumns: { // 왼쪽 1열 고정
+            leftColumns: 1,
+        }
+    });
+});
+</script>
+</body>
+</html>
