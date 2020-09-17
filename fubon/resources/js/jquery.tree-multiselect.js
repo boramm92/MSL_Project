@@ -1143,8 +1143,16 @@ exports.createSelected = function (astItem, disableRemoval, showSectionOnSelecte
   }
 
   if (showSectionOnSelected) {
-    var sectionSpan = exports.createNode('span', { class: 'section-name', text: astItem.section});
+    var sectionSpan = exports.createNode('span', { class: 'section-name', text: astItem.section});    
     node.appendChild(sectionSpan);
+    
+    // 보람 수정
+    var sectionSpanText = sectionSpan.innerText;
+    // console.log(sectionSpanText)
+    var changeText = sectionSpanText.replace("전체선택-", "");
+    console.log(changeText)
+
+    sectionSpan.innerText = changeText;
   }
 
   return node;

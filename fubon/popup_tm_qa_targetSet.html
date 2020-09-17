@@ -308,19 +308,18 @@ $(document).ready(function(){
         startCollapsed: 'false',
         sectionDelimiter: '-',
     });
-    $('.tree-multiselect > div').addClass('sltArea');
+    $('.tree-multiselect > div').addClass('sltArea');    
 
-    $('.div.tree-multiselect input[type=checkbox]:before').on('click', function(){
-        $('.selected .item').each(function(){
-            var itemText = $(this).text();
-            console.log(itemText)
+    // console.log($('div.tree-multiselect input[type=checkbox]'))
+    $('div.tree-multiselect input[type=checkbox]').on('click', function(){
+        console.log($('.section-name'))
+        $('.section-name').each(function(){
+            var stnName = $(this).text();
+            console.log(stnName)
+            stnName.replace("전체삭제", "");
         });
     });
-
-    $('.section-name').each(function(){
-        var stnName = $(this).text();
-        stnName.replace("전체삭제", "");
-    });
+    
 });
 </script>
 </body>
