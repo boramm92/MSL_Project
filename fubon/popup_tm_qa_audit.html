@@ -73,7 +73,9 @@
                                 
                                 <th>주민번호</th>
                                 <td>
-                                    <span class="custom_info">8001011234567</span>
+                                    <span class="custom_info rgst_num">800101</span>
+                                    <em>&hyphen;</em>
+                                    <span class="custom_info rgst_num">1234567</span>
                                 </td>
                                 
                                 <th>피보험자명</th>
@@ -118,10 +120,11 @@
     
                     <div class="btnBox">
                         <div class="btn_qa_group">
-                            <!-- [D] 해당 건의 질의요청이 있을 경우 질의버튼(.btn_question)에 addclass('on')해주면 보여짐 -->
+                            <!-- [D] 해당 건의 질의요청이 있을 경우 질의버튼(.btn_question)에 addclass('on')해주어 활성화해줘야함 -->
                             <!-- [D] 클릭 시 질의응답()팝업 등장 -->
                             <a href="#lyr_qa_edit" class="btn_lyr_open btn_question on">질의</a>
-                            <!-- [D] 질의응답() 팝업에서 응답결과 저장한 경우 질의 버튼이 응답 버튼으로 변경되어 보여짐 -->
+                            <!-- [D] 질의응답() 팝업에서 응답결과 저장한 경우 질의 버튼은 비활성화, 
+                            응답 버튼에 addclass('on')해주어 활성화해줘야함 -->
                             <a href="#none" class="btn_answer">응답</a>
                         </div>                    
                         <!-- [D] 심플 화면 링크 연동되어야 함 -->
@@ -132,8 +135,8 @@
                 </div>
                 <!-- //.customInfo -->
                 
-                <!-- .audit_detailBox -->
-                <div class="audit_detailBox">
+                <!-- .audit_detailArea -->
+                <div class="audit_detailArea">
                     <!--player-->
                     <div class="player">
                        <audio preload="auto" controls>
@@ -154,22 +157,20 @@
                     <!-- //.player -->
                     
                     <!-- .etc_scriptArea -->
-                    <!-- [D] 체크 불가능한 상태(비활성화)로 해당 심사건의 조건에 자동 체크되어있는 상태 -->
-                    <div class="etc_scriptArea">
-                        <div class="chkBox">
-                            <input type="checkbox" id="script_cdt1" disabled checked>
-                            <label for="script_cdt1">CA 캠페인</label>
-                            
-                            <input type="checkbox" id="script_cdt2" disabled>
-                            <label for="script_cdt2">조건2</label>
-                            
-                            <input type="checkbox" id="script_cdt3" disabled>
-                            <label for="script_cdt3">조건3</label>
-                            
-                            <input type="checkbox" id="script_cdt4" disabled>
-                            <label for="script_cdt4">조건4</label>
-                        </div>
-                    </div>
+                    <!-- [D] 기타 스크립트에 해당하는 조건들이 있는경우에만 addclass('on')해주어 보여줘야함 -->
+                    <dl class="etc_scriptArea on">
+                        <dt>기타 스크립트&colon;</dt>
+                        <dd>
+                            <ul>
+                                <li>CA 캠페인</li>
+                                <li>조건2</li>
+                                <li>조건3</li>
+                                <li>조건4</li>
+                                <li>조건5</li>
+                                <li>조건6</li>
+                            </ul>
+                        </dd>
+                    </dl>
                     <!-- //.etc_scriptArea -->
                     
                     <!-- [D] datatables 라이브러리 영역 -->
@@ -266,7 +267,7 @@
                         <div class="fl">
                             <div class="detail_box">
                                 <dl class="ta_score">
-                                    <dt>TA점수</dt>
+                                    <dt>TA점수&colon;</dt>
                                     <dd>
                                         <ul>
                                             <li>
@@ -286,7 +287,7 @@
                                 </dl>
                                 
                                 <dl class="qa_score">
-                                    <dt>QA점수</dt>
+                                    <dt>QA점수&colon;</dt>
                                     <dd>
                                         <ul>
                                             <li>
@@ -305,8 +306,15 @@
                                     </dd>
                                 </dl>
                                 
+                                <dl class="audit_cmt">
+                                    <dt>심사의견&colon;</dt>
+                                    <dd>
+                                        <textarea></textarea>
+                                    </dd>
+                                </dl>
+                                
                                 <dl class="qa_result">
-                                    <dt>QA결과</dt>
+                                    <dt>QA결과&colon;</dt>
                                     <dd>
                                         <select class="select">
                                             <option value="">완판</option>
@@ -318,14 +326,7 @@
                                             <option value="">진행중</option>
                                         </select>
                                     </dd>
-                                </dl>
-                                
-                                <dl class="audit_cmt">
-                                    <dt>심사의견</dt>
-                                    <dd>
-                                        <textarea></textarea>
-                                    </dd>
-                                </dl>
+                                </dl>                                
                             </div>
                             
                             <div class="detail_box">
@@ -410,13 +411,28 @@
                             </div>
                             
                             <div class="detail_box">
-                                
+                                <dl class="gnr_script">
+                                    <dt>표준 스크립트</dt>
+                                    <dd>
+                                        <ul>
+                                            <li>※ rP</li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                                <dl class="stt_result">
+                                    <dt>STT 탐지결과</dt>
+                                    <dd>
+                                        <ul>
+                                            <li></li>
+                                        </ul>
+                                    </dd>
+                                </dl>
                             </div>
                         </div>
                     </div>
                     <!-- //.audit_detail_view -->
                 </div>
-                <!-- //.audit_detailBox -->                
+                <!-- //.audit_detailArea -->                
         </div>
         <!-- //#contents -->
     </div>
