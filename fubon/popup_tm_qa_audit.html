@@ -412,6 +412,12 @@
                             </div>
                             
                             <div class="detail_box">
+                                <div class="btnBox">
+                                    <a href="#none" class="btn_tpry_save">임시저장</a>
+                                    <a href="#none" class="btn_audit_complete">심사완료</a>
+                                    <a href="#none" class="btn_transcript">STT 전수</a>
+                                </div>
+                                
                                 <dl class="gnr_script">
                                     <dt>표준 스크립트</dt>
                                     <dd>
@@ -525,10 +531,9 @@ $(document).ready(function(){
     var table = $('.dataTable').DataTable({
         dom: '<"top">t<"bottom"B>', // 옵션 위치 지정
         responsive: true, // 반응형 허용
-        order: [[ 1, 'asc' ]], // 초기 sort 설정
         info: false, // 페이지 정보 미허용
         paging: false, // 페이징 미허용
-        scrollY: '96px', // 세로 스크롤 허용, 사이즈
+        scrollY: '90px', // 세로 스크롤 허용, 사이즈
         scrollX: true, //가로 스크롤 허용
         scrollCollapse: true,
         ordering: false,
@@ -538,16 +543,13 @@ $(document).ready(function(){
             {targets: [2], width: "100px"},  // 통화시간
             {targets: [3], width: "150px"},  // 상담대분류
             {targets: [4], width: "150px"},  // 상담소분류
-            {targets: [5], width: "400px"},  // 상담내용
+            {targets: [5], width: "410px"},  // 상담내용
             {targets: [6], width: "50px"},   // 청약
             {targets: [7], width: "80px"},   // STT 상태
             {targets: [8], width: "100px"},  // 센터
             {targets: [9], width: "50px"},   // 실
             {targets: [10], width: "80px"}  // 상담원
         ],
-        fixedColumns: { // 왼쪽 1열 고정
-            leftColumns: 1,
-        }
     });
 });
 </script>
