@@ -40,9 +40,9 @@
         <!-- .title_box -->
         <div class="title_box bg_blue">
             <h1>
-                <img src="resources/images/img_logo_w.png" alt="푸본현대생명 로고">
+                <img src="resources/images/img_logo_w.png" class="logo" alt="푸본현대생명 로고">
+                <p class="title">STT TM_QA</p>
             </h1>
-            <h2>STT TM_QA</h2>
 
             <div class="etc_box">
                 <!-- [D] 사용자 계정 표시 영역(.user_account span) / 임의로 '사용자계정 표시'라고 텍스트 넣어둠 -->
@@ -196,583 +196,617 @@
     <div id="container">
         <!-- #contents -->
         <div id="contents">
-            <h4>TM &hyphen; STT</h4>
+            <!-- .tab_title -->
+            <div class="tab_title">
+                <div class="tab_list_wrap">
+                    <ul class="tab_list">
+                        <!-- <li>음성생성<button type="button" class="btn_close">x</button></li>
+                        <li>Text-to-Speech<button type="button" class="btn_close">x</button></li>
+                        <li>텍스트 제거<button type="button" class="btn_close">x</button></li>
+                        <li>Text Removal<button type="button" class="btn_close">x</button></li> -->
+                    </ul>
+                </div>
 
-            <!-- .srchArea -->
-            <div class="srchArea">
-                <table class="tbl_line_view" summary="상담일시, 센터, 실, 상담원, 사번, 고객명, 고객번호, STT상태, 콜키로 구성">
-                    <caption class="hide">검색조건</caption>
-                    <colgroup>
-                        <col width="100"><col width="310"><col width="100"><col><col width="100"><col><col width="100"><col><col width="100"><col>
-                    </colgroup>
-
-                    <tbody>
-                        <tr>
-                            <th>상담일시</th>
-                            <!-- [D] 처음 페이지 들어왔을때의 초기 상담일시는 [전날 날짜, 오전 9시] - [당일 날짜, 미정] 기본 입력 상태여야함 -->
-                            <!-- [D] 시간 초기 기본값 미정으로 비워둠 -->
-                            <td>
-                                <div class="iptBox">
-                                    <input type="text" id="fromDate" class="iptDateTime">
-                                    <span>&hyphen;</span>
-                                    <input type="text" id="toDate" class="iptDateTime">
-                                </div>
-                            </td>
-
-                            <!-- [D] 센터 선택해야 실 활성화됨 -->
-                            <th>센터</th>
-                            <td>
-                                <div class="sltBox custom">
-                                    <select class="select">
-                                        <option value="">전체</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                    </select>
-                                </div>
-                            </td>
-
-                            <!-- [D] 실 선택해야 상담원 활성화됨 -->
-                            <!-- [D] 선택박스(.sltBox)에 addclass('disabled')하면 비활성화 효과 적용됨 -->
-                            <th>실</th>
-                            <td>
-                                <div class="sltBox custom disabled">
-                                    <select class="select">
-                                        <option value="">전체</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                    </select>
-                                </div>
-                            </td>
-
-                            <!-- [D] 선택박스(.sltBox)에 addclass('disabled')하면 비활성화 효과 적용됨 -->
-                            <th>상담원</th>
-                            <td>
-                                <div class="sltBox custom disabled">
-                                    <select class="select">
-                                        <option value="">전체</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                    </select>
-                                </div>
-                            </td>
-
-                            <th>사번</th>
-                            <td>
-                                <div class="iptBox">
-                                    <input type="text" numberOnly>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <th>고객명</th>
-                            <td>
-                                <div class="iptBox">
-                                    <input type="text">
-                                </div>
-                            </td>
-
-                            <th>고객번호</th>
-                            <td>
-                                <div class="iptBox">
-                                    <input type="text" numberOnly>
-                                </div>
-                            </td>
-
-                            <th>STT상태</th>
-                            <td>
-                                <div class="sltBox custom">
-                                    <select class="select">
-                                        <option value="">전체</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                        <option value="">상담유형옵션</option>
-                                    </select>
-                                </div>
-                            </td>
-
-                            <th>콜키</th>
-                            <td colspan="3">
-                                <div class="iptBox">
-                                    <input type="text" class="callKey">
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <!-- [D] 조회 버튼(.btn_srch)클릭 시 하단 리스트 오름차순으로 기본 정렬된 상태로 조회되며, 입력된 검색조건 값들은 reset되어야함 -->
-                <!-- [D] 초기화 버튼(.btn_reset)클릭 시 검색조건 테이블 상 입력값들 모두 reset됨 -->
-                <div class="btnBox">
-                    <a href="#none" class="btn_srch">조회</a>
-                    <a href="#none" class="btn_reset">초기화</a>
+                <div class="tab_dropdown">
+                    <div class="btnBox">
+                        <a href="#lyr_tab_allDlt_chk" class="btn_tab_allDlt btn_lyr_open">탭 전체삭제</a>
+                        <a href="#none" class="btn_open">
+                            <span>탭버튼</span>
+                            <em></em>
+                        </a>
+                    </div>
+                    
+                    <ul class="dropdown_list">
+                        <!-- <li>음성생성<button type="button" class="btn_close">x</button></li>
+                        <li>Text-to-Speech<button type="button" class="btn_close">x</button></li>
+                        <li>텍스트 제거<button type="button" class="btn_close">x</button></li>
+                        <li>Text Removal<button type="button" class="btn_close">x</button></li> -->
+                    </ul>
                 </div>
             </div>
-            <!-- //.srchArea -->
+            <!-- //.tab_title -->
 
-            <!-- .dataTableBox -->
-            <div class="dataTableBox">
-                <!-- [D] datatables 라이브러리 영역 -->
-                <!-- [D] 'Excel 다운로드' 버튼 클릭 시 파일 다운로드됨 -->
-                <!-- [D] 처음 페이지 들어왔을때 목록 순서는 '상담일시'기준으로 오름차순 정렬됨 -->
-                <table class="dataTable">
-                    <thead>
-                        <tr>
-                            <th>NO</th>
-                            <th>상담일시</th>
-                            <th>센터</th>
-                            <th>실</th>
-                            <th>상담원</th>
-                            <th>상담사사번</th>
-                            <th>고객명</th>
-                            <th>고객번호</th>
-                            <th>STT상태</th>
-                            <th>콜키</th>
-                        </tr>
-                    </thead>
+            <!-- .tab_content -->
+            <div class="tab_content">
+                <h4>TM &hyphen; STT</h4>
 
-                    <!-- [D] 조회된 목록(tbody tr) 더블클릭 시 CS STT 전수 팝업 윈도우 팝업으로 등장 -->
-                    <!-- [D] 4번째 상담고객 이름 첫번째, 마지막 글자 제외 가운데 글자 모두 마스킹 해야함 -->
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>2020-06-15 10:23</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김인상</td>
-                            <td>99308289</td>
-                            <td>Y********U</td>
-                            <td>20190328025947332192</td>
-                            <td>정상</td>
-                            <td>20190501152243_20190501152243</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2020-06-15 10:23</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김인상</td>
-                            <td>99308289</td>
-                            <td>Y********U</td>
-                            <td>20190328025947332192</td>
-                            <td>정상</td>
-                            <td>20190501152243_20190501152243</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2020-06-15 10:23</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김인상</td>
-                            <td>99308289</td>
-                            <td>Y********U</td>
-                            <td>20190328025947332192</td>
-                            <td>정상</td>
-                            <td>20190501152243_20190501152243</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2020-06-15 10:23</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김인상</td>
-                            <td>99308289</td>
-                            <td>Y********U</td>
-                            <td>20190328025947332192</td>
-                            <td>정상</td>
-                            <td>20190501152243_20190501152243</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2020-06-15 10:23</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김인상</td>
-                            <td>99308289</td>
-                            <td>Y********U</td>
-                            <td>20190328025947332192</td>
-                            <td>정상</td>
-                            <td>20190501152243_20190501152243</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2020-06-15 10:23</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김인상</td>
-                            <td>99308289</td>
-                            <td>Y********U</td>
-                            <td>20190328025947332192</td>
-                            <td>정상</td>
-                            <td>20190501152243_20190501152243</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2020-06-15 10:23</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김인상</td>
-                            <td>99308289</td>
-                            <td>Y********U</td>
-                            <td>20190328025947332192</td>
-                            <td>정상</td>
-                            <td>20190501152243_20190501152243</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2020-06-15 10:23</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김인상</td>
-                            <td>99308289</td>
-                            <td>Y********U</td>
-                            <td>20190328025947332192</td>
-                            <td>정상</td>
-                            <td>20190501152243_20190501152243</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2020-06-15 10:23</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김인상</td>
-                            <td>99308289</td>
-                            <td>Y********U</td>
-                            <td>20190328025947332192</td>
-                            <td>정상</td>
-                            <td>20190501152243_20190501152243</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2020-06-15 10:23</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김인상</td>
-                            <td>99308289</td>
-                            <td>Y********U</td>
-                            <td>20190328025947332192</td>
-                            <td>정상</td>
-                            <td>20190501152243_20190501152243</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2020-06-15 10:23</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김인상</td>
-                            <td>99308289</td>
-                            <td>Y********U</td>
-                            <td>20190328025947332192</td>
-                            <td>정상</td>
-                            <td>20190501152243_20190501152243</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2020-06-15 10:23</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김인상</td>
-                            <td>99308289</td>
-                            <td>Y********U</td>
-                            <td>20190328025947332192</td>
-                            <td>정상</td>
-                            <td>20190501152243_20190501152243</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2020-06-15 10:23</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김인상</td>
-                            <td>99308289</td>
-                            <td>Y********U</td>
-                            <td>20190328025947332192</td>
-                            <td>정상</td>
-                            <td>20190501152243_20190501152243</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2020-06-15 10:23</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김인상</td>
-                            <td>99308289</td>
-                            <td>Y********U</td>
-                            <td>20190328025947332192</td>
-                            <td>정상</td>
-                            <td>20190501152243_20190501152243</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2020-06-15 10:23</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김인상</td>
-                            <td>99308289</td>
-                            <td>Y********U</td>
-                            <td>20190328025947332192</td>
-                            <td>정상</td>
-                            <td>20190501152243_20190501152243</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2020-06-15 10:23</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김인상</td>
-                            <td>99308289</td>
-                            <td>Y********U</td>
-                            <td>20190328025947332192</td>
-                            <td>정상</td>
-                            <td>20190501152243_20190501152243</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2020-06-15 10:23</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김인상</td>
-                            <td>99308289</td>
-                            <td>Y********U</td>
-                            <td>20190328025947332192</td>
-                            <td>정상</td>
-                            <td>20190501152243_20190501152243</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2020-06-15 10:23</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김인상</td>
-                            <td>99308289</td>
-                            <td>Y********U</td>
-                            <td>20190328025947332192</td>
-                            <td>정상</td>
-                            <td>20190501152243_20190501152243</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2020-06-15 10:23</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김인상</td>
-                            <td>99308289</td>
-                            <td>Y********U</td>
-                            <td>20190328025947332192</td>
-                            <td>정상</td>
-                            <td>20190501152243_20190501152243</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2020-06-15 10:23</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김인상</td>
-                            <td>99308289</td>
-                            <td>Y********U</td>
-                            <td>20190328025947332192</td>
-                            <td>정상</td>
-                            <td>20190501152243_20190501152243</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2020-06-15 10:23</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김인상</td>
-                            <td>99308289</td>
-                            <td>Y********U</td>
-                            <td>20190328025947332192</td>
-                            <td>정상</td>
-                            <td>20190501152243_20190501152243</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2020-06-15 10:23</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김인상</td>
-                            <td>99308289</td>
-                            <td>Y********U</td>
-                            <td>20190328025947332192</td>
-                            <td>정상</td>
-                            <td>20190501152243_20190501152243</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2020-06-15 10:23</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김인상</td>
-                            <td>99308289</td>
-                            <td>Y********U</td>
-                            <td>20190328025947332192</td>
-                            <td>정상</td>
-                            <td>20190501152243_20190501152243</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2020-06-15 10:23</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김인상</td>
-                            <td>99308289</td>
-                            <td>Y********U</td>
-                            <td>20190328025947332192</td>
-                            <td>정상</td>
-                            <td>20190501152243_20190501152243</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2020-06-15 10:23</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김인상</td>
-                            <td>99308289</td>
-                            <td>Y********U</td>
-                            <td>20190328025947332192</td>
-                            <td>정상</td>
-                            <td>20190501152243_20190501152243</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2020-06-15 10:23</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김인상</td>
-                            <td>99308289</td>
-                            <td>Y********U</td>
-                            <td>20190328025947332192</td>
-                            <td>정상</td>
-                            <td>20190501152243_20190501152243</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2020-06-15 10:23</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김인상</td>
-                            <td>99308289</td>
-                            <td>Y********U</td>
-                            <td>20190328025947332192</td>
-                            <td>정상</td>
-                            <td>20190501152243_20190501152243</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2020-06-15 10:23</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김인상</td>
-                            <td>99308289</td>
-                            <td>Y********U</td>
-                            <td>20190328025947332192</td>
-                            <td>정상</td>
-                            <td>20190501152243_20190501152243</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2020-06-15 10:23</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김인상</td>
-                            <td>99308289</td>
-                            <td>Y********U</td>
-                            <td>20190328025947332192</td>
-                            <td>정상</td>
-                            <td>20190501152243_20190501152243</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2020-06-15 10:23</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김인상</td>
-                            <td>99308289</td>
-                            <td>Y********U</td>
-                            <td>20190328025947332192</td>
-                            <td>정상</td>
-                            <td>20190501152243_20190501152243</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2020-06-15 10:23</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김인상</td>
-                            <td>99308289</td>
-                            <td>Y********U</td>
-                            <td>20190328025947332192</td>
-                            <td>정상</td>
-                            <td>20190501152243_20190501152243</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2020-06-15 10:23</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김인상</td>
-                            <td>99308289</td>
-                            <td>Y********U</td>
-                            <td>20190328025947332192</td>
-                            <td>정상</td>
-                            <td>20190501152243_20190501152243</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2020-06-15 10:23</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김인상</td>
-                            <td>99308289</td>
-                            <td>Y********U</td>
-                            <td>20190328025947332192</td>
-                            <td>정상</td>
-                            <td>20190501152243_20190501152243</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <!-- .srchArea -->
+                <div class="srchArea">
+                    <table class="tbl_line_view" summary="상담일시, 센터, 실, 상담원, 사번, 고객명, 고객번호, STT상태, 콜키로 구성">
+                        <caption class="hide">검색조건</caption>
+                        <colgroup>
+                            <col width="100"><col width="310"><col width="100"><col><col width="100"><col><col width="100"><col><col width="100"><col>
+                        </colgroup>
+
+                        <tbody>
+                            <tr>
+                                <th>상담일시</th>
+                                <!-- [D] 처음 페이지 들어왔을때의 초기 상담일시는 [전날 날짜, 오전 9시] - [당일 날짜, 미정] 기본 입력 상태여야함 -->
+                                <!-- [D] 시간 초기 기본값 미정으로 비워둠 -->
+                                <td>
+                                    <div class="iptBox">
+                                        <input type="text" id="fromDate" class="iptDateTime">
+                                        <span>&hyphen;</span>
+                                        <input type="text" id="toDate" class="iptDateTime">
+                                    </div>
+                                </td>
+
+                                <!-- [D] 센터 선택해야 실 활성화됨 -->
+                                <th>센터</th>
+                                <td>
+                                    <div class="sltBox custom">
+                                        <select class="select">
+                                            <option value="">전체</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                        </select>
+                                    </div>
+                                </td>
+
+                                <!-- [D] 실 선택해야 상담원 활성화됨 -->
+                                <!-- [D] 선택박스(.sltBox)에 addclass('disabled')하면 비활성화 효과 적용됨 -->
+                                <th>실</th>
+                                <td>
+                                    <div class="sltBox custom disabled">
+                                        <select class="select">
+                                            <option value="">전체</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                        </select>
+                                    </div>
+                                </td>
+
+                                <!-- [D] 선택박스(.sltBox)에 addclass('disabled')하면 비활성화 효과 적용됨 -->
+                                <th>상담원</th>
+                                <td>
+                                    <div class="sltBox custom disabled">
+                                        <select class="select">
+                                            <option value="">전체</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                        </select>
+                                    </div>
+                                </td>
+
+                                <th>사번</th>
+                                <td>
+                                    <div class="iptBox">
+                                        <input type="text" numberOnly>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th>고객명</th>
+                                <td>
+                                    <div class="iptBox">
+                                        <input type="text">
+                                    </div>
+                                </td>
+
+                                <th>고객번호</th>
+                                <td>
+                                    <div class="iptBox">
+                                        <input type="text" numberOnly>
+                                    </div>
+                                </td>
+
+                                <th>STT상태</th>
+                                <td>
+                                    <div class="sltBox custom">
+                                        <select class="select">
+                                            <option value="">전체</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                        </select>
+                                    </div>
+                                </td>
+
+                                <th>콜키</th>
+                                <td colspan="3">
+                                    <div class="iptBox">
+                                        <input type="text" class="callKey">
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- [D] 조회 버튼(.btn_srch)클릭 시 하단 리스트 오름차순으로 기본 정렬된 상태로 조회되며, 입력된 검색조건 값들은 reset되어야함 -->
+                    <!-- [D] 초기화 버튼(.btn_reset)클릭 시 검색조건 테이블 상 입력값들 모두 reset됨 -->
+                    <div class="btnBox">
+                        <a href="#none" class="btn_srch">조회</a>
+                        <a href="#none" class="btn_reset">초기화</a>
+                    </div>
+                </div>
+                <!-- //.srchArea -->
+
+                <!-- .dataTableBox -->
+                <div class="dataTableBox">
+                    <!-- [D] datatables 라이브러리 영역 -->
+                    <!-- [D] 'Excel 다운로드' 버튼 클릭 시 파일 다운로드됨 -->
+                    <!-- [D] 처음 페이지 들어왔을때 목록 순서는 '상담일시'기준으로 오름차순 정렬됨 -->
+                    <table class="dataTable">
+                        <thead>
+                            <tr>
+                                <th>NO</th>
+                                <th>상담일시</th>
+                                <th>센터</th>
+                                <th>실</th>
+                                <th>상담원</th>
+                                <th>상담사사번</th>
+                                <th>고객명</th>
+                                <th>고객번호</th>
+                                <th>STT상태</th>
+                                <th>콜키</th>
+                            </tr>
+                        </thead>
+
+                        <!-- [D] 조회된 목록(tbody tr) 더블클릭 시 CS STT 전수 팝업 윈도우 팝업으로 등장 -->
+                        <!-- [D] 4번째 상담고객 이름 첫번째, 마지막 글자 제외 가운데 글자 모두 마스킹 해야함 -->
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-06-15 10:23</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김인상</td>
+                                <td>99308289</td>
+                                <td>Y********U</td>
+                                <td>20190328025947332192</td>
+                                <td>정상</td>
+                                <td>20190501152243_20190501152243</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-06-15 10:23</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김인상</td>
+                                <td>99308289</td>
+                                <td>Y********U</td>
+                                <td>20190328025947332192</td>
+                                <td>정상</td>
+                                <td>20190501152243_20190501152243</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-06-15 10:23</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김인상</td>
+                                <td>99308289</td>
+                                <td>Y********U</td>
+                                <td>20190328025947332192</td>
+                                <td>정상</td>
+                                <td>20190501152243_20190501152243</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-06-15 10:23</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김인상</td>
+                                <td>99308289</td>
+                                <td>Y********U</td>
+                                <td>20190328025947332192</td>
+                                <td>정상</td>
+                                <td>20190501152243_20190501152243</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-06-15 10:23</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김인상</td>
+                                <td>99308289</td>
+                                <td>Y********U</td>
+                                <td>20190328025947332192</td>
+                                <td>정상</td>
+                                <td>20190501152243_20190501152243</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-06-15 10:23</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김인상</td>
+                                <td>99308289</td>
+                                <td>Y********U</td>
+                                <td>20190328025947332192</td>
+                                <td>정상</td>
+                                <td>20190501152243_20190501152243</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-06-15 10:23</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김인상</td>
+                                <td>99308289</td>
+                                <td>Y********U</td>
+                                <td>20190328025947332192</td>
+                                <td>정상</td>
+                                <td>20190501152243_20190501152243</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-06-15 10:23</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김인상</td>
+                                <td>99308289</td>
+                                <td>Y********U</td>
+                                <td>20190328025947332192</td>
+                                <td>정상</td>
+                                <td>20190501152243_20190501152243</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-06-15 10:23</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김인상</td>
+                                <td>99308289</td>
+                                <td>Y********U</td>
+                                <td>20190328025947332192</td>
+                                <td>정상</td>
+                                <td>20190501152243_20190501152243</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-06-15 10:23</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김인상</td>
+                                <td>99308289</td>
+                                <td>Y********U</td>
+                                <td>20190328025947332192</td>
+                                <td>정상</td>
+                                <td>20190501152243_20190501152243</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-06-15 10:23</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김인상</td>
+                                <td>99308289</td>
+                                <td>Y********U</td>
+                                <td>20190328025947332192</td>
+                                <td>정상</td>
+                                <td>20190501152243_20190501152243</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-06-15 10:23</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김인상</td>
+                                <td>99308289</td>
+                                <td>Y********U</td>
+                                <td>20190328025947332192</td>
+                                <td>정상</td>
+                                <td>20190501152243_20190501152243</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-06-15 10:23</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김인상</td>
+                                <td>99308289</td>
+                                <td>Y********U</td>
+                                <td>20190328025947332192</td>
+                                <td>정상</td>
+                                <td>20190501152243_20190501152243</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-06-15 10:23</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김인상</td>
+                                <td>99308289</td>
+                                <td>Y********U</td>
+                                <td>20190328025947332192</td>
+                                <td>정상</td>
+                                <td>20190501152243_20190501152243</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-06-15 10:23</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김인상</td>
+                                <td>99308289</td>
+                                <td>Y********U</td>
+                                <td>20190328025947332192</td>
+                                <td>정상</td>
+                                <td>20190501152243_20190501152243</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-06-15 10:23</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김인상</td>
+                                <td>99308289</td>
+                                <td>Y********U</td>
+                                <td>20190328025947332192</td>
+                                <td>정상</td>
+                                <td>20190501152243_20190501152243</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-06-15 10:23</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김인상</td>
+                                <td>99308289</td>
+                                <td>Y********U</td>
+                                <td>20190328025947332192</td>
+                                <td>정상</td>
+                                <td>20190501152243_20190501152243</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-06-15 10:23</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김인상</td>
+                                <td>99308289</td>
+                                <td>Y********U</td>
+                                <td>20190328025947332192</td>
+                                <td>정상</td>
+                                <td>20190501152243_20190501152243</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-06-15 10:23</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김인상</td>
+                                <td>99308289</td>
+                                <td>Y********U</td>
+                                <td>20190328025947332192</td>
+                                <td>정상</td>
+                                <td>20190501152243_20190501152243</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-06-15 10:23</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김인상</td>
+                                <td>99308289</td>
+                                <td>Y********U</td>
+                                <td>20190328025947332192</td>
+                                <td>정상</td>
+                                <td>20190501152243_20190501152243</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-06-15 10:23</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김인상</td>
+                                <td>99308289</td>
+                                <td>Y********U</td>
+                                <td>20190328025947332192</td>
+                                <td>정상</td>
+                                <td>20190501152243_20190501152243</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-06-15 10:23</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김인상</td>
+                                <td>99308289</td>
+                                <td>Y********U</td>
+                                <td>20190328025947332192</td>
+                                <td>정상</td>
+                                <td>20190501152243_20190501152243</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-06-15 10:23</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김인상</td>
+                                <td>99308289</td>
+                                <td>Y********U</td>
+                                <td>20190328025947332192</td>
+                                <td>정상</td>
+                                <td>20190501152243_20190501152243</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-06-15 10:23</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김인상</td>
+                                <td>99308289</td>
+                                <td>Y********U</td>
+                                <td>20190328025947332192</td>
+                                <td>정상</td>
+                                <td>20190501152243_20190501152243</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-06-15 10:23</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김인상</td>
+                                <td>99308289</td>
+                                <td>Y********U</td>
+                                <td>20190328025947332192</td>
+                                <td>정상</td>
+                                <td>20190501152243_20190501152243</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-06-15 10:23</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김인상</td>
+                                <td>99308289</td>
+                                <td>Y********U</td>
+                                <td>20190328025947332192</td>
+                                <td>정상</td>
+                                <td>20190501152243_20190501152243</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-06-15 10:23</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김인상</td>
+                                <td>99308289</td>
+                                <td>Y********U</td>
+                                <td>20190328025947332192</td>
+                                <td>정상</td>
+                                <td>20190501152243_20190501152243</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-06-15 10:23</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김인상</td>
+                                <td>99308289</td>
+                                <td>Y********U</td>
+                                <td>20190328025947332192</td>
+                                <td>정상</td>
+                                <td>20190501152243_20190501152243</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-06-15 10:23</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김인상</td>
+                                <td>99308289</td>
+                                <td>Y********U</td>
+                                <td>20190328025947332192</td>
+                                <td>정상</td>
+                                <td>20190501152243_20190501152243</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-06-15 10:23</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김인상</td>
+                                <td>99308289</td>
+                                <td>Y********U</td>
+                                <td>20190328025947332192</td>
+                                <td>정상</td>
+                                <td>20190501152243_20190501152243</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-06-15 10:23</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김인상</td>
+                                <td>99308289</td>
+                                <td>Y********U</td>
+                                <td>20190328025947332192</td>
+                                <td>정상</td>
+                                <td>20190501152243_20190501152243</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-06-15 10:23</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김인상</td>
+                                <td>99308289</td>
+                                <td>Y********U</td>
+                                <td>20190328025947332192</td>
+                                <td>정상</td>
+                                <td>20190501152243_20190501152243</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-06-15 10:23</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김인상</td>
+                                <td>99308289</td>
+                                <td>Y********U</td>
+                                <td>20190328025947332192</td>
+                                <td>정상</td>
+                                <td>20190501152243_20190501152243</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- //.dataTableBox -->
             </div>
-            <!-- //.dataTableBox -->
+            <!-- //.tab_content -->
         </div>
         <!-- //#contents -->
     </div>
