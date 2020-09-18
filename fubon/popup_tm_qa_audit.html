@@ -132,8 +132,8 @@
                 </div>
                 <!-- //.customInfo -->
                 
-                <!-- .dataTableBox -->
-                <div class="dataTableBox">
+                <!-- .audit_detailBox -->
+                <div class="audit_detailBox">
                     <!--player-->
                     <div class="player">
                        <audio preload="auto" controls>
@@ -191,6 +191,7 @@
                         </thead>
     
                         <!-- [D] 목록 더블클릭 시 해당 콜상담 전체 플레이되어야 함 -->
+                        <!-- [D]  -->
                         <tbody>
                             <tr>
                                 <td>1</td>
@@ -260,11 +261,71 @@
                         </tbody>
                     </table>
                     
-                    <!-- .qa_detail -->
-                    <div class="qa_detail">
+                    <!-- .audit_detail_view -->
+                    <div class="audit_detail_view">
                         <div class="fl">
                             <div class="detail_box">
+                                <dl class="ta_score">
+                                    <dt>TA점수</dt>
+                                    <dd>
+                                        <ul>
+                                            <li>
+                                                <strong>스크립트</strong>
+                                                <span>2</span>
+                                            </li>
+                                            <li>
+                                                <strong>상담</strong>
+                                                <span>6</span>
+                                            </li>
+                                            <li>
+                                                <strong>총점</strong>
+                                                <span>8</span>
+                                            </li>
+                                        </ul>
+                                    </dd>
+                                </dl>
                                 
+                                <dl class="qa_score">
+                                    <dt>QA점수</dt>
+                                    <dd>
+                                        <ul>
+                                            <li>
+                                                <strong>스크립트</strong>
+                                                <span>2</span>
+                                            </li>
+                                            <li>
+                                                <strong>상담</strong>
+                                                <span>6</span>
+                                            </li>
+                                            <li>
+                                                <strong>총점</strong>
+                                                <span>8</span>
+                                            </li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                                
+                                <dl class="qa_result">
+                                    <dt>QA결과</dt>
+                                    <dd>
+                                        <select class="select">
+                                            <option value="">완판</option>
+                                            <option value="">보완</option>
+                                            <option value="">반송</option>
+                                            <option value="">기일반송</option>
+                                            <option value="">불판</option>
+                                            <option value="">신규</option>
+                                            <option value="">진행중</option>
+                                        </select>
+                                    </dd>
+                                </dl>
+                                
+                                <dl class="audit_cmt">
+                                    <dt>심사의견</dt>
+                                    <dd>
+                                        <textarea></textarea>
+                                    </dd>
+                                </dl>
                             </div>
                             
                             <div class="detail_box">
@@ -274,66 +335,78 @@
                         
                         <div class="fr">
                             <div class="detail_box">
-                                <div class="tbl_hd">
-                                    <table summary="회차, 심사일시, 심사자, 점수, 심사시간, QA결과로 구성">
-                                        <thead>
-                                            <tr>
-                                                <th>회차</th>
-                                                <th>심사일시</th>
-                                                <th>심사자</th>
-                                                <th>점수</th>
-                                                <th>심사시간</th>
-                                                <th>QA결과</th>
-                                            </tr>
-                                        </thead>
-                                    </table>
-                                </div>
-                                <div class="tbl_bd">
-                                    <table>
-                                        <tbody>
-                                            <tr>
-                                                <td>1회</td>
-                                                <td>2017-12-14 11:34</td>
-                                                <td>TA</td>
-                                                <td>4</td>
-                                                <td>0</td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td>1회</td>
-                                                <td>2017-12-15 09:14</td>
-                                                <td>이영화</td>
-                                                <td>9</td>
-                                                <td>0:36:21</td>
-                                                <td>보완</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2회</td>
-                                                <td>2017-12-29 15:10</td>
-                                                <td>이영화</td>
-                                                <td></td>
-                                                <td>0:04:12</td>
-                                                <td>완판</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3회</td>
-                                                <td>2017-12-14 11:34</td>
-                                                <td>이영화</td>
-                                                <td>4</td>
-                                                <td>0</td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td>1회</td>
-                                                <td>2017-12-14 11:34</td>
-                                                <td>TA</td>
-                                                <td>4</td>
-                                                <td>0</td>
-                                                <td></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <div class="custom_tbl">
+                                    <div class="tbl_hd">
+                                        <table summary="회차, 심사일시, 심사자, 점수, 심사시간, QA결과로 구성">
+                                            <caption class="hide">회차별 심사결과이력</caption>
+                                            <colgroup>
+                                                <col width="10%"><col width="30%"><col width="15%"><col width="15%"><col width="15%"><col width="15%">
+                                            </colgroup>
+                                            
+                                            <thead>
+                                                <tr>
+                                                    <th>회차</th>
+                                                    <th>심사일시</th>
+                                                    <th>심사자</th>
+                                                    <th>점수</th>
+                                                    <th>심사시간</th>
+                                                    <th>QA결과</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                    <!-- [D] 이력목록 클릭 시 해당결과 좌측 TA/QA점수, QA결과 화면으로 상세화되어 보여짐 -->
+                                    <div class="tbl_bd">
+                                        <table>
+                                            <colgroup>
+                                                <col width="10%"><col width="30%"><col width="15%"><col width="15%"><col width="15%"><col width="15%">
+                                            </colgroup>
+                                            
+                                            <tbody>
+                                                <tr>
+                                                    <td>1회</td>
+                                                    <td>2017-12-14 11:34</td>
+                                                    <td>TA</td>
+                                                    <td>4</td>
+                                                    <td>0</td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1회</td>
+                                                    <td>2017-12-15 09:14</td>
+                                                    <td>이영화</td>
+                                                    <td>9</td>
+                                                    <td>0:36:21</td>
+                                                    <td>보완</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2회</td>
+                                                    <td>2017-12-29 15:10</td>
+                                                    <td>이영화</td>
+                                                    <td></td>
+                                                    <td>0:04:12</td>
+                                                    <td>완판</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3회</td>
+                                                    <td>2017-12-14 11:34</td>
+                                                    <td>이영화</td>
+                                                    <td>4</td>
+                                                    <td>0</td>
+                                                    <td></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1회</td>
+                                                    <td>2017-12-14 11:34</td>
+                                                    <td>TA</td>
+                                                    <td>4</td>
+                                                    <td>0</td>
+                                                    <td></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>                                
                             </div>
                             
                             <div class="detail_box">
@@ -341,9 +414,9 @@
                             </div>
                         </div>
                     </div>
-                    <!-- //.qa_detail -->
+                    <!-- //.audit_detail_view -->
                 </div>
-                <!-- //.dataTableBox -->                
+                <!-- //.audit_detailBox -->                
         </div>
         <!-- //#contents -->
     </div>
@@ -438,7 +511,7 @@ $(document).ready(function(){
         order: [[ 1, 'asc' ]], // 초기 sort 설정
         info: false, // 페이지 정보 미허용
         paging: false, // 페이징 미허용
-        scrollY: '100px', // 세로 스크롤 허용, 사이즈
+        scrollY: '96px', // 세로 스크롤 허용, 사이즈
         scrollX: true, //가로 스크롤 허용
         scrollCollapse: true,
         ordering: false,
