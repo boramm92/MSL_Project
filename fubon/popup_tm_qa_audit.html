@@ -36,31 +36,27 @@
 
                 <!-- .customInfo -->
                 <div class="customInfo">
-                    <table class="tbl_line_view" summary="상품명, 증권번호, 청약일자, 계약자, 누적심사시간, 총녹취길이로 구성">
+                    <table class="tbl_line_view" summary="상품명, 증권번호, 청약일자, 계약자명, 주민번호, 피보험자명, 보험료, 캠페인명, 센터, 실, TMR로 구성">
                         <caption class="hide">심사요약정보</caption>
                         <colgroup>
-                            <col width="70"><col><col width="70"><col><col width="100"><col width="100px"><col width="100"><col width="100"><col width="100px"><col width="100">
+                            <col width="70"><col><col width="100"><col>
+                            <col width="100"><col><col width="100"><col>
                         </colgroup>
     
                         <tbody>
                             <tr>
                                 <th>상품명</th>
-                                <td>
+                                <td colspan="3">
                                     <span class="custom_info">ZERO 나를 위한 암보험</span>
                                 </td>
-                                
-                                <th>캠페인명</th>
-                                <td>
-                                    <span class="custom_info">캠페인명캠페인명</span>
-                                </td>
-    
+                                    
                                 <th>증권번호</th>
                                 <td>
                                     <span class="custom_info">7777777</span>
                                 </td>
     
                                 <th>청약일자</th>
-                                <td colspan="3">
+                                <td>
                                     <span class="custom_info">2020-08-03</span>
                                 </td>
                             </tr>
@@ -84,12 +80,17 @@
                                 </td>
                                 
                                 <th>보험료</th>
-                                <td colspan="3">
+                                <td>
                                     <span class="custom_info">100,940</span>
                                 </td>                                
                             </tr>
                             
                             <tr>
+                                <th>캠페인명</th>
+                                <td>
+                                    <span class="custom_info">캠페인명캠페인명</span>
+                                </td>
+                                
                                 <th>센터</th>
                                 <td>
                                     <span class="custom_info">1센터</span>
@@ -103,16 +104,6 @@
                                 <th>TMR</th>
                                 <td>
                                     <span class="custom_info">TMR</span>
-                                </td>
-                                    
-                                <th>누적심사시간</th>
-                                <td>
-                                    <span class="custom_info">00:42:11</span>
-                                </td>
-                                
-                                <th>총녹취길이</th>
-                                <td>
-                                    <span class="custom_info">04:36:13</span>
                                 </td>
                             </tr>
                         </tbody>
@@ -307,13 +298,6 @@
                                     </dd>
                                 </dl>
                                 
-                                <dl class="audit_cmt">
-                                    <dt>심사의견&colon;</dt>
-                                    <dd>
-                                        <textarea></textarea>
-                                    </dd>
-                                </dl>
-                                
                                 <dl class="qa_result">
                                     <dt>QA결과&colon;</dt>
                                     <dd>
@@ -327,11 +311,55 @@
                                             <option value="">진행중</option>
                                         </select>
                                     </dd>
-                                </dl>                                
+                                </dl> 
+                                
+                                <dl class="audit_cmt">
+                                    <dt>심사의견&colon;</dt>
+                                    <dd>
+                                        <textarea></textarea>
+                                    </dd>
+                                </dl>                                                               
                             </div>
                             
                             <div class="detail_box">
-                                
+                                <div class="evalArea">
+                                    <div class="eval_tab_title">
+                                        <a href="#none">스크립트</a>
+                                        <a href="#none">상담</a>
+                                    </div>
+                                    <div class="custom_tbl eval_tbl">
+                                        <div class="tbl_hd">
+                                            <table summary="NO, 정상, 미흡, 반송, Score, 중분류, 대분류, 답변, 탐지로 구성">
+                                                <caption class="hide">TM QA 평가테이블</caption>
+                                                
+                                                <thead>
+                                                    <tr>
+                                                        <th>NO</th>
+                                                        <th>정상</th>
+                                                        <th>미흡</th>
+                                                        <th>반송</th>
+                                                        <th>Score</th>
+                                                        <th>중분류</th>
+                                                        <th>대분류</th>
+                                                        <th>답변</th>
+                                                        <th>탐지</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                        
+                                        <div class="tbl_bd">
+                                            <table>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>                                
                             </div>
                         </div>
                         
@@ -339,10 +367,10 @@
                             <div class="detail_box">
                                 <div class="custom_tbl">
                                     <div class="tbl_hd">
-                                        <table summary="회차, 심사일시, 심사자, 점수, 심사시간, QA결과로 구성">
+                                        <table summary="회차, 심사일시, 심사자, 점수, QA결과, 녹취시간, 심사시간, 계로 구성">
                                             <caption class="hide">회차별 심사결과이력</caption>
                                             <colgroup>
-                                                <col width="10%"><col width="30%"><col width="15%"><col width="15%"><col width="15%"><col width="15%">
+                                                <col width="10%"><col width="20%"><col width="10%"><col width="10%"><col width="10%"><col width="20%"><col width="20%">
                                             </colgroup>
                                             
                                             <thead>
@@ -351,8 +379,9 @@
                                                     <th>심사일시</th>
                                                     <th>심사자</th>
                                                     <th>점수</th>
-                                                    <th>심사시간</th>
                                                     <th>QA결과</th>
+                                                    <th>녹취시간</th>
+                                                    <th>심사시간</th>
                                                 </tr>
                                             </thead>
                                         </table>
@@ -361,7 +390,7 @@
                                     <div class="tbl_bd">
                                         <table>
                                             <colgroup>
-                                                <col width="10%"><col width="30%"><col width="15%"><col width="15%"><col width="15%"><col width="15%">
+                                                <col width="10%"><col width="20%"><col width="10%"><col width="10%"><col width="10%"><col width="20%"><col width="20%">
                                             </colgroup>
                                             
                                             <tbody>
@@ -370,40 +399,45 @@
                                                     <td>2017-12-14 11:34</td>
                                                     <td>TA</td>
                                                     <td>4</td>
-                                                    <td>0</td>
                                                     <td></td>
+                                                    <td>02:13:29</td>
+                                                    <td>0</td>
                                                 </tr>
                                                 <tr>
                                                     <td>1회</td>
                                                     <td>2017-12-15 09:14</td>
                                                     <td>이영화</td>
                                                     <td>9</td>
-                                                    <td>0:36:21</td>
                                                     <td>보완</td>
+                                                    <td>02:13:29</td>
+                                                    <td>0:36:21</td>                                                    
                                                 </tr>
                                                 <tr>
                                                     <td>2회</td>
                                                     <td>2017-12-29 15:10</td>
                                                     <td>이영화</td>
                                                     <td></td>
-                                                    <td>0:04:12</td>
                                                     <td>완판</td>
+                                                    <td>02:13:29</td>
+                                                    <td>0:36:21</td> 
                                                 </tr>
                                                 <tr>
                                                     <td>3회</td>
-                                                    <td>2017-12-14 11:34</td>
+                                                    <td>2017-12-29 15:10</td>
                                                     <td>이영화</td>
-                                                    <td>4</td>
-                                                    <td>0</td>
                                                     <td></td>
+                                                    <td>완판</td>
+                                                    <td>02:13:29</td>
+                                                    <td>0:36:21</td> 
                                                 </tr>
                                                 <tr>
-                                                    <td>1회</td>
-                                                    <td>2017-12-14 11:34</td>
-                                                    <td>TA</td>
-                                                    <td>4</td>
-                                                    <td>0</td>
+                                                    <td>3회</td>
+                                                    <td>2017-12-29 15:10</td>
+                                                    <td>이영화</td>
                                                     <td></td>
+                                                    <td>완판</td>
+                                                    <td>02:13:29</td>
+                                                    <td>0:36:21</td> 
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -418,19 +452,37 @@
                                     <a href="#none" class="btn_transcript">STT 전수</a>
                                 </div>
                                 
-                                <dl class="gnr_script">
+                                <dl class="gnr_script scriptBox">
                                     <dt>표준 스크립트</dt>
                                     <dd>
                                         <ul>
-                                            <li>※ rP</li>
+                                            <li>※ 계속보험료와 조회 보험료 납입방법 확인 후 녹취</li>
+                                            <li>※ 보험료 자동이체 예금주의 계약자, 피보험자가 아닌 제3자 설정하시는 경우 '제3자 예금주 동의 스크립트'를 별도 진행바랍니다.</li>
+                                            <li><span>[00112]</span>계속 보험료는 자동이체로 등록 하겠습니다.</li>
+                                            <li><span>[00113]</span>보험료 납입은 예금주 000님 생년월일은 0000년 00월 00일이고 00은행 계좌번호는 ***** ******* **** 입니다.</li>
+                                            <li><span>[00114]</span>보험료 출금에 동의하십니까?</li>
+                                            <li><span>[00120]</span>자동이체 일자는 25일자로 등록하겠습니다.</li>
+                                            <li><span>[00125]</span>계속 보험료와 동일한 계좌에서 실시간 이체로 일회 보험료 0만 0천 0백 0원 출금에 동의하십니까?</li>
+                                            <li><span>[00112]</span>계속 보험료는 자동이체로 등록 하겠습니다.</li>
+                                            <li><span>[00113]</span>보험료 납입은 예금주 000님 생년월일은 0000년 00월 00일이고 00은행 계좌번호는 ***** ******* **** 입니다.</li>
+                                            <li><span>[00114]</span>보험료 출금에 동의하십니까?</li>
+                                            <li><span>[00120]</span>자동이체 일자는 25일자로 등록하겠습니다.</li>
+                                            <li><span>[00125]</span>계속 보험료와 동일한 계좌에서 실시간 이체로 일회 보험료 0만 0천 0백 0원 출금에 동의하십니까?</li>
                                         </ul>
                                     </dd>
                                 </dl>
-                                <dl class="stt_result">
+                                <!-- [D] STT 탐지결과 스크립트 개별 문장 클릭 시 해당 부분 녹취 재생되며, 상단 녹취목록 중 해당하는 목록에 하이라이트 처리되어야 함 ※상단 녹취목록 주석 함께 참고 -->
+                                <dl class="stt_result scriptBox">
                                     <dt>STT 탐지결과</dt>
                                     <dd>
                                         <ul>
-                                            <li></li>
+                                            <li><span>[00112]</span> 계속 보험료 결제는 자동이체로 등록을 해드리겠습니다.</li>
+                                            <li><span>[00113]</span> 보험료 납입은 예금주는 000님 생년월일은 00월 00일이고 00은행 계좌번호는 ***** ******* **** 구요.</li>
+                                            <li><span>[00114]</span>보험료 출금에 동의하십니까?</li>
+                                            <li><span>[C]</span>예 예</li>
+                                            <li><span>[00112]</span></li>
+                                            <li><span>[00125]</span>요거는 계속 보험료와 동일한 지금 불러주신 000 여기 계좌에서 실시간 이체로 일회 보험료 0만 0천 0백 0원 출금에 동의하시지요?</li>
+                                            <li><span>[C]</span>예</li>
                                         </ul>
                                     </dd>
                                 </dl>
