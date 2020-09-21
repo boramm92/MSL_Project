@@ -52,7 +52,7 @@
             <!-- //.etc_scriptArea -->
 
             <!-- .customInfo -->
-            <div class="customInfo">
+            <div class="customInfo tm_qa_audit">
                 <table class="tbl_line_view" summary="상품명, 증권번호, 청약일자, 계약자명, 주민번호, 피보험자명, 보험료, 캠페인명, 센터, 실, TMR로 구성">
                     <caption class="hide">심사요약정보</caption>
                     <colgroup>
@@ -354,8 +354,8 @@
                                         <table summary="NO, 정상, 미흡, 반송, Score, 중분류, 대분류, 답변, 탐지로 구성">
                                             <caption class="hide">TM QA 평가테이블</caption>
                                             <colgroup>
-                                                <col width="5%"><col width="10%"><col width="10%"><col width="10%"><col width="10%">
-                                                <col width="10%"><col width="25%"><col width="10%"><col width="10%">
+                                                <col width="50"><col width="50"><col width="50"><col width="50"><col width="70">
+                                                <col width="70"><col><col width="70"><col width="70">
                                             </colgroup>
 
                                             <thead>
@@ -377,8 +377,8 @@
                                     <div class="tbl_bd">
                                         <table>
                                             <colgroup>
-                                                <col width="5%"><col width="10%"><col width="10%"><col width="10%"><col width="10%">
-                                                <col width="10%"><col width="25%"><col width="10%"><col width="10%">
+                                                <col width="50"><col width="50"><col width="50"><col width="50"><col width="70">
+                                                <col width="70"><col><col width="70"><col width="70">
                                             </colgroup>
 
                                             <tbody>
@@ -755,7 +755,7 @@
                                 <div class="tbl_ft">
                                     <table>
                                         <colgroup>
-                                            <col width="470"><col><col>
+                                            <col width="474"><col><col>
                                         </colgroup>
                                         <tfoot>
                                             <tr>
@@ -798,11 +798,13 @@
                                 <dt>STT 탐지결과</dt>
                                 <dd>
                                     <ul>
+                                        <!-- [D] 텍스트 유형에 따른 컬러지정
+                                        파란색: .txt_blue / 빨간색: .txt_red / 검정색: 기본 -->
                                         <li><span>[00112]</span> 계속 보험료 결제는 자동이체로 등록을 해드리겠습니다.</li>
                                         <li><span>[00113]</span> 보험료 납입은 예금주는 000님 생년월일은 00월 00일이고 00은행 계좌번호는 ***** ******* **** 구요.</li>
                                         <li><span>[00114]</span>보험료 출금에 동의하십니까?</li>
-                                        <li><span>[C]</span>예 예</li>
-                                        <li><span>[00112]</span></li>
+                                        <li class="txt_blue"><span>[C]</span>예 예</li>
+                                        <li class="txt_red"><span>[00112]</span></li>
                                         <li><span>[00125]</span>요거는 계속 보험료와 동일한 지금 불러주신 000 여기 계좌에서 실시간 이체로 일회 보험료 0만 0천 0백 0원 출금에 동의하시지요?</li>
                                         <li><span>[C]</span>예</li>
                                     </ul>
@@ -1006,7 +1008,7 @@ $(document).ready(function(){
         // responsive: true, // 반응형 허용
         info: false, // 페이지 정보 미허용
         paging: false, // 페이징 미허용
-        scrollY: '90px', // 세로 스크롤 허용, 사이즈
+        scrollY: '75px', // 세로 스크롤 허용, 사이즈
         scrollX: true, //가로 스크롤 허용
         scrollCollapse: true,
         ordering: false,
@@ -1016,7 +1018,7 @@ $(document).ready(function(){
             {targets: [2], width: "100px"},  // 통화시간
             {targets: [3], width: "150px"},  // 상담대분류
             {targets: [4], width: "150px"},  // 상담소분류
-            {targets: [5], width: "410px"},  // 상담내용
+            {targets: [5], width: "423px"},  // 상담내용
             {targets: [6], width: "50px"},   // 청약
             {targets: [7], width: "80px"},   // STT 상태
             {targets: [8], width: "100px"},  // 센터
