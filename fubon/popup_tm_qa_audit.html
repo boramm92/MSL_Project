@@ -35,7 +35,7 @@
             <h1>TM_QA 심사</h1>
             
             <!-- .etc_scriptArea -->
-            <!-- [D] 기타 스크립트에 해당하는 조건들이 있는경우에만 addclass('on')해주어 보여줘야함 -->
+            <!-- [D] 기타 스크립트에 해당하는 조건들이 있는경우에만 addclass('on')해주어 해당 조건 보여줘야함 -->
             <dl class="etc_scriptArea on">
                 <dt>기타 스크립트&colon;</dt>
                 <dd>
@@ -148,9 +148,9 @@
                 <div class="btnBox">
                     <div class="btn_qa_group">
                         <!-- [D] 해당 건의 질의요청이 있을 경우 질의버튼(.btn_question)에 addclass('on')해주어 활성화해줘야함 -->
-                        <!-- [D] 클릭 시 질의응답()팝업 등장 -->
+                        <!-- [D] 클릭 시 질의응답(#lyr_qa_edit)팝업 등장 -->
                         <a href="#lyr_qa_edit" class="btn_lyr_open btn_question on">질의</a>
-                        <!-- [D] 질의응답() 팝업에서 응답결과 저장한 경우 질의 버튼은 비활성화,
+                        <!-- [D] 질의응답(#lyr_qa_edit) 팝업에서 응답결과 저장한 경우 질의 버튼은 비활성화,
                         응답 버튼에 addclass('on')해주어 활성화해줘야함 -->
                         <a href="#none" class="btn_answer">응답</a>
                     </div>
@@ -257,6 +257,7 @@
                 <!-- .audit_detail_view -->
                 <div class="audit_detail_view">
                     <div class="fl">
+                        <!-- [D] 평가점수상세 보여주는 영역으로 이곳에서 수정하지 않고 하단의 평가표에서 적용버튼으로 반영 -->
                         <div class="detail_box eval_score_box">
                             <div class="custom_tbl">
                                 <table summary="TA점수, QA점수, QA결과, 심사의견으로 구성">
@@ -317,6 +318,7 @@
                                             </td>
                                         </tr>
 
+                                        <!-- [D] 심사의견은 이곳에서 직접 입력 -->
                                         <tr>
                                             <th>심사의견</th>
                                             <td colspan="5">
@@ -401,7 +403,7 @@
                                                     </td>
                                                     <td>
                                                         <div class="iptBox">
-                                                            <input type="text">
+                                                            <input type="text" numberOnly>
                                                         </div>
                                                     </td>
                                                     <td>7-1</td>
@@ -437,7 +439,7 @@
                                                     </td>
                                                     <td>
                                                         <div class="iptBox">
-                                                            <input type="text">
+                                                            <input type="text" numberOnly>
                                                         </div>
                                                     </td>
                                                     <td>7-1</td>
@@ -466,7 +468,7 @@
                                                     </td>
                                                     <td>
                                                         <div class="iptBox">
-                                                            <input type="text">
+                                                            <input type="text" numberOnly>
                                                         </div>
                                                     </td>
                                                     <td>7-1</td>
@@ -497,7 +499,7 @@
                                                     </td>
                                                     <td>
                                                         <div class="iptBox">
-                                                            <input type="text">
+                                                            <input type="text" numberOnly>
                                                         </div>
                                                     </td>
                                                     <td>7-1</td>
@@ -528,7 +530,7 @@
                                                     </td>
                                                     <td>
                                                         <div class="iptBox">
-                                                            <input type="text">
+                                                            <input type="text" numberOnly>
                                                         </div>
                                                     </td>
                                                     <td>7-1</td>
@@ -559,7 +561,7 @@
                                                     </td>
                                                     <td>
                                                         <div class="iptBox">
-                                                            <input type="text">
+                                                            <input type="text" numberOnly>
                                                         </div>
                                                     </td>
                                                     <td>7-1</td>
@@ -590,7 +592,7 @@
                                                     </td>
                                                     <td>
                                                         <div class="iptBox">
-                                                            <input type="text">
+                                                            <input type="text" numberOnly>
                                                         </div>
                                                     </td>
                                                     <td>7-1</td>
@@ -621,7 +623,7 @@
                                                     </td>
                                                     <td>
                                                         <div class="iptBox">
-                                                            <input type="text">
+                                                            <input type="text" numberOnly>
                                                         </div>
                                                     </td>
                                                     <td>7-1</td>
@@ -652,7 +654,7 @@
                                                     </td>
                                                     <td>
                                                         <div class="iptBox">
-                                                            <input type="text">
+                                                            <input type="text" numberOnly>
                                                         </div>
                                                     </td>
                                                     <td>7-1</td>
@@ -773,6 +775,7 @@
                             <div class="btnBox">
                                 <a href="#lyr_tpry_save" class="btn_tpry_save btn_lyr_open">임시저장</a>
                                 <a href="#lyr_audit_cplt" class="btn_audit_cplt btn_lyr_open">심사완료</a>
+                                <!-- [D] STT 전수(.btn_transcript)버튼 클릭 시 tm_qa_stt 전수팝업 열려야함 -->
                                 <a href="#none" class="btn_transcript">STT 전수</a>
                             </div>
 
@@ -798,7 +801,7 @@
                                 <dt>STT 탐지결과</dt>
                                 <dd>
                                     <ul>
-                                        <!-- [D] 텍스트 유형에 따른 컬러지정
+                                        <!-- [D] STT 탐지결과에 따른 컬러지정
                                         파란색: .txt_blue / 빨간색: .txt_red / 검정색: 기본 -->
                                         <li><span>[00112]</span> 계속 보험료 결제는 자동이체로 등록을 해드리겠습니다.</li>
                                         <li><span>[00113]</span> 보험료 납입은 예금주는 000님 생년월일은 00월 00일이고 00은행 계좌번호는 ***** ******* **** 구요.</li>
@@ -1031,6 +1034,13 @@ $(document).ready(function(){
     $('.eval_tab_title a').on('click', function(){
         $('.eval_tab_title a').removeClass('on');
         $(this).addClass('on');
+    });
+    
+    // input:text[numberOnly] 숫자만 입력가능
+    $('input:text[numberOnly]').keypress(function(e) {
+        if(e.which && (e.which < 48 || e.which > 57) ){
+            e.preventDefault();
+        }
     });
 });
 </script>
