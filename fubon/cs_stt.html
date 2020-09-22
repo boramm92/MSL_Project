@@ -1271,7 +1271,7 @@ $(document).ready(function(){
             var label = {'label': tabName};
             var temp = '';
 
-            var thisArr = tabData.findIndex((data)=>{ return data.label === tabName }); //이미 탭에 있는 메뉴를 클릭하는지 확인
+            var thisArr = tabData.findIndex(function(data){ return data.label === tabName }); //이미 탭에 있는 메뉴를 클릭하는지 확인
 
             //이미 탭에 있는 메뉴일 경우 해당 탭 보여주기
             if ( thisArr > -1 ) {
@@ -1343,7 +1343,7 @@ $(document).ready(function(){
             // 탭 닫기 버튼 클릭
             $('.tab_title .btn_close').on('click', function(e){
                 var thisTitle = $(this).parent('li').text(); //닫을 탭
-                var thisArr = tabData.findIndex((data)=>{ return data.label === thisTitle }); //닫을 탭 확인
+                var thisArr = tabData.findIndex(function(data){ return data.label === thisTitle }); //닫을 탭 확인
 
                 e.stopPropagation(); //버블링 막는 방어코드
                 closeTabList(thisArr); //탭 닫기
