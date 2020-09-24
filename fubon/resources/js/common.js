@@ -173,7 +173,7 @@ $(document).ready(function(){
         $(popHref).css({'display': 'block'});
 
         // popup close
-        $('.btn_lyr_cplt, .btn_lyr_close, .lyr_bg_dimmed').on('click',function(){
+        $('.btn_lyr_confirm, .btn_lyr_cplt, .btn_lyr_close, .lyr_bg_dimmed').on('click',function(){
             $('body').removeClass('lyr_bg_dim');
             $('.lyrBox').css({'display': 'none'});
         });
