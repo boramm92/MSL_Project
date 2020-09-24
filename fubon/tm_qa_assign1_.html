@@ -29,7 +29,7 @@
 
 <script src="resources/js/common.js"></script>
 
-<title>TM QA배정 || 푸본현대생명</title>
+<title>TM QA배정1_관리자 || 푸본현대생명</title>
 </head>
 <body>
 <!-- #wrap -->
@@ -564,15 +564,23 @@
                 <!-- //.stnArea -->
                 
                 <!-- .stnArea -->
-                <div class="stnArea">
+                <div class="stnArea qa_assign_status">
                     <h2>QA 배정 현황</h2>
+                    
+                    <div class="btnBox">
+                        <a href="#none">휴무관리</a>
+                    </div>
+                    
+                    <div class="btnBox">
+                        <a href="#none" class="btn_search">조회</a>
+                    </div>
                     
                     <div class="iptBox">
                         <span>배정일&colon;</span>
                         <input type="text" id="fromDate2" class="iptDateTime">
                         <span>&hyphen;</span>
                         <input type="text" id="toDate2" class="iptDateTime">
-                    </div>
+                    </div>                    
                     
                     <div class="assign_status_box tbl_line_view">
                         <table summary="심사자, 근무관리, 배정으로 구성">
@@ -625,6 +633,10 @@
                 <!-- .stnArea -->
                 <div class="stnArea">
                     <h2>심사자별 상세 현황</h2>
+                    
+                    <div class="btnBox">
+                        <a href="#lyr_assign_cancel" class="btn_assign_cancel btn_lyr_open">배정 취소</a>
+                    </div>
                     
                     <!-- .dataTableBox -->
                     <div class="dataTableBox">
@@ -768,10 +780,10 @@
 <!-- //#wrap -->
 
 <!-- layer popup -->
-<!-- QA 대상 취소 -->
-<div id="lyr_qaTarget_cancel" class="lyrBox">
+<!-- 배정 취소 팝업 -->
+<div id="lyr_assign_cancel" class="lyrBox">
     <div class="lyr_hd">
-        <span class="title">QA 대상</span>
+        <span class="title">QA 심사자 배정</span>
         <a href="#none" class="btn_lyr_close">닫기</a>
      </div>
     <div class="lyr_ct">
@@ -779,12 +791,12 @@
     </div>
     <div class="lyr_ft">
         <div class="btnBox">
-            <a href="#none" class="btn_lyr_save">확인</a>
+            <a href="#none" class="btn_lyr_confirm">확인</a>
             <a href="#none" class="btn_lyr_close">취소</a>
         </div>
     </div>
 </div>
-<!-- //STT 오류수정 -->
+<!-- //배정 취소 팝업 -->
 
 <!-- script -->
 <script type="text/javascript">
@@ -842,9 +854,9 @@ $(document).ready(function(){
     });
     
     // 왼쪽 2열 고정
-    // new $.fn.dataTable.FixedColumns(table, {
-    //     leftColumns: 2,
-    // });
+    new $.fn.dataTable.FixedColumns(table, {
+        leftColumns: 2,
+    });
     
     var table2 = $('.dataTable.qa_detail_status').DataTable({
         dom: '<"top">t<"bottom"i>', // 옵션 위치 지정
@@ -878,9 +890,9 @@ $(document).ready(function(){
     });
 
     // 왼쪽 2열 고정
-    // new $.fn.dataTable.FixedColumns(table2, {
-    //     leftColumns: 2,
-    // });
+    new $.fn.dataTable.FixedColumns(table2, {
+        leftColumns: 2,
+    });
 
     // 다른 열에서 sort되어도 1열 순번은 그대로 유지
     table.on('order.dt search.dt', function(){

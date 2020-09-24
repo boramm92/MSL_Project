@@ -308,14 +308,12 @@ $(document).ready(function(){
     customScrollSelectBox();
     
     // input:text[numberOnly] 숫자만 입력가능
-    $('input:text[numberOnly]').keypress(function(e) {
-        if(e.which && (e.which < 48 || e.which > 57) ){
-            e.preventDefault();
-        }
+    $('input:text[numberOnly]').on('keyup', function(){
+        $(this).val($(this).val().replace(/[^0-9]/gi,""));
     });
     
     // 콜키 입력박스 숫자, 특수문자(_)만 가능제한
-    $(document).on('keyup', 'input.callKey', function(){
+    $('input.callKey').on('keyup', function(){
         $(this).val($(this).val().replace(/[^0-9_]/gi,""));
     });
 	
