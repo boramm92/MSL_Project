@@ -24,6 +24,8 @@
 <script src="resources/js/buttons.html5.min.js"></script>
 <script src="resources/js/jszip.min.js"></script>
 
+<script src="resources/js/common.js"></script>
+
 <title>TM STT 전수 ver1 || 푸본현대생명</title>
 </head>
 <body>
@@ -363,65 +365,12 @@
 <!-- script -->
 <script type="text/javascript">
 $(document).ready(function(){
-    // 공통 레이어 팝업
-	$('.btn_lyr_open').on('click',function(){
-        var popHref = $(this).attr('href');
-
-        // popup open
-        $('body').addClass('lyr_bg_dim');
-        $(popHref).css({'display': 'block'});
-
-        // popup close
-        $('.btn_lyr_close, .lyr_bg_dimmed').on('click',function(){
-            $('body').removeClass('lyr_bg_dim');
-            $('.lyrBox').css({'display': 'none'});
-        });
-    });
-
-    // 공통 클립보드 레이어 팝업
-    $('.btn_clipboard').on('click',function(){
-        $('body').append(' \
-            <div id="lyr_clipboard" class="lyrBox lyr_notify">\
-                <div class="lyr_ct"> \
-                    <p class="massage">복사되었습니다.</p> \
-                </div> \
-            </div> \
-        ');
-        $('#lyr_clipboard').show();
-
-        setTimeout(function(){
-            $('.lyr_notify').addClass('lyr_hide').delay(300).queue(function(){$(this).remove();});
-        }, 400);
-    });
-
-    // 공통 저장완료 레이어 팝업
-    $('.btn_lyr_save').on('click',function(){
-        var thisLayer = $(this).parents('.lyrBox').attr('id');
-        var thisLayerHref = $('#' + thisLayer);
-        $(thisLayerHref).css({'display': 'none'});
-
-        $('body').append(' \
-            <div class="lyrBox lyr_notify">\
-                <div class="lyr_ct"> \
-                    <p class="massage">저장 되었습니다.</p> \
-                </div> \
-            </div> \
-        ');
-        $('.lyr_notify').show();
-
-        setTimeout(function(){
-            $('.lyr_notify').addClass('lyr_hide').delay(300).queue(function(){$(this).remove();});
-            $('body').removeClass('lyr_bg_dim');
-        }, 600);
-    });
-
     //오디오 플레이어
     $('audio').audioPlayer();
     $('.btn_player_play').on('click',function(){
         $(this).toggleClass('pause');
     });
 
-    // STT 결과에서 텍스트 검색하기
     // STT 결과에서 텍스트 검색하기
     $('table.dataTable tbody td:nth-child(4)').addClass('sttSrchArea');
     
@@ -533,13 +482,6 @@ $(document).ready(function(){
                     $(this).addClass('disabled').attr('disabled','disabled');
                 }
             });
-        }
-    });
-
-    // input:text[numberOnly] 숫자만 입력가능
-    $('input:text[numberOnly]').keypress(function(event) {
-        if(event.which < 48 || event.which > 57){
-            event.preventDefault();
         }
     });
 

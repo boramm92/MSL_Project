@@ -313,6 +313,11 @@ $(document).ready(function(){
             e.preventDefault();
         }
     });
+    
+    // 콜키 입력박스 숫자, 특수문자(_)만 가능제한
+    $(document).on('keyup', 'input.callKey', function(){
+        $(this).val($(this).val().replace(/[^0-9_]/gi,""));
+    });
 	
 	// 초기화 버튼 클릭 시 검색조건 초기화
     $('.btn_reset').on('click', function(){

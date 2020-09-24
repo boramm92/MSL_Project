@@ -16,6 +16,8 @@
 <script src="resources/js/jquery-migrate-3.3.0.min.js"></script>
 <script src="resources/js/jquery.tree-multiselect.js"></script>
 
+<script src="resources/js/common.js"></script>
+
 <title>TM QA 대상 지정 || 푸본현대생명</title>
 </head>
 <body>
@@ -139,7 +141,7 @@
                                     <li>
                                         <div class="chkBox">
                                             <input type="checkbox" id="chk1">
-                                            <label for="chk1"></label>
+                                            <label for="chk1">ZERO 성인병 보험</label>
                                         </div>
                                     </li>
                                     <li>
@@ -249,49 +251,6 @@
 <!-- script -->
 <script type="text/javascript">
 $(document).ready(function(){
-    // 공통 레이어 팝업
-	$('.btn_lyr_open').on('click',function(){
-        var popHref = $(this).attr('href');
-
-        // popup open
-        $('body').addClass('lyr_bg_dim');
-        $(popHref).css({'display': 'block'});
-
-        // popup close
-        $('.btn_lyr_close, .lyr_bg_dimmed').on('click',function(){
-            $('body').removeClass('lyr_bg_dim');
-            $('.lyrBox').css({'display': 'none'});
-        });
-    });
-
-    // 공통 저장완료 레이어 팝업
-    $('.btn_lyr_save').on('click',function(){
-        var thisLayer = $(this).parents('.lyrBox').attr('id');
-        var thisLayerHref = $('#' + thisLayer);
-        $(thisLayerHref).css({'display': 'none'});
-
-        $('body').append(' \
-            <div class="lyrBox lyr_notify">\
-                <div class="lyr_ct"> \
-                    <p class="massage">저장 되었습니다.</p> \
-                </div> \
-            </div> \
-        ');
-        $('.lyr_notify').show();
-
-        setTimeout(function(){
-            $('.lyr_notify').addClass('lyr_hide').delay(300).queue(function(){$(this).remove();});
-            $('body').removeClass('lyr_bg_dim');
-        }, 600);
-    });
-
-    // input:text[numberOnly] 숫자만 입력가능
-    $('input:text[numberOnly]').keypress(function(event) {
-        if(event.which < 48 || event.which > 57){
-            event.preventDefault();
-        }
-    });
-
     // QA 대상 지정 총 건수 자동 합계
     var caseSum = 0;
     $('.target_setArea .set_condition dt .iptBox input').each(function(){
@@ -308,7 +267,11 @@ $(document).ready(function(){
         startCollapsed: 'false',
         sectionDelimiter: '-',
     });
-    $('.tree-multiselect > div').addClass('sltArea');       
+    $('.tree-multiselect > div').addClass('sltArea');
+    
+    $('input.section').each(function(){
+        $(this).after('<label for=""></label>');              
+    });   
 });
 </script>
 </body>

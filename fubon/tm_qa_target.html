@@ -30,6 +30,8 @@
 <script src="resources/js/buttons.html5.min.js"></script>
 <script src="resources/js/jszip.min.js"></script>
 
+<script src="resources/js/common.js"></script>
+
 <title>TM QA || 푸본현대생명</title>
 </head>
 <body>
@@ -934,155 +936,6 @@
 <!-- script -->
 <script type="text/javascript">
 $(document).ready(function(){
-    // gnb 메뉴 script
-    function gnbShowSlide() {
-        // 대메뉴 마우스오버 시 중메뉴 슬라이드 다운으로 보여짐
-        $('.gnb > li').hover(function(){
-            $(this).find('.sub').stop().slideToggle(200);
-            $(this).toggleClass('active');
-            $('.third').slideUp();
-        });
-
-        // 소메뉴가 존재하는 중메뉴에 화살표 추가됨
-        if($('.third').length){
-            $('.third').parents('li').addClass('down');
-        }
-
-        // 중메뉴 클릭 시 소메뉴 슬라이드 다운으로 보여짐
-        $('.sub a').on('click', function(e){
-            e.stopPropagation();
-            $(this).parents('.sub').css('height', 'auto');
-            $(this).next().slideToggle(200);
-        });
-    }
-    gnbShowSlide();
-
-    // 공통 레이어 팝업
-	$('.btn_lyr_open').on('click',function(){
-        var popHref = $(this).attr('href');
-
-        // popup open
-        $('body').addClass('lyr_bg_dim');
-        $(popHref).css({'display': 'block'});
-
-        // popup close
-        $('.btn_lyr_save, .btn_lyr_close, .lyr_bg_dimmed').on('click',function(){
-            $('body').removeClass('lyr_bg_dim');
-            $('.lyrBox').css({'display': 'none'});
-        });
-    });
-
-    // select 스크롤 커스텀
-    function customScrollSelectBox(){
-        var SelectBoxScroll = $('.sltBox.custom select');
-        SelectBoxScroll.each(function (i, select){
-            if (!$(this).next().hasClass('slt_scroll')) {
-                $(this).after('<div class="slt_scroll wide ' + ($(this).attr('class') || '') + '" tabindex="0"><span class="current_option"></span><div class="list"><ul></ul></div></div>');
-                var dropdown = $(this).next();
-                var options = $(select).find('option');
-                var selected = $(this).find('option:selected');
-                dropdown.find('.current_option').html(selected.data('display-text') || selected.text());
-                options.each(function (j, o) {
-                    var display = $(o).data('display-text') || '';
-                    dropdown.find('ul').append('<li class="option ' + ($(o).is(':selected') ? 'selected' : '') + '" data-value="' + $(o).val() + '" data-display-text="' + display + '">' + $(o).text() + '</li>');
-                });
-            }
-        });
-
-        // Open/close
-        $(document).on('click', '.slt_scroll', function(e){
-            if($(e.target).hasClass('dd-searchbox')){
-                return;
-            }
-            $('.slt_scroll').not($(this)).removeClass('open');
-            $(this).toggleClass('open');
-            if ($(this).hasClass('open')){
-                $(this).find('.option').attr('tabindex', 0);
-                $(this).find('.selected').focus();
-            }else{
-                $(this).find('.option').removeAttr('tabindex');
-                $(this).focus();
-            }
-        });
-
-        // select 박스 외 영역 클릭 시 닫기
-        $(document).on('click', function(e){
-            if ($(e.target).closest('.slt_scroll').length === 0) {
-                $('.slt_scroll').removeClass('open');
-                $('.slt_scroll .option').removeAttr('tabindex');
-            }
-            e.stopPropagation();
-        });
-
-        // Option 클릭 시 text 가져오기
-        $(document).on('click', '.slt_scroll .option', function(e){
-            $(this).closest('.list').find('.selected').removeClass('selected');
-            $(this).addClass('selected');
-            var text = $(this).data('display-text') || $(this).text();
-            $(this).closest('.slt_scroll').find('.current_option').text(text);
-            $(this).closest('.slt_scroll').prev('select').val($(this).data('value')).trigger('change');
-        });
-
-        // Keyboard events
-        $(document).on('keydown', '.slt_scroll', function (e) {
-            var focused_option = $($(this).find('.list .option:focus')[0] || $(this).find('.list .option.selected')[0]);
-            // Space or Enter
-            //if (event.keyCode == 32 || event.keyCode == 13) {
-            if (e.keyCode == 13) {
-                if ($(this).hasClass('open')) {
-                    focused_option.trigger('click');
-                } else {
-                    $(this).trigger('click');
-                }
-                return false;
-                // Down
-            } else if (e.keyCode == 40) {
-                if (!$(this).hasClass('open')) {
-                    $(this).trigger('click');
-                } else {
-                    focused_option.next().focus();
-                }
-                return false;
-                // Up
-            } else if (e.keyCode == 38) {
-                if (!$(this).hasClass('open')) {
-                    $(this).trigger('click');
-                } else {
-                    var focused_option = $($(this).find('.list .option:focus')[0] || $(this).find('.list .option.selected')[0]);
-                    focused_option.prev().focus();
-                }
-                return false;
-                // Esc
-            } else if (e.keyCode == 27) {
-                if ($(this).hasClass('open')) {
-                    $(this).trigger('click');
-                }
-                return false;
-            }
-        });
-    }
-    customScrollSelectBox();
-
-    // input:text[numberOnly] 숫자만 입력가능
-    // $('input:text[numberOnly]').keypress(function(event) {
-    //     if(event.which < 48 || event.which > 57){
-    //         event.preventDefault();
-    //     }
-    // });
-
-    // 초기화 버튼 클릭 시 검색조건 초기화
-    $('.btn_reset').on('click', function(){
-        $('.srchArea input').val('');
-        $('.srchArea .slt_scroll .list .option').removeClass('selected');
-        $('.srchArea .slt_scroll .list .option:first-child').addClass('selected');
-
-        var optionSelected = $('.srchArea .slt_scroll .list .option.selected');
-        optionSelected.each(function(){
-            var optionText = $(this).text();
-            $('.current_option').text(optionText);
-        });
-    });
-
     // datetimepicker 렌더링
     $('#fromDate').datetimepicker({
         language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
@@ -1150,7 +1003,7 @@ $(document).ready(function(){
         leftColumns: 2,
     });
 
-    $('#tbl_chk_all').on('click', function(){
+    $('.chkBox input').on('click', function(){
         if($(this).prop('checked') === true){
             console.log("체크되었다");
         }else{
@@ -1186,63 +1039,6 @@ $(document).ready(function(){
     $(window).resize(function() {
         tableResize();
     });
-    
-    // $('.chk_only_box input[type="checkbox"]').on('click', function(){
-    //     console.log('체크박스 클릭함')
-    //     $(this).attr('checked', true);
-    // });
-
-    // 테이블 체크박스 기능 (전체선택, 해제)
-    // function allCheckFunc(obj) {
-    //     $("[name=chkOne]").prop("checked", $(obj).prop("checked") );
-    // }
-    // 
-    // // 체크박스 체크시 전체선택 체크 여부
-    // function oneCheckFunc(obj){
-    //     var allObj = $("#tbl_chk_all");
-    //     var objName = $(obj).attr("name");
-    // 
-    //     if( $(obj).prop("checked") ){
-    //         checkBoxLength = $("[name="+ objName +"]").length;
-    //         checkedLength = $("[name="+ objName +"]:checked").length;
-    // 
-    //         if(checkBoxLength == checkedLength){
-    //             allObj.prop("checked", true);
-    //         }else{
-    //             allObj.prop("checked", false);
-    //         }
-    //     }else{
-    //         allObj.prop("checked", false);
-    //     }
-    // }
-    // 
-    // $(function(){
-    //     $("[name=chkAll]").click(function(){
-    //         allCheckFunc(this);
-    //     });
-    //     $("[name=chkOne]").each(function(){
-    //         $(this).click(function(){
-    //             oneCheckFunc($(this));
-    //         });
-    //     });
-    // });
-    // 
-    // // 체크박스 1개 이상 체크 시 대상, 취소 버튼 활성화 / 선택 해제 시 다시 비활성화
-    // var targetSelectBtn = $('.btn_target, .btn_cancel');
-    // $(".tbl_chk").on('click', function(){
-    //     if($(".tbl_chk").is(":checked") == true){
-    //         targetSelectBtn.addClass('on');
-    //     }else{
-    //         targetSelectBtn.removeClass('on');
-    //     }
-    // });
-    // $(".tbl_chk_all").on('click', function(){
-    //     if($(".tbl_chk").is(":checked") == true && $(".tbl_chk_all").is(":checked") == true){
-    //         targetSelectBtn.addClass('on');
-    //     }else{
-    //         targetSelectBtn.removeClass('on');
-    //     }
-    // });
 });
 </script>
 </body>
