@@ -326,4 +326,10 @@ $(document).ready(function(){
             $('.current_option').text(optionText);
         });
     });
+    
+    // 체크박스 그룹별 전체선택 기능
+    $('input[type=checkbox]').on('click', function(){
+        $('input[name=\''+this.id+'\']').not(this).prop('checked', this.checked);
+        $('#'+this.name).prop('checked', $('input[name=\''+this.name+'\']').length === $('input[name=\''+this.name+'\']').filter(':checked').length);      
+    });
 });
