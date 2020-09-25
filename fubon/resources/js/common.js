@@ -330,9 +330,115 @@ $(document).ready(function(){
         });
     });
     
+    // 체크박스 선택 기능
+    // $('input[type=checkbox]').on('click', function(){
+    //     $('input[name=\''+this.id+'\']').not(this).prop('checked', this.checked);
+    //     $('#'+this.name).prop('checked', $('input[name=\''+this.name+'\']').length === $('input[name=\''+this.name+'\']').filter(':checked').length);  
+    //     console.log($('input[name=\''+this.name+'\']').length);    
+    // });
+    
     // 체크박스 그룹별 전체선택 기능
-    $('input[type=checkbox]').on('click', function(){
-        $('input[name=\''+this.id+'\']').not(this).prop('checked', this.checked);
-        $('#'+this.name).prop('checked', $('input[name=\''+this.name+'\']').length === $('input[name=\''+this.name+'\']').filter(':checked').length);      
+    $('.allChk').on('click', $('.dataTables_scrollBody'), function(){
+        var thisName = $(this).attr('name');
+        $('input[name=\''+thisName+'\']').not(this).prop('checked', this.checked);
     });
+    
+    // $('label').on('click', $('.dataTables_scrollBody'), function(){
+    //     var $thisCheckbox = $(this).prev('input[type="checkbox"]')
+    //     var check = $thisCheckbox.prop('checked')
+    //     var thisName = $thisCheckbox.attr('name')
+    // 
+    //     if ( $thisCheckbox.hasClass('allChk') ) {
+    //         return;
+    //     }
+    // 
+    //     if ( check == false ) {
+    //         $thisCheckbox.prop('checked',true);
+    //     } else {
+    //         $thisCheckbox.prop('checked',false);
+    //     }
+    // 
+    //     handleAllCheck(thisName)
+    // 
+    //     setTimeout(function(){
+    //         handleAllCheck(thisName)
+    //     },0);
+    // });
+    // 
+    // function handleAllCheck(thisName) {
+    //     var checkboxes = $('.dataTables_scrollBody input[name=\''+thisName+'\']');
+    //     var $allCheck = $('.allChk[name=\''+thisName+'\']');
+    //     var length = checkboxes.length;
+    //     var trueLength = -1;
+    // 
+    //     console.log('함수진입')
+    // 
+    // 
+    //     checkboxes.each(function(){            
+    //         if ( $(this).prop('checked') == true ) {
+    //             trueLength += 1
+    //             console.log('체크있음', trueLength);
+    //         }            
+    //     })
+    // 
+    //     // console.log({trueLength, length})
+    // 
+    //     if ( trueLength == length ) {
+    //         $allCheck.prop('checked', true)
+    //         console.log('length가 같음', {trueLength, length})
+    // 
+    //         return;
+    //     }
+    //     $allCheck.prop('checked', false)
+    //     console.log('length가 틀림', {trueLength, length})
+    // }
+    
+    
+    // $('label').on('click', $('.dataTables_scrollBody'), function(){
+    //     var $thisCheckbox = $(this).prev('input[type="checkbox"]')
+    //     var thisName = $thisCheckbox.attr('name')
+    // 
+    //     if ( $thisCheckbox.hasClass('allChk') ) {
+    //         return;
+    //     }
+    // 
+    //     handleCheck(thisName);
+    // });
+    // 
+    // function handleCheck(thisName) {
+    //     var checkboxes = $('.dataTables_scrollBody input[name=\''+thisName+'\']');
+    //     var $allCheck = $('.allChk[name=\''+thisName+'\']');
+    //     var length = checkboxes.length;
+    //     var trueLength = -1;
+    // 
+    // 
+    //     var $thisCheckbox = $(this).prev('input[type="checkbox"]')
+    //     var check = $thisCheckbox.prop('checked')
+    // 
+    //     if ( check == false ) {
+    //         $thisCheckbox.prop('checked',true);
+    //     } else {
+    //         $thisCheckbox.prop('checked',false);
+    //     }
+    // 
+    // 
+    //     checkboxes.each(function(){            
+    //         if ( $(this).prop('checked') == true ) {
+    //             trueLength += 1
+    //             console.log('체크있음', trueLength);
+    //         }            
+    //     })
+    // 
+    //     // console.log({trueLength, length})
+    // 
+    //     if ( trueLength == length ) {
+    //         $allCheck.prop('checked', true)
+    //         console.log('length가 같음', {trueLength, length})
+    // 
+    //         return;
+    //     }
+    //     $allCheck.prop('checked', false)
+    //     console.log('length가 틀림', {trueLength, length})
+    // }
+    
 });

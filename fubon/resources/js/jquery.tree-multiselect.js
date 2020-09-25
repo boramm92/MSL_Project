@@ -599,6 +599,7 @@ Tree.prototype.handleSectionCheckboxMarkings = function () {
   var self = this;
   this.$selectionContainer.on('click', 'input.section[type=checkbox]', function () {
     var $section = jQuery(this).closest('div.section');
+    var $childSection = $section.find('div.section'); //NBR 부모 section 아래에 있는 section 찾기
     var $items = $section.find('div.item');
     var keys = $items.map(function (idx, el) {
       var key = Util.getKey(el);
@@ -610,13 +611,15 @@ Tree.prototype.handleSectionCheckboxMarkings = function () {
 
     if (this.checked) {
       var _self$keysToAdd;
-
+      
+      $childSection.find('input[type="checkbox"]').prop('checked', true); //NBR 부모 section이 checked true 되면 $childSection 도 동일하게 작동
       // TODO why does this always take this branch
       (_self$keysToAdd = self.keysToAdd).push.apply(_self$keysToAdd, _toConsumableArray(keys));
       Util.array.uniq(self.keysToAdd);
     } else {
       var _self$keysToRemove;
 
+      $childSection.find('input[type="checkbox"]').prop('checked', false); //NBR 부모 section이 checked false 되면 $childSection 도 동일하게 작동
       (_self$keysToRemove = self.keysToRemove).push.apply(_self$keysToRemove, _toConsumableArray(keys));
       Util.array.uniq(self.keysToRemove);
     }
@@ -672,6 +675,7 @@ Tree.prototype.redrawSectionCheckboxes = function ($section) {
 
 Tree.prototype.addCollapsibility = function () {
   var titleSelector = 'div.title';
+  var labelSelector = 'label'; //NBR 라벨 찾기
   var $titleDivs = this.$selectionContainer.find(titleSelector);
 
   var collapseSpan = Util.dom.createNode('span', { class: 'collapse-section' });
@@ -683,6 +687,11 @@ Tree.prototype.addCollapsibility = function () {
   if (this.params.startCollapsed) {
     $sectionDivs.addClass('collapsed');
   }
+  
+  // NBR 라벨을 클릭하면 titleSelector 이벤트를 막기
+  this.$selectionContainer.on('click', labelSelector, function (event) {
+      event.stopPropagation();
+  });
 
   this.$selectionContainer.on('click', titleSelector, function (event) {
     if (event.target.nodeName === 'INPUT') {
@@ -1116,6 +1125,8 @@ exports.createSelection = function (astItem, createCheckboxes, disableCheckboxes
     var inputCheckbox = exports.createNode('input', inputCheckboxProps);
     // prepend child
     selectionNode.insertBefore(inputCheckbox, selectionNode.firstChild);
+    
+    var inputCheckbox = exports.createNode('input', inputCheckboxProps);
 
     var labelProps = {
       class: astItem.disabled ? 'disabled' : '',
@@ -1160,6 +1171,7 @@ exports.createSection = function (astSection, createCheckboxes, disableCheckboxe
   var sectionNode = exports.createNode('div', { class: 'section', 'data-key': astSection.id });
 
   var titleNode = exports.createNode('div', { class: 'title', text: astSection.name });
+  
   if (createCheckboxes) {
     var checkboxProps = {
       class: 'section',
@@ -1169,7 +1181,11 @@ exports.createSection = function (astSection, createCheckboxes, disableCheckboxe
       checkboxProps.disabled = true;
     }
     var checkboxNode = exports.createNode('input', checkboxProps);
+    var labelNode = exports.createNode('label'); // NBR lavel node
+    
+    titleNode.insertBefore(labelNode, titleNode.firstChild); // NBR title에 lavel 추가
     titleNode.insertBefore(checkboxNode, titleNode.firstChild);
+    
   }
   sectionNode.appendChild(titleNode);
   return sectionNode;

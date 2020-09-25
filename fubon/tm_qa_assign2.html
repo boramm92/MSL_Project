@@ -521,7 +521,6 @@
                     
                     <div class="dateSearch_box">
                         <!-- [D] QA요청일자 날짜별 조회 가능 -->
-                        <!--  -->
                         <div class="iptBox">
                             <span>배정일&colon;</span>
                             <input type="text" id="fromDate2" class="iptDateTime">
@@ -719,25 +718,6 @@
 </div>
 <!-- //#wrap -->
 
-<!-- layer popup -->
-<!-- 배정 취소 팝업 -->
-<div id="lyr_assign_cancel" class="lyrBox">
-    <div class="lyr_hd">
-        <span class="title">QA 심사자 배정</span>
-        <a href="#none" class="btn_lyr_close">닫기</a>
-     </div>
-    <div class="lyr_ct">
-            <p>취소하시겠습니까?</p>
-    </div>
-    <div class="lyr_ft">
-        <div class="btnBox">
-            <a href="#none" class="btn_lyr_confirm">확인</a>
-            <a href="#none" class="btn_lyr_close">취소</a>
-        </div>
-    </div>
-</div>
-<!-- //배정 취소 팝업 -->
-
 <!-- script -->
 <script type="text/javascript">
 $(document).ready(function(){
@@ -761,7 +741,7 @@ $(document).ready(function(){
     });
 
     // datatable 렌더링
-    var table = $('.dataTable').DataTable({
+    var firstTable = $('.dataTable').DataTable({
         dom: 'iptlB', // 옵션 위치 지정
         language: { // 테이블 목록 건수 text 한글 설정
             emptyTable: "조회된 데이터가 없습니다.", // 데이터 없을 경우 노출되는 text 설정
@@ -770,29 +750,29 @@ $(document).ready(function(){
         },
         responsive: true, // 반응형 허용
         filter: false, // 검색창 미허용
-        order: [[ 12, 'asc' ]], // 초기 sort 설정
+        order: [[ 9, 'asc' ]], // 초기 sort 설정
         paging: false, // 페이징 허용
         scrollY: "156px", // 세로 스크롤 허용, 사이즈
         scrollX: true, //가로 스크롤 허용
         scrollCollapse: true,
         columnDefs: [ // 컬럼별 width, 옵션 사용 지정
             {targets: [0], width: "50px", orderable: false, sortable: false},  // NO
-            {targets: [1], width: "150px", orderable: false},                   // 청약일자
+            {targets: [1], width: "150px"},                                    // 청약일자
             {targets: [2], width: "150px"},                                    // 상품명
-            {targets: [3], width: "200px", orderable: false},                  // 증권번호
-            {targets: [4], width: "120px"},                                    // 청약상태
+            {targets: [3], width: "200px"},                                    // 증권번호
+            {targets: [4], width: "120px", orderable: false},                  // 청약상태
             {targets: [5], width: "100px", orderable: false},                  // 계약자
             {targets: [6], width: "100px", orderable: false},                  // 피보험자
             {targets: [7], width: "100px", orderable: false},                  // 상담원
-            {targets: [8], width: "100px"},                                    // 사번
+            {targets: [8], width: "100px", orderable: false},                  // 사번
             {targets: [9], width: "100px"},                                    // 센터
             {targets: [10], width: "100px", orderable: false},                 // 실
             {targets: [11], width: "100px", orderable: false},                 // TA점수
-            {targets: [12], width: "100px"},                                   // 담당QA
+            {targets: [12], width: "100px", orderable: false},                  // 담당QA
             {targets: [13], width: "100px", orderable: false},                 // QA상태
             {targets: [14], width: "100px", orderable: false},                 // QA결과
             {targets: [15], width: "100px", orderable: false},                 // QA점수
-            {targets: [16], width: "100px", orderable: false},                 // 콜타임
+            {targets: [16], width: "100px"},                                   // 콜타임
             {targets: [17], width: "100px", orderable: false},                 // 업무처리시간
         ],
         dom: 'Blfrtip', // 엑셀 다운로드 버튼 추가
@@ -803,27 +783,28 @@ $(document).ready(function(){
     });
     
     // 왼쪽 2열 고정
-    new $.fn.dataTable.FixedColumns(table, {
+    new $.fn.dataTable.FixedColumns(firstTable, {
         leftColumns: 1,
     });
     
-    var table2 = $('.dataTable.qa_processing_status').DataTable();
-    
-    // 왼쪽 2열 고정
-    new $.fn.dataTable.FixedColumns(table2, {
-        leftColumns: 1,
-    });
-
     // 다른 열에서 sort되어도 1열 순번은 그대로 유지
-    table.on('order.dt search.dt', function(){
-        table.column(0, {search:'applied', order:'applied'}).nodes().each(function (cell, i){
+    firstTable.on('order.dt search.dt', function(){
+        firstTable.column(0, {search:'applied', order:'applied'}).nodes().each(function (cell, i){
             cell.innerHTML = i+1;
         });
     }).draw();
     
+    // datatable 렌더링 
+    var secondTable = $('.dataTable.qa_processing_status').DataTable();
+    
+    // 왼쪽 2열 고정
+    new $.fn.dataTable.FixedColumns(secondTable, {
+        leftColumns: 1,
+    });
+    
     // 다른 열에서 sort되어도 1열 순번은 그대로 유지
-    table2.on('order.dt search.dt', function(){
-        table2.column(0, {search:'applied', order:'applied'}).nodes().each(function (cell, i){
+    secondTable.on('order.dt search.dt', function(){
+        secondTable.column(0, {search:'applied', order:'applied'}).nodes().each(function (cell, i){
             cell.innerHTML = i+1;
         });
     }).draw();
@@ -848,41 +829,6 @@ $(document).ready(function(){
     // 
     // $(window).resize(function() {
     //     tableResize();
-    // });
-    
-    // 테이블 체크박스 기능 (전체선택, 해제)
-    // function allCheckFunc(obj) {
-    //     $("[name=chkOne]").prop("checked", $(obj).prop("checked"));
-    // }
-    // 
-    // // 체크박스 체크시 전체선택 체크 여부
-    // function oneCheckFunc(obj){
-    //     var allObj = $(".tbl_chk_all");
-    //     var objName = $(obj).attr("name");
-    // 
-    //     if( $(obj).prop("checked") ){
-    //         checkBoxLength = $("[name="+ objName +"]").length;
-    //         checkedLength = $("[name="+ objName +"]:checked").length;
-    // 
-    //         if(checkBoxLength == checkedLength){
-    //             allObj.prop("checked", true);
-    //         }else{
-    //             allObj.prop("checked", false);
-    //         }
-    //     }else{
-    //         allObj.prop("checked", false);
-    //     }
-    // }
-    // 
-    // $(function(){
-    //     $("[name=chkAll]").click(function(){
-    //         allCheckFunc(this);
-    //     });
-    //     $("[name=chkOne]").each(function(){
-    //         $(this).click(function(){
-    //             oneCheckFunc($(this));
-    //         });
-    //     });
     // });
 });
 </script>
