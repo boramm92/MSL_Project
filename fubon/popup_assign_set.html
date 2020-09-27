@@ -24,7 +24,7 @@
         <!-- #contents -->
         <div class="popup_wrap small">
             <h1>QA 배정</h1>
-            
+
             <!-- .qa_setArea -->
             <div class="qa_setArea">
                 <!-- .custom_tbl -->
@@ -32,12 +32,13 @@
                     <div class="tbl_hd">
                         <table summary="체크박스, 심사자, 상태, 신계약(건)으로 구성">
                             <colgroup>
-                                <col width="15%"><col width="45%"><col width="20%"><col width="20%">
+                                <col width="50"><col><col width="65"><col width="65">
                             </colgroup>
-                            
+
                             <thead>
                                 <tr>
                                     <th>
+                                        <!-- [D] 전체선택 체크박스 input[id]와 label[for] 값 동일하게 입력해야함 -->
                                         <div class="chkBox">
                                             <input type="checkbox" id="chkGroup">
                                             <label for="chkGroup"></label>
@@ -50,16 +51,18 @@
                             </thead>
                         </table>
                     </div>
-                    
+
                     <div class="tbl_bd">
                         <table>
                             <colgroup>
-                                <col width="15%"><col width="45%"><col width="20%"><col width="20%">
+                                <col width="50"><col><col width="65"><col width="65">
                             </colgroup>
-                            
+
                             <tbody>
                                 <tr>
                                     <td>
+                                        <!-- [D] 개별선택 체크박스 input[id]와 label[for] 값 동일하게 입력해야함 -->
+                                        <!-- [D] 전체선택 체크박스 input[id]와 개별선택 체크박스 input[name] 값 동일하게 입력해야함 -->
                                         <div class="chkBox">
                                             <input type="checkbox" name="chkGroup" id="chkOne1">
                                             <label for="chkOne1"></label>
@@ -195,12 +198,13 @@
                     </div>
                 </div>
                 <!-- //.custom_tbl -->
-                
+
+                <!-- [D] 배정(.btn_lyr_save)버튼 클릭 시 배정정보 저장되고 배정팝업 닫힘 -->
                 <div class="btnBox">
                     <a href="#none" class="btn_lyr_save">배정</a>
-                    <a href="#lyr_cancel_confirm" class="btn_cancel btn_lyr_open">취소</a>                    
+                    <a href="#lyr_cancel_confirm" class="btn_cancel btn_lyr_open">취소</a>
                 </div>
-            </div>            
+            </div>
             <!-- //.qa_setArea -->
         </div>
         <!-- //#contents -->
@@ -226,5 +230,16 @@
     </div>
 </div>
 <!-- //취소확인 팝업 -->
+
+<!-- script -->
+<script type="text/javascript">
+$(document).ready(function(){
+    // 체크박스 전체 선택 기능
+    $("input[type=checkbox]").on('click', function() {
+        $('input[name=\''+this.id+'\']').not(this).prop('checked', this.checked);
+        $('#'+this.name).prop('checked', $('input[name=\''+this.name+'\']').length ===                  $('input[name=\''+this.name+'\']').filter(':checked').length);
+    });
+});
+</script>
 </body>
 </html>

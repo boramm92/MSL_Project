@@ -373,13 +373,13 @@ $(document).ready(function(){
 
     // STT 결과에서 텍스트 검색하기
     $('table.dataTable tbody td:nth-child(4)').addClass('sttSrchArea');
-    
+
     $("#findTxtField").keydown(function(key) {
         if (key.keyCode == 13) {
             $('#findTxt .btn_srch').trigger("click");
         }
     });
-        
+
     $('#findTxt .btn_srch').on('click',function(){
         var findTxtField = $('#findTxtField').val();
 
@@ -524,7 +524,7 @@ $(document).ready(function(){
         responsive: true, // 반응형 허용
         info: false, // 페이지 정보 미허용
         paging: false, // 페이징 미허용
-        scrollY: true, // 세로 스크롤 허용, 사이즈
+        scrollY: "650px", // 세로 스크롤 허용, 사이즈
         scrollX: false, //가로 스크롤 미허용
         scrollCollapse: true,
         columnDefs: [ // 컬럼별 width, 옵션 사용 지정
@@ -548,28 +548,6 @@ $(document).ready(function(){
         } else {
             $(this).css('background', '#fdeddc');
         }
-    });
-
-    // datatable height 브라우저 height 기준 maxheight 조정
-    function tableResize() {
-        // 전체 테이블
-        $('.DTFC_ScrollWrapper').css({
-            height: "100%",
-            maxHeight: ($(window).height() - 450) + 'px'
-        });
-        // 테이블 바디 (스크롤 포함)
-        $('.DTFC_LeftBodyWrapper').css({
-            maxHeight: ($(window).height() - 456 - 40) + 'px'
-        });
-        // 첫번째 열
-        $('.dataTables_scrollBody').css({
-            maxHeight: ($(window).height() - 450 - 40) + 'px'
-        });
-    }
-    tableResize();
-
-    $(window).on('resize', function() {
-        tableResize();
     });
 });
 </script>

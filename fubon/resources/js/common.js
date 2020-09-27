@@ -24,7 +24,7 @@ $(document).ready(function(){
         });
     }
     gnbShowSlide();
-	
+
 	// AMR 200915 탭 이벤트
 	// var tabData = [];
 	var tabData = [{'label': 'STT 대상'}]; //탭 데이터 임의로 넣음
@@ -163,7 +163,7 @@ $(document).ready(function(){
 		$('.tab_content').empty();
 	});
 	// AMR 200915 탭 이벤트
-	
+
     // 공통 레이어 팝업
 	$('.btn_lyr_open').on('click',function(){
         var popHref = $(this).attr('href');
@@ -215,7 +215,7 @@ $(document).ready(function(){
             $('body').removeClass('lyr_bg_dim');
         }, 600);
     });
-	
+
 	// select 스크롤 커스텀
     function customScrollSelectBox(){
         var SelectBoxScroll = $('.sltBox.custom select');
@@ -306,17 +306,17 @@ $(document).ready(function(){
         });
     }
     customScrollSelectBox();
-    
+
     // input:text[numberOnly] 숫자만 입력가능
     $('input:text[numberOnly]').on('keyup', function(){
         $(this).val($(this).val().replace(/[^0-9]/gi,""));
     });
-    
+
     // 콜키 입력박스 숫자, 특수문자(_)만 가능제한
     $('input.callKey').on('keyup', function(){
         $(this).val($(this).val().replace(/[^0-9_]/gi,""));
     });
-	
+
 	// 초기화 버튼 클릭 시 검색조건 초기화
     $('.btn_reset').on('click', function(){
         $('.srchArea input').val('');
@@ -329,7 +329,13 @@ $(document).ready(function(){
             $('.current_option').text(optionText);
         });
     });
-    
+
+    // 체크박스 전체 선택 기능
+    $("input[type=checkbox]").on('click', function() {
+        $('input[name=\''+this.id+'\']').not(this).prop('checked', this.checked);
+        $('#'+this.name).prop('checked', $('input[name=\''+this.name+'\']').length ===                  $('input[name=\''+this.name+'\']').filter(':checked').length);
+    });
+
     // 데이터 테이블스에서 input 체크가 정상적으로 되지 않아 작성된 코드
     // 전체 선택 클릭 시 (dataTables_scrollHead에서 상태를 받아와서 DTFC_Cloned에 적용)
     $('.all_chk').on('click', $('.dataTables_scrollHead'), function(){
@@ -337,7 +343,7 @@ $(document).ready(function(){
         var check = $(this).prop('checked');
         var $this = $('.DTFC_Cloned .all_chk[name=\''+thisName+'\']');
         var $childCheck = $('.each_chk[name=\''+thisName+'\']');
-        
+
         if ( check == false ) { // 전체선택 체크가 false이면 자식들도 false
             $this.prop('checked', false);
             $childCheck.prop('checked', false);
@@ -346,7 +352,7 @@ $(document).ready(function(){
             $childCheck.prop('checked', true);
         }
     });
-    
+
     // 개별 체크박스 클릭 시 (dataTables_scrollBody에서 상태를 받아와서 DTFC_Cloned에 적용)
     $('.each_chk').on('click', $('.dataTables_scrollBody'), function(){
         var $thisCheckbox = $(this);
@@ -354,25 +360,25 @@ $(document).ready(function(){
         var thisId = $thisCheckbox.attr('id');
         var $this = $('.DTFC_Cloned .each_chk[id=\''+thisId+'\']');
         var check = $thisCheckbox.prop('checked');
-        
+
         if ( check == false ) {
             $this.prop('checked',false);
         } else {
             $this.prop('checked', true);
         }
-        
+
         var checkboxes = $('.DTFC_Cloned .each_chk[name=\''+thisName+'\']');
         var $allCheck = $('.DTFC_Cloned .all_chk[name=\''+thisName+'\']');
         var length = checkboxes.length;
-        
-        // 자식 중 체크 false기 있으면 전체선택 false
+
+        // 자식 중 체크 false가 있으면 전체선택 false
         for (var i=0; i<checkboxes.length; i++) {
             if ( checkboxes[i].checked == false ) {
               $allCheck.prop('checked', false);
               return;
             }
         }
-        // 자식 중 체크 false기 없으면 전체선택 true
+        // 자식 중 체크 false가 없으면 전체선택 true
         $allCheck.prop('checked', true);
-    });    
+    });
 });
