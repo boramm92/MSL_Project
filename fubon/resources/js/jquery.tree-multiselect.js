@@ -629,31 +629,35 @@ Tree.prototype.handleSectionCheckboxMarkings = function () {
 };
 
 // AMR 트리 체크 선택 기능
-Tree.prototype.handleSectionAllCheckboxMarkings = function () {
-  var self = this;
-  this.$selectionContainer.on('click', 'input[type=checkbox]', function () {
-    var $thisSection = $(this).closest('div.section');
-    var $section = $thisSection.parent();
-    var $title = $section.children('.title');
-    var sectionInput = $title.find('input[type="checkbox"]');
-    var $childInput = $section.find('input[type="checkbox"]');
-    var inputLength = $childInput.length;
-    
-    if ( $section.hasClass('selections') ) {
-        $title = $thisSection.children('.title');
-        sectionInput = $title.find('input[type="checkbox"]');
-    }
-
-    for (var i=0; i<inputLength; i++) {
-      if ( $childInput[i].checked == false ) {
-        sectionInput.prop('checked', false);
-        return;
+  Tree.prototype.handleSectionAllCheckboxMarkings = function () {
+    var self = this;
+    this.$selectionContainer.on('click', 'input[type=checkbox]', function () {
+      var $thisParents = $(this).parents('div.section');
+      if ( !$(this).hasClass('option') ) {
+        $thisParents =  $(this).parents('div.section').not($(this).closest('div.section'));
       }
-    }
-    
-    sectionInput.prop('checked', true);
-  });
-};
+      $thisParents.each(function(i){
+        handleParentCheckbox($(this))
+      })
+      function handleParentCheckbox(parent) {
+        var $parentInput = parent.children('div.title').find('input.section')
+        var $childInput = parent.children('div.section').children('div.title').find('input.section')
+        var childLength = $childInput.length;
+        if ( childLength == 0 ) {
+          $childInput = parent.find('input.option')
+          childLength = $childInput.length;
+        }
+
+        for (var i=0; i<childLength; i++) {
+          if ( $childInput[i].checked === false ) { // 직속자식 중 하나라도 check false이면 부모도 check false
+            $parentInput.prop('checked', false);
+            return;
+          }
+        }
+        $parentInput.prop('checked', true); // 직속자식이 모두 check true면 직속부모도 true
+      }
+    });
+  };
 
 Tree.prototype.redrawSectionCheckboxes = function ($section) {
   $section = $section || this.$selectionContainer;
