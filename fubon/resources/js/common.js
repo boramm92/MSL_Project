@@ -330,13 +330,6 @@ $(document).ready(function(){
         });
     });
     
-    // 체크박스 선택 기능
-    // $('input[type=checkbox]').on('click', function(){
-    //     $('input[name=\''+this.id+'\']').not(this).prop('checked', this.checked);
-    //     $('#'+this.name).prop('checked', $('input[name=\''+this.name+'\']').length === $('input[name=\''+this.name+'\']').filter(':checked').length);  
-    //     console.log($('input[name=\''+this.name+'\']').length);    
-    // });
-    
     // 데이터 테이블스에서 input 체크가 정상적으로 되지 않아 작성된 코드
     // 전체 선택 클릭 시 (dataTables_scrollHead에서 상태를 받아와서 DTFC_Cloned에 적용)
     $('.all_chk').on('click', $('.dataTables_scrollHead'), function(){
