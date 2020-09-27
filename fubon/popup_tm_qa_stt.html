@@ -34,7 +34,7 @@
     <!-- #container -->
     <div id="container">
         <!-- #contents -->
-        <div class="popup_wrap middle">
+        <div class="popup_wrap middle tm_qa_stt">
             <h1>TM_QA &hyphen; STT 전수</h1>
 
             <!-- .customInfo -->
@@ -85,22 +85,100 @@
                 </table>
             </div>
             <!-- //.customInfo -->
-            
-            <!-- .datetableBox -->
-            <div class="datatableBox">
-                <table class="dataTable">
-                    <thead>
-                        <tr>
-                            <th>NO</th>
-                            <th>청약일자</th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
-            <!-- //.datatableBox -->
 
             <!-- .dataTableBox -->
             <div class="dataTableBox">
+                <!-- [D] datatables 라이브러리 영역 -->
+                <table class="dataTable tbl_counsel_list">
+                    <thead>
+                        <tr>
+                            <th>NO</th>
+                            <th>상담일시</th>
+                            <th>통화시간</th>
+                            <th>상담대분류</th>
+                            <th>상담소분류</th>
+                            <th>상담내용</th>
+                            <th>청약</th>
+                            <th>STT 상태</th>
+                            <th>센터</th>
+                            <th>실</th>
+                            <th>상담원</th>
+                        </tr>
+                    </thead>
+
+                    <!-- [D] 목록 더블클릭 시 해당 콜상담 전체 플레이되어야 함 -->
+                    <!-- [D] 화면 하단 STT 탐지결과에서 문장클릭 시 해당하는 부분이 플레이 되어야하며,
+                    해당되는 녹취 목록에 addclass('active')주면 하이라이트 처리됨  -->
+                    <tbody>
+                        <tr class="active">
+                            <td>1</td>
+                            <td>2017-12-13 16:28:58</td>
+                            <td>0:24:23</td>
+                            <td>하이라이트 기반</td>
+                            <td>하이라이트 기반</td>
+                            <td>하이라이트 기반</td>
+                            <td>Y</td>
+                            <td>정상</td>
+                            <td>1센터</td>
+                            <td>2팀</td>
+                            <td>김영희</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>2017-12-13 16:28:58</td>
+                            <td>0:24:23</td>
+                            <td>하이라이트 기반</td>
+                            <td>하이라이트 기반</td>
+                            <td>하이라이트 기반</td>
+                            <td>Y</td>
+                            <td>정상</td>
+                            <td>1센터</td>
+                            <td>2팀</td>
+                            <td>김영희</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>2017-12-13 16:28:58</td>
+                            <td>0:24:23</td>
+                            <td>하이라이트 기반</td>
+                            <td>하이라이트 기반</td>
+                            <td>하이라이트 기반</td>
+                            <td>Y</td>
+                            <td>정상</td>
+                            <td>1센터</td>
+                            <td>2팀</td>
+                            <td>김영희</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>2017-12-13 16:28:58</td>
+                            <td>0:24:23</td>
+                            <td>하이라이트 기반</td>
+                            <td>하이라이트 기반</td>
+                            <td>하이라이트 기반</td>
+                            <td>Y</td>
+                            <td>정상</td>
+                            <td>1센터</td>
+                            <td>2팀</td>
+                            <td>김영희</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>2017-12-13 16:28:58</td>
+                            <td>0:24:23</td>
+                            <td>하이라이트 기반</td>
+                            <td>하이라이트 기반</td>
+                            <td>하이라이트 기반</td>
+                            <td>Y</td>
+                            <td>정상</td>
+                            <td>1센터</td>
+                            <td>2팀</td>
+                            <td>김영희</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- //datatables 라이브러리 영역 -->
+                
                 <!-- .playerBox -->
                 <!-- [D] 플레이어에서 재생버튼 클릭 시 상담내용 처음부터 재생되어야 함 -->
                 <!-- [D] tbody의 대화내용 셀 더블클릭 시 해당 내용 재생되며 재생 중인 음성과 텍스트의 싱크 맞춰야 함 / 재생 중인 텍스트(.dataTable tbody tr)에는 addclass('currentPlay')해주면 1~4번째 셀 텍스트 볼드처리 됨 -->
@@ -123,10 +201,6 @@
                 </div>
                 <!-- //.player -->
 
-                <!-- .table_clipboard -->
-                <!-- [D] STT 결과 내 우클릭 시 복사하기 기능을 위해 추가한 input으로 실제 브라우저에서 보이지 않음 -->
-                <input type="text" class="table_clipboard">
-
                 <!-- .term_srch_box -->
                 <!-- [D] 검색 시 아래 테이블 내 검색어와 일치하는 텍스트를 em.findElement 으로 감싸주며, 검색어 이동버튼 클릭 시 순서대로 포커스 이동되며 해당 순서의 텍스트에 추가로 addclass('selected')되어 하이라이트 처리됨  -->
                 <div class="term_srch_box">
@@ -142,9 +216,7 @@
                 <!-- [D] datatables 라이브러리 영역 -->
                 <!-- [D] 'Excel 다운로드' 버튼 클릭 시 파일 다운로드됨 -->
                 <!-- [D] '구분'(상담사 / 고객)에 따른 백그라운드 컬러 추가됨 -->
-
-                <!-- [D] 'STT 결과' 셀의 상담 내용 영역에서 마우스 우클릭 시 contextmenu 등장 -->
-                <table class="dataTable">
+                <table class="dataTable tbl_counsel_script">
                     <thead>
                         <tr>
                             <th>순번</th>
@@ -350,44 +422,6 @@
 </div>
 <!-- //#wrap -->
 
-<!-- context menu -->
-<!-- [D] '복사하기' 클릭 시 해당 영역 text 클립보드  -->
-<!-- [D] 'STT 오류수정' 클릭 시 수정 팝업(#lyr_stt_edit) 등장, 선택 영역의 STT 결과 text가 STT 원문에 반영됨 -->
-<ul class="contextMenu">
-    <li><a href="#none" class="btn_clipboard">복사하기</a></li>
-    <li><a href="#lyr_stt_edit" class="btn_lyr_open">STT 오류수정</a></li>
-</ul>
-<!-- //context menu -->
-
-<!-- layer popup -->
-<!-- STT 오류수정 -->
-<div id="lyr_stt_edit" class="lyrBox">
-    <div class="lyr_hd">
-        <span class="title">STT 오류수정</span>
-        <a href="#none" class="btn_lyr_close">닫기</a>
-     </div>
-    <div class="lyr_ct">
-        <div class="textArea_original">
-            <span>STT 원문 <small>&lpar;문장 전체를 수정해야 합니다.&rpar;</small></span>
-            <div class="textBox">
-                가입설계 체결 위해서 관련 법률에 따라 수집 이용 조회 제공에 동의 얻고자하며 신용등급과 무관하시고 동의 하지 않으실 경우에는 계약상담이 불가능하신데요
-            </div>
-        </div>
-
-        <div class="textArea_edit">
-            <span>오류 수정</span>
-            <textarea class="textBox"></textarea>
-        </div>
-    </div>
-    <div class="lyr_ft">
-        <div class="btnBox">
-            <a href="#none" class="btn_lyr_save">저장</a>
-            <a href="#none" class="btn_lyr_close">취소</a>
-        </div>
-    </div>
-</div>
-<!-- //STT 오류수정 -->
-
 <!-- script -->
 <script type="text/javascript">
 $(document).ready(function(){
@@ -510,47 +544,39 @@ $(document).ready(function(){
             });
         }
     });
-
-    // 마우스 우클릭 시 contextmenu 등장
-    var $contextMenu = $('.contextMenu');
-
-    // 상담내용 셀 영역에서만 context menu 등장하도록 지정
-    $('body').on('contextmenu', '.dataTable tbody td:nth-child(4)', function(e){
-        $contextMenu.css({
-            display: 'block',
-            left: e.pageX,
-            top: e.pageY
-        });
-        return false;
-    });
-
-    $('.dataTable tbody td:nth-child(4)').contextmenu(function(){
-        $('.dataTable tbody td:nth-child(4)').removeClass('active');
-        $(this).toggleClass('active');
-
-        var sttScript = $(this).text(); // 선택한 셀의 상담내용
-        $('#lyr_stt_edit .textArea_original .textBox').text(sttScript); // 원문수정 팝업에 넣어줌
-
-        // contextmenu 복사하기(클립보드)
-        $('.btn_clipboard').on('click', function(){
-            $('.table_clipboard').val(sttScript);
-            $('.table_clipboard').select();
-            document.execCommand('Copy');
-        });
-    });
-
-    // context menu 숨기기
-    $('body').click(function(){
-        $('.contextMenu').hide();
+    
+    // datatable 렌더링
+    var firstTable = $('.dataTable.tbl_counsel_list').DataTable({
+        dom: '<"top">t<"bottom">', // 옵션 위치 지정
+        responsive: true, // 반응형 허용
+        info: false, // 페이지 정보 미허용
+        paging: false, // 페이징 미허용
+        scrollY: "150px", // 세로 스크롤 허용, 사이즈
+        scrollX: false, //가로 스크롤 미허용
+        scrollCollapse: true,
+        ordering: false,
+        columnDefs: [ // 컬럼별 width, 옵션 사용 지정
+            {targets: [0], width: "50px", sortable: false},   // NO
+            {targets: [1], width: "150px"},  // 상담일시
+            {targets: [2], width: "100px"},  // 통화시간
+            {targets: [3], width: "150px"},  // 상담대분류
+            {targets: [4], width: "150px"},  // 상담소분류
+            {targets: [5], width: "423px"},  // 상담내용
+            {targets: [6], width: "50px"},   // 청약
+            {targets: [7], width: "80px"},   // STT 상태
+            {targets: [8], width: "100px"},  // 센터
+            {targets: [9], width: "50px"},   // 실
+            {targets: [10], width: "80px"}  // 상담원
+        ],
     });
 
     // datatable 렌더링
-    var firstTable = $('.dataTable').DataTable({
+    var firstTable = $('.dataTable.tbl_counsel_script').DataTable({
         dom: '<"top">t<"bottom"B>', // 옵션 위치 지정
         responsive: true, // 반응형 허용
         info: false, // 페이지 정보 미허용
         paging: false, // 페이징 미허용
-        scrollY: true, // 세로 스크롤 허용, 사이즈
+        scrollY: "460px", // 세로 스크롤 허용, 사이즈
         scrollX: false, //가로 스크롤 미허용
         scrollCollapse: true,
         ordering: false,
@@ -577,28 +603,6 @@ $(document).ready(function(){
             $(this).css('background', '#fdeddc');
         }
     });
-
-    // datatable height 브라우저 height 기준 maxheight 조정
-    // function tableResize() {
-    //     // 전체 테이블
-    //     $('.DTFC_ScrollWrapper').css({
-    //         height: "100%",
-    //         maxHeight: ($(window).height() - 450) + 'px'
-    //     });
-    //     // 테이블 바디 (스크롤 포함)
-    //     $('.DTFC_LeftBodyWrapper').css({
-    //         maxHeight: ($(window).height() - 456 - 40) + 'px'
-    //     });
-    //     // 첫번째 열
-    //     $('.dataTables_scrollBody').css({
-    //         maxHeight: ($(window).height() - 450 - 40) + 'px'
-    //     });
-    // }
-    // tableResize();
-    // 
-    // $(window).on('resize', function() {
-    //     tableResize();
-    // });
 });
 </script>
 </body>

@@ -25,7 +25,7 @@
 <script src="resources/js/ko.js"></script>
 <!-- datatables -->
 <script src="resources/js/datatables.min.js"></script>
-<script src="resources/js/dataTables.fixedColumns.min.js"></script>
+<script src="resources/js/dataTables.fixedColumns.js"></script>
 
 <script src="resources/js/common.js"></script>
 
@@ -387,7 +387,7 @@
                                 <tr>
                                     <th>
                                         <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup1" id="chkGroup1" class="allChk">
+                                            <input type="checkbox" name="chkGroup1" id="chkGroup1" class="all_chk">
                                             <label for="chkGroup1"></label>
                                         </div>
                                     </th>
@@ -412,7 +412,7 @@
                                 <tr>
                                     <td>
                                         <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup1" id="chkone1">
+                                            <input type="checkbox" name="chkGroup1" id="chkone1" class="each_chk">
                                             <label for="chkone1"></label>
                                         </div>
                                     </td>
@@ -433,7 +433,7 @@
                                 <tr>
                                     <td>
                                         <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup1" id="chkone2">
+                                            <input type="checkbox" name="chkGroup1" id="chkone2" class="each_chk">
                                             <label for="chkone2"></label>
                                         </div>
                                     </td>
@@ -454,7 +454,7 @@
                                 <tr>
                                     <td>
                                         <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup1" id="chkone3">
+                                            <input type="checkbox" name="chkGroup1" id="chkone3" class="each_chk">
                                             <label for="chkone3"></label>
                                         </div>
                                     </td>
@@ -475,7 +475,7 @@
                                 <tr>
                                     <td>
                                         <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup1" id="chkone4">
+                                            <input type="checkbox" name="chkGroup1" id="chkone4" class="each_chk">
                                             <label for="chkone4"></label>
                                         </div>
                                     </td>
@@ -496,7 +496,7 @@
                                 <tr>
                                     <td>
                                         <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup1" id="chkone5">
+                                            <input type="checkbox" name="chkGroup1" id="chkone5" class="each_chk">
                                             <label for="chkone5"></label>
                                         </div>
                                     </td>
@@ -517,7 +517,7 @@
                                 <tr>
                                     <td>
                                         <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup1" id="chkone6">
+                                            <input type="checkbox" name="chkGroup1" id="chkone6" class="each_chk">
                                             <label for="chkone6"></label>
                                         </div>
                                     </td>
@@ -538,7 +538,7 @@
                                 <tr>
                                     <td>
                                         <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup1" id="chkone7">
+                                            <input type="checkbox" name="chkGroup1" id="chkone7" class="each_chk">
                                             <label for="chkone7"></label>
                                         </div>
                                     </td>
@@ -648,7 +648,7 @@
                                 <tr>
                                     <th>
                                         <div class="chkBox">
-                                            <input type="checkbox" id="chkGroup2">
+                                            <input type="checkbox" name="chkGroup2" id="chkGroup2" class="all_chk">
                                             <label for="chkGroup2"></label>
                                         </div>
                                     </th>
@@ -671,7 +671,7 @@
                                 <tr>
                                     <td>
                                         <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup2" id="chkone8">
+                                            <input type="checkbox" name="chkGroup2" id="chkone8" class="each_chk">
                                             <label for="chkone8"></label>
                                         </div>
                                     </td>
@@ -691,7 +691,7 @@
                                 <tr>
                                     <td>
                                         <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup2" id="chkone9">
+                                            <input type="checkbox" name="chkGroup2" id="chkone9" class="each_chk">
                                             <label for="chkone9"></label>
                                         </div>
                                     </td>
@@ -711,7 +711,7 @@
                                 <tr>
                                     <td>
                                         <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup2" id="chkone10">
+                                            <input type="checkbox" name="chkGroup2" id="chkone10" class="each_chk">
                                             <label for="chkone10"></label>
                                         </div>
                                     </td>
@@ -731,7 +731,7 @@
                                 <tr>
                                     <td>
                                         <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup2" id="chkone11">
+                                            <input type="checkbox" name="chkGroup2" id="chkone11" class="each_chk">
                                             <label for="chkone11"></label>
                                         </div>
                                     </td>
@@ -751,7 +751,7 @@
                                 <tr>
                                     <td>
                                         <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup2" id="chkone12">
+                                            <input type="checkbox" name="chkGroup2" id="chkone12" class="each_chk">
                                             <label for="chkone12"></label>
                                         </div>
                                     <td>5</td>
@@ -926,41 +926,8 @@ $(document).ready(function(){
     //     tableResize();
     // });
     
-    // 테이블 체크박스 기능 (전체선택, 해제)
-    // function allCheckFunc(obj) {
-    //     $("[name=chkOne]").prop("checked", $(obj).prop("checked"));
-    // }
-    // 
-    // // 체크박스 체크시 전체선택 체크 여부
-    // function oneCheckFunc(obj){
-    //     var allObj = $(".tbl_chk_all");
-    //     var objName = $(obj).attr("name");
-    // 
-    //     if( $(obj).prop("checked") ){
-    //         checkBoxLength = $("[name="+ objName +"]").length;
-    //         checkedLength = $("[name="+ objName +"]:checked").length;
-    // 
-    //         if(checkBoxLength == checkedLength){
-    //             allObj.prop("checked", true);
-    //         }else{
-    //             allObj.prop("checked", false);
-    //         }
-    //     }else{
-    //         allObj.prop("checked", false);
-    //     }
-    // }
-    // 
-    // $(function(){
-    //     $("[name=chkAll]").click(function(){
-    //         allCheckFunc(this);
-    //     });
-    //     $("[name=chkOne]").each(function(){
-    //         $(this).click(function(){
-    //             oneCheckFunc($(this));
-    //         });
-    //     });
-    // });
 });
 </script>
+
 </body>
 </html>

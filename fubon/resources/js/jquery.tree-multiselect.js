@@ -408,6 +408,7 @@ Tree.prototype.initialize = function () {
 
   if (this.params.allowBatchSelection) {
     this.handleSectionCheckboxMarkings();
+    this.handleSectionAllCheckboxMarkings();
   }
 
   if (this.params.collapsible) {
@@ -431,7 +432,7 @@ Tree.prototype.initialize = function () {
   this.updateSelectedAndOnChange();
 
   this.render(true);
-  this.uiBuilder.attach();
+  this.uiBuilder.attach();  
 };
 
 Tree.prototype.remove = function () {
@@ -608,7 +609,7 @@ Tree.prototype.handleSectionCheckboxMarkings = function () {
         return key;
       }
     }).get();
-
+    
     if (this.checked) {
       var _self$keysToAdd;
       
@@ -624,6 +625,33 @@ Tree.prototype.handleSectionCheckboxMarkings = function () {
       Util.array.uniq(self.keysToRemove);
     }
     self.render();
+  });
+};
+
+// AMR 트리 체크 선택 기능
+Tree.prototype.handleSectionAllCheckboxMarkings = function () {
+  var self = this;
+  this.$selectionContainer.on('click', 'input[type=checkbox]', function () {
+    var $thisSection = $(this).closest('div.section');
+    var $section = $thisSection.parent();
+    var $title = $section.children('.title');
+    var sectionInput = $title.find('input[type="checkbox"]');
+    var $childInput = $section.find('input[type="checkbox"]');
+    var inputLength = $childInput.length;
+    
+    if ( $section.hasClass('selections') ) {
+        $title = $thisSection.children('.title');
+        sectionInput = $title.find('input[type="checkbox"]');
+    }
+
+    for (var i=0; i<inputLength; i++) {
+      if ( $childInput[i].checked == false ) {
+        sectionInput.prop('checked', false);
+        return;
+      }
+    }
+    
+    sectionInput.prop('checked', true);
   });
 };
 

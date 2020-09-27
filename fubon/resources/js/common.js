@@ -337,108 +337,49 @@ $(document).ready(function(){
     //     console.log($('input[name=\''+this.name+'\']').length);    
     // });
     
-    // 체크박스 그룹별 전체선택 기능
-    $('.allChk').on('click', $('.dataTables_scrollBody'), function(){
+    // 데이터 테이블스에서 input 체크가 정상적으로 되지 않아 작성된 코드
+    // 전체 선택 클릭 시 (dataTables_scrollHead에서 상태를 받아와서 DTFC_Cloned에 적용)
+    $('.all_chk').on('click', $('.dataTables_scrollHead'), function(){
         var thisName = $(this).attr('name');
-        $('input[name=\''+thisName+'\']').not(this).prop('checked', this.checked);
+        var check = $(this).prop('checked');
+        var $this = $('.DTFC_Cloned .all_chk[name=\''+thisName+'\']');
+        var $childCheck = $('.each_chk[name=\''+thisName+'\']');
+        
+        if ( check == false ) { // 전체선택 체크가 false이면 자식들도 false
+            $this.prop('checked', false);
+            $childCheck.prop('checked', false);
+        } else { // 전체선택 체크가 true이면 자식들도 true
+            $this.prop('checked', true);
+            $childCheck.prop('checked', true);
+        }
     });
     
-    // $('label').on('click', $('.dataTables_scrollBody'), function(){
-    //     var $thisCheckbox = $(this).prev('input[type="checkbox"]')
-    //     var check = $thisCheckbox.prop('checked')
-    //     var thisName = $thisCheckbox.attr('name')
-    // 
-    //     if ( $thisCheckbox.hasClass('allChk') ) {
-    //         return;
-    //     }
-    // 
-    //     if ( check == false ) {
-    //         $thisCheckbox.prop('checked',true);
-    //     } else {
-    //         $thisCheckbox.prop('checked',false);
-    //     }
-    // 
-    //     handleAllCheck(thisName)
-    // 
-    //     setTimeout(function(){
-    //         handleAllCheck(thisName)
-    //     },0);
-    // });
-    // 
-    // function handleAllCheck(thisName) {
-    //     var checkboxes = $('.dataTables_scrollBody input[name=\''+thisName+'\']');
-    //     var $allCheck = $('.allChk[name=\''+thisName+'\']');
-    //     var length = checkboxes.length;
-    //     var trueLength = -1;
-    // 
-    //     console.log('함수진입')
-    // 
-    // 
-    //     checkboxes.each(function(){            
-    //         if ( $(this).prop('checked') == true ) {
-    //             trueLength += 1
-    //             console.log('체크있음', trueLength);
-    //         }            
-    //     })
-    // 
-    //     // console.log({trueLength, length})
-    // 
-    //     if ( trueLength == length ) {
-    //         $allCheck.prop('checked', true)
-    //         console.log('length가 같음', {trueLength, length})
-    // 
-    //         return;
-    //     }
-    //     $allCheck.prop('checked', false)
-    //     console.log('length가 틀림', {trueLength, length})
-    // }
-    
-    
-    // $('label').on('click', $('.dataTables_scrollBody'), function(){
-    //     var $thisCheckbox = $(this).prev('input[type="checkbox"]')
-    //     var thisName = $thisCheckbox.attr('name')
-    // 
-    //     if ( $thisCheckbox.hasClass('allChk') ) {
-    //         return;
-    //     }
-    // 
-    //     handleCheck(thisName);
-    // });
-    // 
-    // function handleCheck(thisName) {
-    //     var checkboxes = $('.dataTables_scrollBody input[name=\''+thisName+'\']');
-    //     var $allCheck = $('.allChk[name=\''+thisName+'\']');
-    //     var length = checkboxes.length;
-    //     var trueLength = -1;
-    // 
-    // 
-    //     var $thisCheckbox = $(this).prev('input[type="checkbox"]')
-    //     var check = $thisCheckbox.prop('checked')
-    // 
-    //     if ( check == false ) {
-    //         $thisCheckbox.prop('checked',true);
-    //     } else {
-    //         $thisCheckbox.prop('checked',false);
-    //     }
-    // 
-    // 
-    //     checkboxes.each(function(){            
-    //         if ( $(this).prop('checked') == true ) {
-    //             trueLength += 1
-    //             console.log('체크있음', trueLength);
-    //         }            
-    //     })
-    // 
-    //     // console.log({trueLength, length})
-    // 
-    //     if ( trueLength == length ) {
-    //         $allCheck.prop('checked', true)
-    //         console.log('length가 같음', {trueLength, length})
-    // 
-    //         return;
-    //     }
-    //     $allCheck.prop('checked', false)
-    //     console.log('length가 틀림', {trueLength, length})
-    // }
-    
+    // 개별 체크박스 클릭 시 (dataTables_scrollBody에서 상태를 받아와서 DTFC_Cloned에 적용)
+    $('.each_chk').on('click', $('.dataTables_scrollBody'), function(){
+        var $thisCheckbox = $(this);
+        var thisName = $thisCheckbox.attr('name');
+        var thisId = $thisCheckbox.attr('id');
+        var $this = $('.DTFC_Cloned .each_chk[id=\''+thisId+'\']');
+        var check = $thisCheckbox.prop('checked');
+        
+        if ( check == false ) {
+            $this.prop('checked',false);
+        } else {
+            $this.prop('checked', true);
+        }
+        
+        var checkboxes = $('.DTFC_Cloned .each_chk[name=\''+thisName+'\']');
+        var $allCheck = $('.DTFC_Cloned .all_chk[name=\''+thisName+'\']');
+        var length = checkboxes.length;
+        
+        // 자식 중 체크 false기 있으면 전체선택 false
+        for (var i=0; i<checkboxes.length; i++) {
+            if ( checkboxes[i].checked == false ) {
+              $allCheck.prop('checked', false);
+              return;
+            }
+        }
+        // 자식 중 체크 false기 없으면 전체선택 true
+        $allCheck.prop('checked', true);
+    });    
 });
