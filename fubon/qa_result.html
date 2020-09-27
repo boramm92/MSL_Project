@@ -276,7 +276,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <!-- [D] 입력값 전체일치 시에만 조회 가능하도록 해야함 -->
                                 <th>증권번호</th>
@@ -298,7 +298,7 @@
                                         </select>
                                     </div>
                                 </td>
-                                
+
                                 <th>대상</th>
                                 <td>
                                     <div class="sltBox custom">
@@ -311,7 +311,7 @@
                                         </select>
                                     </div>
                                 </td>
-                                
+
                                 <th>질의응답</th>
                                 <td>
                                     <div class="sltBox custom">
@@ -1159,12 +1159,9 @@ $(document).ready(function(){
 
     // datatable 렌더링
     var table = $('.dataTable').DataTable({
-        dom: 'iptlB', // 옵션 위치 지정
+        dom: '<"top">t<"bottom"B>', // 옵션 위치 지정
         language: { // 테이블 목록 건수 text 한글 설정
             emptyTable: "조회된 데이터가 없습니다.", // 데이터 없을 경우 노출되는 text 설정
-            infoEmpty: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>_END_</strong> 건 &sol; _TOTAL_ 건&rbrack;",
-            info: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>_END_</strong> 건 &sol; _TOTAL_ 건&rbrack;",
-            lengthMenu: "_MENU_ 건씩 보기",
             paginate: {
                 first: "",
                 previous: "",
@@ -1175,10 +1172,11 @@ $(document).ready(function(){
         responsive: true, // 반응형 허용
         filter: false, // 검색창 미허용
         order: [[ 1, 'asc' ]], // 초기 sort 설정
-        paging: true, // 페이징 허용
+        info: false,
+        paging: false, // 페이징 허용
         pagingType: "full_numbers", // 페이징 버튼 구성 (처음, 이전, 페이지숫자, 다음, 마지막)
         lengthMenu: [25, 50, 100], // 페이지 당 보여질 목록 갯수 select 범위 지정
-        scrollY: true, // 세로 스크롤 허용, 사이즈
+        scrollY: "575px", // 세로 스크롤 허용, 사이즈
         scrollX: true, //가로 스크롤 허용
         scrollCollapse: true,
         columnDefs: [ // 컬럼별 width, 옵션 사용 지정
@@ -1206,7 +1204,6 @@ $(document).ready(function(){
             {targets: [21], width: "120px"},                                   // QA요청일자
             {targets: [22], width: "80px", orderable: false},                  // 대상
         ],
-        dom: 'Blfrtip', // 엑셀 다운로드 버튼 추가
         buttons: [{
             extend: 'excelHtml5',
             text: 'Excel 다운로드',
@@ -1218,35 +1215,13 @@ $(document).ready(function(){
             leftColumns: 1,
         }
     });
-    
+
     // 다른 열에서 sort되어도 1열 순번은 그대로 유지
     table.on('order.dt search.dt', function(){
         table.column(0, {search:'applied', order:'applied'}).nodes().each(function (cell, i){
             cell.innerHTML = i+1;
         });
     }).draw();
-
-    // datatable height 브라우저 height 기준 maxheight 조정
-    function tableResize() {
-        // 전체 테이블
-        $('.DTFC_ScrollWrapper').css({
-            height: "100%",
-            maxHeight: ($(window).height() - 345) + 'px'
-        });
-        // 테이블 바디 (스크롤 포함)
-        $('.DTFC_LeftBodyWrapper').css({
-            maxHeight: ($(window).height() - 351 - 40) + 'px'
-        });
-        // 첫번째 열
-        $('.dataTables_scrollBody').css({
-            maxHeight: ($(window).height() - 345 - 40) + 'px'
-        });
-    }
-    tableResize();
-
-    $(window).resize(function() {
-        tableResize();
-    });
 });
 </script>
 </body>

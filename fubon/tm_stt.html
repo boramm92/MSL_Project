@@ -217,7 +217,7 @@
                             <em></em>
                         </a>
                     </div>
-                    
+
                     <ul class="dropdown_list">
                         <!-- <li>음성생성<button type="button" class="btn_close">x</button></li>
                         <li>Text-to-Speech<button type="button" class="btn_close">x</button></li>
@@ -855,7 +855,7 @@ $(document).ready(function(){
         paging: true, // 페이징 허용
         pagingType: "full_numbers", // 페이징 버튼 구성 (처음, 이전, 페이지숫자, 다음, 마지막)
         lengthMenu: [25, 50, 100], // 페이지 당 보여질 목록 갯수 select 범위 지정
-        scrollY: true, // 세로 스크롤 허용, 사이즈
+        scrollY: "570px", // 세로 스크롤 허용, 사이즈
         scrollX: true, //가로 스크롤 허용
         scrollCollapse: true,
         columnDefs: [ // 컬럼별 width, 옵션 사용 지정
@@ -890,28 +890,6 @@ $(document).ready(function(){
             cell.innerHTML = i+1;
         });
     }).draw();
-
-    // datatable height 브라우저 height 기준 maxheight 조정
-    function tableResize() {
-        // 전체 테이블
-        $('.DTFC_ScrollWrapper').css({
-            height: "100%",
-            maxHeight: ($(window).height() - 450) + 'px'
-        });
-        // 테이블 바디 (스크롤 포함)
-        $('.DTFC_LeftBodyWrapper').css({
-            maxHeight: ($(window).height() - 456 - 40) + 'px'
-        });
-        // 첫번째 열
-        $('.dataTables_scrollBody').css({
-            maxHeight: ($(window).height() - 450 - 40) + 'px'
-        });
-    }
-    tableResize();
-
-    $(window).resize(function() {
-        tableResize();
-    });
 });
 </script>
 </body>

@@ -25,7 +25,7 @@
 <script src="resources/js/ko.js"></script>
 <!-- datatables -->
 <script src="resources/js/datatables.min.js"></script>
-<script src="resources/js/dataTables.fixedColumns.js"></script>
+<script src="resources/js/dataTables.fixedColumns.min.js"></script>
 
 <script src="resources/js/common.js"></script>
 
@@ -214,7 +214,7 @@
                             <em></em>
                         </a>
                     </div>
-                    
+
                     <ul class="dropdown_list">
                         <!-- <li>음성생성<button type="button" class="btn_close">x</button></li>
                         <li>Text-to-Speech<button type="button" class="btn_close">x</button></li>
@@ -293,7 +293,7 @@
                                         <input type="text" numberOnly>
                                     </div>
                                 </td>
-                                
+
                                 <!-- [D] 입력값 전체일치 시에만 조회 가능하도록 해야함 -->
                                 <th>계약자</th>
                                 <td>
@@ -301,14 +301,14 @@
                                         <input type="text">
                                     </div>
                                 </td>
-                                
+
                                 <!-- [D] 입력값 전체일치 시에만 조회 가능하도록 해야함 -->
                                 <th>피보험자</th>
                                 <td>
                                     <div class="iptBox">
                                         <input type="text">
                                     </div>
-                                </td>                                                               
+                                </td>
                             </tr>
 
                             <tr>
@@ -318,8 +318,8 @@
                                     <div class="iptBox">
                                         <input type="text">
                                     </div>
-                                </td> 
-                                
+                                </td>
+
                                 <!-- [D] 입력값 전체일치 시에만 조회 가능하도록 해야함 -->
                                 <th>증권번호</th>
                                 <td>
@@ -327,7 +327,7 @@
                                         <input type="text" numberOnly>
                                     </div>
                                 </td>
-                                
+
                                 <th>TA점수&lpar;최소&hyphen;최대&rpar;</th>
                                 <td>
                                     <div class="iptBox">
@@ -349,7 +349,7 @@
                                         </select>
                                     </div>
                                 </td>
-                                
+
                                 <th>번들유무</th>
                                 <td>
                                     <div class="sltBox custom">
@@ -406,7 +406,7 @@
                                     <th>번들유무</th>
                                 </tr>
                             </thead>
-    
+
                             <!-- [D] 조회된 목록(tbody tr) 더블클릭 시 심사 상세페이지로 이동 -->
                             <tbody>
                                 <tr>
@@ -562,15 +562,15 @@
                     <!-- //.dataTableBox -->
                 </div>
                 <!-- //.stnArea -->
-                
+
                 <!-- .stnArea -->
                 <div class="stnArea assign_status_box">
                     <h2>QA 배정 현황</h2>
-                    
+
                     <div class="btnBox">
                         <a href="#none">휴무관리</a>
                     </div>
-                    
+
                     <div class="dateSearch_box">
                         <!-- [D] QA요청일자 날짜별 조회 가능 -->
                         <div class="iptBox">
@@ -579,26 +579,26 @@
                             <span>&hyphen;</span>
                             <input type="text" id="toDate2" class="iptDateTime">
                         </div>
-                        
+
                         <div class="btnBox">
                             <a href="#none" class="btn_search">조회</a>
-                        </div>   
-                    </div>                    
-                    
+                        </div>
+                    </div>
+
                     <div class="assign_status_box tbl_line_view">
                         <table summary="심사자, 근무관리, 배정으로 구성">
                             <tbody>
                                 <tr>
                                     <th>심사자</th>
-                                    <td>김민정</td>                                    
-                                    <td>이명욱</td>                                    
-                                    <td>천일우</td>                                    
-                                    <td>김정인</td>                                    
+                                    <td>김민정</td>
+                                    <td>이명욱</td>
+                                    <td>천일우</td>
+                                    <td>김정인</td>
                                     <td>민성일</td>
-                                    <td>이명욱</td>                                    
-                                    <td>천일우</td>                                    
-                                    <td>김정인</td>                                    
-                                    <td>이영인</td>                                    
+                                    <td>이명욱</td>
+                                    <td>천일우</td>
+                                    <td>김정인</td>
+                                    <td>이영인</td>
                                     <td>김민정</td>
                                 </tr>
                                 <tr>
@@ -613,7 +613,7 @@
                                     <td>업무</td>
                                     <td>업무</td>
                                     <td>업무</td>
-                                </tr>                                
+                                </tr>
                                 <tr>
                                     <th>배정</th>
                                     <td><a href="#none">0</a></td>
@@ -630,17 +630,17 @@
                             </tbody>
                         </table>
                     </div>
-                </div> 
+                </div>
                 <!-- //.stnArea -->
-                
+
                 <!-- .stnArea -->
                 <div class="stnArea">
                     <h2>심사자별 상세 현황</h2>
-                    
+
                     <div class="btnBox">
                         <a href="#lyr_assign_cancel" class="btn_assign_cancel btn_lyr_open">배정 취소</a>
                     </div>
-                    
+
                     <!-- .dataTableBox -->
                     <div class="dataTableBox">
                         <table class="dataTable qa_detail_status">
@@ -666,7 +666,7 @@
                                     <th>콜타임</th>
                                 </tr>
                             </thead>
-                            
+
                             <tbody>
                                 <tr>
                                     <td>
@@ -824,7 +824,7 @@ $(document).ready(function(){
     });
 
     // datatable 렌더링
-    var table = $('.qa_assign_target').DataTable({
+    var firstTable = $('.qa_assign_target').DataTable({
         dom: '<"top">t<"bottom"i>', // 옵션 위치 지정
         language: { // 테이블 목록 건수 text 한글 설정
             emptyTable: "조회된 데이터가 없습니다.", // 데이터 없을 경우 노출되는 text 설정
@@ -835,7 +835,7 @@ $(document).ready(function(){
         filter: false, // 검색창 미허용
         order: [[ 12, 'asc' ]], // 초기 sort 설정
         paging: false, // 페이징 허용
-        scrollY: "156px", // 세로 스크롤 허용, 사이즈
+        scrollY: "120px", // 세로 스크롤 허용, 사이즈
         scrollX: true, //가로 스크롤 허용
         scrollCollapse: true,
         columnDefs: [ // 컬럼별 width, 옵션 사용 지정
@@ -855,13 +855,20 @@ $(document).ready(function(){
             {targets: [13], width: "100px", orderable: false},                 // 번들유무
         ],
     });
-    
+
     // 왼쪽 2열 고정
-    new $.fn.dataTable.FixedColumns(table, {
+    new $.fn.dataTable.FixedColumns(firstTable, {
         leftColumns: 2,
     });
-    
-    var table2 = $('.qa_detail_status').DataTable({
+
+    // 다른 열에서 sort되어도 1열 순번은 그대로 유지
+    firstTable.on('order.dt search.dt', function(){
+        firstTable.column(1, {search:'applied', order:'applied'}).nodes().each(function (cell, i){
+            cell.innerHTML = i+1;
+        });
+    }).draw();
+
+    var secondTable = $('.qa_detail_status').DataTable({
         dom: '<"top">t<"bottom"i>', // 옵션 위치 지정
         language: { // 테이블 목록 건수 text 한글 설정
             emptyTable: "조회된 데이터가 없습니다.", // 데이터 없을 경우 노출되는 text 설정
@@ -872,7 +879,7 @@ $(document).ready(function(){
         filter: false, // 검색창 미허용
         order: [[ 12, 'asc' ]], // 초기 sort 설정
         paging: false, // 페이징 허용
-        scrollY: "156px", // 세로 스크롤 허용, 사이즈
+        scrollY: "120px", // 세로 스크롤 허용, 사이즈
         scrollX: true, //가로 스크롤 허용
         scrollCollapse: true,
         columnDefs: [ // 컬럼별 width, 옵션 사용 지정
@@ -893,39 +900,62 @@ $(document).ready(function(){
     });
 
     // 왼쪽 2열 고정
-    new $.fn.dataTable.FixedColumns(table2, {
+    new $.fn.dataTable.FixedColumns(secondTable, {
         leftColumns: 2,
     });
 
     // 다른 열에서 sort되어도 1열 순번은 그대로 유지
-    table.on('order.dt search.dt', function(){
-        table.column(1, {search:'applied', order:'applied'}).nodes().each(function (cell, i){
+    secondTable.on('order.dt search.dt', function(){
+        secondTable.column(1, {search:'applied', order:'applied'}).nodes().each(function (cell, i){
             cell.innerHTML = i+1;
         });
     }).draw();
 
-    // datatable height 브라우저 height 기준 maxheight 조정
-    // function tableResize() {
-    //     // 전체 테이블
-    //     $('.DTFC_ScrollWrapper').css({
-    //         height: "100%",
-    //         maxHeight: ($(window).height() - 450) + 'px'
-    //     });
-    //     // 테이블 바디 (스크롤 포함)
-    //     $('.DTFC_LeftBodyWrapper').css({
-    //         maxHeight: ($(window).height() - 456 - 40) + 'px'
-    //     });
-    //     // 첫번째 열
-    //     $('.dataTables_scrollBody').css({
-    //         maxHeight: ($(window).height() - 450 - 40) + 'px'
-    //     });
-    // }
-    // tableResize();
-    // 
-    // $(window).resize(function() {
-    //     tableResize();
-    // });
-    
+    // 데이터 테이블스에서 input 체크가 정상적으로 되지 않아 작성된 코드
+    // 전체 선택 클릭 시 (dataTables_scrollHead에서 상태를 받아와서 DTFC_Cloned에 적용)
+    $('.all_chk').on('click', $('.dataTables_scrollHead'), function(){
+        var thisName = $(this).attr('name');
+        var check = $(this).prop('checked');
+        var $this = $('.DTFC_Cloned .all_chk[name=\''+thisName+'\']');
+        var $childCheck = $('.each_chk[name=\''+thisName+'\']');
+
+        if ( check == false ) { // 전체선택 체크가 false이면 자식들도 false
+            $this.prop('checked', false);
+            $childCheck.prop('checked', false);
+        } else { // 전체선택 체크가 true이면 자식들도 true
+            $this.prop('checked', true);
+            $childCheck.prop('checked', true);
+        }
+    });
+
+    // 개별 체크박스 클릭 시 (dataTables_scrollBody에서 상태를 받아와서 DTFC_Cloned에 적용)
+    $('.each_chk').on('click', $('.dataTables_scrollBody'), function(){
+        var $thisCheckbox = $(this);
+        var thisName = $thisCheckbox.attr('name');
+        var thisId = $thisCheckbox.attr('id');
+        var $this = $('.DTFC_Cloned .each_chk[id=\''+thisId+'\']');
+        var check = $thisCheckbox.prop('checked');
+
+        if ( check == false ) {
+            $this.prop('checked',false);
+        } else {
+            $this.prop('checked', true);
+        }
+
+        var checkboxes = $('.DTFC_Cloned .each_chk[name=\''+thisName+'\']');
+        var $allCheck = $('.DTFC_Cloned .all_chk[name=\''+thisName+'\']');
+        var length = checkboxes.length;
+
+        // 자식 중 체크 false가 있으면 전체선택 false
+        for (var i=0; i<checkboxes.length; i++) {
+            if ( checkboxes[i].checked == false ) {
+              $allCheck.prop('checked', false);
+              return;
+            }
+        }
+        // 자식 중 체크 false가 없으면 전체선택 true
+        $allCheck.prop('checked', true);
+    });
 });
 </script>
 
