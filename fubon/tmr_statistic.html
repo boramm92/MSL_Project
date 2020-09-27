@@ -25,6 +25,7 @@
 <script src="resources/js/ko.js"></script>
 <!-- datatables -->
 <script src="resources/js/datatables.min.js"></script>
+<script src="resources/js/dataTables.fixedHeader.min.js"></script>
 <script src="resources/js/dataTables.fixedColumns.min.js"></script>
 <script src="resources/js/dataTables.buttons.min.js"></script>
 <script src="resources/js/buttons.html5.min.js"></script>
@@ -419,7 +420,7 @@
                             </tr>
                             <tr>
                                 <td>3</td>
-                                <td>센터</td>c
+                                <td>센터</td>
                                 <td>실</td>
                                 <td>상담원</td>
                                 <td>사번</td>
@@ -707,7 +708,7 @@
                             </tr>
                             <tr>
                                 <td>19</td>
-                                <td>센터</td>c
+                                <td>센터</td>
                                 <td>실</td>
                                 <td>상담원</td>
                                 <td>사번</td>
@@ -940,6 +941,26 @@
                                 <td>심사패널티</td>
                             </tr>
                         </tbody>
+                        
+                        <!-- <tfoot>
+                            <tr>
+                                <td>합계&colon;</td>
+                                <td>합계&colon;</td>
+                                <td>합계&colon;</td>
+                                <td>합계&colon;</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tfoot> -->
                     </table>
                 </div>
                 <!-- //.dataTableBox -->
@@ -998,12 +1019,12 @@ $(document).ready(function(){
 
     // datatable 렌더링
     var table = $('.dataTable').DataTable({
-        dom: 'iptlB', // 옵션 위치 지정
+        dom: 'ptB', // 옵션 위치 지정
+        fixedHeader: {
+            footer: true
+        },
         language: { // 테이블 목록 건수 text 한글 설정
             emptyTable: "조회된 데이터가 없습니다.", // 데이터 없을 경우 노출되는 text 설정
-            infoEmpty: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>_END_</strong> 건 &sol; _TOTAL_ 건&rbrack;",
-            info: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>_END_</strong> 건 &sol; _TOTAL_ 건&rbrack;",
-            lengthMenu: "_MENU_ 건씩 보기",
             paginate: {
                 first: "",
                 previous: "",
@@ -1012,31 +1033,32 @@ $(document).ready(function(){
             },
         },
         responsive: true, // 반응형 허용
+        info: false,
+        lengthChange: false,
         filter: false, // 검색창 미허용
         order: [[ 1, 'asc' ]], // 초기 sort 설정
         paging: true, // 페이징 허용
         pagingType: "full_numbers", // 페이징 버튼 구성 (처음, 이전, 페이지숫자, 다음, 마지막)
-        lengthMenu: [25, 50, 100], // 페이지 당 보여질 목록 갯수 select 범위 지정
         scrollY: true, // 세로 스크롤 허용, 사이즈
         scrollX: true, //가로 스크롤 허용
         scrollCollapse: true,
         columnDefs: [ // 컬럼별 width, 옵션 사용 지정
             {targets: [0], width: "50px", sortable: false},                    // NO
-            {targets: [1], width: "50px", sortable: false},                    // 센터
-            {targets: [2], width: "120px", orderable: false},                  // 실
-            {targets: [3], width: "150px"},                                    // 상담원
-            {targets: [4], width: "120px"},                                    // 사번
-            {targets: [5], width: "120px", orderable: false},                  // 상담차월
-            {targets: [6], width: "120px", orderable: false},                  // 청약건수
-            {targets: [7], width: "100px", orderable: false},                  // QA 건수
-            {targets: [8], width: "100px"},                                    // QA 배정률
-            {targets: [9], width: "100px"},                                    // QA 보완율
-            {targets: [10], width: "120px", orderable: false},                  // QA 보완완료율
-            {targets: [11], width: "80px"},                                    // QA 전체점수
-            {targets: [12], width: "100px", orderable: false},                 // QA 평균점수
-            {targets: [13], width: "100px"},                                   // TA 전체점수
-            {targets: [14], width: "80px", orderable: false},                  // TA 평균점수
-            {targets: [15], width: "100px", orderable: false},                 // 심사패널티
+            {targets: [1], width: "100px", sortable: false},                   // 센터
+            {targets: [2], width: "100px", orderable: false},                  // 실
+            {targets: [3], width: "100px", orderable: false},                  // 상담원
+            {targets: [4], width: "100px", orderable: false},                  // 사번
+            {targets: [5], width: "120px"},                                    // 상담차월
+            {targets: [6], width: "120px"},                                    // 청약건수
+            {targets: [7], width: "120px"},                                    // QA 건수
+            {targets: [8], width: "120px"},                                    // QA 배정률
+            {targets: [9], width: "120px"},                                    // QA 보완율
+            {targets: [10], width: "120px"},                                   // QA 보완완료율
+            {targets: [11], width: "120px"},                                   // QA 전체점수
+            {targets: [12], width: "120px"},                                   // QA 평균점수
+            {targets: [13], width: "120px"},                                   // TA 전체점수
+            {targets: [14], width: "120px"},                                   // TA 평균점수
+            {targets: [15], width: "120px", orderable: false},                 // 심사패널티
         ],
         dom: 'Blfrtip', // 엑셀 다운로드 버튼 추가
         buttons: [{
