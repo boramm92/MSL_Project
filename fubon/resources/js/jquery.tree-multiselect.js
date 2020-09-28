@@ -408,7 +408,6 @@ Tree.prototype.initialize = function () {
 
   if (this.params.allowBatchSelection) {
     this.handleSectionCheckboxMarkings();
-    this.handleSectionAllCheckboxMarkings();
   }
 
   if (this.params.collapsible) {
@@ -600,7 +599,6 @@ Tree.prototype.handleSectionCheckboxMarkings = function () {
   var self = this;
   this.$selectionContainer.on('click', 'input.section[type=checkbox]', function () {
     var $section = jQuery(this).closest('div.section');
-    var $childSection = $section.find('div.section'); //NBR 부모 section 아래에 있는 section 찾기
     var $items = $section.find('div.item');
     var keys = $items.map(function (idx, el) {
       var key = Util.getKey(el);
@@ -613,51 +611,18 @@ Tree.prototype.handleSectionCheckboxMarkings = function () {
     if (this.checked) {
       var _self$keysToAdd;
       
-      $childSection.find('input[type="checkbox"]').prop('checked', true); //NBR 부모 section이 checked true 되면 $childSection 도 동일하게 작동
       // TODO why does this always take this branch
       (_self$keysToAdd = self.keysToAdd).push.apply(_self$keysToAdd, _toConsumableArray(keys));
       Util.array.uniq(self.keysToAdd);
     } else {
       var _self$keysToRemove;
 
-      $childSection.find('input[type="checkbox"]').prop('checked', false); //NBR 부모 section이 checked false 되면 $childSection 도 동일하게 작동
       (_self$keysToRemove = self.keysToRemove).push.apply(_self$keysToRemove, _toConsumableArray(keys));
       Util.array.uniq(self.keysToRemove);
     }
     self.render();
   });
 };
-
-// AMR 트리 체크 선택 기능
-  Tree.prototype.handleSectionAllCheckboxMarkings = function () {
-    var self = this;
-    this.$selectionContainer.on('click', 'input[type=checkbox]', function () {
-      var $thisParents = $(this).parents('div.section');
-      if ( !$(this).hasClass('option') ) {
-        $thisParents =  $(this).parents('div.section').not($(this).closest('div.section'));
-      }
-      $thisParents.each(function(i){
-        handleParentCheckbox($(this))
-      })
-      function handleParentCheckbox(parent) {
-        var $parentInput = parent.children('div.title').find('input.section')
-        var $childInput = parent.children('div.section').children('div.title').find('input.section')
-        var childLength = $childInput.length;
-        if ( childLength == 0 ) {
-          $childInput = parent.find('input.option')
-          childLength = $childInput.length;
-        }
-
-        for (var i=0; i<childLength; i++) {
-          if ( $childInput[i].checked === false ) { // 직속자식 중 하나라도 check false이면 부모도 check false
-            $parentInput.prop('checked', false);
-            return;
-          }
-        }
-        $parentInput.prop('checked', true); // 직속자식이 모두 check true면 직속부모도 true
-      }
-    });
-  };
 
 Tree.prototype.redrawSectionCheckboxes = function ($section) {
   $section = $section || this.$selectionContainer;
