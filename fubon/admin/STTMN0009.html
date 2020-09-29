@@ -12,9 +12,11 @@
 <!-- js -->
 <script src="../resources/js/jquery-3.3.1.min.js"></script>
 <script src="../resources/js/jquery-migrate-3.3.0.min.js"></script>
+<!-- datatables -->
+<script src="../resources/js/datatables.min.js"></script>
 <script src="../resources/js/common.js"></script>
 
-<title>사용자관리 - 권한부여 || 푸본현대생명</title>
+<title>권한부여 || 푸본현대생명</title>
 </head>
 <body>
     <!-- #wrap -->
@@ -212,166 +214,124 @@
     
                 <!-- .tab_content -->
                 <div class="tab_content">
-                    <h4>CS &hyphen; STT</h4>
-    
+                    <h4>사용자 권한 관리</h4>
+                    
+                    <div class="btnBox">
+                        <a href="#none">사용자 추가</a>
+                    </div>
+                    
                     <!-- .srchArea -->
                     <div class="srchArea">
-                        <table class="tbl_line_view" summary="상담일시, 고객 전화번호, 고객번호, 증권번호, 사번, 업무구분, 상담유형(대), 상담유형(중), 상담유형(소), 무음길이로 구성">
+                        <table class="tbl_line_view" summary="사용자ID, 사용자명으로 구성">
                             <caption class="hide">검색조건</caption>
                             <colgroup>
-                                <col width="100"><col width="310"><col width="100"><col><col width="100"><col><col width="100"><col><col width="100"><col>
+                                <col width="100"><col width="310"><col width="100"><col>
                             </colgroup>
     
                             <tbody>
                                 <tr>
-                                    <th>상담일시</th>
-                                    <!-- [D] 처음 페이지 들어왔을때의 초기 상담일시는 [전날 날짜, 오전 9시] - [당일 날짜, 미정] 기본 입력 상태여야함 -->
-                                    <!-- [D] 시간 초기 기본값 미정으로 비워둠 -->
+                                    <th>사용자ID</th>
                                     <td>
                                         <div class="iptBox">
-                                            <input type="text" id="fromDate" class="iptDateTime">
-                                            <span>&hyphen;</span>
-                                            <input type="text" id="toDate" class="iptDateTime">
+                                            <input type="text">
                                         </div>
                                     </td>
     
-                                    <th>고객 전화번호</th>
+                                    <th>사용자명</th>
                                     <td>
                                         <div class="iptBox">
-                                            <input type="text" numberOnly>
-                                        </div>
-                                    </td>
-    
-                                    <th>고객번호</th>
-                                    <td>
-                                        <div class="iptBox">
-                                            <input type="text" numberOnly>
-                                        </div>
-                                    </td>
-    
-                                    <th>증권번호</th>
-                                    <td>
-                                        <div class="iptBox">
-                                            <input type="text" numberOnly>
-                                        </div>
-                                    </td>
-    
-                                    <th>사번</th>
-                                    <td>
-                                        <div class="iptBox">
-                                            <input type="text" numberOnly>
-                                        </div>
-                                    </td>
-                                </tr>
-    
-                                <tr>
-                                    <th>업무구분</th>
-                                    <td>
-                                        <!-- [D] 선택박스 옵션 10개까지 보여짐, 그 외 스크롤로 확인가능 -->
-                                        <div class="sltBox custom">
-                                            <select class="select">
-                                                <option value="">전체</option>
-                                                <option value="">X-SELL</option>
-                                                <option value="">기타 아웃바운드 안내</option>
-                                                <option value="">내 보험 찾아줌</option>
-                                                <option value="">당월 미납안내</option>
-                                                <option value="">당월 실효부활안내 해피콜</option>
-                                                <option value="">등기 반송안내</option>
-                                                <option value="">만족도조사</option>
-                                                <option value="">반송안내</option>
-                                                <option value="">사전콜</option>
-                                                <option value="">생존&sol;만기</option>
-                                                <option value="">미지급안내</option>
-                                                <option value="">신계약 해피콜</option>
-                                                <option value="">실효예고안내</option>
-                                                <option value="">업무문의</option>
-                                                <option value="">연금도래안내</option>
-                                                <option value="">연금미지급 미신청</option>
-                                                <option value="">연락처 유입오류안내</option>
-                                                <option value="">예약호통화</option>
-                                            </select>
-                                        </div>
-                                    </td>
-    
-                                    <!-- [D] 상담유형(대) 선택해야 상담유형(중) 활성화됨 -->
-                                    <th>상담유형&lpar;대&rpar;</th>
-                                    <td>
-                                        <div class="sltBox custom largeType">
-                                            <select class="select">
-                                                <option value="">전체</option>
-                                                <option value="">개인</option>
-                                                <option value="">법인</option>
-                                                <option value="">변액</option>
-                                                <option value="">VIP</option>
-                                                <option value="">BA</option>
-                                            </select>
-                                        </div>
-                                    </td>
-    
-                                    <!-- [D] 상담유형(중) 선택해야 상담유형(소) 활성화됨 -->
-                                    <!-- [D] 선택박스(.sltBox)에 addclass('disabled')하면 비활성화 효과 적용됨 -->
-                                    <th>상담유형&lpar;중&rpar;</th>
-                                    <td>
-                                        <div class="sltBox custom mediumType disabled">
-                                            <select class="select">
-                                                <option value="">전체</option>
-                                                <option value="">상담유형옵션</option>
-                                                <option value="">상담유형옵션</option>
-                                                <option value="">상담유형옵션</option>
-                                                <option value="">상담유형옵션</option>
-                                                <option value="">상담유형옵션</option>
-                                                <option value="">상담유형옵션</option>
-                                                <option value="">상담유형옵션</option>
-                                                <option value="">상담유형옵션</option>
-                                                <option value="">상담유형옵션</option>
-                                                <option value="">상담유형옵션</option>
-                                                <option value="">상담유형옵션</option>
-                                                <option value="">상담유형옵션</option>
-                                            </select>
-                                        </div>
-                                    </td>
-    
-                                    <!-- [D] 선택박스(.sltBox)에 addclass('disabled')하면 비활성화 효과 적용됨 -->
-                                    <th>상담유형&lpar;소&rpar;</th>
-                                    <td>
-                                        <div class="sltBox custom smallType disabled">
-                                            <select class="select">
-                                                <option value="">전체</option>
-                                                <option value="">상담유형옵션</option>
-                                                <option value="">상담유형옵션</option>
-                                                <option value="">상담유형옵션</option>
-                                                <option value="">상담유형옵션</option>
-                                                <option value="">상담유형옵션</option>
-                                                <option value="">상담유형옵션</option>
-                                                <option value="">상담유형옵션</option>
-                                                <option value="">상담유형옵션</option>
-                                                <option value="">상담유형옵션</option>
-                                                <option value="">상담유형옵션</option>
-                                                <option value="">상담유형옵션</option>
-                                                <option value="">상담유형옵션</option>
-                                            </select>
-                                        </div>
-                                    </td>
-    
-                                    <th>무음길이</th>
-                                    <td>
-                                        <div class="iptBox">
-                                            <input type="text" numberOnly>
+                                            <input type="text">
                                         </div>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-    
-                        <!-- [D] 조회 버튼(.btn_srch)클릭 시 하단 리스트 오름차순으로 기본 정렬된 상태로 조회되며, 입력된 검색조건 값들은 reset되어야함 -->
-                        <!-- [D] 초기화 버튼(.btn_reset)클릭 시 검색조건 테이블 상 입력값들 모두 reset됨 -->
+                        
                         <div class="btnBox">
                             <a href="#none" class="btn_srch">조회</a>
-                            <a href="#none" class="btn_reset">초기화</a>
-                        </div>
+                        </div>                        
                     </div>
                     <!-- //.srchArea -->
-    
+                    
+                    <!-- .dataTableBox -->
+                    <div class="dataTableBox">
+                        <table class="dataTable" summary="NO, 사용자ID, 사용자명, 권한 설정, 설정, 등록일자, 수정일자로 구성됨">
+                            <colgroup>
+                                <col width="100"><col><col><col><col><col><col>
+                            </colgroup>
+                            
+                            <thead>
+                                <tr>
+                                    <th>NO</th>
+                                    <th>사용자 ID</th>
+                                    <th>사용자명</th>
+                                    <th>권한 설정</th>
+                                    <th>설정</th>
+                                    <th>등록일자</th>
+                                    <th>수정일자</th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>aa</td>
+                                    <td>관리자1</td>
+                                    <td>관리자</td>
+                                    <td>
+                                        <a href="#none">설정</a>
+                                    </td>
+                                    <td>2020-09-20</td>
+                                    <td>2020-10-20</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>aa</td>
+                                    <td>관리자1</td>
+                                    <td>관리자</td>
+                                    <td>
+                                        <a href="#none">설정</a>
+                                    </td>
+                                    <td>2020-09-20</td>
+                                    <td>2020-10-20</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>aa</td>
+                                    <td>관리자1</td>
+                                    <td>관리자</td>
+                                    <td>
+                                        <a href="#none">설정</a>
+                                    </td>
+                                    <td>2020-09-20</td>
+                                    <td>2020-10-20</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>aa</td>
+                                    <td>관리자1</td>
+                                    <td>관리자</td>
+                                    <td>
+                                        <a href="#none">설정</a>
+                                    </td>
+                                    <td>2020-09-20</td>
+                                    <td>2020-10-20</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>aa</td>
+                                    <td>관리자1</td>
+                                    <td>관리자</td>
+                                    <td>
+                                        <a href="#none">설정</a>
+                                    </td>
+                                    <td>2020-09-20</td>
+                                    <td>2020-10-20</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- //.dataTableBox -->
                 </div>
                 <!-- //.tab_content -->
             </div>
