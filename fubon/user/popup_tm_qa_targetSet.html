@@ -26,19 +26,19 @@
     <!-- #container -->
     <div id="container">
         <!-- #contents -->
-        <div class="popup_wrap">
+        <div class="popup_wrap tm_qa_targetSet">
             <h1>QA 대상 지정</h1>
+
+            <!-- [D] QA 대상 지정의 총 건수는 저장된 이후에 반영되어야함 -->
+            <h2>
+                <p>
+                    QA 대상 지정
+                    <span>총 <em class="qa_total_case"></em>건</span>
+                </p>
+            </h2>
 
             <!-- .target_setArea -->
             <div class="target_setArea">
-                <!-- [D] QA 대상 지정의 총 건수는 저장된 이후에 반영되어야함 -->
-                <h2>
-                    <p>
-                        QA 대상 지정
-                        <span>총 <em class="qa_total_case"></em>건</span>
-                    </p>
-                </h2>
-
                 <div class="fl">
                     <dl class="set_condition">
                         <dt>
@@ -50,7 +50,7 @@
                         </dt>
 
                         <dd>
-                            <!-- [D] data-section으로 카테고리 분류 -->
+                            <!-- [D] data-section으로 카테고리 분류 / '-'를 넣으면 depth 구분됨(아래 예시 참고) -->
                             <select id="treeSelector1" multiple="multiple">
                                 <option value="1" data-section="전체선택-Upsell 1센터-1팀">홍길동</option>
                                 <option value="2" data-section="전체선택-Upsell 1센터-1팀">김미영</option>
@@ -273,7 +273,7 @@ $(document).ready(function(){
     $('input.section').each(function(i){
         $(this).attr('id', 'chkbox' + i + 1);
         $(this).siblings('label').attr('for', 'chkbox' + i + 1);
-    });  
+    });
 });
 </script>
 </body>

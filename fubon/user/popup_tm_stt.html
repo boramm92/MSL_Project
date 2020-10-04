@@ -34,7 +34,7 @@
     <!-- #container -->
     <div id="container">
         <!-- #contents -->
-        <div class="popup_wrap" class="tm_stt">
+        <div class="popup_wrap tm_stt">
             <h1>TM &hyphen; STT 전수</h1>
 
             <!-- .customInfo -->
@@ -98,8 +98,8 @@
             </div>
             <!-- //.customInfo -->
 
-            <!-- .dataTableBox -->
-            <div class="dataTableBox">
+            <!-- .stnArea -->
+            <div class="stnArea">
                 <!-- .playerBox -->
                 <!-- [D] 플레이어에서 재생버튼 클릭 시 상담내용 처음부터 재생되어야 함 -->
                 <!-- [D] tbody의 대화내용 셀 더블클릭 시 해당 내용 재생되며 재생 중인 음성과 텍스트의 싱크 맞춰야 함 / 재생 중인 텍스트(.dataTable tbody tr)에는 addclass('currentPlay')해주면 1~4번째 셀 텍스트 볼드처리 됨 -->
@@ -138,190 +138,194 @@
                 </div>
                 <!-- //.term_srch_box -->
 
-                <!-- [D] datatables 라이브러리 영역 -->
-                <!-- [D] 'Excel 다운로드' 버튼 클릭 시 파일 다운로드됨 -->
-                <!-- [D] '구분'(상담사 / 고객)에 따른 백그라운드 컬러 추가됨 -->
+                <!-- .dataTableBox -->
+                <div class="dataTableBox">
+                    <!-- [D] datatables 라이브러리 영역 -->
+                    <!-- [D] 'Excel 다운로드' 버튼 클릭 시 파일 다운로드됨 -->
+                    <!-- [D] '구분'(상담사 / 고객)에 따른 백그라운드 컬러 추가됨 -->
 
-                <!-- [D] 'STT 결과' 셀의 상담 내용 영역에서 마우스 우클릭 시 contextmenu 등장 -->
-                <table class="dataTable" summary="순번, 구분, 시작시간, STT 결과로 구성">
-                    <caption class="hide">STT 결과 목록</caption>
-                    <colgroup>
-                        <col width="50"><col width="60"><col width="70"><col>
-                    </colgroup>
-                    
-                    <thead>
-                        <tr>
-                            <th scope="col">순번</th>
-                            <th scope="col">구분</th>
-                            <th scope="col">시작시간</th>
-                            <th scope="col">STT 결과</th>
-                        </tr>
-                    </thead>
+                    <!-- [D] 'STT 결과' 셀의 상담 내용 영역에서 마우스 우클릭 시 contextmenu 등장 -->
+                    <table class="dataTable" summary="순번, 구분, 시작시간, STT 결과로 구성">
+                        <caption class="hide">STT 결과 목록</caption>
+                        <colgroup>
+                            <col width="50"><col width="60"><col width="70"><col>
+                        </colgroup>
 
-                    <tbody>
-                        <tr>
-                            <td scope="row">1</td>
-                            <td>상담사</td>
-                            <td>0:00:02</td>
-                            <td>가입설계 체결 위해서 관련 법률에 따라 수집 이용 조회 제공에 동의 얻고자하며 신용등급과 무관하시고 동의 하지 않으실 경우에는 계약상담이 불가능하신데요</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">2</td>
-                            <td>상담사</td>
-                            <td>0:00:02</td>
-                            <td>고객님의 개인신용 정보이신 이름 주민번호 연락처 주소 구매내역 등을 수집 이용 제공하시는데 동의하십니까</td>
-                        </tr>
-                        <!-- [D] 대화내용 셀 더블클릭 시 해당 내용 재생되며 재생 중인 음성과 텍스트의 싱크 맞춰야 함 / 재생 중인 텍스트(.dataTable tbody tr)에는 addclass('currentPlay')해주면 1~4번째 셀 텍스트 볼드처리 됨 -->
-                        <tr class="currentPlay">
-                            <td scope="row">3</td>
-                            <td>고객</td>
-                            <td>0:00:07</td>
-                            <td>예예</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">4</td>
-                            <td>상담사</td>
-                            <td>0:00:07</td>
-                            <td>예 수집목적은 상담 체결 유지 관리 등을 위해서 쓰여지시고 업무 위탁을 받은자 및 법률상의 업무수행 계약목적 등을 위해서 제 삼자에게 제공하시는데 동의하십니까</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">5</td>
-                            <td>고객</td>
-                            <td>0:00:11</td>
-                            <td>예예</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td scope="row">6</td>
-                            <td>상담사</td>
-                            <td>0:00:13</td>
-                            <td>예 고객님의 고유식별정보를 상기의 목적으로 처리하시는 것에 대해서 동의 해주셨어요 맞으십니까</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">7</td>
-                            <td>고객</td>
-                            <td>0:00:17</td>
-                            <td>예예</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td scope="row">8</td>
-                            <td>상담사</td>
-                            <td>0:00:19</td>
-                            <td>네 수집한 정보는 삼개월 이용 일년 보유이시며 체결 후에는 거래 종료후 오년 이용 보관하구요 각 제공 대상기관 및 이용목적 구체적인 정보는 롯데손해보험 홈페이지 통해서 확인해 보실 수 있으시고</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">9</td>
-                            <td>상담사</td>
-                            <td>0:00:23</td>
-                            <td>계약자님 성함하고 주민번호 말씀해 주시면 되시는데 전화받으신 고객님의 성함이 어떻게 되십니까</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">10</td>
-                            <td>고객</td>
-                            <td>0:00:25</td>
-                            <td>송지영이요</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">11</td>
-                            <td>상담사</td>
-                            <td>0:00:26</td>
-                            <td>네 송지영 고객님께서 계약자님</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">12</td>
-                            <td>고객</td>
-                            <td>0:00:26</td>
-                            <td>송</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">13</td>
-                            <td>고객</td>
-                            <td>0:00:27</td>
-                            <td>송이요</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">14</td>
-                            <td>상담사</td>
-                            <td>0:00:28</td>
-                            <td>송 송나라 송</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">15</td>
-                            <td>고객</td>
-                            <td>0:00:29</td>
-                            <td>네 송이요</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">16</td>
-                            <td>고객</td>
-                            <td>0:00:29</td>
-                            <td>예예</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">17</td>
-                            <td>상담사</td>
-                            <td>0:00:31</td>
-                            <td>예 송지영 고객님께서 계약자님으로 들어가시고 고객님 주민등록번호 말씀해 주시면 되십니다</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">18</td>
-                            <td>고객</td>
-                            <td>0:00:33</td>
-                            <td>칠하나공칠이사 이삼사오 삼사팔</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">19</td>
-                            <td>상담사</td>
-                            <td>0:00:35</td>
-                            <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">20</td>
-                            <td>상담사</td>
-                            <td>0:00:35</td>
-                            <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">21</td>
-                            <td>상담사</td>
-                            <td>0:00:35</td>
-                            <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">22</td>
-                            <td>상담사</td>
-                            <td>0:00:35</td>
-                            <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">23</td>
-                            <td>상담사</td>
-                            <td>0:00:35</td>
-                            <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">24</td>
-                            <td>상담사</td>
-                            <td>0:00:35</td>
-                            <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">25</td>
-                            <td>상담사</td>
-                            <td>0:00:35</td>
-                            <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
-                        </tr>
-                        <tr>
-                            <td scope="row">26</td>
-                            <td>상담사</td>
-                            <td>0:00:35</td>
-                            <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
-                        </tr>
-                    </tbody>
-                </table>
+                        <thead>
+                            <tr>
+                                <th scope="col">순번</th>
+                                <th scope="col">구분</th>
+                                <th scope="col">시작시간</th>
+                                <th scope="col">STT 결과</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td scope="row">1</td>
+                                <td>상담사</td>
+                                <td>0:00:02</td>
+                                <td>가입설계 체결 위해서 관련 법률에 따라 수집 이용 조회 제공에 동의 얻고자하며 신용등급과 무관하시고 동의 하지 않으실 경우에는 계약상담이 불가능하신데요</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">2</td>
+                                <td>상담사</td>
+                                <td>0:00:02</td>
+                                <td>고객님의 개인신용 정보이신 이름 주민번호 연락처 주소 구매내역 등을 수집 이용 제공하시는데 동의하십니까</td>
+                            </tr>
+                            <!-- [D] 대화내용 셀 더블클릭 시 해당 내용 재생되며 재생 중인 음성과 텍스트의 싱크 맞춰야 함 / 재생 중인 텍스트(.dataTable tbody tr)에는 addclass('currentPlay')해주면 1~4번째 셀 텍스트 볼드처리 됨 -->
+                            <tr class="currentPlay">
+                                <td scope="row">3</td>
+                                <td>고객</td>
+                                <td>0:00:07</td>
+                                <td>예예</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">4</td>
+                                <td>상담사</td>
+                                <td>0:00:07</td>
+                                <td>예 수집목적은 상담 체결 유지 관리 등을 위해서 쓰여지시고 업무 위탁을 받은자 및 법률상의 업무수행 계약목적 등을 위해서 제 삼자에게 제공하시는데 동의하십니까</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">5</td>
+                                <td>고객</td>
+                                <td>0:00:11</td>
+                                <td>예예</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">6</td>
+                                <td>상담사</td>
+                                <td>0:00:13</td>
+                                <td>예 고객님의 고유식별정보를 상기의 목적으로 처리하시는 것에 대해서 동의 해주셨어요 맞으십니까</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">7</td>
+                                <td>고객</td>
+                                <td>0:00:17</td>
+                                <td>예예</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">8</td>
+                                <td>상담사</td>
+                                <td>0:00:19</td>
+                                <td>네 수집한 정보는 삼개월 이용 일년 보유이시며 체결 후에는 거래 종료후 오년 이용 보관하구요 각 제공 대상기관 및 이용목적 구체적인 정보는 롯데손해보험 홈페이지 통해서 확인해 보실 수 있으시고</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">9</td>
+                                <td>상담사</td>
+                                <td>0:00:23</td>
+                                <td>계약자님 성함하고 주민번호 말씀해 주시면 되시는데 전화받으신 고객님의 성함이 어떻게 되십니까</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">10</td>
+                                <td>고객</td>
+                                <td>0:00:25</td>
+                                <td>송지영이요</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">11</td>
+                                <td>상담사</td>
+                                <td>0:00:26</td>
+                                <td>네 송지영 고객님께서 계약자님</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">12</td>
+                                <td>고객</td>
+                                <td>0:00:26</td>
+                                <td>송</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">13</td>
+                                <td>고객</td>
+                                <td>0:00:27</td>
+                                <td>송이요</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">14</td>
+                                <td>상담사</td>
+                                <td>0:00:28</td>
+                                <td>송 송나라 송</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">15</td>
+                                <td>고객</td>
+                                <td>0:00:29</td>
+                                <td>네 송이요</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">16</td>
+                                <td>고객</td>
+                                <td>0:00:29</td>
+                                <td>예예</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">17</td>
+                                <td>상담사</td>
+                                <td>0:00:31</td>
+                                <td>예 송지영 고객님께서 계약자님으로 들어가시고 고객님 주민등록번호 말씀해 주시면 되십니다</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">18</td>
+                                <td>고객</td>
+                                <td>0:00:33</td>
+                                <td>칠하나공칠이사 이삼사오 삼사팔</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">19</td>
+                                <td>상담사</td>
+                                <td>0:00:35</td>
+                                <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">20</td>
+                                <td>상담사</td>
+                                <td>0:00:35</td>
+                                <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">21</td>
+                                <td>상담사</td>
+                                <td>0:00:35</td>
+                                <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">22</td>
+                                <td>상담사</td>
+                                <td>0:00:35</td>
+                                <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">23</td>
+                                <td>상담사</td>
+                                <td>0:00:35</td>
+                                <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">24</td>
+                                <td>상담사</td>
+                                <td>0:00:35</td>
+                                <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">25</td>
+                                <td>상담사</td>
+                                <td>0:00:35</td>
+                                <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">26</td>
+                                <td>상담사</td>
+                                <td>0:00:35</td>
+                                <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- //.dataTableBox -->
             </div>
-            <!-- //.dataTableBox -->
+            <!-- //.stnArea -->
         </div>
         <!-- //#contents -->
     </div>
@@ -388,7 +392,7 @@ $(document).ready(function(){
             text: 'Excel 다운로드',
         }]
     });
-    
+
     //오디오 플레이어
     $('audio').audioPlayer();
     $('.btn_player_play').on('click',function(){

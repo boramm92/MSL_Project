@@ -19,7 +19,7 @@
 <!-- player -->
 <script src="../resources/js/player.js"></script>
 <!-- datatables -->
-<script src="../resources/js/datatables.js"></script>
+<script src="../resources/js/datatables.min.js"></script>
 <script src="../resources/js/dataTables.buttons.min.js"></script>
 <script src="../resources/js/buttons.html5.min.js"></script>
 <script src="../resources/js/jszip.min.js"></script>
@@ -48,7 +48,7 @@
 
                     <tbody>
                         <tr>
-                            <th>청약일자</th>
+                            <th scope="row">청약일자</th>
                             <td>
                                 <span class="consult_time custom_info">2020-08-03 09:10</span>
                                 <span>&hyphen;</span>
@@ -56,27 +56,27 @@
 
                             </td>
 
-                            <th>센터</th>
+                            <th scope="row">센터</th>
                             <td>
                                 <span class="name custom_info">Upsell 센터</span>
                             </td>
 
-                            <th>실</th>
+                            <th scope="row">실</th>
                             <td>
                                 <span class="custom_num custom_info">2팀</span>
                             </td>
 
-                            <th>상담원</th>
+                            <th scope="row">상담원</th>
                             <td>
                                 <span class="consultant custom_info">86802&sol;김영희</span>
                             </td>
 
-                            <th>담당QA</th>
+                            <th scope="row">담당QA</th>
                             <td>
                                 <span class="epy_num custom_info">김철수</span>
                             </td>
 
-                            <th>증권번호</th>
+                            <th scope="row">증권번호</th>
                             <td>
                                 <span class="work_type custom_info">120</span>
                             </td>
@@ -89,20 +89,22 @@
             <!-- .dataTableBox -->
             <div class="dataTableBox">
                 <!-- [D] datatables 라이브러리 영역 -->
-                <table class="dataTable tbl_counsel_list">
+                <table class="dataTable tbl_counsel_list" summary="NO, 상담일시, 통화시간, 상담대분류, 상담소분류, 상담내용, 청약, STT 상태, 센터, 실, 상담원으로 구성">
+                    <caption class="hide">TM QA STT 결과</caption>
+
                     <thead>
                         <tr>
-                            <th>NO</th>
-                            <th>상담일시</th>
-                            <th>통화시간</th>
-                            <th>상담대분류</th>
-                            <th>상담소분류</th>
-                            <th>상담내용</th>
-                            <th>청약</th>
-                            <th>STT 상태</th>
-                            <th>센터</th>
-                            <th>실</th>
-                            <th>상담원</th>
+                            <th scope="col">NO</th>
+                            <th scope="col">상담일시</th>
+                            <th scope="col">통화시간</th>
+                            <th scope="col">상담대분류</th>
+                            <th scope="col">상담소분류</th>
+                            <th scope="col">상담내용</th>
+                            <th scope="col">청약</th>
+                            <th scope="col">STT 상태</th>
+                            <th scope="col">센터</th>
+                            <th scope="col">실</th>
+                            <th scope="col">상담원</th>
                         </tr>
                     </thead>
 
@@ -451,6 +453,54 @@
 <!-- script -->
 <script type="text/javascript">
 $(document).ready(function(){
+    // datatable 렌더링
+    var firstTable = $('.dataTable.tbl_counsel_list').DataTable({
+        dom: '<"top">t<"bottom">', // 옵션 위치 지정
+        responsive: true, // 반응형 허용
+        info: false, // 페이지 정보 미허용
+        paging: false, // 페이징 미허용
+        scrollY: "90px", // 세로 스크롤 허용, 사이즈
+        scrollX: false, //가로 스크롤 미허용
+        scrollCollapse: true,
+        ordering: false,
+        columnDefs: [ // 컬럼별 width, 옵션 사용 지정
+            {targets: [0], width: "50px", sortable: false},   // NO
+            {targets: [1], width: "150px"},  // 상담일시
+            {targets: [2], width: "100px"},  // 통화시간
+            {targets: [3], width: "150px"},  // 상담대분류
+            {targets: [4], width: "150px"},  // 상담소분류
+            {targets: [5], width: "423px"},  // 상담내용
+            {targets: [6], width: "50px"},   // 청약
+            {targets: [7], width: "80px"},   // STT 상태
+            {targets: [8], width: "100px"},  // 센터
+            {targets: [9], width: "50px"},   // 실
+            {targets: [10], width: "80px"}  // 상담원
+        ],
+    });
+
+    // datatable 렌더링
+    var firstTable = $('.dataTable.tbl_counsel_script').DataTable({
+        dom: '<"top">t<"bottom"B>', // 옵션 위치 지정
+        responsive: true, // 반응형 허용
+        info: false, // 페이지 정보 미허용
+        paging: false, // 페이징 미허용
+        scrollY: "575px", // 세로 스크롤 허용, 사이즈
+        scrollX: false, //가로 스크롤 미허용
+        scrollCollapse: true,
+        ordering: false,
+        columnDefs: [ // 컬럼별 width, 옵션 사용 지정
+            {targets: [0], width: "50px"},   // 순번
+            {targets: [1], width: "60px"},   // 구분
+            {targets: [2], width: "70px"},   // 시작시간
+            {targets: [3], width: ""},       // STT 결과
+            {targets: [4], width: "100px"},       // 탐지 구간
+        ],
+        buttons: [{
+            extend: 'excelHtml5',
+            text: 'Excel 다운로드',
+        }]
+    });
+
     //오디오 플레이어
     $('audio').audioPlayer();
     $('.btn_player_play').on('click',function(){
@@ -458,6 +508,7 @@ $(document).ready(function(){
     });
 
     // STT 결과에서 텍스트 검색하기
+    $('.dataTables_scrollBody').addClass('stt_scroll');
     $('table.dataTable tbody td:nth-child(4)').addClass('sttSrchArea');
 
     $("#findTxtField").keydown(function(key) {
@@ -569,54 +620,6 @@ $(document).ready(function(){
                 }
             });
         }
-    });
-
-    // datatable 렌더링
-    var firstTable = $('.dataTable.tbl_counsel_list').DataTable({
-        dom: '<"top">t<"bottom">', // 옵션 위치 지정
-        responsive: true, // 반응형 허용
-        info: false, // 페이지 정보 미허용
-        paging: false, // 페이징 미허용
-        scrollY: "150px", // 세로 스크롤 허용, 사이즈
-        scrollX: false, //가로 스크롤 미허용
-        scrollCollapse: true,
-        ordering: false,
-        columnDefs: [ // 컬럼별 width, 옵션 사용 지정
-            {targets: [0], width: "50px", sortable: false},   // NO
-            {targets: [1], width: "150px"},  // 상담일시
-            {targets: [2], width: "100px"},  // 통화시간
-            {targets: [3], width: "150px"},  // 상담대분류
-            {targets: [4], width: "150px"},  // 상담소분류
-            {targets: [5], width: "423px"},  // 상담내용
-            {targets: [6], width: "50px"},   // 청약
-            {targets: [7], width: "80px"},   // STT 상태
-            {targets: [8], width: "100px"},  // 센터
-            {targets: [9], width: "50px"},   // 실
-            {targets: [10], width: "80px"}  // 상담원
-        ],
-    });
-
-    // datatable 렌더링
-    var firstTable = $('.dataTable.tbl_counsel_script').DataTable({
-        dom: '<"top">t<"bottom"B>', // 옵션 위치 지정
-        responsive: true, // 반응형 허용
-        info: false, // 페이지 정보 미허용
-        paging: false, // 페이징 미허용
-        scrollY: "495px", // 세로 스크롤 허용, 사이즈
-        scrollX: false, //가로 스크롤 미허용
-        scrollCollapse: true,
-        ordering: false,
-        columnDefs: [ // 컬럼별 width, 옵션 사용 지정
-            {targets: [0], width: "50px"},   // 순번
-            {targets: [1], width: "60px"},   // 구분
-            {targets: [2], width: "70px"},   // 시작시간
-            {targets: [3], width: ""},       // STT 결과
-            {targets: [4], width: "100px"},       // 탐지 구간
-        ],
-        buttons: [{
-            extend: 'excelHtml5',
-            text: 'Excel 다운로드',
-        }]
     });
 
     // 구분(고객, 상담사)에 따른 백그라운드 컬러 주기

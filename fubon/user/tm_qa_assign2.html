@@ -67,7 +67,7 @@
         <!-- [D] 소메뉴(.third)가 존재하는 중메뉴(.snb > li)는 오른쪽에 아래방향 화살표가 추가되며, 클릭 시 소메뉴(.third) slidedown되며 보여짐 -->
         <ul class="gnb">
             <li>
-                <h3>Home</h3>
+                <h2>Home</h2>
 
                 <ul class="sub">
                     <li>
@@ -76,7 +76,7 @@
                 </ul>
             </li>
             <li>
-                <h3>CS</h3>
+                <h2>CS</h2>
 
                 <ul class="sub">
                     <li>
@@ -85,7 +85,7 @@
                 </ul>
             </li>
             <li>
-                <h3>TM</h3>
+                <h2>TM</h2>
 
                 <ul class="sub">
                     <li>
@@ -94,7 +94,7 @@
                 </ul>
             </li>
             <li class="current">
-                <h3>TM_QA</h3>
+                <h2>TM_QA</h2>
 
                 <ul class="sub">
                     <li class="current">
@@ -109,7 +109,7 @@
                 </ul>
             </li>
             <li>
-                <h3>통계</h3>
+                <h2>통계</h2>
 
                 <ul class="sub">
                     <li>
@@ -121,7 +121,7 @@
                 </ul>
             </li>
             <li>
-                <h3>모니터링</h3>
+                <h2>모니터링</h2>
 
                 <ul class="sub">
                     <li>
@@ -133,7 +133,7 @@
                 </ul>
             </li>
             <li>
-                <h3>관리설정</h3>
+                <h2>관리설정</h2>
 
                 <ul class="sub">
                     <li>
@@ -230,8 +230,6 @@
 
             <!-- .tab_content -->
             <div class="tab_content">
-                <h4>QA 배정</h4>
-
                 <!-- .srchArea -->
                 <div class="srchArea">
                     <table class="tbl_line_view" summary="청약일자, 센터, 실, 상담원, 담당QA, 증권번호로 구성">
@@ -862,7 +860,7 @@ $(document).ready(function(){
 
     // datatable 렌더링
     var firstTable = $('.dataTable').DataTable({
-        dom: 'iptlB', // 옵션 위치 지정
+        dom: 't<"bottom"iB>', // 옵션 위치 지정
         language: { // 테이블 목록 건수 text 한글 설정
             emptyTable: "조회된 데이터가 없습니다.", // 데이터 없을 경우 노출되는 text 설정
             infoEmpty: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>0</strong> 건&rbrack;",
@@ -895,7 +893,6 @@ $(document).ready(function(){
             {targets: [16], width: "100px"},                                   // 콜타임
             {targets: [17], width: "100px", orderable: false},                 // 업무처리시간
         ],
-        dom: 'Blfrtip', // 엑셀 다운로드 버튼 추가
         buttons: [{
             extend: 'excelHtml5',
             text: 'Excel 다운로드',

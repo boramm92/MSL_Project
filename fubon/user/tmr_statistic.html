@@ -25,7 +25,7 @@
 <script src="../resources/js/ko.js"></script>
 <!-- datatables -->
 <script src="../resources/js/datatables.min.js"></script>
-<script src="../resources/js/dataTables.fixedHeader.min.js"></script>
+<!-- <script src="../resources/js/dataTables.fixedHeader.min.js"></script> -->
 <script src="../resources/js/dataTables.fixedColumns.min.js"></script>
 <script src="../resources/js/dataTables.buttons.min.js"></script>
 <script src="../resources/js/buttons.html5.min.js"></script>
@@ -68,7 +68,7 @@
         <!-- [D] 소메뉴(.third)가 존재하는 중메뉴(.snb > li)는 오른쪽에 아래방향 화살표가 추가되며, 클릭 시 소메뉴(.third) slidedown되며 보여짐 -->
         <ul class="gnb">
             <li>
-                <h3>Home</h3>
+                <h2>Home</h2>
 
                 <ul class="sub">
                     <li>
@@ -77,7 +77,7 @@
                 </ul>
             </li>
             <li class="current">
-                <h3>CS</h3>
+                <h2>CS</h2>
 
                 <ul class="sub">
                     <li class="current">
@@ -86,7 +86,7 @@
                 </ul>
             </li>
             <li>
-                <h3>TM</h3>
+                <h2>TM</h2>
 
                 <ul class="sub">
                     <li>
@@ -95,7 +95,7 @@
                 </ul>
             </li>
             <li>
-                <h3>TM_QA</h3>
+                <h2>TM_QA</h2>
 
                 <ul class="sub">
                     <li>
@@ -110,7 +110,7 @@
                 </ul>
             </li>
             <li>
-                <h3>통계</h3>
+                <h2>통계</h2>
 
                 <ul class="sub">
                     <li>
@@ -122,7 +122,7 @@
                 </ul>
             </li>
             <li>
-                <h3>모니터링</h3>
+                <h2>모니터링</h2>
 
                 <ul class="sub">
                     <li>
@@ -134,7 +134,7 @@
                 </ul>
             </li>
             <li>
-                <h3>관리설정</h3>
+                <h2>관리설정</h2>
 
                 <ul class="sub">
                     <li>
@@ -231,8 +231,6 @@
 
             <!-- .tab_content -->
             <div class="tab_content">
-                <h4>TMR 통계</h4>
-
                 <!-- .srchArea -->
                 <div class="srchArea">
                     <table class="tbl_line_view" summary="청약일자, 센터, 실, 상담원, 사번, 상품명, 청약상태로 구성">
@@ -249,19 +247,19 @@
                                 <!-- [D] 월 변경 시 다시 1일부터 세팅 -->
                                 <td>
                                     <div class="iptBox">
-                                        <input type="text" id="fromDate" class="iptDateTime">
+                                        <input type="text" id="fromDate" class="iptDate">
                                         <span>&hyphen;</span>
-                                        <input type="text" id="toDate" class="iptDateTime">
+                                        <input type="text" id="toDate" class="iptDate">
                                     </div>
                                 </td>
-                                
+
                                 <th>상품명</th>
                                 <td colspan="3">
                                     <div class="iptBox">
                                         <input type="text">
                                     </div>
                                 </td>
-                                
+
                                 <th>청약상태</th>
                                 <td>
                                     <div class="sltBox custom">
@@ -274,7 +272,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            
+
                             <tr>
                                 <th>센터</th>
                                 <td>
@@ -290,7 +288,7 @@
                                         </select>
                                     </div>
                                 </td>
-                                
+
                                 <th>실</th>
                                 <td>
                                     <div class="sltBox custom">
@@ -311,7 +309,7 @@
                                         </select>
                                     </div>
                                 </td>
-                                
+
                                 <th>상담원</th>
                                 <td>
                                     <div class="sltBox custom">
@@ -332,13 +330,13 @@
                                         </select>
                                     </div>
                                 </td>
-                                
+
                                 <th>사번</th>
                                 <td>
                                     <div class="iptBox">
                                         <input type="text" numberOnly>
                                     </div>
-                                </td>                                
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -941,21 +939,21 @@
                                 <td>심사패널티</td>
                             </tr>
                         </tbody>
-                        
+
+                        <!-- [D] 하단 셀(tfoot th)에 순서대로 청약건수 / QA건수 / QA배정율(평균) / QA보완율(평균) / QA보완완료율(평균) / QA전체점수(sum) / QA평균 점수(평균) / TA전체점수(sum) / TA평균점수(평균) / 심사패널티 (sum) - 필드별 합계 넣어야함  -->
                         <tfoot>
                             <tr>
-                                <td colspan="3">합계&colon;</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <th colspan="6">합계&colon;</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
                             </tr>
                         </tfoot>
                     </table>
@@ -1016,10 +1014,7 @@ $(document).ready(function(){
 
     // datatable 렌더링
     var table = $('.dataTable').DataTable({
-        dom: 'ptB', // 옵션 위치 지정
-        fixedHeader: {
-            footer: true
-        },
+        dom: 't<"bottom"B>', // 옵션 위치 지정
         language: { // 테이블 목록 건수 text 한글 설정
             emptyTable: "조회된 데이터가 없습니다.", // 데이터 없을 경우 노출되는 text 설정
             paginate: {
@@ -1031,12 +1026,10 @@ $(document).ready(function(){
         },
         responsive: true, // 반응형 허용
         info: false,
-        lengthChange: false,
-        filter: false, // 검색창 미허용
         order: [[ 1, 'asc' ]], // 초기 sort 설정
-        paging: true, // 페이징 허용
+        paging: false, // 페이징 허용
         pagingType: "full_numbers", // 페이징 버튼 구성 (처음, 이전, 페이지숫자, 다음, 마지막)
-        scrollY: true, // 세로 스크롤 허용, 사이즈
+        scrollY: "600px", // 세로 스크롤 허용, 사이즈
         scrollX: true, //가로 스크롤 허용
         scrollCollapse: true,
         columnDefs: [ // 컬럼별 width, 옵션 사용 지정
@@ -1057,7 +1050,6 @@ $(document).ready(function(){
             {targets: [14], width: "120px"},                                   // TA 평균점수
             {targets: [15], width: "120px", orderable: false},                 // 심사패널티
         ],
-        dom: 'Blfrtip', // 엑셀 다운로드 버튼 추가
         buttons: [{
             extend: 'excelHtml5',
             text: 'Excel 다운로드',
@@ -1069,36 +1061,13 @@ $(document).ready(function(){
             leftColumns: 1,
         }
     });
-    
+
     // 다른 열에서 sort되어도 1열 순번은 그대로 유지
     table.on('order.dt search.dt', function(){
         table.column(0, {search:'applied', order:'applied'}).nodes().each(function (cell, i){
             cell.innerHTML = i+1;
         });
     }).draw();
-
-    // datatable height 브라우저 height 기준 maxheight 조정
-    function tableResize() {
-        // 전체 테이블
-        $('.DTFC_ScrollWrapper').css({
-            height: "100%",
-            maxHeight: ($(window).height() - 345) + 'px'
-        });
-        // 테이블 바디 (스크롤 포함)
-        $('.DTFC_LeftBodyWrapper, DTFC_LeftBodyLiner').css({
-            height: ($(window).height() - 351 - 40) + 'px',
-            maxHeight: ($(window).height() - 351 - 40) + 'px'
-        });
-        // 첫번째 열
-        $('.dataTables_scrollBody').css({
-            maxHeight: ($(window).height() - 345 - 40) + 'px'
-        });
-    }
-    tableResize();
-    
-    $(window).resize(function() {
-        tableResize();
-    });
 });
 </script>
 </body>
