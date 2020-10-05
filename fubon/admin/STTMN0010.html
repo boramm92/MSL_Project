@@ -660,8 +660,10 @@ jQuery.event.add(window,"load",function(){
         });
 
         // 조회 또는 설정 버튼 클릭 시 해당 목록 하이라이트
+        var $highLightLine = $('.tbl_include_btn tbody tr, .tbl_set_view tbody tr');
+
         $('.btn_check, .btn_set').on('click', function(){
-            $('.tbl_include_btn tbody tr').removeClass('active');
+            $highLightLine.removeClass('active');
             $(this).parents('tr').addClass('active');
         });
 
