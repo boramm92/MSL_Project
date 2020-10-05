@@ -1014,7 +1014,7 @@
                         </tbody>
                     </table>
                     
-                    <!-- [D] 체크박스 선택 시 대상, 취소 버튼에 addclass('on')해주면 활성화되며 체크 해제 시 다시 비활성화됨 -->
+                    <!-- [D] 체크박스 선택 시 대상, 취소 버튼에 addclass('on')해주면 활성화되며 체크 해제 시 다시 비활성화됨 -> 활성화 script 적용 안되어있음, 개발 시 적용 필요 -->
                     <!-- [D] 대상(.btn_target)버튼 클릭 시 선택목록들 대상 지정 -->
                     <!-- [D] 취소(.btn_cancel)버튼 클릭 시 취소확인팝업(#lyr_qaTarget_cancel) 등장 -->
                     <!-- [D] 대상설정(.btn_target_set)버튼 클릭 시 대상설정 윈도우 팝업(popup_tm_qa_targetSet.html) 열림 -->
@@ -1161,11 +1161,9 @@ jQuery.event.add(window,"load",function(){
             if ( check == false ) { // 전체선택 체크가 false이면 자식들도 false
                 $this.prop('checked', false);
                 $childCheck.prop('checked', false);
-                $('.btn_target, .btn_cancel').removeClass('on');
             } else { // 전체선택 체크가 true이면 자식들도 true
                 $this.prop('checked', true);
                 $childCheck.prop('checked', true);
-                $('.btn_target, .btn_cancel').addClass('on');
             }
         });
 
@@ -1181,7 +1179,6 @@ jQuery.event.add(window,"load",function(){
                 $this.prop('checked',false);
             } else {
                 $this.prop('checked', true);
-                $('.btn_target, .btn_cancel').addClass('on');
             }
 
             var checkboxes = $('.DTFC_Cloned .each_chk[name=\''+thisName+'\']');
@@ -1192,13 +1189,11 @@ jQuery.event.add(window,"load",function(){
             for (var i=0; i<checkboxes.length; i++) {
                 if ( checkboxes[i].checked == false ) {
                     $allCheck.prop('checked', false);
-                    $('.btn_target, .btn_cancel').removeClass('on');
                     return;
                 }
             }
             // 자식 중 체크 false가 없으면 전체선택 true
             $allCheck.prop('checked', true);
-            $('.btn_target, .btn_cancel').addClass('on');
         });
     });
 });
