@@ -51,7 +51,7 @@
             <!-- [D] 소메뉴(.third)가 존재하는 중메뉴(.snb > li)는 오른쪽에 아래방향 화살표가 추가되며, 클릭 시 소메뉴(.third) slidedown되며 보여짐 -->
             <ul class="gnb">
                 <li>
-                    <h3>Home</h3>
+                    <h2>Home</h2>
     
                     <ul class="sub">
                         <li>
@@ -59,17 +59,17 @@
                         </li>
                     </ul>
                 </li>
-                <li class="current">
-                    <h3>CS</h3>
+                <li>
+                    <h2>CS</h2>
     
                     <ul class="sub">
-                        <li class="current">
+                        <li>
                             <a href="#none">CS - STT 대상</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <h3>TM</h3>
+                    <h2>TM</h2>
     
                     <ul class="sub">
                         <li>
@@ -78,7 +78,7 @@
                     </ul>
                 </li>
                 <li>
-                    <h3>TM_QA</h3>
+                    <h2>TM_QA</h2>
     
                     <ul class="sub">
                         <li>
@@ -93,7 +93,7 @@
                     </ul>
                 </li>
                 <li>
-                    <h3>통계</h3>
+                    <h2>통계</h2>
     
                     <ul class="sub">
                         <li>
@@ -105,7 +105,7 @@
                     </ul>
                 </li>
                 <li>
-                    <h3>모니터링</h3>
+                    <h2>모니터링</h2>
     
                     <ul class="sub">
                         <li>
@@ -116,8 +116,8 @@
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <h3>관리설정</h3>
+                <li class="current">
+                    <h2>관리설정</h2>
     
                     <ul class="sub">
                         <li>
@@ -149,11 +149,11 @@
                         <li>
                             <a href="#none">시뮬레이션 화면</a>
                         </li>
-                        <li>
+                        <li class="current">
                             <a href="#none">사용자 관리</a>
                             <ul class="third">
-                                <li>
-                                    <a href="#none">사용자 관리</a>
+                                <li class="current">
+                                    <a href="#none">권한 부여</a>
                                 </li>
                                 <li>
                                     <a href="#none">권한 관리</a>
@@ -213,9 +213,7 @@
                 <!-- //.tab_title -->
     
                 <!-- .tab_content -->
-                <div class="tab_content">
-                    <h4>사용자 권한 관리</h4>
-                    
+                <div class="tab_content">                    
                     <div class="btnBox">
                         <a href="#none">사용자 추가</a>
                     </div>
@@ -256,6 +254,7 @@
                     <!-- .dataTableBox -->
                     <div class="dataTableBox">
                         <table class="dataTable" summary="NO, 사용자ID, 사용자명, 권한 설정, 설정, 등록일자, 수정일자로 구성됨">
+                            <caption class="hide">사용자 권한 관리 목록</caption>
                             <colgroup>
                                 <col width="100"><col><col><col><col><col><col>
                             </colgroup>
@@ -344,9 +343,20 @@
 <!-- script -->
 <script type="text/javascript">
 $(document).ready(function(){
-    function openPopup(){
-        var url = ""
-    }
+    var table = $('.dataTable').DataTable({
+        dom: 't<"bottom"p>', // 옵션 위치 지정
+        language: { // 테이블 목록 건수 text 한글 설정
+            emptyTable: "조회된 데이터가 없습니다.", // 데이터 없을 경우 노출되는 text 설정
+            paginate: {
+                first: "",
+                previous: "",
+                next: "",
+                last: ""
+            },
+        },
+        paging: true, // 페이징 허용
+        pagingType: "full_numbers", // 페이징 버튼 구성 (처음, 이전, 페이지숫자, 다음, 마지막)
+    });
 });
 </script>
 </body>

@@ -4,32 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="format-detection" content="telephone=no">
 
-<!-- css -->
-<!-- datetimepicker -->
-<link rel="stylesheet" href="../resources/css/bootstrap.css"/>
-<link rel="stylesheet" href="../resources/css/bootstrap-datetimepicker.css"/>
-<!-- datatables -->
-<link rel="stylesheet" href="../resources/css/datatables.min.css">
-<link rel="stylesheet" href="../resources/css/buttons.dataTables.min.css">
-
+<!---------------------- General Resources ---------------------->
+<!-- General CSS -->
 <link rel="stylesheet" href="../resources/css/common.css">
-<link rel="stylesheet" href="../resources/css/stt_tm_qa.css">
 
-<!-- js -->
+<!-- General Script -->
 <script src="../resources/js/jquery-3.3.1.min.js"></script>
 <script src="../resources/js/jquery-migrate-3.3.0.min.js"></script>
-<!-- datetimepicker -->
-<script src="../resources/js/bootstrap-datetimepicker.js"></script>
-<script src="../resources/js/moment.min.js"></script>
-<script src="../resources/js/ko.js"></script>
-<!-- datatables -->
-<script src="../resources/js/datatables.min.js"></script>
-<script src="../resources/js/dataTables.fixedColumns.min.js"></script>
-<script src="../resources/js/dataTables.buttons.min.js"></script>
-<script src="../resources/js/buttons.html5.min.js"></script>
-<script src="../resources/js/jszip.min.js"></script>
-
 <script src="../resources/js/common.js"></script>
 
 <title>QA 결과 || 푸본현대생명</title>
@@ -71,16 +54,16 @@
 
                 <ul class="sub">
                     <li>
-                        <a href="#none">Dashboard</a>
+                        <a href="home_dashboard.html">Dashboard</a>
                     </li>
                 </ul>
             </li>
-            <li class="current">
+            <li>
                 <h2>CS</h2>
 
                 <ul class="sub">
-                    <li class="current">
-                        <a href="#none">CS - STT 대상</a>
+                    <li>
+                        <a href="cs_stt.html">CS - STT 대상</a>
                     </li>
                 </ul>
             </li>
@@ -89,22 +72,22 @@
 
                 <ul class="sub">
                     <li>
-                        <a href="#none">TM - STT 대상</a>
+                        <a href="tm_stt.html">TM - STT 대상</a>
                     </li>
                 </ul>
             </li>
-            <li>
+            <li class="current">
                 <h2>TM_QA</h2>
 
                 <ul class="sub">
                     <li>
-                        <a href="#none">QA 배정</a>
+                        <a href="tm_qa_target.html">QA 대상</a>
                     </li>
                     <li>
-                        <a href="#none">QA 심사리스트</a>
+                        <a href="tm_qa_assign1.html">QA 배정</a>
                     </li>
-                    <li>
-                        <a href="#none">QA 결과</a>
+                    <li class="current">
+                        <a href="qa_result.html">QA 결과</a>
                     </li>
                 </ul>
             </li>
@@ -113,10 +96,10 @@
 
                 <ul class="sub">
                     <li>
-                        <a href="#none">상담원 통계</a>
+                        <a href="tmr_statistic.html">상담원 통계</a>
                     </li>
                     <li>
-                        <a href="#none">심사자 통계</a>
+                        <a href="qa_statistic.html">심사자 통계</a>
                     </li>
                 </ul>
             </li>
@@ -245,9 +228,9 @@
                                 <!-- [D] 처음 페이지 들어왔을때의 초기 상담일시는 전일날짜 ~ 오늘날짜 세팅 필요 -->
                                 <td>
                                     <div class="iptBox">
-                                        <input type="text" id="fromDate" class="iptDate">
+                                        <input type="text" id="fromDate" class="iptDateTime">
                                         <span>&hyphen;</span>
-                                        <input type="text" id="toDate" class="iptDate">
+                                        <input type="text" id="toDate" class="iptDateTime">
                                     </div>
                                 </td>
 
@@ -340,41 +323,32 @@
                     <!-- [D] datatables 라이브러리 영역 -->
                     <!-- [D] 'Excel 다운로드' 버튼 클릭 시 파일 다운로드됨 -->
                     <!-- [D] 처음 페이지 들어왔을때 목록 순서는 '센터'기준으로 오름차순 정렬됨 -->
-                    <table class="dataTable" summary="NO, 청약일자, 상품명, 증권번호, 계약자, 피보험자, 상담원, 센터, 실, 청약상태, TA 점수, QA 상태, QA 결과, QA 점수, 담당 QA, QA 실행일자, 콜타임, 업무처리시간, 질의응답, 질의요청, 응답결과, QA 요청일자, 대상으로 구성">
-                        <caption class="hide">QA 결과</caption>
-                        <colgroup>
-                            <col width="50"><col width="100"><col width="150"><col width="120"><col width="120">
-                            <col width="120"><col width="100"><col width="100"><col width="100"><col width="120">
-                            <col width="80"><col width="100"><col width="100"><col width="80"><col width="100">
-                            <col width="120"><col width="80"><col width="120"><col width="120"><col width="120">
-                            <col width="120"><col width="120"><col width="80">
-                        </colgroup>
-
+                    <table class="dataTable">
                         <thead>
                             <tr>
-                                <th scope="col">NO</th>
-                                <th scope="col">청약일자</th>
-                                <th scope="col">상품명</th>
-                                <th scope="col">증권번호</th>
-                                <th scope="col">계약자</th>
-                                <th scope="col">피보험자</th>
-                                <th scope="col">상담원</th>
-                                <th scope="col">센터</th>
-                                <th scope="col">실</th>
-                                <th scope="col">청약상태</th>
-                                <th scope="col">TA 점수</th>
-                                <th scope="col">QA 상태</th>
-                                <th scope="col">QA 결과</th>
-                                <th scope="col">QA 점수</th>
-                                <th scope="col">담당 QA</th>
-                                <th scope="col">QA 실행일자</th>
-                                <th scope="col">콜타임</th>
-                                <th scope="col">업무처리시간</th>
-                                <th scope="col">질의응답</th>
-                                <th scope="col">질의요청</th>
-                                <th scope="col">응답결과</th>
-                                <th scope="col">QA 요청일자</th>
-                                <th scope="col">대상</th>
+                                <th>NO</th>
+                                <th>청약일자</th>
+                                <th>상품명</th>
+                                <th>증권번호</th>
+                                <th>계약자</th>
+                                <th>피보험자</th>
+                                <th>상담원</th>
+                                <th>센터</th>
+                                <th>실</th>
+                                <th>청약상태</th>
+                                <th>TA 점수</th>
+                                <th>QA 상태</th>
+                                <th>QA 결과</th>
+                                <th>QA 점수</th>
+                                <th>담당 QA</th>
+                                <th>QA 실행일자</th>
+                                <th>콜타임</th>
+                                <th>업무처리시간</th>
+                                <th>질의응답</th>
+                                <th>질의요청</th>
+                                <th>응답결과</th>
+                                <th>QA 요청일자</th>
+                                <th>대상</th>
                             </tr>
                         </thead>
 
@@ -383,7 +357,7 @@
                         <!-- [D] 질의요청, 응답결과 셀은 해당 내용이 있을때만 텍스트 들어감 -->
                         <tbody>
                             <tr>
-                                <td scope="row">1</td>
+                                <td>1</td>
                                 <td>2020-06-15</td>
                                 <td>ZERO 암보험 갱신형</td>
                                 <td>201905002108</td>
@@ -408,7 +382,7 @@
                                 <td>TMR</td>
                             </tr>
                             <tr>
-                                <td scope="row">2</td>
+                                <td>2</td>
                                 <td>2020-08-01</td>
                                 <td>ZERO 메디컬 보험</td>
                                 <td>201905002108</td>
@@ -433,7 +407,7 @@
                                 <td>TMR</td>
                             </tr>
                             <tr>
-                                <td scope="row">3</td>
+                                <td>3</td>
                                 <td>2020-06-15</td>
                                 <td>ZERO 암보험 갱신형</td>
                                 <td>201905002108</td>
@@ -458,7 +432,7 @@
                                 <td>TMR</td>
                             </tr>
                             <tr>
-                                <td scope="row">4</td>
+                                <td>4</td>
                                 <td>2020-08-01</td>
                                 <td>ZERO 메디컬 보험</td>
                                 <td>201905002108</td>
@@ -483,7 +457,7 @@
                                 <td>TMR</td>
                             </tr>
                             <tr>
-                                <td scope="row">5</td>
+                                <td>5</td>
                                 <td>2020-06-15</td>
                                 <td>ZERO 암보험 갱신형</td>
                                 <td>201905002108</td>
@@ -508,7 +482,7 @@
                                 <td>TMR</td>
                             </tr>
                             <tr>
-                                <td scope="row">6</td>
+                                <td>6</td>
                                 <td>2020-08-01</td>
                                 <td>ZERO 메디컬 보험</td>
                                 <td>201905002108</td>
@@ -533,7 +507,7 @@
                                 <td>TMR</td>
                             </tr>
                             <tr>
-                                <td scope="row">7</td>
+                                <td>7</td>
                                 <td>2020-06-15</td>
                                 <td>ZERO 암보험 갱신형</td>
                                 <td>201905002108</td>
@@ -558,7 +532,7 @@
                                 <td>TMR</td>
                             </tr>
                             <tr>
-                                <td scope="row">8</td>
+                                <td>8</td>
                                 <td>2020-08-01</td>
                                 <td>ZERO 메디컬 보험</td>
                                 <td>201905002108</td>
@@ -583,7 +557,7 @@
                                 <td>TMR</td>
                             </tr>
                             <tr>
-                                <td scope="row">9</td>
+                                <td>9</td>
                                 <td>2020-06-15</td>
                                 <td>ZERO 암보험 갱신형</td>
                                 <td>201905002108</td>
@@ -608,7 +582,7 @@
                                 <td>TMR</td>
                             </tr>
                             <tr>
-                                <td scope="row">10</td>
+                                <td>10</td>
                                 <td>2020-08-01</td>
                                 <td>ZERO 메디컬 보험</td>
                                 <td>201905002108</td>
@@ -633,7 +607,7 @@
                                 <td>TMR</td>
                             </tr>
                             <tr>
-                                <td scope="row">11</td>
+                                <td>11</td>
                                 <td>2020-06-15</td>
                                 <td>ZERO 암보험 갱신형</td>
                                 <td>201905002108</td>
@@ -658,7 +632,7 @@
                                 <td>TMR</td>
                             </tr>
                             <tr>
-                                <td scope="row">12</td>
+                                <td>12</td>
                                 <td>2020-08-01</td>
                                 <td>ZERO 메디컬 보험</td>
                                 <td>201905002108</td>
@@ -683,7 +657,7 @@
                                 <td>TMR</td>
                             </tr>
                             <tr>
-                                <td scope="row">13</td>
+                                <td>13</td>
                                 <td>2020-06-15</td>
                                 <td>ZERO 암보험 갱신형</td>
                                 <td>201905002108</td>
@@ -708,7 +682,7 @@
                                 <td>TMR</td>
                             </tr>
                             <tr>
-                                <td scope="row">14</td>
+                                <td>14</td>
                                 <td>2020-08-01</td>
                                 <td>ZERO 메디컬 보험</td>
                                 <td>201905002108</td>
@@ -733,7 +707,7 @@
                                 <td>TMR</td>
                             </tr>
                             <tr>
-                                <td scope="row">15</td>
+                                <td>15</td>
                                 <td>2020-08-01</td>
                                 <td>ZERO 메디컬 보험</td>
                                 <td>201905002108</td>
@@ -758,7 +732,7 @@
                                 <td>TMR</td>
                             </tr>
                             <tr>
-                                <td scope="row">16</td>
+                                <td>16</td>
                                 <td>2020-06-15</td>
                                 <td>ZERO 암보험 갱신형</td>
                                 <td>201905002108</td>
@@ -783,7 +757,7 @@
                                 <td>TMR</td>
                             </tr>
                             <tr>
-                                <td scope="row">17</td>
+                                <td>17</td>
                                 <td>2020-08-01</td>
                                 <td>ZERO 메디컬 보험</td>
                                 <td>201905002108</td>
@@ -808,7 +782,7 @@
                                 <td>TMR</td>
                             </tr>
                             <tr>
-                                <td scope="row">18</td>
+                                <td>18</td>
                                 <td>2020-08-01</td>
                                 <td>ZERO 메디컬 보험</td>
                                 <td>201905002108</td>
@@ -833,7 +807,7 @@
                                 <td>TMR</td>
                             </tr>
                             <tr>
-                                <td scope="row">19</td>
+                                <td>19</td>
                                 <td>2020-06-15</td>
                                 <td>ZERO 암보험 갱신형</td>
                                 <td>201905002108</td>
@@ -858,7 +832,7 @@
                                 <td>TMR</td>
                             </tr>
                             <tr>
-                                <td scope="row">20</td>
+                                <td>20</td>
                                 <td>2020-08-01</td>
                                 <td>ZERO 메디컬 보험</td>
                                 <td>201905002108</td>
@@ -883,7 +857,7 @@
                                 <td>TMR</td>
                             </tr>
                             <tr>
-                                <td scope="row">21</td>
+                                <td>21</td>
                                 <td>2020-08-01</td>
                                 <td>ZERO 메디컬 보험</td>
                                 <td>201905002108</td>
@@ -908,7 +882,7 @@
                                 <td>TMR</td>
                             </tr>
                             <tr>
-                                <td scope="row">22</td>
+                                <td>22</td>
                                 <td>2020-06-15</td>
                                 <td>ZERO 암보험 갱신형</td>
                                 <td>201905002108</td>
@@ -933,7 +907,7 @@
                                 <td>TMR</td>
                             </tr>
                             <tr>
-                                <td scope="row">23</td>
+                                <td>23</td>
                                 <td>2020-08-01</td>
                                 <td>ZERO 메디컬 보험</td>
                                 <td>201905002108</td>
@@ -958,7 +932,7 @@
                                 <td>TMR</td>
                             </tr>
                             <tr>
-                                <td scope="row">24</td>
+                                <td>24</td>
                                 <td>2020-08-01</td>
                                 <td>ZERO 메디컬 보험</td>
                                 <td>201905002108</td>
@@ -983,7 +957,7 @@
                                 <td>TMR</td>
                             </tr>
                             <tr>
-                                <td scope="row">25</td>
+                                <td>25</td>
                                 <td>2020-06-15</td>
                                 <td>ZERO 암보험 갱신형</td>
                                 <td>201905002108</td>
@@ -1008,7 +982,7 @@
                                 <td>TMR</td>
                             </tr>
                             <tr>
-                                <td scope="row">26</td>
+                                <td>26</td>
                                 <td>2020-08-01</td>
                                 <td>ZERO 메디컬 보험</td>
                                 <td>201905002108</td>
@@ -1033,7 +1007,7 @@
                                 <td>TMR</td>
                             </tr>
                             <tr>
-                                <td scope="row">27</td>
+                                <td>27</td>
                                 <td>2020-08-01</td>
                                 <td>ZERO 메디컬 보험</td>
                                 <td>201905002108</td>
@@ -1058,7 +1032,7 @@
                                 <td>TMR</td>
                             </tr>
                             <tr>
-                                <td scope="row">28</td>
+                                <td>28</td>
                                 <td>2020-06-15</td>
                                 <td>ZERO 암보험 갱신형</td>
                                 <td>201905002108</td>
@@ -1083,7 +1057,7 @@
                                 <td>TMR</td>
                             </tr>
                             <tr>
-                                <td scope="row">29</td>
+                                <td>29</td>
                                 <td>2020-08-01</td>
                                 <td>ZERO 메디컬 보험</td>
                                 <td>201905002108</td>
@@ -1142,71 +1116,116 @@
 </div>
 <!-- //탭 전체삭제 확인 팝업 -->
 
-<!-- script -->
+<!---------------------- Local Resources ---------------------->
+<!-- Local CSS -->
+<link rel="stylesheet" href="../resources/css/bootstrap.css"/>
+<link rel="stylesheet" href="../resources/css/bootstrap-datetimepicker.css"/>
+<!-- //datetimepicker -->
+<link rel="stylesheet" href="../resources/css/datatables.min.css">
+<link rel="stylesheet" href="../resources/css/buttons.dataTables.min.css">
+<!-- //datatables -->
+<link rel="stylesheet" href="../resources/css/stt_tm_qa.css">
+
+<!-- Local Script Library -->
+<script src="../resources/js/bootstrap-datetimepicker.js"></script>
+<script src="../resources/js/moment.min.js"></script>
+<script src="../resources/js/ko.js"></script>
+<!-- //datetimepicker -->
+<script src="../resources/js/datatables.min.js"></script>
+<script src="../resources/js/dataTables.fixedColumns.min.js"></script>
+<script src="../resources/js/dataTables.buttons.min.js"></script>
+<script src="../resources/js/buttons.html5.min.js"></script>
+<script src="../resources/js/jszip.min.js"></script>
+<!-- //datatables -->
+
+<!-- Local Script -->
 <script type="text/javascript">
-$(document).ready(function(){
-    // datetimepicker 렌더링
-    $('#fromDate').datetimepicker({
-        language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
-        format: 'yyyy-mm-dd',  // 년-월-일 만 출
-        minView: 'month',
-        pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
-        defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
-        autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
-    });
-
-    $('#toDate').datetimepicker({
-        language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
-        format: 'yyyy-mm-dd',  // 년-월-일 만 출
-        minView: 'month',
-        pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
-        defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
-        autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
-    });
-
-    // datatable 렌더링
-    var table = $('.dataTable').DataTable({
-        dom: '<"top">t<"bottom"B>', // 옵션 위치 지정
-        language: { // 테이블 목록 건수 text 한글 설정
-            emptyTable: "조회된 데이터가 없습니다.", // 데이터 없을 경우 노출되는 text 설정
-            paginate: {
-                first: "",
-                previous: "",
-                next: "",
-                last: ""
-            },
-        },
-        responsive: true, // 반응형 허용
-        order: [[ 7, 'asc' ]], // 초기 sort 설정
-        info: false,
-        paging: false, // 페이징 허용
-        pagingType: "full_numbers", // 페이징 버튼 구성 (처음, 이전, 페이지숫자, 다음, 마지막)
-        lengthMenu: [25, 50, 100], // 페이지 당 보여질 목록 갯수 select 범위 지정
-        scrollY: "630px", // 세로 스크롤 허용, 사이즈
-        scrollX: true, //가로 스크롤 허용
-        scrollCollapse: true,
-        columnDefs: [ // 컬럼별 옵션 사용 지정
-            {targets: [0], sortable: false},
-            {targets: [1, 4, 5, 6, 9, 11, 13, 14, 15, 19, 20, 22], orderable: false}
-        ],
-        buttons: [{
-            extend: 'excelHtml5',
-            text: 'Excel 다운로드',
-        }]
-    });
-
-    new $.fn.dataTable.FixedColumns(table, {
-        fixedColumns: { // 왼쪽 1열 고정
-            leftColumns: 1,
-        }
-    });
-
-    // 다른 열에서 sort되어도 1열 순번은 그대로 유지
-    table.on('order.dt search.dt', function(){
-        table.column(0, {search:'applied', order:'applied'}).nodes().each(function (cell, i){
-            cell.innerHTML = i+1;
+jQuery.event.add(window,"load",function(){
+    $(document).ready(function(){
+        // datetimepicker 렌더링
+        $('#fromDate').datetimepicker({
+            language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
+            format: 'yyyy-mm-dd',  // 년-월-일 만 출
+            minView: 'month',
+            pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
+            defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
+            autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
         });
-    }).draw();
+
+        $('#toDate').datetimepicker({
+            language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
+            format: 'yyyy-mm-dd',  // 년-월-일 만 출
+            minView: 'month',
+            pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
+            defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
+            autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
+        });
+
+        // datatable 렌더링
+        var table = $('.dataTable').DataTable({
+            dom: '<"top">t<"bottom"B>', // 옵션 위치 지정
+            language: { // 테이블 목록 건수 text 한글 설정
+                emptyTable: "조회된 데이터가 없습니다.", // 데이터 없을 경우 노출되는 text 설정
+                paginate: {
+                    first: "",
+                    previous: "",
+                    next: "",
+                    last: ""
+                },
+            },
+            responsive: true, // 반응형 허용
+            order: [[ 7, 'asc' ]], // 초기 sort 설정
+            info: false,
+            paging: false, // 페이징 허용
+            pagingType: "full_numbers", // 페이징 버튼 구성 (처음, 이전, 페이지숫자, 다음, 마지막)
+            lengthMenu: [25, 50, 100], // 페이지 당 보여질 목록 갯수 select 범위 지정
+            scrollY: "630px", // 세로 스크롤 허용, 사이즈
+            scrollX: true, //가로 스크롤 허용
+            scrollCollapse: true,
+            columnDefs: [ // 컬럼별 width, 옵션 사용 지정
+                {targets: [0], width: "50px", sortable: false},    // NO
+                {targets: [1], width: "100px", orderable: false},  // 청약일자
+                {targets: [2], width: "150px"},                    // 상품명
+                {targets: [3], width: "120px"},                    // 증권번호
+                {targets: [4], width: "120px", orderable: false},  // 계약자
+                {targets: [5], width: "120px", orderable: false},  // 피보험자
+                {targets: [6], width: "100px", orderable: false},  // 상담원
+                {targets: [7], width: "100px"},                    // 센터
+                {targets: [8], width: "100px"},                    // 실
+                {targets: [9], width: "120px", orderable: false},  // 청약상태
+                {targets: [10], width: "80px"},                    // TA 점수
+                {targets: [11], width: "100px", orderable: false}, // QA 상태
+                {targets: [12], width: "100px"},                   // QA 결과
+                {targets: [13], width: "80px", orderable: false},  // QA 점수
+                {targets: [14], width: "100px", orderable: false}, // 담당 QA
+                {targets: [15], width: "120px", orderable: false}, // QA 실행일자
+                {targets: [16], width: "80px"},                    // 콜타임
+                {targets: [17], width: "120px"},                   // 업무처리시간
+                {targets: [18], width: "120px"},                   // 질의응답
+                {targets: [19], width: "120px", orderable: false}, // 질의요청
+                {targets: [20], width: "120px", orderable: false}, // 응답결과
+                {targets: [21], width: "120px"},                   // QA 요청일자
+                {targets: [22], width: "80px", orderable: false},  // 대상
+            ],
+            buttons: [{
+                extend: 'excelHtml5',
+                text: 'Excel 다운로드',
+            }]
+        });
+
+        new $.fn.dataTable.FixedColumns(table, {
+            fixedColumns: { // 왼쪽 1열 고정
+                leftColumns: 1,
+            }
+        });
+
+        // 다른 열에서 sort되어도 1열 순번은 그대로 유지
+        table.on('order.dt search.dt', function(){
+            table.column(0, {search:'applied', order:'applied'}).nodes().each(function (cell, i){
+                cell.innerHTML = i+1;
+            });
+        }).draw();
+    });
 });
 </script>
 </body>

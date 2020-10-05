@@ -4,32 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="format-detection" content="telephone=no">
 
-<!-- css -->
-<!-- datetimepicker -->
-<link rel="stylesheet" href="../resources/css/bootstrap.css"/>
-<link rel="stylesheet" href="../resources/css/bootstrap-datetimepicker.css"/>
-<!-- datatables -->
-<link rel="stylesheet" href="../resources/css/datatables.min.css">
-<link rel="stylesheet" href="../resources/css/buttons.dataTables.min.css">
-
+<!---------------------- General Resources ---------------------->
+<!-- General CSS -->
 <link rel="stylesheet" href="../resources/css/common.css">
-<link rel="stylesheet" href="../resources/css/stt_tm_qa.css">
 
-<!-- js -->
+<!-- General Script -->
 <script src="../resources/js/jquery-3.3.1.min.js"></script>
 <script src="../resources/js/jquery-migrate-3.3.0.min.js"></script>
-<!-- datetimepicker -->
-<script src="../resources/js/bootstrap-datetimepicker.js"></script>
-<script src="../resources/js/moment.min.js"></script>
-<script src="../resources/js/ko.js"></script>
-<!-- datatables -->
-<script src="../resources/js/datatables.min.js"></script>
-<script src="../resources/js/dataTables.fixedColumns.min.js"></script>
-<script src="../resources/js/dataTables.buttons.min.js"></script>
-<script src="../resources/js/buttons.html5.min.js"></script>
-<script src="../resources/js/jszip.min.js"></script>
-
 <script src="../resources/js/common.js"></script>
 
 <title>CS || 푸본현대생명</title>
@@ -71,7 +54,7 @@
 
                 <ul class="sub">
                     <li>
-                        <a href="#none">Dashboard</a>
+                        <a href="home_dashboard.html">Dashboard</a>
                     </li>
                 </ul>
             </li>
@@ -98,13 +81,13 @@
 
                 <ul class="sub">
                     <li>
-                        <a href="#none">QA 배정</a>
+                        <a href="tm_qa_target.html">QA 대상</a>
                     </li>
                     <li>
-                        <a href="#none">QA 심사리스트</a>
+                        <a href="tm_qa_assign1.html">QA 배정</a>
                     </li>
                     <li>
-                        <a href="#none">QA 결과</a>
+                        <a href="qa_result.html">QA 결과</a>
                     </li>
                 </ul>
             </li>
@@ -113,10 +96,10 @@
 
                 <ul class="sub">
                     <li>
-                        <a href="#none">상담원 통계</a>
+                        <a href="tmr_statistic.html">상담원 통계</a>
                     </li>
                     <li>
-                        <a href="#none">심사자 통계</a>
+                        <a href="qa_statistic.html">심사자 통계</a>
                     </li>
                 </ul>
             </li>
@@ -245,9 +228,9 @@
                                 <!-- [D] 시간 초기 기본값 미정으로 비워둠 -->
                                 <td>
                                     <div class="iptBox">
-                                        <input type="text" id="fromDate" class="iptDate">
+                                        <input type="text" id="fromDate" class="iptDateTime">
                                         <span>&hyphen;</span>
-                                        <input type="text" id="toDate" class="iptDate">
+                                        <input type="text" id="toDate" class="iptDateTime">
                                     </div>
                                 </td>
 
@@ -394,38 +377,30 @@
                     <!-- [D] 'Excel 다운로드' 버튼 클릭 시 파일 다운로드됨 -->
                     <!-- [D] 처음 페이지 들어왔을때 목록 순서는 '상담일시'기준으로 오름차순 정렬됨 -->
                     <!-- [D] 실제 테이블데이터로 해피콜, 완전판매여부가 포함되어있지만 브라우저 상에서는 hidden 처리 되어있으며 엑셀 다운로드 하면 함께 노출됨 -->
-                    <table class="dataTable" summary="NO, 상담일시, 고객 전화번호, 상담고객, 고객번호, 증권번호, 상담사, 사번, 상담경로, 업무구분, 상담유형(대), 상담유형(중), 상담유형(소), 상담키워드, 무음길이, 녹취번호, 상담번호, STT 상태, 해피콜, 완전판매여부로 구성">
-                        <caption class="hide">CS STT대상 목록</caption>
-                        <colgroup>
-                            <col width="50"><col width="120"><col width="120"><col width="100"><col width="100">
-                            <col width="100"><col width="100"><col width="80"><col width="80"><col width="150">
-                            <col width="100"><col width="150"><col width="150"><col width="300"><col width="80">
-                            <col width="120"><col width="100"><col width="100"><col width="120"><col width="120">
-                        </colgroup>
-
+                    <table class="dataTable">
                         <thead>
                             <tr>
-                                <th scope="col">NO</th>
-                                <th scope="col">상담일시</th>
-                                <th scope="col">고객 전화번호</th>
-                                <th scope="col">상담고객</th>
-                                <th scope="col">고객번호</th>
-                                <th scope="col">증권번호</th>
-                                <th scope="col">상담사</th>
-                                <th scope="col">사번</th>
-                                <th scope="col">상담경로</th>
-                                <th scope="col">업무구분</th>
-                                <th scope="col">상담유형&lpar;대&rpar;</th>
-                                <th scope="col">상담유형&lpar;중&rpar;</th>
-                                <th scope="col">상담유형&lpar;소&rpar;</th>
-                                <th scope="col">상담키워드</th>
-                                <th scope="col">무음길이</th>
-                                <th scope="col">녹취번호</th>
-                                <th scope="col">상담번호</th>
-                                <th scope="col">STT 상태</th>
+                                <th>NO</th>
+                                <th>상담일시</th>
+                                <th>고객 전화번호</th>
+                                <th>상담고객</th>
+                                <th>고객번호</th>
+                                <th>증권번호</th>
+                                <th>상담사</th>
+                                <th>사번</th>
+                                <th>상담경로</th>
+                                <th>업무구분</th>
+                                <th>상담유형&lpar;대&rpar;</th>
+                                <th>상담유형&lpar;중&rpar;</th>
+                                <th>상담유형&lpar;소&rpar;</th>
+                                <th>상담키워드</th>
+                                <th>무음길이</th>
+                                <th>녹취번호</th>
+                                <th>상담번호</th>
+                                <th>STT 상태</th>
                                 <!-- [D] 실제 테이블데이터로 해피콜, 완전판매여부가 포함되어있지만 브라우저 상에서는 hidden 처리 되어있으며 엑셀 다운로드 하면 함께 노출됨 -->
-                                <th scope="col">해피콜</th>
-                                <th scope="col">완전판매여부</th>
+                                <th>해피콜</th>
+                                <th>완전판매여부</th>
                             </tr>
                         </thead>
 
@@ -434,7 +409,7 @@
                         <!-- [D] 13번째 상담키워드는 최대 16글자로 모두 노출되어야함 -->
                         <tbody>
                             <tr>
-                                <td scope="row">1</td>
+                                <td>1</td>
                                 <td>2020-06-15 10:23</td>
                                 <td>010-1234-5678</td>
                                 <td>홍길동</td>
@@ -456,7 +431,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">2</td>
+                                <td>2</td>
                                 <td>2020-06-15 10:20</td>
                                 <td>010-1234-5678</td>
                                 <td>홍길옥</td>
@@ -478,7 +453,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">3</td>
+                                <td>3</td>
                                 <td>2020-06-15 10:19</td>
                                 <td>010-1234-5678</td>
                                 <td>법정상속인</td>
@@ -500,7 +475,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">4</td>
+                                <td>4</td>
                                 <td>2020-06-15 10:23</td>
                                 <td>010-1234-5678</td>
                                 <td>이영희</td>
@@ -522,7 +497,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">5</td>
+                                <td>5</td>
                                 <td>2020-06-15 10:23</td>
                                 <td>010-1234-5678</td>
                                 <td>박영미</td>
@@ -544,7 +519,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">6</td>
+                                <td>6</td>
                                 <td>2020-06-15 10:23</td>
                                 <td>010-1234-5678</td>
                                 <td>김영재</td>
@@ -566,7 +541,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">7</td>
+                                <td>7</td>
                                 <td>2020-06-15 10:23</td>
                                 <td>010-1234-5678</td>
                                 <td>이영희</td>
@@ -588,7 +563,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">8</td>
+                                <td>8</td>
                                 <td>2020-06-15 10:23</td>
                                 <td>010-1234-5678</td>
                                 <td>민영애</td>
@@ -610,7 +585,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">9</td>
+                                <td>9</td>
                                 <td>2020-06-15 10:23</td>
                                 <td>010-1234-5678</td>
                                 <td>박영옥</td>
@@ -632,7 +607,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">10</td>
+                                <td>10</td>
                                 <td>2020-06-15 10:23</td>
                                 <td>010-1234-5678</td>
                                 <td>법정상속인</td>
@@ -654,7 +629,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">11</td>
+                                <td>11</td>
                                 <td>2020-06-15 10:23</td>
                                 <td>010-1234-5678</td>
                                 <td>장영진</td>
@@ -676,7 +651,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">12</td>
+                                <td>12</td>
                                 <td>2020-06-15 10:23</td>
                                 <td>010-1234-5678</td>
                                 <td>허영</td>
@@ -698,7 +673,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">13</td>
+                                <td>13</td>
                                 <td>2020-06-15 10:23</td>
                                 <td>010-1234-5678</td>
                                 <td>홍길동</td>
@@ -720,7 +695,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">14</td>
+                                <td>14</td>
                                 <td>2020-06-15 10:23</td>
                                 <td>010-1234-5678</td>
                                 <td>홍길옥</td>
@@ -742,7 +717,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">15</td>
+                                <td>15</td>
                                 <td>2020-06-15 10:23</td>
                                 <td>010-1234-5678</td>
                                 <td>법정상속인</td>
@@ -764,7 +739,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">16</td>
+                                <td>16</td>
                                 <td>2020-06-15 10:23</td>
                                 <td>010-1234-5678</td>
                                 <td>이영희</td>
@@ -786,7 +761,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">17</td>
+                                <td>17</td>
                                 <td>2020-06-15 10:23</td>
                                 <td>010-1234-5678</td>
                                 <td>박영미</td>
@@ -808,7 +783,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">18</td>
+                                <td>18</td>
                                 <td>2020-06-15 10:23</td>
                                 <td>010-1234-5678</td>
                                 <td>김영재</td>
@@ -830,7 +805,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">19</td>
+                                <td>19</td>
                                 <td>2020-06-15 10:23</td>
                                 <td>010-1234-5678</td>
                                 <td>이영희</td>
@@ -852,7 +827,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">20</td>
+                                <td>20</td>
                                 <td>2020-06-15 10:23</td>
                                 <td>010-1234-5678</td>
                                 <td>민영애</td>
@@ -874,7 +849,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">21</td>
+                                <td>21</td>
                                 <td>2020-06-15 10:23</td>
                                 <td>010-1234-5678</td>
                                 <td>박영옥</td>
@@ -896,7 +871,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">22</td>
+                                <td>22</td>
                                 <td>2020-06-15 10:23</td>
                                 <td>010-1234-5678</td>
                                 <td>법정상속인</td>
@@ -918,7 +893,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">23</td>
+                                <td>23</td>
                                 <td>2020-06-15 10:23</td>
                                 <td>010-1234-5678</td>
                                 <td>장영진</td>
@@ -940,7 +915,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">24</td>
+                                <td>24</td>
                                 <td>2020-06-15 10:23</td>
                                 <td>010-1234-5678</td>
                                 <td>허영</td>
@@ -962,7 +937,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">25</td>
+                                <td>25</td>
                                 <td>2020-06-15 10:23</td>
                                 <td>010-1234-5678</td>
                                 <td>홍길동</td>
@@ -984,7 +959,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">26</td>
+                                <td>26</td>
                                 <td>2020-06-15 10:23</td>
                                 <td>010-1234-5678</td>
                                 <td>홍길옥</td>
@@ -1006,7 +981,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">27</td>
+                                <td>27</td>
                                 <td>2020-06-15 10:23</td>
                                 <td>010-1234-5678</td>
                                 <td>법정상속인</td>
@@ -1028,7 +1003,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">28</td>
+                                <td>28</td>
                                 <td>2020-06-15 10:23</td>
                                 <td>010-1234-5678</td>
                                 <td>이영희</td>
@@ -1050,7 +1025,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">29</td>
+                                <td>29</td>
                                 <td>2020-06-15 10:23</td>
                                 <td>010-1234-5678</td>
                                 <td>박영미</td>
@@ -1072,7 +1047,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">30</td>
+                                <td>30</td>
                                 <td>2020-06-15 10:23</td>
                                 <td>010-1234-5678</td>
                                 <td>김영재</td>
@@ -1094,7 +1069,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">31</td>
+                                <td>31</td>
                                 <td>2020-06-15 10:23</td>
                                 <td>010-1234-5678</td>
                                 <td>이영희</td>
@@ -1116,7 +1091,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">32</td>
+                                <td>32</td>
                                 <td>2020-06-15 10:23</td>
                                 <td>010-1234-5678</td>
                                 <td>민영애</td>
@@ -1138,7 +1113,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">33</td>
+                                <td>33</td>
                                 <td>2020-06-15 10:23</td>
                                 <td>010-1234-5678</td>
                                 <td>박영옥</td>
@@ -1160,7 +1135,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">34</td>
+                                <td>34</td>
                                 <td>2020-06-15 10:23</td>
                                 <td>010-1234-5678</td>
                                 <td>법정상속인</td>
@@ -1182,7 +1157,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">35</td>
+                                <td>35</td>
                                 <td>2020-06-15 10:23</td>
                                 <td>010-1234-5678</td>
                                 <td>장영진</td>
@@ -1204,7 +1179,7 @@
                                 <td>완전판매여부</td>
                             </tr>
                             <tr>
-                                <td scope="row">36</td>
+                                <td>36</td>
                                 <td>2020-06-15 10:23</td>
                                 <td>010-1234-5678</td>
                                 <td>허영</td>
@@ -1260,70 +1235,111 @@
 </div>
 <!-- //탭 전체삭제 확인 팝업 -->
 
-<!-- script -->
+<!---------------------- Local Resources ---------------------->
+<!-- Local CSS -->
+<link rel="stylesheet" href="../resources/css/bootstrap.css"/>
+<link rel="stylesheet" href="../resources/css/bootstrap-datetimepicker.css"/>
+<!-- //datetimepicker -->
+<link rel="stylesheet" href="../resources/css/datatables.min.css">
+<link rel="stylesheet" href="../resources/css/buttons.dataTables.min.css">
+<!-- //datatables -->
+<link rel="stylesheet" href="../resources/css/stt_tm_qa.css">
+
+<!-- Local Script Library -->
+<script src="../resources/js/bootstrap-datetimepicker.js"></script>
+<script src="../resources/js/moment.min.js"></script>
+<script src="../resources/js/ko.js"></script>
+<!-- //datetimepicker -->
+<script src="../resources/js/datatables.min.js"></script>
+<script src="../resources/js/dataTables.fixedColumns.min.js"></script>
+<script src="../resources/js/dataTables.buttons.min.js"></script>
+<script src="../resources/js/buttons.html5.min.js"></script>
+<script src="../resources/js/jszip.min.js"></script>
+<!-- //datatables -->
+
+<!-- Local Script -->
 <script type="text/javascript">
-$(document).ready(function(){
-    // datetimepicker 렌더링
-    $('#fromDate').datetimepicker({
-        language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
-        pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
-        defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
-        autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
-    });
-
-    $('#toDate').datetimepicker({
-        language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
-        pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
-        defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
-        autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
-    });
-
-    // datatable 렌더링
-    var table = $('.dataTable').DataTable({
-        // dom: 'Blfrtip', // 옵션 위치 지정
-        dom: 't<"bottom"lipB>', // 옵션 위치 지정
-        language: { // 테이블 목록 건수 text 한글 설정
-            emptyTable: "조회된 데이터가 없습니다.", // 데이터 없을 경우 노출되는 text 설정
-            infoEmpty: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>0</strong> 건 &sol; _TOTAL_ 건&rbrack;",
-            info: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>0</strong> 건 &sol; _TOTAL_ 건&rbrack;",
-            lengthMenu: "_MENU_ 건씩 보기",
-            paginate: {
-                first: "",
-                previous: "",
-                next: "",
-                last: ""
-            },
-        },
-        responsive: true, // 반응형 허용
-        order: [[ 1, 'asc' ]], // 초기 sort 설정
-        paging: true, // 페이징 허용
-        pagingType: "full_numbers", // 페이징 버튼 구성 (처음, 이전, 페이지숫자, 다음, 마지막)
-        lengthMenu: [25, 50, 100], // 페이지 당 보여질 목록 갯수 select 범위 지정
-        scrollY: "630px", // 세로 스크롤 허용, 사이즈
-        scrollX: true, //가로 스크롤 허용
-        scrollCollapse: true,
-        columnDefs: [ // 컬럼별 옵션 사용 지정
-            {targets: [0], sortable: false},
-            {targets: [3, 6, 8, 10, 11, 12, 13, 15, 16, 18, 19], orderable: false}
-        ],
-        buttons: [{
-            extend: 'excelHtml5',
-            text: 'Excel 다운로드',
-        }]
-    });
-
-    new $.fn.dataTable.FixedColumns(table, {
-        fixedColumns: { // 왼쪽 1열 고정
-            leftColumns: 1,
-        }
-    });
-
-    // 다른 열에서 sort되어도 1열 순번은 그대로 유지
-    table.on('order.dt search.dt', function(){
-        table.column(0, {search:'applied', order:'applied'}).nodes().each(function (cell, i){
-            cell.innerHTML = i+1;
+jQuery.event.add(window,"load",function(){
+    $(document).ready(function(){
+        // datetimepicker 렌더링
+        $('#fromDate').datetimepicker({
+            language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
+            pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
+            defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
+            autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
         });
-    }).draw();
+
+        $('#toDate').datetimepicker({
+            language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
+            pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
+            defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
+            autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
+        });
+
+        // datatable 렌더링
+        var table = $('.dataTable').DataTable({
+            dom: 't<"bottom"lipB>', // 옵션 위치 지정
+            language: { // 테이블 목록 건수 text 한글 설정
+                emptyTable: "조회된 데이터가 없습니다.", // 데이터 없을 경우 노출되는 text 설정
+                infoEmpty: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>0</strong> 건 &sol; _TOTAL_ 건&rbrack;",
+                info: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>0</strong> 건 &sol; _TOTAL_ 건&rbrack;",
+                lengthMenu: "_MENU_ 건씩 보기",
+                paginate: {
+                    first: "",
+                    previous: "",
+                    next: "",
+                    last: ""
+                },
+            },
+            responsive: true, // 반응형 허용
+            order: [[ 1, 'asc' ]], // 초기 sort 설정
+            paging: true, // 페이징 허용
+            pagingType: "full_numbers", // 페이징 버튼 구성 (처음, 이전, 페이지숫자, 다음, 마지막)
+            lengthMenu: [25, 50, 100], // 페이지 당 보여질 목록 갯수 select 범위 지정
+            scrollY: "630px", // 세로 스크롤 허용, 사이즈
+            scrollX: true, //가로 스크롤 허용
+            scrollCollapse: true,
+            columnDefs: [ // 컬럼별 width, 옵션 사용 지정
+                {targets: [0], width: "50px", sortable: false},                    // NO
+                {targets: [1], width: "120px"},                                    // 상담일시
+                {targets: [2], width: "120px"},                                    // 고객 전화번호
+                {targets: [3], width: "100px", orderable: false},                  // 상담고객
+                {targets: [4], width: "100px"},                                    // 고객번호
+                {targets: [5], width: "100px"},                                    // 증권번호
+                {targets: [6], width: "100px", orderable: false},                  // 상담사
+                {targets: [7], width: "80px"},                                    // 사번
+                {targets: [8], width: "80px", orderable: false},                  // 상담경로
+                {targets: [9], width: "150px"},                                    // 업무구분
+                {targets: [10], width: "100px", orderable: false},                 // 상담유형(대)
+                {targets: [11], width: "150px", orderable: false},                 // 상담유형(중)
+                {targets: [12], width: "150px", orderable: false},                 // 상담유형(소)
+                {targets: [13], width: "300px", orderable: false},                 // 상담 키워드
+                {targets: [14], width: "80px"},                                   // 무음길이
+                {targets: [15], width: "120px", orderable: false},                 // 녹취번호
+                {targets: [16], width: "100px", orderable: false},                 // 상담번호
+                {targets: [17], width: "100px"},                                   // STT 상태
+                {targets: [18], width: "120px", orderable: false, visible: false}, // 해피콜
+                {targets: [19], width: "120px", orderable: false, visible: false}, // 완전판매여부
+            ],
+            buttons: [{
+                extend: 'excelHtml5',
+                text: 'Excel 다운로드',
+            }]
+        });
+
+        new $.fn.dataTable.FixedColumns(table, {
+            fixedColumns: { // 왼쪽 1열 고정
+                leftColumns: 1,
+            }
+        });
+
+        // 다른 열에서 sort되어도 1열 순번은 그대로 유지
+        table.on('order.dt search.dt', function(){
+            table.column(0, {search:'applied', order:'applied'}).nodes().each(function (cell, i){
+                cell.innerHTML = i+1;
+            });
+        }).draw();
+    });
 });
 </script>
 </body>

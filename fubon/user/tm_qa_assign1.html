@@ -4,29 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="format-detection" content="telephone=no">
 
-<!-- css -->
-<!-- datetimepicker -->
-<link rel="stylesheet" href="../resources/css/bootstrap.css"/>
-<link rel="stylesheet" href="../resources/css/bootstrap-datetimepicker.css"/>
-<!-- datatables -->
-<link rel="stylesheet" href="../resources/css/datatables.min.css">
-<link rel="stylesheet" href="../resources/css/buttons.dataTables.min.css">
-
+<!---------------------- General Resources ---------------------->
+<!-- General CSS -->
 <link rel="stylesheet" href="../resources/css/common.css">
-<link rel="stylesheet" href="../resources/css/stt_tm_qa.css">
 
-<!-- js -->
+<!-- General Script -->
 <script src="../resources/js/jquery-3.3.1.min.js"></script>
 <script src="../resources/js/jquery-migrate-3.3.0.min.js"></script>
-<!-- datetimepicker -->
-<script src="../resources/js/bootstrap-datetimepicker.js"></script>
-<script src="../resources/js/moment.min.js"></script>
-<script src="../resources/js/ko.js"></script>
-<!-- datatables -->
-<script src="../resources/js/datatables.min.js"></script>
-<script src="../resources/js/dataTables.fixedColumns.min.js"></script>
-
 <script src="../resources/js/common.js"></script>
 
 <title>TM QA배정1_관리자 || 푸본현대생명</title>
@@ -77,7 +63,7 @@
 
                 <ul class="sub">
                     <li>
-                        <a href="cs_stt.html">STT 대상</a>
+                        <a href="cs_stt.html">CS - STT 대상</a>
                     </li>
                 </ul>
             </li>
@@ -86,7 +72,7 @@
 
                 <ul class="sub">
                     <li>
-                        <a href="#none">STT 대상</a>
+                        <a href="tm_stt.html">TM - STT 대상</a>
                     </li>
                 </ul>
             </li>
@@ -94,14 +80,14 @@
                 <h2>TM_QA</h2>
 
                 <ul class="sub">
+                    <li>
+                        <a href="tm_qa_target.html">QA 대상</a>
+                    </li>
                     <li class="current">
-                        <a href="#none">QA 배정</a>
+                        <a href="tm_qa_assign1.html">QA 배정</a>
                     </li>
                     <li>
-                        <a href="#none">QA 심사리스트</a>
-                    </li>
-                    <li>
-                        <a href="#none">QA 결과</a>
+                        <a href="qa_result.html">QA 결과</a>
                     </li>
                 </ul>
             </li>
@@ -110,10 +96,10 @@
 
                 <ul class="sub">
                     <li>
-                        <a href="#none">상담원 통계</a>
+                        <a href="tmr_statistic.html">상담원 통계</a>
                     </li>
                     <li>
-                        <a href="#none">심사자 통계</a>
+                        <a href="qa_statistic.html">심사자 통계</a>
                     </li>
                 </ul>
             </li>
@@ -194,7 +180,7 @@
     <!-- #container -->
     <div id="container">
         <!-- #contents -->
-        <div id="contents" class="tm_qa_assign">
+        <div id="contents" class="tm_qa_assign manager">
             <!-- .tab_title -->
             <div class="tab_title">
                 <div class="tab_list_wrap">
@@ -230,6 +216,7 @@
                 <!-- .srchArea -->
                 <div class="srchArea">
                     <h2>QA 배정 대상</h2>
+                    
                     <table class="tbl_line_view" summary="청약일자, 센터, 상담원, 사번, 대상, 대상내용, TA점수(최소-최대), 증권번호, 상품명, 번들유무, 청약상태, 상품발송안내로 구성">
                         <caption class="hide">검색조건</caption>
                         <colgroup>
@@ -372,49 +359,41 @@
                 </div>
                 <!-- //.srchArea -->
 
-                <!-- .stnArea -->
-                <div class="stnArea">
+                <!-- .tableWrap -->
+                <div class="tableWrap">
                     <!-- .dataTableBox -->
                     <div class="dataTableBox">
                         <!-- [D] datatables 라이브러리 영역 -->
                         <!-- [D] 처음 페이지 들어왔을때 목록 순서는 '센터'기준으로 오름차순 정렬됨 -->
-                        <!-- [D] 페이지 정보(.dataTables_info) [총 19건 0건]에서의 0건 부분은 계약자명 기준으로 중복제거된 건수로 넣어주어야 함 -->
-                        <table class="dataTable qa_assign_target" summary="체크박스, NO, 청약일자, 상품명, 계약자, 피보험자, 증권번호, 청약상태, TA 점수, 대상내용, 상담원, 사번, 센터, 번들유무로 구성">
-                            <caption class="hide">TM QA 배정 대상</caption>
-                            <colgroup>
-                                <col width="50"><col width="50"><col width="100"><col width="200"><col width="100">
-                                <col width="100"><col width="100"><col width="100"><col width="80"><col width="100">
-                                <col width="100"><col width="100"><col width="100"><col width="80">
-                            </colgroup>
-
+                        <table class="dataTable qa_assign_target">
                             <thead>
                                 <tr>
-                                    <th scope="col">
+                                    <th>
                                         <div class="chkBox">
                                             <input type="checkbox" name="chkGroup1" id="chkGroup1" class="all_chk">
                                             <label for="chkGroup1"></label>
                                         </div>
                                     </th>
-                                    <th scope="col">NO</th>
-                                    <th scope="col">청약일자</th>
-                                    <th scope="col">상품명</th>
-                                    <th scope="col">계약자</th>
-                                    <th scope="col">피보험자</th>
-                                    <th scope="col">증권번호</th>
-                                    <th scope="col">청약상태</th>
-                                    <th scope="col">TA 점수</th>
-                                    <th scope="col">대상내용</th>
-                                    <th scope="col">상담원</th>
-                                    <th scope="col">사번</th>
-                                    <th scope="col">센터</th>
-                                    <th scope="col">번들유무</th>
+                                    <th>NO</th>
+                                    <th>청약일자</th>
+                                    <th>상품명</th>
+                                    <th>계약자</th>
+                                    <th>피보험자</th>
+                                    <th>증권번호</th>
+                                    <th>청약상태</th>
+                                    <th>TA 점수</th>
+                                    <th>대상내용</th>
+                                    <th>상담원</th>
+                                    <th>사번</th>
+                                    <th>센터</th>
+                                    <th>번들유무</th>
                                 </tr>
                             </thead>
 
                             <!-- [D] 조회된 목록(tbody tr) 더블클릭 시 심사 상세페이지로 이동 -->
                             <tbody>
                                 <tr>
-                                    <td scope="row">
+                                    <td>
                                         <div class="chkBox">
                                             <input type="checkbox" name="chkGroup1" id="chkone1" class="each_chk">
                                             <label for="chkone1"></label>
@@ -435,7 +414,7 @@
                                     <td>Y</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row">
+                                    <td>
                                         <div class="chkBox">
                                             <input type="checkbox" name="chkGroup1" id="chkone2" class="each_chk">
                                             <label for="chkone2"></label>
@@ -456,7 +435,7 @@
                                     <td>Y</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row">
+                                    <td>
                                         <div class="chkBox">
                                             <input type="checkbox" name="chkGroup1" id="chkone3" class="each_chk">
                                             <label for="chkone3"></label>
@@ -477,7 +456,7 @@
                                     <td>Y</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row">
+                                    <td>
                                         <div class="chkBox">
                                             <input type="checkbox" name="chkGroup1" id="chkone4" class="each_chk">
                                             <label for="chkone4"></label>
@@ -498,7 +477,7 @@
                                     <td>Y</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row">
+                                    <td>
                                         <div class="chkBox">
                                             <input type="checkbox" name="chkGroup1" id="chkone5" class="each_chk">
                                             <label for="chkone5"></label>
@@ -519,7 +498,7 @@
                                     <td>Y</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row">
+                                    <td>
                                         <div class="chkBox">
                                             <input type="checkbox" name="chkGroup1" id="chkone6" class="each_chk">
                                             <label for="chkone6"></label>
@@ -540,7 +519,7 @@
                                     <td>Y</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row">
+                                    <td>
                                         <div class="chkBox">
                                             <input type="checkbox" name="chkGroup1" id="chkone7" class="each_chk">
                                             <label for="chkone7"></label>
@@ -561,7 +540,7 @@
                                     <td>Y</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row">
+                                    <td>
                                         <div class="chkBox">
                                             <input type="checkbox" name="chkGroup1" id="chkone7" class="each_chk">
                                             <label for="chkone7"></label>
@@ -582,7 +561,7 @@
                                     <td>Y</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row">
+                                    <td>
                                         <div class="chkBox">
                                             <input type="checkbox" name="chkGroup1" id="chkone7" class="each_chk">
                                             <label for="chkone7"></label>
@@ -603,7 +582,7 @@
                                     <td>Y</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row">
+                                    <td>
                                         <div class="chkBox">
                                             <input type="checkbox" name="chkGroup1" id="chkone7" class="each_chk">
                                             <label for="chkone7"></label>
@@ -624,7 +603,7 @@
                                     <td>Y</td>
                                 </tr>
                                 <tr>
-                                    <td scope="row">
+                                    <td>
                                         <div class="chkBox">
                                             <input type="checkbox" name="chkGroup1" id="chkone7" class="each_chk">
                                             <label for="chkone7"></label>
@@ -646,104 +625,81 @@
                                 </tr>
                             </tbody>
                         </table>
+                        
+                        <!-- [D] 배정('.btn_assign')버튼 클릭 시 배정관리팝업(popup_assign_set.html)열려야함 -->
+                        <div class="btnBox">
+                            <a href="#none" class="btn_assign">배정</a>
+                        </div>
                     </div>
                     <!-- //.dataTableBox -->
-
-                    <div class="btnBox">
-                        <a href="#none" class="btn_assign">배정</a>
-                    </div>
-                </div>
-                <!-- //.stnArea -->
-
-                <!-- .stnArea -->
-                <div class="stnArea assign_status_box">
-                    <h2>QA 배정 현황</h2>
-
-                    <div class="dateSearch_box">
-                        <!-- [D] QA요청일자 날짜별 조회 가능 -->
-                        <div class="iptBox">
-                            <span>배정일&colon;</span>
-                            <input type="text" id="fromDate2" class="iptDate">
-                            <span>&hyphen;</span>
-                            <input type="text" id="toDate2" class="iptDate">
+                    
+                    <div class="assign_status_box">
+                            <h2>QA 배정 현황</h2>
+        
+                            <div class="dateSearch_box">
+                                <!-- [D] QA요청일자 날짜별 조회 가능 -->
+                                <div class="iptBox">
+                                    <span>배정일&colon;</span>
+                                    <input type="text" id="fromDate2" class="iptDateTime">
+                                    <span>&hyphen;</span>
+                                    <input type="text" id="toDate2" class="iptDateTime">
+                                </div>
+                                <!-- [D] 휴무관리('.btn_holiday_set')버튼 클릭 시 휴무관리팝업(popup_holiday_set.html)열려야함 -->
+                                <div class="btnBox">
+                                    <a href="#none" class="btn_search">조회</a>
+                                    <a href="#none" class="btn_holiday_set">휴무관리</a>
+                                </div>
+                            </div>
+                            
+                            <table class="tbl_line_view" summary="심사자, 근무관리, 배정으로 구성">
+                                <caption class="hide">QA 배정 현황</caption>
+                                <colgroup>
+                                    <col width="120"><col width="90"><col width="90"><col width="90"><col width="90"><col width="90">
+                                    <col width="90"><col width="90"><col width="90"><col width="90"><col width="90"><col width="90"><col width="90">
+                                </colgroup>
+    
+                                <tbody>
+                                    <!-- [D] 근무관리(td span)가 휴무인 사람에게 addclass('off')주면 text color 빨간색으로 변경됨 -->
+                                    <tr>
+                                        <th scope="row">심사자 &lbrack;근무관리&rbrack;</th>
+                                        <td>김민정<span class="off">&lbrack;휴무&rbrack;</span></td>
+                                        <td>이명욱<span>&lbrack;업무&rbrack;</span></td>
+                                        <td>천일우<span>&lbrack;업무&rbrack;</span></td>
+                                        <td>김정인<span>&lbrack;업무&rbrack;</span></td>
+                                        <td>민성일<span class="off">&lbrack;휴무&rbrack;</span></td>
+                                        <td>이명욱<span>&lbrack;업무&rbrack;</span></td>
+                                        <td>천일우<span>&lbrack;업무&rbrack;</span></td>
+                                        <td>김정인<span>&lbrack;업무&rbrack;</span></td>
+                                        <td>이영인<span>&lbrack;업무&rbrack;</span></td>
+                                        <td>김민정<span>&lbrack;업무&rbrack;</span></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">배정</th>
+                                        <td><a href="#none">0</a></td>
+                                        <td><a href="#none">2</a></td>
+                                        <td><a href="#none">10</a></td>
+                                        <td><a href="#none">8</a></td>
+                                        <td><a href="#none">0</a></td>
+                                        <td><a href="#none">2</a></td>
+                                        <td><a href="#none">8</a></td>
+                                        <td><a href="#none">7</a></td>
+                                        <td><a href="#none">10</a></td>
+                                        <td><a href="#none">5</a></td>
+                                        <td><a href="#none"></a></td>
+                                        <td><a href="#none"></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="btnBox">
-                            <a href="#none" class="btn_search">조회</a>
-                            <a href="#none" class="btn_holiday_set">휴무관리</a>
-                        </div>
-                    </div>
-
-                    <div class="assign_status_box tbl_line_view">
-                        <table summary="심사자, 근무관리, 배정으로 구성">
-                            <caption class="hide">QA 배정 현황</caption>
-                            <colgroup>
-                                <col width="100"><col width="100"><col width="100"><col width="100"><col width="100"><col width="100">
-                                <col width="100"><col width="100"><col width="100"><col width="100"><col width="100"><col width="100"><col width="100">
-                            </colgroup>
-
-                            <tbody>
-                                <tr>
-                                    <th scope="row">심사자</th>
-                                    <td>김민정</td>
-                                    <td>이명욱</td>
-                                    <td>천일우</td>
-                                    <td>김정인</td>
-                                    <td>민성일</td>
-                                    <td>이명욱</td>
-                                    <td>천일우</td>
-                                    <td>김정인</td>
-                                    <td>이영인</td>
-                                    <td>김민정</td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">근무관리</th>
-                                    <td>휴무</td>
-                                    <td>업무</td>
-                                    <td>업무</td>
-                                    <td>업무</td>
-                                    <td>휴무</td>
-                                    <td>업무</td>
-                                    <td>업무</td>
-                                    <td>업무</td>
-                                    <td>업무</td>
-                                    <td>업무</td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">배정</th>
-                                    <td><a href="#none">0</a></td>
-                                    <td><a href="#none">2</a></td>
-                                    <td><a href="#none">10</a></td>
-                                    <td><a href="#none">8</a></td>
-                                    <td><a href="#none">0</a></td>
-                                    <td><a href="#none">2</a></td>
-                                    <td><a href="#none">8</a></td>
-                                    <td><a href="#none">7</a></td>
-                                    <td><a href="#none">10</a></td>
-                                    <td><a href="#none">5</a></td>
-                                    <td><a href="#none"></a></td>
-                                    <td><a href="#none"></a></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <!-- //.stnArea -->
-
-                <!-- .stnArea -->
-                <div class="stnArea">
-                    <h2>심사자별 상세 현황</h2>
-
-                    <div class="btnBox">
-                        <a href="#lyr_assign_cancel" class="btn_assign_cancel btn_lyr_open">배정취소</a>
-                    </div>
-
+    
                     <!-- .dataTableBox -->
                     <div class="dataTableBox">
-                        <table class="dataTable qa_detail_status" summary="체크박스, NO, 청약일자, 상품명, 증권번호, 계약자, 피보험자, 상담원, TA 점수, QA 상태, QA 점수, QA 결과, 콜타임으로 구성">
+                        <h2>심사자별 상세 현황</h2>
+                        
+                        <!-- [D] datatables 라이브러리 영역 -->
+                        <table class="dataTable qa_detail_status">
                             <thead>
                                 <tr>
                                     <th>
@@ -766,7 +722,8 @@
                                     <th>콜타임</th>
                                 </tr>
                             </thead>
-
+    
+                            <!-- [D] 리스트 더블클릭 시 비활성화된 심사페이지(popup_tm_qa_audit.html) 열려야 함 -->
                             <tbody>
                                 <tr>
                                     <td>
@@ -869,10 +826,14 @@
                                 </tr>
                             </tbody>
                         </table>
+                        
+                        <div class="btnBox">
+                            <a href="#lyr_assign_cancel" class="btn_assign_cancel btn_lyr_open">배정취소</a>
+                        </div>
                     </div>
-                    <!-- //.dataTableBox -->
+                    <!-- //.dataTableBox -->                    
                 </div>
-                <!-- //.stnArea -->
+                <!-- //.tableWrap -->                
             </div>
             <!-- //.tab_content -->
         </div>
@@ -901,151 +862,182 @@
 </div>
 <!-- //배정 취소 팝업 -->
 
-<!-- script -->
+<!---------------------- Local Resources ---------------------->
+<!-- Local CSS -->
+<link rel="stylesheet" href="../resources/css/bootstrap.css"/>
+<link rel="stylesheet" href="../resources/css/bootstrap-datetimepicker.css"/>
+<!-- //datetimepicker -->
+<link rel="stylesheet" href="../resources/css/datatables.min.css">
+<link rel="stylesheet" href="../resources/css/buttons.dataTables.min.css">
+<!-- //datatables -->
+<link rel="stylesheet" href="../resources/css/stt_tm_qa.css">
+
+<!-- Local Script Library -->
+<script src="../resources/js/bootstrap-datetimepicker.js"></script>
+<script src="../resources/js/moment.min.js"></script>
+<script src="../resources/js/ko.js"></script>
+<!-- //datetimepicker -->
+<script src="../resources/js/datatables.min.js"></script>
+<script src="../resources/js/dataTables.fixedColumns.min.js"></script>
+<!-- //datatables -->
+
+<!-- Local Script -->
 <script type="text/javascript">
-$(document).ready(function(){
-    // datetimepicker 렌더링
-    $('#fromDate, #fromDate2').datetimepicker({
-        language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
-        format: 'yyyy-mm-dd',  // 년-월-일 만 출
-        minView: 'month',
-        pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
-        defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
-        autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
-    });
-
-    $('#toDate, #toDate2').datetimepicker({
-        language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
-        format: 'yyyy-mm-dd',  // 년-월-일 만 출
-        minView: 'month',
-        pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
-        defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
-        autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
-    });
-
-    // datatable 렌더링
-    var firstTable = $('.qa_assign_target').DataTable({
-        dom: 't<"bottom"i>', // 옵션 위치 지정
-        language: { // 테이블 목록 건수 text 한글 설정
-            emptyTable: "조회된 데이터가 없습니다.", // 데이터 없을 경우 노출되는 text 설정
-            infoEmpty: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>0</strong> 건&rbrack;",
-            info: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>0</strong> 건&rbrack;",
-        },
-        responsive: true, // 반응형 허용
-        filter: false, // 검색창 미허용
-        order: [[ 12, 'asc' ]], // 초기 sort 설정
-        paging: false, // 페이징 허용
-        scrollY: "300px", // 세로 스크롤 허용, 사이즈
-        scrollX: true, //가로 스크롤 허용
-        scrollCollapse: true,
-        columnDefs: [ // 컬럼별 옵션 사용 지정
-            {targets: [0], sortable: false},
-            {targets: [1, 3, 5, 6, 7, 10, 11, 13], orderable: false}
-        ],
-    });
-
-    // 왼쪽 2열 고정
-    new $.fn.dataTable.FixedColumns(firstTable, {
-        leftColumns: 2,
-    });
-
-    // 다른 열에서 sort되어도 1열 순번은 그대로 유지
-    firstTable.on('order.dt search.dt', function(){
-        firstTable.column(1, {search:'applied', order:'applied'}).nodes().each(function (cell, i){
-            cell.innerHTML = i+1;
+jQuery.event.add(window,"load",function(){
+    $(document).ready(function(){
+        // datetimepicker 렌더링
+        $('#fromDate, #fromDate2').datetimepicker({
+            language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
+            format: 'yyyy-mm-dd',  // 년-월-일 만 출
+            minView: 'month',
+            pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
+            defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
+            autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
         });
-    }).draw();
 
-    var secondTable = $('.qa_detail_status').DataTable({
-        dom: 't<"bottom"i>', // 옵션 위치 지정
-        language: { // 테이블 목록 건수 text 한글 설정
-            emptyTable: "조회된 데이터가 없습니다.", // 데이터 없을 경우 노출되는 text 설정
-            infoEmpty: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>0</strong> 건&rbrack;",
-            info: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>0</strong> 건&rbrack;",
-        },
-        responsive: true, // 반응형 허용
-        filter: false, // 검색창 미허용
-        order: [[ 12, 'asc' ]], // 초기 sort 설정
-        paging: false, // 페이징 허용
-        scrollY: "90px", // 세로 스크롤 허용, 사이즈
-        scrollX: true, //가로 스크롤 허용
-        scrollCollapse: true,
-        columnDefs: [ // 컬럼별 width, 옵션 사용 지정
-            {targets: [0], width: "50px", orderable: false, sortable: false},  // 체크박스
-            {targets: [1], width: "50px", orderable: false},                   // NO
-            {targets: [2], width: "150px"},                                    // 청약일자
-            {targets: [3], width: "200px", orderable: false},                  // 상품명
-            {targets: [4], width: "120px"},                                    // 계약자
-            {targets: [5], width: "100px", orderable: false},                  // 피보험자
-            {targets: [6], width: "100px", orderable: false},                  // 증권번호
-            {targets: [7], width: "100px", orderable: false},                  // 청약상태
-            {targets: [8], width: "100px"},                                    // TA점수
-            {targets: [9], width: "100px"},                                    // 대상내용
-            {targets: [10], width: "100px", orderable: false},                 // 상담원
-            {targets: [11], width: "100px", orderable: false},                 // 사번
-            {targets: [12], width: "100px"},                                   // 센터
-        ],
-    });
-
-    // 왼쪽 2열 고정
-    new $.fn.dataTable.FixedColumns(secondTable, {
-        leftColumns: 2,
-    });
-
-    // 다른 열에서 sort되어도 1열 순번은 그대로 유지
-    secondTable.on('order.dt search.dt', function(){
-        secondTable.column(1, {search:'applied', order:'applied'}).nodes().each(function (cell, i){
-            cell.innerHTML = i+1;
+        $('#toDate, #toDate2').datetimepicker({
+            language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
+            format: 'yyyy-mm-dd',  // 년-월-일 만 출
+            minView: 'month',
+            pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
+            defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
+            autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
         });
-    }).draw();
 
-    // 데이터 테이블스에서 input 체크가 정상적으로 되지 않아 작성된 코드
-    // 전체 선택 클릭 시 (dataTables_scrollHead에서 상태를 받아와서 DTFC_Cloned에 적용)
-    $('.all_chk').on('click', $('.dataTables_scrollHead'), function(){
-        var thisName = $(this).attr('name');
-        var check = $(this).prop('checked');
-        var $this = $('.DTFC_Cloned .all_chk[name=\''+thisName+'\']');
-        var $childCheck = $('.each_chk[name=\''+thisName+'\']');
+        // datatable 렌더링
+        var firstTable = $('.qa_assign_target').DataTable({
+            dom: 't<"bottom"i>', // 옵션 위치 지정
+            language: { // 테이블 목록 건수 text 한글 설정
+                emptyTable: "조회된 데이터가 없습니다.", // 데이터 없을 경우 노출되는 text 설정
+                infoEmpty: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>0</strong> 건&rbrack;",
+                info: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>0</strong> 건&rbrack;",
+            },
+            responsive: true, // 반응형 허용
+            order: [[ 12, 'asc' ]], // 초기 sort 설정
+            paging: false, // 페이징 허용
+            scrollY: "306px", // 세로 스크롤 허용, 사이즈
+            scrollX: true, //가로 스크롤 허용
+            scrollCollapse: true,
+            columnDefs: [ // 컬럼별 width, 옵션 사용 지정
+                {targets: [0], width: "50px", orderable: false, sortable: false},  // 체크박스
+                {targets: [1], width: "50px", orderable: false},                   // NO
+                {targets: [2], width: "100px"},                                    // 청약일자
+                {targets: [3], width: "200px", orderable: false},                  // 상품명
+                {targets: [4], width: "100px"},                                    // 계약자
+                {targets: [5], width: "100px", orderable: false},                  // 피보험자
+                {targets: [6], width: "100px", orderable: false},                  // 증권번호
+                {targets: [7], width: "100px", orderable: false},                  // 청약상태
+                {targets: [8], width: "80px"},                                    // TA점수
+                {targets: [9], width: "100px"},                                    // 대상내용
+                {targets: [10], width: "100px", orderable: false},                 // 상담원
+                {targets: [11], width: "100px", orderable: false},                 // 사번
+                {targets: [12], width: "100px"},                                   // 센터
+                {targets: [13], width: "80px", orderable: false},                  // 번들유무
+            ],
+        });
 
-        if ( check == false ) { // 전체선택 체크가 false이면 자식들도 false
-            $this.prop('checked', false);
-            $childCheck.prop('checked', false);
-        } else { // 전체선택 체크가 true이면 자식들도 true
-            $this.prop('checked', true);
-            $childCheck.prop('checked', true);
-        }
-    });
+        // 왼쪽 2열 고정
+        new $.fn.dataTable.FixedColumns(firstTable, {
+            leftColumns: 2,
+        });
 
-    // 개별 체크박스 클릭 시 (dataTables_scrollBody에서 상태를 받아와서 DTFC_Cloned에 적용)
-    $('.each_chk').on('click', $('.dataTables_scrollBody'), function(){
-        var $thisCheckbox = $(this);
-        var thisName = $thisCheckbox.attr('name');
-        var thisId = $thisCheckbox.attr('id');
-        var $this = $('.DTFC_Cloned .each_chk[id=\''+thisId+'\']');
-        var check = $thisCheckbox.prop('checked');
+        // 다른 열에서 sort되어도 1열 순번은 그대로 유지
+        firstTable.on('order.dt search.dt', function(){
+            firstTable.column(1, {search:'applied', order:'applied'}).nodes().each(function (cell, i){
+                cell.innerHTML = i+1;
+            });
+        }).draw();
 
-        if ( check == false ) {
-            $this.prop('checked',false);
-        } else {
-            $this.prop('checked', true);
-        }
+        var secondTable = $('.qa_detail_status').DataTable({
+            dom: 't<"bottom"i>', // 옵션 위치 지정
+            language: { // 테이블 목록 건수 text 한글 설정
+                emptyTable: "조회된 데이터가 없습니다.", // 데이터 없을 경우 노출되는 text 설정
+                infoEmpty: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>0</strong> 건&rbrack;",
+                info: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>0</strong> 건&rbrack;",
+            },
+            responsive: true, // 반응형 허용
+            filter: false, // 검색창 미허용
+            order: false, // 초기 sort 설정
+            paging: false, // 페이징 허용
+            scrollY: "90px", // 세로 스크롤 허용, 사이즈
+            scrollX: true, //가로 스크롤 허용
+            scrollCollapse: true,
+            columnDefs: [ // 컬럼별 width, 옵션 사용 지정
+                {targets: [0], width: "50px", orderable: false, sortable: false},  // 체크박스
+                {targets: [1], width: "50px", orderable: false},                   // NO
+                {targets: [2], width: "100px", orderable: false},                  // 청약일자
+                {targets: [3], width: "200px", orderable: false},                  // 상품명
+                {targets: [4], width: "100px", orderable: false},                  // 증권번호
+                {targets: [5], width: "100px", orderable: false},                  // 계약자
+                {targets: [6], width: "100px", orderable: false},                  // 피보험자
+                {targets: [7], width: "100px", orderable: false},                  // 상담원
+                {targets: [8], width: "80px", orderable: false},                   // TA 점수
+                {targets: [9], width: "100px", orderable: false},                  // QA 상태
+                {targets: [10], width: "80px", orderable: false},                  // QA 점수
+                {targets: [11], width: "80px", orderable: false},                  // QA 결과
+                {targets: [12], width: "80px", orderable: false},                  // 콜타임
+            ],
+        });
 
-        var checkboxes = $('.DTFC_Cloned .each_chk[name=\''+thisName+'\']');
-        var $allCheck = $('.DTFC_Cloned .all_chk[name=\''+thisName+'\']');
-        var length = checkboxes.length;
+        // 왼쪽 2열 고정
+        new $.fn.dataTable.FixedColumns(secondTable, {
+            leftColumns: 2,
+        });
 
-        // 자식 중 체크 false가 있으면 전체선택 false
-        for (var i=0; i<checkboxes.length; i++) {
-            if ( checkboxes[i].checked == false ) {
-              $allCheck.prop('checked', false);
-              return;
+        // 다른 열에서 sort되어도 1열 순번은 그대로 유지
+        secondTable.on('order.dt search.dt', function(){
+            secondTable.column(1, {search:'applied', order:'applied'}).nodes().each(function (cell, i){
+                cell.innerHTML = i+1;
+            });
+        }).draw();
+
+        // 데이터 테이블스에서 input 체크가 정상적으로 되지 않아 작성된 코드
+        // 전체 선택 클릭 시 (dataTables_scrollHead에서 상태를 받아와서 DTFC_Cloned에 적용)
+        $('.all_chk').on('click', $('.dataTables_scrollHead'), function(){
+            var thisName = $(this).attr('name');
+            var check = $(this).prop('checked');
+            var $this = $('.DTFC_Cloned .all_chk[name=\''+thisName+'\']');
+            var $childCheck = $('.each_chk[name=\''+thisName+'\']');
+
+            if ( check == false ) { // 전체선택 체크가 false이면 자식들도 false
+                $this.prop('checked', false);
+                $childCheck.prop('checked', false);
+            } else { // 전체선택 체크가 true이면 자식들도 true
+                $this.prop('checked', true);
+                $childCheck.prop('checked', true);
             }
-        }
-        // 자식 중 체크 false가 없으면 전체선택 true
-        $allCheck.prop('checked', true);
+        });
+
+        // 개별 체크박스 클릭 시 (dataTables_scrollBody에서 상태를 받아와서 DTFC_Cloned에 적용)
+        $('.each_chk').on('click', $('.dataTables_scrollBody'), function(){
+            var $thisCheckbox = $(this);
+            var thisName = $thisCheckbox.attr('name');
+            var thisId = $thisCheckbox.attr('id');
+            var $this = $('.DTFC_Cloned .each_chk[id=\''+thisId+'\']');
+            var check = $thisCheckbox.prop('checked');
+
+            if ( check == false ) {
+                $this.prop('checked',false);
+            } else {
+                $this.prop('checked', true);
+            }
+
+            var checkboxes = $('.DTFC_Cloned .each_chk[name=\''+thisName+'\']');
+            var $allCheck = $('.DTFC_Cloned .all_chk[name=\''+thisName+'\']');
+            var length = checkboxes.length;
+
+            // 자식 중 체크 false가 있으면 전체선택 false
+            for (var i=0; i<checkboxes.length; i++) {
+                if ( checkboxes[i].checked == false ) {
+                  $allCheck.prop('checked', false);
+                  return;
+                }
+            }
+            // 자식 중 체크 false가 없으면 전체선택 true
+            $allCheck.prop('checked', true);
+        });
     });
 });
 </script>
-
 </body>
 </html>

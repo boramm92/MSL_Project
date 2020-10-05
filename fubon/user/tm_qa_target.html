@@ -4,32 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="format-detection" content="telephone=no">
 
-<!-- css -->
-<!-- datetimepicker -->
-<link rel="stylesheet" href="../resources/css/bootstrap.css"/>
-<link rel="stylesheet" href="../resources/css/bootstrap-datetimepicker.css"/>
-<!-- datatables -->
-<link rel="stylesheet" href="../resources/css/datatables.min.css">
-<link rel="stylesheet" href="../resources/css/buttons.dataTables.min.css">
-
+<!---------------------- General Resources ---------------------->
+<!-- General CSS -->
 <link rel="stylesheet" href="../resources/css/common.css">
-<link rel="stylesheet" href="../resources/css/stt_tm_qa.css">
 
-<!-- js -->
+<!-- General Script -->
 <script src="../resources/js/jquery-3.3.1.min.js"></script>
 <script src="../resources/js/jquery-migrate-3.3.0.min.js"></script>
-<!-- datetimepicker -->
-<script src="../resources/js/bootstrap-datetimepicker.js"></script>
-<script src="../resources/js/moment.min.js"></script>
-<script src="../resources/js/ko.js"></script>
-<!-- datatables -->
-<script src="../resources/js/datatables.min.js"></script>
-<script src="../resources/js/dataTables.fixedColumns.min.js"></script>
-<script src="../resources/js/dataTables.buttons.min.js"></script>
-<script src="../resources/js/buttons.html5.min.js"></script>
-<script src="../resources/js/jszip.min.js"></script>
-
 <script src="../resources/js/common.js"></script>
 
 <title>TM QA || 푸본현대생명</title>
@@ -71,15 +54,15 @@
 
                 <ul class="sub">
                     <li>
-                        <a href="#none">Dashboard</a>
+                        <a href="home_dashboard.html">Dashboard</a>
                     </li>
                 </ul>
             </li>
-            <li class="current">
+            <li>
                 <h2>CS</h2>
 
                 <ul class="sub">
-                    <li class="current">
+                    <li>
                         <a href="cs_stt.html">CS - STT 대상</a>
                     </li>
                 </ul>
@@ -93,18 +76,18 @@
                     </li>
                 </ul>
             </li>
-            <li>
+            <li class="current">
                 <h2>TM_QA</h2>
 
                 <ul class="sub">
-                    <li>
-                        <a href="#none">QA 배정</a>
+                    <li class="current">
+                        <a href="tm_qa_target.html">QA 대상</a>
                     </li>
                     <li>
-                        <a href="#none">QA 심사리스트</a>
+                        <a href="tm_qa_assign1.html">QA 배정</a>
                     </li>
                     <li>
-                        <a href="#none">QA 결과</a>
+                        <a href="qa_result.html">QA 결과</a>
                     </li>
                 </ul>
             </li>
@@ -113,10 +96,10 @@
 
                 <ul class="sub">
                     <li>
-                        <a href="#none">상담원 통계</a>
+                        <a href="tmr_statistic.html">상담원 통계</a>
                     </li>
                     <li>
-                        <a href="#none">심사자 통계</a>
+                        <a href="qa_statistic.html">심사자 통계</a>
                     </li>
                 </ul>
             </li>
@@ -245,9 +228,9 @@
                                 <!-- [D] 시간 초기 기본값 미정으로 비워둠 -->
                                 <td>
                                     <div class="iptBox">
-                                        <input type="text" id="fromDate" class="iptDate">
+                                        <input type="text" id="fromDate" class="iptDateTime">
                                         <span>&hyphen;</span>
-                                        <input type="text" id="toDate" class="iptDate">
+                                        <input type="text" id="toDate" class="iptDateTime">
                                     </div>
                                 </td>
 
@@ -392,656 +375,645 @@
                 </div>
                 <!-- //.srchArea -->
 
-                <!-- .stnArea -->
-                <div class="stnArea">
-                    <!-- .dataTableBox -->
-                    <div class="dataTableBox">
-                        <!-- [D] datatables 라이브러리 영역 -->
-                        <!-- [D] 'Excel 다운로드' 버튼 클릭 시 파일 다운로드됨 -->
-                        <!-- [D] 처음 페이지 들어왔을때 목록 순서는 '센터'기준으로 오름차순 정렬됨 -->
-                        <!-- [D] 페이지 정보(.dataTables_info) [총 19건 0건]에서의 0건 부분은 계약자명 기준으로 중복제거된 건수로 넣어주어야 함 -->
-                        <table class="dataTable" summary="NO, 청약일자, 상품명, 증권번호, 계약자, 피보험자, 센터, 상담원, 사번, TA 점수, 대상, 대상내용, QA 요청일자, 청약상태, 번들유무, 상품발송안내로 구성">
-                            <caption class="hide">TM QA대상 목록</caption>
-                            <colgroup>
-                                <col width="50"><col width="50"><col width="120"><col width="150"><col width="120">
-                                <col width="100"><col width="100"><col width="100"><col width="100"><col width="100"><col width="80">
-                                <col width="80"><col width="100"><col width="120"><col width="100"><col width="80"><col width="100">
-                            </colgroup>
+                <!-- .dataTableBox -->
+                <div class="dataTableBox">
+                    <!-- [D] datatables 라이브러리 영역 -->
+                    <!-- [D] 'Excel 다운로드' 버튼 클릭 시 파일 다운로드됨 -->
+                    <!-- [D] 처음 페이지 들어왔을때 목록 순서는 '센터'기준으로 오름차순 정렬됨 -->
+                    <!-- [D] 페이지 정보(.dataTables_info) [총 19건 0건]에서의 0건 부분은 계약자명 기준으로 중복제거된 건수로 넣어주어야 함 -->
+                    <table class="dataTable">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <div class="chkBox">
+                                        <input type="checkbox" name="chkGroup" id="chkGroup" class="all_chk">
+                                        <label for="chkGroup"></label>
+                                    </div>
+                                </th>
+                                <th>NO</th>
+                                <th>청약일자</th>
+                                <th>상품명</th>
+                                <th>증권번호</th>
+                                <th>계약자</th>
+                                <th>피보험자</th>
+                                <th>센터</th>
+                                <th>상담원</th>
+                                <th>사번</th>
+                                <th>TA점수</th>
+                                <th>대상</th>
+                                <th>대상내용</th>
+                                <th>QA 요청일자</th>
+                                <th>청약상태</th>
+                                <th>번들유무</th>
+                                <th>상품발송안내</th>
+                            </tr>
+                        </thead>
 
-                            <thead>
-                                <tr>
-                                    <th scope="col">
-                                        <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup" id="chkGroup" class="all_chk">
-                                            <label for="chkGroup"></label>
-                                        </div>
-                                    </th>
-                                    <th scope="col">NO</th>
-                                    <th scope="col">청약일자</th>
-                                    <th scope="col">상품명</th>
-                                    <th scope="col">증권번호</th>
-                                    <th scope="col">계약자</th>
-                                    <th scope="col">피보험자</th>
-                                    <th scope="col">센터</th>
-                                    <th scope="col">상담원</th>
-                                    <th scope="col">사번</th>
-                                    <th scope="col">TA점수</th>
-                                    <th scope="col">대상</th>
-                                    <th scope="col">대상내용</th>
-                                    <th scope="col">QA 요청일자</th>
-                                    <th scope="col">청약상태</th>
-                                    <th scope="col">번들유무</th>
-                                    <th scope="col">상품발송안내</th>
-                                </tr>
-                            </thead>
-
-                            <!-- [D] 조회된 목록(tbody tr) 더블클릭 시 심사 상세페이지로 이동 -->
-                            <tbody>
-                                <tr>
-                                    <td scope="row">
-                                        <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup" id="chkOne1" class="each_chk">
-                                            <label for="chkOne1"></label>
-                                        </div>
-                                    </td>
-                                    <td>1</td>
-                                    <td>2020-08-01 0:00</td>
-                                    <td>ZERO 암보험갱신형</td>
-                                    <td>201905002108</td>
-                                    <td>김민정</td>　
-                                    <td>김민정</td>　
-                                    <td>1 센터</td>
-                                    <td>천일우</td>　
-                                    <td>99308289</td>
-                                    <td>2</td>
-                                    <td>Y</td>
-                                    <td>TMR</td>
-                                    <td>2020-08-01</td>
-                                    <td>신계약</td>
-                                    <td>Y</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">
-                                        <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup" id="chkone2" class="each_chk">
-                                            <label for="chkone2"></label>
-                                        </div>
-                                    </td>
-                                    <td>2</td>
-                                    <td>2020-08-01 0:00</td>
-                                    <td>ZERO 암보험갱신형</td>
-                                    <td>201905003391</td>
-                                    <td>이명욱</td>　
-                                    <td>이명욱</td>　
-                                    <td>1 센터</td>
-                                    <td>김정인</td>　
-                                    <td>99229580</td>
-                                    <td>3</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>신계약</td>
-                                    <td></td>
-                                    <td>Y</td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">
-                                        <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup" id="chkone3" class="each_chk">
-                                            <label for="chkone3"></label>
-                                        </div>
-                                    </td>
-                                    <td>3</td>
-                                    <td>2020-08-01 0:00</td>
-                                    <td>ZERO 암보험갱신형</td>
-                                    <td>201905003496</td>
-                                    <td>천일우</td>　
-                                    <td>김민정</td>　
-                                    <td>1 센터</td>
-                                    <td>김민정</td>　
-                                    <td>99344464</td>
-                                    <td>5</td>
-                                    <td>Y</td>
-                                    <td>TA점수</td>
-                                    <td></td>
-                                    <td>청약철회</td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">
-                                        <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup" id="chkone4" class="each_chk">
-                                            <label for="chkone4"></label>
-                                        </div>
-                                    </td>
-                                    <td>4</td>
-                                    <td>2020-08-01 0:00</td>
-                                    <td>ZERO 암보험갱신형</td>
-                                    <td>201905003690</td>
-                                    <td>김정인</td>　
-                                    <td>이명욱</td>　
-                                    <td>1 센터</td>
-                                    <td>이명욱</td>　
-                                    <td>99344534</td>
-                                    <td>1</td>
-                                    <td>Y</td>
-                                    <td>상품</td>
-                                    <td></td>
-                                    <td>신계약</td>
-                                    <td></td>
-                                    <td>Y</td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">
-                                        <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup" id="chkone5" class="each_chk">
-                                            <label for="chkone5"></label>
-                                        </div>
-                                    </td>
-                                    <td>5</td>
-                                    <td>2020-08-01 0:00</td>
-                                    <td>ZERO 암보험갱신형</td>
-                                    <td>201905003719</td>
-                                    <td>민성일</td>　
-                                    <td>김민정</td>　
-                                    <td>2 센터</td>
-                                    <td>김민정</td>　
-                                    <td>99343001</td>
-                                    <td>0</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>신계약</td>
-                                    <td>N</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">
-                                        <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup" id="chkone6" class="each_chk">
-                                            <label for="chkone6"></label>
-                                        </div>
-                                    </td>
-                                    <td>6</td>
-                                    <td>2020-08-01 0:00</td>
-                                    <td>ZERO 암보험갱신형</td>
-                                    <td>201905002108</td>
-                                    <td>김민정</td>　
-                                    <td>김민정</td>　
-                                    <td>1 센터</td>
-                                    <td>천일우</td>　
-                                    <td>99308289</td>
-                                    <td>2</td>
-                                    <td>Y</td>
-                                    <td>TMR</td>
-                                    <td>2020-08-01</td>
-                                    <td>신계약</td>
-                                    <td>Y</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">
-                                        <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup" id="chkone7" class="each_chk">
-                                            <label for="chkone7"></label>
-                                        </div>
-                                    </td>
-                                    <td>7</td>
-                                    <td>2020-08-01 0:00</td>
-                                    <td>ZERO 암보험갱신형</td>
-                                    <td>201905003391</td>
-                                    <td>이명욱</td>　
-                                    <td>이명욱</td>　
-                                    <td>Upsell 센터</td>
-                                    <td>김정인</td>　
-                                    <td>99229580</td>
-                                    <td>3</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>신계약</td>
-                                    <td></td>
-                                    <td>Y</td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">
-                                        <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup" id="chkone8" class="each_chk">
-                                            <label for="chkone8"></label>
-                                        </div>
-                                    </td>
-                                    <td>8</td>
-                                    <td>2020-08-01 0:00</td>
-                                    <td>ZERO 암보험갱신형</td>
-                                    <td>201905003496</td>
-                                    <td>천일우</td>　
-                                    <td>김민정</td>　
-                                    <td>3 센터</td>
-                                    <td>김민정</td>　
-                                    <td>99344464</td>
-                                    <td>5</td>
-                                    <td>Y</td>
-                                    <td>TA점수</td>
-                                    <td></td>
-                                    <td>청약철회</td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">
-                                        <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup" id="chkone9" class="each_chk">
-                                            <label for="chkone9"></label>
-                                        </div>
-                                    </td>
-                                    <td>9</td>
-                                    <td>2020-08-01 0:00</td>
-                                    <td>ZERO 암보험갱신형</td>
-                                    <td>201905003690</td>
-                                    <td>김정인</td>　
-                                    <td>이명욱</td>　
-                                    <td>1 센터</td>
-                                    <td>이명욱</td>　
-                                    <td>99344534</td>
-                                    <td>1</td>
-                                    <td>Y</td>
-                                    <td>상품</td>
-                                    <td></td>
-                                    <td>신계약</td>
-                                    <td></td>
-                                    <td>Y</td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">
-                                        <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup" id="chkone10" class="each_chk">
-                                            <label for="chkone10"></label>
-                                        </div>
-                                    </td>
-                                    <td>10</td>
-                                    <td>2020-08-01 0:00</td>
-                                    <td>ZERO 암보험갱신형</td>
-                                    <td>201905003719</td>
-                                    <td>민성일</td>　
-                                    <td>김민정</td>　
-                                    <td>5 센터</td>
-                                    <td>김민정</td>　
-                                    <td>99343001</td>
-                                    <td>0</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>신계약</td>
-                                    <td>N</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">
-                                        <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup" id="chkone11" class="each_chk">
-                                            <label for="chkone11"></label>
-                                        </div>
-                                    </td>
-                                    <td>11</td>
-                                    <td>2020-08-01 0:00</td>
-                                    <td>ZERO 암보험갱신형</td>
-                                    <td>201905002108</td>
-                                    <td>김민정</td>　
-                                    <td>김민정</td>　
-                                    <td>4 센터</td>
-                                    <td>천일우</td>　
-                                    <td>99308289</td>
-                                    <td>2</td>
-                                    <td>Y</td>
-                                    <td>TMR</td>
-                                    <td>2020-08-01</td>
-                                    <td>신계약</td>
-                                    <td>Y</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">
-                                        <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup" id="chkone12" class="each_chk">
-                                            <label for="chkone12"></label>
-                                        </div>
-                                    </td>
-                                    <td>12</td>
-                                    <td>2020-08-01 0:00</td>
-                                    <td>ZERO 암보험갱신형</td>
-                                    <td>201905002108</td>
-                                    <td>김민정</td>　
-                                    <td>김민정</td>　
-                                    <td>4 센터</td>
-                                    <td>천일우</td>　
-                                    <td>99308289</td>
-                                    <td>2</td>
-                                    <td>Y</td>
-                                    <td>TMR</td>
-                                    <td>2020-08-01</td>
-                                    <td>신계약</td>
-                                    <td>Y</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">
-                                        <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup" id="chkone13" class="each_chk">
-                                            <label for="chkone13"></label>
-                                        </div>
-                                    </td>
-                                    <td>12</td>
-                                    <td>2020-08-01 0:00</td>
-                                    <td>ZERO 암보험갱신형</td>
-                                    <td>201905002108</td>
-                                    <td>김민정</td>　
-                                    <td>김민정</td>　
-                                    <td>4 센터</td>
-                                    <td>천일우</td>　
-                                    <td>99308289</td>
-                                    <td>2</td>
-                                    <td>Y</td>
-                                    <td>TMR</td>
-                                    <td>2020-08-01</td>
-                                    <td>신계약</td>
-                                    <td>Y</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">
-                                        <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup" id="chkone14" class="each_chk">
-                                            <label for="chkone14"></label>
-                                        </div>
-                                    </td>
-                                    <td>12</td>
-                                    <td>2020-08-01 0:00</td>
-                                    <td>ZERO 암보험갱신형</td>
-                                    <td>201905002108</td>
-                                    <td>김민정</td>　
-                                    <td>김민정</td>　
-                                    <td>4 센터</td>
-                                    <td>천일우</td>　
-                                    <td>99308289</td>
-                                    <td>2</td>
-                                    <td>Y</td>
-                                    <td>TMR</td>
-                                    <td>2020-08-01</td>
-                                    <td>신계약</td>
-                                    <td>Y</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">
-                                        <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup" id="chkone15" class="each_chk">
-                                            <label for="chkone15"></label>
-                                        </div>
-                                    </td>
-                                    <td>12</td>
-                                    <td>2020-08-01 0:00</td>
-                                    <td>ZERO 암보험갱신형</td>
-                                    <td>201905002108</td>
-                                    <td>김민정</td>　
-                                    <td>김민정</td>　
-                                    <td>4 센터</td>
-                                    <td>천일우</td>　
-                                    <td>99308289</td>
-                                    <td>2</td>
-                                    <td>Y</td>
-                                    <td>TMR</td>
-                                    <td>2020-08-01</td>
-                                    <td>신계약</td>
-                                    <td>Y</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">
-                                        <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup" id="chkone16" class="each_chk">
-                                            <label for="chkone16"></label>
-                                        </div>
-                                    </td>
-                                    <td>12</td>
-                                    <td>2020-08-01 0:00</td>
-                                    <td>ZERO 암보험갱신형</td>
-                                    <td>201905002108</td>
-                                    <td>김민정</td>　
-                                    <td>김민정</td>　
-                                    <td>4 센터</td>
-                                    <td>천일우</td>　
-                                    <td>99308289</td>
-                                    <td>2</td>
-                                    <td>Y</td>
-                                    <td>TMR</td>
-                                    <td>2020-08-01</td>
-                                    <td>신계약</td>
-                                    <td>Y</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">
-                                        <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup" id="chkone17" class="each_chk">
-                                            <label for="chkone17"></label>
-                                        </div>
-                                    </td>
-                                    <td>12</td>
-                                    <td>2020-08-01 0:00</td>
-                                    <td>ZERO 암보험갱신형</td>
-                                    <td>201905002108</td>
-                                    <td>김민정</td>　
-                                    <td>김민정</td>　
-                                    <td>4 센터</td>
-                                    <td>천일우</td>　
-                                    <td>99308289</td>
-                                    <td>2</td>
-                                    <td>Y</td>
-                                    <td>TMR</td>
-                                    <td>2020-08-01</td>
-                                    <td>신계약</td>
-                                    <td>Y</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">
-                                        <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup" id="chkone18" class="each_chk">
-                                            <label for="chkone18"></label>
-                                        </div>
-                                    </td>
-                                    <td>12</td>
-                                    <td>2020-08-01 0:00</td>
-                                    <td>ZERO 암보험갱신형</td>
-                                    <td>201905002108</td>
-                                    <td>김민정</td>　
-                                    <td>김민정</td>　
-                                    <td>4 센터</td>
-                                    <td>천일우</td>　
-                                    <td>99308289</td>
-                                    <td>2</td>
-                                    <td>Y</td>
-                                    <td>TMR</td>
-                                    <td>2020-08-01</td>
-                                    <td>신계약</td>
-                                    <td>Y</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">
-                                        <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup" id="chkone19" class="each_chk">
-                                            <label for="chkone19"></label>
-                                        </div>
-                                    </td>
-                                    <td>12</td>
-                                    <td>2020-08-01 0:00</td>
-                                    <td>ZERO 암보험갱신형</td>
-                                    <td>201905002108</td>
-                                    <td>김민정</td>　
-                                    <td>김민정</td>　
-                                    <td>4 센터</td>
-                                    <td>천일우</td>　
-                                    <td>99308289</td>
-                                    <td>2</td>
-                                    <td>Y</td>
-                                    <td>TMR</td>
-                                    <td>2020-08-01</td>
-                                    <td>신계약</td>
-                                    <td>Y</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">
-                                        <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup" id="chkone20" class="each_chk">
-                                            <label for="chkone20"></label>
-                                        </div>
-                                    </td>
-                                    <td>12</td>
-                                    <td>2020-08-01 0:00</td>
-                                    <td>ZERO 암보험갱신형</td>
-                                    <td>201905002108</td>
-                                    <td>김민정</td>　
-                                    <td>김민정</td>　
-                                    <td>4 센터</td>
-                                    <td>천일우</td>　
-                                    <td>99308289</td>
-                                    <td>2</td>
-                                    <td>Y</td>
-                                    <td>TMR</td>
-                                    <td>2020-08-01</td>
-                                    <td>신계약</td>
-                                    <td>Y</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">
-                                        <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup" id="chkone21" class="each_chk">
-                                            <label for="chkone21"></label>
-                                        </div>
-                                    </td>
-                                    <td>12</td>
-                                    <td>2020-08-01 0:00</td>
-                                    <td>ZERO 암보험갱신형</td>
-                                    <td>201905002108</td>
-                                    <td>김민정</td>　
-                                    <td>김민정</td>　
-                                    <td>4 센터</td>
-                                    <td>천일우</td>　
-                                    <td>99308289</td>
-                                    <td>2</td>
-                                    <td>Y</td>
-                                    <td>TMR</td>
-                                    <td>2020-08-01</td>
-                                    <td>신계약</td>
-                                    <td>Y</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">
-                                        <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup" id="chkone22" class="each_chk">
-                                            <label for="chkone22"></label>
-                                        </div>
-                                    </td>
-                                    <td>12</td>
-                                    <td>2020-08-01 0:00</td>
-                                    <td>ZERO 암보험갱신형</td>
-                                    <td>201905002108</td>
-                                    <td>김민정</td>　
-                                    <td>김민정</td>　
-                                    <td>4 센터</td>
-                                    <td>천일우</td>　
-                                    <td>99308289</td>
-                                    <td>2</td>
-                                    <td>Y</td>
-                                    <td>TMR</td>
-                                    <td>2020-08-01</td>
-                                    <td>신계약</td>
-                                    <td>Y</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">
-                                        <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup" id="chkone23" class="each_chk">
-                                            <label for="chkone23"></label>
-                                        </div>
-                                    </td>
-                                    <td>12</td>
-                                    <td>2020-08-01 0:00</td>
-                                    <td>ZERO 암보험갱신형</td>
-                                    <td>201905002108</td>
-                                    <td>김민정</td>　
-                                    <td>김민정</td>　
-                                    <td>4 센터</td>
-                                    <td>천일우</td>　
-                                    <td>99308289</td>
-                                    <td>2</td>
-                                    <td>Y</td>
-                                    <td>TMR</td>
-                                    <td>2020-08-01</td>
-                                    <td>신계약</td>
-                                    <td>Y</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">
-                                        <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup" id="chkone24" class="each_chk">
-                                            <label for="chkone24"></label>
-                                        </div>
-                                    </td>
-                                    <td>12</td>
-                                    <td>2020-08-01 0:00</td>
-                                    <td>ZERO 암보험갱신형</td>
-                                    <td>201905002108</td>
-                                    <td>김민정</td>　
-                                    <td>김민정</td>　
-                                    <td>4 센터</td>
-                                    <td>천일우</td>　
-                                    <td>99308289</td>
-                                    <td>2</td>
-                                    <td>Y</td>
-                                    <td>TMR</td>
-                                    <td>2020-08-01</td>
-                                    <td>신계약</td>
-                                    <td>Y</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td scope="row">
-                                        <div class="chkBox">
-                                            <input type="checkbox" name="chkGroup" id="chkone25" class="each_chk">
-                                            <label for="chkone25"></label>
-                                        </div>
-                                    </td>
-                                    <td>12</td>
-                                    <td>2020-08-01 0:00</td>
-                                    <td>ZERO 암보험갱신형</td>
-                                    <td>201905002108</td>
-                                    <td>김민정</td>　
-                                    <td>김민정</td>　
-                                    <td>4 센터</td>
-                                    <td>천일우</td>　
-                                    <td>99308289</td>
-                                    <td>2</td>
-                                    <td>Y</td>
-                                    <td>TMR</td>
-                                    <td>2020-08-01</td>
-                                    <td>신계약</td>
-                                    <td>Y</td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- //.dataTableBox -->
-
+                        <!-- [D] 조회된 목록(tbody tr) 더블클릭 시 심사 상세페이지로 이동 -->
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="chkBox">
+                                        <input type="checkbox" name="chkGroup" id="chkOne1" class="each_chk">
+                                        <label for="chkOne1"></label>
+                                    </div>
+                                </td>
+                                <td>1</td>
+                                <td>2020-08-01 0:00</td>
+                                <td>ZERO 암보험갱신형</td>
+                                <td>201905002108</td>
+                                <td>김민정</td>　
+                                <td>김민정</td>　
+                                <td>1 센터</td>
+                                <td>천일우</td>　
+                                <td>99308289</td>
+                                <td>2</td>
+                                <td>Y</td>
+                                <td>TMR</td>
+                                <td>2020-08-01</td>
+                                <td>신계약</td>
+                                <td>Y</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="chkBox">
+                                        <input type="checkbox" name="chkGroup" id="chkone2" class="each_chk">
+                                        <label for="chkone2"></label>
+                                    </div>
+                                </td>
+                                <td>2</td>
+                                <td>2020-08-01 0:00</td>
+                                <td>ZERO 암보험갱신형</td>
+                                <td>201905003391</td>
+                                <td>이명욱</td>　
+                                <td>이명욱</td>　
+                                <td>1 센터</td>
+                                <td>김정인</td>　
+                                <td>99229580</td>
+                                <td>3</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>신계약</td>
+                                <td></td>
+                                <td>Y</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="chkBox">
+                                        <input type="checkbox" name="chkGroup" id="chkone3" class="each_chk">
+                                        <label for="chkone3"></label>
+                                    </div>
+                                </td>
+                                <td>3</td>
+                                <td>2020-08-01 0:00</td>
+                                <td>ZERO 암보험갱신형</td>
+                                <td>201905003496</td>
+                                <td>천일우</td>　
+                                <td>김민정</td>　
+                                <td>1 센터</td>
+                                <td>김민정</td>　
+                                <td>99344464</td>
+                                <td>5</td>
+                                <td>Y</td>
+                                <td>TA점수</td>
+                                <td></td>
+                                <td>청약철회</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="chkBox">
+                                        <input type="checkbox" name="chkGroup" id="chkone4" class="each_chk">
+                                        <label for="chkone4"></label>
+                                    </div>
+                                </td>
+                                <td>4</td>
+                                <td>2020-08-01 0:00</td>
+                                <td>ZERO 암보험갱신형</td>
+                                <td>201905003690</td>
+                                <td>김정인</td>　
+                                <td>이명욱</td>　
+                                <td>1 센터</td>
+                                <td>이명욱</td>　
+                                <td>99344534</td>
+                                <td>1</td>
+                                <td>Y</td>
+                                <td>상품</td>
+                                <td></td>
+                                <td>신계약</td>
+                                <td></td>
+                                <td>Y</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="chkBox">
+                                        <input type="checkbox" name="chkGroup" id="chkone5" class="each_chk">
+                                        <label for="chkone5"></label>
+                                    </div>
+                                </td>
+                                <td>5</td>
+                                <td>2020-08-01 0:00</td>
+                                <td>ZERO 암보험갱신형</td>
+                                <td>201905003719</td>
+                                <td>민성일</td>　
+                                <td>김민정</td>　
+                                <td>2 센터</td>
+                                <td>김민정</td>　
+                                <td>99343001</td>
+                                <td>0</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>신계약</td>
+                                <td>N</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="chkBox">
+                                        <input type="checkbox" name="chkGroup" id="chkone6" class="each_chk">
+                                        <label for="chkone6"></label>
+                                    </div>
+                                </td>
+                                <td>6</td>
+                                <td>2020-08-01 0:00</td>
+                                <td>ZERO 암보험갱신형</td>
+                                <td>201905002108</td>
+                                <td>김민정</td>　
+                                <td>김민정</td>　
+                                <td>1 센터</td>
+                                <td>천일우</td>　
+                                <td>99308289</td>
+                                <td>2</td>
+                                <td>Y</td>
+                                <td>TMR</td>
+                                <td>2020-08-01</td>
+                                <td>신계약</td>
+                                <td>Y</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="chkBox">
+                                        <input type="checkbox" name="chkGroup" id="chkone7" class="each_chk">
+                                        <label for="chkone7"></label>
+                                    </div>
+                                </td>
+                                <td>7</td>
+                                <td>2020-08-01 0:00</td>
+                                <td>ZERO 암보험갱신형</td>
+                                <td>201905003391</td>
+                                <td>이명욱</td>　
+                                <td>이명욱</td>　
+                                <td>Upsell 센터</td>
+                                <td>김정인</td>　
+                                <td>99229580</td>
+                                <td>3</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>신계약</td>
+                                <td></td>
+                                <td>Y</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="chkBox">
+                                        <input type="checkbox" name="chkGroup" id="chkone8" class="each_chk">
+                                        <label for="chkone8"></label>
+                                    </div>
+                                </td>
+                                <td>8</td>
+                                <td>2020-08-01 0:00</td>
+                                <td>ZERO 암보험갱신형</td>
+                                <td>201905003496</td>
+                                <td>천일우</td>　
+                                <td>김민정</td>　
+                                <td>3 센터</td>
+                                <td>김민정</td>　
+                                <td>99344464</td>
+                                <td>5</td>
+                                <td>Y</td>
+                                <td>TA점수</td>
+                                <td></td>
+                                <td>청약철회</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="chkBox">
+                                        <input type="checkbox" name="chkGroup" id="chkone9" class="each_chk">
+                                        <label for="chkone9"></label>
+                                    </div>
+                                </td>
+                                <td>9</td>
+                                <td>2020-08-01 0:00</td>
+                                <td>ZERO 암보험갱신형</td>
+                                <td>201905003690</td>
+                                <td>김정인</td>　
+                                <td>이명욱</td>　
+                                <td>1 센터</td>
+                                <td>이명욱</td>　
+                                <td>99344534</td>
+                                <td>1</td>
+                                <td>Y</td>
+                                <td>상품</td>
+                                <td></td>
+                                <td>신계약</td>
+                                <td></td>
+                                <td>Y</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="chkBox">
+                                        <input type="checkbox" name="chkGroup" id="chkone10" class="each_chk">
+                                        <label for="chkone10"></label>
+                                    </div>
+                                </td>
+                                <td>10</td>
+                                <td>2020-08-01 0:00</td>
+                                <td>ZERO 암보험갱신형</td>
+                                <td>201905003719</td>
+                                <td>민성일</td>　
+                                <td>김민정</td>　
+                                <td>5 센터</td>
+                                <td>김민정</td>　
+                                <td>99343001</td>
+                                <td>0</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>신계약</td>
+                                <td>N</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="chkBox">
+                                        <input type="checkbox" name="chkGroup" id="chkone11" class="each_chk">
+                                        <label for="chkone11"></label>
+                                    </div>
+                                </td>
+                                <td>11</td>
+                                <td>2020-08-01 0:00</td>
+                                <td>ZERO 암보험갱신형</td>
+                                <td>201905002108</td>
+                                <td>김민정</td>　
+                                <td>김민정</td>　
+                                <td>4 센터</td>
+                                <td>천일우</td>　
+                                <td>99308289</td>
+                                <td>2</td>
+                                <td>Y</td>
+                                <td>TMR</td>
+                                <td>2020-08-01</td>
+                                <td>신계약</td>
+                                <td>Y</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="chkBox">
+                                        <input type="checkbox" name="chkGroup" id="chkone12" class="each_chk">
+                                        <label for="chkone12"></label>
+                                    </div>
+                                </td>
+                                <td>12</td>
+                                <td>2020-08-01 0:00</td>
+                                <td>ZERO 암보험갱신형</td>
+                                <td>201905002108</td>
+                                <td>김민정</td>　
+                                <td>김민정</td>　
+                                <td>4 센터</td>
+                                <td>천일우</td>　
+                                <td>99308289</td>
+                                <td>2</td>
+                                <td>Y</td>
+                                <td>TMR</td>
+                                <td>2020-08-01</td>
+                                <td>신계약</td>
+                                <td>Y</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="chkBox">
+                                        <input type="checkbox" name="chkGroup" id="chkone13" class="each_chk">
+                                        <label for="chkone13"></label>
+                                    </div>
+                                </td>
+                                <td>12</td>
+                                <td>2020-08-01 0:00</td>
+                                <td>ZERO 암보험갱신형</td>
+                                <td>201905002108</td>
+                                <td>김민정</td>　
+                                <td>김민정</td>　
+                                <td>4 센터</td>
+                                <td>천일우</td>　
+                                <td>99308289</td>
+                                <td>2</td>
+                                <td>Y</td>
+                                <td>TMR</td>
+                                <td>2020-08-01</td>
+                                <td>신계약</td>
+                                <td>Y</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="chkBox">
+                                        <input type="checkbox" name="chkGroup" id="chkone14" class="each_chk">
+                                        <label for="chkone14"></label>
+                                    </div>
+                                </td>
+                                <td>12</td>
+                                <td>2020-08-01 0:00</td>
+                                <td>ZERO 암보험갱신형</td>
+                                <td>201905002108</td>
+                                <td>김민정</td>　
+                                <td>김민정</td>　
+                                <td>4 센터</td>
+                                <td>천일우</td>　
+                                <td>99308289</td>
+                                <td>2</td>
+                                <td>Y</td>
+                                <td>TMR</td>
+                                <td>2020-08-01</td>
+                                <td>신계약</td>
+                                <td>Y</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="chkBox">
+                                        <input type="checkbox" name="chkGroup" id="chkone15" class="each_chk">
+                                        <label for="chkone15"></label>
+                                    </div>
+                                </td>
+                                <td>12</td>
+                                <td>2020-08-01 0:00</td>
+                                <td>ZERO 암보험갱신형</td>
+                                <td>201905002108</td>
+                                <td>김민정</td>　
+                                <td>김민정</td>　
+                                <td>4 센터</td>
+                                <td>천일우</td>　
+                                <td>99308289</td>
+                                <td>2</td>
+                                <td>Y</td>
+                                <td>TMR</td>
+                                <td>2020-08-01</td>
+                                <td>신계약</td>
+                                <td>Y</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="chkBox">
+                                        <input type="checkbox" name="chkGroup" id="chkone16" class="each_chk">
+                                        <label for="chkone16"></label>
+                                    </div>
+                                </td>
+                                <td>12</td>
+                                <td>2020-08-01 0:00</td>
+                                <td>ZERO 암보험갱신형</td>
+                                <td>201905002108</td>
+                                <td>김민정</td>　
+                                <td>김민정</td>　
+                                <td>4 센터</td>
+                                <td>천일우</td>　
+                                <td>99308289</td>
+                                <td>2</td>
+                                <td>Y</td>
+                                <td>TMR</td>
+                                <td>2020-08-01</td>
+                                <td>신계약</td>
+                                <td>Y</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="chkBox">
+                                        <input type="checkbox" name="chkGroup" id="chkone17" class="each_chk">
+                                        <label for="chkone17"></label>
+                                    </div>
+                                </td>
+                                <td>12</td>
+                                <td>2020-08-01 0:00</td>
+                                <td>ZERO 암보험갱신형</td>
+                                <td>201905002108</td>
+                                <td>김민정</td>　
+                                <td>김민정</td>　
+                                <td>4 센터</td>
+                                <td>천일우</td>　
+                                <td>99308289</td>
+                                <td>2</td>
+                                <td>Y</td>
+                                <td>TMR</td>
+                                <td>2020-08-01</td>
+                                <td>신계약</td>
+                                <td>Y</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="chkBox">
+                                        <input type="checkbox" name="chkGroup" id="chkone18" class="each_chk">
+                                        <label for="chkone18"></label>
+                                    </div>
+                                </td>
+                                <td>12</td>
+                                <td>2020-08-01 0:00</td>
+                                <td>ZERO 암보험갱신형</td>
+                                <td>201905002108</td>
+                                <td>김민정</td>　
+                                <td>김민정</td>　
+                                <td>4 센터</td>
+                                <td>천일우</td>　
+                                <td>99308289</td>
+                                <td>2</td>
+                                <td>Y</td>
+                                <td>TMR</td>
+                                <td>2020-08-01</td>
+                                <td>신계약</td>
+                                <td>Y</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="chkBox">
+                                        <input type="checkbox" name="chkGroup" id="chkone19" class="each_chk">
+                                        <label for="chkone19"></label>
+                                    </div>
+                                </td>
+                                <td>12</td>
+                                <td>2020-08-01 0:00</td>
+                                <td>ZERO 암보험갱신형</td>
+                                <td>201905002108</td>
+                                <td>김민정</td>　
+                                <td>김민정</td>　
+                                <td>4 센터</td>
+                                <td>천일우</td>　
+                                <td>99308289</td>
+                                <td>2</td>
+                                <td>Y</td>
+                                <td>TMR</td>
+                                <td>2020-08-01</td>
+                                <td>신계약</td>
+                                <td>Y</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="chkBox">
+                                        <input type="checkbox" name="chkGroup" id="chkone20" class="each_chk">
+                                        <label for="chkone20"></label>
+                                    </div>
+                                </td>
+                                <td>12</td>
+                                <td>2020-08-01 0:00</td>
+                                <td>ZERO 암보험갱신형</td>
+                                <td>201905002108</td>
+                                <td>김민정</td>　
+                                <td>김민정</td>　
+                                <td>4 센터</td>
+                                <td>천일우</td>　
+                                <td>99308289</td>
+                                <td>2</td>
+                                <td>Y</td>
+                                <td>TMR</td>
+                                <td>2020-08-01</td>
+                                <td>신계약</td>
+                                <td>Y</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="chkBox">
+                                        <input type="checkbox" name="chkGroup" id="chkone21" class="each_chk">
+                                        <label for="chkone21"></label>
+                                    </div>
+                                </td>
+                                <td>12</td>
+                                <td>2020-08-01 0:00</td>
+                                <td>ZERO 암보험갱신형</td>
+                                <td>201905002108</td>
+                                <td>김민정</td>　
+                                <td>김민정</td>　
+                                <td>4 센터</td>
+                                <td>천일우</td>　
+                                <td>99308289</td>
+                                <td>2</td>
+                                <td>Y</td>
+                                <td>TMR</td>
+                                <td>2020-08-01</td>
+                                <td>신계약</td>
+                                <td>Y</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="chkBox">
+                                        <input type="checkbox" name="chkGroup" id="chkone22" class="each_chk">
+                                        <label for="chkone22"></label>
+                                    </div>
+                                </td>
+                                <td>12</td>
+                                <td>2020-08-01 0:00</td>
+                                <td>ZERO 암보험갱신형</td>
+                                <td>201905002108</td>
+                                <td>김민정</td>　
+                                <td>김민정</td>　
+                                <td>4 센터</td>
+                                <td>천일우</td>　
+                                <td>99308289</td>
+                                <td>2</td>
+                                <td>Y</td>
+                                <td>TMR</td>
+                                <td>2020-08-01</td>
+                                <td>신계약</td>
+                                <td>Y</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="chkBox">
+                                        <input type="checkbox" name="chkGroup" id="chkone23" class="each_chk">
+                                        <label for="chkone23"></label>
+                                    </div>
+                                </td>
+                                <td>12</td>
+                                <td>2020-08-01 0:00</td>
+                                <td>ZERO 암보험갱신형</td>
+                                <td>201905002108</td>
+                                <td>김민정</td>　
+                                <td>김민정</td>　
+                                <td>4 센터</td>
+                                <td>천일우</td>　
+                                <td>99308289</td>
+                                <td>2</td>
+                                <td>Y</td>
+                                <td>TMR</td>
+                                <td>2020-08-01</td>
+                                <td>신계약</td>
+                                <td>Y</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="chkBox">
+                                        <input type="checkbox" name="chkGroup" id="chkone24" class="each_chk">
+                                        <label for="chkone24"></label>
+                                    </div>
+                                </td>
+                                <td>12</td>
+                                <td>2020-08-01 0:00</td>
+                                <td>ZERO 암보험갱신형</td>
+                                <td>201905002108</td>
+                                <td>김민정</td>　
+                                <td>김민정</td>　
+                                <td>4 센터</td>
+                                <td>천일우</td>　
+                                <td>99308289</td>
+                                <td>2</td>
+                                <td>Y</td>
+                                <td>TMR</td>
+                                <td>2020-08-01</td>
+                                <td>신계약</td>
+                                <td>Y</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="chkBox">
+                                        <input type="checkbox" name="chkGroup" id="chkone25" class="each_chk">
+                                        <label for="chkone25"></label>
+                                    </div>
+                                </td>
+                                <td>12</td>
+                                <td>2020-08-01 0:00</td>
+                                <td>ZERO 암보험갱신형</td>
+                                <td>201905002108</td>
+                                <td>김민정</td>　
+                                <td>김민정</td>　
+                                <td>4 센터</td>
+                                <td>천일우</td>　
+                                <td>99308289</td>
+                                <td>2</td>
+                                <td>Y</td>
+                                <td>TMR</td>
+                                <td>2020-08-01</td>
+                                <td>신계약</td>
+                                <td>Y</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
                     <!-- [D] 체크박스 선택 시 대상, 취소 버튼에 addclass('on')해주면 활성화되며 체크 해제 시 다시 비활성화됨 -->
                     <!-- [D] 대상(.btn_target)버튼 클릭 시 선택목록들 대상 지정 -->
                     <!-- [D] 취소(.btn_cancel)버튼 클릭 시 취소확인팝업(#lyr_qaTarget_cancel) 등장 -->
@@ -1052,7 +1024,7 @@
                         <a href="#none" class="btn_target_set">대상설정</a>
                     </div>
                 </div>
-                <!-- //.stnArea -->
+                <!-- //.dataTableBox -->
             </div>
             <!-- //.tab_content -->
         </div>
@@ -1081,114 +1053,153 @@
 </div>
 <!-- //QA 대상 취소 -->
 
-<!-- script -->
+<!---------------------- Local Resources ---------------------->
+<!-- Local CSS -->
+<link rel="stylesheet" href="../resources/css/bootstrap.css"/>
+<link rel="stylesheet" href="../resources/css/bootstrap-datetimepicker.css"/>
+<!-- //datetimepicker -->
+<link rel="stylesheet" href="../resources/css/datatables.min.css">
+<link rel="stylesheet" href="../resources/css/buttons.dataTables.min.css">
+<!-- //datatables -->
+<link rel="stylesheet" href="../resources/css/stt_tm_qa.css">
+
+<!-- Local Script Library -->
+<script src="../resources/js/bootstrap-datetimepicker.js"></script>
+<script src="../resources/js/moment.min.js"></script>
+<script src="../resources/js/ko.js"></script>
+<!-- //datetimepicker -->
+<script src="../resources/js/datatables.min.js"></script>
+<script src="../resources/js/dataTables.fixedColumns.min.js"></script>
+<script src="../resources/js/dataTables.buttons.min.js"></script>
+<script src="../resources/js/buttons.html5.min.js"></script>
+<script src="../resources/js/jszip.min.js"></script>
+<!-- //datatables -->
+
+<!-- Local Script -->
 <script type="text/javascript">
-$(document).ready(function(){
-    // datetimepicker 렌더링
-    $('#fromDate').datetimepicker({
-        language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
-        format: 'yyyy-mm-dd',  // 년-월-일 만 출
-        minView: 'month',
-        pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
-        defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
-        autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
-    });
-
-    $('#toDate').datetimepicker({
-        language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
-        format: 'yyyy-mm-dd',  // 년-월-일 만 출
-        minView: 'month',
-        pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
-        defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
-        autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
-    });
-
-    // datatable 렌더링
-    var table = $('.dataTable').DataTable({
-        dom: 't<"bottom"iB>', // 옵션 위치 지정
-        language: { // 테이블 목록 건수 text 한글 설정
-            emptyTable: "조회된 데이터가 없습니다.", // 데이터 없을 경우 노출되는 text 설정
-            infoEmpty: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>0</strong> 건&rbrack;",
-            info: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>0</strong> 건&rbrack;",
-        },
-        responsive: true, // 반응형 허용
-        order: [[ 7, 'asc' ]], // 초기 sort 설정
-        paging: false, // 페이징 허용
-        lengthMenu: false, // 페이지 당 보여질 목록 갯수 select 범위 지정
-        scrollY: "630px", // 세로 스크롤 허용, 사이즈
-        scrollX: true, //가로 스크롤 허용
-        scrollCollapse: true,
-        columnDefs: [ // 컬럼별 옵션 사용 지정
-            {targets: [0, 1], sortable: false},
-            {targets: [3, 4, 5, 6, 8, 9, 14, 15, 16], orderable: false}
-        ],
-        buttons: [{
-            extend: 'excelHtml5',
-            text: 'Excel 다운로드',
-        }],
-    });
-
-    // 왼쪽 2열 고정
-    new $.fn.dataTable.FixedColumns(table, {
-        leftColumns: 2,
-    });
-
-    // 다른 열에서 sort되어도 1열 순번은 그대로 유지
-    table.on('order.dt search.dt', function(){
-        table.column(1, {search:'applied', order:'applied'}).nodes().each(function (cell, i){
-            cell.innerHTML = i+1;
+jQuery.event.add(window,"load",function(){
+    $(document).ready(function(){
+        // datetimepicker 렌더링
+        $('#fromDate').datetimepicker({
+            language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
+            format: 'yyyy-mm-dd',  // 년-월-일 만 출
+            minView: 'month',
+            pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
+            defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
+            autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
         });
-    }).draw();
 
-    // 데이터 테이블스에서 input 체크가 정상적으로 되지 않아 작성된 코드
-    // 전체 선택 클릭 시 (dataTables_scrollHead에서 상태를 받아와서 DTFC_Cloned에 적용)
-    $('.all_chk').on('click', $('.dataTables_scrollHead'), function(){
-        var thisName = $(this).attr('name');
-        var check = $(this).prop('checked');
-        var $this = $('.DTFC_Cloned .all_chk[name=\''+thisName+'\']');
-        var $childCheck = $('.each_chk[name=\''+thisName+'\']');
+        $('#toDate').datetimepicker({
+            language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
+            format: 'yyyy-mm-dd',  // 년-월-일 만 출
+            minView: 'month',
+            pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
+            defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
+            autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
+        });
 
-        if ( check == false ) { // 전체선택 체크가 false이면 자식들도 false
-            $this.prop('checked', false);
-            $childCheck.prop('checked', false);
-            $('.btn_target, .btn_cancel').removeClass('on');
-        } else { // 전체선택 체크가 true이면 자식들도 true
-            $this.prop('checked', true);
-            $childCheck.prop('checked', true);
-            $('.btn_target, .btn_cancel').addClass('on');
-        }
-    });
+        // datatable 렌더링
+        var table = $('.dataTable').DataTable({
+            dom: 't<"bottom"iB>', // 옵션 위치 지정
+            language: { // 테이블 목록 건수 text 한글 설정
+                emptyTable: "조회된 데이터가 없습니다.", // 데이터 없을 경우 노출되는 text 설정
+                infoEmpty: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>0</strong> 건&rbrack;",
+                info: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>0</strong> 건&rbrack;",
+            },
+            responsive: true, // 반응형 허용
+            order: [[ 7, 'asc' ]], // 초기 sort 설정
+            paging: false, // 페이징 허용
+            lengthMenu: false, // 페이지 당 보여질 목록 갯수 select 범위 지정
+            scrollY: "630px", // 세로 스크롤 허용, 사이즈
+            scrollX: true, //가로 스크롤 허용
+            scrollCollapse: true,
+            columnDefs: [ // 컬럼별 width, 옵션 사용 지정
+                {targets: [0], width: "50px", orderable: false, sortable: false},  // 체크박스
+                {targets: [1], width: "50px", orderable: false},                   // NO
+                {targets: [2], width: "120px"},                                    // 청약일자
+                {targets: [3], width: "150px", orderable: false},                  // 상품명
+                {targets: [4], width: "120px", orderable: false},                  // 증권번호
+                {targets: [5], width: "100px", orderable: false},                  // 계약자
+                {targets: [6], width: "100px", orderable: false},                  // 피보험자
+                {targets: [7], width: "100px"},                                    // 센터
+                {targets: [8], width: "100px", orderable: false},                  // 상담원
+                {targets: [9], width: "100px", orderable: false},                  // 사번
+                {targets: [10], width: "80px"},                                   // TA점수
+                {targets: [11], width: "80px"},                                   // 대상
+                {targets: [12], width: "100px"},                                   // 대상내용
+                {targets: [13], width: "120px"},                                   // QA요청일자
+                {targets: [14], width: "100px", orderable: false},                 // 청약상태
+                {targets: [15], width: "80px", orderable: false},                 // 번들유무
+                {targets: [16], width: "100px", orderable: false},                 // 상품발송안내
+            ],
+            buttons: [{
+                extend: 'excelHtml5',
+                text: 'Excel 다운로드',
+            }],
+        });
 
-    // 개별 체크박스 클릭 시 (dataTables_scrollBody에서 상태를 받아와서 DTFC_Cloned에 적용)
-    $('.each_chk').on('click', $('.dataTables_scrollBody'), function(){
-        var $thisCheckbox = $(this);
-        var thisName = $thisCheckbox.attr('name');
-        var thisId = $thisCheckbox.attr('id');
-        var $this = $('.DTFC_Cloned .each_chk[id=\''+thisId+'\']');
-        var check = $thisCheckbox.prop('checked');
+        // 왼쪽 2열 고정
+        new $.fn.dataTable.FixedColumns(table, {
+            leftColumns: 2,
+        });
 
-        if ( check == false ) {
-            $this.prop('checked',false);
-        } else {
-            $this.prop('checked', true);
-            $('.btn_target, .btn_cancel').addClass('on');
-        }
+        // 다른 열에서 sort되어도 1열 순번은 그대로 유지
+        table.on('order.dt search.dt', function(){
+            table.column(1, {search:'applied', order:'applied'}).nodes().each(function (cell, i){
+                cell.innerHTML = i+1;
+            });
+        }).draw();
 
-        var checkboxes = $('.DTFC_Cloned .each_chk[name=\''+thisName+'\']');
-        var $allCheck = $('.DTFC_Cloned .all_chk[name=\''+thisName+'\']');
-        var length = checkboxes.length;
+        // 데이터 테이블스에서 input 체크가 정상적으로 되지 않아 작성된 코드
+        // 전체 선택 클릭 시 (dataTables_scrollHead에서 상태를 받아와서 DTFC_Cloned에 적용)
+        $('.all_chk').on('click', $('.dataTables_scrollHead'), function(){
+            var thisName = $(this).attr('name');
+            var check = $(this).prop('checked');
+            var $this = $('.DTFC_Cloned .all_chk[name=\''+thisName+'\']');
+            var $childCheck = $('.each_chk[name=\''+thisName+'\']');
 
-        // 자식 중 체크 false가 있으면 전체선택 false
-        for (var i=0; i<checkboxes.length; i++) {
-            if ( checkboxes[i].checked == false ) {
-                $allCheck.prop('checked', false);
+            if ( check == false ) { // 전체선택 체크가 false이면 자식들도 false
+                $this.prop('checked', false);
+                $childCheck.prop('checked', false);
                 $('.btn_target, .btn_cancel').removeClass('on');
-                return;
+            } else { // 전체선택 체크가 true이면 자식들도 true
+                $this.prop('checked', true);
+                $childCheck.prop('checked', true);
+                $('.btn_target, .btn_cancel').addClass('on');
             }
-        }
-        // 자식 중 체크 false가 없으면 전체선택 true
-        $allCheck.prop('checked', true);
-        $('.btn_target, .btn_cancel').addClass('on');
+        });
+
+        // 개별 체크박스 클릭 시 (dataTables_scrollBody에서 상태를 받아와서 DTFC_Cloned에 적용)
+        $('.each_chk').on('click', $('.dataTables_scrollBody'), function(){
+            var $thisCheckbox = $(this);
+            var thisName = $thisCheckbox.attr('name');
+            var thisId = $thisCheckbox.attr('id');
+            var $this = $('.DTFC_Cloned .each_chk[id=\''+thisId+'\']');
+            var check = $thisCheckbox.prop('checked');
+
+            if ( check == false ) {
+                $this.prop('checked',false);
+            } else {
+                $this.prop('checked', true);
+                $('.btn_target, .btn_cancel').addClass('on');
+            }
+
+            var checkboxes = $('.DTFC_Cloned .each_chk[name=\''+thisName+'\']');
+            var $allCheck = $('.DTFC_Cloned .all_chk[name=\''+thisName+'\']');
+            var length = checkboxes.length;
+
+            // 자식 중 체크 false가 있으면 전체선택 false
+            for (var i=0; i<checkboxes.length; i++) {
+                if ( checkboxes[i].checked == false ) {
+                    $allCheck.prop('checked', false);
+                    $('.btn_target, .btn_cancel').removeClass('on');
+                    return;
+                }
+            }
+            // 자식 중 체크 false가 없으면 전체선택 true
+            $allCheck.prop('checked', true);
+            $('.btn_target, .btn_cancel').addClass('on');
+        });
     });
 });
 </script>

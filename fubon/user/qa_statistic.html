@@ -4,32 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="format-detection" content="telephone=no">
 
-<!-- css -->
-<!-- datetimepicker -->
-<link rel="stylesheet" href="../resources/css/bootstrap.css"/>
-<link rel="stylesheet" href="../resources/css/bootstrap-datetimepicker.css"/>
-<!-- datatables -->
-<link rel="stylesheet" href="../resources/css/datatables.min.css">
-<link rel="stylesheet" href="../resources/css/buttons.dataTables.min.css">
-
+<!---------------------- General Resources ---------------------->
+<!-- General CSS -->
 <link rel="stylesheet" href="../resources/css/common.css">
-<link rel="stylesheet" href="../resources/css/stt_tm_qa.css">
 
-<!-- js -->
+<!-- General Script -->
 <script src="../resources/js/jquery-3.3.1.min.js"></script>
 <script src="../resources/js/jquery-migrate-3.3.0.min.js"></script>
-<!-- datetimepicker -->
-<script src="../resources/js/bootstrap-datetimepicker.js"></script>
-<script src="../resources/js/moment.min.js"></script>
-<script src="../resources/js/ko.js"></script>
-<!-- datatables -->
-<script src="../resources/js/datatables.min.js"></script>
-<script src="../resources/js/dataTables.fixedColumns.min.js"></script>
-<script src="../resources/js/dataTables.buttons.min.js"></script>
-<script src="../resources/js/buttons.html5.min.js"></script>
-<script src="../resources/js/jszip.min.js"></script>
-
 <script src="../resources/js/common.js"></script>
 
 <title>QAA 통계 || 푸본현대생명</title>
@@ -71,16 +54,16 @@
 
                 <ul class="sub">
                     <li>
-                        <a href="#none">Dashboard</a>
+                        <a href="home_dashboard.html">Dashboard</a>
                     </li>
                 </ul>
             </li>
-            <li class="current">
+            <li>
                 <h2>CS</h2>
 
                 <ul class="sub">
-                    <li class="current">
-                        <a href="#none">CS - STT 대상</a>
+                    <li>
+                        <a href="cs_stt.html">CS - STT 대상</a>
                     </li>
                 </ul>
             </li>
@@ -89,7 +72,7 @@
 
                 <ul class="sub">
                     <li>
-                        <a href="#none">TM - STT 대상</a>
+                        <a href="tm_stt.html">TM - STT 대상</a>
                     </li>
                 </ul>
             </li>
@@ -98,25 +81,25 @@
 
                 <ul class="sub">
                     <li>
-                        <a href="#none">QA 배정</a>
+                        <a href="tm_qa_target.html">QA 대상</a>
                     </li>
                     <li>
-                        <a href="#none">QA 심사리스트</a>
+                        <a href="tm_qa_assign1.html">QA 배정</a>
                     </li>
                     <li>
-                        <a href="#none">QA 결과</a>
+                        <a href="qa_result.html">QA 결과</a>
                     </li>
                 </ul>
             </li>
-            <li>
+            <li class="current">
                 <h2>통계</h2>
 
                 <ul class="sub">
                     <li>
-                        <a href="#none">상담원 통계</a>
+                        <a href="tmr_statistic.html">상담원 통계</a>
                     </li>
-                    <li>
-                        <a href="#none">심사자 통계</a>
+                    <li class="current">
+                        <a href="qa_statistic.html">심사자 통계</a>
                     </li>
                 </ul>
             </li>
@@ -240,18 +223,18 @@
 
                         <tbody>
                             <tr>
-                                <th>청약일자</th>
+                                <th scope="row">청약일자</th>
                                 <!-- [D] 처음 페이지 들어왔을때의 초기 날짜세팅: 1일자부터 현재날짜 -->
                                 <!-- [D] 월 변경 시 다시 1일부터 세팅 -->
                                 <td>
                                     <div class="iptBox">
-                                        <input type="text" id="fromDate" class="iptDate">
+                                        <input type="text" id="fromDate" class="iptDateTime">
                                         <span>&hyphen;</span>
-                                        <input type="text" id="toDate" class="iptDate">
+                                        <input type="text" id="toDate" class="iptDateTime">
                                     </div>
                                 </td>
 
-                                <th>담담QA</th>
+                                <th scope="row">담담QA</th>
                                 <td>
                                     <div class="sltBox custom">
                                         <select class="select">
@@ -871,84 +854,108 @@
 </div>
 <!-- //탭 전체삭제 확인 팝업 -->
 
-<!-- script -->
+<!---------------------- Local Resources ---------------------->
+<!-- Local CSS -->
+<link rel="stylesheet" href="../resources/css/bootstrap.css"/>
+<link rel="stylesheet" href="../resources/css/bootstrap-datetimepicker.css"/>
+<!-- //datetimepicker -->
+<link rel="stylesheet" href="../resources/css/datatables.min.css">
+<link rel="stylesheet" href="../resources/css/buttons.dataTables.min.css">
+<!-- //datatables -->
+<link rel="stylesheet" href="../resources/css/stt_tm_qa.css">
+
+<!-- Local Script Library -->
+<script src="../resources/js/bootstrap-datetimepicker.js"></script>
+<script src="../resources/js/moment.min.js"></script>
+<script src="../resources/js/ko.js"></script>
+<!-- //datetimepicker -->
+<script src="../resources/js/datatables.min.js"></script>
+<script src="../resources/js/dataTables.fixedColumns.min.js"></script>
+<script src="../resources/js/dataTables.buttons.min.js"></script>
+<script src="../resources/js/buttons.html5.min.js"></script>
+<script src="../resources/js/jszip.min.js"></script>
+<!-- //datatables -->
+
+<!-- Local Script -->
 <script type="text/javascript">
-$(document).ready(function(){
-    // datetimepicker 렌더링
-    $('#fromDate').datetimepicker({
-        language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
-        format: 'yyyy-mm-dd',  // 년-월-일 만 출
-        minView: 'month',
-        pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
-        defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
-        autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
-    });
-
-    $('#toDate').datetimepicker({
-        language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
-        format: 'yyyy-mm-dd',  // 년-월-일 만 출
-        minView: 'month',
-        pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
-        defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
-        autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
-    });
-
-    // datatable 렌더링
-    var table = $('.dataTable').DataTable({
-        dom: 't<"bottom"B>', // 옵션 위치 지정
-        language: { // 테이블 목록 건수 text 한글 설정
-            emptyTable: "조회된 데이터가 없습니다.", // 데이터 없을 경우 노출되는 text 설정
-            paginate: {
-                first: "",
-                previous: "",
-                next: "",
-                last: ""
-            },
-        },
-        responsive: true, // 반응형 허용
-        order: [[ 1, 'asc' ]], // 초기 sort 설정
-        info: false,
-        paging: false, // 페이징 허용
-        pagingType: "full_numbers", // 페이징 버튼 구성 (처음, 이전, 페이지숫자, 다음, 마지막)
-        scrollY: "600px", // 세로 스크롤 허용, 사이즈
-        scrollX: true, //가로 스크롤 허용
-        scrollCollapse: true,
-        columnDefs: [ // 컬럼별 width, 옵션 사용 지정
-            {targets: [0], width: "50px", sortable: false},                    // NO
-            {targets: [1], width: "100px", sortable: false},                   // 청약일자
-            {targets: [2], width: "100px", orderable: false},                  // 담당 QA
-            {targets: [3], width: "100px", orderable: false},                  // 처리건수
-            {targets: [4], width: "100px", orderable: false},                  // 계약자수
-            {targets: [5], width: "120px"},                                    // 처리시간
-            {targets: [6], width: "120px"},                                    // TA 점수(총)
-            {targets: [7], width: "120px"},                                    // TA 점수(평균)
-            {targets: [8], width: "120px"},                                    // 콜타임
-            {targets: [9], width: "120px"},                                    // QA 점수
-            {targets: [10], width: "120px"},                                   // QA 점수(평균)
-            {targets: [11], width: "120px"},                                   // 수용건
-            {targets: [12], width: "120px"},                                   // 불수용건
-            {targets: [13], width: "120px"},                                   // 부분수용건
-            {targets: [14], width: "120px"},                                   // 타부서 검필요토
-            {targets: [15], width: "120px", orderable: false},                 // 단순문의답변
-        ],
-        buttons: [{
-            extend: 'excelHtml5',
-            text: 'Excel 다운로드',
-        }]
-    });
-
-    new $.fn.dataTable.FixedColumns(table, {
-        fixedColumns: { // 왼쪽 1열 고정
-            leftColumns: 1,
-        }
-    });
-
-    // 다른 열에서 sort되어도 1열 순번은 그대로 유지
-    table.on('order.dt search.dt', function(){
-        table.column(0, {search:'applied', order:'applied'}).nodes().each(function (cell, i){
-            cell.innerHTML = i+1;
+jQuery.event.add(window,"load",function(){
+    $(document).ready(function(){
+        // datetimepicker 렌더링
+        $('#fromDate').datetimepicker({
+            language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
+            format: 'yyyy-mm-dd',  // 년-월-일 만 출
+            minView: 'month',
+            pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
+            defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
+            autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
         });
-    }).draw();
+
+        $('#toDate').datetimepicker({
+            language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
+            format: 'yyyy-mm-dd',  // 년-월-일 만 출
+            minView: 'month',
+            pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
+            defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
+            autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
+        });
+
+        // datatable 렌더링
+        var table = $('.dataTable').DataTable({
+            dom: 't<"bottom"B>', // 옵션 위치 지정
+            language: { // 테이블 목록 건수 text 한글 설정
+                emptyTable: "조회된 데이터가 없습니다.", // 데이터 없을 경우 노출되는 text 설정
+                paginate: {
+                    first: "",
+                    previous: "",
+                    next: "",
+                    last: ""
+                },
+            },
+            responsive: true, // 반응형 허용
+            order: [[ 1, 'asc' ]], // 초기 sort 설정
+            info: false,
+            paging: false, // 페이징 허용
+            pagingType: "full_numbers", // 페이징 버튼 구성 (처음, 이전, 페이지숫자, 다음, 마지막)
+            scrollY: "600px", // 세로 스크롤 허용, 사이즈
+            scrollX: true, //가로 스크롤 허용
+            scrollCollapse: true,
+            columnDefs: [ // 컬럼별 width, 옵션 사용 지정
+                {targets: [0], width: "50px", sortable: false},                    // NO
+                {targets: [1], width: "100px", sortable: false},                   // 청약일자
+                {targets: [2], width: "100px", orderable: false},                  // 담당 QA
+                {targets: [3], width: "100px", orderable: false},                  // 처리건수
+                {targets: [4], width: "100px", orderable: false},                  // 계약자수
+                {targets: [5], width: "120px"},                                    // 처리시간
+                {targets: [6], width: "120px"},                                    // TA 점수(총)
+                {targets: [7], width: "120px"},                                    // TA 점수(평균)
+                {targets: [8], width: "120px"},                                    // 콜타임
+                {targets: [9], width: "120px"},                                    // QA 점수
+                {targets: [10], width: "120px"},                                   // QA 점수(평균)
+                {targets: [11], width: "120px"},                                   // 수용건
+                {targets: [12], width: "120px"},                                   // 불수용건
+                {targets: [13], width: "120px"},                                   // 부분수용건
+                {targets: [14], width: "120px"},                                   // 타부서 검필요토
+                {targets: [15], width: "120px", orderable: false},                 // 단순문의답변
+            ],
+            buttons: [{
+                extend: 'excelHtml5',
+                text: 'Excel 다운로드',
+            }]
+        });
+
+        new $.fn.dataTable.FixedColumns(table, {
+            fixedColumns: { // 왼쪽 1열 고정
+                leftColumns: 1,
+            }
+        });
+
+        // 다른 열에서 sort되어도 1열 순번은 그대로 유지
+        table.on('order.dt search.dt', function(){
+            table.column(0, {search:'applied', order:'applied'}).nodes().each(function (cell, i){
+                cell.innerHTML = i+1;
+            });
+        }).draw();
+    });
 });
 </script>
 </body>

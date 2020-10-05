@@ -4,18 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="format-detection" content="telephone=no">
 
-<!-- css -->
-<link rel="stylesheet" href="../resources/css/jquery.tree-multiselect.min.css">
+<!---------------------- General Resources ---------------------->
+<!-- General CSS -->
 <link rel="stylesheet" href="../resources/css/common.css">
-<link rel="stylesheet" href="../resources/css/popup.css">
-<link rel="stylesheet" href="../resources/css/popup.css">
 
-<!-- js -->
+<!-- General Script -->
 <script src="../resources/js/jquery-3.3.1.min.js"></script>
 <script src="../resources/js/jquery-migrate-3.3.0.min.js"></script>
-<script src="../resources/js/jquery.tree-multiselect.js"></script>
-
 <script src="../resources/js/common.js"></script>
 
 <title>TM QA 대상 지정 || 푸본현대생명</title>
@@ -248,31 +245,43 @@
 </div>
 <!-- //QA 대상 지정상태 저장 -->
 
-<!-- script -->
+<!---------------------- Local Resources ---------------------->
+<!-- Local CSS -->
+<link rel="stylesheet" href="../resources/css/jquery.tree-multiselect.min.css">
+<!-- //multiselect -->
+<link rel="stylesheet" href="../resources/css/popup.css">
+
+<!-- Local Script Library -->
+<script src="../resources/js/jquery.tree-multiselect.js"></script>
+<!-- //multiselect -->
+
+<!-- Local Script -->
 <script type="text/javascript">
-$(document).ready(function(){
-    // QA 대상 지정 총 건수 자동 합계
-    var caseSum = 0;
-    $('.target_setArea .set_condition dt .iptBox input').each(function(){
-        caseSum += Number($(this).val());
-        $('.qa_total_case').text(caseSum);
-    });
+jQuery.event.add(window,"load",function(){
+    $(document).ready(function(){
+        // QA 대상 지정 총 건수 자동 합계
+        var caseSum = 0;
+        $('.target_setArea .set_condition dt .iptBox input').each(function(){
+            caseSum += Number($(this).val());
+            $('.qa_total_case').text(caseSum);
+        });
 
-    // tree multiselect
-    $('#treeSelector1').treeMultiselect({
-        startCollapsed: 'false',
-        sectionDelimiter: '-',
-    });
-    $('#treeSelector2').treeMultiselect({
-        startCollapsed: 'false',
-        sectionDelimiter: '-',
-    });
-    $('.tree-multiselect > div').addClass('sltArea');
+        // tree multiselect
+        $('#treeSelector1').treeMultiselect({
+            startCollapsed: 'false',
+            sectionDelimiter: '-',
+        });
+        $('#treeSelector2').treeMultiselect({
+            startCollapsed: 'false',
+            sectionDelimiter: '-',
+        });
+        $('.tree-multiselect > div').addClass('sltArea');
 
-    // ie 호환 체크박스
-    $('input.section').each(function(i){
-        $(this).attr('id', 'chkbox' + i + 1);
-        $(this).siblings('label').attr('for', 'chkbox' + i + 1);
+        // ie 호환 체크박스
+        $('input.section').each(function(i){
+            $(this).attr('id', 'chkbox' + i + 1);
+            $(this).siblings('label').attr('for', 'chkbox' + i + 1);
+        });
     });
 });
 </script>
