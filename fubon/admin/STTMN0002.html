@@ -15,7 +15,7 @@
 <script src="../resources/js/jquery-migrate-3.3.0.min.js"></script>
 <script src="../resources/js/common.js"></script>
 
-<title>권한부여 || 푸본현대생명</title>
+<title>스크립트 구간관리 || 푸본현대생명</title>
 </head>
 <body>
 <!-- #wrap -->
@@ -119,10 +119,10 @@
                 <h2>관리설정</h2>
 
                 <ul class="sub">
-                    <li>
+                    <li class="current">
                         <a href="#none">표준 스크립트 관리</a>
                         <ul class="third">
-                            <li>
+                            <li class="current">
                                 <a href="#none">상품 스크립트 관리</a>
                             </li>
                             <li>
@@ -148,10 +148,10 @@
                     <li>
                         <a href="#none">시뮬레이션 화면</a>
                     </li>
-                    <li class="current">
+                    <li>
                         <a href="#none">사용자 관리</a>
                         <ul class="third">
-                            <li class="current">
+                            <li>
                                 <a href="STTMN0009.html">권한 부여</a>
                             </li>
                             <li>
@@ -213,31 +213,53 @@
 
             <!-- .tab_content -->
             <div class="tab_content">
-                <h3>사용자 권한 관리</h3>
+                <h3>표준스크립트 관리</h3>
 
-                <!-- [D] 사용자 추가 버튼(.btn_user_add)클릭 시 사용자 추가 팝업(STTMN0009P1.html) 열어야함 -->
+                <!-- [D] 분류 코드 관리 버튼(.btn_code_manage)클릭 시 분류 코드 관리 팝업(STTMN0002P1.html) 열어야함 -->
+                <!-- [D] 표준스크립트 등록 버튼(.btn_gnrScript_register)클릭 시 표준스크립트 등록 팝업(STTMN0002P2.html) 열어야함 -->
                 <div class="btnBox">
-                    <a href="#none" class="btn_user_add">사용자 추가</a>
+                    <a href="#none" class="btn_code_manage">분류 코드 관리</a>
+                    <a href="#none" class="btn_gnrScript_rgst">표준스크립트 등록</a>
                 </div>
 
                 <!-- .srchArea -->
                 <div class="srchArea">
-                    <table class="tbl_line_view" summary="사용자ID, 사용자명으로 구성">
+                    <table class="tbl_line_view" summary="적용일자, 대분류, 중분류, 소분류로 구성">
                         <caption class="hide">검색조건</caption>
                         <colgroup>
                             <col width="100"><col width="310"><col width="100"><col>
+                            <col width="100"><col><col width="100"><col>
                         </colgroup>
 
                         <tbody>
                             <tr>
-                                <th scope="row">사용자ID</th>
+                                <th scope="row">적용일자</th>
+                                <td>
+                                    <div class="iptBox">
+                                        <input type="text" id="fromDate" class="iptDateTime">
+                                        <span>&hyphen;</span>
+                                        <input type="text" id="toDate" class="iptDateTime">
+                                    </div>
+                                </td>
+                                
+                                <th scope="row">대분류</th>
+                                <td>
+                                    <select class="select">
+                                        <option value="">전체</option>
+                                        <option value="">대분류옵션</option>
+                                        <option value="">대분류옵션</option>
+                                        <option value="">대분류옵션</option>
+                                    </select>
+                                </td>
+
+                                <th scope="row">중분류</th>
                                 <td>
                                     <div class="iptBox">
                                         <input type="text">
                                     </div>
                                 </td>
-
-                                <th scope="row">사용자명</th>
+                                
+                                <th scope="row">소분류</th>
                                 <td>
                                     <div class="iptBox">
                                         <input type="text">
@@ -379,11 +401,18 @@
 
 <!---------------------- Local Resources ---------------------->
 <!-- Local CSS -->
+<link rel="stylesheet" href="../resources/css/bootstrap.css"/>
+<link rel="stylesheet" href="../resources/css/bootstrap-datetimepicker.css"/>
+<!-- //datetimepicker -->
 <link rel="stylesheet" href="../resources/css/datatables.min.css">
 <!-- //datatables -->
 <link rel="stylesheet" href="../resources/css/stt_tm_qa.css">
 
 <!-- Local Script Library -->
+<script src="../resources/js/bootstrap-datetimepicker.js"></script>
+<script src="../resources/js/moment.min.js"></script>
+<script src="../resources/js/ko.js"></script>
+<!-- //datetimepicker -->
 <script src="../resources/js/datatables.min.js"></script>
 <!-- //datatables -->
 
@@ -391,6 +420,26 @@
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
+        // datetimepicker 렌더링
+        $('#fromDate').datetimepicker({
+            language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
+            format: 'yyyy-mm-dd',  // 년-월-일 만 출
+            minView: 'month',
+            pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
+            defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
+            autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
+        });
+
+        $('#toDate').datetimepicker({
+            language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
+            format: 'yyyy-mm-dd',  // 년-월-일 만 출
+            minView: 'month',
+            pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
+            defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
+            autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
+        });
+        
+        // datatables 렌더링
         var table = $('.dataTable').DataTable({
             dom: 't<"bottom"p>', // 옵션 위치 지정
             language: { // 테이블 목록 건수 text 한글 설정
