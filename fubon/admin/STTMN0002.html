@@ -180,7 +180,7 @@
     <!-- #container -->
     <div id="container">
         <!-- #contents -->
-        <div id="contents" class="admin right_manage">
+        <div id="contents" class="admin">
             <!-- .tab_title -->
             <div class="tab_title">
                 <div class="tab_list_wrap">
@@ -224,24 +224,15 @@
 
                 <!-- .srchArea -->
                 <div class="srchArea">
-                    <table class="tbl_line_view" summary="적용일자, 대분류, 중분류, 소분류로 구성">
+                    <table class="tbl_line_view" summary="대분류, 중분류, 소분류, 적용일자로 구성">
                         <caption class="hide">검색조건</caption>
                         <colgroup>
-                            <col width="100"><col width="310"><col width="100"><col>
                             <col width="100"><col><col width="100"><col>
+                            <col width="100"><col><col width="100"><col width="310">
                         </colgroup>
 
                         <tbody>
-                            <tr>
-                                <th scope="row">적용일자</th>
-                                <td>
-                                    <div class="iptBox">
-                                        <input type="text" id="fromDate" class="iptDateTime">
-                                        <span>&hyphen;</span>
-                                        <input type="text" id="toDate" class="iptDateTime">
-                                    </div>
-                                </td>
-                                
+                            <tr>                                
                                 <th scope="row">대분류</th>
                                 <td>
                                     <select class="select">
@@ -265,6 +256,15 @@
                                         <input type="text">
                                     </div>
                                 </td>
+                                
+                                <th scope="row">적용일자</th>
+                                <td>
+                                    <div class="iptBox">
+                                        <input type="text" id="fromDate" class="iptDateTime">
+                                        <span>&hyphen;</span>
+                                        <input type="text" id="toDate" class="iptDateTime">
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -278,118 +278,243 @@
                 <!-- .dataTableBox -->
                 <div class="dataTableBox">
                     <!-- [D] datatables 라이브러리 영역 -->
-                    <!-- [D] 초기 화면 진입 시 전체 리스트 조회 상태여야함 -->
                     <table class="dataTable tbl_include_btn">
                         <thead>
                             <tr>
                                 <th>NO</th>
-                                <th>사용자 ID</th>
-                                <th>사용자명</th>
-                                <th>권한 설정</th>
+                                <th>대분류명</th>
+                                <th>중분류명</th>
+                                <th>소분류명</th>
+                                <th>적용차수</th>
+                                <th>적용시작</th>
+                                <th>적용종료</th>
+                                <th>사용여부</th>
+                                <th>조회</th>
                                 <th>설정</th>
-                                <th>등록일자</th>
-                                <th>수정일자</th>
                             </tr>
                         </thead>
 
-                        <!-- [D] 설정(.btn_right_set)버튼 클릭 시 사용자 설정 팝업(STTMN0009P2.html) 열어야함  -->
-                        <!-- [D] 설정(.btn_right_set)버튼 클릭 시 해당 목록(tr)에 addclass('active')되며 하이라이트 처리됨 -->
+                        <!-- [D] 조회(.btn_check)버튼 클릭 시 하단에 문장관리 테이블 보여주어야함  -->
+                        <!-- [D] 조회 또는 설정(.btn_check, .btn_set)버튼 클릭 시 해당 목록(tr)에 addclass('active')되며 하이라이트 처리됨 -->
                         <tbody>
                             <tr>
                                 <td>1</td>
-                                <td>aa</td>
-                                <td>관리자1</td>
-                                <td>관리자</td>
+                                <td>고객안내</td>
+                                <td>알릴의무</td>
+                                <td>알릴의무1</td>
+                                <td>1</td>
+                                <td>20200101</td>
+                                <td>20201231</td>
+                                <td>N</td>
                                 <td>
                                     <div class="btnBox">
-                                        <a href="#none" class="btn_right_set">설정</a>
+                                        <a href="#none" class="btn_check">조회</a>
                                     </div>
                                 </td>
-                                <td>2020-09-20</td>
-                                <td>2020-10-20</td>
+                                <td>
+                                    <div class="btnBox">
+                                        <a href="#none" class="btn_set">설정</a>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td>aa</td>
-                                <td>관리자1</td>
-                                <td>관리자</td>
+                                <td>고객안내</td>
+                                <td>알릴의무</td>
+                                <td>알릴의무1</td>
+                                <td>1</td>
+                                <td>20200101</td>
+                                <td>20201231</td>
+                                <td>N</td>
                                 <td>
                                     <div class="btnBox">
-                                        <a href="#none" class="btn_right_set">설정</a>
+                                        <a href="#none" class="btn_check">조회</a>
                                     </div>
                                 </td>
-                                <td>2020-09-20</td>
-                                <td>2020-10-20</td>
+                                <td>
+                                    <div class="btnBox">
+                                        <a href="#none" class="btn_set">설정</a>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>3</td>
-                                <td>aa</td>
-                                <td>관리자1</td>
-                                <td>관리자</td>
+                                <td>고객안내</td>
+                                <td>알릴의무</td>
+                                <td>알릴의무1</td>
+                                <td>1</td>
+                                <td>20200101</td>
+                                <td>20201231</td>
+                                <td>N</td>
                                 <td>
                                     <div class="btnBox">
-                                        <a href="#none" class="btn_right_set">설정</a>
+                                        <a href="#none" class="btn_check">조회</a>
                                     </div>
                                 </td>
-                                <td>2020-09-20</td>
-                                <td>2020-10-20</td>
+                                <td>
+                                    <div class="btnBox">
+                                        <a href="#none" class="btn_set">설정</a>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>4</td>
-                                <td>aa</td>
-                                <td>관리자1</td>
-                                <td>관리자</td>
+                                <td>고객안내</td>
+                                <td>알릴의무</td>
+                                <td>알릴의무1</td>
+                                <td>1</td>
+                                <td>20200101</td>
+                                <td>20201231</td>
+                                <td>N</td>
                                 <td>
                                     <div class="btnBox">
-                                        <a href="#none" class="btn_right_set">설정</a>
+                                        <a href="#none" class="btn_check">조회</a>
                                     </div>
                                 </td>
-                                <td>2020-09-20</td>
-                                <td>2020-10-20</td>
+                                <td>
+                                    <div class="btnBox">
+                                        <a href="#none" class="btn_set">설정</a>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>5</td>
-                                <td>aa</td>
-                                <td>관리자1</td>
-                                <td>관리자</td>
+                                <td>고객안내</td>
+                                <td>알릴의무</td>
+                                <td>알릴의무1</td>
+                                <td>1</td>
+                                <td>20200101</td>
+                                <td>20201231</td>
+                                <td>N</td>
                                 <td>
                                     <div class="btnBox">
-                                        <a href="#none" class="btn_right_set">설정</a>
+                                        <a href="#none" class="btn_check">조회</a>
                                     </div>
                                 </td>
-                                <td>2020-09-20</td>
-                                <td>2020-10-20</td>
+                                <td>
+                                    <div class="btnBox">
+                                        <a href="#none" class="btn_set">설정</a>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>6</td>
-                                <td>aa</td>
-                                <td>관리자1</td>
-                                <td>관리자</td>
+                                <td>고객안내</td>
+                                <td>알릴의무</td>
+                                <td>알릴의무1</td>
+                                <td>1</td>
+                                <td>20200101</td>
+                                <td>20201231</td>
+                                <td>N</td>
                                 <td>
                                     <div class="btnBox">
-                                        <a href="#none" class="btn_right_set">설정</a>
+                                        <a href="#none" class="btn_check">조회</a>
                                     </div>
                                 </td>
-                                <td>2020-09-20</td>
-                                <td>2020-10-20</td>
+                                <td>
+                                    <div class="btnBox">
+                                        <a href="#none" class="btn_set">설정</a>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td>7</td>
-                                <td>aa</td>
-                                <td>관리자1</td>
-                                <td>관리자</td>
+                                <td>고객안내</td>
+                                <td>알릴의무</td>
+                                <td>알릴의무1</td>
+                                <td>1</td>
+                                <td>20200101</td>
+                                <td>20201231</td>
+                                <td>N</td>
                                 <td>
                                     <div class="btnBox">
-                                        <a href="#none" class="btn_right_set">설정</a>
+                                        <a href="#none" class="btn_check">조회</a>
                                     </div>
                                 </td>
-                                <td>2020-09-20</td>
-                                <td>2020-10-20</td>
+                                <td>
+                                    <div class="btnBox">
+                                        <a href="#none" class="btn_set">설정</a>
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <!-- //.dataTableBox -->
+                
+                <div class="setArea">
+                    <h3>문장관리</h3>
+                    
+                    <div class="btnBox btn_change">
+                        <a href="#none" class="btn_edit">수정</a>
+                        <a href="#none" class="btn_save btn_edit_show">저장</a>
+                        <a href="#none" class="btn_delete btn_edit_show">삭제</a>
+                    </div>
+                    
+                    <div class="tbl_set_view">
+                        <table summary="(체크박스), NO, 가이드문구, 문장내용, 담보코드, 담보명, 고객답변, 문장발화조건, 탐지사전유무, 시작문장, 필수문장, 상세설정, (문장추가)으로 구성">
+                            <caption class="문장관리 내용"></caption>
+                            <colgroup>
+                                <col width="50"><col width="80"><col><col><col>
+                                <col><col><col><col><col>
+                                <col><col><col>
+                            </colgroup>
+                            
+                            <thead>
+                                <tr>
+                                    <th>선택</th>
+                                    <th>NO</th>
+                                    <th>가이드문구</th>
+                                    <th>문장내용</th>
+                                    <th>담보코드</th>
+                                    <th>담보명</th>
+                                    <th>고객답변</th>
+                                    <th>문장발화조건</th>
+                                    <th>탐지사전유무</th>
+                                    <th>시작문장</th>
+                                    <th>필수문장</th>
+                                    <th>상세설정</th>
+                                    <th>문장추가</th>
+                                </tr> 
+                            </thead>
+                            
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <!-- [D] input[type="checkbox"]의 id와 label의 for 값을 동일하게 주어야함 -->
+                                        <div class="chkBox">
+                                            <input type="checkbox" id="each_chk1">
+                                            <label for="each_chk1"></label>
+                                        </div>
+                                    </td>
+                                    <td>1</td>
+                                    <td></td>
+                                    <td>해외 출국예정이 있으십니까?</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>Y</td>
+                                    <td>계피동일</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                    <td>Y</td>
+                                    <td>
+                                        <div class="btnBox">
+                                            <a href="#none" class="btn_set">설정</a>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <!-- [D] 추가버튼 클릭 시 테이블 행 추가되어야 함 -->
+                                        <div class="btnBox">
+                                            <a href="#none" class="btn_add">
+                                                <span>추가버튼</span>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
             <!-- //.tab_content -->
         </div>
@@ -451,19 +576,21 @@ jQuery.event.add(window,"load",function(){
                     last: ""
                 },
             },
-            responsive: true, // 반응형 허용
             order: false,
             lengthMenu: [5], // 한 페이지에 보여줄 목록 갯수
             paging: true, // 페이징 허용
             pagingType: "full_numbers", // 페이징 버튼 구성 (처음, 이전, 페이지숫자, 다음, 마지막)
             columnDefs: [ // 컬럼별 width, 옵션 사용 지정
                 {targets: [0], width: "50px", sortable: false, orderable: false},   // NO
-                {targets: [1], width: "", orderable: false},      // 사용자 ID
-                {targets: [2], width: "", orderable: false},      // 사용자명
-                {targets: [3], width: "", orderable: false},      // 권한설정
-                {targets: [4], width: "100px", orderable: false},      // 설정
-                {targets: [5], width: "120px", orderable: false},      // 등록일자
-                {targets: [6], width: "120px", orderable: false},      // 수정일자
+                {targets: [1], width: "", orderable: false},                        // 대분류명
+                {targets: [2], width: "", orderable: false},                        // 중분류명
+                {targets: [3], width: "", orderable: false},                        // 소분류명
+                {targets: [4], width: "80px", orderable: false},                    // 적용차수
+                {targets: [5], width: "100px", orderable: false},                   // 적용시작
+                {targets: [6], width: "100px", orderable: false},                   // 적용종료
+                {targets: [7], width: "80px", orderable: false},                    // 사용여부
+                {targets: [8], width: "100px", orderable: false},                   // 조회
+                {targets: [9], width: "100px", orderable: false},                   // 설정
             ],
         });
 
