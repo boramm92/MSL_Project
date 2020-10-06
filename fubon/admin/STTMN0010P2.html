@@ -26,22 +26,28 @@
     <div id="container">
         <!-- #contents -->
         <div class="popup_wrap admin right_manage">
-            <div class="topBox">
+            <div class="set_topBox">
                 <div class="tbl_popup_set">
-                    <table summary="권한ID, 권한명으로 구성됨">
+                    <table summary="화면ID, 화면명, 위치로 구성됨">
                         <colgroup>
-                            <col width="200"><col>
+                            <col width="120"><col><col>
                         </colgroup>
 
                         <thead>
                             <tr>
-                                <th>권한ID</th>
-                                <th>권한명</th>
+                                <th>화면ID</th>
+                                <th>화면명</th>
+                                <th>위치</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             <tr>
+                                <td>
+                                    <div class="iptBox">
+                                        <input type="text">
+                                    </div>
+                                </td>
                                 <td>
                                     <div class="iptBox">
                                         <input type="text">
@@ -62,23 +68,39 @@
                 </div>
             </div>
 
-            <div class="btmBox">
+            <div class="set_btmBox">
+                <div class="btnBox btn_change">
+                    <a href="#none" class="btn_edit">수정</a>
+                    <a href="#none" class="btn_save btn_edit_show">저장</a>
+                    <a href="#none" class="btn_delete btn_edit_show">삭제</a>
+                </div>
+
                 <div class="tbl_popup_set">
-                    <table summary="권한ID, 권한명으로 구성됨">
+                    <table summary="선택, 버튼ID, 버튼명, 버튼위치, 추가로 구성됨">
                         <colgroup>
-                            <col width="200"><col>
+                            <col width="50"><col><col><col><col width="50">
                         </colgroup>
 
                         <thead>
                             <tr>
-                                <th>권한ID</th>
-                                <th>권한명</th>
+                                <th>선택</th>
+                                <th>버튼ID</th>
+                                <th>버튼명</th>
+                                <th>버튼위치</th>
+                                <th>추가</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             <tr>
                                 <td>
+                                    <!-- [D] input[type="checkbox"]의 id와 label의 for 값을 동일하게 주어야함 -->
+                                    <div class="chkBox">
+                                        <input type="checkbox" id="each_chk1">
+                                        <label for="each_chk1"></label>
+                                    </div>
+                                </td>
+                                <td>
                                     <div class="iptBox">
                                         <input type="text">
                                     </div>
@@ -88,13 +110,21 @@
                                         <input type="text">
                                     </div>
                                 </td>
+                                <td>
+                                    <div class="iptBox">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="btnBox">
+                                        <a href="#none" class="btn_add">
+                                            <span>추가버튼</span>
+                                        </a>
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
-                </div>
-
-                <div class="btnBox">
-                    <a href="#none" class="btn_save">저장</a>
                 </div>
             </div>
         </div>
@@ -112,7 +142,11 @@
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-
+        // 설정 영역 내 테이블 상단 수정버튼 클릭 시 저장, 삭제버튼 보여주기
+        $('.btn_change .btn_edit').on('click', function(){
+            $(this).hide();
+            $(this).siblings('.btn_edit_show').addClass('on');
+        });
     });
 });
 </script>
