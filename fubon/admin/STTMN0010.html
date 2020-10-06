@@ -409,6 +409,7 @@
                             <a href="#none" class="btn_edit">수정</a>
                             <a href="#none" class="btn_save btn_edit_show">저장</a>
                             <a href="#none" class="btn_delete btn_edit_show">삭제</a>
+                            <a href="#none" class="btn_cancel btn_edit_show">취소</a>
                         </div>
 
                         <div class="tbl_set_view">
@@ -418,7 +419,7 @@
                                     <col width="50"><col width="80"><col><col width="100">
                                 </colgroup>
 
-                                <!-- [D] 테이블 상단 수정버튼(.btn_edit)클릭 시 선택, 조회 열 보여주어야함 -->
+                                <!-- [D] 테이블 상단 수정버튼(.btn_edit)클릭 시 선택 열 보여주어야함 -->
                                 <thead>
                                     <tr>
                                         <th scope="col">선택</th>
@@ -430,7 +431,7 @@
 
                                 <tbody>
                                     <tr>
-                                        <td>
+                                        <td scope="row">
                                             <!-- [D] input[type="checkbox"]의 id와 label의 for 값을 동일하게 주어야함 -->
                                             <div class="chkBox">
                                                 <input type="checkbox" id="each_chk1">
@@ -453,7 +454,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>
+                                        <td scope="row">
                                             <div class="chkBox">
                                                 <input type="checkbox" id="each_chk2">
                                                 <label for="each_chk2"></label>
@@ -475,7 +476,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>
+                                        <td scope="row">
                                             <div class="chkBox">
                                                 <input type="checkbox" id="each_chk3">
                                                 <label for="each_chk3"></label>
@@ -508,6 +509,7 @@
                             <a href="#none" class="btn_edit">수정</a>
                             <a href="#none" class="btn_save btn_edit_show">저장</a>
                             <a href="#none" class="btn_delete btn_edit_show">삭제</a>
+                            <a href="#none" class="btn_cancel btn_edit_show">취소</a>
                         </div>
 
                         <div class="tbl_set_view">
@@ -529,7 +531,7 @@
 
                                 <tbody>
                                     <tr>
-                                        <td>
+                                        <td scope="row">
                                             <!-- [D] input[type="checkbox"]의 id와 label의 for 값을 동일하게 주어야함 -->
                                             <div class="chkBox">
                                                 <input type="checkbox" id="each_chk4">
@@ -555,7 +557,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>
+                                        <td scope="row">
                                             <!-- [D] input[type="checkbox"]의 id와 label의 for 값을 동일하게 주어야함 -->
                                             <div class="chkBox">
                                                 <input type="checkbox" id="each_chk5">
@@ -580,7 +582,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>
+                                        <td scope="row">
                                             <!-- [D] input[type="checkbox"]의 id와 label의 for 값을 동일하게 주어야함 -->
                                             <div class="chkBox">
                                                 <input type="checkbox" id="each_chk6">
@@ -649,21 +651,19 @@ jQuery.event.add(window,"load",function(){
             paging: true, // 페이징 허용
             pagingType: "full_numbers", // 페이징 버튼 구성 (처음, 이전, 페이지숫자, 다음, 마지막)
             columnDefs: [ // 컬럼별 width, 옵션 사용 지정
-                {targets: [0], width: "100px", sortable: false, orderable: false},   // NO
+                {targets: [0], width: "50px", sortable: false, orderable: false},   // NO
                 {targets: [1], width: "200px", orderable: false},      // 권한 ID
                 {targets: [2], width: "", orderable: false},           // 권한명
                 {targets: [3], width: "100px", orderable: false},      // 조회
                 {targets: [4], width: "100px", orderable: false},      // 설정
-                {targets: [5], width: "200px", orderable: false},      // 등록일자
-                {targets: [6], width: "200px", orderable: false},      // 수정일자
+                {targets: [5], width: "120px", orderable: false},      // 등록일자
+                {targets: [6], width: "120px", orderable: false},      // 수정일자
             ],
         });
 
         // 조회 또는 설정 버튼 클릭 시 해당 목록 하이라이트
-        var $highLightLine = $('.tbl_include_btn tbody tr, .tbl_set_view tbody tr');
-
         $('.btn_check, .btn_set').on('click', function(){
-            $highLightLine.removeClass('active');
+            $('.tbl_include_btn tbody tr').removeClass('active');
             $(this).parents('tr').addClass('active');
         });
 
@@ -677,10 +677,15 @@ jQuery.event.add(window,"load",function(){
             $('.set_btn').show();
         });
 
-        // 설정 영역 내 테이블 상단 수정버튼 클릭 시 저장, 삭제버튼 보여주기
+        // 설정 영역 내 테이블 상단 수정버튼 클릭 시 저장, 삭제, 취소버튼 보여주기
         $('.btn_change .btn_edit').on('click', function(){
             $(this).hide();
-            $(this).siblings('.btn_edit_show').addClass('on');
+            $(this).siblings('.btn_edit_show').css('display', 'inline-block');
+        });
+        // 설정 영역 내 테이블 상단 취소버튼 클릭 시 수정버튼 보여주기
+        $('.btn_change .btn_cancel').on('click', function(){
+            $(this).parent('.btn_change').find('.btn_edit_show').css('display', 'none');
+            $(this).parent('.btn_change').find('.btn_edit').show();
         });
     });
 });
