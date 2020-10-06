@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="format-detection" content="telephone=no">
+
+<!---------------------- General Resources ---------------------->
+<!-- General CSS -->
+<link rel="stylesheet" href="../resources/css/common.css">
+
+<!-- General Script -->
+<script src="../resources/js/jquery-3.3.1.min.js"></script>
+<script src="../resources/js/jquery-migrate-3.3.0.min.js"></script>
+<script src="../resources/js/common.js"></script>
+
+<title>분류 코드 관리(팝업) || 푸본현대생명</title>
+</head>
+<body>
+<!-- [D] 팝업 사이즈  X  -->
+
+<!-- #wrap -->
+<div id="wrap">
+    <!-- #container -->
+    <div id="container">
+        <!-- #popup_wrap -->
+        <div class="popup_wrap admin">
+            <!-- .script_manage -->
+            <div class="script_manage">
+                <h1>분류 코드 관리</h1>
+
+                <!-- .set_topBox -->
+                <div class="set_topBox">
+                    <div class="tbl_popup_set">
+                        <h2>분류 코드 추가</h2>
+
+                        <table summary="대분류코드, 대분류명, 중분류코드, 중분류명, 소분류코드, 소분류명으로 구성됨">
+                            <colgroup>
+                                <col><col><col><col><col><col>
+                            </colgroup>
+
+                            <thead>
+                                <tr>
+                                    <th scope="col">대분류코드</th>
+                                    <th scope="col">대분류명</th>
+                                    <th scope="col">중분류코드</th>
+                                    <th scope="col">중분류명</th>
+                                    <th scope="col">소분류코드</th>
+                                    <th scope="col">소분류명</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td scope="row">
+                                        <div class="iptBox">
+                                            <input type="text">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="iptBox">
+                                            <input type="text">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="iptBox">
+                                            <input type="text">
+                                        </div>
+                                    </td>
+                                    <td scope="row">
+                                        <div class="iptBox">
+                                            <input type="text">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="iptBox">
+                                            <input type="text">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="iptBox">
+                                            <input type="text">
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="btnBox btn_gnr_group">
+                        <a href="#none" class="btn_save">저장</a>
+                    </div>
+                </div>
+                <!-- //.set_topBox -->
+
+                <!-- .set_mdlBox -->
+                <div class="set_mdlBox">
+                    <div class="tbl_popup_set">
+                        <h2>분류 코드 조회</h2>
+
+                        <table summary="대분류, 중분류, 소분류로 구성됨">
+                            <colgroup>
+                                <col><col><col><col><col><col>
+                            </colgroup>
+
+                            <tbody>
+                                <tr>
+                                    <th>대분류</th>
+                                    <td>
+                                        <select class="select">
+                                            <option value="">대분류옵션</option>
+                                            <option value="">대분류옵션</option>
+                                            <option value="">대분류옵션</option>
+                                            <option value="">대분류옵션</option>
+                                        </select>
+                                    </td>
+
+                                    <th>중분류</th>
+                                    <td>
+                                        <div class="iptBox">
+                                            <input type="text">
+                                        </div>
+                                    </td>
+
+                                    <th>소분류</th>
+                                    <td>
+                                        <div class="iptBox">
+                                            <input type="text">
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="btnBox btn_gnr_group">
+                        <a href="#none" class="btn_srch">조회</a>
+                    </div>
+                </div>
+                <!-- //.set_mdlBox -->
+
+                <!-- .set_btmBox -->
+                <div class="set_btmBox">
+                    <div class="btnBox btn_change_group">
+                        <a href="#none" class="btn_edit">수정</a>
+                        <a href="#none" class="btn_save btn_edit_show">저장</a>
+                        <a href="#none" class="btn_delete btn_edit_show">삭제</a>
+                        <a href="#none" class="btn_cancel btn_edit_show">취소</a>
+                    </div>
+
+                    <div class="tbl_popup_set">
+                        <table summary="선택, 버튼ID, 버튼명, 버튼위치, 추가로 구성됨">
+                            <colgroup>
+                                <col width="50"><col><col><col><col width="50">
+                            </colgroup>
+
+                            <!-- [D] 테이블 상단 수정버튼(.btn_edit)클릭 시 선택, 추가 열 보여주어야함 -->
+                            <thead>
+                                <tr>
+                                    <th>선택</th>
+                                    <th>버튼ID</th>
+                                    <th>버튼명</th>
+                                    <th>버튼위치</th>
+                                    <th>추가</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <!-- [D] input[type="checkbox"]의 id와 label의 for 값을 동일하게 주어야함 -->
+                                        <div class="chkBox">
+                                            <input type="checkbox" id="each_chk1">
+                                            <label for="each_chk1"></label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="iptBox">
+                                            <input type="text">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="iptBox">
+                                            <input type="text">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="iptBox">
+                                            <input type="text">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="btnBox">
+                                            <a href="#none" class="btn_add">
+                                                <span>추가버튼</span>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- //.set_btmBox -->
+            </div>
+            <!-- //.script_manage -->
+        </div>
+        <!-- //#contents -->
+    </div>
+    <!-- //#container -->
+</div>
+<!-- //#wrap -->
+
+<!---------------------- Local Resources ---------------------->
+<!-- Local CSS -->
+<link rel="stylesheet" href="../resources/css/popup.css">
+
+<!-- Local Script -->
+<script type="text/javascript">
+jQuery.event.add(window,"load",function(){
+    $(document).ready(function(){
+        // 설정 영역 내 테이블 상단 수정버튼 클릭 시 저장, 삭제, 취소버튼 보여주기
+        $('.btn_change_group .btn_edit').on('click', function(){
+            $(this).hide();
+            $(this).siblings('.btn_edit_show').css('display', 'inline-block');
+        });
+        // 설정 영역 내 테이블 상단 취소버튼 클릭 시 수정버튼 보여주기
+        $('.btn_change_group .btn_cancel').on('click', function(){
+            $(this).parent('.btn_change_group').find('.btn_edit_show').css('display', 'none');
+            $(this).parent('.btn_change_group').find('.btn_edit').show();
+        });
+    });
+});
+</script>
+</body>
+</html>
