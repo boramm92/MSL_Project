@@ -329,4 +329,9 @@ $(document).ready(function(){
             $('.current_option').text(optionText);
         });
     });
+    
+    // 팝업 하단 닫기버튼 클릭 시 새창팝업 닫힘
+    $('.pop_btm .btnBox .btn_close').on('click', function(){
+        window.open('about:blank', '_self').close();
+    });
 });

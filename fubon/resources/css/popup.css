@@ -10,7 +10,7 @@
 .popup_wrap.middle {width: 1600px; max-width: 1600px;}
 .popup_wrap.small {width: 340px; max-width: 340px;}
 .popup_wrap.admin {width: 100%; max-width: 100%;}
-.popup_wrap.admin > div {margin: 0 auto;}
+.popup_wrap.admin > div {margin: 0 auto; box-sizing: border-box;}
 
 /* customInfo */
 .customInfo {width: 100%; margin: 0 0 10px; padding: 5px; border-radius: 3px; box-shadow: 0 1px 4px 0 rgba(44, 63, 81, 0.1); box-sizing: border-box; background: #fff;}
@@ -385,20 +385,30 @@ div.tree-multiselect div.item input[type="checkbox"] + label:before {top: 4px;}
 .tbl_popup_set table tbody td .iptBox input[readonly] {background: #f0f0f0;}
 .tbl_popup_set table tbody td .iptBox input[readonly]:focus {border: 1px solid #C7D0D3; box-shadow: none;}
 .tbl_popup_set table tbody td .select {width: 100%;}
+.tbl_popup_set table tbody td .btnBox {margin: 0; text-align: center;}
 .tbl_popup_set table tbody td .btnBox a span {display: inline-block; overflow: hidden; text-indent: -9999px;}
 .tbl_popup_set table tbody td .btnBox a.btn_add {position: relative; width: 25px; height: 25px; padding: 0;}
 .tbl_popup_set table tbody td .btnBox a.btn_add:before {content: ''; position: absolute; top: 50%; left: 50%; width: 15px; height: 3px; background: #fff; transform: translate(-50%, -50%);}
 .tbl_popup_set table tbody td .btnBox a.btn_add:after {content: ''; position: absolute; top: 50%; left: 50%; width: 3px; height: 15px; background: #fff; transform: translate(-50%, -50%);}
 /* //tbl_popup_set(admin에서 사용하는 윈도우 팝업 내 테이블 스타일) */
 
-.admin h1 {margin: 0 0 10px !important;}
-.admin h2 {position: relative; margin: 0 0 5px; padding: 0 0 0 15px; font-size: 14px;}
+#container .admin h1 {margin: 0 0 5px; line-height: 30px;}
+#container .admin h1:before {top: 8px;}
+.admin h1 ~ .btnBox {float: right; margin: 0 0 5px;}
+.admin h2 {display: inline-block; position: relative; margin: 0 0 5px; padding: 0 0 0 15px; font-size: 14px; line-height: 30px;}
 .admin h2:before {content: ''; display: inline-block; position: absolute; top: 50%; left: 0; width: 8px; height: 8px; margin-top: -3px; border-radius: 2px; background: #00829d;}
+.admin h2 ~ .btnBox {float: right; margin: 0 0 5px;}
+.admin .pop_top {}
+.admin .pop_mdl {}
+.admin .pop_mdl > div {margin: 0 0 10px;}
+.admin .pop_btm .btnBox {text-align: center;}
 .admin .btnBox {margin: 10px 0 0; text-align: right;}
 .admin .btnBox a {margin: 0 2px;}
+.admin .btnBox a.btn_close {background: #7f8185;}
 .admin .btnBox a.btn_delete {background: #7f8185;}
+.admin .btn_gnr_group {text-align: center;}
 .admin .btn_gnr_group a.btn_delete {float: left;}
-.admin .btn_change_group {margin: 10px 0 10px;}
+.admin .btn_change_group {margin: 0 0 5px;}
 .admin .btn_change_group a.btn_edit_show {display: none; float: none;}
 
 /* -------------------- right_manage page -------------------- */
