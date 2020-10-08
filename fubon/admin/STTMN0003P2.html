@@ -26,94 +26,104 @@
     <div id="container">
         <!-- #popup_wrap -->
         <div class="popup_wrap admin">
-            <!-- .set_sentence -->
-            <div class="set_sentence">
+            <!-- .rgst_sentence_srch -->
+            <div class="rgst_sentence_srch">
                 <!-- .pop_top -->
                 <div class="pop_top">
-                    <h1>등록 문장 검색</h1>
-                    
-                    <div class="srchBox">
-                        <input type="search" >
-                        <a href="#none" class="btn_srch">
-                            <span>검색버튼</span>
-                        </a>
-                    </div>
+                    <h1>문장 설정</h1>
                 </div>
                 <!-- //.pop_top -->
 
                 <!-- .pop_mdl -->
                 <div class="pop_mdl">
-                    <!-- .set_topBox -->
-                    <div class="set_topBox">
-                        <h2>상담 코드 추가</h2>
+                    <!-- .setBox -->
+                    <div class="setBox">
+                        <h2>등록 문장 검색</h2>
                         
-                        <div class="btnBox">
-                            <a href="#none" class="btn_add_item">추가</a>
+                        <div class="srchBox">
+                            <input type="search">
+                            <a href="#none" class="btn_srch">
+                                <span>검색버튼</span>
+                            </a>
                         </div>
                         
-                        <div class="tbl_popup_set">
-                            <table summary="상담코드, 상담명으로 구성됨">
-                                <colgroup>
-                                    <col><col>
-                                </colgroup>
-    
+                        <!-- .dataTableBox -->
+                        <div class="dataTableBox">
+                            <!-- [D] datatables 라이브러리 영역 -->
+                            <table class="dataTable tbl_include_btn">
                                 <thead>
                                     <tr>
-                                        <th scope="col">상담코드</th>
-                                        <th scope="col">상담명</th>
+                                        <th>검색결과</th>
+                                        <th colspan="2">탐지사전 반영</th>
                                     </tr>
                                 </thead>
-    
+                                
                                 <tbody>
                                     <tr>
-                                        <td scope="row">
-                                            <div class="iptBox">
-                                                <input type="text">
+                                        <td>안녕하세요</td>
+                                        <td>
+                                            <div class="btnBox">
+                                                <a href="#none">등록 문장 내용 반영</a>
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="iptBox">
-                                                <input type="text">
+                                            <div class="btnBox">
+                                                <a href="#none">등록 문장 번호 반영</a>
                                             </div>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
+                        <!-- //.dataTableBox -->
                     </div>
-                    <!-- //.set_topBox -->
+                    <!-- //.setBox -->
     
-                    <!-- .set_mdlBox -->
-                    <div class="set_mdlBox">
-                        <h2>상담 코드 조회</h2>
+                    <!-- .setBox -->
+                    <div class="setBox">
+                        <h2>탐지사전 입력</h2>
                         
-                        <div class="btnBox">
-                            <a href="#none" class="btn_srch">조회</a>
-                        </div>
-                        
-                        <div class="tbl_popup_set">
-                            <table summary="상담코드, 상담명으로 구성됨">
+                        <div class="tbl_popup_set tbl_include_btn">
+                            <table summary="문장내용, 형태소 분리 문장, 탐지사전(예시), 탐지사전 입력으로 구성됨">
                                 <colgroup>
-                                    <col><col>
+                                    <col width="120"><col width="50"><col><col><col>
                                 </colgroup>
                                 
-                                <thead>
-                                    <tr>
-                                        <th scope="col">상담코드</th>
-                                        <th scope="col">상담명</th>
-                                    </tr>
-                                </thead>
-    
                                 <tbody>
                                     <tr>
+                                        <th scope="row">문장내용</th>
+                                        <td colspan="4"></td>
+                                    </tr>
+                                    
+                                    <tr>    
+                                        <th scope="row">형태소 분리 문장</th>
+                                        <td colspan="4"></td>
+                                    </tr>
+                                        
+                                    <tr>
+                                        <th scope="row">탐지사전(예시)</th>
+                                        <td colspan="4"></td>
+                                    </tr>  
+                                      
+                                    <tr>    
+                                        <th scope="row">탐지사전 입력</th>
+                                        <td scope="row">1</td>
                                         <td scope="row">
                                             <div class="iptBox">
                                                 <input type="text">
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="iptBox">
-                                                <input type="text">
+                                            <div class="btnBox">
+                                                <a href="#none" class="btn_sentence_">문장분리</a>
+                                                <a href="#none" class="btn_delete">제거</a>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="btnBox">
+                                                <a href="#none" class="btn_add">
+                                                    <span>추가버튼</span>
+                                                </a>
                                             </div>
                                         </td>
                                     </tr>
@@ -121,57 +131,90 @@
                             </table>
                         </div>
                     </div>
-                    <!-- //.set_mdlBox -->
+                    <!-- //.setBox -->
     
-                    <!-- .set_btmBox -->
-                    <div class="set_btmBox">
-                        <h2>상담 코드 리스트</h2>
-                        
-                        <div class="btnBox btn_change_group">
-                            <a href="#none" class="btn_edit">수정</a>
-                            <a href="#none" class="btn_delete btn_edit_show">삭제</a>
-                        </div>
+                    <!-- .setBox -->
+                    <div class="setBox">
+                        <h2>탐지사전 리스트</h2>
     
-                        <div class="tbl_popup_set">
-                            <table summary="선택, 상담코드, 상담명으로 구성됨">
+                        <div class="tbl_popup_set tbl_include_btn">
+                            <table summary="탐지사전 번호, 그룹 순번, 연결 순번, 탐지사전 내용으로 구성됨">
                                 <colgroup>
-                                    <col width="50"><col><col>
+                                    <col width="100"><col width="80"><col width="80"><col><col width="100"><col width="100">
                                 </colgroup>
     
-                                <!-- [D] 테이블 상단 수정버튼(.btn_edit)클릭 시 선택 열 보여주어야함 -->
                                 <thead>
                                     <tr>
-                                        <th>선택</th>
-                                        <th>상담코드</th>
-                                        <th>상담명</th>
+                                        <th>탐지사전 번호</th>
+                                        <th>그룹 순번</th>
+                                        <th>연결 순번</th>
+                                        <th colspan="3">탐지사전 내용</th>
                                     </tr>
                                 </thead>
     
                                 <tbody>
                                     <tr>
+                                        <td>01234</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td class="dtcn_dic_sentence">(안녕)(하다)</td>
                                         <td>
-                                            <!-- [D] input[type="checkbox"]의 id와 label의 for 값을 동일하게 주어야함 -->
-                                            <div class="chkBox">
-                                                <input type="checkbox" id="each_chk1">
-                                                <label for="each_chk1"></label>
+                                            <div class="btnBox btn_change_group">
+                                                <a href="#none" class="btn_edit">수정</a>
+                                                <a href="#none" class="btn_cplt btn_edit_show">완료</a>
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="iptBox">
-                                                <input type="text">
+                                            <div class="btnBox">
+                                                <a href="#none" class="btn_delete">삭제</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td rowspan="3">01234</td>
+                                        <td>2</td>
+                                        <td>1</td>
+                                        <td class="dtcn_dic_sentence">(안녕)(하다)</td>
+                                        <td>
+                                            <div class="btnBox btn_change_group">
+                                                <a href="#none" class="btn_edit">수정</a>
+                                                <a href="#none" class="btn_cplt btn_edit_show">완료</a>
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="iptBox">
-                                                <input type="text">
+                                            <div class="btnBox">
+                                                <a href="#none" class="btn_delete">삭제</a>
                                             </div>
                                         </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td rowspan="2">3</td>
+                                        <td>1</td>
+                                        <td class="dtcn_dic_sentence">(안녕)(하다)</td>
+                                        <td rowspan="2">
+                                            <div class="btnBox btn_change_group">
+                                                <a href="#none" class="btn_edit">수정</a>
+                                                <a href="#none" class="btn_cplt btn_edit_show">완료</a>
+                                            </div>
+                                        </td>
+                                        <td rowspan="2">
+                                            <div class="btnBox">
+                                                <a href="#none" class="btn_delete">삭제</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>2</td>
+                                        <td class="dtcn_dic_sentence">(안녕)(하다)</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    <!-- //.set_btmBox -->
+                    <!-- //.setBox -->
                 </div>
                 <!-- //.pop_mdl -->
                 
@@ -184,7 +227,7 @@
                 </div>
                 <!-- //.pop_btm -->
             </div>
-            <!-- //.counselCode_rgst -->
+            <!-- //.rgst_sentence_srch -->
         </div>
         <!-- //#contents -->
     </div>
@@ -194,12 +237,40 @@
 
 <!---------------------- Local Resources ---------------------->
 <!-- Local CSS -->
+<link rel="stylesheet" href="../resources/css/datatables.min.css">
+<!-- //datatables -->
 <link rel="stylesheet" href="../resources/css/popup.css">
+
+<!-- Local Script Library -->
+<script src="../resources/js/datatables.min.js"></script>
+<!-- //datatables -->
 
 <!-- Local Script -->
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
+        var table = $('.dataTable').DataTable({
+            dom: 't<"bottom"p>', // 옵션 위치 지정
+            language: { // 테이블 목록 건수 text 한글 설정
+                emptyTable: "조회된 데이터가 없습니다.", // 데이터 없을 경우 노출되는 text 설정
+                paginate: {
+                    first: "",
+                    previous: "",
+                    next: "",
+                    last: ""
+                },
+            },
+            order: false,
+            lengthMenu: [5], // 한 페이지에 보여줄 목록 갯수
+            paging: true, // 페이징 허용
+            pagingType: "full_numbers", // 페이징 버튼 구성 (처음, 이전, 페이지숫자, 다음, 마지막)
+            columnDefs: [ // 컬럼별 width, 옵션 사용 지정
+                {targets: [0], width: "", sortable: false, orderable: false},   // 검색결과
+                {targets: [1], width: "180px", orderable: false},      // 등록 문장 내용 반영
+                {targets: [2], width: "180px", orderable: false},           // 등록 문장 번호 반영
+            ],
+        })
+        
         // 설정 영역 내 테이블 상단 수정버튼 클릭 시 저장, 삭제, 취소버튼 보여주기
         $('.btn_change_group .btn_edit').on('click', function(){
             $(this).hide();
