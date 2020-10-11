@@ -54,7 +54,7 @@
                                 <thead>
                                     <tr>
                                         <th>검색결과</th>
-                                        <th colspan="2">탐지사전 반영</th>
+                                        <th>탐지사전 반영</th>
                                     </tr>
                                 </thead>
                                 
@@ -63,12 +63,8 @@
                                         <td>안녕하세요</td>
                                         <td>
                                             <div class="btnBox">
-                                                <a href="#none" class="rgst_sentence_apply">등록 문장 내용 반영</a>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="btnBox">
-                                                <a href="#none" class="rgst_sentenceNum_apply">등록 문장 번호 반영</a>
+                                                <a href="#none" class="rgst_sentence_apply">등록 문장 내용</a>
+                                                <a href="#none" class="rgst_sentenceNum_apply">등록 문장 번호</a>
                                             </div>
                                         </td>
                                     </tr>
@@ -86,13 +82,18 @@
                         <div class="tbl_popup_set tbl_include_btn">
                             <table summary="문장내용, 형태소 분리 문장, 탐지사전(예시), 탐지사전 입력으로 구성됨">
                                 <colgroup>
-                                    <col width="120"><col width="50"><col><col width="100"><col width="50">
+                                    <col width="120"><col width="50"><col><col width="100"><col width="80">
                                 </colgroup>
                                 
                                 <tbody>
                                     <tr>
                                         <th scope="row">문장내용</th>
-                                        <td colspan="4"></td>
+                                        <td colspan="3"></td>
+                                        <td>
+                                            <div class="btnBox">
+                                                <a href="#none" class="btn_sentence_anls">분석</a>
+                                            </div>
+                                        </td>
                                     </tr>
                                     
                                     <tr>    
@@ -265,9 +266,8 @@ jQuery.event.add(window,"load",function(){
             paging: true, // 페이징 허용
             pagingType: "full_numbers", // 페이징 버튼 구성 (처음, 이전, 페이지숫자, 다음, 마지막)
             columnDefs: [ // 컬럼별 width, 옵션 사용 지정
-                {targets: [0], width: "80%", sortable: false, orderable: false},   // 검색결과
-                {targets: [1], width: "", orderable: false},      // 등록 문장 내용 반영
-                {targets: [2], width: "", orderable: false},      // 등록 문장 내용 반영
+                {targets: [0], width: "", sortable: false, orderable: false},   // 검색결과
+                {targets: [1], width: "260px", orderable: false},      // 등록 문장 내용 반영
             ],
         })
         
