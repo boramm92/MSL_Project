@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<!-- css -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.0/css/all.min.css" />
+	<link rel="stylesheet" type="text/css" href="../../../assets/css/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../assets/css/font.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../assets/css/common.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../assets/css/data_edit_tool.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../assets/css/data_edit_tool_m.css"/>
+
+	<!-- js -->
+	<script type="text/javascript" src="../../../assets/js/jquery-2.2.0.min.js"></script>
+
+	<title>HOME ll 워크스페이스</title>
+</head>
+<body>
+	<!-- #wrap -->
+	<div id="wrap">
+		<!-- #m_header -->
+		<!-- [D] 모바일 사이즈에서 보여지는 햄버거버튼, 사이드메뉴 -->
+		<div id="m_header">
+			<div class="aside_bg"></div>
+			<!-- .aside -->
+			<div class="aside">
+				<!-- .aside_h -->
+				<div class="aside_h">
+					<a href="https://data.maum.ai">
+						<img src="../../../assets/images/img_data_logo.svg" alt="maum.ai로고">
+					</a>
+				</div>
+				<!-- //.aside_h -->
+
+				<!-- .aside_b -->
+				<div class="aside_b">
+					<!-- .login_area -->
+					<!-- [D] 로그인 영역(.login_area > div)에 addclass('on')하면 상황에 맞는 UI 보여짐 -->
+					<div class="login_area">
+						<!-- [D] 로그인하지 않았을 때 -->
+						<div class="sign_in on">
+							<div class="top_sign">
+								<form action="">
+									<div class="ipt_box">
+										<input type="text" id="m_id">
+										<span class="fas fa-user"></span>
+										<label for="m_id">아이디</label>
+									</div>
+									<div class="ipt_box">
+										<input type="password" id="m_pw">
+										<span class="fas fa-lock"></span>
+										<label for="m_pw">비밀번호</label>
+									</div>
+									<div class="check_box">
+										<input type="checkbox" id="m_id_save">
+										<label for="m_id_save">아이디 저장</label>
+									</div>
+								</form>
+								<div class="btn_box">
+									<button type="submit" id="signin_btn">로그인</button>
+								</div>
+							</div>
+
+							<div class="btm_sign">
+								<div class="btn_box">
+									<button type="submit"><img src="../../../assets/images/ico_google_logo.svg" alt="구글G로고">구글 로그인</button>
+								</div>
+							</div>
+						</div>
+
+						<!-- [D] 로그인했을 때 -->
+						<div class="sign_out">
+							<div class="top_sign">
+								<div class="my_account">
+									<span class="far fa-user"></span>
+									<div class="user_account">
+										<p>안녕하세요</p>
+										<p><span>hello@mindslab.ai</span></p>
+									</div>
+								</div>
+								<!-- <div class="btn_box">
+									<a href="#none">마이페이지</a>
+								</div> -->
+							</div>
+
+							<ul class="m_nav">
+								<li>
+									<a href="#none"><span class="fas fa-home"></span>홈</a>
+								</li>
+								<li class="nav_wosc">
+									<a href="#none"><span class="fas fa-briefcase"></span>워크스페이스
+									<em class="fas fa-chevron-up"></em>
+									<em class="fas fa-chevron-down active"></em>
+										<ul class="m_sub">
+											<li><a href="#none"><span class="fas fa-file-alt"></span>Text</a></li>
+											<li><a href="#none"><span class="fas fa-file-image"></span>Image</a></li>
+											<li><a href="#none"><span class="fas fa-file-audio"></span>Sound</a></li>
+											<li><a href="#none"><span class="fas fa-file-video"></span>Video</a></li>
+										</ul>
+									</a>
+								</li>
+							</ul>
+
+							<div class="btm_sign">
+								<div class="btn_box">
+									<button type="submit">로그아웃</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- //.login_area -->
+				</div>
+				<!-- //.aside_b -->
+			</div>
+			<!-- //.aside -->
+			<div class="btn_ham">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+		<!-- //#m_header -->
+
+		<!-- #header -->
+		<!-- [D] 웹 사이즈에서 보여지는 헤더 -->
+		<div id="header">
+	        <h1><a target="_self" href="#none"><img src="../../../assets/images/img_maumdata_logo.svg" alt="logo"></a></h1>
+	    	<h2>워크스페이스</h2>
+			<!-- .etcmenu -->
+			<div class="etcmenu">
+				<div class="userBox">
+					<span class="my_point">4,600</span>
+					<div class="btn_box">
+						<a href="#none"><span class="fas fa-user"></span>마이페이지</a>
+					</div>
+	            </div>
+				<div class="outBox">
+					<a target="_self" href="#none">Sign out <em class="fas fa-sign-out-alt"></em></a>
+	            </div>
+			</div>
+			<!-- //.etcmenu -->
+		</div>
+		<!-- //#header -->
+
+		<!-- #container -->
+		<div id="container">
+			<!-- .snb -->
+			<div class="snb">
+				<ul class="nav">
+					<li class="active">
+						<a target="_self" href="#none"><em class="fas fa-home"></em>Home</a>
+	                </li>
+					<li>
+						<a target="_self" href="#"><em class="fas fa-file-alt"></em>Text</a>
+	                </li>
+					<li >
+						<a target="_self" href="#"><em class="fas fa-file-image"></em>Image</a>
+					</li>
+					<li>
+						<a target="_self" href="#"><em class="fas fa-file-audio"></em>Voice</a>
+					</li>
+				</ul>
+			</div>
+			<!-- //.snb -->
+
+			<!-- .contents -->
+			<div class="contents">
+	            <!-- .content -->
+	            <div class="content">
+					<ul class="m_tab_btn">
+					   <li class="active">
+						   <a href="#none">진행중인 작업 <span>7</span></a>
+					   </li>
+					   <li>
+						   <a href="#none">진행가능 작업 <span>22</span></a>
+					   </li>
+					</ul>
+					<div class="work_space">
+						 <h3>진행중인 작업  <span>7</span></h3>
+						<!-- .stn -->
+						<div class="stn">
+							<ul>
+								<li>
+									<div class="progressbar"><span><em>35%</em></span></div>
+									<h5><em class="fas fa-file-alt"></em>TTS <span><em class="fas fa-coins"></em> 1000</span></h5>
+									<p class="title">최신신문기사와 음성 읽고 의미 파악 _ AI</p>
+									<p class="sub_tit">자산이 증가했을때 AI와의 대화 1 자산이 증가했을때 AI와의 대화 1</p>
+									<div class="text_cont">
+									자산이 증가하였을때 AI가 해줬으면 하는 대화를 작성하는 프로젝트 입니다.
+									</div>
+									<small>~ 2019.09.20까지</small>
+								</li>
+								<li>
+									<div class="progressbar"><span><em>35%</em></span></div>
+									<h5><em class="fas fa-file-image"></em>TTS <span><em class="fas fa-coins"></em> 1000</span></h5>
+									<p class="title">최신신문기사와 음성 읽고 의미 파악 _ AI최신신문기사와 의미 파악 _ AI최신신문기사와</p>
+									<p class="sub_tit">자산이 증가했을때 AI와의 대화 1</p>
+									<div class="text_cont">
+									자산이 증가하였을때 AI가 해줬으면 하는 대화를 작성하는 프로젝트 입니다.는 대화를 작성하는 프로젝트 입니다. 대화를 작성하는 프로젝트 입니다다
+									</div>
+									<small>~ 2019.09.20까지</small>
+								</li>
+								<li>
+									<div class="progressbar"><span><em>35%</em></span></div>
+									<h5><em class="fas fa-file-image"></em>TTS <span><em class="fas fa-coins"></em> 1000</span></h5>
+									<p class="title">최신신문기사와 음성 읽고 의미 파악 _ AI</p>
+									<p class="sub_tit">자산이 증가했을때 AI와의 대화 1</p>
+									<div class="text_cont">
+									자산이 증가하였을때 AI가 해줬으면 하는 대화를 작성하는 프로젝트 입니다.
+									</div>
+									<small>~ 2019.09.20까지</small>
+								</li>
+								<li>
+									<div class="progressbar"><span><em>35%</em></span></div>
+									<h5><em class="fas fa-file-image"></em>TTS <span><em class="fas fa-coins"></em> 1000</span></h5>
+									<p class="title">최신신문기사와 음성 읽고 의미 파악 _ AI</p>
+									<p class="sub_tit">자산이 증가했을때 AI와의 대화 1</p>
+									<div class="text_cont">
+									자산이 증가하였을때 AI가 해줬으면 하는 대화를 작성하는 프로젝트 입니다.
+									</div>
+									<small>~ 2019.09.20까지</small>
+								</li>
+								<li>
+									<div class="progressbar"><span><em>35%</em></span></div>
+									<h5><em class="fas fa-file-image"></em>TTS <span><em class="fas fa-coins"></em> 1000</span></h5>
+									<p class="title">최신신문기사와 음성 읽고 의미 파악 _ AI</p>
+									<p class="sub_tit">자산이 증가했을때 AI와의 대화 1</p>
+									<div class="text_cont">
+									자산이 증가하였을때 AI가 해줬으면 하는 대화를 작성하는 프로젝트 입니다.
+									</div>
+									<small>~ 2019.09.20까지</small>
+								</li>
+							</ul>
+							<div class="btm_info">
+								<div class="paging">
+									<a class="btn_paging_prev" href="#none" >이전 페이지로 이동</a>
+									<span class="list">
+										<strong>1</strong>
+										<span> / </span>
+										<a href="#none">2</a>
+									</span>
+									<a class="btn_paging_next" href="#none">다음 페이지로 이동</a>
+								</div>
+							</div>
+						</div>
+						<!-- //.stn -->
+					</div>
+					<!-- //.work_space -->
+					<!-- .work_space -->
+					<div class="work_space progressing">
+						<h3>진행가능 작업  <span>22</span></h3>
+						<!-- .stn -->
+						<div class="stn">
+							<ul>
+								<li>
+									<div class="progressbar"><span><em>75%</em></span></div>
+									<h5><em class="fas fa-file-image"></em>TTS <span><em class="fas fa-coins"></em> 1000</span></h5>
+									<p class="title">최신신문기사와 음성 읽고 의미 파악 _ AI최신신문기사와 음성 읽고 의미 파악 _ AI</p>
+									<p class="sub_tit">자산이 증가했을때 AI와의 대화 1</p>
+									<div class="text_cont">
+									자산이 증가하였을때 AI가 해줬으면 하는 대화를 작성하는 프로젝트 입니다.
+									</div>
+									<small>~ 2019.09.20까지</small>
+								</li>
+								<li>
+									<div class="progressbar"><span><em>75%</em></span></div>
+									<h5><em class="fas fa-file-image"></em>TTS <span><em class="fas fa-coins"></em> 1000</span></h5>
+									<p class="title">최신신문기사와 음성 읽고 의미 파악 _ AI</p>
+									<p class="sub_tit">자산이 증가했을때 AI와의 대화 1</p>
+									<div class="text_cont">
+									자산이 증가하였을때 AI가 해줬으면 하는 대화를 작성하는 프로젝트 입니다.
+									</div>
+									<small>~ 2019.09.20까지</small>
+								</li>
+								<li>
+									<div class="progressbar"><span><em>75%</em></span></div>
+									<h5><em class="fas fa-file-image"></em>TTS <span><em class="fas fa-coins"></em> 1000</span></h5>
+									<p class="title">최신신문기사와 음성 읽고 의미 파악 _ AI</p>
+									<p class="sub_tit">자산이 증가했을때 AI와의 대화 1</p>
+									<div class="text_cont">
+									자산이 증가하였을때 AI가 해줬으면 하는 대화를 작성하는 프로젝트 입니다.자산이 증가하였을때 AI가 해줬으면 하는 대화를 작성하는 프로젝트 입니다.
+									</div>
+									<small>~ 2019.09.20까지</small>
+								</li>
+								<li>
+									<div class="progressbar"><span><em>75%</em></span></div>
+									<h5><em class="fas fa-file-image"></em>TTS <span><em class="fas fa-coins"></em> 1000</span></h5>
+									<p class="title">최신신문기사와 음성 읽고 의미 파악 _ AI</p>
+									<p class="sub_tit">자산이 증가했을때 AI와의 대화 1</p>
+									<div class="text_cont">
+									자산이 증가하였을때 AI가 해줬으면 하는 대화를 작성하는 프로젝트 입니다.
+									</div>
+									<small>~ 2019.09.20까지</small>
+								</li>
+								<li>
+									<div class="progressbar"><span><em>75%</em></span></div>
+									<h5><em class="fas fa-file-image"></em>TTS <span><em class="fas fa-coins"></em> 1000</span></h5>
+									<p class="title">최신신문기사와 음성 읽고 의미 파악 _ AI</p>
+									<p class="sub_tit">자산이 증가했을때 AI와의 대화 1</p>
+									<div class="text_cont">
+									자산이 증가하였을때 AI가 해줬으면 하는 대화를 작성하는 프로젝트 입니다.
+									</div>
+									<small>~ 2019.09.20까지</small>
+								</li>
+							</ul>
+
+						</div>
+						<!-- //.stn -->
+					</div>
+					<!-- //.work_space -->
+
+					<div class="btm_info mobile">
+						<div class="paging">
+							<a class="btn_paging_prev" href="#none" >이전 페이지로 이동</a>
+							<span class="list">
+								<strong>1</strong>
+								<span> / </span>
+								<a href="#none">2</a>
+							</span>
+							<a class="btn_paging_next" href="#none">다음 페이지로 이동</a>
+						</div>
+					</div>
+	            </div>
+	            <!-- //.content -->
+			</div>
+			<!-- //.contents -->
+		</div>
+		<!-- //#container -->
+
+		<!-- #footer -->
+		<div id="footer">
+			<!-- .w_footer -->
+			<!-- [D] 웹 사이즈에서 보여지는 footer -->
+			<div class="w_footer">
+				<div class="copyright">
+					<div class="cont_box">
+						<span>&copy; Copyright 2020</span>
+						<span class="company"><a href="https://maum.ai/login/loginForm?lang=ko" target="_self" title="maum.ai로 이동하기">(주)마인즈랩</a></span>
+						<span>경기도 성남시 분당구 대왕판교로644번길 49 다산타워 6층</span>
+						<span>대표 유태준</span>
+						<span>사업자 등록번호 314-86-55446</span>
+					</div>
+				</div>
+			</div>
+			<!-- //.w_footer -->
+
+			<!-- .m_footer -->
+		    <div class="m_footer">
+		        <span>&copy; Copyright 2020 <a href="https://maum.ai/login/loginForm?lang=ko" target="_self" title="maum.ai로 이동하기">(주)마인즈랩</a></span>
+		    </div>
+		    <!-- //.m_footer -->
+		</div>
+		<!-- //#footer -->
+	</div>
+	<!-- //wrap -->
+
+	<!---------- script ---------->
+	<script>
+		$(document).ready(function(){
+			// 모바일 사이즈에서 등장하는 aside menu
+			$('.btn_ham').on('click', function(){
+				if ($('.aside_bg').css('display') == 'none') {
+					$('.btn_ham').addClass('active');
+					$('.aside').animate({
+						width : '100%',
+					},{duration:200,queue:false});
+
+					$('.aside_bg').animate({
+						opacity : 0.7,
+					},{duration:200,queue:false});
+					$('.aside_bg').css({
+						display : 'block',
+					});
+					$('body').css({
+						overflow : 'hidden',
+					});
+					clicked=true;
+				} else {
+					$('.btn_ham').removeClass('active');
+					$('.aside').animate({
+						width: '0',
+					},{duration:200,queue:false});
+
+					$('.aside_bg').animate({
+						opacity : 0,
+					},{duration:150,queue:false});
+					$('.aside_bg').css({
+						display : 'none',
+					});
+					$('body').css({
+						overflow : '',
+					});
+					clicked=false;
+				}
+			});
+
+			// aside menu list
+			$('.nav_wosc > a').on('click', function(){
+				$('.m_sub').slideToggle();
+				$('.m_nav em').toggleClass('active');
+			});
+
+			// tan_btn 모바일버전 작업리스트 탭메뉴
+			var worklst_tabBtn = $('.m_tab_btn > li');
+			var worklst_tabCont = $('.content > .work_space');
+
+			worklst_tabBtn.on('click',function(){
+				var target = $(this);
+				var index = target.index();
+				worklst_tabBtn.removeClass('active');
+				target.addClass('active');
+				worklst_tabCont.css('display','none');
+				worklst_tabCont.eq(index).css('display','block');
+			});
+
+			// 프로젝트 박스 모바일 버전에서 터치효과
+			$('.stn ul li').on("touchstart", function(){
+				$(this).addClass('active');
+			});
+			$('.stn ul li').on("touchend", function(){
+				$(this).removeClass('active');
+			});
+		});
+	</script>
+</body>
+</html>

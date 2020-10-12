@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<!-- css -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+	<link rel="stylesheet" type="text/css" href="../../../assets/css/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../assets/css/font.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../assets/css/jquery-ui-1.8.18.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../assets/css/common.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../assets/css/my_page.css"/>
+
+	<!-- js -->
+	<script type="text/javascript" src="../../../assets/js/jquery-2.2.0.min.js"></script>
+	<script type="text/javascript" src="../../../assets/js/jquery-ui-1.11.4.min.js"></script>
+
+	<title>작업내역 ll 마이페이지</title>
+</head>
+<body>
+	<!-- wrap -->
+	<div id="wrap">
+		<!-- #header -->
+		<div id="header">
+	        <h1><a target="_self" href="#none"><img src="../../../assets/images/img_maumdata_logo.svg" alt="logo"></a></h1>
+	    	<h2>마이페이지</h2>
+			<!-- .etcmenu -->
+			<div class="etcmenu">
+	            <div class="userBox">
+					<span class="my_point">4,600</span>
+					<div class="btn_box">
+						<a href="#none"><span class="fas fa-chalkboard"></span>워크스페이스</a>
+					</div>
+	            </div>
+				<div class="outBox">
+					<a target="_self" href="#none">Sign out <em class="fas fa-sign-out-alt"></em></a>
+	            </div>
+			</div>
+			<!-- //.etcmenu -->
+		</div>
+		<!-- //#header -->
+
+		<!-- #container -->
+		<div id="container" class="mypage worklist">
+			<!-- .snb -->
+			<div class="snb">
+				<ul class="nav">
+					<li class="active">
+						<a target="_self" href="worklist.html">작업내역</a>
+	                </li>
+					<li>
+						<a target="_self" href="point.html">포인트 내역</a>
+	                </li>
+					<li>
+						<a target="_self" href="payment.html">수익금 신청</a>
+					</li>
+					<li>
+						<a target="_self" href="myinfo.html">내 정보 관리</a>
+					</li>
+				</ul>
+			</div>
+			<!-- //.snb -->
+
+			<!-- .contents -->
+			<div class="contents">
+	            <!-- .content -->
+	            <div class="content">
+					<!-- .work_space -->
+					<div class="work_space">
+						<div class="mypage_stn">
+							<div class="history_box my_box">
+								<h3>작업 현황</h3>
+
+								<div class="my_cases common_box">
+									<p>작업중 <em><span class="blue">100</span>건</em></p>
+									<p>작업 반려 <em><span>5</span>건</em></p>
+									<p>검수 대기중 <em><span>23</span>건</em></p>
+									<p>작업 완료 <em><span>100</span>건</em></p>
+								</div>
+							</div>
+
+							<div class="point_box my_box">
+								<h3>포인트</h3>
+
+								<div class="my_cases common_box">
+									<p>잔여포인트 <em class="balance blue">22,222,200</em></p>
+									<p>수익금 전환 가능 포인트 <em>0</em></p>
+									<p>총 누적포인트 <em>4,600</em></p>
+
+									<!-- [D] '포인트 수익금으로 전환' 버튼 클릭 시 수익금 신청 페이지(payment.html)로 이동됨 -->
+									<div class="btn_box">
+										<button type="button" onclick="location.href='payment.html'">
+											<img src="../../../assets/images/ico_point.svg" alt="포인트아이콘">
+											&nbsp;포인트&nbsp;&nbsp;<span class="fas fa-arrow-right"></span>&nbsp;&nbsp;
+											<span class="fas fa-coins"></span>&nbsp;&nbsp;수익금으로 전환
+										</button>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="point_info">
+								<p><span class="fas fa-caret-right"></span> 5,000 포인트 이상부터 1,000 포인트 단위로 수익금전환이 가능합니다.</p>
+								<p><span class="fas fa-caret-right"></span> 총 누적포인트는 가입 후 쌓아온 모든 포인트를 뜻합니다.</p>
+							</div>
+						</div>
+					</div>
+					<!-- //.work_space -->
+
+					<!-- .work_space -->
+					<div class="work_space">
+						<!-- .stn -->
+						<div class="mypage_stn">
+							<h3 class="working_lst">진행중인 작업</h3>
+							<div class="sort_group">
+								<div class="select_box">
+									<select id="work_type">
+										<option selected>종류</option>
+										<option value="voice">Voice</option>
+										<option value="text">Text</option>
+										<option value="image">Image</option>
+									</select>
+								</div>
+
+								<div class="date_box">
+									<form action="">
+										<input type="text" class="ipt_date fromDate" placeholder="작업기간(시작)">
+									</form>
+									<span class="fas fa-calendar-alt"></span>
+									<em>~</em>
+								</div>
+
+								<div class="date_box">
+									<form action="">
+										<input type="text" class="ipt_date toDate" placeholder="작업기간(종료)">
+									</form>
+									<span class="fas fa-calendar-alt"></span>
+								</div>
+
+								<div class="srch_box">
+									<form action="">
+										<input type="text" id="project">
+										<label for="project">프로젝트명</label>
+										<button type="submit"><span class="fas fa-search"></span></button>
+									</form>
+								</div>
+							</div>
+
+							<div class="work_lst common_box">
+								<table>
+									<caption class="hide">진행중인 작업 리스트</caption>
+									<colgroup>
+										<col width="6%"><col width="16%"><col width="16%"><col width="9%"><col width="6%">
+										<col width="9%"><col width="7%"><col width="7%"><col width="12%"><col width="12%">
+									</colgroup>
+									<thead>
+										<tr>
+											<th>종류</th>
+											<th>프로젝트명</th>
+											<th>작업명</th>
+											<th>총 작업 수</th>
+											<th>작업중</th>
+											<th>검수대기</th>
+											<th>반려</th>
+											<th>완료</th>
+											<th>포인트</th>
+											<th>만료기간</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="type">Voice</td>
+											<td class="project">최신신문기사와 음성 읽고 의미 파악 _ AI</td>
+											<td class="work_title">최신신문기사와 음성 읽고 의미 파악 _ AI</td>
+											<td class="total_cases"><span>100</span>건</td>
+											<td class="working_cases"><span>42</span>건</td>
+											<td class="inspect_yet"><span>42</span>건</td>
+											<td class="reject_cases"><span>42</span>건</td>
+											<td class="complate_cases"><span>42</span>건</td>
+											<td class="point"><span>5,142,000</span></td>
+											<td class="expire_date">~<span>2020.04.30</span></td>
+										</tr>
+										<tr>
+											<td class="type">Voice</td>
+											<td class="project">문장분리_체험하기</td>
+											<td class="work_title">음성 문장단위 분리</td>
+											<td class="total_cases"><span>100</span>건</td>
+											<td class="working_cases"><span>42</span>건</td>
+											<td class="inspect_yet"><span>42</span>건</td>
+											<td class="reject_cases"><span>42</span>건</td>
+											<td class="complate_cases"><span>42</span>건</td>
+											<td class="point"><span>5,142,000</span></td>
+											<td class="expire_date">~<span>2020.04.30</span></td>
+										</tr>
+										<tr>
+											<td class="type">Voice</td>
+											<td class="project">문장분리_체험하기</td>
+											<td class="work_title">음성 문장단위 분리</td>
+											<td class="total_cases"><span>100</span>건</td>
+											<td class="working_cases"><span>42</span>건</td>
+											<td class="inspect_yet"><span>42</span>건</td>
+											<td class="reject_cases"><span>42</span>건</td>
+											<td class="complate_cases"><span>42</span>건</td>
+											<td class="point"><span>5,142,000</span></td>
+											<td class="expire_date">~<span>2020.04.30</span></td>
+										</tr>
+										<tr>
+											<td class="type">Voice</td>
+											<td class="project">문장분리_체험하기</td>
+											<td class="work_title">음성 문장단위 분리</td>
+											<td class="total_cases"><span>100</span>건</td>
+											<td class="working_cases"><span>42</span>건</td>
+											<td class="inspect_yet"><span>42</span>건</td>
+											<td class="reject_cases"><span>42</span>건</td>
+											<td class="complate_cases"><span>42</span>건</td>
+											<td class="point"><span>5,142,000</span></td>
+											<td class="expire_date">~<span>2020.04.30</span></td>
+										</tr>
+										<tr>
+											<td class="type">Voice</td>
+											<td class="project">문장분리_체험하기</td>
+											<td class="work_title">음성 문장단위 분리</td>
+											<td class="total_cases"><span>100</span>건</td>
+											<td class="working_cases"><span>42</span>건</td>
+											<td class="inspect_yet"><span>42</span>건</td>
+											<td class="reject_cases"><span>42</span>건</td>
+											<td class="complate_cases"><span>42</span>건</td>
+											<td class="point"><span>5,142,000</span></td>
+											<td class="expire_date">~<span>2020.04.30</span></td>
+										</tr>
+										<tr>
+											<td class="type">Voice</td>
+											<td class="project">문장분리_체험하기</td>
+											<td class="work_title">음성 문장단위 분리</td>
+											<td class="total_cases"><span>100</span>건</td>
+											<td class="working_cases"><span>42</span>건</td>
+											<td class="inspect_yet"><span>42</span>건</td>
+											<td class="reject_cases"><span>42</span>건</td>
+											<td class="complate_cases"><span>42</span>건</td>
+											<td class="point"><span>5,142,000</span></td>
+											<td class="expire_date">~<span>2020.04.30</span></td>
+										</tr>
+										<tr>
+											<td class="type">Voice</td>
+											<td class="project">문장분리_체험하기</td>
+											<td class="work_title">음성 문장단위 분리</td>
+											<td class="total_cases"><span>100</span>건</td>
+											<td class="working_cases"><span>42</span>건</td>
+											<td class="inspect_yet"><span>42</span>건</td>
+											<td class="reject_cases"><span>42</span>건</td>
+											<td class="complate_cases"><span>42</span>건</td>
+											<td class="point"><span>5,142,000</span></td>
+											<td class="expire_date">~<span>2020.04.30</span></td>
+										</tr>
+										<tr>
+											<td class="type">Voice</td>
+											<td class="project">문장분리_체험하기</td>
+											<td class="work_title">음성 문장단위 분리</td>
+											<td class="total_cases"><span>100</span>건</td>
+											<td class="working_cases"><span>42</span>건</td>
+											<td class="inspect_yet"><span>42</span>건</td>
+											<td class="reject_cases"><span>42</span>건</td>
+											<td class="complate_cases"><span>42</span>건</td>
+											<td class="point"><span>5,142,000</span></td>
+											<td class="expire_date">~<span>2020.04.30</span></td>
+										</tr>
+										<tr>
+											<td class="type">Voice</td>
+											<td class="project">문장분리_체험하기</td>
+											<td class="work_title">음성 문장단위 분리</td>
+											<td class="total_cases"><span>100</span>건</td>
+											<td class="working_cases"><span>42</span>건</td>
+											<td class="inspect_yet"><span>42</span>건</td>
+											<td class="reject_cases"><span>42</span>건</td>
+											<td class="complate_cases"><span>42</span>건</td>
+											<td class="point"><span>5,142,000</span></td>
+											<td class="expire_date">~<span>2020.04.30</span></td>
+										</tr>
+										<tr>
+											<td class="type">Voice</td>
+											<td class="project">문장분리_체험하기</td>
+											<td class="work_title">음성 문장단위 분리</td>
+											<td class="total_cases"><span>100</span>건</td>
+											<td class="working_cases"><span>42</span>건</td>
+											<td class="inspect_yet"><span>42</span>건</td>
+											<td class="reject_cases"><span>42</span>건</td>
+											<td class="complate_cases"><span>42</span>건</td>
+											<td class="point"><span>5,142,000</span></td>
+											<td class="expire_date">~<span>2020.04.30</span></td>
+										</tr>
+										<tr>
+											<td class="type">Voice</td>
+											<td class="project">문장분리_체험하기</td>
+											<td class="work_title">음성 문장단위 분리</td>
+											<td class="total_cases"><span>100</span>건</td>
+											<td class="working_cases"><span>42</span>건</td>
+											<td class="inspect_yet"><span>42</span>건</td>
+											<td class="reject_cases"><span>42</span>건</td>
+											<td class="complate_cases"><span>42</span>건</td>
+											<td class="point"><span>5,142,000</span></td>
+											<td class="expire_date">~<span>2020.04.30</span></td>
+										</tr>
+										<tr>
+											<td class="type">Voice</td>
+											<td class="project">문장분리_체험하기</td>
+											<td class="work_title">음성 문장단위 분리</td>
+											<td class="total_cases"><span>100</span>건</td>
+											<td class="working_cases"><span>42</span>건</td>
+											<td class="inspect_yet"><span>42</span>건</td>
+											<td class="reject_cases"><span>42</span>건</td>
+											<td class="complate_cases"><span>42</span>건</td>
+											<td class="point"><span>5,142,000</span></td>
+											<td class="expire_date">~<span>2020.04.30</span></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+							<div class="btm_info">
+								<div class="paging">
+									<a class="btn_paging_prev" href="#none" >이전 페이지로 이동</a>
+									<span class="list">
+										<a href="#none" class="on">1</a>
+										<a href="#none">2</a>
+										<a href="#none">3</a>
+										<a href="#none">4</a>
+										<a href="#none">5</a>
+									</span>
+									<a class="btn_paging_next" href="#none">다음 페이지로 이동</a>
+								</div>
+							</div>
+						</div>
+						<!-- //.stn -->
+					</div>
+					<!-- //.work_space -->
+	            </div>
+	            <!-- //.content -->
+			</div>
+			<!-- //.contents -->
+		</div>
+		<!-- //#container -->
+
+		<!-- #footer -->
+ 		<div id="footer">
+ 			<!-- .w_footer -->
+ 			<!-- [D] 웹 사이즈에서 보여지는 footer -->
+ 			<div class="w_footer">
+ 				<div class="copyright">
+ 					<div class="cont_box">
+ 						<span>&copy; Copyright 2020</span>
+ 						<span>(주)마인즈랩</span>
+ 						<span>경기도 성남시 분당구 대왕판교로644번길 49 다산타워 6층</span>
+ 						<span>대표 유태준</span>
+ 						<span>사업자 등록번호 314-86-55446</span>
+ 					</div>
+ 				</div>
+ 			</div>
+ 			<!-- //.w_footer -->
+ 		</div>
+ 		<!-- //#footer -->
+	</div>
+	<!-- //#wrap -->
+
+	<!---------- script ---------->
+	<script>
+		$(document).ready(function(){
+			// datepicker 불러오기
+			$(function() {
+				var dates = $('.fromDate, .toDate').datepicker({
+					prevText: '이전 달',
+					nextText: '다음 달',
+					dateFormat: 'yy-mm-dd',
+					onSelect: function (date) {
+						var endDate = $('.toDate');
+						var startDate = $(this).datepicker('getDate');
+						var minDate = $(this).datepicker('getDate');
+						endDate.datepicker('setDate', minDate);
+						startDate.setDate(startDate.getDate() + 365);
+						endDate.datepicker('option', 'maxDate', startDate);
+						endDate.datepicker('option', 'minDate', minDate);
+					}
+				});
+				$(".hasDatepicker").attr("autocomplete", "off");
+			});
+
+			// 인풋 라벨
+			var placeholderLabel = $('input[type="text"], input[type="number"]');
+
+			placeholderLabel.on('focus', function(){
+				$(this).siblings('label').hide();
+			});
+			placeholderLabel.on('focusout', function(){
+				if($(this).val() === ''){
+					$(this).siblings('label').show();
+				}
+			});
+		});
+	</script>
+</body>
+</html>
