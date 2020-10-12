@@ -372,25 +372,6 @@ div.tree-multiselect div.item input[type="checkbox"] + label:before {top: 4px;}
 .tm_qa_stt .term_srch_box {margin: 5px 0;}
 
 /* -------------------- admin popup -------------------- */
-/* tbl_popup_set(admin에서 사용하는 윈도우 팝업 내 테이블 스타일) */
-.tbl_popup_set {width: 100%;}
-.tbl_popup_set table {width: 100%;}
-.tbl_popup_set table tr {height: 35px;}
-.tbl_popup_set table th {border: 1px solid #C7D0D3; background: #4e8692; color: #fff; font-weight: 700; text-align: center;}
-.tbl_popup_set table tbody td {padding: 5px; border: 1px solid #C7D0D3; background: #fff; text-align: center;}
-.tbl_popup_set table tbody td .iptBox {width: 100%;}
-.tbl_popup_set table tbody td .iptBox input {width: 100%;}
-.tbl_popup_set table tbody td .iptBox input[disabled],
-.tbl_popup_set table tbody td .iptBox input[readonly] {background: #f0f0f0;}
-.tbl_popup_set table tbody td .iptBox input[readonly]:focus {border: 1px solid #C7D0D3; box-shadow: none;}
-.tbl_popup_set table tbody td .select {width: 100%;}
-.tbl_popup_set table tbody td .btnBox {margin: 0; text-align: center;}
-.tbl_popup_set table tbody td .btnBox a span {display: inline-block; overflow: hidden; text-indent: -9999px;}
-.tbl_popup_set table tbody td .btnBox a.btn_add {position: relative; width: 25px; height: 25px; padding: 0;}
-.tbl_popup_set table tbody td .btnBox a.btn_add:before {content: ''; position: absolute; top: 50%; left: 50%; width: 15px; height: 3px; background: #fff; transform: translate(-50%, -50%);}
-.tbl_popup_set table tbody td .btnBox a.btn_add:after {content: ''; position: absolute; top: 50%; left: 50%; width: 3px; height: 15px; background: #fff; transform: translate(-50%, -50%);}
-/* //tbl_popup_set(admin에서 사용하는 윈도우 팝업 내 테이블 스타일) */
-
 #container .admin h1 {float: left; margin: 0 0 5px; line-height: 30px;}
 #container .admin h1:before {top: 8px;}
 .admin h1 ~ .btnBox {float: right; margin: 6px 0;}
@@ -422,39 +403,50 @@ div.tree-multiselect div.item input[type="checkbox"] + label:before {top: 4px;}
 .admin table.dataTable td.dataTables_empty:hover {background: #fff;}
 .admin table.dataTable.no-footer {border-bottom: 1px solid #C7D0D3;}
 
-.tbl_include_btn tbody tr:hover td,
+/* tbl_popup_set(admin에서 사용하는 윈도우 팝업 내 테이블 스타일) */
+.tbl_popup_set {width: 100%;}
+.tbl_popup_set table {width: 100%;}
+.tbl_popup_set table tr {height: 35px;}
+.tbl_popup_set table th {border: 1px solid #C7D0D3; background: #4e8692; color: #fff; font-weight: 700; text-align: center;}
+.tbl_popup_set table tbody td {padding: 5px; border: 1px solid #C7D0D3; background: #fff; text-align: center;}
+.tbl_popup_set table tbody td .iptBox {width: 100%;}
+.tbl_popup_set table tbody td .iptBox input {width: 100%;}
+.tbl_popup_set table tbody td .iptBox input[disabled],
+.tbl_popup_set table tbody td .iptBox input[readonly] {background: #f0f0f0;}
+.tbl_popup_set table tbody td .iptBox input[readonly]:focus {border: 1px solid #C7D0D3; box-shadow: none;}
+.tbl_popup_set table tbody td .select {width: 100%; height: 25px; line-height: 25px;}
+.tbl_popup_set table tbody td .btnBox {margin: 0; text-align: center;}
+.tbl_popup_set table tbody td .btnBox a span {display: inline-block; overflow: hidden; text-indent: -9999px;}
+/* //tbl_popup_set(admin에서 사용하는 윈도우 팝업 내 테이블 스타일) */
+
+/* tbl_include_btn */
 .tbl_include_btn tbody tr.active td {background: #e9f1f3;}
-.tbl_include_btn tbody td .iptBox {}
 .tbl_include_btn tbody td .iptBox input {height: 25px;}
 .tbl_include_btn tbody td .btnBox a {padding: 0 15px; font-size: 12px; font-weight: 400; line-height: 23px;}
+/* //tbl_include_btn */
 
-/* -------------------- right_manage page -------------------- */
-.right_manage {width: 530px; height: auto;}
-.right_manage .setBox {margin: 0 0 10px;}
+/* .rgst_sentence_srch */
+.setBox.rgst_sentence_srch table tbody td:first-child {text-align: left;}
+.setBox.rgst_sentence_srch table tbody td.dataTables_empty {text-align: center;}
+/* //rgst_sentence_srch */
 
-/* -------------------- script_manage page -------------------- */
-.script_manage {}
-    
-/* -------------------- rgst_sentence_srch page -------------------- */
-.rgst_sentence_srch .pop_mdl .setBox:nth-child(1) .tbl_include_btn tbody td:first-child,
-.rgst_sentence_srch .pop_mdl .setBox:nth-child(3) .tbl_popup_set tbody td.dtcn_dic_sentence {text-align: left;}
-.rgst_sentence_srch .pop_mdl .setBox:nth-child(1) .tbl_include_btn tbody tr:hover td,
-.rgst_sentence_srch .pop_mdl .setBox:nth-child(2) .tbl_include_btn tbody tr:hover td,
-.rgst_sentence_srch .pop_mdl .setBox:nth-child(3) .tbl_include_btn tbody tr:hover td {background: #fff;}
+/* dtcn_dic_add */
+.setBox.dtcn_dic_add tr:nth-child(1) td,
+.setBox.dtcn_dic_add tr:nth-child(2) td,
+.setBox.dtcn_dic_add tr:nth-child(3) td {text-align: left;}
+/* //dtcn_dic_add */
 
-/* -------------------- add_sentence page -------------------- */
-.add_sentence .tbl_include_btn tbody td:nth-child(2),
-.add_sentence .tbl_include_btn tbody td:nth-child(3) {text-align: left;}
-.add_sentence .tbl_include_btn tbody td:nth-child(4) {text-align: center;}
+/* add_sentence */
+.setBox.add_sentence .tbl_include_btn tbody td:nth-child(2),
+.setBox.add_sentence .tbl_include_btn tbody td:nth-child(3) {text-align: left;}
+.setBox.add_sentence .tbl_include_btn tbody td:nth-child(4) {text-align: center;}
+/* //add_sentence */
+
+/* -------------------- prdt_script_manage page -------------------- */
+.prdt_script_manage .setBox .tbl_popup_set:nth-child(4) {margin: 10px 0 0;}
 
 /* -------------------- add_keyWord page -------------------- */
-.add_keyWord .tbl_include_btn tbody td:nth-child(2) {text-align: left;}
+.add_keyWord .tbl_popup_set tbody td:nth-child(2) {text-align: left;}
 
 /* -------------------- gnrScript_rgst page -------------------- */
-.gnrScript_rgst .setBox .tbl_include_btn {margin: 10px 0 0;}
-.gnrScript_rgst .setBox .tbl_include_btn tbody tr:hover td {background: #fff;}
-
-/* -------------------- media qeury -------------------- */
-@media screen and (max-width: 767px){
-    .dataTables_wrapper .dataTables_paginate {margin: 0}
-}
+.gnrScript_rgst .setBox .tbl_popup_set {margin: 10px 0 0;}

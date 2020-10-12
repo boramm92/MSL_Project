@@ -26,8 +26,8 @@
     <div id="container">
         <!-- #popup_wrap -->
         <div class="popup_wrap admin">
-            <!-- .script_manage -->
-            <div class="script_manage">
+            <!-- .prdt_script_manage -->
+            <div class="prdt_script_manage">
                 <!-- .pop_top -->
                 <div class="pop_top">
                     <h1>분류 코드 등록</h1>
@@ -46,6 +46,7 @@
                         
                         <div class="tbl_popup_set">
                             <table summary="대분류코드, 대분류명, 중분류코드, 중분류명, 소분류코드, 소분류명으로 구성됨">
+                                <caption class="hide">분류 코드 추가 내용</caption>
                                 <colgroup>
                                     <col><col><col><col><col><col>
                                 </colgroup>
@@ -110,6 +111,7 @@
                         
                         <div class="tbl_popup_set">
                             <table summary="대분류, 중분류, 소분류로 구성됨">
+                                <caption class="hide">분류 코드 조회 목록</caption>
                                 <colgroup>
                                     <col width="80"><col><col width="80"><col><col width="80"><col>
                                 </colgroup>
@@ -153,10 +155,12 @@
                         <div class="btnBox btn_change_group">
                             <a href="#none" class="btn_edit">수정</a>
                             <a href="#none" class="btn_delete btn_edit_show">삭제</a>
+                            <a href="#none" class="btn_cancel btn_edit_show">취소</a>
                         </div>
     
                         <div class="tbl_popup_set">
                             <table summary="선택, 버튼ID, 버튼명, 버튼위치, 추가로 구성됨">
+                                <caption class="hide">분류 코드 리스트</caption>
                                 <colgroup>
                                     <col width="50"><col><col><col><col><col><col>
                                 </colgroup>
@@ -214,6 +218,9 @@
                                             </div>
                                         </td>
                                     </tr>                                    
+                                    <tr>
+                                        <td colspan="7">조회된 데이터가 없습니다.</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -231,7 +238,7 @@
                 </div>
                 <!-- //.pop_btm -->
             </div>
-            <!-- //.script_manage -->
+            <!-- //.prdt_script_manage -->
         </div>
         <!-- //#contents -->
     </div>
@@ -253,8 +260,8 @@ jQuery.event.add(window,"load",function(){
             $(this).siblings('.btn_edit_show').css('display', 'inline-block');
         });
         // 설정 영역 내 테이블 상단 취소버튼 클릭 시 수정버튼 보여주기
-        $('.btn_change_group .btn_edit_show').on('click', function(){
-            $(this).hide();
+        $('.btn_change_group .btn_cancel').on('click', function(){
+            $(this).parent('.btn_change_group').find('.btn_edit_show').css('display', 'none');
             $(this).parent('.btn_change_group').find('.btn_edit').show();
         });
     });

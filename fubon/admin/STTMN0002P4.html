@@ -26,8 +26,8 @@
     <div id="container">
         <!-- #popup_wrap -->
         <div class="popup_wrap admin">
-            <!-- .rgst_sentence_srch -->
-            <div class="rgst_sentence_srch">
+            <!-- .prdt_script_manage -->
+            <div class="prdt_script_manage">
                 <!-- .pop_top -->
                 <div class="pop_top">
                     <h1>문장 설정</h1>
@@ -68,7 +68,7 @@
                                 
                                 <tbody>
                                     <tr>
-                                        <td>1</td>
+                                        <td scope="row">1</td>
                                         <td>대분류</td>
                                         <td>중분류</td>
                                         <td>소분류</td>
@@ -136,7 +136,7 @@
                                 
                                 <tbody>
                                     <tr>
-                                        <td>
+                                        <td scope="row">
                                             <select class="select">
                                                 <option value="">계피동일 조건항목</option>
                                                 <option value="">계피동일 조건항목</option>
@@ -158,7 +158,7 @@
                     <!-- //.setBox -->
                     
                     <!-- .setBox -->
-                    <div class="setBox">
+                    <div class="setBox rgst_sentence_srch">
                         <h2>등록 문장 검색</h2>
                         
                         <div class="srchBox">
@@ -180,7 +180,7 @@
                                 </thead>
                                 
                                 <tbody>
-                                    <tr>
+                                    <!-- <tr>
                                         <td>안녕하세요</td>
                                         <td>
                                             <div class="btnBox">
@@ -188,7 +188,7 @@
                                                 <a href="#none" class="rgst_sentenceNum_apply">등록 문장 번호</a>
                                             </div>
                                         </td>
-                                    </tr>
+                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>
@@ -197,11 +197,12 @@
                     <!-- //.setBox -->
     
                     <!-- .setBox -->
-                    <div class="setBox">
+                    <div class="setBox dtcn_dic_add">
                         <h2>탐지사전 입력</h2>
                         
                         <div class="tbl_popup_set tbl_include_btn">
                             <table summary="문장내용, 형태소 분리 문장, 탐지사전(예시), 탐지사전 입력으로 구성됨">
+                                <caption class="hide">탐지사전 입력</caption>
                                 <colgroup>
                                     <col width="120"><col width="50"><col><col width="100"><col width="80">
                                 </colgroup>
@@ -228,24 +229,34 @@
                                     </tr>  
                                       
                                     <tr>    
-                                        <th scope="row">탐지사전 입력</th>
-                                        <td scope="row">1</td>
-                                        <td scope="row">
+                                        <th scope="row" rowspan="2">탐지사전 입력</th>
+                                        <td>1</td>
+                                        <td>
                                             <div class="iptBox">
                                                 <input type="text">
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="btnBox btn_change_group">
-                                                <a href="#none" class="btn_sentence_sprt btn_edit">문장분리</a>
-                                                <a href="#none" class="btn_delete btn_edit_show">제거</a>
+                                            <div class="btnBox">
+                                                <a href="#none" class="btn_sentence_sprt">문장분리</a>
+                                            </div>
+                                        </td>
+                                        <td rowspan="2">
+                                            <div class="btnBox">
+                                                <a href="#none" class="btn_add">추가</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>    
+                                        <td>2</td>
+                                        <td>
+                                            <div class="iptBox">
+                                                <input type="text">
                                             </div>
                                         </td>
                                         <td>
                                             <div class="btnBox">
-                                                <a href="#none" class="btn_add">
-                                                    <span>추가버튼</span>
-                                                </a>
+                                                <a href="#none" class="btn_delete">삭제</a>
                                             </div>
                                         </td>
                                     </tr>
@@ -256,30 +267,35 @@
                     <!-- //.setBox -->
     
                     <!-- .setBox -->
-                    <div class="setBox">
+                    <div class="setBox dtcn_dic_sentence">
                         <h2>탐지사전 리스트</h2>
     
                         <div class="tbl_popup_set tbl_include_btn">
                             <table summary="탐지사전 번호, 그룹 순번, 연결 순번, 탐지사전 내용으로 구성됨">
+                                <caption class="hide">탐지사전 리스트</caption>
                                 <colgroup>
                                     <col width="100"><col width="80"><col width="80"><col><col width="80"><col width="80">
                                 </colgroup>
     
                                 <thead>
                                     <tr>
-                                        <th>탐지사전 번호</th>
-                                        <th>그룹 순번</th>
-                                        <th>연결 순번</th>
-                                        <th colspan="3">탐지사전 내용</th>
+                                        <th scope="col">탐지사전 번호</th>
+                                        <th scope="col">그룹 순번</th>
+                                        <th scope="col">연결 순번</th>
+                                        <th scope="col" colspan="3">탐지사전 내용</th>
                                     </tr>
                                 </thead>
     
                                 <tbody>
                                     <tr>
-                                        <td>01234</td>
+                                        <td scope="row">01234</td>
                                         <td>1</td>
                                         <td>1</td>
-                                        <td class="dtcn_dic_sentence">(안녕)(하다)</td>
+                                        <td>
+                                            <div class="iptBox">
+                                                <input type="text" value="(안녕)(하다)" readonly>
+                                            </div>
+                                        </td>
                                         <td>
                                             <div class="btnBox btn_change_group">
                                                 <a href="#none" class="btn_edit">수정</a>
@@ -294,10 +310,14 @@
                                     </tr>
                                     
                                     <tr>
-                                        <td rowspan="3">01234</td>
+                                        <td scope="row" rowspan="3">01234</td>
                                         <td>2</td>
                                         <td>1</td>
-                                        <td class="dtcn_dic_sentence">(안녕)(하다)</td>
+                                        <td>
+                                            <div class="iptBox">
+                                                <input type="text" value="(안녕)(하다)" readonly>
+                                            </div>
+                                        </td>
                                         <td>
                                             <div class="btnBox btn_change_group">
                                                 <a href="#none" class="btn_edit">수정</a>
@@ -314,7 +334,11 @@
                                     <tr>
                                         <td rowspan="2">3</td>
                                         <td>1</td>
-                                        <td class="dtcn_dic_sentence">(안녕)(하다)</td>
+                                        <td>
+                                            <div class="iptBox">
+                                                <input type="text" value="(안녕)(하다)" readonly>
+                                            </div>
+                                        </td>
                                         <td rowspan="2">
                                             <div class="btnBox btn_change_group">
                                                 <a href="#none" class="btn_edit">수정</a>
@@ -330,7 +354,15 @@
                                     
                                     <tr>
                                         <td>2</td>
-                                        <td class="dtcn_dic_sentence">(안녕)(하다)</td>
+                                        <td>
+                                            <div class="iptBox">
+                                                <input type="text" value="(안녕)(하다)" readonly>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td colspan="6">조회된 데이터가 없습니다.</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -349,7 +381,7 @@
                 </div>
                 <!-- //.pop_btm -->
             </div>
-            <!-- //.rgst_sentence_srch -->
+            <!-- //.prdt_script_manage -->
         </div>
         <!-- //#contents -->
     </div>
