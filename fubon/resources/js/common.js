@@ -332,6 +332,12 @@ $(document).ready(function(){
     
     // 팝업 하단 닫기버튼 클릭 시 새창팝업 닫힘
     $('.pop_btm .btnBox .btn_close').on('click', function(){
+        opener.$('.tbl_include_btn tbody tr').removeClass('active');    // 20.10.10 추가
         window.open('about:blank', '_self').close();
     });
+    
+    // 팝업 상단 닫기버튼 클릭 시 상위페이지 라인 하이라이팅 제거 (20.10.10 추가)
+    onbeforeunload = function(){
+        opener.$('.tbl_include_btn tbody tr').removeClass('active');
+    }
 });
