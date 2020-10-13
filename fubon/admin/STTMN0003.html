@@ -427,7 +427,7 @@
                 <div class="setArea">
                     <!-- .set_sentence -->
                     <div class="set_sentence">
-                        <h3>문장관리</h3>
+                        <h3>문장 관리</h3>
 
                         <div class="btnBox btn_change_group">
                             <a href="#none" class="btn_edit">수정</a>
@@ -476,6 +476,106 @@
                                             </td>
                                             <td>1</td>
                                             <td>모든 암</td>
+                                            <td>Y</td>
+                                            <td>
+                                                <div class="btnBox">
+                                                    <a href="#none" class="btn_set">설정</a>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <!-- [D] 추가버튼 클릭 시 테이블 행 추가되어야 함 -->
+                                                <div class="btnBox">
+                                                    <a href="#none" class="btn_add">
+                                                        <span>추가버튼</span>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row">
+                                                <!-- [D] input[type="checkbox"]의 id와 label의 for 값을 동일하게 주어야함 -->
+                                                <div class="chkBox">
+                                                    <input type="checkbox" id="each_chk2">
+                                                    <label for="each_chk2"></label>
+                                                </div>
+                                            </td>
+                                            <td>2</td>
+                                            <td>전부 보장</td>
+                                            <td>Y</td>
+                                            <td>
+                                                <div class="btnBox">
+                                                    <a href="#none" class="btn_set">설정</a>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <!-- [D] 추가버튼 클릭 시 테이블 행 추가되어야 함 -->
+                                                <div class="btnBox">
+                                                    <a href="#none" class="btn_add">
+                                                        <span>추가버튼</span>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row">
+                                                <!-- [D] input[type="checkbox"]의 id와 label의 for 값을 동일하게 주어야함 -->
+                                                <div class="chkBox">
+                                                    <input type="checkbox" id="each_chk2">
+                                                    <label for="each_chk2"></label>
+                                                </div>
+                                            </td>
+                                            <td>2</td>
+                                            <td>전부 보장</td>
+                                            <td>Y</td>
+                                            <td>
+                                                <div class="btnBox">
+                                                    <a href="#none" class="btn_set">설정</a>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <!-- [D] 추가버튼 클릭 시 테이블 행 추가되어야 함 -->
+                                                <div class="btnBox">
+                                                    <a href="#none" class="btn_add">
+                                                        <span>추가버튼</span>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row">
+                                                <!-- [D] input[type="checkbox"]의 id와 label의 for 값을 동일하게 주어야함 -->
+                                                <div class="chkBox">
+                                                    <input type="checkbox" id="each_chk2">
+                                                    <label for="each_chk2"></label>
+                                                </div>
+                                            </td>
+                                            <td>2</td>
+                                            <td>전부 보장</td>
+                                            <td>Y</td>
+                                            <td>
+                                                <div class="btnBox">
+                                                    <a href="#none" class="btn_set">설정</a>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <!-- [D] 추가버튼 클릭 시 테이블 행 추가되어야 함 -->
+                                                <div class="btnBox">
+                                                    <a href="#none" class="btn_add">
+                                                        <span>추가버튼</span>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row">
+                                                <!-- [D] input[type="checkbox"]의 id와 label의 for 값을 동일하게 주어야함 -->
+                                                <div class="chkBox">
+                                                    <input type="checkbox" id="each_chk2">
+                                                    <label for="each_chk2"></label>
+                                                </div>
+                                            </td>
+                                            <td>2</td>
+                                            <td>전부 보장</td>
                                             <td>Y</td>
                                             <td>
                                                 <div class="btnBox">
@@ -611,6 +711,11 @@ jQuery.event.add(window,"load",function(){
         // 표준스크립트 관리 테이블 내 조회 버튼 클릭 시 하단 문장 관리 테이블 보여주기
         $('.btn_check').on('click', function(){
             $('.set_sentence').show();
+            
+            // 하단 테이블 목록 5개 이상일때 스크롤처리되면서 어긋나는 테이블 레이아웃 맞춰주기
+            if( $('.tbl_scroll tr').length >= 5 ) {
+                $('.tbl_scroll').siblings('.tbl_hd').css({'padding-right':'6px'});
+            }
         });
 
         // 설정 영역 내 테이블 상단 수정버튼 클릭 시 저장, 삭제, 취소버튼 보여주기
