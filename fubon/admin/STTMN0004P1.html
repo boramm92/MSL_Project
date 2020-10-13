@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="format-detection" content="telephone=no">
+
+<!---------------------- General Resources ---------------------->
+<!-- General CSS -->
+<link rel="stylesheet" href="../resources/css/common.css">
+
+<!-- General Script -->
+<script src="../resources/js/jquery-3.3.1.min.js"></script>
+<script src="../resources/js/jquery-migrate-3.3.0.min.js"></script>
+<script src="../resources/js/common.js"></script>
+
+<title>담보코드 조회 및 추가(팝업) || 푸본현대생명</title>
+</head>
+<body>
+<!-- [D] 팝업 사이즈 550 X  -->
+
+<!-- #wrap -->
+<div id="wrap">
+    <!-- #container -->
+    <div id="container">
+        <!-- #popup_wrap -->
+        <div class="popup_wrap admin small">
+            <!-- .sentence_talk_cdtn -->
+            <div class="sentence_talk_cdtn">
+                <!-- .pop_top -->
+                <div class="pop_top">
+                    <h1>담보코드 조회 및 추가</h1>
+                    
+                    <div class="srchBox">
+                        <input type="search">
+                        <a href="#none" class="btn_srch">
+                            <span>검색버튼</span>
+                        </a>
+                    </div>
+                </div>
+                <!-- //.pop_top -->
+
+                <!-- .pop_mdl -->
+                <div class="pop_mdl">
+                    <!-- .setBox -->
+                    <div class="setBox">                                                
+                        <!-- .dataTableBox -->
+                        <div class="dataTableBox">
+                            <!-- [D] datatables 라이브러리 영역 -->
+                            <table class="dataTable tbl_include_btn">
+                                <thead>
+                                    <tr>
+                                        <th>보종구분</th>
+                                        <th>담보코드</th>
+                                        <th>담보명</th>
+                                        <th>코드추가</th>
+                                    </tr>
+                                </thead>
+                                
+                                <tbody>
+                                    <tr>
+                                        <td>장기</td>
+                                        <td>609020</td>
+                                        <td>특정바이러스추가보장담보</td>
+                                        <td>
+                                            <div class="btnBox">
+                                                <a href="#none" class="btn_add_item">추가</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- //.dataTableBox -->
+                    </div>
+                    <!-- //.setBox -->
+                </div>
+                <!-- //.pop_mdl -->
+                
+                <!-- .pop_btm -->
+                <div class="pop_btm">
+                    <div class="btnBox">
+                        <a href="#none" class="btn_save">저장</a>
+                        <a href="#none" class="btn_close">닫기</a>
+                    </div>
+                </div>
+                <!-- //.pop_btm -->
+            </div>
+            <!-- //.sentence_talk_cdtn -->
+        </div>
+        <!-- //#contents -->
+    </div>
+    <!-- //#container -->
+</div>
+<!-- //#wrap -->
+
+<!---------------------- Local Resources ---------------------->
+<!-- Local CSS -->
+<link rel="stylesheet" href="../resources/css/datatables.min.css">
+<!-- //datatables -->
+<link rel="stylesheet" href="../resources/css/popup.css">
+
+<!-- Local Script Library -->
+<script src="../resources/js/datatables.min.js"></script>
+<!-- //datatables -->
+
+<!-- Local Script -->
+<script type="text/javascript">
+jQuery.event.add(window,"load",function(){
+    $(document).ready(function(){
+        var table = $('.dataTable').DataTable({
+            dom: 't<"bottom"p>', // 옵션 위치 지정
+            language: { // 테이블 목록 건수 text 한글 설정
+                emptyTable: "조회된 데이터가 없습니다.", // 데이터 없을 경우 노출되는 text 설정
+                paginate: {
+                    first: "",
+                    previous: "",
+                    next: "",
+                    last: ""
+                },
+            },
+            order: false,
+            lengthMenu: [5], // 한 페이지에 보여줄 목록 갯수
+            paging: true, // 페이징 허용
+            pagingType: "full_numbers", // 페이징 버튼 구성 (처음, 이전, 페이지숫자, 다음, 마지막)
+            columnDefs: [ // 컬럼별 width, 옵션 사용 지정
+                {targets: [0], width: "100px", sortable: false, orderable: false},   // 보종구분
+                {targets: [1], width: "100px", orderable: false},      // 담보코드
+                {targets: [2], width: "", orderable: false},      // 담보명
+                {targets: [3], width: "80px", orderable: false},      // 코드추가
+            ],
+        })
+    });
+});
+</script>
+</body>
+</html>
