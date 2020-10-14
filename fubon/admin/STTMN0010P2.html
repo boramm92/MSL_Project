@@ -89,6 +89,7 @@
                         <div class="btnBox btn_change_group">
                             <a href="#none" class="btn_edit">수정</a>
                             <a href="#none" class="btn_delete btn_edit_show">삭제</a>
+                            <a href="#none" class="btn_cancel btn_edit_show">취소</a>
                         </div>
     
                         <div class="tbl_popup_set">
@@ -179,8 +180,8 @@ jQuery.event.add(window,"load",function(){
             $(this).siblings('.btn_edit_show').css('display', 'inline-block');
         });
         // 설정 영역 내 테이블 상단 취소버튼 클릭 시 수정버튼 보여주기
-        $('.btn_change_group .btn_edit_show').on('click', function(){
-            $(this).hide();
+        $('.btn_change_group .btn_cancel').on('click', function(){
+            $(this).parent('.btn_change_group').find('.btn_edit_show').hide();
             $(this).parent('.btn_change_group').find('.btn_edit').show();
         });
     });
