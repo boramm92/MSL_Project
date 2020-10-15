@@ -89,42 +89,53 @@
                         <h2>상담 리스트</h2>
                     
                         <div class="tbl_popup_set tbl_include_btn">
-                            <table summary="상담코드, 상담코드명, 적용차수, 적용시작일, 적용종료일, 조회(버튼)으로 구성됨">
-                                <caption class="hide">상담 리스트</caption>
-                                <colgroup>
-                                    <col width="80"><col><col width="80">
-                                    <col width="120"><col width="120"><col width="80">
-                                </colgroup>
-    
-                                <thead>
-                                    <tr>
-                                        <th scope="col">상담코드</th>
-                                        <th scope="col">상담코드명</th>
-                                        <th scope="col">적용차수</th>
-                                        <th scope="col">적용시작일</th>
-                                        <th scope="col">적용종료일</th>
-                                        <th scope="col">조회</th>
-                                    </tr>
-                                </thead>
-    
-                                <tbody>
-                                    <tr>
-                                        <td>FD0001</td>
-                                        <td>과도한 표현</td>
-                                        <td>1</td>
-                                        <td>2020-01-01</td>
-                                        <td>2020-03-01</td>
-                                        <td>
-                                            <div class="btnBox">
-                                                <a href="#none" class="btn_check">조회</a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="8">조회된 데이터가 없습니다.</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="tbl_hd">
+                                <table summary="상담코드, 상담코드명, 적용차수, 적용시작일, 적용종료일, 조회(버튼)으로 구성됨">
+                                    <caption class="hide">상담 리스트</caption>
+                                    <colgroup>
+                                        <col width="80"><col><col width="80">
+                                        <col width="120"><col width="120"><col width="80">
+                                    </colgroup>
+        
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">상담코드</th>
+                                            <th scope="col">상담코드명</th>
+                                            <th scope="col">적용차수</th>
+                                            <th scope="col">적용시작일</th>
+                                            <th scope="col">적용종료일</th>
+                                            <th scope="col">조회</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            
+                            <div class="tbl_bd tbl_scroll">
+                                <table>
+                                    <colgroup>
+                                        <col width="80"><col><col width="80">
+                                        <col width="120"><col width="120"><col width="80">
+                                    </colgroup>
+                                    
+                                    <tbody>
+                                        <tr>
+                                            <td>FD0001</td>
+                                            <td>과도한 표현</td>
+                                            <td>1</td>
+                                            <td>2020-01-01</td>
+                                            <td>2020-03-01</td>
+                                            <td>
+                                                <div class="btnBox">
+                                                    <a href="#none" class="btn_check">조회</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="8">조회된 데이터가 없습니다.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                     <!-- //.setBox -->
@@ -134,33 +145,43 @@
                         <h2>상담 키워드 리스트</h2>
                     
                         <div class="tbl_popup_set tbl_include_btn">
-                            <table summary="NO, 키워드로 구성됨">
-                                <caption class="hide">상담 키워드 리스트</caption>
-                                <colgroup>
-                                    <col width="50"><col>
-                                </colgroup>
-    
-                                <thead>
-                                    <tr>
-                                        <th scope="col">NO</th>
-                                        <th scope="col">키워드</th>
-                                    </tr>
-                                </thead>
-    
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>모든암</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>전부 보장</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="8">조회된 데이터가 없습니다.</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="tbl_hd">
+                                <table summary="NO, 키워드로 구성됨">
+                                    <caption class="hide">상담 키워드 리스트</caption>
+                                    <colgroup>
+                                        <col width="50"><col>
+                                    </colgroup>
+        
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">NO</th>
+                                            <th scope="col">키워드</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            
+                            <div class="tbl_bd tbl_scroll">
+                                <table>
+                                    <colgroup>
+                                        <col width="50"><col>
+                                    </colgroup>
+                                    
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>모든암</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>전부 보장</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="8">조회된 데이터가 없습니다.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                     <!-- //.setBox -->
@@ -218,6 +239,13 @@ jQuery.event.add(window,"load",function(){
             pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
             defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
             autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
+        });
+        
+        // 스크롤 테이블 목록 10개 이상일때 스크롤바 추가되면서 어긋나는 테이블 레이아웃 맞춰주기
+        $('.btn_srch').on('click', function(){
+            if( $('.tbl_scroll tr').length > 10 ) {
+                $('.tbl_scroll').siblings('.tbl_hd').css({'padding-right':'6px'});
+            }
         });
     });
 });
