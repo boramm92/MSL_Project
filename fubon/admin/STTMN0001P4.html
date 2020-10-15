@@ -127,56 +127,67 @@
                         <h2>평가표 상세 리스트</h2>
                     
                         <div class="tbl_popup_set tbl_include_btn">
-                            <table summary="선택(체크박스), 점검항목 코드, 점검항목명, 점검항목설명, 부분검수여부, 자동검수여부로 구성됨">
-                                <caption class="hide">평가표 상세 리스트</caption>
-                                <colgroup>
-                                    <col width="50"><col width="100"><col>
-                                    <col><col><col>
-                                </colgroup>
-    
-                                <thead>
-                                    <tr>
-                                        <th scope="col">선택</th>
-                                        <th scope="col">점검항목 코드</th>
-                                        <th scope="col">점검항목명</th>
-                                        <th scope="col">점검항목설명</th>
-                                        <th scope="col">부분검수여부</th>
-                                        <th scope="col">자동검수여부</th>
-                                    </tr>
-                                </thead>
-    
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="chkBox">
-                                                <input type="checkbox" id="each_chk1">
-                                                <label for="each_chk1"></label>
-                                            </div>
-                                        </td>
-                                        <td>L001</td>
-                                        <td>절판마케팅</td>
-                                        <td>부적절한 마케팅</td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="chkBox">
-                                                <input type="checkbox" id="each_chk2">
-                                                <label for="each_chk2"></label>
-                                            </div>
-                                        </td>
-                                        <td>L002</td>
-                                        <td>가입동의</td>
-                                        <td>가입동의 여부</td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="8">조회된 데이터가 없습니다.</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="tbl_hd">
+                                <table summary="선택(체크박스), 점검항목 코드, 점검항목명, 점검항목설명, 부분검수여부, 자동검수여부로 구성됨">
+                                    <caption class="hide">평가표 상세 리스트</caption>
+                                    <colgroup>
+                                        <col width="50"><col width="100"><col width="200">
+                                        <col width="200"><col width="200"><col width="100">
+                                    </colgroup>
+        
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">선택</th>
+                                            <th scope="col">점검항목 코드</th>
+                                            <th scope="col">점검항목명</th>
+                                            <th scope="col">점검항목설명</th>
+                                            <th scope="col">부분검수여부</th>
+                                            <th scope="col">자동검수여부</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            
+                            <div class="tbl_bd tbl_scroll">
+                                <table>
+                                    <colgroup>
+                                        <col width="50"><col width="100"><col width="200">
+                                        <col width="200"><col width="200"><col width="100">
+                                    </colgroup>
+                                    
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="chkBox">
+                                                    <input type="checkbox" id="each_chk1">
+                                                    <label for="each_chk1"></label>
+                                                </div>
+                                            </td>
+                                            <td>L001</td>
+                                            <td>절판마케팅</td>
+                                            <td>부적절한 마케팅</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="chkBox">
+                                                    <input type="checkbox" id="each_chk2">
+                                                    <label for="each_chk2"></label>
+                                                </div>
+                                            </td>
+                                            <td>L002</td>
+                                            <td>가입동의</td>
+                                            <td>가입동의 여부</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="8">조회된 데이터가 없습니다.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                     <!-- //.setBox -->
@@ -208,7 +219,12 @@
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-        
+        // 스크롤 테이블 목록 10개 이상일때 스크롤바 추가되면서 어긋나는 테이블 레이아웃 맞춰주기
+        $('.btn_check').on('click', function(){
+            if( $('.tbl_scroll tr').length > 10 ) {
+                $('.tbl_scroll').siblings('.tbl_hd').css({'padding-right':'6px'});
+            }
+        });
     });
 });
 </script>
