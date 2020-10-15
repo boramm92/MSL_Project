@@ -143,47 +143,57 @@
                         <h2>선택 문장 리스트</h2>
     
                         <div class="tbl_popup_set tbl_include_btn">
-                            <table summary="NO, 가이드 문장, 표준스크립트 문장 내용, 삭제(버튼)으로 구성됨">
-                                <caption class="hide">선택 문장 리스트</caption>
-                                <colgroup>
-                                    <col width="50"><col width="200"><col><col width="80">
-                                </colgroup>
+                            <div class="tbl_hd">
+                                <table summary="NO, 가이드 문장, 표준스크립트 문장 내용, 삭제(버튼)으로 구성됨">
+                                    <caption class="hide">선택 문장 리스트</caption>
+                                    <colgroup>
+                                        <col width="50"><col width="200"><col><col width="80">
+                                    </colgroup>
+        
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">NO</th>
+                                            <th scope="col">가이드 문장</th>
+                                            <th scope="col">표준스크립트 문장 내용</th>
+                                            <th scope="col">삭제</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
     
-                                <thead>
-                                    <tr>
-                                        <th scope="col">NO</th>
-                                        <th scope="col">가이드 문장</th>
-                                        <th scope="col">표준스크립트 문장 내용</th>
-                                        <th scope="col">삭제</th>
-                                    </tr>
-                                </thead>
-    
-                                <tbody>
-                                    <tr>
-                                        <td scope="row">1</td>
-                                        <td></td>
-                                        <td>안녕하세요</td>
-                                        <td>
-                                            <div class="btnBox">
-                                                <a href="#none" class="btn_delete">삭제</a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td scope="row">2</td>
-                                        <td></td>
-                                        <td>거부하시는 경우 보험계약 상담 등 정상적인 서비스 제공이 불가능하며, 가입설계 동의에 의한 개인(신용)정보 조회는 귀하의 신용등급에 영향을 주지 않습니다.</td>
-                                        <td>
-                                            <div class="btnBox">
-                                                <a href="#none" class="btn_delete">삭제</a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="4">조회된 데이터가 없습니다.</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="tbl_bd tbl_scroll">
+                                <table>
+                                    <colgroup>
+                                        <col width="50"><col width="200"><col><col width="80">
+                                    </colgroup>
+                                    
+                                    <tbody>
+                                        <tr>
+                                            <td scope="row">1</td>
+                                            <td></td>
+                                            <td>안녕하세요</td>
+                                            <td>
+                                                <div class="btnBox">
+                                                    <a href="#none" class="btn_delete">삭제</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row">2</td>
+                                            <td></td>
+                                            <td>거부하시는 경우 보험계약 상담 등 정상적인 서비스 제공이 불가능하며, 가입설계 동의에 의한 개인(신용)정보 조회는 귀하의 신용등급에 영향을 주지 않습니다.</td>
+                                            <td>
+                                                <div class="btnBox">
+                                                    <a href="#none" class="btn_delete">삭제</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4">조회된 데이터가 없습니다.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>                                
                         </div>
                     </div>
                     <!-- //.setBox -->
@@ -242,7 +252,14 @@ jQuery.event.add(window,"load",function(){
                 {targets: [2], width: "", orderable: false},      // 표준스크립트 문장 내용
                 {targets: [3], width: "80px", orderable: false},      // 선택
             ],
-        })
+        });
+        
+        // 선택 버튼 클릭 시 스크롤 테이블 목록 10개 이상일때 스크롤바 추가되면서 어긋나는 테이블 레이아웃 맞춰주기
+        $('.btn_slt').on('click', function(){
+            if( $('.tbl_scroll tr').length > 10 ) {
+                $('.tbl_scroll').siblings('.tbl_hd').css({'padding-right':'6px'});
+            }
+        });
         
         // 설정 영역 내 테이블 상단 수정버튼 클릭 시 저장, 삭제, 취소버튼 보여주기
         $('.btn_change_group .btn_edit').on('click', function(){
