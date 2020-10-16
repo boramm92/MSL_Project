@@ -79,12 +79,12 @@
     
                     <!-- .setBox -->
                     <div class="setBox">
-                        <h2>답변 선택</h2>
+                        <h2>답변 리스트</h2>
     
                         <div class="tbl_popup_set">
                             <div class="tbl_hd">
                                 <table summary="선택(체크박스), 답변내용, 추가(버튼)으로 구성됨">
-                                    <caption class="hide">답변 선택</caption>
+                                    <caption class="hide">답변 리스트</caption>
                                     <colgroup>
                                         <col width="50"><col><col width="50">
                                     </colgroup>
@@ -171,6 +171,13 @@ jQuery.event.add(window,"load",function(){
             $(this).parent('.btn_change_group').find('.btn_edit_show').hide();
             $(this).parent('.btn_change_group').find('.btn_edit').show();
         });
+        
+        // 스크롤 테이블 목록 10개 이상일때 스크롤바 추가되면서 어긋나는 테이블 레이아웃 맞춰주기
+        $('.btn_add').on('click', function(){
+            if( $('.tbl_scroll tr').length > 10 ) {
+                $('.tbl_scroll').siblings('.tbl_hd').css({'padding-right':'6px'});
+            }
+        });        
     });
 });
 </script>
