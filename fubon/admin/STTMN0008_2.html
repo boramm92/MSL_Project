@@ -15,7 +15,7 @@
 <script src="../resources/js/jquery-migrate-3.3.0.min.js"></script>
 <script src="../resources/js/common.js"></script>
 
-<title>처리 상태 모니터링 || 푸본현대생명</title>
+<title>시뮬레이션 화면2 || 푸본현대생명</title>
 </head>
 <body>
 <!-- #wrap -->
@@ -180,7 +180,7 @@
     <!-- #container -->
     <div id="container">
         <!-- #contents -->
-        <div id="contents" class="admin process_mntr">
+        <div id="contents" class="admin simulation_screen">
             <!-- .tab_title -->
             <div class="tab_title">
                 <div class="tab_list_wrap">
@@ -213,166 +213,167 @@
 
             <!-- .tab_content -->
             <div class="tab_content">
-                <h3>데이터 처리 상태</h3>
+                <h3>탐지사전 검증</h3>
 
-                <!-- .srchArea -->
-                <div class="srchArea">
-                    <table class="tbl_line_view" summary="조회일자, 조회주기로 구성">
-                        <caption class="hide">검색조건</caption>
-                        <colgroup>
-                            <col width="100"><col><col width="100"><col>
-                        </colgroup>
-
-                        <tbody>
-                            <tr>
-                                <th scope="row">조회일자</th>
-                                <td>
-                                    <div class="iptBox">
-                                        <input type="text" id="datePicker" class="iptDateTime">
-                                    </div>
-                                </td>
-
-                                <th scope="row">조회주기</th>
-                                <td>
-                                    <select class="select">
-                                        <option value="">1번 조회</option>
-                                        <option value="">5초 마다</option>
-                                        <option value="">30초 마다</option>
-                                        <option value="">60초 마다</option>
-                                    </select>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-
+                <!-- .topBox -->
+                <div class="topBox">
                     <div class="btnBox">
-                        <a href="#none" class="btn_srch">조회</a>
+                        <a href="#none" class="btn_action">형태소 분리 실행</a>
                     </div>
+
+                    <!-- .scriptArea -->
+                    <div class="scriptArea">
+                        <h4>대상 스크립트</h4>
+                        <div class="scriptBox">
+                            <textarea placeholder="텍스트파일 업로드 또는 직접 입력해 주세요.">동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세</textarea>
+                        </div>
+                    </div>
+                    <!-- //.scriptArea -->
+
+                    <!-- .scriptArea -->
+                    <div class="scriptArea">
+                        <h4>형태소 분리 결과</h4>
+                        <div class="scriptBox">
+                            <textarea></textarea>
+                        </div>
+                    </div>
+                    <!-- //.scriptArea -->
                 </div>
-                <!-- //.srchArea -->
+                <!-- //.topBox -->
 
-                <!-- .custom_tbl -->
-                <div class="custom_tbl">
-                    <table summary="서버처리현황, 녹취회사, 인입콜, STT 대기중, STT 처리중, STT 처리완료, STT 오류로 구성">
-                        <caption class="hide">서버처리현황</caption>
-                        <colgroup>
-                            <col width="100"><col width="100"><col width="100">
-                            <col width="100"><col width="100"><col width="100"><col width="100">
-                        </colgroup>
+                <!-- .btmBox -->
+                <div class="btmBox">
+                    <div class="btnBox">
+                        <a href="#none" class="btn_action">탐지사전 실행</a>
+                        <a href="#none" class="btn_delete">삭제</a>
+                    </div>
 
-                        <thead>
-                            <tr>
-                                <th>서버처리현황</th>
-                                <th>녹취회사</th>
-                                <th>인입콜</th>
-                                <th>STT 대기중</th>
-                                <th>STT 처리중</th>
-                                <th>STT 처리완료</th>
-                                <th>STT 오류</th>
-                            </tr>
-                        </thead>
+                    <!-- .tbl_set_view -->
+                    <div class="tbl_set_view">
+                        <div class="tbl_hd">
+                            <table summary="선택(체크박스), 스크립트(선택입력), 탐지사전번호, 탐지사전(필수입력), 추가(버튼)으로 구성됨">
+                                <caption class="hide">탐지사전 스크립트 리스트</caption>
+                                <colgroup>
+                                    <col width="50"><col><col width="100"><col><col width="80">
+                                </colgroup>
 
-                        <tbody>
-                            <tr>
-                                <th rowspan="2">STT 1서버</th>
-                                <th>A회사</th>
-                                <td>2324</td>
-                                <td>2324</td>
-                                <td>234</td>
-                                <td>234</td>
-                                <td>234</td>
-                            </tr>
-                            <tr>
-                                <th>B회사</th>
-                                <td>2324</td>
-                                <td>2324</td>
-                                <td>234</td>
-                                <td>234</td>
-                                <td>234</td>
-                            </tr>
-                            <tr>
-                                <th rowspan="2">STT 2서버</th>
-                                <th>A회사</th>
-                                <td>2324</td>
-                                <td>2324</td>
-                                <td>234</td>
-                                <td>234</td>
-                                <td>234</td>
-                            </tr>
-                            <tr>
-                                <th>B회사</th>
-                                <td>2324</td>
-                                <td>2324</td>
-                                <td>234</td>
-                                <td>234</td>
-                                <td>234</td>
-                            </tr>
-                            <tr>
-                                <th colspan="2">총계</th>
-                                <td>23425</td>
-                                <td>2524</td>
-                                <td>2524</td>
-                                <td>2524</td>
-                                <td>2524</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">선택</th>
+                                        <th scope="col">스크립트&lpar;선택입력&rpar;</th>
+                                        <th scope="col">탐지사전번호</th>
+                                        <th scope="col">탐지사전&lpar;필수입력&rpar;</th>
+                                        <th scope="col">추가</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+
+                        <div class="tbl_bd tbl_scroll">
+                            <table>
+                                <colgroup>
+                                    <col width="50"><col><col width="100"><col><col width="80">
+                                </colgroup>
+
+                                <tbody>
+                                    <tr>
+                                        <td scope="row">
+                                            <!-- [D] input[type="checkbox"]의 id와 label의 for 값을 동일하게 주어야함 -->
+                                            <div class="chkBox">
+                                                <input type="checkbox" id="each_chk1">
+                                                <label for="each_chk1"></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="iptBox">
+                                                <input type="text">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="iptBox">
+                                                <input type="text">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="iptBox">
+                                                <input type="text">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="btnBox">
+                                                <a href="#none" class="btn_add">
+                                                    <span>추가버튼</span>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5">조회된 데이터가 없습니다.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- //.tbl_set_view -->
+
+                    <!-- .tbl_set_view -->
+                    <div class="tbl_set_view">
+                        <div class="tbl_hd">
+                            <table summary="NO, 대상 스크립트, 탐지사전번호, 탐지 결과로 구성됨">
+                                <caption class="hide">탐지사전 스크립트 리스트</caption>
+                                <colgroup>
+                                    <col width="50"><col width="600"><col width="100"><col>
+                                </colgroup>
+
+                                <thead>
+                                    <tr>
+                                        <th scope="col">NO</th>
+                                        <th scope="col">대상 스크립트</th>
+                                        <th scope="col">탐지사전번호</th>
+                                        <th scope="col">탐지 결과</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+
+                        <div class="tbl_bd tbl_scroll">
+                            <table>
+                                <colgroup>
+                                    <col width="50"><col width="600"><col width="100"><col>
+                                </colgroup>
+
+                                <tbody>
+                                    <tr>
+                                        <td scope="row">1</td>
+                                        <td>동해물과 백두산이 마르고 닳도록</td>
+                                        <td>1</td>
+                                        <td>(동해)(물과)(백두)(산이)</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5">조회된 데이터가 없습니다.</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5">조회된 데이터가 없습니다.</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5">조회된 데이터가 없습니다.</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5">조회된 데이터가 없습니다.</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5">조회된 데이터가 없습니다.</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5">조회된 데이터가 없습니다.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- //.tbl_set_view -->
                 </div>
-                <!-- //.custom_tbl -->
-
-                <!-- .custom_tbl -->
-                <div class="custom_tbl">
-                    <table summary="보종, 인입건수, STT 대기, STT 처리중, STT 오류, QA 대기, QA 처리중, QA 변환오류, QA 처리완료, 녹취파일 미탐지로 구성">
-                        <caption class="hide"></caption>
-                        <colgroup>
-                            <col width="80"><col width="100"><col width="100"><col width="100"><col width="100">
-                            <col width="100"><col width="100"><col width="100"><col width="100"><col width="100">
-                        </colgroup>
-
-                        <thead>
-                            <tr>
-                                <th>보종</th>
-                                <th>인입건수</th>
-                                <th>STT 대기</th>
-                                <th>STT 처리중</th>
-                                <th>STT 오류</th>
-                                <th>QA 대기</th>
-                                <th>QA 처리중</th>
-                                <th>QA 변환오류</th>
-                                <th>QA 처리완료</th>
-                                <th>녹취파일 미탐지</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <th>장기</th>
-                                <td>2320</td>
-                                <td>120</td>
-                                <td>120</td>
-                                <td>120</td>
-                                <td>120</td>
-                                <td>120</td>
-                                <td>120</td>
-                                <td>120</td>
-                                <td>120</td>
-                            </tr>
-                            <tr>
-                                <th>총계</th>
-                                <td>2754</td>
-                                <td>130</td>
-                                <td>130</td>
-                                <td>130</td>
-                                <td>130</td>
-                                <td>130</td>
-                                <td>130</td>
-                                <td>130</td>
-                                <td>130</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <!-- //.custom_tbl -->
+                <!-- //.btmBox -->
             </div>
             <!-- //.tab_content -->
         </div>
@@ -387,6 +388,8 @@
 <link rel="stylesheet" href="../resources/css/bootstrap.css"/>
 <link rel="stylesheet" href="../resources/css/bootstrap-datetimepicker.css"/>
 <!-- //datetimepicker -->
+<link rel="stylesheet" href="../resources/css/datatables.min.css">
+<!-- //datatables -->
 <link rel="stylesheet" href="../resources/css/stt_tm_qa.css">
 
 <!-- Local Script Library -->
@@ -394,19 +397,18 @@
 <script src="../resources/js/moment.min.js"></script>
 <script src="../resources/js/ko.js"></script>
 <!-- //datetimepicker -->
+<script src="../resources/js/datatables.min.js"></script>
+<!-- //datatables -->
 
 <!-- Local Script -->
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-        // datetimepicker 렌더링
-        $('#datePicker').datetimepicker({
-            language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
-            format: 'yyyy-mm-dd',  // 년-월-일 만 출
-            minView: 'month',
-            pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
-            defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
-            autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
+        // 스크롤 테이블 목록 10개 이상일때 스크롤바 추가되면서 어긋나는 테이블 레이아웃 맞춰주기
+        $('.btn_add, .btn_action').on('click', function(){
+            if( $('.tbl_scroll tr').length > 10 ) {
+                $('.tbl_scroll').siblings('.tbl_hd').css({'padding-right':'6px'});
+            }
         });
     });
 });
