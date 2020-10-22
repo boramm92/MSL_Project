@@ -18,7 +18,7 @@
 <title>대분류 코드 관리(팝업) || 푸본현대생명</title>
 </head>
 <body>
-<!-- [D] 팝업 사이즈 580 X 495 -->
+<!-- [D] 팝업 사이즈 580 X 455 -->
 
 <!-- #wrap -->
 <div id="wrap">
@@ -45,7 +45,7 @@
                         </div>
                         
                         <div class="tbl_popup_set">
-                            <table summary="대분류코드, 대분류명으로 구성됨">
+                            <table summary="대분류 코드, 대분류명으로 구성됨">
                                 <caption class="hide">대분류 코드 추가 내용</caption>
                                 <colgroup>
                                     <col><col>
@@ -53,7 +53,7 @@
     
                                 <thead>
                                     <tr>
-                                        <th scope="col">대분류코드</th>
+                                        <th scope="col">대분류 코드</th>
                                         <th scope="col">대분류명</th>
                                     </tr>
                                 </thead>
@@ -101,7 +101,7 @@
                                             </div>
                                         </td>
     
-                                        <th>대분류명</th>
+                                        <th scope="row">대분류명</th>
                                         <td>
                                             <div class="iptBox">
                                                 <input type="text">
@@ -132,11 +132,11 @@
                                         <col width="50"><col width="140"><col width="140">
                                     </colgroup>
         
-                                    <!-- [D] 테이블 상단 수정버튼(.btn_edit)클릭 시 선택 컬럼 보여주어야함 -->
+                                    <!-- [D] 테이블 상단 수정(.btn_edit) 버튼 클릭 시 선택 컬럼 보여주어야함 -->
                                     <thead>
                                         <tr>
                                             <th scope="col">선택</th>
-                                            <th scope="col">대분류코드</th>
+                                            <th scope="col">대분류 코드</th>
                                             <th scope="col">대분류명</th>
                                         </tr>
                                     </thead>
@@ -209,17 +209,17 @@ jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
         // 조회 버튼 클릭 시 스크롤 테이블 목록 10개 이상일때 스크롤바 추가되면서 어긋나는 테이블 레이아웃 맞춰주기
         $('.btn_srch').on('click', function(){
-            if( $('.tbl_scroll tr').length > 10 ) {
+            if( $('.tbl_scroll tr').length >= 10 ) {
                 $('.tbl_scroll').siblings('.tbl_hd').css({'padding-right':'6px'});
             }
         });
         
-        // 설정 영역 내 테이블 상단 수정버튼 클릭 시 저장, 삭제, 취소버튼 보여주기
+        // 수정버튼 클릭 시 삭제, 취소버튼 보여주기
         $('.btn_change_group .btn_edit').on('click', function(){
             $(this).hide();
             $(this).siblings('.btn_edit_show').css('display', 'inline-block');
         });
-        // 설정 영역 내 테이블 상단 취소버튼 클릭 시 수정버튼 보여주기
+        // 취소버튼 클릭 시 수정버튼 보여주기
         $('.btn_change_group .btn_cancel').on('click', function(){
             $(this).parent('.btn_change_group').find('.btn_edit_show').css('display', 'none');
             $(this).parent('.btn_change_group').find('.btn_edit').show();

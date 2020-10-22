@@ -136,7 +136,7 @@
                                         <col width="50"><col width="200"><col>
                                     </colgroup>
         
-                                    <!-- [D] 테이블 상단 수정버튼(.btn_edit)클릭 시 선택 열 보여주어야함 -->
+                                    <!-- [D] 테이블 상단 수정버튼(.btn_edit)클릭 시 선택 컬럼 보여주어야함 -->
                                     <thead>
                                         <tr>
                                             <th scope="col">선택</th>
@@ -176,8 +176,8 @@
                                         <tr>
                                             <td scope="row">
                                                 <div class="chkBox">
-                                                    <input type="checkbox" id="each_chk1">
-                                                    <label for="each_chk1"></label>
+                                                    <input type="checkbox" id="each_chk2">
+                                                    <label for="each_chk2"></label>
                                                 </div>
                                             </td>
                                             <td>
@@ -228,12 +228,12 @@
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-        // 설정 영역 내 테이블 상단 수정버튼 클릭 시 저장, 삭제, 취소버튼 보여주기
+        // 수정버튼 클릭 시 삭제, 취소버튼 보여주기
         $('.btn_change_group .btn_edit').on('click', function(){
             $(this).hide();
             $(this).siblings('.btn_edit_show').css('display', 'inline-block');
         });
-        // 설정 영역 내 테이블 상단 취소버튼 클릭 시 수정버튼 보여주기
+        // 취소버튼 클릭 시 수정버튼 보여주기
         $('.btn_change_group .btn_cancel').on('click', function(){
             $(this).parent('.btn_change_group').find('.btn_edit_show').hide();
             $(this).parent('.btn_change_group').find('.btn_edit').show();

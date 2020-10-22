@@ -40,6 +40,10 @@
                     <div class="setBox">
                         <h2>문장 관리</h2>
                         
+                        <div class="btnBox">
+                            <a href="#none" class="btn_delete">삭제</a>
+                        </div>
+                        
                         <div class="tbl_popup_set tbl_include_btn">
                             <table summary="문장내용, 특약코드, 특약명, 고객답변, 필수문장으로 구성됨">
                                 <caption class="hide">문장관리</caption>
@@ -366,16 +370,16 @@ jQuery.event.add(window,"load",function(){
             pagingType: "full_numbers", // 페이징 버튼 구성 (처음, 이전, 페이지숫자, 다음, 마지막)
             columnDefs: [ // 컬럼별 width, 옵션 사용 지정
                 {targets: [0], width: "", sortable: false, orderable: false},   // 검색결과
-                {targets: [1], width: "260px", orderable: false},      // 등록 문장 내용 반영
+                {targets: [1], width: "260px", orderable: false},               // 탐지사전 반영
             ],
         });
         
-        // 설정 영역 내 테이블 상단 수정버튼 클릭 시 저장, 삭제, 취소버튼 보여주기
+        // 수정버튼 클릭 시 완료버튼 보여주기
         $('.btn_change_group .btn_edit').on('click', function(){
             $(this).hide();
             $(this).siblings('.btn_edit_show').css('display', 'inline-block');
         });
-        // 설정 영역 내 테이블 상단 취소버튼 클릭 시 수정버튼 보여주기
+        // 완료버튼 클릭 시 수정버튼 보여주기
         $('.btn_change_group .btn_edit_show').on('click', function(){
             $(this).hide();
             $(this).parent('.btn_change_group').find('.btn_edit').show();

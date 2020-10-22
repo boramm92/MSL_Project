@@ -136,7 +136,7 @@
     
                         <div class="tbl_popup_set">
                             <div class="tbl_hd">
-                                <table summary="선택, NO, 상품구분 코드(영문), 상품구분 이름(한글), 상품구분 설명으로 구성됨">
+                                <table summary="선택(체크박스), NO, 상품구분 코드(영문), 상품구분 이름(한글), 상품구분 설명으로 구성됨">
                                     <caption class="hide">상담 코드 리스트</caption>
                                     <colgroup>
                                         <col width="50"><col width="50"><col width="100"><col width="150"><col>
@@ -188,13 +188,12 @@
                                         </tr>
                                         <tr>
                                             <td scope="row">
-                                                <!-- [D] input[type="checkbox"]의 id와 label의 for 값을 동일하게 주어야함 -->
                                                 <div class="chkBox">
                                                     <input type="checkbox" id="each_chk2">
                                                     <label for="each_chk2"></label>
                                                 </div>
                                             </td>
-                                            <td>1</td>
+                                            <td>2</td>
                                             <td>
                                                 <div class="iptBox">
                                                     <input type="text" readonly>
@@ -248,12 +247,12 @@
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-        // 설정 영역 내 테이블 상단 수정버튼 클릭 시 삭제, 취소버튼 보여주기
+        // 수정버튼 클릭 시 삭제, 취소버튼 보여주기
         $('.btn_change_group .btn_edit').on('click', function(){
             $(this).hide();
             $(this).siblings('.btn_edit_show').css('display', 'inline-block');
         });
-        // 설정 영역 내 테이블 상단 취소버튼 클릭 시 수정버튼 보여주기
+        // 취소버튼 클릭 시 수정버튼 보여주기
         $('.btn_change_group .btn_cancel').on('click', function(){
             $(this).parent('.btn_change_group').find('.btn_edit_show').hide();
             $(this).parent('.btn_change_group').find('.btn_edit').show();

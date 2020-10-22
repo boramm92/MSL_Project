@@ -18,7 +18,7 @@
 <title>평가항목 선택(팝업) || 푸본현대생명</title>
 </head>
 <body>
-<!-- [D] 팝업 사이즈 930 X 495 -->
+<!-- [D] 팝업 사이즈 930 X 455 -->
 
 <!-- #wrap -->
 <div id="wrap">
@@ -30,7 +30,7 @@
             <div class="gnr_script_manage">
                 <!-- .pop_top -->
                 <div class="pop_top">
-                    <h1>평가항목 조회</h1>
+                    <h1>평가항목 선택</h1>
                 </div>
                 <!-- //.pop_top -->
 
@@ -158,6 +158,7 @@
                                     <tbody>
                                         <tr>
                                             <td>
+                                                <!-- [D] input[type="checkbox"]의 id와 label의 for 값을 동일하게 주어야함 -->
                                                 <div class="chkBox">
                                                     <input type="checkbox" id="each_chk1">
                                                     <label for="each_chk1"></label>
@@ -221,7 +222,7 @@ jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
         // 스크롤 테이블 목록 10개 이상일때 스크롤바 추가되면서 어긋나는 테이블 레이아웃 맞춰주기
         $('.btn_check').on('click', function(){
-            if( $('.tbl_scroll tr').length > 10 ) {
+            if( $('.tbl_scroll tr').length >= 10 ) {
                 $('.tbl_scroll').siblings('.tbl_hd').css({'padding-right':'6px'});
             }
         });
