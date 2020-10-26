@@ -440,7 +440,7 @@
                             </div>
                             
                             <!-- [D] 목록 5개까지 한번에 볼 수 있으며 그 이상은 스크롤처리됨 -->
-                            <div class="tbl_bd tbl_scroll">
+                            <div class="tbl_bd tbl_scroll five_line">
                                 <table>
                                     <colgroup>
                                         <col width="50"><col width="50"><col width="80"><col width="200"><col width="200">
@@ -864,42 +864,6 @@ jQuery.event.add(window,"load",function(){
                 {targets: [6], width: "100px", orderable: false},               // 설정
             ],
         });
-
-        // 조회 또는 설정 버튼 클릭 시 해당 목록 하이라이트
-        $('.btn_check, .btn_set').on('click', function(){
-            $(this).parents('tbody').find('tr').removeClass('active');
-            $(this).parents('tr').addClass('active');
-        }); 
-        
-        
-
-        // 표준스크립트 관리 테이블 내 조회 버튼 클릭 시 하단 문장 관리 테이블 보여주기
-        // $('.btn_check').on('click', function(){
-        //     $('.setArea').show();
-        // 
-        //     console.log('1')
-        //     // 하단 테이블 목록 5개 이상일때 스크롤처리되면서 어긋나는 테이블 레이아웃 맞춰주기
-        //     if( $('.tbl_scroll tr').length >= 5 ) {
-        //         console.log('2')
-        // 
-        //         $('.tbl_scroll').siblings('.tbl_hd').css({'padding-right': getScrollBarWidth() + 'px'});
-        //         console.log(getScrollBarWidth() + "px");
-        //     }
-        // });
-
-        
-        // 수정버튼 클릭 시 저장, 삭제, 취소버튼 보여주기
-        $('.btn_change_group .btn_edit').on('click', function(){
-            $(this).hide();
-            $(this).siblings('.btn_edit_show').css('display', 'inline-block');
-        });
-        // 취소버튼 클릭 시 수정버튼 보여주기
-        $('.btn_change_group .btn_cancel').on('click', function(){
-            $(this).parent('.btn_change_group').find('.btn_edit_show').css('display', 'none');
-            $(this).parent('.btn_change_group').find('.btn_edit').show();
-        });
-        
-         
     });
 });
 </script>

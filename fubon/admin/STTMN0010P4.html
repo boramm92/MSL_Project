@@ -249,51 +249,7 @@
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-        // 수정버튼 클릭 시 삭제, 취소버튼 보여주기
-        $('.btn_change_group .btn_edit').on('click', function(){
-            $(this).hide();
-            $(this).siblings('.btn_edit_show').css('display', 'inline-block');
-        });
-        // 취소버튼 클릭 시 수정버튼 보여주기
-        $('.btn_change_group .btn_cancel').on('click', function(){
-            $(this).parent('.btn_change_group').find('.btn_edit_show').hide();
-            $(this).parent('.btn_change_group').find('.btn_edit').show();
-        });
         
-        // 스크롤바 width 사이즈 구하기 - 스크롤 테이블의 브라우저 호환성때문에 필요
-        function getScrollBarWidth() {
-            var inner = document.createElement('p');
-            inner.style.width = "100%";
-            inner.style.height = "200px";
-        
-            var outer = document.createElement('div');
-            outer.style.position = "absolute";
-            outer.style.top = "0px";
-            outer.style.left = "0px";
-            outer.style.visibility = "hidden";
-            outer.style.width = "200px";
-            outer.style.height = "150px";
-            outer.style.overflow = "hidden";
-            outer.appendChild (inner);
-        
-            document.body.appendChild (outer);
-            var w1 = inner.offsetWidth;
-            outer.style.overflow = 'scroll';
-            var w2 = inner.offsetWidth;
-            if (w1 == w2) w2 = outer.clientWidth;
-        
-            document.body.removeChild (outer);
-            return (w1 - w2);
-        };
-        
-        $('.btn_check, .btn_add').on('click', function(){
-            $('.setArea').show();
-
-            // 스크롤 테이블 목록 10개 이상일때 스크롤바 추가되면서 어긋나는 테이블 레이아웃 맞춰주기
-            if( $('.tbl_scroll.ten_line tr').length >= 10 ) {
-                $('.tbl_scroll').siblings('.tbl_hd').css({'padding-right': getScrollBarWidth() + 'px'});
-            }
-        });
     });
 });
 </script>

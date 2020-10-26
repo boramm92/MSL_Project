@@ -331,6 +331,12 @@ jQuery.event.add(window,"load",function(){
             });
         });
         
+        // 테이블 내 조회 또는 설정 버튼 클릭 시 해당 목록 하이라이트
+        $('.btn_check, .btn_set').on('click', function(){
+            $(this).parent('tbody').find('tr').removeClass('active');
+            $(this).parent('tr').addClass('active');
+        });
+        
         // 팝업 하단 닫기버튼 클릭 시 새창팝업 닫힘
         $('.pop_btm .btnBox .btn_close').on('click', function(){
             opener.$('.tbl_include_btn tbody tr').removeClass('active');    // 20.10.10 추가
@@ -341,5 +347,66 @@ jQuery.event.add(window,"load",function(){
         onbeforeunload = function(){
             opener.$('.tbl_include_btn tbody tr').removeClass('active');
         }
+        
+        // 설정 영역 내 테이블 상단 수정버튼 클릭 시 저장, 삭제, 취소버튼 보여주기
+        $('.btn_change_group .btn_edit').on('click', function(){
+            $(this).hide();
+            $(this).siblings('.btn_edit_show').css('display', 'inline-block');
+        });
+        // 설정 영역 내 테이블 상단 취소버튼 클릭 시 수정버튼 보여주기
+        $('.btn_change_group .btn_cancel, .btn_change_group .btn_cplt').on('click', function(){
+            $(this).parent('.btn_change_group').find('.btn_edit_show').css('display', 'none');
+            $(this).parent('.btn_change_group').find('.btn_edit').show();
+        });
+        
+        // 스크롤바 width 사이즈 구하기 - 스크롤 테이블의 브라우저 호환성때문에 필요
+        function getScrollBarWidth() {
+            var inner = document.createElement('p');
+            inner.style.width = "100%";
+            inner.style.height = "200px";
+        
+            var outer = document.createElement('div');
+            outer.style.position = "absolute";
+            outer.style.top = "0px";
+            outer.style.left = "0px";
+            outer.style.visibility = "hidden";
+            outer.style.width = "200px";
+            outer.style.height = "150px";
+            outer.style.overflow = "hidden";
+            outer.appendChild (inner);
+        
+            document.body.appendChild (outer);
+            var w1 = inner.offsetWidth;
+            outer.style.overflow = 'scroll';
+            var w2 = inner.offsetWidth;
+            if (w1 == w2) w2 = outer.clientWidth;
+        
+            document.body.removeChild (outer);
+            return (w1 - w2);
+        };
+        // 스크롤 테이블 목록 특정갯수 이상일때 스크롤바 추가되면서 어긋나는 테이블 레이아웃 맞춰주기
+        function handleScrollTableHeader(){
+            $('.tbl_scroll').each(function (){
+                // 3개일때
+                if( $(this).hasClass('three_line') && $(this).find('tr').length >= 3 ) {
+                    $(this).siblings('.tbl_hd').css({'padding-right': getScrollBarWidth() + 'px'});
+                // 5개일때
+                }else if( $(this).hasClass('five_line') && $(this).find('tr').length >= 5 ) {
+                        $(this).siblings('.tbl_hd').css({'padding-right': getScrollBarWidth() + 'px'});
+                // 10개일때
+                }else if( $(this).hasClass('ten_line') && $(this).find('tr').length >= 10 ) {
+                        $(this).siblings('.tbl_hd').css({'padding-right': getScrollBarWidth() + 'px'});
+                }
+            });
+        };
+        handleScrollTableHeader();
+        
+        // 테이블 내 조회 또는 추가 버튼 클릭 시 하단 설정 테이블 영역 보여주며 handleScrollTableHeader 실행
+        $('.btn_check, .btn_add').on('click', function(){
+            $('.setArea').show();
+
+            // 스크롤 테이블 특정갯수 이상일때 스크롤바 추가되면서 어긋나는 테이블 레이아웃 맞춰주기
+            handleScrollTableHeader();
+        });
     });
 });

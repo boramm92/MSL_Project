@@ -184,7 +184,7 @@
                                 </table>
                             </div>
                             
-                            <div class="tbl_bd tbl_scroll">
+                            <div class="tbl_bd tbl_scroll ten_line">
                                 <table>
                                     <colgroup>
                                         <col width="50"><col width="140"><col width="140">
@@ -268,23 +268,7 @@
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-        // 조회 버튼 클릭 시 스크롤 테이블 목록 10개 이상일때 스크롤바 추가되면서 어긋나는 테이블 레이아웃 맞춰주기
-        $('.btn_srch').on('click', function(){
-            if( $('.tbl_scroll tr').length >= 10 ) {
-                $('.tbl_scroll').siblings('.tbl_hd').css({'padding-right':'6px'});
-            }
-        });
         
-        // 수정버튼 클릭 시 삭제, 취소버튼 보여주기
-        $('.btn_change_group .btn_edit').on('click', function(){
-            $(this).hide();
-            $(this).siblings('.btn_edit_show').css('display', 'inline-block');
-        });
-        // 취소버튼 클릭 시 수정버튼 보여주기
-        $('.btn_change_group .btn_cancel').on('click', function(){
-            $(this).parent('.btn_change_group').find('.btn_edit_show').css('display', 'none');
-            $(this).parent('.btn_change_group').find('.btn_edit').show();
-        });
     });
 });
 </script>

@@ -161,7 +161,7 @@
                                 </table>
                             </div>
     
-                            <div class="tbl_bd tbl_scroll">
+                            <div class="tbl_bd tbl_scroll ten_line">
                                 <table>
                                     <colgroup>
                                         <col width="50"><col width="200"><col><col width="80">
@@ -252,24 +252,6 @@ jQuery.event.add(window,"load",function(){
                 {targets: [2], width: "", orderable: false},      // 표준스크립트 문장 내용
                 {targets: [3], width: "80px", orderable: false},      // 선택
             ],
-        });
-        
-        // 선택 버튼 클릭 시 스크롤 테이블 목록 10개 이상일때 스크롤바 추가되면서 어긋나는 테이블 레이아웃 맞춰주기
-        $('.btn_slt').on('click', function(){
-            if( $('.tbl_scroll tr').length >= 10 ) {
-                $('.tbl_scroll').siblings('.tbl_hd').css({'padding-right':'6px'});
-            }
-        });
-        
-        // 설정 영역 내 테이블 상단 수정버튼 클릭 시 저장, 삭제, 취소버튼 보여주기
-        $('.btn_change_group .btn_edit').on('click', function(){
-            $(this).hide();
-            $(this).siblings('.btn_edit_show').css('display', 'inline-block');
-        });
-        // 설정 영역 내 테이블 상단 취소버튼 클릭 시 수정버튼 보여주기
-        $('.btn_change_group .btn_edit_show').on('click', function(){
-            $(this).hide();
-            $(this).parent('.btn_change_group').find('.btn_edit').show();
         });
     });
 });
