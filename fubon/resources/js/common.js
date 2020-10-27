@@ -405,7 +405,7 @@ jQuery.event.add(window,"load",function(){
         $('.btn_check, .btn_add').on('click', function(){
             $('.setArea').show();
 
-            // 스크롤 테이블 특정갯수 이상일때 스크롤바 추가되면서 어긋나는 테이블 레이아웃 맞춰주기
+            // 스크롤 테이블 특정갯수 초과일때 스크롤바 추가되면서 어긋나는 테이블 레이아웃 맞춰주기
             handleScrollTableHeader();
         });
     });
