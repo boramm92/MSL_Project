@@ -401,30 +401,6 @@ jQuery.event.add(window,"load",function(){
         };
         handleScrollTableHeader();
         
-        //삭제 버튼 클릭 시 체크된 테이블 행 삭제
-        $('.btn_delete').click(function() {                             
-            if($('table input:checkbox:checked').length > 0){              
-                $('input[type=checkbox]:checked').each(function(){                                          
-                    var clickedRow = $(this).parents('tr');                     
-                    clickedRow.remove();
-                    
-                    // 스크롤 테이블 목록 특정갯수 이하일때 스크롤바 삭제되면서 어긋나는 테이블 레이아웃 맞춰주기
-                    $('.tbl_scroll').each(function(){
-                        // 3개일때
-                        if( $(this).hasClass('three_line') && $(this).find('tr').length <= 3 ) {
-                            $(this).siblings('.tbl_hd').css({'padding-right': '0px'});
-                        // 5개일때
-                    }else if( $(this).hasClass('five_line') && $(this).find('tr').length <= 5 ) {
-                                $(this).siblings('.tbl_hd').css({'padding-right': '0px'});
-                        // 10개일때
-                    }else if( $(this).hasClass('ten_line') && $(this).find('tr').length <= 10 ) {
-                                $(this).siblings('.tbl_hd').css({'padding-right': '0px'});
-                        }
-                    });                                           
-                });                
-            }
-        });
-        
         // 테이블 내 조회 또는 추가 버튼 클릭 시 하단 설정 테이블 영역 보여주며 handleScrollTableHeader 실행
         $('.btn_check, .btn_add').on('click', function(){
             $('.setArea').show();
