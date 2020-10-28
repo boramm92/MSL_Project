@@ -1,0 +1,351 @@
+/* ------------------------- common [maum_data] ------------------------- */
+/* header */
+#m_header {display: block;}
+#m_header .aside_bg {display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; opacity: 0.1; z-index: 10;}
+#m_header .aside {display: none; overflow: auto; position: fixed; top: 0; right: 0; width: 0; height: 100%; background: #f7f8fc; z-index: 10;}
+#m_header .aside .aside_h {height: 60px; border-bottom: 1px solid #cfd5eb; box-sizing: border-box; background: #fff;}
+#m_header .aside .aside_h a {display: inline-block; width: 116px; margin: 21px 0 0 20px;}
+#m_header .aside .aside_h a img {width: 100%;}
+#m_header .login_area {position: static; width: 100%; height: auto; padding: 0 30px; box-shadow: none; box-sizing: border-box; background: none; transform: none;}
+#m_header .login_area .sign_in > div {width: 100%;}
+#m_header .login_area .top_sign .ipt_box {width: 100%;}
+#m_header .login_area .btn_box {width: 100%;}
+#m_header .login_area .sign_out {padding: 20px 0 0;}
+#m_header .login_area .sign_out .top_sign {width: 100%;}
+#m_header .login_area .sign_out > div {width: 100%;}
+#m_header .login_area .sign_out .my_account {margin: 0 0 20px 4px;}
+#m_header .login_area .sign_out .my_account > span {margin: 3px 18px 0 0;}
+#m_header .login_area .sign_out .my_account .user_account p {display: block; line-height: 22px;}
+#m_header .login_area .sign_out .my_account .user_account p span {width: 170px; margin: 0;}
+#m_header .login_area .sign_out .top_sign .btn_box {margin: 17px 0 26px;}
+#m_header .login_area .sign_out .m_nav {padding: 0 14px 17px; border-bottom: 1px dotted #cfd5eb; text-align: left;}
+#m_header .login_area .sign_out .m_nav li {line-height: 52px;}
+#m_header .login_area .sign_out .m_nav li a {display: block; color: #00263e; font-weight: 500;}
+#m_header .login_area .sign_out .m_nav > li  > a {font-size: 16px;}
+#m_header .login_area .sign_out .m_nav > li > a > span {margin: 0 27px 0 0; color: #506df5;}
+#m_header .login_area .sign_out .m_nav > li > a > em {display: none; float: right; color: #506df5; font-size: 12px; line-height: 52px;}
+#m_header .login_area .sign_out .m_nav > li > a > em.active {display: block;}
+#m_header .login_area .sign_out .m_nav .m_sub {border: 1px solid #cfd5eb; background: #fff;}
+#m_header .login_area .sign_out .m_nav .m_sub li a {padding: 0 0 0 47px; box-sizing: border-box; font-size: 14px;}
+#m_header .login_area .sign_out .m_nav .m_sub li a span {margin: 0 8px 0 0;}
+
+#m_header .btn_ham {display: none; position: absolute; top: 10px; right: 15px; width: 40px; height: 40px; z-index: 10; transition: all 0.3s ease-out; cursor: pointer;}
+#m_header .btn_ham span {display: block; position: absolute; left: 5px; width: 30px; height: 3px; border-radius: 3px; background: #2c3f51; z-index: 5;}
+#m_header .btn_ham span:nth-child(1) {top: 7px; -webkit-animation : menu_bar1 0.8s forwards; animation : menu_bar1 0.8s forwards;}
+#m_header .btn_ham span:nth-child(2) {top: 18px;}
+#m_header .btn_ham span:nth-child(3) {bottom: 8px; -webkit-animation : menu_bar2 0.8s forwards; animation : menu_bar2 0.8s forwards;}
+#m_header .btn_ham.active {position: fixed;}
+#m_header .btn_ham.active span {background: #cfd5eb;}
+#m_header .btn_ham.active span:nth-child(1) {top: 3px; -webkit-animation : active_menu_bar1 0.8s forwards; animation : active_menu_bar1 0.8s forwards;}
+#m_header .btn_ham.active span:nth-child(2) {opacity : 0;}
+#m_header .btn_ham.active span:nth-child(3) {bottom: 11px; -webkit-animation : active_menu_bar2 0.8s forwards; animation : active_menu_bar2 0.8s forwards;}
+
+@-webkit-keyframes menu_bar1 {
+	0% {-webkit-transform : translateY(11px) rotate(45deg);}
+	50% {-webkit-transform : translateY(11px) rotate(0);}
+	100% {-webkit-transform : translateY(0) rotate(0);}
+}
+@keyframes menu_bar1 {
+	0% {transform : translateY(11px) rotate(45deg);}
+	50% {transform : translateY(11px) rotate(0);}
+	100% {transform : translateY(0) rotate(0);}
+}
+@-webkit-keyframes menu_bar2 {
+	0% {-webkit-transform : translateY(-11px) rotate(-45deg);}
+	50% {-webkit-transform : translateY(-11px) rotate(0);}
+	100% {-webkit-transform : translateY(0) rotate(0);}
+}
+@keyframes menu_bar2 {
+	0% {transform : translateY(-11px) rotate(-45deg);}
+	50% {transform : translateY(-11px) rotate(0);}
+	100% {transform : translateY(0) rotate(0);}
+}
+
+@-webkit-keyframes active_menu_bar1 {
+	0% {-webkit-transform : translateY(0) rotate(0);}
+	50% {-webkit-transform : translateY(15px) rotate(0);}
+	100% {-webkit-transform : translateY(15px) rotate(45deg);}
+}
+@keyframes active_menu_bar1 {
+	0% {transform : translateY(0) rotate(0);}
+	50% {transform : translateY(15px) rotate(0);}
+	100% {transform : translateY(15px) rotate(45deg);}
+}
+@-webkit-keyframes active_menu_bar2 {
+	0% {-webkit-transform : translateY(0) rotate(0);}
+	50% {-webkit-transform : translateY(-8px) rotate(0);}
+	100% {-webkit-transform : translateY(-8px) rotate(-45deg);}
+}
+@keyframes active_menu_bar2 {
+	0% {transform : translateY(0) rotate(0);}
+	50% {transform : translateY(-8px) rotate(0);}
+	100% {transform : translateY(-8px) rotate(-45deg);}
+}
+/* //header */
+
+/* footer */
+#maum_data #footer .m_footer {display: none;}
+#maum_data #footer .m_footer .cont_box {width: 100%; padding: 22px 30px 20px; box-sizing: border-box;}
+#maum_data #footer .m_footer .cont_box > a {display: inline-block; float: none; margin: 0 0 30px;}
+#maum_data #footer .m_footer .cont_box > div {text-align: left;}
+#maum_data #footer .m_footer .cont_box > div p {font-size: 14px; line-height: 22px; opacity: 0.5;}
+#maum_data #footer .m_footer .cont_box > div:not(:nth-child(2)) p {float: left; width: 82px;}
+#maum_data #footer .m_footer .cont_box > div a {margin: 0 20px 0 0;}
+#maum_data #footer .m_footer .cont_box .contact {margin: 0 0 30px;}
+#maum_data #footer .m_footer .cont_box .contact p {margin: 0 0 8px;}
+#maum_data #footer .m_footer .cont_box .contact a span {margin: 0 8px 0 0;}
+#maum_data #footer .m_footer .cont_box .service > div {overflow: hidden; margin: 0 0 15px;}
+#maum_data #footer .m_footer .cont_box .service > div > div {float: left; width: calc(100% - 82px);}
+#maum_data #footer .m_footer .cont_box .service > div > div a {display: inline-block; line-height: 22px;}
+#maum_data #footer .m_footer .cont_box .copyright {height: auto; margin: 3px 0 20px; background: none; font-size: 13px; line-height: 22px; word-break: keep-all; opacity: 0.7;}
+#maum_data #footer .m_footer .cont_box .info_box a {display: inline-block; position: relative; margin: 0 29px 0 0; font-size: 13px;}
+#maum_data #footer .m_footer .cont_box .info_box a:last-child {margin: 0;}
+#maum_data #footer .m_footer .cont_box .info_box a + a:before {content: ''; display: block; position: absolute; top: 4px; left: -14px; width: 1px; height: 12px; background: #fff;}
+/* //footer */
+/* ------------------------- //common [maum_data] ------------------------- */
+
+/* -------------------- content [edit_tool] -------------------- */
+
+/* -------------------- common [edit_tool] -------------------- */
+/* footer */
+#edit_tool #footer .m_footer {display: none; height: 40px; text-align: center;}
+#edit_tool #footer .m_footer span {font-size: 13px; line-height: 40px; letter-spacing: 0.4px; opacity: 0.8;}
+#edit_tool #footer .m_footer span a {font-size: 14px;}
+#edit_tool #footer .m_footer span a:hover {text-decoration: underline;}
+
+/* -------------------- //common [edit_tool] -------------------- */
+
+/* -------------------- content [edit_tool] -------------------- */
+/* workspace - home */
+.m_tab_btn {display: none; overflow: hidden; width: 100%; height: 47px; border: 1px solid #c7cbdc; border-radius: 5px; background: #fff;}
+.m_tab_btn li {float: left; width: 50%; }
+.m_tab_btn li a {display: block; width: 100%; color: #35384d; font-size: 14px; font-weight: 500; line-height: 47px;}
+.m_tab_btn li a span {padding: 0 10px; border-radius: 8px; background: #506df5; color: #fff; font-size: 11px; font-weight: 700;}
+.m_tab_btn li.active a {background: #506df5; color: #fff;}
+.m_tab_btn li:nth-child(1) a span {background: #f5508b;}
+.m_tab_btn li:nth-child(2).active a span {background: #fff; color: #506df5;}
+#edit_tool.workspace .btm_info.mobile {display: none;}
+/* -------------------- //content [edit_tool] -------------------- */
+
+/* -------------------- media query -------------------- */
+@media all and (max-width:768px){
+    /* -------------------- maum data -------------------- */
+    #wrap {min-width: 320px !important;}
+
+    /* ---------- header ---------- */
+    #header {height: 60px !important;}
+    #header .header_box {width: 100% !important; padding: 0 20px !important; box-sizing: border-box !important;}
+    #header .sta {display: none;}
+    #m_header {display: block;}
+    #m_header .btn_ham {display: inline-block;}
+    #maum_data #header h1 {width: 116px; margin: 21px 0 0;}
+	#maum_data #header.logo_only h1 {}
+
+    /* ---------- index ---------- */
+	.index #contents {padding: 14px 0 40px;}
+    .index .cont_box {width: 100%; padding: 0 30px; box-sizing: border-box; text-align: center;}
+
+	/* sign up */
+	#maum_data.sign_up #contents {height: auto; padding: 0 20px 70px;}
+	.sign_up .sign_up_main {width: 100%;}
+	.sign_up .sign_btn_box .btn_box {width: 100%;}
+	.sign_up .sign_up_main > .btn_box {width: 100%;}
+	.sign_up .sign_up_wrap {width: 100%;}
+	.sign_up .sign_up_wrap .progress_box li + li {margin: 0 0 0 23px;}
+	.sign_up .sign_up_wrap .progress_box li span:after {right: -38px; width: 50px;}
+	.sign_up .sign_up_wrap .terms_area .textarea {height: 100px;}
+	.sign_up .sign_up_wrap .progress_box li span.fas.fa-check-circle:after {right: -38px; width: 50px;}
+	.sign_up .sign_up_wrap h2 {margin: 30px 0 10px;}
+	.certify .sign_up_wrap .sign_btn_box {width: 100%;}
+	.certify .sign_up_wrap .account_info {width: 100%;}
+	.form .sign_up_wrap .form_tbl {width: 100%;}
+	.form .sign_up_wrap .form_tbl table td:nth-child(1) {display: none;}
+	.form .sign_up_wrap .form_tbl table td:nth-child(2) {width: 60%;}
+	.form .sign_up_wrap .form_tbl table td .ipt_box {width: 100%; min-width: 140px;}
+	.form .sign_up_wrap .form_tbl table td .ipt_box input::placeholder {color: #808aab;}
+	.form .sign_up_wrap .form_tbl table tr.sign_up_route td:nth-child(2) p {display: block;}
+	.form .sign_up_wrap .form_tbl table td .btn_box {width: 100%;}
+	.stage .sign_up_wrap .btn_box button {padding: 0 10px;}
+	.sign_up.complete .sign_up_wrap h2 {font-size: 19px;}
+
+    /* stn_training */
+    .stn_training {height: auto;}
+    .stn_training .cont_box > div {display: inline-block; float: none !important; position: static; transform: none;}
+    .index .cont_box .img {width: calc(100% - 40px); margin: 0 0 14px;}
+    .stn_training .txt {width: 100%;}
+    .stn_training .txt img {display: none;}
+    .stn_training .txt p {margin: 0; font-weight: 500;}
+    .stn_training .txt em:nth-child(1) {display: none;}
+    .stn_training .txt em:nth-child(4) {display: none;}
+    .stn_training .txt .btn_box {width: 100%; margin: 20px 0 0;}
+
+    /* stn_user */
+    .stn_user {display: none;}
+
+    /* stn_info */
+    .stn_info {height: auto;}
+    .stn_info .cont_box > div {float: none !important;}
+    .index #contents .cont_box h3 {position: static; margin: 33px 0 0;}
+    .index .cont_box .service_area > div {padding: 30px 0 0;}
+    .stn_info .service_area .use_process {width: 100%;}
+    .stn_info .service_area .use_process li {width: calc(50% - 6px); height: 82px; margin: 0 0 26px;}
+    .stn_info .service_area .use_process li:nth-child(odd) {margin: 0 12px 0 0;}
+    .stn_info .service_area .use_process li > div {width: 40px; height: 30px;}
+    .stn_info .service_area .use_process li:not(:nth-child(4)) > div {width: 40px; height: 30px;}
+    .stn_info .service_area .use_process li span {font-size: 13px; line-height: 1.1;}
+    .stn_info .service_area .use_process li:not(:nth-child(4)) span {margin: 5px 0 0;}
+    .stn_info .lank_area h3 {margin: 9px 0 0 !important;}
+    .index .cont_box .lank_area > div {padding: 49px 0 0;}
+    .stn_info .lank_area .tab_box {width: 100%;}
+    .stn_info .lank_area .tab_box .tab_btn {top: -32px;}
+    .stn_info .lank_area .tab_box .tab_btn li {height: 32px; line-height: 32px;}
+    .stn_info .lank_area .tab_box .tab_btn li.active {height: 33px;}
+    .stn_info .lank_area .tab_box .tab_cont li {font-size: 13px; text-align: left;}
+    .stn_info .lank_area .tab_box .tab_cont .payment:before {left: -18px; width: 14px; height: 14px; margin: -7px 0 0;}
+
+    /* ---------- footer ---------- */
+    #footer .w_footer {display: none;}
+    #maum_data #footer .m_footer,
+    #edit_tool #footer .m_footer {display: block;}
+
+	/* ---------- voucher ---------- */
+	.voucher .contents {min-width: 320px;}
+    .voucher .contents .stn {height: auto;}
+    .voucher .contents .cont_box {width: calc(100% - 40px); padding: 30px 20px;}
+    .voucher .contents .cont_box h3 {width: 100%; margin: 0; font-size: 17px; line-height: 25px; text-align: left;}
+
+    .voucher .stn_title .cont_box {padding: 0 20px 30px 20px;}
+    .voucher .stn_title .cont_box .txt_box {width: 10%; padding: 149px 0 0 0;}
+    .voucher .stn_title .cont_box .txt_box h2.title {display: none;}
+    .voucher .stn_title .cont_box .txt_box h2.m_title {display: block; width: 196px; font-size: 28px; line-height: 35px; margin: 30px 0 12px 0;}
+    .voucher .stn_title .cont_box .txt_box h3 {min-width: 257px; font-size: 16px; line-height: 25px;}
+    .voucher .stn_title .cont_box .txt_box p {min-width: 210px; margin: 0; font-size: 12px; line-height: 1.5;}
+    .voucher .stn_title .cont_box .txt_box .btn_inquiry {width: 210px; margin: 12px 0 0 0;}
+    .voucher .stn_title .cont_box .img_box {width: 70%; min-width: 236px;}
+
+    .voucher .stn_service .cont_box h3 {margin: 0 0 25px 0;}
+    .voucher .stn_service .cont_box h3 br {display: none;}
+    .voucher .stn_service .cont_box .cont_lst {width: 100%;}
+    .voucher .stn_service .cont_box .cont_lst + .cont_lst {margin: 0;}
+    .voucher .stn_service .cont_box .cont_lst:last-child dd{margin: 8px 0 0 0;}
+    .voucher .stn_service .cont_box .cont_lst dd {margin: 8px 0 30px 0;}
+	.voucher .stn_service dd br {display: none;}
+
+    .voucher .stn_process .cont_box {width: calc(100% - 46px); padding: 30px 23px;}
+    .voucher .stn_process .cont_box h3 {margin: 0 0 28px 0;}
+    .voucher .stn_process .cont_box .process_lst {width: calc(100% - 18px); padding: 0 9px;}
+    .voucher .stn_process .cont_box .process_lst > li {width: 100%; margin: 0;}
+    .voucher .stn_process .cont_box .process_lst > li + li {margin: 47px 0 0 0;}
+    .voucher .stn_process .cont_box .process_lst > li:after {top: calc(100% + 34px); left: calc(50% - 33px); width: 68px; transform: rotate(90deg);}
+    .voucher .stn_process .cont_box .process_lst > li:nth-child(3):after {left: calc(50% - 33px);}
+    .voucher .stn_process .cont_box .process_lst > li.change_lst_num > em:nth-child(1) {display: none;}
+    .voucher .stn_process .cont_box .process_lst > li.change_lst_num > em:nth-child(2) {display: block;}
+	.voucher .stn_process .cont_box .process_lst > li.change_lst_num > h6:nth-child(3) {display: none;}
+	.voucher .stn_process .cont_box .process_lst > li.change_lst_num > h6:nth-child(4) {display: block;}
+    .voucher .stn_process .cont_box .process_lst > li.change_lst_num span.txt:nth-child(5) {display: none;}
+	.voucher .stn_process .cont_box .process_lst > li.change_lst_num span.txt:nth-child(6) {display: block;}
+    .voucher .stn_process .cont_box .process_lst > li span.txt_m {display: block;}
+    .voucher .stn_process .cont_box .process_lst > li span.fas {top: calc(100% + 13px); left: calc(50% - 5px); transform: rotate(90deg);}
+    .voucher .stn_process .cont_box .process_lst > li:nth-child(3) span.fas {top: calc(100% + 14px); left: calc(50% - 5px);}
+    .voucher .stn_process .cont_box .process_lst > li span.fa-angle-double-left {transform: rotate(-90deg);}
+
+    .voucher .stn_inquiry .cont_box {padding: 30px 17px 40px 23px;}
+    .voucher .stn_inquiry .cont_box .info_box .detail {display: none;}
+    .voucher .stn_inquiry .cont_box .info_box .m_detail {display: block; margin: 0 0 24px 0;}
+    .voucher .stn_inquiry .cont_box .info_box .number {margin: 0 0 7px 0;}
+    .voucher .stn_inquiry .cont_box {padding: 30px 20px 40px 20px;}
+    .voucher .stn_inquiry .cont_box .inquiry_box {float: none; width: 100%; margin: 24px 0 0 0;}
+    .voucher .stn_inquiry .cont_box .inquiry_box input,
+    .voucher .stn_inquiry .cont_box .inquiry_box textarea {padding: 0 6px;}
+    .voucher .stn_inquiry .cont_box .inquiry_box label {left: 6px;}
+    .voucher .stn_inquiry .cont_box .inquiry_box label span {margin: 0 3px 0 0;}
+    .voucher .stn_inquiry .cont_box .info_box .mail {margin: 0 0 24px 0;}
+    .voucher .stn_inquiry .cont_box .inquiry_box .btn_inquiry {width: 100%; margin: 12px 0 0 0;}
+
+    /* -------------------- //maum data -------------------- */
+
+    /* -------------------- edit tool -------------------- */
+    /* ---------- header ---------- */
+    #edit_tool #header h1 {display: none;}
+    #edit_tool #header h2 {padding: 0 20px; color: #506df5; line-height: 60px;}
+    #edit_tool #header .etcmenu {display: none;}
+
+    /* ---------- contents ---------- */
+	/* .paging a.btn_paging_prev:hover,
+	.paging a.btn_paging_next:hover,
+	.paging a.btn_paging_prev:focus,
+	.paging a.btn_paging_next:focus {border: none; transition: none;}
+	.paging a:hover,
+	.paging a:focus {border: none; color: none; text-decoration: none; transition: none;} */
+    #edit_tool #container {height: calc(100% - 100px);}
+    #edit_tool .snb {display: none;}
+    #edit_tool .contents {padding: 0 0 70px;}
+    #edit_tool .content .work_space {padding: 15px 20px 0;}
+	#edit_tool .content .work_space > h3 {display: none;}
+	#edit_tool .content .work_space .stn {padding: 15px 0 30px;}
+	#edit_tool .content .work_space .stn ul li {width: 100%; height: 130px; min-height: 130px; margin: 0 0 10px; padding: 10px 18px 14px; border: 1px solid rgba(85, 110, 241, 0.4);}
+	/* #edit_tool .content .work_space .stn ul li:hover {border: 1px solid rgba(85, 110, 241, 0.4); box-shadow: 0 2px 4px 0 rgba(197, 197, 197, 0.5);} */
+	#edit_tool .content .work_space .stn ul li.active {border: solid 1px rgba(85, 110, 241, 0.4); box-shadow: 0 0 6px 2px #cdcccc;}
+	#edit_tool .content .work_space .stn ul li:hover .progressbar span em {display: none;}
+	#edit_tool .content .work_space .stn ul li h5 {margin: 0 0 10px;}
+	#edit_tool .content .work_space .stn ul li p.title {margin: 0 0 7px; font-size: 15px;}
+	#edit_tool .content .work_space .stn ul li p.sub_tit {display: none;}
+	#edit_tool .content .work_space .stn ul li .text_cont {display: none;}
+	#edit_tool .content .work_space .stn ul li small {bottom: 16px; padding: 0 15px; border-radius: 11px; background: #eff3fc; font-size: 12px; line-height: 22px;}
+
+	/* home */
+	.m_tab_btn {display: block;}
+	#edit_tool.workspace .contents {padding: 0;}
+	#edit_tool.workspace .content {padding: 15px 20px 0;}
+	#edit_tool.workspace .content .work_space {padding: 0;}
+	#edit_tool.workspace .content .work_space .stn {border: none;}
+	#edit_tool.workspace .content .work_space .stn ul li:nth-child(5n) {margin: 0;}
+	#edit_tool.workspace .content .work_space.progressing {display: none;}
+	#edit_tool.workspace .btm_info {display: none;}
+	#edit_tool.workspace .btm_info.mobile {display: block; margin: 0 0 30px;}
+
+	/* work guide popup */
+	#pop_work_guide .popWrap {height: 350px;}
+
+	/* video */
+	.video_tool .popWrap {min-width: calc(100% - 40px); margin: 100px 20px;}
+    .work_space.video > h4 {display: none;}
+	.video_box {padding: 100% 0 0;}
+	.work_space.video .script_area {margin: 25px 0;}
+	.video_tool .reject_box {display: none;}
+
+	/* voice */
+	.voice_tool .reject_box {display: none;}
+}
+
+@media all and (max-width:480px){
+    /* -------------------- maum data -------------------- */
+    /* ---------- contents ---------- */
+	/* sign up */
+	.sign_up .sign_up_main h2 {margin: 0 0 30px; font-size: 15px; line-height: 1.6;}
+
+    /* stn_training */
+    .stn_training .txt p {font-size: 20px;}
+    .stn_training .txt em {font-size: 13px;}
+	.stn_training .txt .btn_box {height: auto;}
+	.stn_training .txt .btn_box a {width: calc(100% - 40px);}
+	.stn_training .txt .btn_box a:nth-child(1) {margin: 0 0 15px;}
+
+    /* stn_info */
+    .stn_info .service_area .use_process li span {font-size: 12px;}
+    .stn_info .service_area .use_process li:not(:nth-child(4)) span {margin: 6px 0 0;}
+    /* -------------------- //maum data -------------------- */
+
+    /* ---------- footer ---------- */
+    #maum_data #footer .m_footer .cont_box .contact a {display: block; line-height: 22px;}
+
+    /* -------------------- edit tool -------------------- */
+}
+
+@media all and (max-width:350px){
+    /* -------------------- maum data -------------------- */
+	#m_header .login_area .sign_out .my_account .user_account p span {width: 159px;}
+    /* ---------- footer ---------- */
+    #maum_data #footer .m_footer .cont_box .service .ai_service > div a:nth-child(even) {margin: 0;}
+    /* -------------------- //maum data -------------------- */
+}

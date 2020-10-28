@@ -1,0 +1,89 @@
+@charset "utf-8";
+/* MINDsLab. UX/UI Team. YMJ. 20180825 */ 
+
+/* Loading */ 
+.page_loading {position:fixed; top:0; left:0; width:100%; height:100%; background:#02112e; z-index:9999;}
+.loading_itemBox {display:block; position:absolute; top:50%; left:50%; width:80px; height:80px; margin:-40px 0 0 -40px;}
+.loading_itemBox span {position:absolute; top:33px; width:13px; height:13px; border-radius:50%; background:#0dd3d3; animation-timing-function:cubic-bezier(0, 1, 1, 0);}
+.loading_itemBox span:nth-child(1) {left:8px;  animation:loading_item1 0.6s infinite;}
+.loading_itemBox span:nth-child(2) {left:8px;  animation:loading_item2 0.6s infinite;}
+.loading_itemBox span:nth-child(3) {left:32px; animation:loading_item2 0.6s infinite;}
+.loading_itemBox span:nth-child(4) {left:56px; animation:loading_item3 0.6s infinite;}
+
+@keyframes loading_item1 {
+  0% {transform:scale(0);}
+100% {transform:scale(1);}
+}
+@keyframes loading_item3 {
+  0% {transform:scale(1);}
+100% {transform:scale(0);}
+}
+@keyframes loading_item2 {
+  0% {transform:translate(0, 0);}
+100% {transform:translate(24px, 0);}
+}
+.pageldg_hide {-webkit-animation-duration:1s; animation-duration:1s; -webkit-animation-fill-mode:both; animation-fill-mode:both; -webkit-animation-name:pageldg_hide; animation-name:pageldg_hide;}
+
+@-webkit-keyframes pageldg_hide {
+0% {opacity:1;}
+100% {opacity:0;}
+}
+
+@keyframes pageldg_hide {
+0% {opacity:1;}
+100% {opacity:0;}
+}
+
+body {background:url(../images/bg_login.png) 50% 50% no-repeat; background-size: cover;}
+
+/* IE 지원 브리우저 안내메세지 */ 
+.legacy_browser {position:fixed; top:0; left:0; width:100%; height:100%; background:url(../images/bg_legacy_browser.png) 0 0 repeat; z-index:9999;}
+.legacy_browser .legacyBox {overflow:hidden; position:absolute; top:50px; left:50%; width:400px; margin:0 0 0 -200px; border-radius:5px; box-shadow:0 0 30px rgba(0,0,0,0.5); background:#fff;}
+.legacy_browser .legacyBox .tit {clear:both; overflow:hidden; padding:10px 20px; background:#183554;}
+.legacy_browser .legacyBox .tit h1 {float:left;}
+.legacy_browser .legacyBox .tit h1 img {width:120px;}
+.legacy_browser .legacyBox .tit .btn_legacy_close {overflow:hidden; float:right; width:30px; height:30px; text-indent:-999px; border:none; background:url(../images/btn_legacy_close_w.png) 50% 50% no-repeat; opacity:0.3; cursor:pointer;}
+.legacy_browser .legacyBox .txt {display:block; padding:20px; color:#333; font-size:15px; line-height:24px; word-break:keep-all;}
+.legacy_browser .legacyBox .txt a {color:#0dd3d3;}
+.legacy_browser .legacyBox .txt a:hover, .legacy_browser .legacyBox .txt a:focus {text-decoration:underline;}
+
+.main_tit {position: absolute; top: 50%; left: 50%; margin: -250px 0 0 -180px; ;color:#fff; font-size: 20px; font-weight: bold;}
+.main_tit span {font-size: 18px; font-weight: 300;}
+/* Login */ 
+.loginWrap {overflow:hidden; position:absolute; top:50%; left:50%; width:853px; height:416px; margin:-208px 0 0 -426px; border-radius:5px; box-shadow:0 0 30px rgba(0,0,0,0.1); background:#fff;}
+.loginWrap fieldset {display:block; float:left; width:100%; height:100%;}
+.loginWrap .loginBox {display:table; width:100%; height:100%;}
+.loginWrap .fl {display:table-cell;  width:50%; height:100%; text-align:center; vertical-align:middle;font-size:50px; font-weight: bold;color:#3b445b;}
+.loginWrap .fr {display:table-cell; position:relative; width:50%; padding:0 55px; text-align:center; vertical-align:middle;}
+.loginWrap .fr:before {content: "";position: absolute; left: -1px; bottom: 90px; width: 1px ; height: 240px; background: #d8e2fa; }
+
+.loginWrap .fl .sub_logo {margin: 10px 0 0 0;}
+.loginWrap .fr span {display:block; position:relative; margin:0 0 5px 0;}
+.loginWrap .fr span .ipt_txt {display:block; width:85%; height:36px; padding:0 5px 0 40px; line-height:36px; border:2px solid #fff; border-radius:5px; box-shadow:inset 2px 2px 5px rgba(0,0,0,0.1); transition:all 0.3s ease-out;}
+.loginWrap .fr span #ipt_id {background:#e0e9f6 url(../images/ico_email.png) 10px 50% no-repeat;}
+.loginWrap .fr span #ipt_pw {background:#e0e9f6 url(../images/ico_pw.png) 10px 50% no-repeat;}
+.loginWrap .fr span .ipt_txt:focus {border:2px solid #0dd3d3; box-shadow:none; background-color: #fff !important; transition:all 0.3s ease-out;}
+.loginWrap .fr span .ipt_txt.error { border:2px solid #f00;  transition:all 0.3s ease-out;}
+.loginWrap .fr span .rta_txt:focus{border:2px solid #ff8415;}
+.loginWrap .fr span .chatbot_txt:focus{border:2px solid #6d98fa;}
+.loginWrap .fr span .voc_txt:focus{border:2px solid #654ccc;}
+
+.loginWrap .fr span .txt_error { display: none; position:absolute; top:-23px; left:0; color: #f00; text-align:left;}
+.loginWrap .fr span .disbBox {position:absolute; top:0; left:0; width:100%; height:100%; cursor: pointer;}
+.loginWrap .fr span .btn_login {display:block; width:100%; height:46px; margin: 27px 0 0 0; color:#fff; font-size:14px; line-height:46px; border:none; border-radius:3px; background:#0dd3d3; cursor:pointer; transition:all 0.3s ease-out;}
+.loginWrap .fr span .btn_login_rta{background:#ff8415;}
+.loginWrap .fr span .btn_login_chatbot{background:#6d98fa;}
+.loginWrap .fr span .btn_login_voc{background:#654ccc;}
+.loginWrap .fr span .btn_login.disabled {height: 46px; background:#3b445b;}
+.loginWrap .fr .btn_forgot {margin: 10px 0 0 0; color:#363a44;  text-align: center; background-color: transparent; border: none;}
+
+.checks { padding:0 0 5px 2px; text-align:left;}
+.checks input[type="checkbox"] {position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0} 
+.checks input[type="checkbox"] + label {display:inline-block; position:relative; color:#363a44; cursor:pointer; -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none;} 
+.checks input[type="checkbox"] + label:before {content:''; display:inline-block; overflow:hidden; width:15px; height:15px; font-size:12px; line-height:14px; margin:-2px 5px 0 0; text-align:center; vertical-align:middle; border:none; border-radius:3px; box-shadow:inset 2px 2px 3px rgba(0,0,0,0.1); background:#e0e9f6; transition:all 0.3s ease-out;} 
+.checks input[type="checkbox"]:checked + label:before {content:'\2714'; color:#fff; font-size:10px; box-shadow:inset 2px 2px 3px rgba(0,0,0,0);  background:#0dd3d3; transition:all 0.3s ease-out;}
+.checks input[type="checkbox"]:checked + .check_rta:before {background:#ff8415;}
+.checks input[type="checkbox"]:checked + .check_chatbot:before {background:#6d98fa;}
+.checks input[type="checkbox"]:checked + .check_voc:before {background:#654ccc;}
+
+.copyRight {position:absolute; bottom:20px; width:100%; color:#fff; text-align:center;}

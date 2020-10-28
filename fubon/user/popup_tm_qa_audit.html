@@ -4,30 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="format-detection" content="telephone=no">
 
-<!-- css -->
-<!-- datatables -->
-<link rel="stylesheet" href="../resources/css/datatables.min.css">
-<link rel="stylesheet" href="../resources/css/buttons.dataTables.min.css">
-
+<!---------------------- General Resources ---------------------->
+<!-- General CSS -->
 <link rel="stylesheet" href="../resources/css/common.css">
-<link rel="stylesheet" href="../resources/css/popup.css">
 
-<!-- js -->
+<!-- General Script -->
 <script src="../resources/js/jquery-3.3.1.min.js"></script>
 <script src="../resources/js/jquery-migrate-3.3.0.min.js"></script>
-<!-- player -->
-<script src="../resources/js/player.js"></script>
-<!-- datatables -->
-<script src="../resources/js/datatables.js"></script>
-<script src="../resources/js/dataTables.fixedColumns.min.js"></script>
-<script src="../resources/js/jszip.min.js"></script>
-
 <script src="../resources/js/common.js"></script>
 
 <title>TM QA 심사 || 푸본현대생명</title>
 </head>
 <body>
+<!-- [D] 팝업 사이즈 1640 X 920 -->
+
 <!-- #wrap -->
 <div id="wrap">
     <!-- #container -->
@@ -67,61 +59,61 @@
                         <!-- [D] 상품명, 캠페인명은 해당 내용이 잘려서 말줄임처리 될 수 있고 title 추가하여 마우스커서 가져가면 전체 텍스트 확인가능함 -->
                         <tbody>
                             <tr>
-                                <th>상품명</th>
+                                <th scope="row">상품명</th>
                                 <td>
                                     <span class="custom_info long_text">ZERO 나를 위한 암보험</span>
                                 </td>
 
-                                <th>증권번호</th>
+                                <th scope="row">증권번호</th>
                                 <td>
                                     <span class="custom_info">7777777</span>
                                 </td>
 
-                                <th>청약일자</th>
+                                <th scope="row">청약일자</th>
                                 <td>
                                     <span class="custom_info">2020-08-03</span>
                                 </td>
 
-                                <th>캠페인명</th>
+                                <th scope="row">캠페인명</th>
                                 <td>
                                     <span class="custom_info long_text">캠페인명캠페인명</span>
                                 </td>
 
-                                <th>센터</th>
+                                <th scope="row">센터</th>
                                 <td>
                                     <span class="custom_info">1센터</span>
                                 </td>
 
-                                <th>실</th>
+                                <th scope="row">실</th>
                                 <td>
                                     <span class="custom_info">2팀</span>
                                 </td>
                             </tr>
 
                             <tr>
-                                <th>계약자명</th>
+                                <th scope="row">계약자명</th>
                                 <td>
                                     <span class="custom_info">홍길동</span>
                                 </td>
 
-                                <th>주민번호</th>
+                                <th scope="row">주민번호</th>
                                 <td colspan="3">
                                     <span class="custom_info rgst_num">800101</span>
                                     <em>&hyphen;</em>
                                     <span class="custom_info rgst_num">1234567</span>
                                 </td>
 
-                                <th>피보험자명</th>
+                                <th scope="row">피보험자명</th>
                                 <td>
                                     <span class="custom_info">이정호</span>
                                 </td>
 
-                                <th>보험료</th>
+                                <th scope="row">보험료</th>
                                 <td>
                                     <span class="custom_info">100,940</span>
                                 </td>
 
-                                <th>TMR</th>
+                                <th scope="row">TMR</th>
                                 <td>
                                     <span class="custom_info">TMR</span>
                                 </td>
@@ -141,6 +133,7 @@
                    <div class="sltBox pyr_speed">
                        <select class="select">
                            <option value="">1.1X</option>
+                           <option value="">1X</option>
                            <option value="">1.2X</option>
                            <option value="">1.5X</option>
                            <option value="">2X</option>
@@ -161,7 +154,7 @@
                         <a href="#none" class="btn_answer">응답</a>
                     </div>
                     <!-- [D] 클릭 시 연동화면은 현업 조율중(미정) -->
-                    <a href="#none">SMS</a>
+                    <a href="#lyr_sms_detail" class="btn_lyr_open">SMS</a>
                     <!-- [D] 심플 화면 링크 연동되어야 함 -->
                     <a href="#none">기계약 조회</a>
                     <!-- [D] 하이라이트 화면 링크 연동되어야 함 -->
@@ -172,95 +165,99 @@
 
             <!-- .audit_detailArea -->
             <div class="audit_detailArea">
-                <!-- [D] datatables 라이브러리 영역 -->
-                <table class="dataTable tbl_counsel_list">
-                    <thead>
-                        <tr>
-                            <th>NO</th>
-                            <th>상담일시</th>
-                            <th>통화시간</th>
-                            <th>상담대분류</th>
-                            <th>상담소분류</th>
-                            <th>상담내용</th>
-                            <th>청약</th>
-                            <th>STT 상태</th>
-                            <th>센터</th>
-                            <th>실</th>
-                            <th>상담원</th>
-                        </tr>
-                    </thead>
+                <!-- .dataTableBox -->
+                <div class="dataTableBox">
+                    <!-- [D] datatables 라이브러리 영역 -->
+                    <table class="dataTable tbl_counsel_list">
+                        <thead>
+                            <tr>
+                                <th>NO</th>
+                                <th>상담일시</th>
+                                <th>통화시간</th>
+                                <th>상담대분류</th>
+                                <th>상담소분류</th>
+                                <th>상담내용</th>
+                                <th>청약</th>
+                                <th>STT 상태</th>
+                                <th>센터</th>
+                                <th>실</th>
+                                <th>상담원</th>
+                            </tr>
+                        </thead>
 
-                    <!-- [D] 목록 더블클릭 시 해당 콜상담 전체 플레이되어야 함 -->
-                    <!-- [D] 화면 하단 STT 탐지결과에서 문장클릭 시 해당하는 부분이 플레이 되어야하며,
-                    해당되는 녹취 목록에 addclass('active')주면 하이라이트 처리됨  -->
-                    <tbody>
-                        <tr class="active">
-                            <td>1</td>
-                            <td>2017-12-13 16:28:58</td>
-                            <td>0:24:23</td>
-                            <td>하이라이트 기반</td>
-                            <td>하이라이트 기반</td>
-                            <td>하이라이트 기반</td>
-                            <td>Y</td>
-                            <td>정상</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김영희</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>2017-12-13 16:28:58</td>
-                            <td>0:24:23</td>
-                            <td>하이라이트 기반</td>
-                            <td>하이라이트 기반</td>
-                            <td>하이라이트 기반</td>
-                            <td>Y</td>
-                            <td>정상</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김영희</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>2017-12-13 16:28:58</td>
-                            <td>0:24:23</td>
-                            <td>하이라이트 기반</td>
-                            <td>하이라이트 기반</td>
-                            <td>하이라이트 기반</td>
-                            <td>Y</td>
-                            <td>정상</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김영희</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>2017-12-13 16:28:58</td>
-                            <td>0:24:23</td>
-                            <td>하이라이트 기반</td>
-                            <td>하이라이트 기반</td>
-                            <td>하이라이트 기반</td>
-                            <td>Y</td>
-                            <td>정상</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김영희</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>2017-12-13 16:28:58</td>
-                            <td>0:24:23</td>
-                            <td>하이라이트 기반</td>
-                            <td>하이라이트 기반</td>
-                            <td>하이라이트 기반</td>
-                            <td>Y</td>
-                            <td>정상</td>
-                            <td>1센터</td>
-                            <td>2팀</td>
-                            <td>김영희</td>
-                        </tr>
-                    </tbody>
-                </table>
+                        <!-- [D] 목록 더블클릭 시 해당 콜상담 전체 플레이되어야 함 -->
+                        <!-- [D] 화면 하단 STT 탐지결과에서 문장클릭 시 해당하는 부분이 플레이 되어야하며,
+                        해당되는 녹취 목록에 addclass('active')주면 하이라이트 처리됨  -->
+                        <tbody>
+                            <tr class="active">
+                                <td>1</td>
+                                <td>2017-12-13 16:28:58</td>
+                                <td>0:24:23</td>
+                                <td>하이라이트 기반</td>
+                                <td>하이라이트 기반</td>
+                                <td>하이라이트 기반</td>
+                                <td>Y</td>
+                                <td>정상</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김영희</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>2017-12-13 16:28:58</td>
+                                <td>0:24:23</td>
+                                <td>하이라이트 기반</td>
+                                <td>하이라이트 기반</td>
+                                <td>하이라이트 기반</td>
+                                <td>Y</td>
+                                <td>정상</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김영희</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>2017-12-13 16:28:58</td>
+                                <td>0:24:23</td>
+                                <td>하이라이트 기반</td>
+                                <td>하이라이트 기반</td>
+                                <td>하이라이트 기반</td>
+                                <td>Y</td>
+                                <td>정상</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김영희</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>2017-12-13 16:28:58</td>
+                                <td>0:24:23</td>
+                                <td>하이라이트 기반</td>
+                                <td>하이라이트 기반</td>
+                                <td>하이라이트 기반</td>
+                                <td>Y</td>
+                                <td>정상</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김영희</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>2017-12-13 16:28:58</td>
+                                <td>0:24:23</td>
+                                <td>하이라이트 기반</td>
+                                <td>하이라이트 기반</td>
+                                <td>하이라이트 기반</td>
+                                <td>Y</td>
+                                <td>정상</td>
+                                <td>1센터</td>
+                                <td>2팀</td>
+                                <td>김영희</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- //.dataTableBox -->
 
                 <!-- .audit_detail_view -->
                 <div class="audit_detail_view">
@@ -276,7 +273,7 @@
 
                                     <tbody>
                                         <tr>
-                                            <th>TA점수</th>
+                                            <th scope="row">TA점수</th>
                                             <td>
                                                 <ul>
                                                     <li>
@@ -294,7 +291,7 @@
                                                 </ul>
                                             </td>
 
-                                            <th>QA점수</th>
+                                            <th scope="row">QA점수</th>
                                             <td>
                                                 <ul>
                                                     <li>
@@ -312,7 +309,7 @@
                                                 </ul>
                                             </td>
 
-                                            <th>QA결과</th>
+                                            <th scope="row">QA결과</th>
                                             <td>
                                                 <select class="select">
                                                     <option value="">완판</option>
@@ -328,7 +325,7 @@
 
                                         <!-- [D] 심사의견은 이곳에서 직접 입력 후 저장가능 -->
                                         <tr>
-                                            <th>심사의견</th>
+                                            <th scope="row">심사의견</th>
                                             <td colspan="5">
                                                 <textarea></textarea>
                                             </td>
@@ -372,15 +369,15 @@
 
                                             <thead>
                                                 <tr>
-                                                    <th>NO</th>
-                                                    <th>정상</th>
-                                                    <th>미흡</th>
-                                                    <th>반송</th>
-                                                    <th>Score</th>
-                                                    <th>중분류</th>
-                                                    <th>대분류</th>
-                                                    <th>답변</th>
-                                                    <th>탐지</th>
+                                                    <th scope="col">NO</th>
+                                                    <th scope="col">정상</th>
+                                                    <th scope="col">미흡</th>
+                                                    <th scope="col">반송</th>
+                                                    <th scope="col">Score</th>
+                                                    <th scope="col">중분류</th>
+                                                    <th scope="col">대분류</th>
+                                                    <th scope="col">답변</th>
+                                                    <th scope="col">탐지</th>
                                                 </tr>
                                             </thead>
                                         </table>
@@ -395,7 +392,7 @@
 
                                             <tbody>
                                                 <tr>
-                                                    <td>1</td>
+                                                    <td scope="row">1</td>
                                                     <td>
                                                         <!-- [D] 라디오버튼 input[id]와 label[for] 값 동일하게 입력해야함 -->
                                                         <!-- [D] 선택범위 구분은 input[name] 값을 동일하게 주면됨 -->
@@ -438,7 +435,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>2</td>
+                                                    <td scope="row">2</td>
                                                     <td>
                                                         <div class="radioBox">
                                                             <input type="radio" name="radio_type2" id="radio4">
@@ -470,7 +467,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>3</td>
+                                                    <td scope="row">3</td>
                                                     <td>
                                                         <div class="radioBox">
                                                             <input type="radio" name="radio_type3" id="radio7">
@@ -504,7 +501,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>4</td>
+                                                    <td scope="row">4</td>
                                                     <td>
                                                         <div class="radioBox">
                                                             <input type="radio" name="radio_type4" id="radio10">
@@ -538,7 +535,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>5</td>
+                                                    <td scope="row">5</td>
                                                     <td>
                                                         <div class="radioBox">
                                                             <input type="radio" name="radio_type5" id="radio13">
@@ -572,7 +569,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>6</td>
+                                                    <td scope="row">6</td>
                                                     <td>
                                                         <div class="radioBox">
                                                             <input type="radio" name="radio_type6" id="radio16">
@@ -606,7 +603,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>7</td>
+                                                    <td scope="row">7</td>
                                                     <td>
                                                         <div class="radioBox">
                                                             <input type="radio" name="radio_type7" id="radio19">
@@ -640,7 +637,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>8</td>
+                                                    <td scope="row">8</td>
                                                     <td>
                                                         <div class="radioBox">
                                                             <input type="radio" name="radio_type8" id="radio22">
@@ -674,7 +671,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>9</td>
+                                                    <td scope="row">9</td>
                                                     <td>
                                                         <div class="radioBox">
                                                             <input type="radio" name="radio_type9" id="radio25">
@@ -708,7 +705,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>9</td>
+                                                    <td scope="row">9</td>
                                                     <td>
                                                         <div class="radioBox">
                                                             <input type="radio" name="radio_type10" id="radio28">
@@ -740,8 +737,9 @@
                                                     <td>
                                                         <a href="#none" class="btn_detect_success">탐지</a>
                                                     </td>
-                                                </tr><tr>
-                                                    <td>9</td>
+                                                </tr>
+                                                <tr>
+                                                    <td scope="row">9</td>
                                                     <td>
                                                         <div class="radioBox">
                                                             <input type="radio" name="radio_type11" id="radio31">
@@ -773,8 +771,9 @@
                                                     <td>
                                                         <a href="#none" class="btn_detect_success">탐지</a>
                                                     </td>
-                                                </tr><tr>
-                                                    <td>9</td>
+                                                </tr>
+                                                <tr>
+                                                    <td scope="row">9</td>
                                                     <td>
                                                         <div class="radioBox">
                                                             <input type="radio" name="radio_type12" id="radio34">
@@ -806,8 +805,9 @@
                                                     <td>
                                                         <a href="#none" class="btn_detect_success">탐지</a>
                                                     </td>
-                                                </tr><tr>
-                                                    <td>9</td>
+                                                </tr>
+                                                <tr>
+                                                    <td scope="row">9</td>
                                                     <td>
                                                         <div class="radioBox">
                                                             <input type="radio" name="radio_type13" id="radio37">
@@ -839,8 +839,9 @@
                                                     <td>
                                                         <a href="#none" class="btn_detect_success">탐지</a>
                                                     </td>
-                                                </tr><tr>
-                                                    <td>9</td>
+                                                </tr>
+                                                <tr>
+                                                    <td scope="row">9</td>
                                                     <td>
                                                         <div class="radioBox">
                                                             <input type="radio" name="radio_type14" id="radio40">
@@ -872,8 +873,9 @@
                                                     <td>
                                                         <a href="#none" class="btn_detect_success">탐지</a>
                                                     </td>
-                                                </tr><tr>
-                                                    <td>9</td>
+                                                </tr>
+                                                <tr>
+                                                    <td scope="row">9</td>
                                                     <td>
                                                         <div class="radioBox">
                                                             <input type="radio" name="radio_type15" id="radio43">
@@ -905,8 +907,9 @@
                                                     <td>
                                                         <a href="#none" class="btn_detect_success">탐지</a>
                                                     </td>
-                                                </tr><tr>
-                                                    <td>9</td>
+                                                </tr>
+                                                <tr>
+                                                    <td scope="row">9</td>
                                                     <td>
                                                         <div class="radioBox">
                                                             <input type="radio" name="radio_type16" id="radio46">
@@ -940,7 +943,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>9</td>
+                                                    <td scope="row">9</td>
                                                     <td>
                                                         <div class="radioBox">
                                                             <input type="radio" name="radio_type17" id="radio49">
@@ -972,8 +975,9 @@
                                                     <td>
                                                         <a href="#none" class="btn_detect_success">탐지</a>
                                                     </td>
-                                                </tr><tr>
-                                                    <td>9</td>
+                                                </tr>
+                                                <tr>
+                                                    <td scope="row">9</td>
                                                     <td>
                                                         <div class="radioBox">
                                                             <input type="radio" name="radio_type18" id="radio52">
@@ -1027,13 +1031,13 @@
 
                                         <thead>
                                             <tr>
-                                                <th>회차</th>
-                                                <th>심사일시</th>
-                                                <th>심사자</th>
-                                                <th>점수</th>
-                                                <th>QA결과</th>
-                                                <th>녹취시간</th>
-                                                <th>심사시간</th>
+                                                <th scope="col">회차</th>
+                                                <th scope="col">심사일시</th>
+                                                <th scope="col">심사자</th>
+                                                <th scope="col">점수</th>
+                                                <th scope="col">QA결과</th>
+                                                <th scope="col">녹취시간</th>
+                                                <th scope="col">심사시간</th>
                                             </tr>
                                         </thead>
                                     </table>
@@ -1048,7 +1052,7 @@
 
                                         <tbody>
                                             <tr>
-                                                <td>1회</td>
+                                                <td scope="row">1회</td>
                                                 <td>2017-12-14 11:34</td>
                                                 <td>TA</td>
                                                 <td>4</td>
@@ -1057,7 +1061,7 @@
                                                 <td>0</td>
                                             </tr>
                                             <tr>
-                                                <td>1회</td>
+                                                <td scope="row">1회</td>
                                                 <td>2017-12-15 09:14</td>
                                                 <td>이영화</td>
                                                 <td>9</td>
@@ -1066,7 +1070,7 @@
                                                 <td>0:36:21</td>
                                             </tr>
                                             <tr>
-                                                <td>2회</td>
+                                                <td scope="row">2회</td>
                                                 <td>2017-12-29 15:10</td>
                                                 <td>이영화</td>
                                                 <td></td>
@@ -1075,7 +1079,7 @@
                                                 <td>0:36:21</td>
                                             </tr>
                                             <tr>
-                                                <td>3회</td>
+                                                <td scope="row">3회</td>
                                                 <td>2017-12-29 15:10</td>
                                                 <td>이영화</td>
                                                 <td></td>
@@ -1084,7 +1088,7 @@
                                                 <td>0:36:21</td>
                                             </tr>
                                             <tr>
-                                                <td>3회</td>
+                                                <td scope="row">3회</td>
                                                 <td>2017-12-29 15:10</td>
                                                 <td>이영화</td>
                                                 <td></td>
@@ -1103,7 +1107,7 @@
                                         </colgroup>
                                         <tfoot>
                                             <tr>
-                                                <td>계</td>
+                                                <td scope="row">계</td>
                                                 <td>02:13:29</td>
                                                 <td>02:13:29</td>
                                             </tr>
@@ -1145,13 +1149,13 @@
                                     <ul>
                                         <!-- [D] STT 탐지결과에 따른 컬러지정
                                         파란색: .txt_blue / 빨간색: .txt_red / 검정색: 기본 -->
-                                        <li><span>[00112]</span> 계속 보험료 결제는 자동이체로 등록을 해드리겠습니다.</li>
-                                        <li><span>[00113]</span> 보험료 납입은 예금주는 000님 생년월일은 00월 00일이고 00은행 계좌번호는 ***** ******* **** 구요.</li>
-                                        <li><span>[00114]</span>보험료 출금에 동의하십니까?</li>
-                                        <li class="txt_blue"><span>[C]</span>예 예</li>
-                                        <li class="txt_red"><span>[00112]</span></li>
-                                        <li><span>[00125]</span>요거는 계속 보험료와 동일한 지금 불러주신 000 여기 계좌에서 실시간 이체로 일회 보험료 0만 0천 0백 0원 출금에 동의하시지요?</li>
-                                        <li><span>[C]</span>예</li>
+                                        <li><a href="#none"><span>[00112]</span> 계속 보험료 결제는 자동이체로 등록을 해드리겠습니다.</a></li>
+                                        <li><a href="#none"><span>[00113]</span> 보험료 납입은 예금주는 000님 생년월일은 00월 00일이고 00은행 계좌번호는 ***** ******* **** 구요.</a></li>
+                                        <li><a href="#none"><span>[00114]</span>보험료 출금에 동의하십니까?</a></li>
+                                        <li class="txt_blue"><a href="#none"><span>[C]</span>예 예</a></li>
+                                        <li class="txt_red"><a href="#none"><span>[00112]</span></a></li>
+                                        <li><a href="#none"><span>[00125]</span>요거는 계속 보험료와 동일한 지금 불러주신 000 여기 계좌에서 실시간 이체로 일회 보험료 0만 0천 0백 0원 출금에 동의하시지요?</a></li>
+                                        <li><a href="#none"><span>[C]</span>예</a></li>
                                     </ul>
                                 </dd>
                             </dl>
@@ -1167,6 +1171,131 @@
     <!-- //#container -->
 </div>
 <!-- //#wrap -->
+
+<!-- SMS 발송내역 팝업 -->
+<div id="lyr_sms_detail" class="lyrBox">
+    <div class="lyr_hd">
+        <span class="title">SMS 발송내역</span>
+        <a href="#none" class="btn_lyr_close">닫기</a>
+     </div>
+    <div class="lyr_ct">
+        <div class="custom_tbl">
+            <div class="tbl_hd">
+                <table summary="NO, 발송일시, 발송자 ID, 발송 전화번호, 발송자 성명, 수신자 전화번호, SMS 내용으로 구성">
+                    <caption class="hide">sms 발송내역</caption>
+                    <colgroup>
+                        <col width="50"><col width="80"><col width="80">
+                        <col width="100"><col width="80"><col width="100"><col>
+                    </colgroup>
+                    
+                    <thead>
+                        <tr>
+                            <th scope="col">NO</th>
+                            <th scope="col">발송일시</th>
+                            <th scope="col">발송자 ID</th>
+                            <th scope="col">발송<br>전화번호</th>
+                            <th scope="col">발송자 성명</th>
+                            <th scope="col">수신자<br>전화번호</th>
+                            <th scope="col">SMS 내용</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="tbl_bd">
+                <table>
+                    <colgroup>
+                        <col width="50"><col width="80"><col width="80">
+                        <col width="100"><col width="80"><col width="100"><col>
+                    </colgroup>
+                    
+                    <tbody>
+                        <tr>
+                            <td colspan="7" class="data_empty">SMS 발송내역이 없습니다.</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">1</td>
+                            <td>2020-08-03</td>
+                            <td>AAAAAAAAA</td>
+                            <td>000-0000-0000</td>
+                            <td>홍길동</td>
+                            <td>010-0000-0000</td>
+                            <td>보험료 자동이체 예금주의 계약자, 피보험자가 아닌 제3자 설정하시는 경우 '제3자 예금주 동의 스크립트'를 별도 진행바랍니다.보험료 자동이체 예금주의 계약자, 피보험자가 아닌 제3자 설정하시는 경우 '제3자 예금주 동의 스크립트'를 별도 진행바랍니다.</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">2</td>
+                            <td>2020-08-03</td>
+                            <td>AAAAAAAAA</td>
+                            <td>000-0000-0000</td>
+                            <td>홍길동</td>
+                            <td>010-0000-0000</td>
+                            <td>보험료 자동이체 예금주의 계약자, 피보험자가 아닌 제3자 설정하시는 경우</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">3</td>
+                            <td>2020-08-03</td>
+                            <td>AAAAAAAAA</td>
+                            <td>000-0000-0000</td>
+                            <td>홍길동</td>
+                            <td>010-0000-0000</td>
+                            <td>보험료 자동이체 예금주의 계약자, 피보험자가 아닌 제3자 설정하시는 경우 '제3자 예금주 동의 스크립트'를 별도 진행바랍니다.보험료 자동이체 예금주의 계약자, 피보험자가 아닌 제3자 설정하시는 경우 '제3자 예금주 동의 스크립트'를 별도 진행바랍니다.</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">4</td>
+                            <td>2020-08-03</td>
+                            <td>AAAAAAAAA</td>
+                            <td>000-0000-0000</td>
+                            <td>홍길동</td>
+                            <td>010-0000-0000</td>
+                            <td>보험료 자동이체 예금주의 계약자, 피보험자가 아닌 제3자 설정하시는 경우 '제3자 예금주 동의 스크립트'를 별도 진행바랍니다.보험료 자동이체 예금주의 계약자, 피보험자가 아닌 제3자 설정하시는 경우 '제3자 예금주 동의 스크립트'를 별도 진행바랍니다.</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">5</td>
+                            <td>2020-08-03</td>
+                            <td>AAAAAAAAA</td>
+                            <td>000-0000-0000</td>
+                            <td>홍길동</td>
+                            <td>010-0000-0000</td>
+                            <td>보험료 자동이체 예금주의 계약자, 피보험자가 아닌 제3자 설정하시는 경우 '제3자 예금주 동의 스크립트'를 별도 진행바랍니다..</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">6</td>
+                            <td>2020-08-03</td>
+                            <td>AAAAAAAAA</td>
+                            <td>000-0000-0000</td>
+                            <td>홍길동</td>
+                            <td>010-0000-0000</td>
+                            <td>보험료 자동이체 예금주의 계약자, 피보험자가 아닌 제3자 설정하시는 경우</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">7</td>
+                            <td>2020-08-03</td>
+                            <td>AAAAAAAAA</td>
+                            <td>000-0000-0000</td>
+                            <td>홍길동</td>
+                            <td>010-0000-0000</td>
+                            <td>보험료 자동이체 예금주의 계약자, 피보험자가 아닌 제3자 설정하시는 경우 '제3자 예금주 동의 스크립트'를 별도 진행바랍니다.</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">8</td>
+                            <td>2020-08-03</td>
+                            <td>AAAAAAAAA</td>
+                            <td>000-0000-0000</td>
+                            <td>홍길동</td>
+                            <td>010-0000-0000</td>
+                            <td>보험료 자동이체 예금주의 계약자</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="lyr_ft">
+        <div class="btnBox">
+            <a href="#none" class="btn_lyr_close">닫기</a>
+        </div>
+    </div>
+</div>
+<!-- //SMS 발송내역 팝업 -->
 
 <!-- layer popup -->
 <!-- 질의/응답 팝업 -->
@@ -1286,50 +1415,87 @@
 </div>
 <!-- //심사완료 팝업 팝업 -->
 
-<!-- script -->
+<!-- 브라우저 닫기버튼 클릭 시 저장 확인 팝업 -->
+<!-- [D] 브라우저 닫기 버튼 클릭 시 해당팝업 등장시켜주어야하며 
+확인버튼 클릭 시 저장하지 않고 팝업창 닫힘, 취소버튼 클릭 시 현재 입력된 내용과 팝업창 유지시켜야함 -->
+<div id="lyr_save_confirm" class="lyrBox">
+    <div class="lyr_hd">
+        <span class="title">TM QA 심사 나가기</span>
+        <a href="#none" class="btn_lyr_close">닫기</a>
+     </div>
+    <div class="lyr_ct">
+        <p>저장하지않고 나가시겠습니까?</p>
+    </div>
+    <div class="lyr_ft">
+        <div class="btnBox">
+            <a href="#none" class="btn_lyr_confirm">확인</a>
+            <a href="#none" class="btn_lyr_close">취소</a>
+        </div>
+    </div>
+</div>
+<!-- //브라우저 닫기버튼 클릭 시 저장 확인 팝업 -->
+
+<!---------------------- Local Resources ---------------------->
+<!-- Local CSS -->
+<link rel="stylesheet" href="../resources/css/datatables.min.css">
+<link rel="stylesheet" href="../resources/css/buttons.dataTables.min.css">
+<!-- //datatables -->
+<link rel="stylesheet" href="../resources/css/popup.css">
+
+<!-- Local Script Library -->
+<script src="../resources/js/player.js"></script>
+<!-- //player -->
+<script src="../resources/js/datatables.min.js"></script>
+<script src="../resources/js/dataTables.fixedColumns.min.js"></script>
+<script src="../resources/js/jszip.min.js"></script>
+<!-- //datatables -->
+
+<!-- Local Script -->
 <script type="text/javascript">
-$(document).ready(function(){
-    // datatable 렌더링
-    var table = $('.dataTable').DataTable({
-        dom: '<"top">t<"bottom"B>', // 옵션 위치 지정
-        // responsive: true, // 반응형 허용
-        info: false, // 페이지 정보 미허용
-        paging: false, // 페이징 미허용
-        scrollY: '75px', // 세로 스크롤 허용, 사이즈
-        scrollX: true, //가로 스크롤 허용
-        scrollCollapse: true,
-        ordering: false,
-        columnDefs: [ // 컬럼별 width, 옵션 사용 지정
-            {targets: [0], width: "50px", sortable: false},   // NO
-            {targets: [1], width: "150px"},  // 상담일시
-            {targets: [2], width: "100px"},  // 통화시간
-            {targets: [3], width: "150px"},  // 상담대분류
-            {targets: [4], width: "150px"},  // 상담소분류
-            {targets: [5], width: "423px"},  // 상담내용
-            {targets: [6], width: "50px"},   // 청약
-            {targets: [7], width: "80px"},   // STT 상태
-            {targets: [8], width: "100px"},  // 센터
-            {targets: [9], width: "50px"},   // 실
-            {targets: [10], width: "80px"}  // 상담원
-        ],
-    });
+jQuery.event.add(window,"load",function(){
+    $(document).ready(function(){
+        // datatable 렌더링
+        var table = $('.dataTable').DataTable({
+            dom: 't', // 옵션 위치 지정
+            responsive: true, // 반응형 허용
+            info: false, // 페이지 정보 미허용
+            paging: false, // 페이징 미허용
+            scrollY: "75px", // 세로 스크롤 허용, 사이즈
+            scrollX: true, //가로 스크롤 허용
+            scrollCollapse: true,
+            ordering: false,
+            columnDefs: [ // 컬럼별 width, 옵션 사용 지정
+                {targets: [0], width: "50px", sortable: false},   // NO
+                {targets: [1], width: "150px"},  // 상담일시
+                {targets: [2], width: "100px"},  // 통화시간
+                {targets: [3], width: "150px"},  // 상담대분류
+                {targets: [4], width: "150px"},  // 상담소분류
+                {targets: [5], width: "423px"},  // 상담내용
+                {targets: [6], width: "50px"},   // 청약
+                {targets: [7], width: "80px"},   // STT 상태
+                {targets: [8], width: "100px"},  // 센터
+                {targets: [9], width: "50px"},   // 실
+                {targets: [10], width: "80px"}  // 상담원
+            ],
+        });
 
-    //오디오 플레이어
-    $('audio').audioPlayer();
-    $('.btn_player_play').on('click',function(){
-        $(this).toggleClass('pause');
-    });
+        //오디오 플레이어
+        $('audio').audioPlayer();
+        $('.btn_player_play').on('click',function(){
+            $(this).toggleClass('pause');
+        });
 
-    // 상단 계약정보 - 상품명, 캠페인명 텍스트 영역에 title추가하여  full text 보여주기
-    $('.long_text').each(function(){
-        var infoText = $(this).text();
-        $(this).attr('title', infoText);
-    });
+        // 상단 계약정보 - 상품명, 캠페인명 텍스트 영역에 title추가하여  full text 보여주기
+        $('.long_text').each(function(){
+            var infoText = $(this).text();
+            $(this).attr('title', infoText);
+        });
 
-    // 평가표 탭버튼 활성화 효과
-    $('.eval_tab_title a').on('click', function(){
-        $('.eval_tab_title a').removeClass('on');
-        $(this).addClass('on');
+        // 평가표 탭버튼 활성화 효과
+        $('.eval_tab_title a').on('click', function(){
+            $('.eval_tab_title a').removeClass('on');
+            $(this).addClass('on');
+        });
     });
 });
 </script>

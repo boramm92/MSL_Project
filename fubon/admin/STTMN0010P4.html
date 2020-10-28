@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="format-detection" content="telephone=no">
+
+<!---------------------- General Resources ---------------------->
+<!-- General CSS -->
+<link rel="stylesheet" href="../resources/css/common.css">
+
+<!-- General Script -->
+<script src="../resources/js/jquery-3.3.1.min.js"></script>
+<script src="../resources/js/jquery-migrate-3.3.0.min.js"></script>
+<script src="../resources/js/common.js"></script>
+
+<title>화면 삭제(팝업) || 푸본현대생명</title>
+</head>
+<body>
+<!-- [D] 팝업 사이즈 580 X 495 -->
+
+<!-- #wrap -->
+<div id="wrap">
+    <!-- #container -->
+    <div id="container">
+        <!-- #popup_wrap -->
+        <div class="popup_wrap admin small">
+            <!-- .right_manage -->
+            <div class="right_manage">
+                <!-- .pop_top -->
+                <div class="pop_top">
+                    <h1>화면 삭제</h1>
+                </div>
+                <!-- //.pop_top -->
+                
+                <!-- .pop_mdl -->
+                <div class="pop_mdl">
+                    <!-- .setBox -->
+                    <div class="setBox">
+                        <h2>화면 조회</h2>
+                        
+                        <div class="btnBox">
+                            <a href="#none" class="btn_srch">조회</a>
+                        </div>
+                        
+                        <div class="tbl_popup_set">
+                            <table summary="화면ID, 화면명으로 구성됨">
+                                <colgroup>
+                                    <col><col>
+                                </colgroup>
+    
+                                <thead>
+                                    <tr>
+                                        <th scope="col">화면ID</th>
+                                        <th scope="col">화면명</th>
+                                    </tr>
+                                </thead>
+    
+                                <tbody>
+                                    <tr>
+                                        <td scope="row">
+                                            <div class="iptBox">
+                                                <input type="text">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="iptBox">
+                                                <input type="text">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- //.setBox -->
+    
+                    <!-- .setBox -->
+                    <div class="setBox">
+                        <h2>화면 리스트</h2>
+                        
+                        <div class="btnBox btn_change_group">
+                            <a href="#none" class="btn_edit">수정</a>
+                            <a href="#none" class="btn_delete btn_edit_show">삭제</a>
+                            <a href="#none" class="btn_cancel btn_edit_show">취소</a>
+                        </div>
+    
+                        <div class="tbl_popup_set tbl_include_btn">
+                            <table summary="선택, 화면ID, 화면명, 화면위치, 조회(버튼)로 구성됨">
+                                <colgroup>
+                                    <col width="50"><col><col><col><col width="80">
+                                </colgroup>
+    
+                                <!-- [D] 테이블 상단 수정버튼(.btn_edit)클릭 시 선택, 조회 열 보여주어야함 -->
+                                <thead>
+                                    <tr>
+                                        <th scope="col">선택</th>
+                                        <th scope="col">화면ID</th>
+                                        <th scope="col">화면명</th>
+                                        <th scope="col">화면위치</th>
+                                        <th scope="col">조회</th>
+                                    </tr>
+                                </thead>
+    
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5">조회된 데이터가 없습니다.</td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">
+                                            <!-- [D] input[type="checkbox"]의 id와 label의 for 값을 동일하게 주어야함 -->
+                                            <div class="chkBox">
+                                                <input type="checkbox" id="each_chk1">
+                                                <label for="each_chk1"></label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="iptBox">
+                                                <input type="text" readonly>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="iptBox">
+                                                <input type="text">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="iptBox">
+                                                <input type="text">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="btnBox">
+                                                <a href="#none" class="btn_check">조회</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- //.setBox -->
+                    
+                    <!-- .setBox -->
+                    <div class="setBox">
+                        <h2>버튼 리스트</h2>
+                        
+                        <div class="btnBox btn_change_group">
+                            <a href="#none" class="btn_edit">수정</a>
+                            <a href="#none" class="btn_delete btn_edit_show">삭제</a>
+                            <a href="#none" class="btn_cancel btn_edit_show">취소</a>
+                        </div>
+    
+                        <div class="tbl_popup_set">
+                            <div class="tbl_hd">
+                                <table summary="선택, 버튼ID, 버튼명, 버튼위치, 추가로 구성됨">
+                                    <colgroup>
+                                        <col width="50"><col width="100"><col width="100">
+                                        <col width="100"><col width="50">
+                                    </colgroup>
+        
+                                    <!-- [D] 테이블 상단 수정버튼(.btn_edit)클릭 시 선택, 추가 열 보여주어야함 -->
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">선택</th>
+                                            <th scope="col">버튼ID</th>
+                                            <th scope="col">버튼명</th>
+                                            <th scope="col">버튼위치</th>
+                                            <th scope="col">추가</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            
+                            <div class="tbl_bd tbl_scroll ten_line">
+                                <table>
+                                    <colgroup>
+                                        <col width="50"><col width="100"><col width="100">
+                                        <col width="100"><col width="50">
+                                    </colgroup>
+                                    
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="5">조회된 데이터가 없습니다.</td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row">
+                                                <!-- [D] input[type="checkbox"]의 id와 label의 for 값을 동일하게 주어야함 -->
+                                                <div class="chkBox">
+                                                    <input type="checkbox" id="each_chk2">
+                                                    <label for="each_chk2"></label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="iptBox">
+                                                    <input type="text">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="iptBox">
+                                                    <input type="text">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="iptBox">
+                                                    <input type="text">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="btnBox">
+                                                    <a href="#none" class="btn_add">
+                                                        <span>추가버튼</span>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- //.setBox -->
+                </div>
+                <!-- //.pop_mdl -->
+                
+                <!-- .pop_btm -->
+                <div class="pop_btm">
+                    <div class="btnBox">
+                        <a href="#none" class="btn_save">저장</a>
+                        <a href="#none" class="btn_close">닫기</a>
+                    </div>
+                </div>
+                <!-- //.pop_btm -->
+            </div>
+            <!-- //.right_manage -->
+        </div>
+        <!-- //#contents -->
+    </div>
+    <!-- //#container -->
+</div>
+<!-- //#wrap -->
+
+<!---------------------- Local Resources ---------------------->
+<!-- Local CSS -->
+<link rel="stylesheet" href="../resources/css/popup.css">
+
+<!-- Local Script -->
+<script type="text/javascript">
+jQuery.event.add(window,"load",function(){
+    $(document).ready(function(){
+        
+    });
+});
+</script>
+</body>
+</html>

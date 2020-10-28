@@ -4,32 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="format-detection" content="telephone=no">
 
-<!-- css -->
-<!-- datetimepicker -->
-<link rel="stylesheet" href="../resources/css/bootstrap.css"/>
-<link rel="stylesheet" href="../resources/css/bootstrap-datetimepicker.css"/>
-<!-- datatables -->
-<link rel="stylesheet" href="../resources/css/datatables.min.css">
-<link rel="stylesheet" href="../resources/css/buttons.dataTables.min.css">
-
+<!---------------------- General Resources ---------------------->
+<!-- General CSS -->
 <link rel="stylesheet" href="../resources/css/common.css">
-<link rel="stylesheet" href="../resources/css/stt_tm_qa.css">
 
-<!-- js -->
+<!-- General Script -->
 <script src="../resources/js/jquery-3.3.1.min.js"></script>
 <script src="../resources/js/jquery-migrate-3.3.0.min.js"></script>
-<!-- datetimepicker -->
-<script src="../resources/js/bootstrap-datetimepicker.js"></script>
-<script src="../resources/js/moment.min.js"></script>
-<script src="../resources/js/ko.js"></script>
-<!-- datatables -->
-<script src="../resources/js/datatables.min.js"></script>
-<script src="../resources/js/dataTables.fixedColumns.min.js"></script>
-<script src="../resources/js/dataTables.buttons.min.js"></script>
-<script src="../resources/js/buttons.html5.min.js"></script>
-<script src="../resources/js/jszip.min.js"></script>
-
 <script src="../resources/js/common.js"></script>
 
 <title>TM || 푸본현대생명</title>
@@ -67,7 +50,7 @@
         <!-- [D] 소메뉴(.third)가 존재하는 중메뉴(.snb > li)는 오른쪽에 아래방향 화살표가 추가되며, 클릭 시 소메뉴(.third) slidedown되며 보여짐 -->
         <ul class="gnb">
             <li>
-                <h3>Home</h3>
+                <h2>Home</h2>
 
                 <ul class="sub">
                     <li>
@@ -76,52 +59,52 @@
                 </ul>
             </li>
             <li>
-                <h3>CS</h3>
+                <h2>CS</h2>
 
                 <ul class="sub">
                     <li>
-                        <a href="cs_stt.html">STT 대상</a>
+                        <a href="cs_stt.html">CS - STT 대상</a>
                     </li>
                 </ul>
             </li>
             <li class="current">
-                <h3>TM</h3>
+                <h2>TM</h2>
 
                 <ul class="sub">
                     <li class="current">
-                        <a href="#none">STT 대상</a>
+                        <a href="tm_stt.html">TM - STT 대상</a>
                     </li>
                 </ul>
             </li>
             <li>
-                <h3>TM_QA</h3>
+                <h2>TM_QA</h2>
 
                 <ul class="sub">
                     <li>
-                        <a href="#none">QA 배정</a>
+                        <a href="tm_qa_target.html">QA 대상</a>
                     </li>
                     <li>
-                        <a href="#none">QA 심사리스트</a>
+                        <a href="tm_qa_assign1.html">QA 배정</a>
                     </li>
                     <li>
-                        <a href="#none">QA 결과</a>
+                        <a href="qa_result.html">QA 결과</a>
                     </li>
                 </ul>
             </li>
             <li>
-                <h3>통계</h3>
+                <h2>통계</h2>
 
                 <ul class="sub">
                     <li>
-                        <a href="#none">상담원 통계</a>
+                        <a href="tmr_statistic.html">상담원 통계</a>
                     </li>
                     <li>
-                        <a href="#none">심사자 통계</a>
+                        <a href="qa_statistic.html">심사자 통계</a>
                     </li>
                 </ul>
             </li>
             <li>
-                <h3>모니터링</h3>
+                <h2>모니터링</h2>
 
                 <ul class="sub">
                     <li>
@@ -133,7 +116,7 @@
                 </ul>
             </li>
             <li>
-                <h3>관리설정</h3>
+                <h2>관리설정</h2>
 
                 <ul class="sub">
                     <li>
@@ -230,8 +213,6 @@
 
             <!-- .tab_content -->
             <div class="tab_content">
-                <h4>TM &hyphen; STT</h4>
-
                 <!-- .srchArea -->
                 <div class="srchArea">
                     <table class="tbl_line_view" summary="상담일시, 센터, 실, 상담원, 사번, 고객명, 고객번호, STT상태, 콜키로 구성">
@@ -242,7 +223,7 @@
 
                         <tbody>
                             <tr>
-                                <th>상담일시</th>
+                                <th scope="row">상담일시</th>
                                 <!-- [D] 처음 페이지 들어왔을때의 초기 상담일시는 [전날 날짜, 오전 9시] - [당일 날짜, 미정] 기본 입력 상태여야함 -->
                                 <!-- [D] 시간 초기 기본값 미정으로 비워둠 -->
                                 <td>
@@ -254,30 +235,24 @@
                                 </td>
 
                                 <!-- [D] 센터 선택해야 실 활성화됨 -->
-                                <th>센터</th>
+                                <th scope="row">센터</th>
                                 <td>
                                     <div class="sltBox custom">
                                         <select class="select">
-                                            <option value="">전체</option>
-                                            <option value="">상담유형옵션</option>
-                                            <option value="">상담유형옵션</option>
-                                            <option value="">상담유형옵션</option>
-                                            <option value="">상담유형옵션</option>
-                                            <option value="">상담유형옵션</option>
-                                            <option value="">상담유형옵션</option>
-                                            <option value="">상담유형옵션</option>
-                                            <option value="">상담유형옵션</option>
-                                            <option value="">상담유형옵션</option>
-                                            <option value="">상담유형옵션</option>
-                                            <option value="">상담유형옵션</option>
-                                            <option value="">상담유형옵션</option>
+                                            <option value="" selected>전체</option>
+                                            <option value="">1센터</option>
+                                            <option value="">2센터</option>
+                                            <option value="">3센터</option>
+                                            <option value="">4센터</option>
+                                            <option value="">5센터</option>
+                                            <option value="">Upsell 센터</option>
                                         </select>
                                     </div>
                                 </td>
 
                                 <!-- [D] 실 선택해야 상담원 활성화됨 -->
                                 <!-- [D] 선택박스(.sltBox)에 addclass('disabled')하면 비활성화 효과 적용됨 -->
-                                <th>실</th>
+                                <th scope="row">실</th>
                                 <td>
                                     <div class="sltBox custom disabled">
                                         <select class="select">
@@ -299,7 +274,7 @@
                                 </td>
 
                                 <!-- [D] 선택박스(.sltBox)에 addclass('disabled')하면 비활성화 효과 적용됨 -->
-                                <th>상담원</th>
+                                <th scope="row">상담원</th>
                                 <td>
                                     <div class="sltBox custom disabled">
                                         <select class="select">
@@ -320,7 +295,7 @@
                                     </div>
                                 </td>
 
-                                <th>사번</th>
+                                <th scope="row">사번</th>
                                 <td>
                                     <div class="iptBox">
                                         <input type="text" numberOnly>
@@ -329,7 +304,7 @@
                             </tr>
 
                             <tr>
-                                <th>고객명</th>
+                                <th scope="row">고객명</th>
                                 <td>
                                     <div class="iptBox">
                                         <input type="text">
@@ -343,28 +318,18 @@
                                     </div>
                                 </td>
 
-                                <th>STT상태</th>
+                                <th scope="row">STT상태</th>
                                 <td>
                                     <div class="sltBox custom">
                                         <select class="select">
                                             <option value="">전체</option>
-                                            <option value="">상담유형옵션</option>
-                                            <option value="">상담유형옵션</option>
-                                            <option value="">상담유형옵션</option>
-                                            <option value="">상담유형옵션</option>
-                                            <option value="">상담유형옵션</option>
-                                            <option value="">상담유형옵션</option>
-                                            <option value="">상담유형옵션</option>
-                                            <option value="">상담유형옵션</option>
-                                            <option value="">상담유형옵션</option>
-                                            <option value="">상담유형옵션</option>
-                                            <option value="">상담유형옵션</option>
-                                            <option value="">상담유형옵션</option>
+                                            <option value="">정상</option>
+                                            <option value="">오류</option>
                                         </select>
                                     </div>
                                 </td>
 
-                                <th>콜키</th>
+                                <th scope="row">콜키</th>
                                 <td colspan="3">
                                     <div class="iptBox">
                                         <input type="text" class="callKey">
@@ -816,80 +781,103 @@
 </div>
 <!-- //#wrap -->
 
-<!-- script -->
+<!---------------------- Local Resources ---------------------->
+<!-- Local CSS -->
+<link rel="stylesheet" href="../resources/css/bootstrap.css"/>
+<link rel="stylesheet" href="../resources/css/bootstrap-datetimepicker.css"/>
+<!-- //datetimepicker -->
+<link rel="stylesheet" href="../resources/css/datatables.min.css">
+<link rel="stylesheet" href="../resources/css/buttons.dataTables.min.css">
+<!-- //datatables -->
+<link rel="stylesheet" href="../resources/css/stt_tm_qa.css">
+
+<!-- Local Script Library -->
+<script src="../resources/js/bootstrap-datetimepicker.js"></script>
+<script src="../resources/js/moment.min.js"></script>
+<script src="../resources/js/ko.js"></script>
+<!-- //datetimepicker -->
+<script src="../resources/js/datatables.min.js"></script>
+<script src="../resources/js/dataTables.fixedColumns.min.js"></script>
+<script src="../resources/js/dataTables.buttons.min.js"></script>
+<script src="../resources/js/buttons.html5.min.js"></script>
+<script src="../resources/js/jszip.min.js"></script>
+<!-- //datatables -->
+
+<!-- Local Script -->
 <script type="text/javascript">
-$(document).ready(function(){
-    // datetimepicker 렌더링
-    $('#fromDate').datetimepicker({
-        language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
-        pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
-        defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
-        autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
-    });
-
-    $('#toDate').datetimepicker({
-        language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
-        pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
-        defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
-        autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
-    });
-
-    // datatable 렌더링
-    var table = $('.dataTable').DataTable({
-        dom: 'iptlB', // 옵션 위치 지정
-        language: { // 테이블 목록 건수 text 한글 설정
-            emptyTable: "조회된 데이터가 없습니다.", // 데이터 없을 경우 노출되는 text 설정
-            infoEmpty: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>_END_</strong> 건 &sol; _TOTAL_ 건&rbrack;",
-            info: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>_END_</strong> 건 &sol; _TOTAL_ 건&rbrack;",
-            lengthMenu: "_MENU_ 건씩 보기",
-            paginate: {
-                first: "",
-                previous: "",
-                next: "",
-                last: ""
-            },
-        },
-        responsive: true, // 반응형 허용
-        filter: false, // 검색창 미허용
-        order: [[ 1, 'asc' ]], // 초기 sort 설정
-        paging: true, // 페이징 허용
-        pagingType: "full_numbers", // 페이징 버튼 구성 (처음, 이전, 페이지숫자, 다음, 마지막)
-        lengthMenu: [25, 50, 100], // 페이지 당 보여질 목록 갯수 select 범위 지정
-        scrollY: "570px", // 세로 스크롤 허용, 사이즈
-        scrollX: true, //가로 스크롤 허용
-        scrollCollapse: true,
-        columnDefs: [ // 컬럼별 width, 옵션 사용 지정
-            {targets: [0], width: "50px", sortable: false},    // NO
-            {targets: [1], width: "150px", sortable: false},   // 상담일시
-            {targets: [2], width: "100px"},                    // 센터
-            {targets: [3], width: "100px"},                    // 실
-            {targets: [4], width: "100px", sortable: false},   // 상담원
-            {targets: [5], width: "120px", sortable: false},   // 상담사사번
-            {targets: [6], width: "100px"},                    // 고객명
-            {targets: [7], width: "150px", orderable: false},  // 고객번호
-            {targets: [8], width: "100px"},                    // STT상태
-            {targets: [9], width: "150px", orderable: false},  // 콜키
-        ],
-        dom: 'Blfrtip', // 엑셀 다운로드 버튼 추가
-        buttons: [{
-            extend: 'excelHtml5',
-            text: 'Excel 다운로드',
-        }]
-    });
-
-    new $.fn.dataTable.FixedColumns(table, {
-        fixedColumns: { // 왼쪽 1열 고정
-            leftColumns: 1,
-            heightMatch: 'none'
-        }
-    });
-
-    // 다른 열에서 sort되어도 1열 순번은 그대로 유지
-    table.on('order.dt search.dt', function(){
-        table.column(0, {search:'applied', order:'applied'}).nodes().each(function (cell, i){
-            cell.innerHTML = i+1;
+jQuery.event.add(window,"load",function(){
+    $(document).ready(function(){
+        // datetimepicker 렌더링
+        $('#fromDate').datetimepicker({
+            language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
+            pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
+            defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
+            autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
         });
-    }).draw();
+
+        $('#toDate').datetimepicker({
+            language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
+            pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
+            defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
+            autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
+        });
+
+        // datatable 렌더링
+        var table = $('.dataTable').DataTable({
+            dom: 't<"bottom"lipB>', // 옵션 위치 지정
+            language: { // 테이블 목록 건수 text 한글 설정
+                emptyTable: "조회된 데이터가 없습니다.", // 데이터 없을 경우 노출되는 text 설정
+                infoEmpty: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>0</strong> 건 &sol; _TOTAL_ 건&rbrack;",
+                info: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>0</strong> 건 &sol; _TOTAL_ 건&rbrack;",
+                lengthMenu: "_MENU_ 건씩 보기",
+                paginate: {
+                    first: "",
+                    previous: "",
+                    next: "",
+                    last: ""
+                },
+            },
+            responsive: true, // 반응형 허용
+            filter: false, // 검색창 미허용
+            order: [[ 1, 'asc' ]], // 초기 sort 설정
+            paging: true, // 페이징 허용
+            pagingType: "full_numbers", // 페이징 버튼 구성 (처음, 이전, 페이지숫자, 다음, 마지막)
+            lengthMenu: [25, 50, 100], // 페이지 당 보여질 목록 갯수 select 범위 지정
+            scrollY: "600px", // 세로 스크롤 허용, 사이즈
+            scrollX: true, //가로 스크롤 허용
+            scrollCollapse: true,
+            columnDefs: [ // 컬럼별 width, 옵션 사용 지정
+                {targets: [0], width: "50px", sortable: false},    // NO
+                {targets: [1], width: "", sortable: false},   // 상담일시
+                {targets: [2], width: ""},                    // 센터
+                {targets: [3], width: ""},                    // 실
+                {targets: [4], width: "", sortable: false},   // 상담원
+                {targets: [5], width: "", sortable: false},   // 상담사사번
+                {targets: [6], width: ""},                    // 고객명
+                {targets: [7], width: "", orderable: false},  // 고객번호
+                {targets: [8], width: ""},                    // STT상태
+                {targets: [9], width: "", orderable: false},  // 콜키
+            ],
+            buttons: [{
+                extend: 'excelHtml5',
+                text: 'Excel 다운로드',
+            }]
+        });
+
+        new $.fn.dataTable.FixedColumns(table, {
+            fixedColumns: { // 왼쪽 1열 고정
+                leftColumns: 1,
+                heightMatch: 'none'
+            }
+        });
+
+        // 다른 열에서 sort되어도 1열 순번은 그대로 유지
+        table.on('order.dt search.dt', function(){
+            table.column(0, {search:'applied', order:'applied'}).nodes().each(function (cell, i){
+                cell.innerHTML = i+1;
+            });
+        }).draw();
+    });
 });
 </script>
 </body>

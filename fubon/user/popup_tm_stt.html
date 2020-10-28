@@ -4,37 +4,28 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="format-detection" content="telephone=no">
 
-<!-- css -->
-<!-- datatables -->
-<link rel="stylesheet" href="../resources/css/datatables.min.css">
-<link rel="stylesheet" href="../resources/css/buttons.dataTables.min.css">
-
+<!---------------------- General Resources ---------------------->
+<!-- General CSS -->
 <link rel="stylesheet" href="../resources/css/common.css">
-<link rel="stylesheet" href="../resources/css/popup.css">
 
-<!-- js -->
+<!-- General Script -->
 <script src="../resources/js/jquery-3.3.1.min.js"></script>
 <script src="../resources/js/jquery-migrate-3.3.0.min.js"></script>
-<!-- player -->
-<script src="../resources/js/player.js"></script>
-<!-- datatables -->
-<script src="../resources/js/datatables.js"></script>
-<script src="../resources/js/dataTables.buttons.min.js"></script>
-<script src="../resources/js/buttons.html5.min.js"></script>
-<script src="../resources/js/jszip.min.js"></script>
-
 <script src="../resources/js/common.js"></script>
 
-<title>TM STT 전수 ver1 || 푸본현대생명</title>
+<title>TM STT 전수 || 푸본현대생명</title>
 </head>
 <body>
+<!-- [D] 팝업 사이즈 1640 X 920 -->
+
 <!-- #wrap -->
 <div id="wrap">
     <!-- #container -->
     <div id="container">
         <!-- #contents -->
-        <div class="popup_wrap">
+        <div class="popup_wrap tm_stt">
             <h1>TM &hyphen; STT 전수</h1>
 
             <!-- .customInfo -->
@@ -42,13 +33,13 @@
                 <table class="tbl_line_view" summary="상담일시, 상담고객, 고객번호, 상담사, 사번, 업무구분, 상담키워드로 구성">
                     <caption class="hide">검색조건</caption>
                     <colgroup>
-                        <col width="100"><col width="310"><col width="100"><col width="8%">
-                        <col width="100"><col width="10%"><col width="100"><col width="8%"><col width="100"><col width="8%">
+                        <col width="100"><col width="310"><col width="100"><col>
+                        <col width="100"><col><col width="100"><col><col width="100"><col>
                     </colgroup>
 
                     <tbody>
                         <tr>
-                            <th>상담일시</th>
+                            <th scope="row">상담일시</th>
                             <td>
                                 <span class="consult_time custom_info">2020-08-03 09:10</span>
                                 <span>&hyphen;</span>
@@ -56,39 +47,39 @@
 
                             </td>
 
-                            <th>센터</th>
+                            <th scope="row">센터</th>
                             <td>
                                 <span class="name custom_info">Upsell 센터</span>
                             </td>
 
-                            <th>실</th>
+                            <th scope="row">실</th>
                             <td>
                                 <span class="custom_num custom_info">2팀</span>
                             </td>
 
-                            <th>상담원</th>
+                            <th scope="row">상담원</th>
                             <td>
                                 <span class="consultant custom_info">김영희</span>
                             </td>
 
-                            <th>사번</th>
+                            <th scope="row">사번</th>
                             <td>
                                 <span class="epy_num custom_info">20203</span>
                             </td>
                         </tr>
 
                         <tr>
-                            <th>고객명</th>
+                            <th scope="row">고객명</th>
                             <td>
                                 <span class="work_type custom_info">홍길동</span>
                             </td>
 
-                            <th>고객번호</th>
+                            <th scope="row">고객번호</th>
                             <td colspan="3">
                                 <span class="consultant_keyword custom_info">21546</span>
                             </td>
 
-                            <th>콜키</th>
+                            <th scope="row">콜키</th>
                             <td colspan="3">
                                 <span class="consultant_keyword custom_info">12345678910</span>
                             </td>
@@ -113,6 +104,7 @@
                    <div class="sltBox pyr_speed">
                        <select class="select">
                            <option value="">1.1X</option>
+                           <option value="">1X</option>
                            <option value="">1.2X</option>
                            <option value="">1.5X</option>
                            <option value="">2X</option>
@@ -137,7 +129,7 @@
                     </div>
                 </div>
                 <!-- //.term_srch_box -->
-
+                
                 <!-- [D] datatables 라이브러리 영역 -->
                 <!-- [D] 'Excel 다운로드' 버튼 클릭 시 파일 다운로드됨 -->
                 <!-- [D] '구분'(상담사 / 고객)에 따른 백그라운드 컬러 추가됨 -->
@@ -337,7 +329,7 @@
 <!-- STT 오류수정 -->
 <div id="lyr_stt_edit" class="lyrBox">
     <div class="lyr_hd">
-        <span class="title">STT 오류수정</span>
+        <span class="title">STT 수정</span>
         <a href="#none" class="btn_lyr_close">닫기</a>
      </div>
     <div class="lyr_ct">
@@ -349,7 +341,7 @@
         </div>
 
         <div class="textArea_edit">
-            <span>오류 수정</span>
+            <span>수정</span>
             <textarea class="textBox"></textarea>
         </div>
     </div>
@@ -362,192 +354,212 @@
 </div>
 <!-- //STT 오류수정 -->
 
-<!-- script -->
+<!---------------------- Local Resources ---------------------->
+<!-- Local CSS -->
+<link rel="stylesheet" href="../resources/css/datatables.min.css">
+<link rel="stylesheet" href="../resources/css/buttons.dataTables.min.css">
+<!-- //datatables -->
+<link rel="stylesheet" href="../resources/css/popup.css">
+
+<!-- Local Script Library -->
+<script src="../resources/js/player.js"></script>
+<!-- //player -->
+<script src="../resources/js/datatables.min.js"></script>
+<script src="../resources/js/dataTables.buttons.min.js"></script>
+<script src="../resources/js/buttons.html5.min.js"></script>
+<script src="../resources/js/jszip.min.js"></script>
+<!-- //datatables -->
+
+<!-- Local Script -->
 <script type="text/javascript">
-$(document).ready(function(){
-    //오디오 플레이어
-    $('audio').audioPlayer();
-    $('.btn_player_play').on('click',function(){
-        $(this).toggleClass('pause');
-    });
-
-    // STT 결과에서 텍스트 검색하기
-    $('table.dataTable tbody td:nth-child(4)').addClass('sttSrchArea');
-
-    $("#findTxtField").keydown(function(key) {
-        if (key.keyCode == 13) {
-            $('#findTxt .btn_srch').trigger("click");
-        }
-    });
-
-    $('#findTxt .btn_srch').on('click',function(){
-        var findTxtField = $('#findTxtField').val();
-
-        if ( findTxtField != '' ) {
-            $('.pageing').remove();
-
-            $('.sttSrchArea').find('em.findElement').queue(function() {
-                $(this).removeClass('findElement');
-                $(this).attr('id','');
-            });
-
-            //검색 단어 표시
-            $('.sttSrchArea:contains("'+findTxtField+'")').each(function () {
-                var regex = new RegExp(findTxtField,'gi');
-
-                $(this).html(
-                    $(this).text().replace(regex, '<em class="findElement">'+findTxtField+'</em>')
-                );
-                // 검색 단어 ID 선언
-                var findElementlength = $('.findElement').parents('tr').length;
-
-                $(this).parents('tr').attr('id', 'findElement'+findElementlength);
-            });
-
-            //pageing open
-            var findElementAllNum = $('.findElement').length,
-                page_prev_num = 1,
-                page_next_num = 2;
-
-            $('#findTxt').parent().append(' \
-                <div class="pageing"> \
-                    <div class="page"> \
-                        <span class="nowNum">'+ page_prev_num +'</span>/ \
-                        <span class="allNum">'+findElementAllNum+'</span> \
-                    </div> \
-                    <a class="btn_page_prev disabled" href="#findElement'+page_prev_num+'">이전</a> \
-                    <a class="btn_page_next" href="#findElement'+page_next_num+'">다음</a >\
-                </div>  \
-            ');
-
-            //검색 된 1번으로 스크롤 이동
-            $('.stt_scroll').animate({
-                scrollTop: $('#findElement1').offset().top - $('.stt_scroll').offset().top * 2 + $('.stt_scroll').scrollTop() + 100
-            }, 200);
-            $('.findElement').removeClass('selected');
-            $('#findElement1').find('.findElement').addClass('selected');
-
-            //pageing button(next)
-            $('.pageing a.btn_page_next').on('click',function(){
-                if ( findElementAllNum > page_prev_num) {
-                    $('.pageing a').removeClass('disabled').removeAttr('disabled');
-                    page_prev_num++;
-                    page_next_num++;
-
-                    $('.pageing .nowNum').text(page_prev_num);
-                    $('.pageing .btn_page_prev').attr('href', '#findElement'+page_prev_num+'');
-                    $('.pageing .btn_page_next').attr('href', '#findElement'+page_next_num+'');
-
-                    event.preventDefault();
-                    var findElementOffset = $('#findElement'+page_prev_num+'').offset().top,
-                        stt_scrollOffset = $('.stt_scroll').offset().top,
-                        stt_scrollTop = $('.stt_scroll').scrollTop();
-
-                    $('.stt_scroll').animate({
-                        scrollTop: findElementOffset - stt_scrollOffset * 2 + stt_scrollTop + 100
-                    }, 200);
-                    $('.findElement').removeClass('selected');
-                    $('#findElement'+page_prev_num+'').find('.findElement').addClass('selected');
-
-                }
-                if( findElementAllNum == page_prev_num) {
-                    $(this).addClass('disabled').attr('disabled','disabled');
-                }
-            });
-
-            //pageing button(prev)
-            $('.pageing a.btn_page_prev').on('click',function(){
-                if ( 1 < page_prev_num) {
-                    $('.pageing a').removeClass('disabled').removeAttr('disabled');
-                    page_prev_num--;
-                    page_next_num--;
-
-                    $('.pageing .nowNum').text(page_prev_num);
-                    $('.pageing .btn_page_prev').attr('href', '#findElement'+page_prev_num+'');
-                    $('.pageing .btn_page_next').attr('href', '#findElement'+page_next_num+'');
-
-                    event.preventDefault();
-                    var findElementOffset = $('#findElement'+page_prev_num+'').offset().top,
-                        stt_scrollOffset = $('.stt_scroll').offset().top,
-                        stt_scrollTop = $('.stt_scroll').scrollTop();
-
-                    $('.stt_scroll').animate({
-                        scrollTop: findElementOffset - stt_scrollOffset * 2 + stt_scrollTop + 100
-                    }, 200);
-                    $('.findElement').removeClass('selected');
-                    $('#findElement'+page_prev_num+'').find('.findElement').addClass('selected');
-
-                }
-                if( 1 == page_prev_num) {
-                    $(this).addClass('disabled').attr('disabled','disabled');
-                }
-            });
-        }
-    });
-
-    // 마우스 우클릭 시 contextmenu 등장
-    var $contextMenu = $('.contextMenu');
-
-    // 상담내용 셀 영역에서만 context menu 등장하도록 지정
-    $('body').on('contextmenu', '.dataTable tbody td:nth-child(4)', function(e){
-        $contextMenu.css({
-            display: 'block',
-            left: e.pageX,
-            top: e.pageY
+jQuery.event.add(window,"load",function(){
+    $(document).ready(function(){
+        // datatable 렌더링
+        var table = $('.dataTable').DataTable({
+            dom: '<"top">t<"bottom"B>', // 옵션 위치 지정
+            responsive: true, // 반응형 허용
+            info: false, // 페이지 정보 미허용
+            order: false, // 초기 sort 설정
+            paging: false, // 페이징 미허용
+            scrollY: "650px", // 세로 스크롤 허용, 사이즈
+            scrollX: false, //가로 스크롤 미허용
+            scrollCollapse: true,
+            columnDefs: [ // 컬럼별 width, 옵션 사용 지정
+                {targets: [0], width: "50px", orderable: false},   // 순번
+                {targets: [1], width: "60px", orderable: false},  // 구분
+                {targets: [2], width: "70px", orderable: false},  // 시작시간
+                {targets: [3], width: "", orderable: false},       // STT 결과
+            ],
+            buttons: [{
+                extend: 'excelHtml5',
+                text: 'Excel 다운로드',
+            }]
         });
-        return false;
-    });
 
-    $('.dataTable tbody td:nth-child(4)').contextmenu(function(){
-        $('.dataTable tbody td:nth-child(4)').removeClass('active');
-        $(this).toggleClass('active');
-
-        var sttScript = $(this).text(); // 선택한 셀의 상담내용
-        $('#lyr_stt_edit .textArea_original .textBox').text(sttScript); // 원문수정 팝업에 넣어줌
-
-        // contextmenu 복사하기(클립보드)
-        $('.btn_clipboard').on('click', function(){
-            $('.table_clipboard').val(sttScript);
-            $('.table_clipboard').select();
-            document.execCommand('Copy');
+        //오디오 플레이어
+        $('audio').audioPlayer();
+        $('.btn_player_play').on('click',function(){
+            $(this).toggleClass('pause');
         });
-    });
 
-    // context menu 숨기기
-    $('body').click(function(){
-        $('.contextMenu').hide();
-    });
+        // STT 결과에서 텍스트 검색하기
+        $('.dataTables_scrollBody').addClass('stt_scroll');
+        $('table.dataTable tbody td:nth-child(4)').addClass('sttSrchArea');
 
-    // datatable 렌더링
-    var table = $('.dataTable').DataTable({
-        dom: '<"top">t<"bottom"B>', // 옵션 위치 지정
-        responsive: true, // 반응형 허용
-        info: false, // 페이지 정보 미허용
-        paging: false, // 페이징 미허용
-        scrollY: "650px", // 세로 스크롤 허용, 사이즈
-        scrollX: false, //가로 스크롤 미허용
-        scrollCollapse: true,
-        columnDefs: [ // 컬럼별 width, 옵션 사용 지정
-            {targets: [0], width: "50px", orderable: false},   // 순번
-            {targets: [1], width: "60px", orderable: false},  // 구분
-            {targets: [2], width: "70px", orderable: false},  // 시작시간
-            {targets: [3], width: "", orderable: false},       // STT 결과
-        ],
-        buttons: [{
-            extend: 'excelHtml5',
-            text: 'Excel 다운로드',
-        }]
-    });
+        $("#findTxtField").keydown(function(key) {
+            if (key.keyCode == 13) {
+                $('#findTxt .btn_srch').trigger("click");
+            }
+        });
 
-    // 구분(고객, 상담사)에 따른 백그라운드 컬러 주기
-    $('table.dataTable tbody td:nth-child(2)').each(function(){
-        var speakerType = $(this).text();
+        $('#findTxt .btn_srch').on('click',function(){
+            var findTxtField = $('#findTxtField').val();
 
-        if(speakerType == '고객'){
-            $(this).css('background', '#E9F1F3');
-        } else {
-            $(this).css('background', '#fdeddc');
-        }
+            if ( findTxtField != '' ) {
+                $('.pageing').remove();
+
+                $('.sttSrchArea').find('em.findElement').queue(function() {
+                    $(this).removeClass('findElement');
+                    $(this).attr('id','');
+                });
+
+                //검색 단어 표시
+                $('.sttSrchArea:contains("'+findTxtField+'")').each(function () {
+                    var regex = new RegExp(findTxtField,'gi');
+
+                    $(this).html(
+                        $(this).text().replace(regex, '<em class="findElement">'+findTxtField+'</em>')
+                    );
+                    // 검색 단어 ID 선언
+                    var findElementlength = $('.findElement').parents('tr').length;
+
+                    $(this).parents('tr').attr('id', 'findElement'+findElementlength);
+                });
+
+                //pageing open
+                var findElementAllNum = $('.findElement').length,
+                    page_prev_num = 1,
+                    page_next_num = 2;
+
+                $('#findTxt').parent().append(' \
+                    <div class="pageing"> \
+                        <div class="page"> \
+                            <span class="nowNum">'+ page_prev_num +'</span>/ \
+                            <span class="allNum">'+findElementAllNum+'</span> \
+                        </div> \
+                        <a class="btn_page_prev disabled" href="#findElement'+page_prev_num+'">이전</a> \
+                        <a class="btn_page_next" href="#findElement'+page_next_num+'">다음</a >\
+                    </div>  \
+                ');
+
+                //검색 된 1번으로 스크롤 이동
+                $('.stt_scroll').animate({
+                    scrollTop: $('#findElement1').offset().top - $('.stt_scroll').offset().top * 2 + $('.stt_scroll').scrollTop() + 100
+                }, 200);
+                $('.findElement').removeClass('selected');
+                $('#findElement1').find('.findElement').addClass('selected');
+
+                //pageing button(next)
+                $('.pageing a.btn_page_next').on('click',function(){
+                    if ( findElementAllNum > page_prev_num) {
+                        $('.pageing a').removeClass('disabled').removeAttr('disabled');
+                        page_prev_num++;
+                        page_next_num++;
+
+                        $('.pageing .nowNum').text(page_prev_num);
+                        $('.pageing .btn_page_prev').attr('href', '#findElement'+page_prev_num+'');
+                        $('.pageing .btn_page_next').attr('href', '#findElement'+page_next_num+'');
+
+                        event.preventDefault();
+                        var findElementOffset = $('#findElement'+page_prev_num+'').offset().top,
+                            stt_scrollOffset = $('.stt_scroll').offset().top,
+                            stt_scrollTop = $('.stt_scroll').scrollTop();
+
+                        $('.stt_scroll').animate({
+                            scrollTop: findElementOffset - stt_scrollOffset * 2 + stt_scrollTop + 100
+                        }, 200);
+                        $('.findElement').removeClass('selected');
+                        $('#findElement'+page_prev_num+'').find('.findElement').addClass('selected');
+
+                    }
+                    if( findElementAllNum == page_prev_num) {
+                        $(this).addClass('disabled').attr('disabled','disabled');
+                    }
+                });
+
+                //pageing button(prev)
+                $('.pageing a.btn_page_prev').on('click',function(){
+                    if ( 1 < page_prev_num) {
+                        $('.pageing a').removeClass('disabled').removeAttr('disabled');
+                        page_prev_num--;
+                        page_next_num--;
+
+                        $('.pageing .nowNum').text(page_prev_num);
+                        $('.pageing .btn_page_prev').attr('href', '#findElement'+page_prev_num+'');
+                        $('.pageing .btn_page_next').attr('href', '#findElement'+page_next_num+'');
+
+                        event.preventDefault();
+                        var findElementOffset = $('#findElement'+page_prev_num+'').offset().top,
+                            stt_scrollOffset = $('.stt_scroll').offset().top,
+                            stt_scrollTop = $('.stt_scroll').scrollTop();
+
+                        $('.stt_scroll').animate({
+                            scrollTop: findElementOffset - stt_scrollOffset * 2 + stt_scrollTop + 100
+                        }, 200);
+                        $('.findElement').removeClass('selected');
+                        $('#findElement'+page_prev_num+'').find('.findElement').addClass('selected');
+
+                    }
+                    if( 1 == page_prev_num) {
+                        $(this).addClass('disabled').attr('disabled','disabled');
+                    }
+                });
+            }
+        });
+
+        // 마우스 우클릭 시 contextmenu 등장
+        var $contextMenu = $('.contextMenu');
+
+        // 상담내용 셀 영역에서만 context menu 등장하도록 지정
+        $('body').on('contextmenu', '.dataTable tbody td:nth-child(4)', function(e){
+            $contextMenu.css({
+                display: 'block',
+                left: e.pageX,
+                top: e.pageY
+            });
+            return false;
+        });
+
+        $('.dataTable tbody td:nth-child(4)').contextmenu(function(){
+            $('.dataTable tbody td:nth-child(4)').removeClass('active');
+            $(this).toggleClass('active');
+
+            var sttScript = $(this).text(); // 선택한 셀의 상담내용
+            $('#lyr_stt_edit .textArea_original .textBox').text(sttScript); // 원문수정 팝업에 넣어줌
+
+            // contextmenu 복사하기(클립보드)
+            $('.btn_clipboard').on('click', function(){
+                $('.table_clipboard').val(sttScript);
+                $('.table_clipboard').select();
+                document.execCommand('Copy');
+            });
+        });
+
+        // context menu 숨기기
+        $('body').click(function(){
+            $('.contextMenu').hide();
+        });
+
+        // 구분(고객, 상담사)에 따른 백그라운드 컬러 주기
+        $('table.dataTable tbody td:nth-child(2)').each(function(){
+            var speakerType = $(this).text();
+
+            if(speakerType == '고객'){
+                $(this).css('background', '#E9F1F3');
+            } else {
+                $(this).css('background', '#fdeddc');
+            }
+        });
     });
 });
 </script>

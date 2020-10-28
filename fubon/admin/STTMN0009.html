@@ -4,349 +4,428 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="format-detection" content="telephone=no">
 
-<!-- css -->
+<!---------------------- General Resources ---------------------->
+<!-- General CSS -->
 <link rel="stylesheet" href="../resources/css/common.css">
-<link rel="stylesheet" href="../resources/css/stt_tm_qa.css">
 
-<!-- js -->
+<!-- General Script -->
 <script src="../resources/js/jquery-3.3.1.min.js"></script>
 <script src="../resources/js/jquery-migrate-3.3.0.min.js"></script>
-<!-- datatables -->
-<script src="../resources/js/datatables.min.js"></script>
 <script src="../resources/js/common.js"></script>
 
 <title>권한부여 || 푸본현대생명</title>
 </head>
 <body>
-    <!-- #wrap -->
-    <div id="wrap">
-        <!-- #header -->
-        <div id="header">
-            <!-- .title_box -->
-            <div class="title_box bg_blue">
-                <h1>
-                    <img src="../resources/images/img_logo_w.png" class="logo" alt="푸본현대생명 로고">
-                    <p class="title">STT TM_QA</p>
-                </h1>
-    
-                <div class="etc_box">
-                    <!-- [D] 사용자 계정 표시 영역(.user_account span) / 임의로 '사용자계정 표시'라고 텍스트 넣어둠 -->
-                    <div class="user_account">
-                        <span>사용자계정 표시</span>
-                    </div>
-                    <div class="btnBox btn_logout">
-                        <a href="#none">
-                            <img src="../resources/images/ico_logout_w.png" alt="로그아웃 아이콘">
-                            로그아웃
+<!-- #wrap -->
+<div id="wrap">
+    <!-- #header -->
+    <div id="header">
+        <!-- .title_box -->
+        <div class="title_box bg_blue">
+            <h1>
+                <img src="../resources/images/img_logo_w.png" class="logo" alt="푸본현대생명 로고">
+                <p class="title">STT TM_QA</p>
+            </h1>
+
+            <div class="etc_box">
+                <!-- [D] 사용자 계정 표시 영역(.user_account span) / 임의로 '사용자계정 표시'라고 텍스트 넣어둠 -->
+                <div class="user_account">
+                    <span>사용자계정 표시</span>
+                </div>
+                <div class="btnBox btn_logout">
+                    <a href="#none">
+                        <img src="../resources/images/ico_logout_w.png" alt="로그아웃 아이콘">
+                        로그아웃
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- //.title_box -->
+
+        <!-- .gnb -->
+        <!-- [D] 현재 페이지에 해당하는 메뉴(.gnb li)에 addclass('current')주면 활성화됨 -->
+        <!-- [D] 대메뉴(.gnb > li) 마우스오버 시 중메뉴(.sub) slidedown되며 보여짐 -->
+        <!-- [D] 소메뉴(.third)가 존재하는 중메뉴(.snb > li)는 오른쪽에 아래방향 화살표가 추가되며, 클릭 시 소메뉴(.third) slidedown되며 보여짐 -->
+        <ul class="gnb">
+            <li>
+                <h2>Home</h2>
+
+                <ul class="sub">
+                    <li>
+                        <a href="../user/home_dashboard.html">Dashboard</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h2>CS</h2>
+
+                <ul class="sub">
+                    <li>
+                        <a href="../user/cs_stt.html">CS - STT 대상</a>
+                    </li>
+                    <li>
+                        <a href="../user/STTMN0001.html">CS - TA 탐지사전관리</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h2>TM</h2>
+
+                <ul class="sub">
+                    <li>
+                        <a href="../user/tm_stt.html">TM - STT 대상</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h2>TM_QA</h2>
+
+                <ul class="sub">
+                    <li>
+                        <a href="../user/tm_qa_target.html">QA 대상</a>
+                    </li>
+                    <li>
+                        <a href="../user/tm_qa_assign1.html">QA 배정</a>
+                    </li>
+                    <li>
+                        <a href="../user/qa_result.html">QA 결과</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h2>통계</h2>
+
+                <ul class="sub">
+                    <li>
+                        <a href="../user/tmr_statistic.html">상담원 통계</a>
+                    </li>
+                    <li>
+                        <a href="../user/qa_statistic.html">심사자 통계</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h2>모니터링</h2>
+
+                <ul class="sub">
+                    <li>
+                        <a href="STTMN0011.hmlt">처리 상태 모니터링</a>
+                    </li>
+                    <li>
+                        <a href="STTMN0012.hmlt">서비스 모니터링</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="current">
+                <h2>관리설정</h2>
+
+                <ul class="sub">
+                    <li>
+                        <a href="#none">표준 스크립트 관리</a>
+                        <ul class="third">
+                            <li>
+                                <a href="STTMN0002.html">스크립트 구간 관리</a>
+                            </li>
+                            <li>
+                                <a href="STTMN0005.html">점검 항목 관리</a>
+                            </li>
+                            <li>
+                                <a href="STTMN0001.html">표준 스크립트 관리</a>
+                            </li>
+                            <li>
+                                <a href="STTMN0003.html">상담 구간 관리</a>
+                            </li>
+                            <li>
+                                <a href="STTMN0004.html">문장 발화 조건</a>
+                            </li>
+                            <li>
+                                <a href="STTMN0007.html">답변 관리</a>
+                            </li>
+                            <li>
+                                <a href="STTMN0006.html">문장 관리</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="STTMN0008.hmlt">시뮬레이션 화면</a>
+                    </li>
+                    <li class="current">
+                        <a href="#none">사용자 관리</a>
+                        <ul class="third">
+                            <li class="current">
+                                <a href="STTMN0009.html">권한 부여</a>
+                            </li>
+                            <li>
+                                <a href="STTMN0010.html">권한 관리</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#none">재처리 관리</a>
+                        <ul class="third">
+                            <li>
+                                <a href="STTMN0013.hmlt">TA 재처리</a>
+                            </li>
+                            <li>
+                                <a href="STTMN0014.hmlt">STT&sol;TA 재처리</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <!-- //.gnb -->
+    </div>
+    <!-- //#header -->
+
+    <!-- #container -->
+    <div id="container">
+        <!-- #contents -->
+        <div id="contents" class="admin right_manage">
+            <!-- .tab_title -->
+            <div class="tab_title">
+                <div class="tab_list_wrap">
+                    <ul class="tab_list">
+                        <!-- <li>음성생성<button type="button" class="btn_close">x</button></li>
+                        <li>Text-to-Speech<button type="button" class="btn_close">x</button></li>
+                        <li>텍스트 제거<button type="button" class="btn_close">x</button></li>
+                        <li>Text Removal<button type="button" class="btn_close">x</button></li> -->
+                    </ul>
+                </div>
+
+                <div class="tab_dropdown">
+                    <div class="btnBox">
+                        <a href="#lyr_tab_allDlt_chk" class="btn_tab_allDlt btn_lyr_open">탭 전체삭제</a>
+                        <a href="#none" class="btn_open">
+                            <span>탭버튼</span>
+                            <em></em>
                         </a>
                     </div>
-                </div>
-            </div>
-            <!-- //.title_box -->
-    
-            <!-- .gnb -->
-            <!-- [D] 현재 페이지에 해당하는 메뉴(.gnb li)에 addclass('current')주면 활성화됨 -->
-            <!-- [D] 대메뉴(.gnb > li) 마우스오버 시 중메뉴(.sub) slidedown되며 보여짐 -->
-            <!-- [D] 소메뉴(.third)가 존재하는 중메뉴(.snb > li)는 오른쪽에 아래방향 화살표가 추가되며, 클릭 시 소메뉴(.third) slidedown되며 보여짐 -->
-            <ul class="gnb">
-                <li>
-                    <h3>Home</h3>
-    
-                    <ul class="sub">
-                        <li>
-                            <a href="#none">Dashboard</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="current">
-                    <h3>CS</h3>
-    
-                    <ul class="sub">
-                        <li class="current">
-                            <a href="#none">CS - STT 대상</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h3>TM</h3>
-    
-                    <ul class="sub">
-                        <li>
-                            <a href="#none">TM - STT 대상</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h3>TM_QA</h3>
-    
-                    <ul class="sub">
-                        <li>
-                            <a href="#none">QA 배정</a>
-                        </li>
-                        <li>
-                            <a href="#none">QA 심사리스트</a>
-                        </li>
-                        <li>
-                            <a href="#none">QA 결과</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h3>통계</h3>
-    
-                    <ul class="sub">
-                        <li>
-                            <a href="#none">상담원 통계</a>
-                        </li>
-                        <li>
-                            <a href="#none">심사자 통계</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h3>모니터링</h3>
-    
-                    <ul class="sub">
-                        <li>
-                            <a href="#none">처리 상태 모니터링</a>
-                        </li>
-                        <li>
-                            <a href="#none">서비스 모니터링</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h3>관리설정</h3>
-    
-                    <ul class="sub">
-                        <li>
-                            <a href="#none">표준 스크립트 관리</a>
-                            <ul class="third">
-                                <li>
-                                    <a href="#none">상품 스크립트 관리</a>
-                                </li>
-                                <li>
-                                    <a href="#none">점검 항목 관리</a>
-                                </li>
-                                <li>
-                                    <a href="#none">표준 스크립트 관리</a>
-                                </li>
-                                <li>
-                                    <a href="#none">금지어&sol;유의어 관리</a>
-                                </li>
-                                <li>
-                                    <a href="#none">문장 발화 조건</a>
-                                </li>
-                                <li>
-                                    <a href="#none">답변 관리</a>
-                                </li>
-                                <li>
-                                    <a href="#none">문장 관리</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#none">시뮬레이션 화면</a>
-                        </li>
-                        <li>
-                            <a href="#none">사용자 관리</a>
-                            <ul class="third">
-                                <li>
-                                    <a href="#none">사용자 관리</a>
-                                </li>
-                                <li>
-                                    <a href="#none">권한 관리</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#none">재처리 관리</a>
-                            <ul class="third">
-                                <li>
-                                    <a href="#none">TA 재처리</a>
-                                </li>
-                                <li>
-                                    <a href="#none">STT&sol;TA 재처리</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-            <!-- //.gnb -->
-        </div>
-        <!-- //#header -->
-    
-        <!-- #container -->
-        <div id="container">
-            <!-- #contents -->
-            <div id="contents">
-                <!-- .tab_title -->
-                <div class="tab_title">
-                    <div class="tab_list_wrap">
-                        <ul class="tab_list">
-                            <!-- <li>음성생성<button type="button" class="btn_close">x</button></li>
-                            <li>Text-to-Speech<button type="button" class="btn_close">x</button></li>
-                            <li>텍스트 제거<button type="button" class="btn_close">x</button></li>
-                            <li>Text Removal<button type="button" class="btn_close">x</button></li> -->
-                        </ul>
-                    </div>
-    
-                    <div class="tab_dropdown">
-                        <div class="btnBox">
-                            <a href="#lyr_tab_allDlt_chk" class="btn_tab_allDlt btn_lyr_open">탭 전체삭제</a>
-                            <a href="#none" class="btn_open">
-                                <span>탭버튼</span>
-                                <em></em>
-                            </a>
-                        </div>
-    
-                        <ul class="dropdown_list">
-                            <!-- <li>음성생성<button type="button" class="btn_close">x</button></li>
-                            <li>Text-to-Speech<button type="button" class="btn_close">x</button></li>
-                            <li>텍스트 제거<button type="button" class="btn_close">x</button></li>
-                            <li>Text Removal<button type="button" class="btn_close">x</button></li> -->
-                        </ul>
-                    </div>
-                </div>
-                <!-- //.tab_title -->
-    
-                <!-- .tab_content -->
-                <div class="tab_content">
-                    <h4>사용자 권한 관리</h4>
-                    
-                    <div class="btnBox">
-                        <a href="#none">사용자 추가</a>
-                    </div>
-                    
-                    <!-- .srchArea -->
-                    <div class="srchArea">
-                        <table class="tbl_line_view" summary="사용자ID, 사용자명으로 구성">
-                            <caption class="hide">검색조건</caption>
-                            <colgroup>
-                                <col width="100"><col width="310"><col width="100"><col>
-                            </colgroup>
-    
-                            <tbody>
-                                <tr>
-                                    <th>사용자ID</th>
-                                    <td>
-                                        <div class="iptBox">
-                                            <input type="text">
-                                        </div>
-                                    </td>
-    
-                                    <th>사용자명</th>
-                                    <td>
-                                        <div class="iptBox">
-                                            <input type="text">
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        
-                        <div class="btnBox">
-                            <a href="#none" class="btn_srch">조회</a>
-                        </div>                        
-                    </div>
-                    <!-- //.srchArea -->
-                    
-                    <!-- .dataTableBox -->
-                    <div class="dataTableBox">
-                        <table class="dataTable" summary="NO, 사용자ID, 사용자명, 권한 설정, 설정, 등록일자, 수정일자로 구성됨">
-                            <colgroup>
-                                <col width="100"><col><col><col><col><col><col>
-                            </colgroup>
-                            
-                            <thead>
-                                <tr>
-                                    <th>NO</th>
-                                    <th>사용자 ID</th>
-                                    <th>사용자명</th>
-                                    <th>권한 설정</th>
-                                    <th>설정</th>
-                                    <th>등록일자</th>
-                                    <th>수정일자</th>
-                                </tr>
-                            </thead>
-                            
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>aa</td>
-                                    <td>관리자1</td>
-                                    <td>관리자</td>
-                                    <td>
-                                        <a href="#none">설정</a>
-                                    </td>
-                                    <td>2020-09-20</td>
-                                    <td>2020-10-20</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>aa</td>
-                                    <td>관리자1</td>
-                                    <td>관리자</td>
-                                    <td>
-                                        <a href="#none">설정</a>
-                                    </td>
-                                    <td>2020-09-20</td>
-                                    <td>2020-10-20</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>aa</td>
-                                    <td>관리자1</td>
-                                    <td>관리자</td>
-                                    <td>
-                                        <a href="#none">설정</a>
-                                    </td>
-                                    <td>2020-09-20</td>
-                                    <td>2020-10-20</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>aa</td>
-                                    <td>관리자1</td>
-                                    <td>관리자</td>
-                                    <td>
-                                        <a href="#none">설정</a>
-                                    </td>
-                                    <td>2020-09-20</td>
-                                    <td>2020-10-20</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>aa</td>
-                                    <td>관리자1</td>
-                                    <td>관리자</td>
-                                    <td>
-                                        <a href="#none">설정</a>
-                                    </td>
-                                    <td>2020-09-20</td>
-                                    <td>2020-10-20</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- //.dataTableBox -->
-                </div>
-                <!-- //.tab_content -->
-            </div>
-            <!-- //#contents -->
-        </div>
-        <!-- //#container -->
-    </div>
-    <!-- //#wrap -->
 
-<!-- script -->
+                    <ul class="dropdown_list">
+                        <!-- <li>음성생성<button type="button" class="btn_close">x</button></li>
+                        <li>Text-to-Speech<button type="button" class="btn_close">x</button></li>
+                        <li>텍스트 제거<button type="button" class="btn_close">x</button></li>
+                        <li>Text Removal<button type="button" class="btn_close">x</button></li> -->
+                    </ul>
+                </div>
+            </div>
+            <!-- //.tab_title -->
+
+            <!-- .tab_content -->
+            <div class="tab_content">
+                <h3>사용자 권한 관리</h3>
+
+                <!-- [D] 사용자 추가(.btn_user_add) 버튼 클릭 시 '사용자 추가(STTMN0009P1)' 팝업 보여져야함 -->
+                <div class="btnBox">
+                    <a href="#none" class="btn_user_add">사용자 추가</a>
+                </div>
+
+                <!-- .srchArea -->
+                <div class="srchArea">
+                    <table class="tbl_line_view" summary="사용자ID, 사용자명으로 구성">
+                        <caption class="hide">검색조건</caption>
+                        <colgroup>
+                            <col width="100"><col width="310"><col width="100"><col>
+                        </colgroup>
+
+                        <tbody>
+                            <tr>
+                                <th scope="row">사용자ID</th>
+                                <td>
+                                    <div class="iptBox">
+                                        <input type="text">
+                                    </div>
+                                </td>
+
+                                <th scope="row">사용자명</th>
+                                <td>
+                                    <div class="iptBox">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="btnBox">
+                        <a href="#none" class="btn_srch">조회</a>
+                    </div>
+                </div>
+                <!-- //.srchArea -->
+
+                <!-- .dataTableBox -->
+                <div class="dataTableBox">
+                    <!-- [D] datatables 라이브러리 영역 -->
+                    <!-- [D] 초기 화면 진입 시 전체 리스트 조회 상태여야함 -->
+                    <table class="dataTable tbl_include_btn">
+                        <thead>
+                            <tr>
+                                <th>NO</th>
+                                <th>사용자 ID</th>
+                                <th>사용자명</th>
+                                <th>권한 설정</th>
+                                <th>설정</th>
+                                <th>등록일자</th>
+                                <th>수정일자</th>
+                            </tr>
+                        </thead>
+
+                        <!-- [D] 조회 또는 설정(.btn_check, .btn_set)버튼 클릭 시 해당 목록(tr)에 addclass('active')되며 하이라이트 처리됨 -->
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>aa</td>
+                                <td>관리자1</td>
+                                <td>관리자</td>
+                                <td>
+                                    <!-- [D] 설정(.btn_set) 버튼 클릭 시 '사용자 설정(STTMN0009P2)' 팝업 보여져야함 -->
+                                    <div class="btnBox">
+                                        <a href="#none" class="btn_set">설정</a>
+                                    </div>
+                                </td>
+                                <td>2020-09-20</td>
+                                <td>2020-10-20</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>aa</td>
+                                <td>관리자1</td>
+                                <td>관리자</td>
+                                <td>
+                                    <div class="btnBox">
+                                        <a href="#none" class="btn_set">설정</a>
+                                    </div>
+                                </td>
+                                <td>2020-09-20</td>
+                                <td>2020-10-20</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>aa</td>
+                                <td>관리자1</td>
+                                <td>관리자</td>
+                                <td>
+                                    <div class="btnBox">
+                                        <a href="#none" class="btn_set">설정</a>
+                                    </div>
+                                </td>
+                                <td>2020-09-20</td>
+                                <td>2020-10-20</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>aa</td>
+                                <td>관리자1</td>
+                                <td>관리자</td>
+                                <td>
+                                    <div class="btnBox">
+                                        <a href="#none" class="btn_set">설정</a>
+                                    </div>
+                                </td>
+                                <td>2020-09-20</td>
+                                <td>2020-10-20</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>aa</td>
+                                <td>관리자1</td>
+                                <td>관리자</td>
+                                <td>
+                                    <div class="btnBox">
+                                        <a href="#none" class="btn_set">설정</a>
+                                    </div>
+                                </td>
+                                <td>2020-09-20</td>
+                                <td>2020-10-20</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>aa</td>
+                                <td>관리자1</td>
+                                <td>관리자</td>
+                                <td>
+                                    <div class="btnBox">
+                                        <a href="#none" class="btn_set">설정</a>
+                                    </div>
+                                </td>
+                                <td>2020-09-20</td>
+                                <td>2020-10-20</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>aa</td>
+                                <td>관리자1</td>
+                                <td>관리자</td>
+                                <td>
+                                    <div class="btnBox">
+                                        <a href="#none" class="btn_set">설정</a>
+                                    </div>
+                                </td>
+                                <td>2020-09-20</td>
+                                <td>2020-10-20</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- //.dataTableBox -->
+            </div>
+            <!-- //.tab_content -->
+        </div>
+        <!-- //#contents -->
+    </div>
+    <!-- //#container -->
+</div>
+<!-- //#wrap -->
+
+<!---------------------- Local Resources ---------------------->
+<!-- Local CSS -->
+<link rel="stylesheet" href="../resources/css/datatables.min.css">
+<!-- //datatables -->
+<link rel="stylesheet" href="../resources/css/stt_tm_qa.css">
+
+<!-- Local Script Library -->
+<script src="../resources/js/datatables.min.js"></script>
+<!-- //datatables -->
+
+<!-- Local Script -->
 <script type="text/javascript">
-$(document).ready(function(){
-    function openPopup(){
-        var url = ""
-    }
+jQuery.event.add(window,"load",function(){
+    $(document).ready(function(){
+        var table = $('.dataTable').DataTable({
+            dom: 't<"bottom"p>', // 옵션 위치 지정
+            language: { // 테이블 목록 건수 text 한글 설정
+                emptyTable: "조회된 데이터가 없습니다.", // 데이터 없을 경우 노출되는 text 설정
+                paginate: {
+                    first: "",
+                    previous: "",
+                    next: "",
+                    last: ""
+                },
+            },
+            order: false,
+            lengthMenu: [5], // 한 페이지에 보여줄 목록 갯수
+            paging: true, // 페이징 허용
+            pagingType: "full_numbers", // 페이징 버튼 구성 (처음, 이전, 페이지숫자, 다음, 마지막)
+            columnDefs: [ // 컬럼별 width, 옵션 사용 지정
+                {targets: [0], width: "50px", sortable: false, orderable: false},   // NO
+                {targets: [1], width: "", orderable: false},                        // 사용자 ID
+                {targets: [2], width: "", orderable: false},                        // 사용자명
+                {targets: [3], width: "", orderable: false},                        // 권한설정
+                {targets: [4], width: "100px", orderable: false},                   // 설정
+                {targets: [5], width: "120px", orderable: false},                   // 등록일자
+                {targets: [6], width: "120px", orderable: false},                   // 수정일자
+            ],
+        });
+
+        // 설정 버튼 클릭 시 해당 목록 하이라이트
+        $('.btn_set').on('click', function(){
+            $('.tbl_include_btn tbody tr').removeClass('active');
+            $(this).parents('tr').addClass('active');
+        });
+    });
 });
 </script>
 </body>

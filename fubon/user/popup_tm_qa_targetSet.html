@@ -4,41 +4,40 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="format-detection" content="telephone=no">
 
-<!-- css -->
-<link rel="stylesheet" href="../resources/css/jquery.tree-multiselect.min.css">
+<!---------------------- General Resources ---------------------->
+<!-- General CSS -->
 <link rel="stylesheet" href="../resources/css/common.css">
-<link rel="stylesheet" href="../resources/css/popup.css">
-<link rel="stylesheet" href="../resources/css/popup.css">
 
-<!-- js -->
+<!-- General Script -->
 <script src="../resources/js/jquery-3.3.1.min.js"></script>
 <script src="../resources/js/jquery-migrate-3.3.0.min.js"></script>
-<script src="../resources/js/jquery.tree-multiselect.js"></script>
-
 <script src="../resources/js/common.js"></script>
 
 <title>TM QA 대상 지정 || 푸본현대생명</title>
 </head>
 <body>
+<!-- [D] 팝업 사이즈 1640 X 920 -->
+
 <!-- #wrap -->
 <div id="wrap">
     <!-- #container -->
     <div id="container">
         <!-- #contents -->
-        <div class="popup_wrap">
+        <div class="popup_wrap tm_qa_targetSet">
             <h1>QA 대상 지정</h1>
+
+            <!-- [D] QA 대상 지정의 총 건수는 저장된 이후에 반영되어야함 -->
+            <h2>
+                <p>
+                    QA 대상 지정
+                    <span>총 <em class="qa_total_case"></em>건</span>
+                </p>
+            </h2>
 
             <!-- .target_setArea -->
             <div class="target_setArea">
-                <!-- [D] QA 대상 지정의 총 건수는 저장된 이후에 반영되어야함 -->
-                <h2>
-                    <p>
-                        QA 대상 지정
-                        <span>총 <em class="qa_total_case"></em>건</span>
-                    </p>
-                </h2>
-
                 <div class="fl">
                     <dl class="set_condition">
                         <dt>
@@ -50,7 +49,7 @@
                         </dt>
 
                         <dd>
-                            <!-- [D] data-section으로 카테고리 분류 -->
+                            <!-- [D] data-section으로 카테고리 분류 / '-'를 넣으면 depth 구분됨(아래 예시 참고) -->
                             <select id="treeSelector1" multiple="multiple">
                                 <option value="1" data-section="전체선택-Upsell 1센터-1팀">홍길동</option>
                                 <option value="2" data-section="전체선택-Upsell 1센터-1팀">김미영</option>
@@ -248,32 +247,44 @@
 </div>
 <!-- //QA 대상 지정상태 저장 -->
 
-<!-- script -->
+<!---------------------- Local Resources ---------------------->
+<!-- Local CSS -->
+<link rel="stylesheet" href="../resources/css/jquery.tree-multiselect.min.css">
+<!-- //multiselect -->
+<link rel="stylesheet" href="../resources/css/popup.css">
+
+<!-- Local Script Library -->
+<script src="../resources/js/jquery.tree-multiselect.js"></script>
+<!-- //multiselect -->
+
+<!-- Local Script -->
 <script type="text/javascript">
-$(document).ready(function(){
-    // QA 대상 지정 총 건수 자동 합계
-    var caseSum = 0;
-    $('.target_setArea .set_condition dt .iptBox input').each(function(){
-        caseSum += Number($(this).val());
-        $('.qa_total_case').text(caseSum);
-    });
+jQuery.event.add(window,"load",function(){
+    $(document).ready(function(){
+        // QA 대상 지정 총 건수 자동 합계
+        var caseSum = 0;
+        $('.target_setArea .set_condition dt .iptBox input').each(function(){
+            caseSum += Number($(this).val());
+            $('.qa_total_case').text(caseSum);
+        });
 
-    // tree multiselect
-    $('#treeSelector1').treeMultiselect({
-        startCollapsed: 'false',
-        sectionDelimiter: '-',
-    });
-    $('#treeSelector2').treeMultiselect({
-        startCollapsed: 'false',
-        sectionDelimiter: '-',
-    });
-    $('.tree-multiselect > div').addClass('sltArea');
+        // tree multiselect
+        $('#treeSelector1').treeMultiselect({
+            startCollapsed: 'false',
+            sectionDelimiter: '-',
+        });
+        $('#treeSelector2').treeMultiselect({
+            startCollapsed: 'false',
+            sectionDelimiter: '-',
+        });
+        $('.tree-multiselect > div').addClass('sltArea');
 
-    // ie 호환 체크박스
-    $('input.section').each(function(i){
-        $(this).attr('id', 'chkbox' + i + 1);
-        $(this).siblings('label').attr('for', 'chkbox' + i + 1);
-    });  
+        // ie 호환 체크박스
+        $('input.section').each(function(i){
+            $(this).attr('id', 'chkbox' + i + 1);
+            $(this).siblings('label').attr('for', 'chkbox' + i + 1);
+        });
+    });
 });
 </script>
 </body>
