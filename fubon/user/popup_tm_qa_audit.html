@@ -338,10 +338,10 @@
                         <div class="detail_box">
                             <!-- [D] 평가표는 탭버튼으로 테이블 내용은 동일하고 버튼에만 addclass('on')주어 활성화 처리함 -->
                             <div class="evalArea">
-                                <div class="eval_tab_title">
-                                    <a href="#none" class="on">스크립트</a>
-                                    <a href="#none">상담</a>
-                                </div>
+                                <ul class="eval_tab_title">
+                                    <li class="on">스크립트</li>
+                                    <li>상담</li>
+                                </ul>
 
                                 <div class="eval_case">
                                     <span>탐지&colon;</span>
@@ -1492,8 +1492,8 @@ jQuery.event.add(window,"load",function(){
         });
 
         // 평가표 탭버튼 활성화 효과
-        $('.eval_tab_title a').on('click', function(){
-            $('.eval_tab_title a').removeClass('on');
+        $('.eval_tab_title li').on('click', function(){
+            $('.eval_tab_title li').removeClass('on');
             $(this).addClass('on');
         });
     });
