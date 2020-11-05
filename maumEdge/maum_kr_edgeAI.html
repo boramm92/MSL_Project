@@ -206,7 +206,6 @@
                                 <span class="tit">Device 1</span>
                                 
                                 <div class="dvc_detail">
-                                    <img src="resources/images/img_device01.png" alt="디바이스 이미지">
                                     <ul class="specify_list">
                                         <li>GSP &colon; <span>16 core (16 TOPS)</span></li>
                                         <li>CPU &colon; <span>ARM A53 (1GHz)</span></li>
@@ -228,7 +227,6 @@
                                 <span class="tit">Device 2</span>
                                 
                                 <div class="dvc_detail">
-                                    <img src="resources/images/img_device02.png" alt="디바이스 이미지">
                                     <ul class="specify_list">
                                         <li>GSP &colon; <span>17 core (16 TOPS)</span></li>
                                         <li>CPU &colon; <span>ARM A53 (1GHz)</span></li>
@@ -250,7 +248,6 @@
                                 <span class="tit">Device 3</span>
                                 
                                 <div class="dvc_detail">
-                                    <img src="resources/images/img_device03.png" alt="디바이스 이미지">
                                     <ul class="specify_list">
                                         <li>GSP &colon; <span>18 core (16 TOPS)</span></li>
                                         <li>CPU &colon; <span>ARM A53 (1GHz)</span></li>
@@ -570,21 +567,22 @@ jQuery.event.add(window,"load",function(){
         var $deviceImage = $('.dvc_detail');
         
         $deviceImage.on('mousemove', function(e){
-            x = e.offsetX;
-            y = e.offsetY;
-            console.log('x좌표:' +x + ', y좌표:' + y);
+            e.stopPropagation();
+            offsetX = e.offsetX;
+            offsetY = e.offsetY;
             
             $(this).find('.specify_list').css({
                 display: 'inline-block',
-                top: y,
-                left: x              
+                top: offsetY + 20,
+                left: offsetX + 15             
             });          
         });
         $deviceImage.on('mouseleave', function(){
             $(this).find('.specify_list').css({
                 display: 'none',         
             });
-        })   
+        }); 
+    
     });
 });	
 </script>
