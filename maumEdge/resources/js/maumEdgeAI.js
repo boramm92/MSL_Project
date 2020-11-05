@@ -15,7 +15,7 @@ $(document).ready(function (){
 	});
 	
 	//문의하기(focus이동)
-	$('#btn_contact').on('click',function(){
+	$('.btn_contact').on('click',function(){
 		$('#lyr_contact_us').find('#user_name').delay(300).queue(function() {
 			$(this).focus(); 
 		});
