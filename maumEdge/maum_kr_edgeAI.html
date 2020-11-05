@@ -153,16 +153,11 @@
                 
                 <!-- [D] 로컬메뉴  -->
                 <ul class="nav">
-                    <li><a class="active" href="#none">Overview</a></li>
-                    <li><a href="#none">Edge AI Device</a></li>
-                    <li><a href="#none">AI Computing Cloud</a></li>
-                    <li><a href="#none">고객 사례</a></li>
-                </ul>
-
-                <ul class="nav_etc">
-                    <li>
-                        <a href="#footer">문의하기</a>
-                    </li>
+                    <li><a class="active" href="#stn_overview">Overview</a></li>
+                    <li><a href="#stn_edgeDevice">Edge AI Device</a></li>
+                    <li><a href="#stn_edgeCloud">AI Computing Cloud</a></li>
+                    <li><a href="#stn_svcCase">고객 사례</a></li>
+                    <li><a href="#footer">문의하기</a></li>
                 </ul>
             </div>
             <!-- //.lnb -->
@@ -176,7 +171,7 @@
         <!-- .content -->
         <div class="content">
             <!-- svc_disb -->
-            <div class="svc_disb">
+            <div id="stn_overview" class="svc_disb">
                 <div class="disbBox">
                     <p><span>Maum Edge AI Platform</span>은<br><span>Edge AI Device</span>와 <span>maum AI Cloud</span>를 연동한 신개념 <span>AI Platform</span>입니다.</p>
                     
@@ -197,7 +192,7 @@
             <!-- //svc_disb -->
             
             <!-- bg_whiteBox -->
-            <div class="bg_whiteBox">
+            <div id="stn_edgeDevice" class="bg_whiteBox">
                 <dl>
                     <dt>Edge AI Device</dt>
                     <dd>
@@ -276,7 +271,7 @@
             <!-- //bg_whiteBox -->
             
             <!-- svc_disb -->
-            <div class="svc_disb">
+            <div id="stn_edgeCloud" class="svc_disb">
                 <div class="disbBox">
                     <dl>
                         <dt>AI Computing Cloud</dt>
@@ -390,26 +385,26 @@
             <!-- //svc_disb -->
             
             <!-- bg_navyBox -->
-            <div class="bg_navyBox">
+            <div id="stn_svcCase" class="bg_navyBox">
                 <dl>
                     <dt>고객사례</dt>
                     <dd>
                         <ul class="svc_case_list">
                             <li>
                                 <span class="tit">노후경유 차량 검출 프로젝트</span>
-                                <a class="img" href="#none">
+                                <a class="img" href="https://m.post.naver.com/viewer/postView.nhn?volumeNo=29675697&memberNo=457" target="_blank">
                                     <span>자세히보기<em class="fas fa-chevron-right"></em></span>
                                 </a>                                    
                             </li>
                             <li>
                                 <span class="tit">이상행동 CCTV</span>
-                                <a class="img" href="#none">
+                                <a class="img" href="https://m.post.naver.com/viewer/postView.nhn?volumeNo=29675697&memberNo=4" target="_blank">
                                     <span>자세히보기<em class="fas fa-chevron-right"></em></span>
                                 </a>
                             </li>
                             <li>
                                 <span class="tit">독거노인 모니터링 기능</span>
-                                <a class="img" href="#none">
+                                <a class="img" href="https://m.post.naver.com/viewer/postView.nhn?volumeNo=29737645&memberNo=45" target="_blank">
                                     <span>자세히보기<em class="fas fa-chevron-right"></em></span>
                                 </a>
                             </li>
@@ -603,7 +598,32 @@ $(window).load(function() {
 <!-- Local Script -->
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
-    $(document).ready(function(){        
+    $(document).ready(function(){
+        // var generalScrollPosition = $('.content > div').offset().top;
+        // console.log(generalScrollPosition)
+        
+        $('.nav li a').on('click', function(){
+            // e.preventDefault();
+            
+            // 선택 메뉴 활성 효과
+            $('.nav li a').removeClass('active');
+            $(this).addClass('active');
+            
+            // 선택 메뉴 영역으로 스크롤 이동
+            var scrollPosition = $($(this).attr('href')).offset().top;
+                        
+            if( $('#wrap').is('.trans') ){
+                $('html, body').animate({
+                    scrollTop: scrollPosition - 100,
+                }, 500);
+                console.log(true)
+            }else{
+                $('html, body').animate({
+                    scrollTop: scrollPosition - 470,
+                }, 500);
+            }     
+        });
+        
         // Edge AI Device 영역 이미지 마우스오버 시 각 성능 리스트 보여주기
         var $deviceImage = $('.dvc_detail');
         
