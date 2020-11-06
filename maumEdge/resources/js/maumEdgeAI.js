@@ -58,30 +58,4 @@ $(document).ready(function (){
 			$('body').css('overflow',''); 
 		}
 	});   
-    
-    //이미지 위치
-    $('.svc_visual .bg_img').each(function(){
-        var bgPstion = $('.svc_visual .bg_img').height()/3;
-        
-		$('.svc_visual .bg_img').css({
-			'top': -bgPstion+130
-		});
-    }); 
 }); 
-
-$(window).scroll(function(){
-	var winTop = $(window).scrollTop(),
-        imgPstion = winTop;
-    
-	if( winTop > 10) {
-		$('.svc_visual .bg_img').css({
-			'transform': 'matrix(1,0,0,1,0, -'+imgPstion+')',
-		});
-				
-	} else {
-		$('.svc_visual .bg_img').css({
-			'transform': 'matrix(1,0,0,1, 0, 0)',
-		});						
-	}
-	
-});
