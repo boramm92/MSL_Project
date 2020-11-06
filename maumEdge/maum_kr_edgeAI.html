@@ -500,7 +500,7 @@
 <!-- 문의하기 -->  
 <div id="lyr_contact_us" class="lyrBox contactBox">
     <div class="contact_tit">
-        <h3>마음 아카데미 문의하기</h3>
+        <h3>문의하기</h3>
         <p class="info_txt">서비스에 관련된 문의를 남겨주시면 담당자가 확인 후, 답변 메일을 보내드리겠습니다.</p>
     </div>
     <div class="contact_cnt">        
@@ -599,12 +599,9 @@ $(window).load(function() {
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-        // var generalScrollPosition = $('.content > div').offset().top;
-        // console.log(generalScrollPosition)
-        
-        $('.nav li a').on('click', function(){
-            // e.preventDefault();
-            
+        $('html').scrollTop(0);
+                
+        $('.nav li a').on('click', function(){      
             // 선택 메뉴 활성 효과
             $('.nav li a').removeClass('active');
             $(this).addClass('active');
@@ -613,13 +610,12 @@ jQuery.event.add(window,"load",function(){
             var scrollPosition = $($(this).attr('href')).offset().top;
                         
             if( $('#wrap').is('.trans') ){
-                $('html, body').animate({
-                    scrollTop: scrollPosition - 100,
+                $('html').animate({
+                    scrollTop: scrollPosition - 96,
                 }, 500);
-                console.log(true)
             }else{
-                $('html, body').animate({
-                    scrollTop: scrollPosition - 470,
+                $('html').animate({
+                    scrollTop: scrollPosition - 466,
                 }, 500);
             }     
         });
