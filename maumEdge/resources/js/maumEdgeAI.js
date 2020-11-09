@@ -59,3 +59,20 @@ $(document).ready(function (){
 		}
 	});   
 }); 
+
+$(window).scroll(function(){
+	var winTop = $(window).scrollTop(),
+        imgPstion = winTop;
+    
+	if( winTop > 10) {
+		$('.svc_visual .bg_img').css({
+			'transform': 'matrix(1,0,0,1,0, -'+imgPstion+')',
+		});
+				
+	} else {
+		$('.svc_visual .bg_img').css({
+			'transform': 'matrix(1,0,0,1, 0, 0)',
+		});						
+	}
+	
+});

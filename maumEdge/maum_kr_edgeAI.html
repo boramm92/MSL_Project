@@ -25,7 +25,7 @@
 <script type="text/javascript" src="resources/js/all-5.13.0.js" data-auto-replace-svg="nest"></script>
 <script type="text/javascript" src="resources/js/maum_common.js"></script>
     
-<title>maum Edge AI</title>
+<title>Edge AI Platform</title>
 </head>
 
 <body>
@@ -143,13 +143,13 @@
         <div class="svc_sta">
             <!-- svc_visual -->
         	<div class="svc_visual">
-                <h3>maum Edge AI Platform</h3>
+                <h3>Edge AI Platform</h3>
                 <p class="bg_img"><img src="resources/images/img_visual01.png" alt="Edge AI 이미지"></p>
             </div>
             <!-- //svc_visual -->
             <!-- .lnb -->
             <div class="lnb">
-                <h2>maum Edge AI Platform</h2>
+                <h2>Edge AI Platform</h2>
                 
                 <!-- [D] 로컬메뉴  -->
                 <ul class="nav">
@@ -210,13 +210,15 @@
                                         <li>Display &colon; <span>MIPI DSI</span></li>
                                         <li>Ethernet, USB</li>
                                     </ul>
-                                </div>
-                                
-                                <div class="radioBox">
-                                    <!-- [D] input[type="radio"]의 id와 label의 for값 동일하게 주어야함 -->
-                                    <input type="radio" name="device" id="device1" checked>
-                                    <label for="device1">99,000원</label>
-                                </div>
+                                                                                                            
+                                    <div class="radioBox">                                        
+                                        <!-- [D] input[type="radio"]의 id와 label의 for값 동일하게 주어야함 -->
+                                        <input type="radio" name="device" id="device1" value="Device 1" checked>
+                                        <label for="device1">
+                                            <!-- <img src="resources/images/img_device01.png" alt="edge device 이미지"> -->
+                                        </label>
+                                    </div>
+                                </div>                                
                             </li>
                             <li>
                                 <span class="tit">Device 2</span>
@@ -231,13 +233,15 @@
                                         <li>Display &colon; <span>MIPI DSI</span></li>
                                         <li>Ethernet, USB</li>
                                     </ul>
-                                </div>
-                                
-                                <div class="radioBox">
-                                    <!-- [D] input[type="radio"]의 id와 label의 for값 동일하게 주어야함 -->
-                                    <input type="radio" name="device" id="device2">
-                                    <label for="device2">109,000원</label>
-                                </div>
+                                    
+                                    <div class="radioBox">
+                                        <!-- [D] input[type="radio"]의 id와 label의 for값 동일하게 주어야함 -->
+                                        <input type="radio" name="device" id="device2" value="Device 2">
+                                        <label for="device2">
+                                            <!-- <img src="resources/images/img_device02.png" alt="edge device 이미지"> -->
+                                        </label>
+                                    </div>
+                                </div>                                
                             </li>
                             <li>
                                 <span class="tit">Device 3</span>
@@ -252,13 +256,15 @@
                                         <li>Display &colon; <span>MIPI DSI</span></li>
                                         <li>Ethernet, USB</li>
                                     </ul>
-                                </div>
-                                
-                                <div class="radioBox">
-                                    <!-- [D] input[type="radio"]의 id와 label의 for값 동일하게 주어야함 -->
-                                    <input type="radio" name="device" id="device3">
-                                    <label for="device3">130,000원</label>
-                                </div>
+                                    
+                                    <div class="radioBox">
+                                        <!-- [D] input[type="radio"]의 id와 label의 for값 동일하게 주어야함 -->
+                                        <input type="radio" name="device" id="device3" value="Device 3">
+                                        <label for="device3">
+                                            <!-- <img src="resources/images/img_device03.png" alt="edge device 이미지"> -->
+                                        </label>
+                                    </div>
+                                </div>                                
                             </li>
                         </ul>
                     </dd>
@@ -415,17 +421,14 @@
             <!-- //bg_navyBox -->
             
             <!-- svc_disb -->
-            <div class="svc_disb">
+            <div id="stn_info" class="svc_disb">
                 <div class="disbBox">
                     <div class="img">
                         <img src="resources/images/img_inquiry.png" alt="문의하기 이미지">
                     </div>
                     <div class="txt">
                         <span>문의하기</span>
-                        <p>도움이 필요하시면 여기를 클릭해 주세요.</p>
-                        <div class="btnBox">
-                            <a class="btn_lyr_open btn_contact" href="#lyr_contact_us">문의하기</a>
-                        </div>
+                        <p>Edge AI Platform에 관한 문의 사항이나 도움이 필요하시면<br>아래 고객센터로 전화해 주시거나 이메일로 문의해 주시면 바로 답변 드리겠습니다.</p>
                     </div>
                 </div>
             </div>
@@ -503,8 +506,8 @@
         <h3>견적요청하기</h3>
         
         <div class="estimate_dvc">
-            <span>Device 3</span>
-            <img src="resources/images/img_device01.png" alt="Edge Device 이미지">
+            <span id="deviceNum">Device 3</span>
+            <img id="deviceImg" src="resources/images/img_device01.png" alt="Edge Device 이미지">
         </div>
     </div>
                     
@@ -528,7 +531,11 @@
         <div class="contact_item">
             <span>이메일</span>
             <input type="text" class="ipt_txt" autocomplete="off">
-        </div>            
+        </div>
+        <div class="contact_item">
+            <span>메모</span>
+            <textarea name="name" class="ipt_txt"></textarea>
+        </div>             
     </div>
     
     <div class="estimate_btn">
@@ -619,6 +626,22 @@ jQuery.event.add(window,"load",function(){
                 }, 500);
             }     
         });
+        
+        //디바이스 체크 추가
+    	$("#btn_inquiry_estimate").on('click',function(){
+    		console.log('tas')
+    		var checkd = $('input[name="device"]:checked').val();
+    		if(checkd === 'Device 1'){
+    			$('#deviceNum').text('Device 1');
+    		     $('#deviceImg').attr('src','images/img_device01.png')
+    		}else if (checkd === 'Device 2'){
+    			$('#deviceNum').text('Device 2');
+    			$('#deviceImg').attr('src','images/img_device02.png')
+    		}else if (checkd === 'Device 3'){
+    			$('#deviceNum').text('Device 3');
+    			$('#deviceImg').attr('src','images/img_device03.png')
+    		}
+    	});
         
         // Edge AI Device 영역 이미지 마우스오버 시 각 성능 리스트 보여주기
         var $deviceImage = $('.dvc_detail');
