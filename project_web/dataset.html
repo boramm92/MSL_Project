@@ -22,9 +22,10 @@
 <div id="wrap">
     <!-- #header -->
     <div id="header">
+        <!-- [D] 메뉴(.gnb li)에 addclass('current')해주면 활성화됨 -->
         <ul class="gnb">
             <li class="current">
-                <a href="#none">조회 열람</a>
+                <a href="dataset.html">조회 열람</a>
             </li>
             <li>
                 <a href="#none">도감</a>
@@ -34,7 +35,8 @@
             </li>
         </ul>
 
-        <button type="button" class="btn_logout btn_">Logout</button>
+        <!-- [D] 로그아웃 버튼(#lyr_logout) 클릭 시 확인 팝업 등장 -->
+        <a href="#lyr_logout" class="btn_logout btn_lyr_open">Logout</a>
     </div>
     <!-- //#header -->
 
@@ -44,35 +46,45 @@
         <div class="stn_trend">
             <h1>최근 트렌드</h1>
 
-            <div class="">
+            <div class="view_indicator">
                 <div class="slider">
-                    <span></span>
+                    <span class="bar"></span>
                 </div>
                 <div class="btnBox">
                     <button type="button">
-                        <img src="" alt="">
+                        <img src="resources/images/arw_left_g.png" alt="화살표 이미지">
                     </button>
                     <button type="button">
-                        <img src="" alt="">
+                        <img src="resources/images/arw_right_bk.png" alt="화살표 이미지">
                     </button>
                 </div>
             </div>
 
             <ul class="trend_view">
                 <li>
-                    <img src="resources/images/img_weapon01.png" alt="무기 이미지">
+                    <a href="#none">
+                        <img src="resources/images/img_weapon01.png" alt="무기 이미지">
+                    </a>
                 </li>
                 <li>
-                    <img src="resources/images/img_weapon02.png" alt="무기 이미지">
+                    <a href="#none">
+                        <img src="resources/images/img_weapon02.png" alt="무기 이미지">
+                    </a>
                 </li>
                 <li>
-                    <img src="resources/images/img_weapon03.png" alt="무기 이미지">
+                    <a href="#none">
+                        <img src="resources/images/img_weapon03.png" alt="무기 이미지">
+                    </a>
                 </li>
                 <li>
-                    <img src="resources/images/img_weapon04.png" alt="무기 이미지">
+                    <a href="#none">
+                        <img src="resources/images/img_weapon04.png" alt="무기 이미지">
+                    </a>
                 </li>
                 <li>
-                    <img src="resources/images/img_weapon05.png" alt="무기 이미지">
+                    <a href="#none">
+                        <img src="resources/images/img_weapon05.png" alt="무기 이미지">
+                    </a>
                 </li>
             </ul>
         </div>
@@ -86,13 +98,15 @@
                 <span>최신순 10건</span>
 
                 <div class="iptBox">
-                    <input type="text" id="toDate">
-                    <label for="toDate"></label>
+                    <input type="text" id="fromDate">
+                    <label for="fromDate">등록날짜</label>
+                    <img src="resources/images/ico_calendar.png" alt="달력 이미지">
                 </div>
-                <span>~</span>
+                <em>~</em>
                 <div class="iptBox">
                     <input type="text" id="toDate">
-                    <label for="toDate"></label>
+                    <label for="toDate">종료날짜</label>
+                    <img src="resources/images/ico_calendar.png" alt="달력 이미지">
                 </div>
 
                 <div class="btnBox">
@@ -235,6 +249,8 @@
                     <a href="#none" class="btn_paging btn_prev">
                         <img src="resources/images/ico_paging_prev.png" alt="페이징 버튼 이미지">
                     </a>
+
+                    <!-- [D] page넘버에 addclass('on') 해주면 활성화됨 -->
                     <a class="on" href="#none">1</a>
                     <a href="#none">2</a>
                     <a href="#none">3</a>
@@ -245,6 +261,7 @@
                     <a href="#none">8</a>
                     <a href="#none">9</a>
                     <a href="#none">10</a>
+
                     <a href="#none" class="btn_paging btn_next">
                         <img src="resources/images/ico_paging_next.png" alt="페이징 버튼 이미지">
                     </a>
@@ -260,6 +277,21 @@
     <!-- //#contents -->
 </div>
 <!-- //#wrap -->
+
+<!-- layer popup -->
+<!-- 로그아웃 -->
+<div id="lyr_logout" class="lyrBox">
+    <div class="lyr_ct">
+        <p>로그아웃 하시겠습니까?</p>
+    </div>
+    <div class="lyr_ft">
+        <div class="btnBox">
+            <button type="button" class="btn_lyr_close">취소</button>
+            <button type="button" class="btn_lyr_save">확인</button>
+        </div>
+    </div>
+</div>
+<!-- //로그아웃 -->
 
 <!-- -------------------- Local Resources -------------------- -->
 <!-- Local CSS -->
