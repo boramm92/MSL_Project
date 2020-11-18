@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="format-detection" content="telephone=no">
+<!-- icon_favicon -->
+<link rel="apple-touch-icon-precomposed" href="/images/ico_maumAI_60x60.png">
+<link rel="shortcut icon" type="image/x-icon" href="/images/ico_maumAI_60x60.ico">
+<!-- resources -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="../comm_resources/css/reset.css">
+<link rel="stylesheet" href="../comm_resources/css/font.css">
+<link rel="stylesheet" href="css/login.css">
+<script type="text/javascript" src="/js/jquery-1.11.0.min-52d16e147b5346147d0f3269cd4d0f80.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-122649087-4"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+
+function gtag() {
+    dataLayer.push(arguments);
+}
+
+gtag('js', new Date());
+gtag('config', 'UA-122649087-4');
+</script>
+    
+<title>maum.ai | 로그인</title>
+</head>
+
+<body>
+<!-- #wrap -->
+<div id="wrap">
+    <!-- header -->
+    <header>
+        <a href="https://maum.ai/" title="마음에이아이" target="_self"><img src="https://sso.maum.ai/images/maumai.svg" alt="maum.ai logo"/></a>
+    </header>
+    <!-- //header -->
+    <!-- #container -->
+    <section id="container">
+        <!-- .content -->
+        <div class="content registrationContent">
+            <div class="signUpCompleteWrap">
+                <div class="signUpConfirmBox">
+                    <p>회원가입이 완료 되었습니다.</p>
+                    <ul>
+                        <li><span><em class="fas fa-chevron-right"></em>이름</span><span id="userName" class="user">홍길동</span></li>
+                        <li><span><em class="fas fa-chevron-right"></em>이메일</span><span id="userEmail" class="user">asdf1234@gmail.com</span></li>
+                    </ul>
+                </div>
+
+                <div class="txt">마음 AI 서비스 이용을 위해서는 결제 수단을 등록 하셔야 서비스 이용이 가능합니다.<br>
+                    체험을 위해서 모든 고객은 <strong>첫달 무료</strong>이며, 결제수단을 등록해도 1달 동안 요금이 청구되지 않습니다.<br>
+                    결제수단을 등록하여 더욱 편리하게 서비스를 이용해보세요.
+                </div>
+
+                <div class="signUpCompleteBox">
+                    <h1>첫 1달 무료!</h1>
+                    <p>결제 정보를 등록해도 1달 동안 요금이 청구되지 않습니다.</p>
+                    <a id="registration" class="registration" href="javascript:registrationPage();" title="결제정보 등록하기" style="margin-bottom:0;">결제정보
+                        등록하기</a>
+                    <p class="note">*해외 카드 등록 시, <a class="ft_point_orange" href="#none">여기를 눌러</a> 결제를 진행해주세요.</p>
+                </div>
+                <span>해지 후, 재가입 시 바로 요금이 결제됩니다.</span>
+                <div class="btnBox">
+                    <a href="/maum/login" title="로그인"> 로그인</a>
+                    <a id="serviceMainBtn" href="https://maum.ai/" title="메인으로 이동" target="_self">메인으로 이동</a>
+                </div>
+            </div>
+
+        </div>
+        <!-- //.content -->
+    </section>
+    <!-- //#container -->
+    <!-- footer -->
+    <div id="footer">
+        <footer>
+            <div class="footer">
+                <a href="https://maum.ai/home/krTermsMain" target="_blank">이용약관 </a> ㅣ
+                <a href="https://maum.ai/home/krTermsMain#conditions" target="_blank"> 개인정보처리방침 </a> ㅣ
+                <a href="https://maum.ai/?lang=ko#inquiry" target="_blank"> 고객센터 </a>
+                <span>ㅣ</span>
+                <div class="lang">
+                    <span class="lang_select">한국어 <em class="fas fa-chevron-up"></em></span>
+                    <ul>
+                        <li class="active">한국어</li>
+                        <li><a href="https://maum.ai/?lang=en" target="_blank">English</a></li>
+                    </ul>
+                </div>
+            </div>
+            <p>Copyright © 2020 주식회사 마인즈랩. All rights reserved.</p>
+            <div class="m_lang">한국어 <a href="" title="English">English</a></div>
+        </footer>
+    </div>
+    <!-- //footer -->
+</div>
+<!-- //#wrap -->
+
+<!-- -------------------- Local Resources -------------------- -->
+<script>
+let userName = "성지은";
+let userEmail = "wldms30612@naver.com";
+let maumUrl = "https://maum.ai";
+let serviceUrl = "https://maum.ai/maum/user/info";
+
+$(document).ready(function () {
+    $('#userName').text(userName);
+    $('#userEmail').text(userEmail);
+    $('#serviceMainBtn').attr('href', maumUrl);
+
+    //footer 언어 체크
+    $('.lang_select').on('click', function () {
+        $(this).next().toggleClass('active');
+        return false; 
+    });
+
+    $(document).on('click', function (e) {
+        var langOpen = $('footer .lang ul.active');		
+        if( langOpen.has(e.target).length === 0){		
+            langOpen.removeClass('active');
+        }	
+    });
+});
+
+// 결제 페이지 이동
+function registrationPage() {
+
+    var form = document.createElement('form');
+    var emailObjs = document.createElement('input');
+    var callbackUrlObjs = document.createElement('input');
+
+    emailObjs.setAttribute('type', 'hidden');
+    emailObjs.setAttribute('name', 'email');
+    emailObjs.setAttribute('value', userEmail);
+
+    callbackUrlObjs.setAttribute('type', 'hidden');
+    callbackUrlObjs.setAttribute('name', 'callback_uri');
+    callbackUrlObjs.setAttribute('value', maumUrl);
+
+    form.appendChild(emailObjs);
+    form.appendChild(callbackUrlObjs);
+
+    form.setAttribute('method', 'post');
+    form.setAttribute('action', serviceUrl);
+    document.body.appendChild(form);
+    form.submit();
+}
+</script>
+</body>
+</html>
