@@ -2,28 +2,22 @@
 
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-        // // 공통 레이어 팝업
-        // $('.btn_lyr_open').on('click',function(){
-        //     var popHref = $(this).attr('href');
-        //
-        //     // popup open
-        //     $('body').addClass('lyr_bg_dim');
-        //     $(popHref).css({'display': 'block'});
-        //
-        //     // popup close
-        //     $('.btn_lyr_close, .btn_lyr_save').on('click',function(){
-        //         $('body').removeClass('lyr_bg_dim');
-        //         $('.lyrBox').css({'display': 'none'});
-        //     });
-        // });
-
         // 공통 레이어 팝업
         $('.btn_lyr_open').on('click',function(){
             var popHref = $(this).attr('href');
 
+            var layerPopupWidth = $(popHref).find('.lyrBox').width() / 2;
+            var layerPopupHeight = $(popHref).find('.lyrBox').height() / 2;
+
             // popup open
             $('body').css({'overflow': 'hidden'});
             $(popHref).css({'display': 'block'});
+            $(popHref).find('.lyrBox').css({
+                marginTop: -layerPopupHeight,
+                marginRight: 0,
+                marginBottom: 0,
+                marginLeft: -layerPopupWidth
+            });
 
             // popup close
             $('.btn_lyr_close, .btn_lyr_save').on('click',function(){
