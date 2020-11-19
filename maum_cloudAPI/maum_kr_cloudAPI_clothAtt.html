@@ -55,7 +55,7 @@
         <div class="contents">
             <!-- .content -->
             <div class="content api_content">
-                <h1 class="api_tit">헤어 컬러 인식</h1>
+                <h1 class="api_tit">의상 속성 인식</h1>
                 <ul class="menu_lst vision_lst">
                     <li class="tablinks" onclick="openTap(event, 'avrdemo')" id="defaultOpen">
                         <button type="button">엔진</button>
@@ -69,11 +69,11 @@
                 </ul>
 
                 <!-- .avrdemo -->
-                <div class="demobox hairSegmentation" id="avrdemo">
+                <div class="demobox clothSegmentation" id="avrdemo">
                     <p>
-                        <span>헤어 컬러 인식</span> <small>(Hair Segmentation)</small>
+                        <span>의상 속성 인식</span> <small>(Clothing Multi-Attributes Detection)</small>
                     </p>
-                    <span class="sub">이미지 속 머리카락 영역을 인식하여 표시해주고, 색상을 분류해줍니다.</span>
+                    <span class="sub">이미지 내 인물의 영역을 표시하고, 상하의의 속성 인식 결과를 나타내줍니다.</span>
 
                     <!--demo_layout-->
                     <div class="demo_layout">
@@ -91,7 +91,7 @@
                                             <input type="radio" id="sample1" name="avr_option" value="plate" checked>
                                             <label for="sample1" class="female">
                                                 <div class="img_area">
-                                                    <img src="images/img_hairColor_sample.png" alt="sample img 1">
+                                                    <img src="images/img_clothAtt_sample.png" alt="sample img 1">
                                                 </div>
                                             </label>
                                         </div>
@@ -113,30 +113,8 @@
                                         <input type="file" id="demoFile" class="demoFile" accept=".jpg, .png">
                                     </div>
 
-                                    <div class="result_guide">
-                                        <p>아래 컬러중에서 인식합니다.</p>
-                                        <ul class="detect_color">
-                                            <li>
-                                                <img src="images/img_hairColor_bk.png" alt="헤어컬러인식 샘플이미지">
-                                                <span>Black</span>
-                                            </li>
-                                            <li>
-                                                <img src="images/img_hairColor_bwn.png" alt="헤어컬러인식 샘플이미지">
-                                                <span>Brown</span>
-                                            </li>
-                                            <li>
-                                                <img src="images/img_hairColor_bld.png" alt="헤어컬러인식 샘플이미지">
-                                                <span>Blond</span>
-                                            </li>
-                                            <li>
-                                                <img src="images/img_hairColor_red.png" alt="헤어컬러인식 샘플이미지">
-                                                <span>Red</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-
                                     <ul>
-                                        <li>* 지원가능 파일 확장자: .jpg</li>
+                                        <li>* 지원가능 파일 확장자: .jpg, .png</li>
                                         <li>* 이미지 용량 : 3MB 이하</li>
                                         <li>* 이미지 사이즈 : 200x200 px 이상</li>
                                         <li>* 얼굴 정면이 인식되어야 인식이 가능합니다.</li>
@@ -180,7 +158,7 @@
                             <p class="tit"><em class="far fa-file-image"></em>입력 파일</p>
 							<div class="origin_file file_box">
 								<div class="imgBox">
-									<img id="input_img" src="images/img_hairColor_sample.png" alt="원본 이미지">
+									<img id="input_img" src="images/img_clothAtt_sample.png" alt="원본 이미지">
 								</div>
 							</div>
 
@@ -188,43 +166,31 @@
 							<div class="result_file file_box">
                                 <div class="result_box">
                                     <div class="imgBox">
-    									<img id="output_img" src="images/img_hairColor_result_sample.png" alt="결과 이미지">
-    								</div>
-    								<a id="save" class="btn_dwn">
-                                        <em class="far fa-arrow-alt-circle-down"></em> 결과 파일 다운로드
-                                    </a>
+                                        <img src="images/img_clothAtt_sample.png" alt="결과 이미지">
+                                    </div>
                                 </div>
 
                                 <div class="result_box">
-                                    <div class="result_color">
-                                        <span>머리색상&colon;</span>
-                                        <span class="result_img">
-                                            <img src="images/img_hairColor_bwn.png" alt="헤어 컬러 인식 이미지">
-                                            <em>Brown</em>
-                                        </span>
-                                    </div>
-
-                                    <div class="result_guide">
-                                        <p>아래 컬러중에서 인식합니다.</p>
-                                        <ul class="detect_color">
-                                            <li>
-                                                <img src="images/img_hairColor_bk.png" alt="헤어컬러인식 샘플이미지">
-                                                <span>Black</span>
-                                            </li>
-                                            <li>
-                                                <img src="images/img_hairColor_bwn.png" alt="헤어컬러인식 샘플이미지">
-                                                <span>Brown</span>
-                                            </li>
-                                            <li>
-                                                <img src="images/img_hairColor_bld.png" alt="헤어컬러인식 샘플이미지">
-                                                <span>Blond</span>
-                                            </li>
-                                            <li>
-                                                <img src="images/img_hairColor_red.png" alt="헤어컬러인식 샘플이미지">
-                                                <span>Red</span>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    <ul class="cmt_list">
+                                        <li>
+                                            <dl>
+                                                <dt>Person 1</dt>
+                                                <dd>purple no pattern man autumn vest no sleeves gray dotted woman summer long skirt standinglong skirt standinglong skirt standing</dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl>
+                                                <dt>Person 2</dt>
+                                                <dd>purple no pattern man autumn vest no sleeves gray dotted woman summer long skirt standing</dd>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <dl>
+                                                <dt>Person 3</dt>
+                                                <dd>purple no pattern man autumn vest no sleeves gray dotted woman summer long skirt standing</dd>
+                                            </dl>
+                                        </li>
+                                    </ul>
                                 </div>
 							</div>
 
