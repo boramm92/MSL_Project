@@ -14,7 +14,7 @@
 <script type="text/javascript" src="resources\js\jquery-1.11.2.min.js"></script>
 <script type="text/javascript" src="resources\js\common.js"></script>
 
-<title>조회 열람 | 무기관리시스템</title>
+<title>도감 분류 | 무기관리시스템</title>
 </head>
 
 <body>
@@ -22,12 +22,12 @@
 <div id="wrap">
     <!-- #header -->
     <div id="header">
-        <!-- [D] 메뉴(.gnb li)에 addclass('current')해주면 활성화됨 -->
+        <!-- [D] 메뉴(.gnb li)에 addclass('active')해주면 활성화됨 -->
         <ul class="gnb">
-            <li class="current">
+            <li>
                 <a href="dataset.html">조회 열람</a>
             </li>
-            <li>
+            <li class="active">
                 <a href="#none">도감</a>
             </li>
             <li>
@@ -42,225 +42,84 @@
 
     <!-- #contents -->
     <div id="contents">
-        <!-- .stn_trend -->
-        <div class="stn_trend">
-            <h1>최근 트렌드</h1>
+        <!-- .stn_category -->
+        <div class="stn_category">
+            <h1>무기도감</h1>
 
-            <div class="img_view_indicator">
-                <div class="">
-                    <span class="slider"></span>
-                </div>
-                <div class="btnBox">
-                    <button type="button">
-                        <img src="" alt="">
-                    </button>
-                    <button type="button">
-                        <img src="" alt="">
-                    </button>
-                </div>
+            <div class="srchBox">
+                <input type="text" id="srch_box">
+                <label for="srch_box">검색어를 입력해 주세요.</label>
+                <button type="submit" class="btn_srch">
+                    <img src="resources/images/ico_srch.png" alt="돋보기 이미지">
+                </button>                
             </div>
 
-            <ul class="trend_view">
-                <li>
-                    <img src="resources/images/img_weapon01.png" alt="무기 이미지">
-                </li>
-                <li>
-                    <img src="resources/images/img_weapon02.png" alt="무기 이미지">
-                </li>
-                <li>
-                    <img src="resources/images/img_weapon03.png" alt="무기 이미지">
-                </li>
-                <li>
-                    <img src="resources/images/img_weapon04.png" alt="무기 이미지">
-                </li>
-                <li>
-                    <img src="resources/images/img_weapon05.png" alt="무기 이미지">
-                </li>
-            </ul>
+            <div class="ctgrBox">
+                <h2>총기류(<span>500</span>)</h2>
+                <ul>
+                    <li>
+                        <a href="#none">대물 저격총 / 원거리 저격 소총(<span>200</span>)</a>
+                    </li>
+                    <li>
+                        <a href="#none">소총(<span>200</span>)</a>
+                    </li>
+                    <li>
+                        <a href="#none">기관단총(<span>200</span>)</a>
+                    </li>
+                    <li>
+                        <a href="#none">저격소총(<span>200</span>)</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a href="#none">기관총(<span>200</span>)</a>
+                    </li>
+                    <li>
+                        <a href="#none">산탄총(<span>200</span>)</a>
+                    </li>
+                    <li>
+                        <a href="#none">기관총(<span>200</span>)</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="ctgrBox">
+                <h2>탄약류(<span>500</span>)</h2>
+                <ul>
+                    <li>
+                        <a href="#none">권총탄(<span>200</span>)</a>
+                    </li>
+                    <li>
+                        <a href="#none">소총탄(<span>200</span>)</a>
+                    </li>
+                    <li>
+                        <a href="#none">기관단총/중기관총탄(<span>200</span>)</a>
+                    </li>
+                    <li>
+                        <a href="#none">저격탄(<span>200</span>)</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a href="#none">투척형 폭탄(<span>200</span>)</a>
+                    </li>
+                    <li>
+                        <a href="#none">권총(<span>200</span>)</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="ctgrBox">
+                <h2>화약류(<span>500</span>)</h2>
+                <ul>
+                    <li>
+                        <a href="#none">상용폭약(<span>200</span>)</a>
+                    </li>
+                    <li>
+                        <a href="#none">군용폭약(<span>200</span>)</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <!-- //.stn_trend -->
-
-        <!-- .stn_dataset -->
-        <div class="stn_dataset">
-            <h1>데이터 세트</h1>
-
-            <div class="date_srch_group">
-                <span>최신순 10건</span>
-
-                <div class="iptBox">
-                    <input type="text" id="toDate">
-                    <label for="toDate"></label>
-                </div>
-                <span>~</span>
-                <div class="iptBox">
-                    <input type="text" id="toDate">
-                    <label for="toDate"></label>
-                </div>
-
-                <div class="btnBox">
-                    <button type="submit">검색</button>
-                </div>
-            </div>
-
-            <!-- .tblBox -->
-            <div class="tblBox tbl_dataset">
-                <table summary="NO, 대분류, 중분류, 모델명, 등록일시, 검색결과로 구성">
-                    <caption class="hide">데이터 세트</caption>
-                    <colgroup>
-                        <col><col><col>
-                        <col width="485"><col><col>
-                    </colgroup>
-
-                    <thead>
-                        <tr>
-                            <th scope="col">NO.</th>
-                            <th scope="col">대분류</th>
-                            <th scope="col">중분류</th>
-                            <th scope="col">모델명</th>
-                            <th scope="col">등록일시</th>
-                            <th scope="col">검색결과</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                            <td scope="row">01</td>
-                            <td>총기류</td>
-                            <td>기관총</td>
-                            <td>노린코 DAP 타입92 기관단총(노린코 타입 06 9mm 라이트 머신건)</td>
-                            <td>2020-10-20</td>
-                            <td>
-                                <button type="button">확인</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td scope="row">02</td>
-                            <td>총기류</td>
-                            <td>기관단총</td>
-                            <td>시그 자우어 SIG Pro SP2009, SIG Pro SP2009 Compact 권총</td>
-                            <td>2020-10-20</td>
-                            <td>
-                                <button type="button">확인</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td scope="row">03</td>
-                            <td>총기류</td>
-                            <td>기관단총</td>
-                            <td>노린코 JS9 기관단총(노린코 CS/LS2 라이트 사일런스드 머신건)</td>
-                            <td>2020-10-20</td>
-                            <td>
-                                <button type="button">확인</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td scope="row">04</td>
-                            <td>탄약류</td>
-                            <td>기관단총/중기관총탄</td>
-                            <td>2.7×9mm Kolibri</td>
-                            <td>2020-10-20</td>
-                            <td>
-                                <button type="button">확인</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td scope="row">05</td>
-                            <td>탄약류</td>
-                            <td></td>
-                            <td>5.45×18mm MPTs(7N7)</td>
-                            <td>2020-10-20</td>
-                            <td>
-                                <button type="button">확인</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td scope="row">06</td>
-                            <td>탄약류</td>
-                            <td></td>
-                            <td>7.62×25mm Токарев(Tokarev)</td>
-                            <td>2020-10-20</td>
-                            <td>
-                                <button type="button">확인</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td scope="row">07</td>
-                            <td>탄약류</td>
-                            <td></td>
-                            <td>7.62×25mm Токарев(Tokarev)</td>
-                            <td>2020-10-20</td>
-                            <td>
-                                <button type="button">확인</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td scope="row">08</td>
-                            <td>화약류</td>
-                            <td></td>
-                            <td>뉴 에뮤라이트 벌크1000</td>
-                            <td>2020-10-20</td>
-                            <td>
-                                <button type="button">확인</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td scope="row">09</td>
-                            <td>화약류</td>
-                            <td></td>
-                            <td>ANFO Mixing Truck</td>
-                            <td>2020-10-20</td>
-                            <td>
-                                <button type="button">확인</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td scope="row">10</td>
-                            <td>화약류</td>
-                            <td></td>
-                            <td>123바 암셀 스트라이커 모델 12P 얼티메이트 로 엔포스먼트 웨폰</td>
-                            <td>2020-10-20</td>
-                            <td>
-                                <button type="button">확인</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <!-- //.tblBox -->
-
-            <!-- .paging_wrap -->
-            <div class="paging_wrap">
-                <div class="paging">
-                    <a href="#none" class="btn_paging btn_first">
-                        <img src="resources/images/ico_paging_first.png" alt="페이징 버튼 이미지">
-                    </a>
-                    <a href="#none" class="btn_paging btn_prev">
-                        <img src="resources/images/ico_paging_prev.png" alt="페이징 버튼 이미지">
-                    </a>
-
-                    <!-- [D] page넘버에 addclass('on') 해주면 활성화됨 -->
-                    <a class="on" href="#none">1</a>
-                    <a href="#none">2</a>
-                    <a href="#none">3</a>
-                    <a href="#none">4</a>
-                    <a href="#none">5</a>
-                    <a href="#none">6</a>
-                    <a href="#none">7</a>
-                    <a href="#none">8</a>
-                    <a href="#none">9</a>
-                    <a href="#none">10</a>
-
-                    <a href="#none" class="btn_paging btn_next">
-                        <img src="resources/images/ico_paging_next.png" alt="페이징 버튼 이미지">
-                    </a>
-                    <a href="#none" class="btn_paging btn_last">
-                        <img src="resources/images/ico_paging_last.png" alt="페이징 버튼 이미지">
-                    </a>
-                </div>
-            </div>
-            <!-- //.paging_wrap -->
-        </div>
-        <!-- //.stn_dataset -->
+        <!-- //.stn_category -->
     </div>
     <!-- //#contents -->
 </div>
@@ -281,17 +140,11 @@
 </div>
 <!-- //로그아웃 -->
 
-<!-- -------------------- Local Resources -------------------- -->
-<!-- Local CSS -->
-<!-- <link rel="stylesheet" type="text/css" href="resources/css/maumEdgeAI.css"> -->
-<!-- Local Script Library -->
-<!-- <script type="text/javascript" src="resources/js/maumEdgeAI.js"></script> -->
-
 <!-- Local Script -->
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-
+        
     });
 });
 </script>

@@ -7,7 +7,7 @@
 
 /* -------------------- common -------------------- */
 /* h1 */
-h1 {margin:60px 0 0; font-size:38px; font-weight:500; line-height:1.47;}
+h1 {float:left; margin:60px 0 0; font-size:38px; font-weight:500; line-height:1.47;}
 /* //h1 */
 
 /* hide */
@@ -24,12 +24,20 @@ h1 {margin:60px 0 0; font-size:38px; font-weight:500; line-height:1.47;}
 .iptBox label {display:inline-block; position:absolute; top:0; left:0;}
 /* //iptBox */
 
+/* srchBox */
+.srchBox {float:right; position:relative; width:508px; height:50px; margin:70px 0 0;}
+.srchBox input {width:100%; height:100%; padding:0 30px; border:1px solid #e4e7eb; border-radius:25px; box-sizing:border-box; color:#55a8fd; font-size:16px;}
+.srchBox label {position:absolute; top:0; left:30px; color:#99a3ae; font-size:16px; line-height:50px; cursor:text;}
+.srchBox button {position:absolute; top:10px; right:30px; width:30px;}
+.srchBox img {width:100%;}
+/* //srchBox */
+
 /* header */
 #header {position:relative; width:100%; height:105px; border-bottom:1px solid #bcc0c7; box-sizing:border-box; text-align:center;}
 .gnb li {display:inline-block; width:151px; margin:0 25px;}
 .gnb li a {display:inline-block; width:100%; font-size:24px; font-weight:700; line-height:100px; letter-spacing:-0.2px; transition:color 0.3s ease-out;}
 .gnb li a:hover {border-bottom:4px solid #55a8fd; color:#55a8fd;}
-.gnb li.current a {border-bottom:4px solid #55a8fd; color:#55a8fd;}
+.gnb li.active a {border-bottom:4px solid #55a8fd; color:#55a8fd;}
 .btn_logout {display:inline-block; position:absolute; top:32px; right:80px; width:125px; height:40px; border:1px solid #b0c1d3; border-radius:20px; box-sizing:border-box; background:#fff; color:#8891a7; font-size:18px; font-weight:500; line-height:38px;}
 /* //header */
 
@@ -57,8 +65,7 @@ h1 {margin:60px 0 0; font-size:38px; font-weight:500; line-height:1.47;}
 /* //paging */
 
 /* layer popup */
-.lyr_bg_dim {overflow:hidden;}
-.lyr_bg_dim:after {content:''; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(18,18,18,0.5); z-index:999;}
+.lyr_bg_dim {overflow:hidden; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(18,18,18,0.5); z-index:999;}
 .lyrBox {display:none; overflow:hidden; position:absolute; top:50%; left:50%; width:500px; min-height:150px; border-radius:4px; background:#fff; z-index:9999;}
 .lyrBox .lyr_ct p {text-align:center;}
 .lyrBox .lyr_ft .btnBox {margin:0; text-align:center;}
@@ -77,7 +84,7 @@ h1 {margin:60px 0 0; font-size:38px; font-weight:500; line-height:1.47;}
 /* layout */
 #wrap {width:100%; min-width:1190px;}
 #contents {width:100%; height:100%; padding:0 0 50px;}
-#contents > div {width:1170px; margin:0 auto;}
+#contents > div {position:relative; width:1170px; margin:0 auto;}
 
 /* login page */
 .login_area {position:absolute; top:50%; left:50%; width:420px !important; height:370px; margin:-185px 0 0 -210px !important;}
@@ -91,7 +98,7 @@ h1 {margin:60px 0 0; font-size:38px; font-weight:500; line-height:1.47;}
 
 /* dataset page */
 .tblBox.tbl_dataset table tbody tr > *:first-child + * + * + * {text-align:left;}
-.view_indicator {text-align:right;}
+.view_indicator {clear:both; text-align:right;}
 .view_indicator > div {display:inline-block;}
 .view_indicator .slider {position:relative; width:645px; height:4px; background:#eaecf2; vertical-align:bottom;}
 .view_indicator .slider .bar {position:absolute; top:0; left:0; width:65px; height:4px; background:#121f3e;}
@@ -103,9 +110,36 @@ h1 {margin:60px 0 0; font-size:38px; font-weight:500; line-height:1.47;}
 .trend_view li {float:left; width:218px; height:210px; border:1px solid #e9ecf1; box-sizing:border-box;}
 .trend_view li + li {margin:0 0 0 20px;}
 .trend_view li img {width:100%;}
-.date_srch_group {margin:0 0 20px; text-align:right;}
+.date_srch_group {clear:both; margin:0 0 20px; text-align:right;}
 .date_srch_group span {font-size:18px; font-weight:500; line-height:1.5;}
-.date_srch_group .iptBox {display:inline-block;}
-.date_srch_group .iptBox img {display:inline-block; position:absolute; top:0; right:0; width:20px;}
-.date_srch_group .btnBox {display:inline-block;}
+.date_srch_group .iptBox {display:inline-block; width:146px; height:32px; margin:0 20px;}
+.date_srch_group .iptBox input {padding:0 20px; line-height:32px;}
+.date_srch_group .iptBox label {padding:0 0 0 20px; font-size:14px; line-height:32px; cursor:text;}
+.date_srch_group .iptBox img {display:inline-block; position:absolute; top:5px; right:20px; width:20px;}
+.date_srch_group .btnBox {display:inline-block; margin:0 0 0 25px;}
 .date_srch_group .btnBox button {width:131px; height:34px; border-radius:17px;}
+
+/* category page */
+.stn_category {overflow:hidden;}
+.ctgrBox {overflow:hidden; clear:both; margin:40px 0 0;}
+.ctgrBox h2 {margin:0 0 20px;}
+.ctgrBox ul li {float:left; width:284px; height:77px; border:1px solid #b0c1d3; border-radius:4px; box-sizing:border-box; background:#fff; text-align:center; transition:all 0.3s ease-out;}
+.ctgrBox ul li + li {margin:0 0 10px 10px;}
+.ctgrBox ul li a {display:inline-block; width:100%; height:100%; font-size:20px; font-weight:500; line-height:75px; text-align:center;}
+.ctgrBox ul li:hover {background:#55a8fd;}
+.ctgrBox ul li:hover a {color:#fff;}
+
+/* weaponList page */
+.listBox {clear:both;}
+.navBox {overflow:hidden; width:100%; margin:15px 0 60px; border-bottom:1px solid #dfe0e3;}
+.navBox .lnb {overflow:hidden; float:left;}
+.navBox .lnb li {float:left; position:relative; width:125px; line-height:42px; text-align:center;}
+.navBox .lnb li a {font-size:14px; font-weight:500; line-height:1.43; transition:color 0.3s ease-out;}
+.navBox .lnb li em {position:absolute; right:0; color:#e4e4e6;}
+.navBox .lnb li.active {border-bottom:2px solid #55a8fd;}
+.navBox .lnb li.active a {color:#55a8fd;}
+.navBox .btnbox {float:right; margin:0 0 12px;}
+.navBox .btnbox button {width:30px; height:30px; border:1px solid #e4e7eb; border-radius:4px;}
+.navBox .btnbox button img {height:12px;}
+.navBox .lnb li:hover {border-bottom:2px solid #55a8fd;}
+.navBox .lnb li:hover a {color:#55a8fd;}

@@ -24,7 +24,7 @@
     <div id="header">
         <!-- [D] 메뉴(.gnb li)에 addclass('current')해주면 활성화됨 -->
         <ul class="gnb">
-            <li class="current">
+            <li class="active">
                 <a href="dataset.html">조회 열람</a>
             </li>
             <li>
@@ -295,15 +295,30 @@
 
 <!-- -------------------- Local Resources -------------------- -->
 <!-- Local CSS -->
-<!-- <link rel="stylesheet" type="text/css" href="resources/css/maumEdgeAI.css"> -->
+<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css">
+
 <!-- Local Script Library -->
-<!-- <script type="text/javascript" src="resources/js/maumEdgeAI.js"></script> -->
+<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="resources/js/bootstrap-datepicker.js"></script>
 
 <!-- Local Script -->
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
+        // datepicker
+        $('#fromDate').datetimepicker({
+            language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
+            pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
+            defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
+            autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
+        });
 
+        $('#toDate').datetimepicker({
+            language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
+            pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
+            defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
+            autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
+        });
     });
 });
 </script>

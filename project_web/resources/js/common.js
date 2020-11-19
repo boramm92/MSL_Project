@@ -16,5 +16,17 @@ jQuery.event.add(window,"load",function(){
                 $('.lyrBox').css({'display': 'none'});
             });
         });
+        
+        // 인풋 라벨
+        var placeholderLabel = $('input[type="text"]');
+
+        placeholderLabel.on('focus', function(){
+            $(this).siblings('label').hide();
+        });
+        placeholderLabel.on('focusout', function(){
+            if($(this).val() === ''){
+                $(this).siblings('label').show();
+            }
+        });
     });
 });
