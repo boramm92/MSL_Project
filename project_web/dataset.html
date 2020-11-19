@@ -331,7 +331,7 @@
             <div class="slide_wrap">
                 <div class="slide_box">
                     <ul class="slide_list">
-                        <li class="slide">
+                        <li class="slide on">
                             <a href="#none">
                                 <img src="resources/images/img_weapon01.png" alt="무기 이미지">
                             </a>
@@ -544,6 +544,7 @@ jQuery.event.add(window,"load",function(){
         //     autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
         // });
 
+        // 이미지 슬라이더
         var slideWrap = $('.slide_wrap'),
             slideShow = slideWrap.find('.slide_box'),
             slideList = slideShow.find('.slide_list'),
@@ -551,10 +552,10 @@ jQuery.event.add(window,"load",function(){
             slideBtn = slideWrap.find('.slide_btn');
 
         var slideCount = slides.length,
-            slideWidth = slides.innerWidth(),
-            showNum =3,
+            slideWidth = slides.outerWidth() + 30,
+            showNum = 5,
             num = 0,
-            currentIndex = 0,
+            currentIndex = 0;
 
         slideCopy = $('.slide:lt("+ showNum +")').clone();
         slideList.append(slideCopy);
@@ -564,9 +565,10 @@ jQuery.event.add(window,"load",function(){
             if(num == 0){ //시작
                 num = slideCount;
                 slideList.css("left", -num * slideWidth + "px");
+
             }
             num--;
-            slideList.stop().animate({left: -slideWidth * num + "px"},400);
+            slideList.stop().animate({left: -slideWidth * num + "px"},300);
         }
 
         function nextShow (){
@@ -575,7 +577,7 @@ jQuery.event.add(window,"load",function(){
                 slideList.css("left", num);
             }
             num++;
-            slideList.stop().animate({left: -slideWidth * num + "px"},400);
+            slideList.stop().animate({left: -slideWidth * num + "px"},300);
         }
 
         //왼쪽, 오른쪽 버튼 설정
@@ -588,8 +590,6 @@ jQuery.event.add(window,"load",function(){
                 nextShow();
             }
         });
-
-        console.log(slideWrap)
     });
 });
 </script>
