@@ -329,50 +329,85 @@
     <div class="lyrBox">
         <div class="lyr_ct">
             <h2>외관1</h2>
-            <span class="imgBox">
-                <img src="resources/images/img_weapon01.png" alt="무기 이미지">
-            </span>
 
-            <div class="slide_wrap">
-                <div class="slide_box">
-                    <ul class="slide_list">
-                        <li class="slide on">
-                            <a href="#none">
-                                <img src="resources/images/img_weapon01.png" alt="무기 이미지">
-                            </a>
-                        </li>
-                        <li class="slide">
-                            <a href="#none">
-                                <img src="resources/images/img_weapon02.png" alt="무기 이미지">
-                            </a>
-                        </li>
-                        <li class="slide">
-                            <a href="#none">
-                                <img src="resources/images/img_weapon03.png" alt="무기 이미지">
-                            </a>
-                        </li>
-                        <li class="slide">
-                            <a href="#none">
-                                <img src="resources/images/img_weapon04.png" alt="무기 이미지">
-                            </a>
-                        </li>
-                        <li class="slide">
-                            <a href="#none">
-                                <img src="resources/images/img_weapon05.png" alt="무기 이미지">
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+            <ul class="slider slide_view_box slider-for">
+                <li>
+                    <img src="resources/images/img_weapon01.png" alt="무기 이미지">
+                </li>
+                <li>
+                    <img src="resources/images/img_weapon02.png" alt="무기 이미지">
+                </li>
+                <li>
+                    <img src="resources/images/img_weapon03.png" alt="무기 이미지">
+                </li>
+                <li>
+                    <img src="resources/images/img_weapon04.png" alt="무기 이미지">
+                </li>
+                <li>
+                    <img src="resources/images/img_weapon05.png" alt="무기 이미지">
+                </li>
+                <li>
+                    <img src="resources/images/img_weapon03.png" alt="무기 이미지">
+                </li>
+                <li>
+                    <img src="resources/images/img_weapon04.png" alt="무기 이미지">
+                </li>
+                <li>
+                    <img src="resources/images/img_weapon03.png" alt="무기 이미지">
+                </li>
+            </ul>
 
-                <div class="btnBox slide_btn">
-                    <button type="button" class="btn_slide_prev">
-                        <img src="resources/images/arw_left_bk.png" alt="화살표 이미지">
-                    </button>
-                    <button type="button" class="btn_slide_next">
-                        <img src="resources/images/arw_right_bk.png" alt="화살표 이미지">
-                    </button>
-                </div>
-            </div>
+            <ul class="slider slide_glry slider-nav">
+                <li>
+                    <a href="#none">
+                        <img src="resources/images/img_weapon01.png" alt="무기 이미지">
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <img src="resources/images/img_weapon02.png" alt="무기 이미지">
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <img src="resources/images/img_weapon03.png" alt="무기 이미지">
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <img src="resources/images/img_weapon04.png" alt="무기 이미지">
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <img src="resources/images/img_weapon05.png" alt="무기 이미지">
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <img src="resources/images/img_weapon03.png" alt="무기 이미지">
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <img src="resources/images/img_weapon04.png" alt="무기 이미지">
+                    </a>
+                </li>
+                <li>
+                    <a href="#none">
+                        <img src="resources/images/img_weapon03.png" alt="무기 이미지">
+                    </a>
+                </li>
+            </ul>
+
+            <!-- <div class="btnBox slide_btn">
+                <button type="button" class="btn_slide_prev">
+                    <img src="resources/images/arw_left_bk.png" alt="화살표 이미지">
+                </button>
+                <button type="button" class="btn_slide_next">
+                    <img src="resources/images/arw_right_bk.png" alt="화살표 이미지">
+                </button>
+            </div> -->
 
             <div class="tblBox">
                 <table summary="등록일시, 대분류, 중분류, 모델명(소분류), 제원으로 구성">
@@ -445,28 +480,58 @@ jQuery.event.add(window,"load",function(){
             dots: true,
             arrows: true
         });
+
+        // slick - 상세 팝업 슬라이드
+        $('.slider-for').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            fade: true,
+            asNavFor: '.slider-nav'
+        });
+        $('.slider-nav').slick({
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            asNavFor: '.slider-for',
+            dots: false,
+            centerMode: false,
+            focusOnSelect: true
+        });
+
+        // slick - 상세 팝업 track 길이 구하기
+        $('.lyr_ct .slick-track').each(function(){
+            var slideWidth = $(this).find('.slick-slide').outerWidth(true),
+                slideNum = $(this).find('.slick-slide').length,
+                slideTrackWidth = slideWidth * slideNum;
+                console.log(slideTrackWidth)
+
+            $(this).css({width: slideTrackWidth + 'px !important'});
+        });
+
         // slick - 버튼 텍스트 삭제
         $('.slick-arrow').html('');
         $('.slick-dots li button').html('');
-        // slick - indicator바에 클래스 주기
+
+        // slick - indicator바 커스텀
         $('.slick-dots li').each(function(i){
             var barIndex = $(this).index() + 1;
             $(this).addClass('bar' + barIndex);
+            $(this).find('button').remove();
         });
-        
+
         // datepicker
 		$('#fromDate').datepicker({
 			format : "yyyy-mm-dd",
 			language : "ko",
 			autoclose : true,
 			todayHighlight : true
-		});	
+		});
 		$('#toDate').datepicker({
 			format : "yyyy-mm-dd",
 			language : "ko",
 			autoclose : true,
 			todayHighlight : true
-		});                
+		});
     });
 });
 </script>
