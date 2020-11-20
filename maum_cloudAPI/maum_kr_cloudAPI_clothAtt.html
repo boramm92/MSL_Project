@@ -392,6 +392,14 @@ jQuery.event.add(window,"load",function(){
                 element.classList.add( 'btn_change' );
             });
         });
+        
+        $('.cmt_list dd').each(function(){
+            var dd = $("dd:contains('&nbsp;')");
+            var html = td.html();
+            html = html.replace("&nbsp;","");
+            dd.html(html);
+            // $(this).text().replace(/&nbsp;/g, ' ');
+        });
 
         // 페이지 확인을 위한 script로 개발 시에는 무시해주세요.
         $('.btn_start').on('click', function(){

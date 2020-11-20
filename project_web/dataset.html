@@ -28,10 +28,10 @@
                 <a href="dataset.html">조회 열람</a>
             </li>
             <li>
-                <a href="#none">도감</a>
+                <a href="category.html">도감</a>
             </li>
             <li>
-                <a href="#none">관리자 페이지</a>
+                <a href="admin.html">관리자 페이지</a>
             </li>
         </ul>
 
@@ -100,13 +100,11 @@
                 <div class="iptBox">
                     <input type="text" id="fromDate" class="iptText">
                     <label for="fromDate">등록날짜</label>
-                    <img src="resources/images/ico_calendar.png" alt="달력 이미지">
                 </div>
                 <em>~</em>
                 <div class="iptBox">
                     <input type="text" id="toDate" class="iptText">
                     <label for="toDate">종료날짜</label>
-                    <img src="resources/images/ico_calendar.png" alt="달력 이미지">
                 </div>
 
                 <div class="btnBox">
@@ -308,6 +306,9 @@
             <p>로그아웃 하시겠습니까?</p>
         </div>
         <div class="lyr_ft">
+            <button type="button" class="btn_lyr_close btn_close">
+                <img src="resources/images/ico_close.png" alt="닫기버튼 이미지">
+            </button>
             <div class="btnBox">
                 <button type="button" class="btn_lyr_close">취소</button>
                 <button type="button" class="btn_lyr_save">확인</button>
@@ -409,7 +410,7 @@
         </div>
 
         <div class="lyr_ft">
-            <button type="button" class="btn_lyr_close">
+            <button type="button" class="btn_lyr_close btn_close">
                 <img src="resources/images/ico_close.png" alt="닫기버튼 이미지">
             </button>
         </div>
@@ -509,7 +510,7 @@
         </div>
 
         <div class="lyr_ft">
-            <button type="button" class="btn_lyr_close">
+            <button type="button" class="btn_lyr_close btn_close">
                 <img src="resources/images/ico_close.png" alt="닫기버튼 이미지">
             </button>
         </div>
@@ -522,74 +523,98 @@
 <link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css">
 
 <!-- Local Script Library -->
-<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="resources/js/bootstrap-datepicker.js"></script>
 
 <!-- Local Script -->
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-        // // datepicker
-        // $('#fromDate').datetimepicker({
-        //     language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
-        //     pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
-        //     defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
-        //     autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
-        // });
-        //
-        // $('#toDate').datetimepicker({
-        //     language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
-        //     pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
-        //     defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
-        //     autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
-        // });
+        // datepicker
+		$('#fromDate').datepicker({
+			format : "yyyy-mm-dd",
+			language : "ko",
+			autoclose : true,
+			todayHighlight : true
+		});
+	
+		$('#toDate').datepicker({
+			format : "yyyy-mm-dd",
+			language : "ko",
+			autoclose : true,
+			todayHighlight : true
+		});
+        
+        // datepicker 버튼 커스텀
+        var calendarPrevBtn = $('.table-condensed th.prev');
+        var calendarNextBtn = $('.table-condensed th.next');
+        calendarPrevBtn.html('<img src="resources/images/arw_left_bk.png" alt="화살표 이미지">');
+        calendarNextBtn.html('<img src="resources/images/arw_right_bk.png" alt="화살표 이미지">');
+        
+        $('.table-condensed td').on('click', function(){
+            
+        });
+
 
         // 이미지 슬라이더
-        var slideWrap = $('.slide_wrap'),
-            slideShow = slideWrap.find('.slide_box'),
-            slideList = slideShow.find('.slide_list'),
-            slides = slideList.find('.slide'),
-            slideBtn = slideWrap.find('.slide_btn');
-
-        var slideCount = slides.length,
-            slideWidth = slides.outerWidth() + 30,
-            showNum = 5,
-            num = 0,
-            currentIndex = 0;
-
-        slideCopy = $('.slide:lt("+ showNum +")').clone();
-        slideList.append(slideCopy);
-
-        //이미지 움직이기
-        function backShow (){
-            if(num == 0){ //시작
-                num = slideCount;
-                slideList.css("left", -num * slideWidth + "px");
-
+        function ImageSlider(){
+            var slideWrap = $('.slide_wrap'),
+                slideShow = slideWrap.find('.slide_box'),
+                slideList = slideShow.find('.slide_list'),
+                slides = slideList.find('.slide'),
+                slideBtn = slideWrap.find('.slide_btn');
+    
+            var slideCount = slides.length,
+                slideWidth = slides.outerWidth() + 30,
+                showNum = 5,
+                num = 0,
+                currentIndex = 0,
+                
+                // console.log(slideCount)
+    
+            slideCopy = $('.slide:lt('+ showNum +')').clone();
+            slideList.append(slideCopy);
+    
+            //이미지 움직이기
+            function backShow (){
+                if(num == 0){ //시작
+                    num = slideCount;
+                    slideList.css("left", -num * slideWidth + "px");
+    
+                }
+                num--;
+                slideList.stop().animate({left: -slideWidth * num + "px"},300);
             }
-            num--;
-            slideList.stop().animate({left: -slideWidth * num + "px"},300);
-        }
-
-        function nextShow (){
-            if(num == slideCount){ //마지막
-                num = 0;
-                slideList.css("left", num);
+    
+            function nextShow (){
+                if(num == slideCount){ //마지막
+                    num = 0;
+                    slideList.css("left", num);
+                }
+                num++;
+                slideList.stop().animate({left: -slideWidth * num + "px"},300);
             }
-            num++;
-            slideList.stop().animate({left: -slideWidth * num + "px"},300);
-        }
-
-        //왼쪽, 오른쪽 버튼 설정
-        slideBtn.on('click', 'button', function(){
-            if($(this).hasClass('btn_slide_prev')){
-                //왼쪽버튼클릭
-                backShow();
-            } else {
-                //오른쪽버튼클릭
-                nextShow();
-            }
-        });
+    
+            //왼쪽, 오른쪽 버튼 설정
+            slideBtn.on('click', 'button', function(){
+                if($(this).hasClass('btn_slide_prev')){
+                    //왼쪽버튼클릭
+                    backShow();
+                } else {
+                    //오른쪽버튼클릭
+                    nextShow();
+                }
+            });
+            
+            // 롤링 갤러리 내 이미지 클릭 시 활성화
+            $('.slide').on('click', function(){
+                var selectImageSrc = $(this).find('img').attr('src');
+                console.log(selectImageSrc)
+                
+                $('.slide').removeClass('on');
+                $(this).addClass('on');
+            });
+        };
+        ImageSlider()
     });
 });
 </script>

@@ -28,9 +28,8 @@ h1 {float:left; font-size:32px; font-weight:500; line-height:50px;}
 .srchBox {float:right; position:relative; width:508px; height:50px;}
 .srchBox input {width:100%; height:100%; padding:0 30px; border:1px solid #e4e7eb; border-radius:25px; box-sizing:border-box; color:#55a8fd; font-size:16px;}
 .srchBox label {position:absolute; top:0; left:30px; color:#99a3ae; font-size:16px; line-height:50px; cursor:text;}
-.srchBox button {position:absolute; top:0; right:30px; width:50px; height:50px; line-height:50px;}
-.srchBox img {display:none; width:30px; vertical-align:middle;}
-.srchBox img.on {display:inline-block;}
+.srchBox button {position:absolute; top:0; right:30px; width:50px; height:50px; line-height:50px; background:url('../images/ico_srch.png') 50% 50% no-repeat;}
+.srchBox img {width:30px; vertical-align:middle;}
 /* //srchBox */
 
 /* header */
@@ -39,7 +38,8 @@ h1 {float:left; font-size:32px; font-weight:500; line-height:50px;}
 .gnb li a {display:inline-block; width:100%; font-size:22px; font-weight:700; line-height:100px; letter-spacing:-0.2px; transition:color 0.3s ease-out;}
 .gnb li a:hover {border-bottom:4px solid #55a8fd; color:#55a8fd;}
 .gnb li.active a {border-bottom:4px solid #55a8fd; color:#55a8fd;}
-.btn_logout {display:inline-block; position:absolute; top:32px; right:80px; width:125px; height:40px; border:1px solid #b0c1d3; border-radius:20px; box-sizing:border-box; background:#fff; color:#8891a7; font-size:18px; font-weight:500; line-height:38px;}
+.btn_logout {display:inline-block; position:absolute; top:32px; right:80px; width:125px; height:40px; border:1px solid #b0c1d3; border-radius:20px; box-sizing:border-box; background:#fff; color:#8891a7; font-size:18px; font-weight:500; line-height:38px; transition:all 0.3s ease-out;}
+.btn_logout:hover {background:#b0c1d3; color:#fff;}
 /* //header */
 
 /* tblBox */
@@ -67,36 +67,57 @@ h1 {float:left; font-size:32px; font-weight:500; line-height:50px;}
 .paging .btn_paging img {width:30px;}
 /* //paging */
 
+/* datepicker */
+.dropdown-menu {min-width:220px; font-size:12px;}
+.table-condensed {width:100%;}
+.table-condensed thead > tr > th, .table-condensed tbody > tr > th, .table-condensed tfoot > tr > th, .table-condensed thead > tr > td, .table-condensed tbody > tr > td, .table-condensed tfoot > tr > td {padding:7px 0; text-align:center;}
+.table-condensed th.switch:hover {background:rgba(0,0,0,0.05); cursor:pointer;}
+.table-condensed th.prev:hover {background:rgba(0,0,0,0.05); cursor:pointer;}
+.table-condensed th.prev img {width:15px; padding:7px 5px 5px;}
+.table-condensed th.next:hover {background:rgba(0,0,0,0.05); cursor:pointer;}
+.table-condensed th.next img {width:15px; padding:7px 5px 5px;}
+.table-condensed td.old, .table-condensed td.new {color:#b5becc;}
+.datepicker-days .table-condensed td:hover {background:rgba(0,0,0,0.05); cursor:pointer;}
+.table-condensed td.today {color:#55a8fd; background:rgba(0,0,0,0.1);}
+.table-condensed td.active {color:#fff; background:#55a8fd;}
+.table-condensed td span {display:inline-block; width:50px; margin:0 5px; line-height:30px;}
+.table-condensed td span:hover {background:rgba(0,0,0,0.05); cursor:pointer;}
+
 /* layer popup */
 .lyr_wrap {display:none; position:fixed; top:0; left:0; width:100%; height:100%; text-align:center; z-index:3000;}
-.lyr_bg_dim {position:absolute; top:0; left:0; width:100%; height:100%; background:#121212; opacity:0.5; -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=20)" z-index:-10;}
+.lyr_bg_dim {position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(18,18,18,0.5); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#50181818,endColorstr=#50181818); z-index:-10;}
 .lyrBox {display:inline-block; position:absolute; top:50%; left:50%; width:500px; min-height:150px; border-radius:4px; box-sizing:border-box; background:#fff; z-index:9999;}
 .lyrBox .lyr_ct p {text-align:center;}
 .lyrBox .lyr_ft .btnBox {margin:0; text-align:center;}
 .lyrBox .lyr_ft .btnBox a {min-width:70px; margin:0 3px; color:#fff; line-height:30px;}
 .lyrBox .lyr_ft .btnBox button.btn_lyr_close {background:#b1b7be;}
+.lyrBox .lyr_ft .btn_close {position:absolute; top:25px; right:25px; width:20px; height:20px;}
+.lyrBox .lyr_ft .btn_close img {width:100%;}
 /* //layer popup */
 
 /* 개별 layer popup */
 #lyr_logout .lyrBox {width:350px; height:200px;}
-#lyr_logout .lyrBox .lyr_ct {height:143px;}
-#lyr_logout .lyrBox .lyr_ct p {color:#333; font-size:18px; font-weight:500; line-height:143px;}
-#lyr_logout .lyrBox .lyr_ft .btnBox {width:100%; height:57px;}
-#lyr_logout .lyrBox .lyr_ft .btnBox button {float:left; width:50%; height:100%;}
+#lyr_logout .lyrBox .lyr_ct {height:130px;}
+#lyr_logout .lyrBox .lyr_ct p {margin:0; color:#333; font-size:18px; font-weight:500; line-height:138px;}
+#lyr_logout .lyrBox .lyr_ft .btnBox button {width:130px; height:40px; margin:0 8px; border-radius:20px; background:#fff; font-size:15px; transition:all 0.3s ease-out;}
+#lyr_logout .lyrBox .lyr_ft .btnBox button.btn_lyr_close {border:1px solid #b1b7be; color:#b1b7be;}
+#lyr_logout .lyrBox .lyr_ft .btnBox button.btn_lyr_close:hover {background:#b1b7be; color:#fff;}
+#lyr_logout .lyrBox .lyr_ft .btnBox button.btn_lyr_save {border:1px solid #55a8fd; color:#55a8fd;}
+#lyr_logout .lyrBox .lyr_ft .btnBox button.btn_lyr_save:hover {background:#55a8fd; color:#fff;}
 
-#lyr_user_info .lyrBox {width:750px; height:795px;}
+#lyr_weapon_detail .lyrBox {width:750px; height:795px;}
 #lyr_weapon_detail .lyrBox .lyr_ct {position:relative; width:100%; height:100%; padding:45px 60px; box-sizing:border-box;}
 #lyr_weapon_detail .lyrBox .lyr_ct h2 {float:left;}
 #lyr_weapon_detail .lyrBox .lyr_ct .imgBox {display:inline-block; width:305px; height:244px; border:1px solid #e9ecf1;}
-#lyr_weapon_detail .lyrBox .lyr_ct .imgBox img {height:100%;}
+#lyr_weapon_detail .lyrBox .lyr_ct .imgBox img {max-width:100%; max-height:100%;}
 #lyr_weapon_detail .lyrBox .lyr_ct .slide_wrap {position:relative; width:100%; height:80px; margin:25px 0;}
 #lyr_weapon_detail .lyrBox .lyr_ct .slide_box {overflow:hidden; width:520px; height:80px; margin:0 auto;}
 #lyr_weapon_detail .lyrBox .lyr_ct .slide_box .slide_list {position:relative; width:1500px; height:80px;}
 #lyr_weapon_detail .lyrBox .lyr_ct .slide_box .slide_list li {display: inline-block; float:left; position:relative; width:80px; height:80px; border:1px solid #e9ecf1; box-sizing:border-box;}
-#lyr_weapon_detail .lyrBox .lyr_ct .slide_box .slide_list li.on {border:1px solid #55a8fd;}
+#lyr_weapon_detail .lyrBox .lyr_ct .slide_box .slide_list li.on {border:1px solid #9bccff;}
 #lyr_weapon_detail .lyrBox .lyr_ct .slide_box .slide_list li + li {margin:0 0 0 30px;}
 #lyr_weapon_detail .lyrBox .lyr_ct .slide_box .slide_list li a {display: inline-block; width:100%; height:100%;}
-#lyr_weapon_detail .lyrBox .lyr_ct .slide_box .slide_list li a img {width:100%; vertical-align:middle;}
+#lyr_weapon_detail .lyrBox .lyr_ct .slide_box .slide_list li a img {max-width:100%; max-height:100%; vertical-align:middle;}
 #lyr_weapon_detail .lyrBox .lyr_ct .slide_btn button {position:absolute; width:30px; height:30px; background:none;}
 #lyr_weapon_detail .lyrBox .lyr_ct .slide_btn button.btn_slide_prev {top:24px; left:0;}
 #lyr_weapon_detail .lyrBox .lyr_ct .slide_btn button.btn_slide_next {top:24px; right:0;}
@@ -104,8 +125,6 @@ h1 {float:left; font-size:32px; font-weight:500; line-height:50px;}
 #lyr_weapon_detail .lyrBox .lyr_ct .tblBox table th {padding:15px 30px; background:#f2f7ff; text-align:left;}
 #lyr_weapon_detail .lyrBox .lyr_ct .tblBox table td {padding:15px 30px; text-align:left;}
 #lyr_weapon_detail .lyrBox .lyr_ct .tblBox table td li + li {margin:15px 0 0;}
-#lyr_weapon_detail .lyrBox .lyr_ft .btn_lyr_close {position:absolute; top:25px; right:25px; width:20px; height:20px;}
-#lyr_weapon_detail .lyrBox .lyr_ft .btn_lyr_close img {width:100%;}
 
 #lyr_user_info .lyrBox {width:750px; height:406px; padding:30px; box-sizing:border-box;}
 #lyr_user_info .lyrBox .lyr_hd {overflow:hidden; padding:0 0 15px; border-bottom:1px solid #55a8fd; line-height:41px; text-align:right;}
@@ -120,7 +139,9 @@ h1 {float:left; font-size:32px; font-weight:500; line-height:50px;}
 #lyr_user_info .lyrBox .lyr_ct .tblBox table td .radioBox + .radioBox {margin:0 0 0 10px;}
 #lyr_user_info .lyrBox .lyr_ct .tblBox table td .radioBox input {-webkit-appearance:radio; appearance:radio; cursor:pointer;}
 #lyr_user_info .lyrBox .lyr_ct .tblBox table td .radioBox label {cursor:pointer;}
-#lyr_user_info .lyrBox .lyr_ft .btnBox button {width:130px; height:40px; margin:0 8px; border:1px solid #55a8fd; border-radius:20px; color:#55a8fd; background:#fff;}
+#lyr_user_info .lyrBox .lyr_ft .btn_close {top:15px;}
+#lyr_user_info .lyrBox .lyr_ft .btnBox button {width:130px; height:40px; margin:0 8px; border:1px solid #55a8fd; border-radius:20px; color:#55a8fd; background:#fff; transition:all 0.3s ease-out;}
+#lyr_user_info .lyrBox .lyr_ft .btnBox button:hover {background:#55a8fd; color:#fff;}
 
 /* -------------------- contents -------------------- */
 /* layout */
@@ -152,13 +173,12 @@ h1 {float:left; font-size:32px; font-weight:500; line-height:50px;}
 .trend_view li {float:left; width:218px; height:210px; border:1px solid #e9ecf1; box-sizing:border-box;}
 .trend_view li + li {margin:0 0 0 20px;}
 .trend_view li a {display:inline-block; width:100%; height:100%;}
-.trend_view li img {width:100%;}
+.trend_view li img {max-width:100%; max-height:100%;}
 .date_srch_group {clear:both; margin:0 0 20px; text-align:right;}
 .date_srch_group span {font-size:18px; font-weight:500; line-height:32px;}
 .date_srch_group .iptBox {display:inline-block; width:146px; height:32px; margin:0 18px;}
-.date_srch_group .iptBox input {padding:0 20px; line-height:32px;}
+.date_srch_group .iptBox input {padding:0 18px 0 20px; background:url('../images/ico_calendar.png') right 20px top 50% no-repeat; font-size:14px; line-height:30px;}
 .date_srch_group .iptBox label {padding:0 0 0 20px; font-size:14px; line-height:30px; cursor:text;}
-.date_srch_group .iptBox img {display:inline-block; position:absolute; top:5px; right:20px; width:20px;}
 .date_srch_group .btnBox {display:inline-block; margin:0 0 0 25px;}
 .date_srch_group .btnBox button {width:131px; height:34px; border-radius:17px;}
 
@@ -183,7 +203,8 @@ h1 {float:left; font-size:32px; font-weight:500; line-height:50px;}
 .navBox .lnb li.active a {color:#55a8fd;}
 .navBox .btnbox {float:right; margin:0 0 12px;}
 .navBox .btnbox button {width:30px; height:30px; margin:0 1px; border:1px solid #e4e7eb; border-radius:4px; line-height:12px;}
-.navBox .btnbox button img {height:12px;}
+.navBox .btnbox button.btn_view_list {background:url('../images/ico_list.png') 50% 50% no-repeat;}
+.navBox .btnbox button.btn_view_thumb {background:url('../images/ico_thumb.png') 50% 50% no-repeat;}
 .navBox .lnb li:hover {border-bottom:2px solid #55a8fd;}
 .navBox .lnb li:hover a {color:#55a8fd;}
 
@@ -196,7 +217,7 @@ h1 {float:left; font-size:32px; font-weight:500; line-height:50px;}
 .viewBox .type_thumb .item_list li + li {margin:0 0 0 10px;}
 .viewBox .type_thumb .item_list li a {display:inline-block; width:100%; height:100%;}
 .viewBox .type_thumb .item_list li .thumbnail {display:inline-block; width:100%; height:180px; border:1px solid #e9ecf1; box-sizing:border-box; text-align:center;}
-.viewBox .type_thumb .item_list li .thumbnail img {height:100%;}
+.viewBox .type_thumb .item_list li .thumbnail img {max-width:100%; max-height:100%;}
 .viewBox .type_thumb .item_list li .title {display:inline-block; margin:10px 0 0; font-size:14px; font-weight:500; line-height:1.43;}
 .viewBox .type_thumb .item_list li:hover .title {text-decoration:underline;}
 
@@ -205,8 +226,8 @@ h1 {float:left; font-size:32px; font-weight:500; line-height:50px;}
 .detail_wrap h2 {margin:40px 0 30px; font-size:23px; font-weight:500;}
 .detail_wrap .detail_item {overflow:hidden;}
 .detail_wrap .detail_item .imgBox {float:left; width:490px; height:363px; border:1px solid #e9ecf1; text-align:center;}
-.detail_wrap .detail_item .imgBox img {height:100%;}
-.detail_wrap .detail_item .tblBox {float:right; width:626px; height:363px;}
+.detail_wrap .detail_item .imgBox img {max-width:100%; max-height:100%;}
+.detail_wrap .detail_item .tblBox {float:right; width:626px;}
 .detail_wrap .detail_item .tbl_info table tr {height:33px;}
 .detail_wrap .detail_item .tbl_info table thead th {padding:0; background:#8b939c; color:#fff; font-size:15px; font-weight:500;}
 .detail_wrap .detail_item .tbl_info table tbody th {padding:0; border-bottom:1px solid #e9ecf1; background:#f2f7ff; font-size:15px;}
@@ -222,17 +243,19 @@ h1 {float:left; font-size:32px; font-weight:500; line-height:50px;}
 .result_wrap .result_list {margin:30px 0 0;}
 .result_wrap .result_list li {width:100%; height:124px;}
 .result_wrap .result_list li + li {margin:35px 0 0;}
+.result_wrap .result_list li a {display:inline-block; width:100%; height:100%;}
+.result_wrap .result_list li:hover dd {text-decoration:underline;}
 .result_wrap .result_list li .imgBox {display:inline-block; width:255px; height:124px; border:1px solid #e9ecf1; box-sizing:border-box; text-align:center; vertical-align:top;}
-.result_wrap .result_list li .imgBox img {height:100%;}
-.result_wrap .result_list li .txtBox {display:inline-block; width:855px; margin:0 0 0 30px; }
-.result_wrap .result_list li .txtBox dt {color:#333; font-size:22px; font-weight:700; line-height:1.5;}
-.result_wrap .result_list li .txtBox dd {overflow:hidden; width:100%; height:48px; margin:20px 0 0; color:#333; font-size:15px; line-height:24px; word-break:keep-all; text-overflow:ellipsis;}
+.result_wrap .result_list li .imgBox img {max-width:100%; max-height:100%;}
+.result_wrap .result_list li .txtBox {display:inline-block; width:855px; margin:0 0 0 30px; line-height:51px;}
+.result_wrap .result_list li .txtBox dt {display:inline-block; color:#333; font-size:22px; font-weight:700;}
+.result_wrap .result_list li .txtBox dd {display:inline-block; position:relative; overflow:hidden; width:100%; color:#333; font-size:15px; line-height:24px; word-break:keep-all; text-overflow:ellipsis;}
+.result_wrap .result_list li .txtBox dd .text_els {display:inline-block; width:30px; background:#fff;}
 
 /* admin page */
 .user_admin_box {clear:both; width:100%;}
 .user_admin_box > .btnBox {display: inline-block; width:100%; margin:42px 0 20px; text-align:right;}
-.user_admin_box > .btnBox a {display:inline-block; width:130px; height:40px; border-radius:20px; background:#55a8fd; color:#fff; font-size:13px; line-height:40px; text-align:center;}
-.user_admin_box .btnBox a img {width:10px; vertical-align:middle;}
+.user_admin_box > .btnBox a {display:inline-block; width:130px; height:40px; padding:0 10px 0 0; border-radius:20px; border-color:#55a8fd; box-sizing:border-box; background:#55a8fd url('../images/ico_plus.png') right 24px top 50% no-repeat; color:#fff; font-size:13px; line-height:40px; text-align:center;}
 .tbl_user_list table tbody td {}
 .use_info {display:inline-block;}
 .use_info + .use_info {margin:0 0 0 47px;}
