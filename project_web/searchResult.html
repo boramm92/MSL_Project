@@ -73,7 +73,6 @@
     
                                 <dl class="txtBox">
                                     <dt>CZ 75 SP-01</dt>
-                                    <!-- [D] 2줄 이상은 말줄임처리 해야함 -->
                                     <dd>평가다. 이 권총은 전 세계에 분포되어 있고, 체코에서 가장 흔한 권총이다</dd>
                                 </dl>
                             </a>
@@ -86,7 +85,6 @@
 
                                 <dl class="txtBox">
                                     <dt>EAA Witness Elite Match</dt>
-                                    <!-- [D] 2줄 이상은 말줄임처리 해야함 -->
                                     <dd>위트니스 엘리트 매치는 적은 반동으로 인해 간편한 연습으로 목표치를 강화 할수가 있다. 또한, 총기 전문가들은 이권총의 사격으로 목표를 놓치는것은 불가능 하다고 말한다. 업계에서 가장 다재 다능한 디자인을 가지며, 장인정신으로 높은 품질을 보인다. 인체 공학적자들은 자연 장인정신으로 높은 품질을 보인다. 인체 공학적자들은 자연</dd>
                                 </dl>
                             </a>
@@ -99,7 +97,6 @@
 
                                 <dl class="txtBox">
                                     <dt>Walther PPQ</dt>
-                                    <!-- [D] 2줄 이상은 말줄임처리 해야함 -->
                                     <dd>발터 PPQ는 독일 칼 발터 사에 의해 발달 되었다. 보안군과 스포츠시장에서 발터 PPQ는 발터 P99를 잠재적으로 대체한다. 정당 방위 측면에서도 발터 PPQ는 인간 공학 부분에서 혁명적이라고 할수있다. 우아한 스타일링을 갖추며 방아쇠 부분은 최고의 품질을 자랑한다</dd>
                                 </dl>
                             </a>
@@ -112,7 +109,6 @@
 
                                 <dl class="txtBox">
                                     <dt>Springfield XD m 4.5”</dt>
-                                    <!-- [D] 2줄 이상은 말줄임처리 해야함 -->
                                     <dd>스프링필드 조병창의 XD권총 라인에서 새로운 성능 및 안전성을 위해 나온 XD(M)4.5inch 권총은 완전히 새로운 수준으로 알려져 있다. 이수준으로수준으로 권총은 극도의 정밀도로 다루어 졌으며 인간 공학적으로도 과거보다 개선 되었다 권총은 극도의 정밀도로다루어 졌으며 인간 공학적으로도 과거보다 개선 되었다</dd>
                                 </dl>
                             </a>
@@ -125,7 +121,6 @@
 
                                 <dl class="txtBox">
                                     <dt>Walther P99 AS</dt>
-                                    <!-- [D] 2줄 이상은 말줄임처리 해야함 -->
                                     <dd>발터 P99 AS는 독일 칼 발터 사의 반자동 권총이다. 법 집행용, 보안군용, 스포츠용으로 이용되며 발달했다. 아시아, 미국과 유럽에서도 법 집행 의무로 P99 AS를 사용해 왔다 발터 P99 AS는 독일 칼 발터 사의 반자동 권총이다. 법 집행용, 보안군용, 스포츠용으로 이용되며 발달했다. 아시아, 미국과 유럽에서도 법 집행 의무로 P99 AS를 사용해 왔다</dd>
                                 </dl>
                             </a>
@@ -199,27 +194,9 @@
 
 <!-- Local Script -->
 <script type="text/javascript">
-// var byteNum = document.querySelectorAll('txtBox dd');
-// String.prototype.byteLength = function() {
-//     var l= 0;
-// 
-//     for(var idx=0; idx < this.length; idx++) {
-//         var c = escape(this.charAt(idx));
-// 
-//         if( c.length==1 ) l ++;
-//         else if( c.indexOf("%u")!=-1 ) l += 2;
-//         else if( c.indexOf("%")!=-1 ) l += c.length / 3;
-//     }
-//     return l;
-// };
-// 
-// byteNum.byteLength();
-
-// console.log($('.txtBox dd').byteLength())
-
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-        // 검색 상세결과 글자수 제한
+        // 검색 상세결과 글자수로 제한하여 말줄임 처리
         $('.txtBox dd').each(function(){
             var detailTxt = $(this).text(),
                 trimDetailTxt = detailTxt.substring(0, 120),

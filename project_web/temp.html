@@ -290,6 +290,85 @@
 </div>
 <!-- //STT 수정 -->
 
+<div class="view_indicator">
+    <div class="slider">
+        <span class="bar"></span>
+    </div>
+    <div class="btnBox">
+        <button type="button">
+            <img src="resources/images/arw_left_g.png" alt="화살표 이미지">
+        </button>
+        <button type="button">
+            <img src="resources/images/arw_right_bk.png" alt="화살표 이미지">
+        </button>
+    </div>
+</div>
+
+<ul class="trend_view">
+    <li>
+        <a href="#none">
+            <img src="resources/images/img_weapon01.png" alt="무기 이미지">
+        </a>
+    </li>
+    <li>
+        <a href="#none">
+            <img src="resources/images/img_weapon02.png" alt="무기 이미지">
+        </a>
+    </li>
+    <li>
+        <a href="#none">
+            <img src="resources/images/img_weapon03.png" alt="무기 이미지">
+        </a>
+    </li>
+    <li>
+        <a href="#none">
+            <img src="resources/images/img_weapon04.png" alt="무기 이미지">
+        </a>
+    </li>
+    <li>
+        <a href="#none">
+            <img src="resources/images/img_weapon05.png" alt="무기 이미지">
+        </a>
+    </li>
+</ul>
+
+<span class="imgBox">
+    <img src="resources/images/img_weapon01.png" alt="무기 이미지">
+</span>
+
+<div class="slide_wrap">
+    <div class="slide_box">
+        <ul class="slide_list">
+            <li class="slide on">
+                <a href="#none">
+                    <img src="resources/images/img_weapon01.png" alt="무기 이미지">
+                </a>
+            </li>
+            <li class="slide">
+                <a href="#none">
+                    <img src="resources/images/img_weapon02.png" alt="무기 이미지">
+                </a>
+            </li>
+            <li class="slide">
+                <a href="#none">
+                    <img src="resources/images/img_weapon03.png" alt="무기 이미지">
+                </a>
+            </li>
+            <li class="slide">
+                <a href="#none">
+                    <img src="resources/images/img_weapon04.png" alt="무기 이미지">
+                </a>
+            </li>
+            <li class="slide">
+                <a href="#none">
+                    <img src="resources/images/img_weapon05.png" alt="무기 이미지">
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
 <!-- -------------------- Local Resources -------------------- -->
 <!-- Local CSS -->
 <!-- <link rel="stylesheet" type="text/css" href="resources/css/maumEdgeAI.css"> -->
@@ -300,7 +379,84 @@
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-
+        // 이미지 슬라이드
+        $('.slider-for').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: true,
+            fade: true,
+            asNavFor: '.slider-nav'
+        });
+        $('.slider-nav').slick({
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            asNavFor: '.slider-for',
+            dots: false,
+            centerMode: true,
+            focusOnSelect: true
+        });
+        
+        $('.slick-arrow').each(function(){
+            $(this).html('');
+        })
+        
+        // // 이미지 슬라이더
+        // function ImageSlider(){
+        //     var slideWrap = $('.slide_wrap'),
+        //         slideShow = slideWrap.find('.slide_box'),
+        //         slideList = slideShow.find('.slide_list'),
+        //         slides = slideList.find('.slide'),
+        //         slideBtn = slideWrap.find('.slide_btn');
+        // 
+        //     var slideCount = slides.length,
+        //         slideWidth = slides.outerWidth(true),
+        //         showNum = 5,
+        //         num = 0,
+        //         slideCopy = $('.slide:lt('+ showNum +')').clone();
+        // 
+        //     slideList.append(slideCopy);            
+        //     console.log(slideWidth);
+        // 
+        //     //이미지 움직이기
+        //     function backShow (){
+        //         if(num == 0){ //시작
+        //             num = slideCount;
+        //             slideList.css("left", -num * slideWidth + "px");    
+        //         }
+        //         num--;
+        //         slideList.stop().animate({left: -slideWidth * num + "px"},300);
+        //     }
+        // 
+        //     function nextShow (){
+        //         if(num == slideCount){ //마지막
+        //             num = 0;
+        //             slideList.css("left", num);
+        //         }
+        //         num++;
+        //         slideList.stop().animate({left: -slideWidth * num + "px"},300);
+        //     }
+        // 
+        //     //왼쪽, 오른쪽 버튼 설정
+        //     slideBtn.on('click', 'button', function(){
+        //         if($(this).hasClass('btn_slide_prev')){
+        //             //왼쪽버튼클릭
+        //             backShow();
+        //         } else {
+        //             //오른쪽버튼클릭
+        //             nextShow();
+        //         }
+        //     });
+        // 
+        //     // 롤링 갤러리 내 이미지 클릭 시 활성화
+        //     $('.slide').on('click', function(){
+        //         var selectImageSrc = $(this).find('img').attr('src');
+        //         console.log(selectImageSrc)
+        // 
+        //         $('.slide').removeClass('on');
+        //         $(this).addClass('on');
+        //     });
+        // };
+        // ImageSlider()
     });
 });
 </script>
