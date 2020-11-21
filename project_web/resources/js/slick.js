@@ -1284,9 +1284,9 @@
             _.$slider.trigger('init', [_]);
         }
 
-        // if (_.options.accessibility === true) {
-        //     _.initADA();
-        // }
+        if (_.options.accessibility === true) {
+            _.initADA();
+        }
 
         if ( _.options.autoplay ) {
 
