@@ -392,13 +392,10 @@ jQuery.event.add(window,"load",function(){
                 element.classList.add( 'btn_change' );
             });
         });
-        
-        $('.cmt_list dd').each(function(){
-            var dd = $("dd:contains('&nbsp;')");
-            var html = td.html();
-            html = html.replace("&nbsp;","");
-            dd.html(html);
-            // $(this).text().replace(/&nbsp;/g, ' ');
+
+        // step3 결과 화면에서의 인식 텍스트 내 &nbsp를 스페이스로 대체
+        $(".cmt_list dd").html(function (i, html) {
+            return html.replace(/&nbsp;/g, ' ');
         });
 
         // 페이지 확인을 위한 script로 개발 시에는 무시해주세요.
