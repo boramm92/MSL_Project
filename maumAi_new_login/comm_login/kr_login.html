@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="format-detection" content="telephone=no">
+<!-- icon_favicon -->
+<link rel="apple-touch-icon-precomposed" href="/images/ico_maumAI_60x60.png">
+<link rel="shortcut icon" type="image/x-icon" href="/images/ico_maumAI_60x60.ico">
+<!-- resources -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="../comm_resources/css/reset.css">
+<link rel="stylesheet" href="../comm_resources/css/font.css">
+<link rel="stylesheet" href="css/login.css">
+<script type="text/javascript" src="/js/jquery-1.11.0.min-52d16e147b5346147d0f3269cd4d0f80.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-122649087-4"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+
+function gtag() {
+    dataLayer.push(arguments);
+}
+
+gtag('js', new Date());
+gtag('config', 'UA-122649087-4');
+</script>
+
+<title>maum.ai | 로그인</title>
+</head>
+
+<body>
+<!-- #wrap -->
+<div id="wrap">
+    <!-- header -->
+    <header>
+        <a href="https://maum.ai/" title="마음에이아이" target="_self"><img src="https://sso.maum.ai/images/maumai.svg" alt="maum.ai logo"/></a>
+    </header>
+    <!-- //header -->
+
+    <!-- #container -->
+    <section id="container">
+        <!-- .content -->
+        <div class="content">
+            <form class="loginWrap" method="get" action="">
+                <fieldset>
+                    <legend>Login</legend>
+                    <div class="loginBox">
+                        <span>
+                            <input type="text" name="ipt_id" id="ipt_id" class="ipt_txt" title="User Name"
+                                   placeholder="이메일">
+                        </span>
+                        <span>
+                            <input type="password" name="ipt_pw" id="ipt_pw" class="ipt_txt" title="Password"
+                                   placeholder="비밀번호">
+                        </span>
+                        <span class="checks">
+                            <input type="checkbox" name="ipt_check" id="ipt_check" class="ipt_check">
+                            <!--<label for="ipt_check"><em class="far fa-check-circle"></em> 로그인 상태 유지</label>-->
+                            <!-- [D] 에러일 경우 .txt_error 스크립트로 구현 -->
+                            <span class="txt_error">가입하지 않은 이메일이거나, 잘못된 비밀번호 입니다.</span>
+                        </span>
+                        <span>
+                            <a href="javascript:login_maum();" title="로그인" class="homebtn"> 로그인</a>
+                        </span>
+
+                        <div class="btn">
+                            <a href="javascript:registerUrl();" class="btn_signupt">회원가입 </a><span>&nbsp;|&nbsp;</span>
+                            <a href="javascript:passwordMain();" class="btn_forgot">비밀번호 찾기</a>
+                            <div class="tooltip">
+                                <div class="tooltip_box">
+                                    <img src="images/img_tooltip.png" alt="tooltip Img" />
+                                    지금 회원가입 하면, <span>1달 무료!</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="or">SNS 간편 로그인 / 회원가입</span>
+                </fieldset>
+            </form>
+
+            <div class="btn_box">
+                <a href="javascript:login_google();" title="구글로그인" class="google_login"> 구글 로그인</a>
+                <a href="javascript:login_facebook();" title="페이스북로그인" class="facebook_login">페이스북 로그인</a>
+            </div>
+
+        </div>
+        <!-- //.content -->
+    </section>
+    <!-- //#container -->
+
+    <!-- footer -->
+    <div id="footer">
+        <footer>
+            <div class="footer">
+                <a href="https://maum.ai/home/krTermsMain" target="_blank">이용약관 </a> ㅣ
+                <a href="https://maum.ai/home/krTermsMain#conditions" target="_blank"> 개인정보처리방침 </a> ㅣ
+                <a href="https://maum.ai/?lang=ko#inquiry" target="_blank"> 고객센터 </a>
+                <span>ㅣ</span>
+                <div class="lang">
+                    <span class="lang_select">한국어 <em class="fas fa-chevron-up"></em></span>
+                    <ul>
+                        <li class="active">한국어</li>
+                        <li><a href="https://maum.ai/?lang=en" target="_blank">English</a></li>
+                    </ul>
+                </div>
+            </div>
+            <p>Copyright © 2020 주식회사 마인즈랩. All rights reserved.</p>
+            <div class="m_lang">한국어 <a href="" title="English">English</a></div>
+        </footer>
+    </div>
+    <!-- //footer -->
+</div>
+<!-- //#wrap -->
+
+<!-- -------------------- Local Resources -------------------- -->
+<script>
+let redirect_uri = "https://maum.ai/oauth/callback"; // Ex) https://dev-common.maum.ai/oauth/callback
+
+$(document).ready(function () {
+    //footer 언어 체크
+    $('.lang_select').on('click', function () {
+        $(this).next().toggleClass('active');
+        return false;
+    });
+
+    $(document).on('click', function (e) {
+        var langOpen = $('footer .lang ul.active');
+        if( langOpen.has(e.target).length === 0){
+            langOpen.removeClass('active');
+        }
+    });
+});
+</script>
+</body>
+</html>
