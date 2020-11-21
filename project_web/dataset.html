@@ -330,75 +330,79 @@
         <div class="lyr_ct">
             <h2>외관1</h2>
 
-            <ul class="slide_view_box slider-for">
-                <li>
-                    <img src="resources/images/img_weapon01.png" alt="무기 이미지">
-                </li>
-                <li>
-                    <img src="resources/images/img_weapon02.png" alt="무기 이미지">
-                </li>
-                <li>
-                    <img src="resources/images/img_weapon03.png" alt="무기 이미지">
-                </li>
-                <li>
-                    <img src="resources/images/img_weapon04.png" alt="무기 이미지">
-                </li>
-                <li>
-                    <img src="resources/images/img_weapon05.png" alt="무기 이미지">
-                </li>
-                <li>
-                    <img src="resources/images/img_weapon03.png" alt="무기 이미지">
-                </li>
-                <li>
-                    <img src="resources/images/img_weapon04.png" alt="무기 이미지">
-                </li>
-                <li>
-                    <img src="resources/images/img_weapon03.png" alt="무기 이미지">
-                </li>
-            </ul>
-
-            <ul class="slide_glry slider-nav">
-                <li>
-                    <a href="#none">
+            <div class="slide_view_box">
+                <ul class="slide_view slider-for">
+                    <li>
                         <img src="resources/images/img_weapon01.png" alt="무기 이미지">
-                    </a>
-                </li>
-                <li>
-                    <a href="#none">
+                    </li>
+                    <li>
                         <img src="resources/images/img_weapon02.png" alt="무기 이미지">
-                    </a>
-                </li>
-                <li>
-                    <a href="#none">
+                    </li>
+                    <li>
                         <img src="resources/images/img_weapon03.png" alt="무기 이미지">
-                    </a>
-                </li>
-                <li>
-                    <a href="#none">
+                    </li>
+                    <li>
                         <img src="resources/images/img_weapon04.png" alt="무기 이미지">
-                    </a>
-                </li>
-                <li>
-                    <a href="#none">
+                    </li>
+                    <li>
                         <img src="resources/images/img_weapon05.png" alt="무기 이미지">
-                    </a>
-                </li>
-                <li>
-                    <a href="#none">
+                    </li>
+                    <li>
                         <img src="resources/images/img_weapon03.png" alt="무기 이미지">
-                    </a>
-                </li>
-                <li>
-                    <a href="#none">
+                    </li>
+                    <li>
                         <img src="resources/images/img_weapon04.png" alt="무기 이미지">
-                    </a>
-                </li>
-                <li>
-                    <a href="#none">
+                    </li>
+                    <li>
                         <img src="resources/images/img_weapon03.png" alt="무기 이미지">
-                    </a>
-                </li>
-            </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="slide_glry_box">
+                <ul class="slide_glry slider-nav">
+                    <li>
+                        <a href="#none">
+                            <img src="resources/images/img_weapon01.png" alt="무기 이미지">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#none">
+                            <img src="resources/images/img_weapon02.png" alt="무기 이미지">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#none">
+                            <img src="resources/images/img_weapon03.png" alt="무기 이미지">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#none">
+                            <img src="resources/images/img_weapon04.png" alt="무기 이미지">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#none">
+                            <img src="resources/images/img_weapon05.png" alt="무기 이미지">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#none">
+                            <img src="resources/images/img_weapon03.png" alt="무기 이미지">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#none">
+                            <img src="resources/images/img_weapon04.png" alt="무기 이미지">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#none">
+                            <img src="resources/images/img_weapon03.png" alt="무기 이미지">
+                        </a>
+                    </li>
+                </ul>
+            </div>
 
             <!-- <div class="btnBox slide_btn">
                 <button type="button" class="btn_slide_prev">
@@ -490,7 +494,8 @@ jQuery.event.add(window,"load",function(){
             asNavFor: '.slider-nav'
         });
         $('.slider-nav').slick({
-            slidesToShow: 5,
+            variableWidth: true,
+            slidesToShow: 0,
             slidesToScroll: 1,
             asNavFor: '.slider-for',
             dots: false,
@@ -498,15 +503,22 @@ jQuery.event.add(window,"load",function(){
             focusOnSelect: true
         });
 
-        // slick - 상세 팝업 track 길이 구하기
+        // // slick - 상세 팝업 track 길이 구하기
         // $('.lyr_ct .slick-track').each(function(){
         //     var slideWidth = $(this).find('.slick-slide').outerWidth(true),
         //         slideNum = $(this).find('.slick-slide').length,
         //         slideTrackWidth = slideWidth * slideNum;
         //         console.log(slideTrackWidth)
         //
-        //     $(this).css({width: slideTrackWidth + 'px !important'});
+        //     $(this).css({
+        //         width: slideTrackWidth,
+        //         // border: '1px solid black'
+        //     });
         // });
+
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            $('.slider-nav').slick('setPosition');
+        });
 
         // slick - 버튼 텍스트 삭제
         $('.slick-arrow').html('');
