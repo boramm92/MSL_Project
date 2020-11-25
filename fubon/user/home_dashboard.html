@@ -180,7 +180,7 @@
     <!-- #container -->
     <div id="container">
         <!-- #contents -->
-        <div id="contents" class="cs_stt">
+        <div id="contents" class="dashboard">
             <!-- .tab_title -->
             <div class="tab_title">
                 <div class="tab_list_wrap">
@@ -213,8 +213,43 @@
 
             <!-- .tab_content -->
             <div class="tab_content">
-
-
+                <div class="chart_wrap cs_tm_num">
+                    <h4>CS 대상 건수</h4>
+                    <div class="chartBox">
+                        <h5>STT</h5>
+                        <canvas id="pie1"></canvas>                    
+                    </div> 
+                    <div class="chartBox">
+                        <h5>TA</h5>
+                        <canvas id="pie2"></canvas>
+                    </div>
+                </div>                        
+                <div class="chart_wrap cs_tm_num">
+                    <h4>TM 대상 건수</h4>
+                    <div class="chartBox">
+                        <h5>STT</h5>
+                        <canvas id="pie3"></canvas>
+                    </div>
+                    <div class="chartBox">
+                        <h5>QA</h5>
+                        <canvas id="pie4"></canvas>
+                    </div>   
+                </div>
+            
+                <div class="chart_wrap">
+                    <div class="chartBox">
+                        <canvas id="bar1"></canvas>                    
+                    </div>
+                    <div class="chartBox">
+                        <canvas id="bar2"></canvas> 
+                    </div>                    
+                </div>
+                
+                <div class="chart_wrap">
+                    <div class="chartBox">
+                        <canvas id="bar3"></canvas>
+                    </div>
+                </div>
             </div>
             <!-- //.tab_content -->
         </div>
@@ -248,37 +283,133 @@
 
 <!---------------------- Local Resources ---------------------->
 <!-- Local CSS -->
-<link rel="stylesheet" href="../resources/css/bootstrap.css"/>
-<link rel="stylesheet" href="../resources/css/bootstrap-datetimepicker.css"/>
-<!-- //datetimepicker -->
+<link rel="stylesheet" href="../resources/css/Chart.min.css"/>
+<!-- //Chart -->
 <link rel="stylesheet" href="../resources/css/stt_tm_qa.css">
 
 <!-- Local Script Library -->
-<script src="../resources/js/bootstrap-datetimepicker.js"></script>
-<script src="../resources/js/moment.min.js"></script>
-<script src="../resources/js/ko.js"></script>
-<!-- //datetimepicker -->
+<script src="../resources/js/Chart.min.js"></script>
+<script src="../resources/js/utils.js"></script>
+<!-- //Chart -->
 
 <!-- Local Script -->
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-        // datetimepicker 렌더링
-        $('#fromDate').datetimepicker({
-            language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
-            pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
-            defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
-            autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
-        });
-
-        $('#toDate').datetimepicker({
-            language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
-            pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
-            defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
-            autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
-        });
+        
     });
 });
+</script>
+
+<!-- 대상건수[pie] 차트 -->
+<script type="text/javascript">
+    var randomScalingFactor = function() {
+        return Math.round(Math.random() * 100);
+    };
+    
+    var pieConfig = {
+        type: 'pie',
+        data: {
+            datasets: [{
+                data: [
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                ],
+                backgroundColor: [
+                    window.chartColors.red,
+                    window.chartColors.orange,
+                    window.chartColors.blue,
+                ],
+            }],
+            labels: [
+                '오류',
+                '처리중',
+                '정상'
+            ]
+        },
+        options: {
+            tooltips: {
+                enabled: false
+            },
+            pieceLabel: {
+                mode: 'label'
+            },
+            responsive: true,
+            legend: {
+                position: 'bottom',
+            },
+            animation: {
+                animateScale: true,
+                animateRotate: true
+            }
+        }
+    };
+    
+    var pie1 = document.getElementById('pie1').getContext('2d');
+    var pie2 = document.getElementById('pie2').getContext('2d');
+    var pie3 = document.getElementById('pie3').getContext('2d');
+    var pie4 = document.getElementById('pie4').getContext('2d');
+    
+    window.myPie = new Chart(pie1, pieConfig);
+    window.myPie = new Chart(pie2, pieConfig);
+    window.myPie = new Chart(pie3, pieConfig);
+    window.myPie = new Chart(pie4, pieConfig);
+
+    
+</script>
+
+<!-- 센터별 TMR 배정이력[bar] 차트 -->
+<script>
+    var randomScalingFactor = function() {
+        return Math.round(Math.random() * 100);
+    };
+            
+    var barConfig = {
+        type: 'horizontalBar',
+        data: horizontalBarChartData,
+        options: {
+            elements: {
+                rectangle: {
+                    borderWidth: 2,
+                }
+            },
+            responsive: true,
+            legend: {
+                position: 'right',
+            },
+        }
+    };
+    
+    var horizontalBarChartData = {
+    	labels: ['0건', '20건', '40건', '60건', '80건', '100건', '120건', '140건', '160건', '180건', '200건'],
+    	datasets: [{
+    		label: 'TA건',
+    		backgroundColor: window.chartColors.red,
+    		data: [
+    			randomScalingFactor(),
+    			randomScalingFactor(),
+    			randomScalingFactor(),
+    			randomScalingFactor(),
+    			randomScalingFactor(),
+    			randomScalingFactor(),
+    			randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+    		]
+    	}]
+    };
+    
+    var bar1 = document.getElementById('bar1').getContext('2d');
+    var bar2 = document.getElementById('bar2').getContext('2d');
+    var bar3 = document.getElementById('bar3').getContext('2d');
+    
+    window.myPie = new Chart(bar1, barConfig);
+    window.myPie = new Chart(bar2, barConfig);
+    window.myPie = new Chart(bar3, barConfig);
 </script>
 </body>
 </html>
