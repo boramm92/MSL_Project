@@ -149,10 +149,10 @@
                                 </p>
                                 
                                 <div class="textarea">
-                                    <textarea></textarea>
+                                    <textarea class="lipSync_txt"></textarea>
                                 </div>
                                 
-                                <span class="txt_length"><strong>30</strong> &sol; 50자</span>
+                                <span class="txt_length"><strong>0</strong> &sol; 50자</span>
                             </div>
 
                             <div class="btn_area">
@@ -285,6 +285,18 @@
 
 jQuery.event.add(window,"load",function(){
     $(document).ready(function (){
+        // 문장 입력 글자수 제한
+        $('.lipSync_txt').keyup(function (e){
+            var content = $(this).val();
+            $('.txt_length strong').html(content.length);    
+
+            if (content.length > 50){
+                alert("최대 50자까지 입력 가능합니다.");
+                $(this).val(content.substring(0, 50));
+                $('.txt_length strong').html(50);
+            }
+        });
+
         // 페이지 확인을 위한 script로 개발 시에는 무시해주세요.
         $('.btn_start').on('click', function(){
             $('.avr_1').css('display', 'none');
