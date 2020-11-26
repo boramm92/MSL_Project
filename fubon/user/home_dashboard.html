@@ -245,7 +245,7 @@
                     </div>                    
                 </div>
                 
-                <div class="chart_wrap">
+                <div class="chart_wrap month_ta_score">
                     <div class="chartBox">
                         <canvas id="bar3"></canvas>
                     </div>
@@ -307,7 +307,7 @@ jQuery.event.add(window,"load",function(){
         return Math.round(Math.random() * 100);
     };
     
-    var pieConfig = {
+    var pieConfig1 = {
         type: 'pie',
         data: {
             datasets: [{
@@ -330,15 +330,124 @@ jQuery.event.add(window,"load",function(){
         },
         options: {
             responsive: true,
+            legend: false,
             tooltips: {
-                enabled: false
+                enabled: true
             },
             pieceLabel: {
                 mode: 'label'
-            },            
-            legend: {
-                position: 'bottom',
+            },                        
+            animation: {
+                animateScale: true,
+                animateRotate: true
+            }
+        }
+    };
+    
+    var pieConfig2 = {
+        type: 'pie',
+        data: {
+            datasets: [{
+                data: [
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                ],
+                backgroundColor: [
+                    window.chartColors.red,
+                    window.chartColors.orange,
+                    window.chartColors.blue,
+                ],
+            }],
+            labels: [
+                '오류',
+                '처리중',
+                '정상'
+            ]
+        },
+        options: {
+            responsive: true,
+            legend: false,
+            tooltips: {
+                enabled: true
             },
+            pieceLabel: {
+                mode: 'label'
+            },                        
+            animation: {
+                animateScale: true,
+                animateRotate: true
+            }
+        }
+    };
+    
+    var pieConfig3 = {
+        type: 'pie',
+        data: {
+            datasets: [{
+                data: [
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                ],
+                backgroundColor: [
+                    window.chartColors.red,
+                    window.chartColors.orange,
+                    window.chartColors.blue,
+                ],
+            }],
+            labels: [
+                '오류',
+                '처리중',
+                '정상'
+            ]
+        },
+        options: {
+            responsive: true,
+            legend: false,
+            tooltips: {
+                enabled: true
+            },
+            pieceLabel: {
+                mode: 'label'
+            },                        
+            animation: {
+                animateScale: true,
+                animateRotate: true
+            }
+        }
+    };
+    
+    var pieConfig4 = {
+        type: 'pie',
+        data: {
+            datasets: [{
+                data: [
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                ],
+                backgroundColor: [
+                    window.chartColors.red,
+                    window.chartColors.orange,
+                    window.chartColors.blue,
+                ],
+            }],
+            labels: [
+                '오류',
+                '처리중',
+                '정상'
+            ]
+        },
+        options: {
+            responsive: true,
+            legend: false,
+            tooltips: {
+                enabled: true
+            },
+            pieceLabel: {
+                mode: 'label'
+            },                        
             animation: {
                 animateScale: true,
                 animateRotate: true
@@ -351,41 +460,25 @@ jQuery.event.add(window,"load",function(){
     var pie3 = document.getElementById('pie3').getContext('2d');
     var pie4 = document.getElementById('pie4').getContext('2d');
     
-    window.myPie = new Chart(pie1, pieConfig);
-    window.myPie = new Chart(pie2, pieConfig);
-    window.myPie = new Chart(pie3, pieConfig);
-    window.myPie = new Chart(pie4, pieConfig);
+    window.myPie = new Chart(pie1, pieConfig1);
+    window.myPie = new Chart(pie2, pieConfig2);
+    window.myPie = new Chart(pie3, pieConfig3);
+    window.myPie = new Chart(pie4, pieConfig4);
 
     
 </script>
 
-<!-- 센터별 TMR 배정이력[bar] 차트 -->
+<!-- 직전일자 센터별 TA점수 분포[bar] 차트 -->
 <script>
     var randomScalingFactor = function() {
         return Math.round(Math.random() * 100);
     };
-            
-    var barConfig = {
-        type: 'horizontalBar',
-        data: horizontalBarChartData,
-        options: {
-            elements: {
-                rectangle: {
-                    borderWidth: 2,
-                }
-            },
-            responsive: true,
-            legend: {
-                position: 'right',
-            },
-        }
-    };
     
     var horizontalBarChartData = {
-    	labels: ['0건', '20건', '40건', '60건', '80건', '100건', '120건', '140건', '160건', '180건', '200건'],
+    	labels: ['200건', '180건', '160건', '140건', '120건', '100건', '80건', '60건', '40건', '20건', '0건'],
     	datasets: [{
     		label: 'TA건',
-    		backgroundColor: window.chartColors.red,
+    		backgroundColor: window.chartColors.green,
     		data: [
     			randomScalingFactor(),
     			randomScalingFactor(),
@@ -402,14 +495,132 @@ jQuery.event.add(window,"load",function(){
     		]
     	}]
     };
+            
+    var horizontalbarConfig = {
+        type: 'horizontalBar',
+        data: horizontalBarChartData,
+        options: {
+            elements: {
+                rectangle: {
+                    borderWidth: 2,
+                }
+            },
+            responsive: true,
+            legend: {
+                position: 'right',
+            },
+        }
+    };    
     
     var bar1 = document.getElementById('bar1').getContext('2d');
+    
+    window.myPie = new Chart(bar1, horizontalbarConfig);
+</script>
+
+<!-- 센터별 TMR 배정이력[bar] 차트 -->
+<script>
+    var randomScalingFactor = function() {
+        return Math.round(Math.random() * 100);
+    };
+    
+    var BarChartData = {
+    	labels: ['Center1', 'Center2', 'Center3', 'Center4', 'Center5', 'Center6', 'Center7'],
+    	datasets: [{
+    		label: 'TA건',
+    		backgroundColor: window.chartColors.green,
+    		data: [
+                randomScalingFactor(),
+    			randomScalingFactor(),
+    			randomScalingFactor(),
+    			randomScalingFactor(),
+    			randomScalingFactor(),
+    			randomScalingFactor(),
+    			randomScalingFactor(),
+    		]
+    	}]
+    };
+            
+    var barConfig = {
+        type: 'bar',
+        data: BarChartData,
+        options: {
+            elements: {
+                rectangle: {
+                    borderWidth: 2,
+                }
+            },
+            responsive: true,
+            legend: {
+                position: 'right',
+            },
+        }
+    };    
+    
     var bar2 = document.getElementById('bar2').getContext('2d');
+    
+    window.myPie = new Chart(bar2, barConfig);
+</script>
+
+<!-- 월 누적 TA점수[bar] 차트 -->
+<script>
+    var randomScalingFactor = function() {
+        return Math.round(Math.random() * 100);
+    };
+    
+    var chartData = {
+			labels: ['1일', '2일', '3일', '4일', '5일', '6일', '7일'],
+			datasets: [{
+				type: 'line',
+				label: 'Dataset 1',
+				borderColor: window.chartColors.blue,
+				borderWidth: 2,
+				fill: false,
+				data: [
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor()
+				]
+			}, {
+				type: 'bar',
+				label: 'Dataset 2',
+				backgroundColor: window.chartColors.red,
+				data: [
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor(),
+					randomScalingFactor()
+				],
+				borderColor: 'white',
+				borderWidth: 2
+			}]
+		};
+            
+    var mixBarConfig = {
+        type: 'bar',
+        data: chartData,
+        options: {
+            responsive: true,
+            title: {
+                display: true,
+                text: 'Chart.js Combo Bar Line Chart'
+            },
+            tooltips: {
+                mode: 'index',
+                intersect: true
+            }
+        }
+    };    
+    
     var bar3 = document.getElementById('bar3').getContext('2d');
     
-    window.myPie = new Chart(bar1, barConfig);
-    window.myPie = new Chart(bar2, barConfig);
-    window.myPie = new Chart(bar3, barConfig);
+    window.myPie = new Chart(bar3, mixBarConfig);
 </script>
 </body>
 </html>
