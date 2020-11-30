@@ -298,8 +298,20 @@
                     </div>
                 </div>
                 
-                <div class="stn">
-                    
+                <div class="stn boxPlotChart">
+                    <div class="viewBox">
+                        <div class="view_tit">
+                            <h3>월 누적 TA 점수</h3>
+                            <!-- [D] .date strong에 해당 월 기준일(1일 ~ 당일) 넣어주기(고정) -->
+                            <span class="date">기준일:<strong>2020-10-01</strong>~<strong>2020-10-13</strong></span>
+                        </div>
+                        
+                        <div class="view_cont">
+                            <div class="chartBox">
+                                <canvas id="boxPlot"></canvas>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- //.tab_content -->
@@ -341,7 +353,7 @@
 <!-- Local Script Library -->
 <script src="../resources/js/Chart.min.js"></script>
 <script src="../resources/js/utils.js"></script>
-<script src="../resources/js/boxplot.js"></script>
+<script src="../resources/js/boxplot.min.js"></script>
 <!-- //Chart -->
 
 <!-- Local Script -->
@@ -353,7 +365,7 @@ jQuery.event.add(window,"load",function(){
 });
 </script>
 
-<!-- 대상건수[pie] 차트 -->
+<!-- CS / TM 대상건수[pie] 차트 -->
 <script type="text/javascript">
     var randomScalingFactor = function() {
         return Math.round(Math.random() * 100);
@@ -381,7 +393,7 @@ jQuery.event.add(window,"load",function(){
             ]
         },
         options: {
-            responsive: true,
+            responsive: false,
             legend: false,
             tooltips: {
                 enabled: true
@@ -418,7 +430,7 @@ jQuery.event.add(window,"load",function(){
             ]
         },
         options: {
-            responsive: true,
+            responsive: false,
             legend: false,
             tooltips: {
                 enabled: true
@@ -455,7 +467,7 @@ jQuery.event.add(window,"load",function(){
             ]
         },
         options: {
-            responsive: true,
+            responsive: false,
             legend: false,
             tooltips: {
                 enabled: true
@@ -492,7 +504,7 @@ jQuery.event.add(window,"load",function(){
             ]
         },
         options: {
-            responsive: true,
+            responsive: false,
             legend: false,
             tooltips: {
                 enabled: true
@@ -515,13 +527,11 @@ jQuery.event.add(window,"load",function(){
     window.myPie = new Chart(pie1, pieConfig1);
     window.myPie = new Chart(pie2, pieConfig2);
     window.myPie = new Chart(pie3, pieConfig3);
-    window.myPie = new Chart(pie4, pieConfig4);
-
-    
+    window.myPie = new Chart(pie4, pieConfig4);    
 </script>
 
-<!-- 직전일자 센터별 TA점수 분포[bar] 차트 -->
-<script>
+<!-- 센터별 TA 점수분포[bar] 차트 -->
+<script type="text/javascript">
     var randomScalingFactor = function() {
         return Math.round(Math.random() * 100);
     };
@@ -557,18 +567,17 @@ jQuery.event.add(window,"load",function(){
                     borderWidth: 2,
                 }
             },
-            responsive: true,
+            responsive: false,
             legend: false,
         }
     };    
     
-    var bar1 = document.getElementById('bar1').getContext('2d');
-    
+    var bar1 = document.getElementById('bar1').getContext('2d');    
     window.myPie = new Chart(bar1, horizontalbarConfig);
 </script>
 
-<!-- 센터별 TMR 배정이력[bar] 차트 -->
-<script>
+<!-- 센터별 TMR 배정분포[bar] 차트 -->
+<script type="text/javascript">
     var randomScalingFactor = function() {
         return Math.round(Math.random() * 100);
     };
@@ -599,79 +608,76 @@ jQuery.event.add(window,"load",function(){
                     borderWidth: 2,
                 }
             },
-            responsive: true,
+            responsive: false,
             legend: false,
         }
     };    
     
-    var bar2 = document.getElementById('bar2').getContext('2d');
-    
+    var bar2 = document.getElementById('bar2').getContext('2d');    
     window.myPie = new Chart(bar2, barConfig);
 </script>
 
 <!-- 월 누적 TA점수[boxPlot] 차트 -->
-<script>
-    var randomScalingFactor = function() {
-        return Math.round(Math.random() * 100);
-    };
+<script type="text/javascript">
+    function randomValues(count, min, max) {
+        var delta = max - min;
+        return Array.from({length: count}).map(() => Math.random() * delta + min);
+    }
     
-    var chartData = {
-			labels: ['1일', '2일', '3일', '4일', '5일', '6일', '7일'],
-			datasets: [{
-				label: 'Dataset 1',
-                backgroundColor: 'rgba(255,0,0,0.5)',
-                borderColor: 'red',
-                borderWidth: 1,
-                outlierColor: '#999999',
-                padding: 10,
-                itemRadius: 0,
-				data: [
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor()
-				]
-			}, {
-				label: 'Dataset 2',
-                backgroundColor:  'rgba(0,0,255,0.5)',
+    var boxplotData = {
+            labels: ['1일', '2일', '3일', '4일', '5일', '6일', '7일', '8일', '9일', '10일', '11일', '12일', '13일', '14일', '15일', '16일', '17일', '18일', '19일', '20일', '21일', '22일', '23일', '24일', '25일', '26일', '27일', '28일', '29일', '30일', '31일'],
+            datasets: [{
+                label: 'Dataset 1',
+                backgroundColor: window.chartColors.blue,
                 borderColor: 'blue',
                 borderWidth: 1,
                 outlierColor: '#999999',
-                padding: 10,
-                itemRadius: 0,
-				data: [
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor(),
-					randomScalingFactor()
-				]
-			}]
-		};
-            
+            data: [
+                randomValues(100, 0, 100),
+                randomValues(100, 0, 20),
+                randomValues(100, 20, 70),
+                randomValues(100, 60, 100),
+                randomValues(40, 50, 100),
+                randomValues(100, 60, 120),
+                randomValues(100, 80, 100),
+                randomValues(100, 0, 100),
+                randomValues(100, 0, 20),
+                randomValues(100, 20, 70),
+                randomValues(100, 60, 100),
+                randomValues(40, 50, 100),
+                randomValues(100, 60, 120),
+                randomValues(100, 80, 100),
+                randomValues(100, 0, 100),
+                randomValues(100, 0, 20),
+                randomValues(100, 20, 70),
+                randomValues(100, 60, 100),
+                randomValues(40, 50, 100),
+                randomValues(100, 60, 120),
+                randomValues(100, 80, 100),
+                randomValues(100, 0, 100),
+                randomValues(100, 0, 20),
+                randomValues(100, 20, 70),
+                randomValues(100, 60, 100),
+                randomValues(40, 50, 100),
+                randomValues(100, 60, 120),
+                randomValues(100, 80, 100),
+                randomValues(100, 0, 100),
+                randomValues(100, 0, 20),
+                randomValues(100, 20, 70)
+            ]
+        }]
+    };
+          
     var boxPlotConfig = {
         type: 'boxplot',
-        data: chartData,
+        data: boxplotData,
         options: {
-            responsive: true,
-            title: {
-                display: true,
-                text: 'Chart.js Combo Bar Line Chart'
-            },
-            tooltips: {
-                mode: 'index',
-                intersect: true
-            }
+            responsive: false,
+            legend: false,
         }
-    };    
+    };
     
     var boxPlot = document.getElementById('boxPlot').getContext('2d');
-    
     window.myPie = new Chart(boxPlot, boxPlotConfig);
 </script>
 </body>
