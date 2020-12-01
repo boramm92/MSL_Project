@@ -217,8 +217,8 @@
                     <div class="viewBox">
                         <div class="view_tit">
                             <h3>CS / TM 대상건수</h3>
-                            <!-- [D] .date strong에 당일날짜 넣어주기(고정) -->
-                            <span class="date">기준일:<strong>2020-10-13</strong></span>
+                            <!-- [D] .date span 당일날짜 넣어주기(고정) -->
+                            <span class="date">기준일:<span>2020-10-13</span></span>
                         </div>
                         
                         <div class="view_cont">
@@ -272,8 +272,8 @@
                                 <option value="">6센터</option>
                                 <option value="">7센터</option>
                             </select>
-                            <!-- [D] .date strong에 직전일자 청약일 넣어주기(고정) -->
-                            <span class="date">청약일:<strong>2020-10-12</strong></span>
+                            <!-- [D] .date span 직전일자 청약일 넣어주기(고정) -->
+                            <span class="date">청약일:<span>2020-10-12</span></span>
                         </div>
                         
                         <div class="view_cont">
@@ -286,8 +286,8 @@
                     <div class="viewBox">
                         <div class="view_tit">
                             <h3>센터별 TMR 배정분포</h3>
-                            <!-- [D] .date strong에 해당 월 기준일(1일 ~ 당일) 넣어주기(고정) -->
-                            <span class="date">기준일:<strong>2020-10-01</strong>~<strong>2020-10-13</strong></span>
+                            <!-- [D] .date span 해당 월 기준일(1일 ~ 당일) 넣어주기(고정) -->
+                            <span class="date">기준일:<span>2020-10-01</span>~<span>2020-10-13</span></span>
                         </div>
                         
                         <div class="view_cont">
@@ -302,8 +302,8 @@
                     <div class="viewBox">
                         <div class="view_tit">
                             <h3>월 누적 TA 점수</h3>
-                            <!-- [D] .date strong에 해당 월 기준일(1일 ~ 당일) 넣어주기(고정) -->
-                            <span class="date">기준일:<strong>2020-10-01</strong>~<strong>2020-10-13</strong></span>
+                            <!-- [D] .date span 해당 월 기준일(1일 ~ 당일) 넣어주기(고정) -->
+                            <span class="date">기준일:<span>2020-10-01</span>~<span>2020-10-13</span></span>
                         </div>
                         
                         <div class="view_cont">
@@ -537,9 +537,9 @@ jQuery.event.add(window,"load",function(){
     };
     
     var horizontalBarChartData = {
-    	labels: ['200건', '180건', '160건', '140건', '120건', '100건', '80건', '60건', '40건', '20건', '0건'],
+    	labels: ['0점', '0~10점', '11~20점', '21~40점', '41~60점', '61~80점', '81~100점'],
     	datasets: [{
-    		label: 'TA점수',
+    		label: '건수',
     		backgroundColor: window.chartColors.green,
     		data: [
     			randomScalingFactor(),
@@ -559,7 +559,7 @@ jQuery.event.add(window,"load",function(){
     };
             
     var horizontalbarConfig = {
-        type: 'horizontalBar',
+        type: 'bar',
         data: horizontalBarChartData,
         options: {
             elements: {
@@ -567,8 +567,26 @@ jQuery.event.add(window,"load",function(){
                     borderWidth: 2,
                 }
             },
-            responsive: false,
+            responsive: true,
+            maintainAspectRatio: false,
             legend: false,
+            scales: {
+				yAxes: [{
+                    scaleLabel:{
+                        display: true,
+                        labelString: '건수',
+                    },
+					ticks: {
+						beginAtZero: true,
+                        max: 200,
+                        stepSize : 50,
+						fontSize : 12,
+					}
+				}],
+                xAxes: [{ 
+                    barThickness: 50, 
+                }] 
+			},
         }
     };    
     
@@ -585,7 +603,7 @@ jQuery.event.add(window,"load",function(){
     var BarChartData = {
     	labels: ['Center1', 'Center2', 'Center3', 'Center4', 'Center5', 'Center6', 'Center7'],
     	datasets: [{
-    		label: 'TMR 배정분포',
+    		label: '분포율',
     		backgroundColor: window.chartColors.green,
     		data: [
                 randomScalingFactor(),
@@ -608,8 +626,25 @@ jQuery.event.add(window,"load",function(){
                     borderWidth: 2,
                 }
             },
-            responsive: false,
+            responsive: true,
+            maintainAspectRatio: false,
             legend: false,
+            scales: {
+				yAxes: [{
+                    scaleLabel:{
+                        display: true,
+                        labelString: '%',
+                    },
+					ticks: {
+						beginAtZero: true,
+                        max: 100,
+						fontSize : 12,
+					}
+				}],
+                xAxes: [{ 
+                    barThickness: 50, 
+                }] 
+			}
         }
     };    
     
@@ -627,43 +662,42 @@ jQuery.event.add(window,"load",function(){
     var boxplotData = {
             labels: ['1일', '2일', '3일', '4일', '5일', '6일', '7일', '8일', '9일', '10일', '11일', '12일', '13일', '14일', '15일', '16일', '17일', '18일', '19일', '20일', '21일', '22일', '23일', '24일', '25일', '26일', '27일', '28일', '29일', '30일', '31일'],
             datasets: [{
-                label: 'Dataset 1',
+                label: '월 누적 TA 점수',
                 backgroundColor: window.chartColors.blue,
-                borderColor: 'blue',
+                borderColor: window.chartColors.green,
                 borderWidth: 1,
-                outlierColor: '#999999',
             data: [
-                randomValues(100, 0, 100),
-                randomValues(100, 0, 20),
-                randomValues(100, 20, 70),
-                randomValues(100, 60, 100),
-                randomValues(40, 50, 100),
-                randomValues(100, 60, 120),
+                randomValues(100, 70, 50),
+                randomValues(100, 50, 20),
+                randomValues(100, 70, 50),
+                randomValues(100, 50, 20),
+                randomValues(140, 50, 80),
+                randomValues(140, 50, 80),
                 randomValues(100, 80, 100),
                 randomValues(100, 0, 100),
                 randomValues(100, 0, 20),
-                randomValues(100, 20, 70),
-                randomValues(100, 60, 100),
+                randomValues(100, 70, 50),
+                randomValues(100, 50, 20),
                 randomValues(40, 50, 100),
-                randomValues(100, 60, 120),
+                randomValues(140, 50, 80),
                 randomValues(100, 80, 100),
                 randomValues(100, 0, 100),
                 randomValues(100, 0, 20),
-                randomValues(100, 20, 70),
-                randomValues(100, 60, 100),
+                randomValues(100, 70, 50),
+                randomValues(100, 50, 20),
                 randomValues(40, 50, 100),
-                randomValues(100, 60, 120),
+                randomValues(140, 50, 80),
                 randomValues(100, 80, 100),
                 randomValues(100, 0, 100),
                 randomValues(100, 0, 20),
-                randomValues(100, 20, 70),
-                randomValues(100, 60, 100),
+                randomValues(100, 70, 50),
+                randomValues(100, 50, 20),
                 randomValues(40, 50, 100),
-                randomValues(100, 60, 120),
+                randomValues(140, 50, 80),
                 randomValues(100, 80, 100),
                 randomValues(100, 0, 100),
                 randomValues(100, 0, 20),
-                randomValues(100, 20, 70)
+                randomValues(100, 70, 50)
             ]
         }]
     };
@@ -672,8 +706,22 @@ jQuery.event.add(window,"load",function(){
         type: 'boxplot',
         data: boxplotData,
         options: {
-            responsive: false,
+            responsive: true,
+            maintainAspectRatio: false,
             legend: false,
+            scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero: true,
+                        max: 150,
+						stepSize : 10,
+						fontSize : 12,
+					}
+				}],
+                xAxes: [{ 
+                    barThickness: 20 
+                }] 
+			},
         }
     };
     
