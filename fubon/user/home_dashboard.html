@@ -654,10 +654,19 @@ jQuery.event.add(window,"load",function(){
 
 <!-- 월 누적 TA점수[boxPlot] 차트 -->
 <script type="text/javascript">
-    function randomValues(count, min, max) {
-        var delta = max - min;
-        return Array.from({length: count}).map(() => Math.random() * delta + min);
-    }
+// function randomValues(count, min, max) {
+//     var delta = max - min;
+//     Array.prototype.slice.call({ length: count }).map(function () {
+//             return Math.random() * delta + min;
+//     });
+// }
+
+function randomValues(count, min, max) {
+    var delta = max - min;
+    return Array.from({ length: count }).map(function () {
+            return Math.random() * delta + min;
+    });
+}
     
     var boxplotData = {
             labels: ['1일', '2일', '3일', '4일', '5일', '6일', '7일', '8일', '9일', '10일', '11일', '12일', '13일', '14일', '15일', '16일', '17일', '18일', '19일', '20일', '21일', '22일', '23일', '24일', '25일', '26일', '27일', '28일', '29일', '30일', '31일'],
@@ -666,8 +675,12 @@ jQuery.event.add(window,"load",function(){
                 backgroundColor: window.chartColors.blue,
                 borderColor: window.chartColors.green,
                 borderWidth: 1,
-            data: [
-                randomValues(100, 70, 50),
+            data: [// {
+            //     low: 10, q1: 30, median: 65, q3: 80, high: 115
+            // }, {
+            //     low: 20, q1: 35, median: 40, q3: 60, high: 95
+            // },
+                randomValues(100, 70, 30),
                 randomValues(100, 50, 20),
                 randomValues(100, 70, 50),
                 randomValues(100, 50, 20),
@@ -706,6 +719,7 @@ jQuery.event.add(window,"load",function(){
         type: 'boxplot',
         data: boxplotData,
         options: {
+            tooltips: true,
             responsive: true,
             maintainAspectRatio: false,
             legend: false,
