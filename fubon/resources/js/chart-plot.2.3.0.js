@@ -785,7 +785,7 @@
       ctx.strokeStyle = vm.borderColor;
       ctx.lineWidth = vm.borderWidth;
 
-      // this._drawBoxPlot(vm, boxplot, ctx, vert);
+      this._drawBoxPlot(vm, boxplot, ctx, vert);
 
       this._drawOutliers(vm, boxplot, ctx, vert);
 
@@ -793,68 +793,68 @@
 
       this._drawItems(vm, boxplot, ctx, vert);
     },
-    // _drawBoxPlot: function _drawBoxPlot(vm, boxplot, ctx, vert) {
-    //   if (vert) {
-    //     this._drawBoxPlotVert(vm, boxplot, ctx);
-    //   } else {
-    //     this._drawBoxPlotHoriz(vm, boxplot, ctx);
-    //   }
-    // },
-    // _drawBoxPlotVert: function _drawBoxPlotVert(vm, boxplot, ctx) {
-    //   var x = vm.x;
-    //   var width = vm.width;
-    //   var x0 = x - width / 2; // Draw the q1>q3 box
-    // 
-    //   if (boxplot.q3 > boxplot.q1) {
-    //     ctx.fillRect(x0, boxplot.q1, width, boxplot.q3 - boxplot.q1);
-    //   } else {
-    //     ctx.fillRect(x0, boxplot.q3, width, boxplot.q1 - boxplot.q3);
-    //   } // Draw the median line
-    // 
-    // 
-    //   ctx.save();
-    // 
-    //   if (vm.medianColor) {
-    //     ctx.strokeStyle = vm.medianColor;
-    //   }
-    // 
-    //   ctx.beginPath();
-    //   ctx.moveTo(x0, boxplot.median);
-    //   ctx.lineTo(x0 + width, boxplot.median); // fill the part below the median with lowerColor
-    // 
-    //   if (vm.lowerColor) {
-    //     ctx.fillStyle = vm.lowerColor;
-    // 
-    //     if (boxplot.q3 > boxplot.q1) {
-    //       ctx.fillRect(x0, boxplot.median, width, boxplot.q3 - boxplot.median);
-    //     } else {
-    //       ctx.fillRect(x0, boxplot.median, width, boxplot.q1 - boxplot.median);
-    //     }
-    //   }
-    // 
-    //   ctx.closePath();
-    //   ctx.stroke();
-    //   ctx.restore(); // Draw the border around the main q1>q3 box
-    // 
-    //   if (boxplot.q3 > boxplot.q1) {
-    //     ctx.strokeRect(x0, boxplot.q1, width, boxplot.q3 - boxplot.q1);
-    //   } else {
-    //     ctx.strokeRect(x0, boxplot.q3, width, boxplot.q1 - boxplot.q3);
-    //   } // Draw the whiskers
-    // 
-    // 
-    //   ctx.beginPath();
-    //   ctx.moveTo(x0, boxplot.whiskerMin);
-    //   ctx.lineTo(x0 + width, boxplot.whiskerMin);
-    //   ctx.moveTo(x, boxplot.whiskerMin);
-    //   ctx.lineTo(x, boxplot.q1);
-    //   ctx.moveTo(x0, boxplot.whiskerMax);
-    //   ctx.lineTo(x0 + width, boxplot.whiskerMax);
-    //   ctx.moveTo(x, boxplot.whiskerMax);
-    //   ctx.lineTo(x, boxplot.q3);
-    //   ctx.closePath();
-    //   ctx.stroke();
-    // },
+    _drawBoxPlot: function _drawBoxPlot(vm, boxplot, ctx, vert) {
+      if (vert) {
+        this._drawBoxPlotVert(vm, boxplot, ctx);
+      } else {
+        this._drawBoxPlotHoriz(vm, boxplot, ctx);
+      }
+    },
+    _drawBoxPlotVert: function _drawBoxPlotVert(vm, boxplot, ctx) {
+      var x = vm.x;
+      var width = vm.width;
+      var x0 = x - width / 2; // Draw the q1>q3 box
+
+      if (boxplot.q3 > boxplot.q1) {
+        ctx.fillRect(x0, boxplot.q1, width, boxplot.q3 - boxplot.q1);
+      } else {
+        ctx.fillRect(x0, boxplot.q3, width, boxplot.q1 - boxplot.q3);
+      } // Draw the median line
+
+
+      ctx.save();
+
+      if (vm.medianColor) {
+        ctx.strokeStyle = vm.medianColor;
+      }
+
+      ctx.beginPath();
+      ctx.moveTo(x0, boxplot.median);
+      ctx.lineTo(x0 + width, boxplot.median); // fill the part below the median with lowerColor
+
+      if (vm.lowerColor) {
+        ctx.fillStyle = vm.lowerColor;
+
+        if (boxplot.q3 > boxplot.q1) {
+          ctx.fillRect(x0, boxplot.median, width, boxplot.q3 - boxplot.median);
+        } else {
+          ctx.fillRect(x0, boxplot.median, width, boxplot.q1 - boxplot.median);
+        }
+      }
+
+      ctx.closePath();
+      ctx.stroke();
+      ctx.restore(); // Draw the border around the main q1>q3 box
+
+      if (boxplot.q3 > boxplot.q1) {
+        ctx.strokeRect(x0, boxplot.q1, width, boxplot.q3 - boxplot.q1);
+      } else {
+        ctx.strokeRect(x0, boxplot.q3, width, boxplot.q1 - boxplot.q3);
+      } // Draw the whiskers
+
+
+      ctx.beginPath();
+      ctx.moveTo(x0, boxplot.whiskerMin);
+      ctx.lineTo(x0 + width, boxplot.whiskerMin);
+      ctx.moveTo(x, boxplot.whiskerMin);
+      ctx.lineTo(x, boxplot.q1);
+      ctx.moveTo(x0, boxplot.whiskerMax);
+      ctx.lineTo(x0 + width, boxplot.whiskerMax);
+      ctx.moveTo(x, boxplot.whiskerMax);
+      ctx.lineTo(x, boxplot.q3);
+      ctx.closePath();
+      ctx.stroke();
+    },
     _drawBoxPlotHoriz: function _drawBoxPlotHoriz(vm, boxplot, ctx) {
       var y = vm.y;
       var height = vm.height;
