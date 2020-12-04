@@ -1,13 +1,14 @@
 'use strict';
 
 window.chartColors = {
-	red: 'rgb(247, 94, 98)',
-	orange: 'rgb(255, 185, 97)',
-	yellow: 'rgb(255, 205, 86)',
-	green: 'rgb(0, 130, 157)',
-	blue: 'rgb(50, 139, 216)',
+	red: 'rgb(255,99,132)',
+	orange: 'rgb(255,159,64)',
+	yellow: 'rgb(255,205,86)',
+	green: 'rgb(75,192,192)',
+	blue: 'rgb(54,162,235)',
 	purple: 'rgb(153, 102, 255)',
-	grey: 'rgb(201, 203, 207)'
+	grey: 'rgb(179, 195, 199)',
+	white: 'rgb(255, 255, 255)'
 };
 
 (function(global) {
@@ -27,11 +28,11 @@ window.chartColors = {
 	];
 
 	var COLORS = [
-		'#4dc9f6',
-		'#f67019',
-		'#f53794',
-		'#537bc4',
-		'#acc236',
+		'#ff6384',
+		'#ff9f40',
+		'#ffcd56',
+		'#4bc0c0',
+		'#36a2eb',
 		'#166a8f',
 		'#00a950',
 		'#58595b',
