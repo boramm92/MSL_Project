@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="format-detection" content="telephone=no">
+
+<!---------------------- General Resources ---------------------->
+<!-- General CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+<link rel="stylesheet" type="text/css" href="../../../assets/css/reset.css"/>
+<link rel="stylesheet" type="text/css" href="../../../assets/css/font.css"/>
+<link rel="stylesheet" type="text/css" href="../../../assets/css/jquery-ui-1.8.18.css"/>
+<link rel="stylesheet" type="text/css" href="../../../assets/css/common.css"/>
+
+<!-- General Script -->
+<script type="text/javascript" src="../../../assets/js/jquery-2.2.0.min.js"></script>
+
+<title>문의 글 관리 ll ADMIN</title>
+</head>
+<body>
+<!-- wrap -->
+<div id="wrap">
+	<!-- #header -->
+	<div id="header">
+        <h1><a target="_self" href="#none"><img src="../../../assets/images/img_maumdata_logo.svg" alt="logo"></a></h1>
+    	<h2>Administration</h2>
+		<!-- .etcmenu -->
+		<div class="etcmenu">
+            <div class="userBox">
+				<span class="my_point">4,600</span>
+				<div class="btn_box">
+					<a href="#none"><span class="fas fa-chalkboard"></span>워크스페이스</a>
+				</div>
+            </div>
+			<div class="outBox">
+				<a target="_self" href="#none">Sign out <em class="fas fa-sign-out-alt"></em></a>
+            </div>
+		</div>
+		<!-- //.etcmenu -->
+	</div>
+	<!-- //#header -->
+
+	<!-- #container -->
+	<div id="container" class="admin qna">
+        <!-- .snb -->
+		<div class="snb">
+			<ul class="nav">
+				<li>
+					<a target="_self" href="project.html">프로젝트 관리</a>
+                </li>
+				<li>
+					<a target="_self" href="worker_reviewer.html">작업/<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;검수자 관리</a>
+                </li>
+				<li>
+					<a target="_self" href="project.html">고객사 관리</a>
+				</li>
+                <li class="active">
+					<a target="_self" href="question_list.html">문의관리</a>
+				</li>
+			</ul>
+		</div>
+		<!-- //.snb -->
+
+		<!-- .contents -->
+		<div class="contents">
+            <!-- .content -->
+            <div class="content">
+				<!-- .work_space -->
+				<div class="work_space">
+					<h3>문의 글 관리</h3>
+
+					<div class="sort_group">
+						<div class="select_box">
+							<select>
+								<option value="" selected>프로젝트</option>
+								<option value="">프로젝트명</option>
+								<option value="">프로젝트명</option>
+								<option value="">프로젝트명</option>
+							</select>
+                            <select>
+								<option value="" selected>질문유형</option>
+								<option value="">로그인, 회원가입</option>
+								<option value="">작업 관련 문의</option>
+                                <option value="">검수 관련 문의</option>
+                                <option value="">포인트 관련 문의</option>
+								<option value="">기타 문의</option>
+							</select>
+                            <select>
+								<option value="" selected>답변 상태</option>
+								<option value="">답변대기</option>
+								<option value="">진행중</option>
+								<option value="">답변완료</option>
+							</select>
+						</div>
+
+						<div class="srch_box">
+							<form action="">
+								<input type="text" placeholder="제목+내용">
+								<button type="submit">
+									<em class="hide">검색버튼</em>
+									<span class="fas fa-search"></span>
+								</button>
+							</form>
+						</div>
+					</div>
+
+					<div class="common_tbl">
+						<table summary="프로젝트 명, 질문 유형, 문의, 작성자, 작성 날짜, 답변, 상태로 구성">
+							<caption class="hide">문의글 목록</caption>
+							<colgroup>
+								<col width="230"><col width="140"><col>
+                                <col width="100"><col width="120"><col width="80"><col width="100">
+							</colgroup>
+
+							<thead>
+								<tr>
+									<th scope="col">프로젝트 명</th>
+									<th scope="col">질문 유형</th>
+									<th scope="col">문의</th>
+									<th scope="col">작성자</th>
+									<th scope="col">작성 날짜</th>
+									<th scope="col">답변</th>
+									<th scope="col">상태</th>
+								</tr>
+							</thead>
+
+							<tbody>
+                                <tr>
+                                    <td colspan="7" class="empty_data">조회된 데이터가 없습니다.</td>
+                                </tr>
+								<tr>
+									<td scope="row">보행방해물 이미지 바운딩 작업하기</td>
+									<td>작업 관련 문의</td>
+									<td>
+                                        <a href="write_answer.html">0000 버튼이 안눌립니다.</a>
+                                    </td>
+									<td>홍길동</td>
+									<td>2020-02-29</td>
+									<td>0</td>
+									<td>
+                                        <span class="wait">답변대기</span>
+                                    </td>
+								</tr>
+                                <tr>
+									<td scope="row">보행방해물 이미지 바운딩</td>
+									<td>작업 관련 문의</td>
+									<td>
+                                        <a href="#none">빨리 답을 주셔야 반려건을 해결합니다.</a>
+                                    </td>
+									<td>장그래</td>
+									<td>2020-02-29</td>
+									<td>0</td>
+									<td>
+                                        <span class="ongoing">진행중</span>
+                                    </td>
+								</tr>
+                                <tr>
+									<td scope="row">이미지 세그멘테이션 작업 </td>
+									<td>작업 관련 문의</td>
+									<td>
+                                        <a href="#none">반려 사유에 쓰신 말씀이 이해가 안되어서 문의합니다.</a>
+                                    </td>
+									<td>장그래</td>
+									<td>2020-02-29</td>
+									<td>0</td>
+									<td>
+                                        <span class="cplt">답변완료</span>
+                                    </td>
+								</tr>
+                                <tr>
+									<td scope="row">보행방해물 이미지 바운딩 작업하기</td>
+									<td>작업 관련 문의</td>
+									<td>
+                                        <a href="#none">0000 버튼이 안눌립니다.</a>
+                                    </td>
+									<td>홍길동</td>
+									<td>2020-02-29</td>
+									<td>0</td>
+									<td>
+                                        <span class="wait">답변대기</span>
+                                    </td>
+								</tr>
+                                <tr>
+									<td scope="row">보행방해물 이미지 바운딩</td>
+									<td>작업 관련 문의</td>
+									<td>
+                                        <a href="#none">빨리 답을 주셔야 반려건을 해결합니다.</a>
+                                    </td>
+									<td>장그래</td>
+									<td>2020-02-29</td>
+									<td>0</td>
+									<td>
+                                        <span class="ongoing">진행중</span>
+                                    </td>
+								</tr>
+                                <tr>
+									<td scope="row">이미지 세그멘테이션 작업 </td>
+									<td>작업 관련 문의</td>
+									<td>
+                                        <a href="#none">반려 사유에 쓰신 말씀이 이해가 안되어서 문의합니다.</a>
+                                    </td>
+									<td>장그래</td>
+									<td>2020-02-29</td>
+									<td>0</td>
+									<td>
+                                        <span class="cplt">답변완료</span>
+                                    </td>
+								</tr>
+                                <tr>
+									<td scope="row">보행방해물 이미지 바운딩 작업하기</td>
+									<td>작업 관련 문의</td>
+									<td>
+                                        <a href="#none">0000 버튼이 안눌립니다.</a>
+                                    </td>
+									<td>홍길동</td>
+									<td>2020-02-29</td>
+									<td>0</td>
+									<td>
+                                        <span class="wait">답변대기</span>
+                                    </td>
+								</tr>
+                                <tr>
+									<td scope="row">보행방해물 이미지 바운딩</td>
+									<td>작업 관련 문의</td>
+									<td>
+                                        <a href="#none">빨리 답을 주셔야 반려건을 해결합니다.</a>
+                                    </td>
+									<td>장그래</td>
+									<td>2020-02-29</td>
+									<td>0</td>
+									<td>
+                                        <span class="ongoing">진행중</span>
+                                    </td>
+								</tr>
+                                <tr>
+									<td scope="row">이미지 세그멘테이션 작업 </td>
+									<td>작업 관련 문의</td>
+									<td>
+                                        <a href="#none">반려 사유에 쓰신 말씀이 이해가 안되어서 문의합니다.</a>
+                                    </td>
+									<td>장그래</td>
+									<td>2020-02-29</td>
+									<td>0</td>
+									<td>
+                                        <span class="cplt">답변완료</span>
+                                    </td>
+								</tr>
+                                <tr>
+									<td scope="row">보행방해물 이미지 바운딩 작업하기</td>
+									<td>작업 관련 문의</td>
+									<td>
+                                        <a href="#none">0000 버튼이 안눌립니다.</a>
+                                    </td>
+									<td>홍길동</td>
+									<td>2020-02-29</td>
+									<td>0</td>
+									<td>
+                                        <span class="wait">답변대기</span>
+                                    </td>
+								</tr>
+                                <tr>
+									<td scope="row">보행방해물 이미지 바운딩</td>
+									<td>작업 관련 문의</td>
+									<td>
+                                        <a href="#none">빨리 답을 주셔야 반려건을 해결합니다.</a>
+                                    </td>
+									<td>장그래</td>
+									<td>2020-02-29</td>
+									<td>0</td>
+									<td>
+                                        <span class="ongoing">진행중</span>
+                                    </td>
+								</tr>
+                                <tr>
+									<td scope="row">이미지 세그멘테이션 작업 </td>
+									<td>작업 관련 문의</td>
+									<td>
+                                        <a href="#none">반려 사유에 쓰신 말씀이 이해가 안되어서 문의합니다.</a>
+                                    </td>
+									<td>장그래</td>
+									<td>2020-02-29</td>
+									<td>0</td>
+									<td>
+                                        <span class="cplt">답변완료</span>
+                                    </td>
+								</tr>
+                                <tr>
+									<td scope="row">보행방해물 이미지 바운딩 작업하기</td>
+									<td>작업 관련 문의</td>
+									<td>
+                                        <a href="#none">0000 버튼이 안눌립니다.</a>
+                                    </td>
+									<td>홍길동</td>
+									<td>2020-02-29</td>
+									<td>0</td>
+									<td>
+                                        <span class="wait">답변대기</span>
+                                    </td>
+								</tr>
+                                <tr>
+									<td scope="row">보행방해물 이미지 바운딩</td>
+									<td>작업 관련 문의</td>
+									<td>
+                                        <a href="#none">빨리 답을 주셔야 반려건을 해결합니다.</a>
+                                    </td>
+									<td>장그래</td>
+									<td>2020-02-29</td>
+									<td>0</td>
+									<td>
+                                        <span class="ongoing">진행중</span>
+                                    </td>
+								</tr>
+                                <tr>
+									<td scope="row">이미지 세그멘테이션 작업 </td>
+									<td>작업 관련 문의</td>
+									<td>
+                                        <a href="#none">반려 사유에 쓰신 말씀이 이해가 안되어서 문의합니다.</a>
+                                    </td>
+									<td>장그래</td>
+									<td>2020-02-29</td>
+									<td>0</td>
+									<td>
+                                        <span class="cplt">답변완료</span>
+                                    </td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div class="btm_info">
+						<div class="paging">
+							<a class="btn_paging_prev" href="#none" >이전 페이지로 이동</a>
+							<span class="list">
+								<a href="#none" class="on">1</a>
+								<a href="#none">2</a>
+								<a href="#none">3</a>
+								<a href="#none">4</a>
+								<a href="#none">5</a>
+							</span>
+							<a class="btn_paging_next" href="#none">다음 페이지로 이동</a>
+						</div>
+					</div>
+				</div>
+				<!-- //.work_space -->
+            </div>
+            <!-- //.content -->
+		</div>
+		<!-- //.contents -->
+	</div>
+	<!-- //#container -->
+
+	<!-- #footer -->
+		<div id="footer">
+			<!-- .w_footer -->
+			<!-- [D] 웹 사이즈에서 보여지는 footer -->
+			<div class="w_footer">
+				<div class="copyright">
+					<div class="cont_box">
+						<span>&copy; Copyright 2020</span>
+						<span>(주)마인즈랩</span>
+						<span>경기도 성남시 분당구 대왕판교로644번길 49 다산타워 6층</span>
+						<span>대표 유태준</span>
+						<span>사업자 등록번호 314-86-55446</span>
+					</div>
+				</div>
+			</div>
+			<!-- //.w_footer -->
+		</div>
+		<!-- //#footer -->
+</div>
+<!-- //#wrap -->
+
+<!---------------------- Local Resources ---------------------->
+<!-- Local CSS -->
+<link rel="stylesheet" type="text/css" href="../../../assets/css/operator.css"/>
+
+<!-- Local Script -->
+<script type="text/javascript">
+jQuery.event.add(window,"load",function(){
+    $(document).ready(function(){
+        // 인풋 라벨
+		var placeholderLabel = $('input[type="text"], input[type="number"]');
+
+		placeholderLabel.on('focus', function(){
+			$(this).siblings('label').hide();
+		});
+		placeholderLabel.on('focusout', function(){
+			if($(this).val() === ''){
+				$(this).siblings('label').show();
+			}
+		});
+	});
+});
+</script>
+</body>
+</html>
