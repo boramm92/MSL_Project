@@ -330,24 +330,24 @@ jQuery.event.add(window,"load",function(){
                 $('.current_option').text(optionText);
             });
         });
-        
+
         // 테이블 내 조회 또는 설정 버튼 클릭 시 해당 목록 하이라이트
         $('.btn_check, .btn_set').on('click', function(){
             $(this).parent('tbody').find('tr').removeClass('active');
             $(this).parent('tr').addClass('active');
         });
-        
+
         // 팝업 하단 닫기버튼 클릭 시 새창팝업 닫힘
         $('.pop_btm .btnBox .btn_close').on('click', function(){
             opener.$('.tbl_include_btn tbody tr').removeClass('active');    // 20.10.10 추가
             window.open('about:blank', '_self').close();
         });
-        
+
         // 팝업 상단 닫기버튼 클릭 시 상위페이지 라인 하이라이팅 제거 (20.10.10 추가)
         onbeforeunload = function(){
             opener.$('.tbl_include_btn tbody tr').removeClass('active');
         }
-        
+
         // 설정 영역 내 테이블 상단 수정버튼 클릭 시 저장, 삭제, 취소버튼 보여주기
         $('.btn_change_group .btn_edit').on('click', function(){
             $(this).hide();
@@ -358,13 +358,13 @@ jQuery.event.add(window,"load",function(){
             $(this).parent('.btn_change_group').find('.btn_edit_show').css('display', 'none');
             $(this).parent('.btn_change_group').find('.btn_edit').show();
         });
-        
+
         // 스크롤바 width 사이즈 구하기 - 스크롤 테이블의 브라우저 호환성때문에 필요
         function getScrollBarWidth() {
             var inner = document.createElement('p');
             inner.style.width = "100%";
             inner.style.height = "200px";
-        
+
             var outer = document.createElement('div');
             outer.style.position = "absolute";
             outer.style.top = "0px";
@@ -374,13 +374,13 @@ jQuery.event.add(window,"load",function(){
             outer.style.height = "150px";
             outer.style.overflow = "hidden";
             outer.appendChild (inner);
-        
+
             document.body.appendChild (outer);
             var w1 = inner.offsetWidth;
             outer.style.overflow = 'scroll';
             var w2 = inner.offsetWidth;
             if (w1 == w2) w2 = outer.clientWidth;
-        
+
             document.body.removeChild (outer);
             return (w1 - w2);
         };
@@ -400,7 +400,7 @@ jQuery.event.add(window,"load",function(){
             });
         };
         handleScrollTableHeader();
-        
+
         // 테이블 내 조회 또는 추가 버튼 클릭 시 하단 설정 테이블 영역 보여주며 handleScrollTableHeader 실행
         $('.btn_check, .btn_add').on('click', function(){
             $('.setArea').show();
