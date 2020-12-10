@@ -86,7 +86,7 @@
                                 <div class="sample_box">
                                     <div class="video_box">
                                         <video src="video/lipSync_sample.mp4" controls autoplay></video>
-                                    </div>                                    
+                                    </div>
                                 </div>
                             </div>
 
@@ -139,21 +139,21 @@
                                     </li>
                                 </ul>
                             </div>
-                            
+
                             <div class="txt_box">
                                 <p>
                                     <em class="far fa-keyboard"></em>
                                     <strong>듣고 싶은 문장을 직접 입력해주세요.</strong>
                                 </p>
-                                
+
                                 <div class="textarea">
                                     <!-- [D] placeholder외에 기본으로 입력되는 문장(안녕하세요?~인사드립니다.)은 유지해주세요 -->
                                     <textarea class="lipSync_txt" placeholder="아바타가 말할 텍스트를 50자 이내로 입력하세요.">안녕하세요? 2020년 마인즈랩 마음 AI 아바타 인사드립니다.</textarea>
                                 </div>
-                                
+
                                 <span class="txt_length"><strong>0</strong> &sol; 50자</span>
                                 <ul class="info_txt">
-                                    <li>*현재 모델은 한국어에 최적화되어있습니다.</li>                                    
+                                    <li>*현재 모델은 한국어에 최적화되어있습니다.</li>
                                     <li>*아바타 및 TTS 모델은 커스타미이징 학습이 가능합니다.</li>
                                     <li>*특수문자(예: #, *, ~ ), 특수단위(예: ㎖, ㎡, ㎧ ㎉ 등), 다른 언어 등 현재 TTS 모델에서 수정이 필요한 경우, 고객센터로 문의주세요.</li>
                                 </ul>
@@ -197,14 +197,14 @@
                                 <div class="result_box">
                                     <video src="video/lipSync_sample.mp4" controls autoplay loop></video>
                                 </div>
-                                
+
                                 <div class="txt_box">
                                     <span>입력 문장</span>
                                     <div class="textarea">
                                         <p class="input_">2020년은 코로나 때문에 힘드셨을텐데, 앞으로는 행복한 일이 가득하시길 바랍니다.2020년은</p>
                                     </div>
                                 </div>
-                                
+
                                 <a id="save" class="btn_dwn">
                                     <em class="far fa-arrow-alt-circle-down"></em> 결과 파일 다운로드
                                 </a>
@@ -243,6 +243,132 @@
 
                             <p class="sub_txt">입력한 텍스트에 따라 자연스럽게 말하는 아바타가 생성됩니다.</p>
                             <span class="sub_title">준비사항</span>
+                            <p class="sub_txt">- Input 1: 듣고 싶은 문장 텍스트</p>
+                            <ul>
+                                <li>제약사항 1) : 1000자 이내의 문장(한글 기준)</li>
+                                <li>제약사항 2) : 긴 문장을 넣을수록 동영상 처리하는 시간이 오래 걸립니다</li>
+                            </ul>
+                            <p class="sub_txt">- Input 2: 배경 이미지 파일</p>
+                            <ul>
+                                <li>확장자 : .jpg, .png</li>
+                                <li>용량 : 10MB 이하 </li>
+                            </ul>
+                            <span class="sub_title">실행 가이드</span>
+                            <em>&#8203;Upload : 발화할 텍스트 및 배경 이미지를 넣고 request key를 받아옵니다.</em>
+                            <p class="sub_txt">① Request </p>
+                            <ul>
+                                <li>Method : POST</li>
+                                <li>URL : https://api.maum.ai/lipsync/upload</li>
+                            </ul>
+                            <p class="sub_txt">② Request 파라미터 설명 </p>
+                            <table>
+                                <tr>
+                                    <th>키</th>
+                                    <th>설명</th>
+                                    <th>type</th>
+                                </tr>
+                                <tr>
+                                    <td>apiId </td>
+                                    <td>사용자의 고유 ID. 마인즈랩 담당자에게 이메일로 발급요청 </td>
+                                    <td>string</td>
+                                </tr>
+                                <tr>
+                                    <td>apiKey </td>
+                                    <td>사용자의 고유 key. 마인즈랩 담당자에게 이메일로 발급요청 </td>
+                                    <td>string</td>
+                                </tr>
+                                <tr>
+                                    <td>text</td>
+                                    <td>문장 (*50자 이내)</td>
+                                    <td>file</td>
+                                </tr>
+                                <tr>
+                                    <td>image</td>
+                                    <td>배경 이미지</td>
+                                    <td>file</td>
+                                </tr>
+                            </table>
+                            <p class="sub_txt">③ Request 예제 </p>
+                            <div class="code_box">
+                                <pre>
+curl --location --request POST
+'https://api.maum.ai/feat/getHairInfo' \
+--header 'Content-Type: multipart/form-data' \
+--form 'apiId= 발급받은 API ID' \
+--form 'apiKey= 발급받은 API KEY' \
+--form 'text= 아바타가 발화할 문장'
+--form 'image= 아바타의 배경 이미지 파일'
+</pre>
+                            </div>
+
+                            <p class="sub_txt">④ Request 파라미터 설명 </p>
+                            <span class="table_tit">Response</span>
+                            <table>
+                                <tr>
+                                    <th>키</th>
+                                    <th>설명</th>
+                                    <th>type</th>
+                                </tr>
+                                <tr>
+                                    <td>message </td>
+                                    <td>API 동작여부</td>
+                                    <td>list</td>
+                                </tr>
+                                <tr>
+                                    <td>payload</td>
+                                    <td>결과</td>
+                                    <td>list</td>
+                                </tr>
+                            </table>
+
+                            <span class="table_tit">message: API 동작여부</span>
+                            <table>
+                                <tr>
+                                    <th>키</th>
+                                    <th>설명</th>
+                                    <th>type</th>
+                                </tr>
+                                <tr>
+                                    <td>message</td>
+                                    <td>요청 처리 상태를 설명하는 문자열  (Success/ Fail)</td>
+                                    <td>string</td>
+                                </tr>
+                                <tr>
+                                    <td>status</td>
+                                    <td>요청 처리 상태에 대한 status code (0: Success)</td>
+                                    <td>number</td>
+                                </tr>
+                            </table>
+
+                            <span class="table_tit">payload: 결과</span>
+                            <table>
+                                <tr>
+                                    <th>키</th>
+                                    <th>설명</th>
+                                    <th>type</th>
+                                </tr>
+                                <tr>
+                                    <td>requestKey</td>
+                                    <td>아바타 생성을 위한 request Key</td>
+                                    <td>string</td>
+                                </tr>
+                            </table>
+
+                            <p class="sub_txt">⑤ Response 예제 </p>
+
+                            <div class="code_box">
+                                <pre>
+{
+"message": {
+"message": "Success",
+"status": 0
+},
+"payload": {
+"requestKey": "요청 key"
+}
+}
+</pre>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -252,6 +378,50 @@
                 <div class="demobox" id="avrexample">
                     <p><em style="color:#f7778a;font-weight: 400;">적용사례</em> <small>(Use Cases)</small></p>
                     <span class="sub">마인즈랩의 앞선 기술을 다양하게 활용할 수 있습니다.</span>
+
+                    <!-- 의상/패션 검색용 엔진 -->
+                    <div class="useCasesBox">
+                        <ul class="lst_useCases">
+                            <li>
+                                <dl>
+                                    <dt>
+                                        <em>CASE 01</em>
+                                        <span>영상 제작</span>
+                                    </dt>
+                                    <dd class="txt">뉴스 또는 인터뷰와 같이 정보 전달 영상을 제작할 때, 가상의 인물의 음성과 영상으로 함께 나타낼 수 있습니다.</dd>
+                                </dl>
+                            </li>
+                            <li>
+                                <dl>
+                                    <dt>
+                                        <em>CASE 02</em>
+                                        <span>가상 비서<strong>(Virtual Assistant)</strong></span>
+                                    </dt>
+                                    <dd class="txt">개인 비서처럼 사용자가 요구하는 작업을 처리하고 사용자에게 특화된 서비스를 제공하는 소프트웨어 에이전트에 활용</dd>
+                                    <dd class="api_itemBox">
+                                        <ul class="lst_api">
+                                            <li class="ico_bot"><span>챗봇</span></li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </li>
+                            <li>
+                                <dl>
+                                    <dt>
+                                        <em>CASE 03</em>
+                                        <span>키오스크<strong>가상 컨시어지</strong></span>
+                                    </dt>
+                                    <dd class="txt">호텔 컨시어지에 필요한 모든 서비스를 제공해주는 버추얼 컨시어지의 형태로 활용되어집니다.</dd>
+                                    <dd class="api_itemBox">
+                                        <ul class="lst_api">
+                                            <li class="ico_conciergeBot"><span>호텔 컨시어지 챗봇</span></li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- //의상/패션 검색용 엔진 -->
                 </div>
                 <!--//.avrexample-->
             </div>
@@ -287,7 +457,7 @@ jQuery.event.add(window,"load",function(){
         // 문장 입력 글자수 제한
         $('.lipSync_txt').keyup(function (e){
             var content = $(this).val();
-            $('.txt_length strong').html(content.length);    
+            $('.txt_length strong').html(content.length);
 
             if (content.length > 50){
                 alert("최대 50자까지 입력 가능합니다.");
