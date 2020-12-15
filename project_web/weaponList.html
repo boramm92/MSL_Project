@@ -340,7 +340,7 @@
                                     <span class="thumbnail">
                                         <img src="resources/images/img_weapon01.png" alt="무기 이미지">
                                     </span>
-                                    <span class="title">시그 자우어 SIG Pro SP2009, SIG Pro SP2009 Compact 권총</span>
+                                    <span class="title">시그 자우어 SIG Pro SP2009, SIG Pro SP2009 Compact 권총시그 자우어 SIG Pro SP2009, SIG Pro SP2009 Compact 권총</span>
                                 </a>
                             </li>
                             <li>
@@ -568,6 +568,17 @@ jQuery.event.add(window,"load",function(){
         $('.btn_view_thumb').on('click', function(){
             $('.viewBox > div').removeClass('on');
             $('.type_thumb').addClass('on');
+        });
+
+        // 검색 상세결과 글자수로 제한하여 말줄임 처리
+        $('.item_list li .title').each(function(){
+            var titleTxt = $(this).text(),
+                trimtitleTxt = titleTxt.substring(0, 35),
+                titleTxtNum = $(this).text().length;
+
+            if( titleTxtNum > 35 ){
+                $(this).html(trimtitleTxt).append('<span class="text_els">&hellip;</span>');
+            }
         });
     });
 });
