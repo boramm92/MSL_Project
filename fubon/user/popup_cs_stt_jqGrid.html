@@ -134,7 +134,7 @@
                 <table id="jqGrid" class="stt_detail"></table>
                 
                 <div class="btnBox">
-                    <a href="#none">Excel 다운로드</a>
+                    <a href="#none" class="btn_dwn_excel">Excel 다운로드</a>
                 </div>
             </div>
             <!-- //.jqGridBox -->
@@ -190,10 +190,11 @@
 <link rel="stylesheet" href="../resources/css/popup.css">
 
 <!-- Local Script Library -->
-<script src="../resources/js/jquery.jqGrid.min.js"></script>
-<!-- //jqgrid -->
 <script src="../resources/js/player.js"></script>
 <!-- //player -->
+<script src="../resources/js/jquery.jqGrid.min.js"></script>
+<script src="../resources/js/jszip.min.js"></script>
+<!-- //jqgrid -->
 
 <!-- Local Script -->
 <script type="text/javascript">
@@ -256,8 +257,19 @@ jQuery.event.add(window,"load",function(){
             edittable: false,
         });
         
+        // 엑셀 다운로드
+        $('.btn_dwn_excel').on('click', function(){
+			$('#jqGrid').jqGrid('exportToExcel',{
+				includeLabels : true,
+				includeGroupHeader : true,
+				includeFooter: true,
+				fileName : 'jqGridExport.xlsx',
+				maxlength : 40 // maxlength for visible string data 
+			})
+		});
+            
         // jqrid 테이블 width 100% 맞춰주기
-        $("#jqGrid").jqGrid( 'setGridWidth', $(".jqGridBox").width() );
+        $('#jqGrid').jqGrid('setGridWidth', $('.jqGridBox').width());
 
         // STT 결과에서 텍스트 검색하기
         $('.ui-jqgrid-bdiv').addClass('stt_scroll');
