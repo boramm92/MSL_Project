@@ -123,7 +123,7 @@
                     </div>
                 </div>
                 <!-- //.term_srch_box -->
-                
+
                 <!-- [D] jqgrid 라이브러리 영역 -->
                 <!-- [D] 'Excel 다운로드' 버튼 클릭 시 파일 다운로드됨 -->
                 <!-- [D] '구분'(상담사 / 고객) 열의 텍스트가 '고객'일 경우, '구분, 시작시간, STT 결과'에 해당하는 셀 백그라운드컬러 처리됨 -->
@@ -132,7 +132,7 @@
 
                 <!-- [D] '무음'셀 th에 무음길이 숫자입력을 위한 input 추가함, 해당 입력창에 숫자 입력 후 엔터 키 누르면 입력숫자 이상의 셀에 addclass('active')되며 백그라운드 하이라이트됨, 입력숫자 지운후 엔터 키 누르면 removeclass('active')되며 백그라운드 하이라이트 사라짐  -->
                 <table id="jqGrid" class="stt_detail"></table>
-                
+
                 <div class="btnBox">
                     <a href="#none" class="btn_dwn_excel">Excel 다운로드</a>
                 </div>
@@ -205,7 +205,7 @@ jQuery.event.add(window,"load",function(){
         $('.btn_player_play').on('click',function(){
             $(this).toggleClass('pause');
         });
-        
+
         // jqGrid 렌더링
         var mydata = [
             {순번:"1",구분:"상담사",시작시간:"0:00:02",STT결과:"가입설계 체결 위해서 관련 법률에 따라 수집 이용 조회 제공에 동의 얻고자하며 신용등급과 무관하시고 동의 하지 않으실 경우에는 계약상담이 불가능하신데요", 상담키워드:"신용등급",무음:"1",수정:"Y"} ,
@@ -236,27 +236,26 @@ jQuery.event.add(window,"load",function(){
             {순번:"28",구분:"고객",시작시간:"0:00:07",STT결과:"제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요", 상담키워드:"",무음:"78",수정:""},
             {순번:"29",구분:"고객",시작시간:"0:00:11",STT결과:"제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요", 상담키워드:"",무음:"8",수정:""}
         ];
-        
+
         //jqGrid
         $("#jqGrid").jqGrid({
             data: mydata,
             datatype: "local",
             colNames:['순번', '구분', '시작시간', 'STT결과', '상담키워드', '무음', '수정'],
             colModel:[
-                {name:'순번', index:'순번', width:50, align:'center'},
-                {name:'구분', index:'구분', width:60, align:'center'},
-                {name:'시작시간', index:'시작시간', width:70, align:'center'},
-                {name:'STT결과', index:'STT결과', width:1170},
-                {name:'상담키워드', index:'상담키워드', width:100, align:'center'},
-                {name:'무음', index:'무음', width:90, align:'center', sorttype:'integer'},		
-                {name:'수정', index:'수정', width:60, align:'center'}		
+                {name:'순번', index:'순번', width:50, align:'center', sortable: false, resizable: false, title: false},
+                {name:'구분', index:'구분', width:60, align:'center', sortable: false, resizable: false, title: false},
+                {name:'시작시간', index:'시작시간', width:70, align:'center', sortable: false, resizable: false, title: false},
+                {name:'STT결과', index:'STT결과', width:1170, sortable: false, resizable: false, title: false},
+                {name:'상담키워드', index:'상담키워드', width:100, align:'center', sortable: false, resizable: false, title: false},
+                {name:'무음', index:'무음', width:90, align:'center', sorttype:'integer', sortable: false, resizable: false, title: false},
+                {name:'수정', index:'수정', width:60, align:'center', sortable: false, resizable: false, title: false}
             ],
             rowNum: 30,
             height: 645,
-            sortable: false,
-            edittable: false,
+            title: false,
         });
-        
+
         // 엑셀 다운로드
         $('.btn_dwn_excel').on('click', function(){
 			$('#jqGrid').jqGrid('exportToExcel',{
@@ -264,16 +263,16 @@ jQuery.event.add(window,"load",function(){
 				includeGroupHeader : true,
 				includeFooter: true,
 				fileName : 'jqGridExport.xlsx',
-				maxlength : 40 // maxlength for visible string data 
+				maxlength : 40 // maxlength for visible string data
 			})
 		});
-            
+
         // jqrid 테이블 width 100% 맞춰주기
         $('#jqGrid').jqGrid('setGridWidth', $('.jqGridBox').width());
 
         // STT 결과에서 텍스트 검색하기
         $('.ui-jqgrid-bdiv').addClass('stt_scroll');
-        $('.ui-jqgrid tr.ui-row-ltr td:nth-child(4)').addClass('sttSrchArea');
+        $('.stt_detail td:nth-child(4)').addClass('sttSrchArea');
 
         $("#findTxtField").keydown(function(key) {
             if (key.keyCode == 13) {
@@ -390,7 +389,7 @@ jQuery.event.add(window,"load",function(){
         var $contextMenu = $('.contextMenu');
 
         // 상담내용 셀 영역에서만 context menu 등장하도록 지정
-        $('body').on('contextmenu', '.dataTable tbody td:nth-child(4)', function(e){
+        $('body').on('contextmenu', '.stt_detail td:nth-child(4)', function(e){
             $contextMenu.css({
                 display: 'block',
                 left: e.pageX,
@@ -399,8 +398,8 @@ jQuery.event.add(window,"load",function(){
             return false;
         });
 
-        $('.ui-jqgrid tr.ui-row-ltr td:nth-child(4)').contextmenu(function(){
-            $('.ui-jqgrid tr.ui-row-ltr td:nth-child(4)').removeClass('active');
+        $('.stt_detail td:nth-child(4)').contextmenu(function(){
+            $('.stt_detail td:nth-child(4)').removeClass('active');
             $(this).toggleClass('active');
 
             var sttScript = $(this).text(); // 선택한 셀의 상담내용
@@ -424,7 +423,7 @@ jQuery.event.add(window,"load",function(){
 
         // 무음길이 입력 후 엔터치면 입력값 이상 숫자들 백그라운드 하이라이트 처리
         function largersilentNum(){
-            $('.ui-jqgrid tr.ui-row-ltr td:nth-child(6)').each(function(){
+            $('.stt_detail td:nth-child(6)').each(function(){
                 // 테이블에서의 무음 길이
                 var sttSilentText = $(this).text();
                 var sttSilentNum = Number(sttSilentText);
@@ -446,12 +445,12 @@ jQuery.event.add(window,"load",function(){
             if(e.which == 13){
                 largersilentNum();
             }if(e.which == 13 && $('.srch_silent_num').val() == ''){
-                $('.ui-jqgrid tr.ui-row-ltr td:nth-child(6)').removeClass('active');
+                $('.stt_detail td:nth-child(6)').removeClass('active');
             }
         });
 
         // 구분이 '고객'인 경우 해당하는 '구분, 시작시간, STT 결과'의 td 백그라운드 하이라이트
-        $('.ui-jqgrid tr.ui-row-ltr td:nth-child(2)').each(function(){
+        $('.stt_detail td:nth-child(2)').each(function(){
             var speakerType = $(this).text();
 
             if(speakerType == '고객'){
