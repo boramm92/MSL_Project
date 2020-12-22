@@ -28,36 +28,42 @@
 
 
 /*api 이용내역 - 20.12.21 NBR 수정*/
-.account { width:calc(955px - 120px); margin:0 auto; padding:0 60px;}
+.account {width:calc(955px - 120px); margin:0 auto; padding:0 60px 42px;}
 .account > p {text-align:left; font-size:20px; font-weight:500; color:#2c3f51; line-height:29px;}
 .account > p:not(:first-child) {margin:50px 0 0;}
-.account > p span {display:inline-block; margin:0 0 0 18px; color:#002b49; font-size:14px; font-weight:400;}
+.account > p span {display:inline-block; margin:0 0 0 18px; color:#002b49; font-size:14px; font-weight:400; vertical-align:bottom;}
 .account > p span em {font-weight:700}
 .account .stn {position:relative; margin:20px 0 0;}
 .account dl {float:left; margin:0 10px 0 0;}
 .account dl dt {font-size:14px; color:#89929a; margin:34px 0 8px 0;}
 .account dl dd {min-width:145px; min-height:18px; font-size:14px; padding:10px 14px; background:#f5f6fa; border:1px solid #dadff0; border-radius:5px; color:#192a39;}
-.account .chartBox {padding:20px 0 0;}
+.account .chartBox {height:260px;}
+.account .chartBox canvas {position:absolute; z-index:5;}
+.account .usage_txt {position:absolute; top:87px; left:50%; color:#002b49; font-size:17px; text-align:center; line-height:24px; transform:translate(-50%,0);}
+.account .usage_txt strong {font-size:16px;}
+.account .usage_txt strong span {font-size:20px;}
 .account .sort_group {margin:0 0 10px;}
 .account .sort_group span {display:inline-block; margin:0 10px 0 0; color:#2c3f51; font-size:14px; vertical-align:middle;}
-.account .sort_group .select {position:relative; min-width:116px; height:40px; padding:0 25px 0 10px; background:#fafbfe url('../images/arw_bottom_g.png') right 10px top 50% no-repeat; background-size:10px; color:#2c3f51; font-size:14px; vertical-align:middle; cursor:pointer;}
+.account .sort_group .select {overflow:hidden; position:relative; min-width:116px; height:40px; padding:0 25px 0 10px; background:#fafbfe url('../images/arw_bottom_g.png') right 10px top 50% no-repeat; background-size:10px; color:#2c3f51; font-size:14px; vertical-align:middle; text-overflow:ellipsis; white-space:nowrap; cursor:pointer;}
 .account .sort_group .select:nth-child(2) {margin:0 30px 0 0;}
-.account .sort_group .select:nth-child(4) {margin:0 10px 0 0;}
+.account .sort_group .select:nth-child(4) {width:200px; margin:0 10px 0 0;}
 .account .sort_group button {height:40px; padding:0 20px; border:none; border-radius:3px; background:#3f7bde; color:#fff; font-size:14px; vertical-align:middle;}
 .account .tbl_usage {overflow:hidden; border:1px solid #cfd5eb; border-radius:5px; box-shadow:0 3px 4px 0 rgba(61, 70, 92, 0.1);}
-.account .tbl_usage table {width:100%;}
+.account .tbl_usage table {table-layout:fixed; width:100%;}
 .account .tbl_usage thead th {height:40px; background:#808aab; color:#fff; font-size:14px; font-weight:500;}
-.account .tbl_usage tbody td {height:40px; border-bottom:1px solid #cfd5eb; color:#2c3f51; font-size:14px; text-align:center;}
+.account .tbl_usage tbody td {overflow:hidden; height:40px; border-bottom:1px solid #cfd5eb; color:#2c3f51; font-size:14px; text-align:center; text-overflow:ellipsis; white-space:nowrap;}
+.account .tbl_usage tbody td.empty_data {height:400px; padding-top:30px; line-height:40px; vertical-align:top; opacity:0.8;}
 .account .tbl_usage tbody tr:nth-child(even) {background:#fafbfe;}
 .account .tbl_usage tbody tr:last-child td {border-bottom:none;}
 .account .pageing {overflow:visible; padding:18px 0 0;}
-.account .pageing a {color:#787a8a; font-size:14px; transition:box-shadow 0.3s ease-out;}
+.account .pageing a {color:#787a8a; font-size:14px; transition:border 0.3s ease-out;}
 .account .pageing .list a.on,
 .account .pageing .list a:hover {color:#3f7bde; font-weight:700;}
-.account .pageing a span {display:inline-block; overflow:hidden; text-indent:-9999px;}
-.account .pageing a em {font-size:11px; vertical-align:middle;}
+.account .pageing a em {font-size:11px; line-height:30px;}
 .account .pageing a.btn_paging_prev,
-.account .pageing a.btn_paging_next {width:30px; height:30px; box-shadow: 0 0 2px 0 #a9a9a9;}
+.account .pageing a.btn_paging_next {width:30px; height:30px; border:1px solid transparent; box-shadow: 0 0 2px 0 #a9a9a9;}
+.account .pageing a.btn_paging_prev:hover,
+.account .pageing a.btn_paging_next:hover {border:1px solid #d1d1d3; ox-shadow: 0 0 1px 0 rgb(169, 169, 169);}
 .stn_1 {overflow:hidden;}
 .stn_1 button.requestbtn {width:104px; height:40px; background:#2575f9; color:#fff; font-size:14px; text-align:center; line-height:40px; border:none; border-radius:5px; margin:26px 18px 0 5px; float:left; cursor:pointer;}
 .stn_1 > span {float:left; color:#697992; font-size:14px; line-height:20px; letter-spacing:-0.4px; margin:26px 0 0 0;}

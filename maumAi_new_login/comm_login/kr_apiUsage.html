@@ -164,7 +164,7 @@
                         <div class="chartBox">
                             <canvas id="myChart"></canvas>
                         </div>
-                        <p>총 사용량<br><span>85</span>%</p>
+                        <p class="usage_txt">총 사용량<br><strong><span>85</span>%</strong></p>
                     </div>
 
                     <p>API 서비스별 사용량</p>
@@ -251,7 +251,7 @@
 
                         <div class="pageing">
                             <a class="btn_paging_prev" href="#none">
-                                <span>이전 페이지로 이동</span>
+                                <span class="hide">이전 페이지로 이동</span>
                                 <em class="fas fa-chevron-left"></em>
                             </a>
                             <span class="list">
@@ -262,7 +262,7 @@
                                 <a href="#none">5</a>
                             </span>
                             <a class="btn_paging_next" href="#none">
-                                <span>다음 페이지로 이동</span>
+                                <span class="hide">다음 페이지로 이동</span>
                                 <em class="fas fa-chevron-right"></em>
                             </a>
                         </div>
@@ -285,7 +285,7 @@
                             <span>서비스명</span>
                             <select class="select">
                                 <option value="">AI 스타일링</option>
-                                <option value="">서비스명</option>
+                                <option value="">Enhanced Super Resolution</option>
                                 <option value="">서비스명</option>
                             </select>
 
@@ -296,7 +296,7 @@
                             <table summary="No, 분류, 서비스 명, 사용량, 사용일자로 구성">
                                 <caption class="hide">API 상세 사용 내역</caption>
                                 <colgroup>
-                                    <col><col><col><col><col>
+                                    <col width="10%"><col width="15%"><col width="40%"><col width="15%"><col width="20%">
                                 </colgroup>
 
                                 <thead>
@@ -309,6 +309,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <!-- [D] 검색 데이터 없는 경우 -->
+                                    <!-- <tr>
+                                        <td colspan="5" class="empty_data">서비스 분류 및 서비스 명을 선택하고 확인 버튼을 선택해 주세요.</td>
+                                    </tr> -->
+
+                                    <!-- [D] 검색 데이터 있는 경우 -->
                                     <tr>
                                         <td scope="row">1</td>
                                         <td>음성</td>
@@ -385,6 +391,7 @@
 
                         <div class="pageing">
                             <a class="btn_paging_prev" href="#none">
+                                <span class="hide">이전 페이지로 이동</span>
                                 <em class="fas fa-chevron-left"></em>
                             </a>
                             <span class="list">
@@ -395,6 +402,7 @@
                                 <a href="#none">5</a>
                             </span>
                             <a class="btn_paging_next" href="#none">
+                                <span class="hide">다음 페이지로 이동</span>
                                 <em class="fas fa-chevron-right"></em>
                             </a>
                         </div>
@@ -446,33 +454,58 @@ jQuery.event.add(window,"load",function(){
                     randomScalingFactor(),
                     randomScalingFactor(),
                     randomScalingFactor(),
+                    randomScalingFactor(),
                 ],
+                borderWidth: 0,
                 backgroundColor: [
                     window.chartColors.red,
-                    window.chartColors.orange,
-                    window.chartColors.yellow,
                     window.chartColors.green,
+                    window.chartColors.purple,
                     window.chartColors.blue,
+                    window.chartColors.orange,
+                    window.chartColors.grey,
                 ],
                 label: 'Dataset 1'
             }],
             labels: [
-                'Red',
-                'Orange',
-                'Yellow',
-                'Green',
-                'Blue'
-            ]
+                '음성',
+                '시각',
+                '언어',
+                '대화',
+                '영어교육',
+                '남은 사용량'
+            ],
+            fontColor: '#f7778a',
         },
         options: {
             responsive: true,
+            maintainAspectRatio: false,
             legend: {
+                labels: {
+                    padding: 18,
+					fontColor: '#002b49',
+					fontSize: 13,
+					fontStyle: 500,
+                    boxWidth: 15,
+					// boxHeight: 15,
+                    cornerRadius: 3,
+				},
                 position: 'bottom',
             },
             cutoutPercentage: 65,
             animation: {
                 animateScale: true,
                 animateRotate: true
+            },
+            tooltips: {
+                backgroundColor: '#ffffff',
+                cornerRadius: 3,
+                borderWidth: 1,
+                borderColor: '#cfd5eb',
+                caretSize: 0,
+                titleFontColor: '#cfd5eb',
+                bodyFontColor: '#002b49',
+                bodyFontSize: 14,
             }
         }
     };
