@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<!-- Open Graph Tag -->
+<meta property="og:title"            content="maum.ai" />
+<meta property="og:type"             content="website" /><!-- 웹 페이지 타입 -->
+<meta property="og:url"              content="https://maum.ai" />
+<meta property="og:image"            content="kr/images/maum.ai_web.png" />
+<meta property="og:description"      content="웹인공지능이 필요할땐 마음AI" />
+<!-- icon_favicon -->
+<link rel="apple-touch-icon-precomposed" href="kr/images/ico_maumAI_60x60.png">
+<link rel="shortcut icon" type="image/x-icon" href="kr/images/ico_maumAI_60x60.ico">
+
+<!-- -------------------- General Resources -------------------- -->
+<!-- General CSS -->
+<link rel="stylesheet" type="text/css" href="common/css/reset.css">
+<link rel="stylesheet" type="text/css" href="common/css/font.css">
+<link rel="stylesheet" type="text/css" href="common/css/all.css">
+<link rel="stylesheet" type="text/css" href="common/css/pop_common.css">
+<link rel="stylesheet" type="text/css" href="kr/css/common.css">
+
+<!-- General Script -->
+<script type="text/javascript" src="common/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="common/js/common.js"></script>
+<script type="text/javascript" src="common/js/jsrender.min.js"></script>
+
+<title>maum.ai platform</title>
+</head>
+
+<body>
+<!-- .page loading -->
+<div id="pageldg">
+    <span class="out_bg">
+        <em>
+            <strong>&nbsp;</strong>
+            <strong>&nbsp;</strong>
+            <strong>&nbsp;</strong>
+            <b>&nbsp;</b>
+        </em>
+    </span>
+</div>
+<!-- //.page loading -->
+
+<!-- #wrap -->
+<div id="wrap">
+    <!-- #container -->
+    <div id="container">
+        <!-- .contents -->
+        <div class="contents">
+            <!-- .content -->
+            <div class="content api_content">
+                <h1 class="api_tit ">날씨봇·위키봇</h1>
+				<ul class="menu_lst bot_lst">
+					<li class="tablink" onclick="openTap(event, 'chatdemo')" id="default">
+                        <button type="button">엔진</button>
+                    </li>
+					<li class="tablink" onclick="openTap(event, 'chatexample')">
+                        <button type="button">적용사례</button>
+                    </li>
+					<li class="tablink" onclick="openTap(event, 'chatmenu')">
+                        <button type="button">매뉴얼</button>
+                    </li>
+				</ul>
+
+                <!-- .demobox -->
+                <div class="demobox" id="chatdemo">
+					<p><span style="color:#2cace5;">챗봇</span>, 필요한 곳에 바로 가져다 쓰세요!</p>
+					<span class="sub">제공  가능: 날씨를 알려주는 날씨봇, 위키 백과 지식을 알려주는 위키봇 (다양한 주제의 봇 확장 중)</span>
+
+					<div class="chatbot_tab">
+					  	<button class="tablinks weather" onclick="openCity(event, 'weather')" id="defaultOpen">
+							<img src="kr/images/ico_chabot.png" alt="weatherbot">
+							<span>날씨봇</span>
+						</button>
+					  	<button class="tablinks wiki" onclick="openCity(event, 'wiki')">
+							<img src="kr/images/img_wiki.png" alt="wikibot">
+							<span>위키봇</span>
+						</button>
+                        <button class="tablinks news" onclick="openCity(event, 'news')">
+							<img src="kr/images/img_news.png" alt="wikibot">
+							<span>뉴스봇</span>
+						</button>
+					</div>
+
+					<!-- chatbot_box -->
+					<div class="chatbot_box" id="weather">
+						<!-- .chat_mid -->
+						<div class="chat_mid">
+							<div class="bot_infoBox">
+								<div class="thumb"><img src="kr/images/ico_chabot.png" alt="chatbot"></div>
+								<div class="txt">
+                                    잠깐!! 우산 챙기셨나요?<br>
+                                    오늘의 날씨가 궁금하시면 저에게 물어보세요.
+                                </div>
+								<ul class="info_btnBox">
+									<li><button type="button">오늘 날씨 알려줘</button></li>
+									<li><button type="button">오늘 성남 날씨는?</button></li>
+									<li><button type="button">내일 비 와?</button></li>
+								</ul>
+							</div>
+							<ul class="talkLst">
+								<li class="newDate">
+									<span><!-- 날짜는 스크립트가 정의--></span>
+								</li>
+							</ul>
+						</div>
+						<!-- //.chat_mid -->
+						<!-- .chat_btm -->
+						<div class="chat_btm">
+							<form method="post" action="" id="formChat" name="formChat">
+								<textarea class="textArea" placeholder="메세지를 입력해 주세요"></textarea>
+								<input type="button" name="btn_chat" id="btn_chat" class="btn_chat" title="전송" value="전송">
+							</form>
+						</div>
+						<!-- //.chat_btm -->
+						<div class="remark">발표: 기상청 &nbsp;&nbsp;&nbsp;제공: 공공데이터포털</div>
+					</div>
+					<!-- //.chatbot_box -->
+
+					<!-- chatbot_box -->
+					<div class="chatbot_box" id="wiki">
+						<!-- .chat_mid -->
+						<div class="chat_mid">
+							<div class="bot_infoBox">
+								<div class="thumb"><img src="kr/images/img_wiki.png" alt="chatbot"></div>
+								<div class="txt">
+                                    지식을 모두 섭렵한 챗봇 계의 석학, 위키봇 입니다.<br>
+                                    제 상식을 한번 테스트해 보시겠어요?
+                                </div>
+								<ul class="info_btnBox">
+									<li><button type="button">프랑스 혁명은 언제 일어났어?</button></li>
+									<li><button type="button">김연아 선수는 키가 얼마나 크지?</button></li>
+									<li><button type="button">데미안의 저자는 누구야? </button></li>
+								</ul>
+							</div>
+							<ul class="talkLst">
+								<li class="newDate">
+									<span><!-- 날짜는 스크립트가 정의--></span>
+								</li>
+							</ul>
+						</div>
+						<!-- //.chat_mid -->
+						<!-- .chat_btm -->
+						<div class="chat_btm">
+							<form method="post" action="" id="formChat2" name="formChat2">
+								<textarea class="textArea" placeholder="메세지를 입력해 주세요"></textarea>
+								<input type="button" name="btn_chat2" id="btn_chat2" class="btn_chat" title="전송" value="전송">
+							</form>
+						</div>
+						<!-- //.chat_btm -->
+						<div class="remark">발표: 기상청 &nbsp;&nbsp;&nbsp;제공: 공공데이터포털</div>
+					</div>
+					<!-- //.chatbot_box -->
+
+                    <!-- chatbot_box -->
+					<div class="chatbot_box" id="news">
+						<!-- .chat_mid -->
+						<div class="chat_mid">
+							<div class="bot_infoBox">
+								<div class="thumb"><img src="kr/images/img_news.png" alt="chatbot"></div>
+								<div class="txt">
+                                    뉴스봇 텍스트<br>
+                                    뉴스봇 텍스트
+                                </div>
+								<ul class="info_btnBox">
+									<li><button type="button">프랑스 혁명은 언제 일어났어?</button></li>
+									<li><button type="button">김연아 선수는 키가 얼마나 크지?</button></li>
+									<li><button type="button">데미안의 저자는 누구야? </button></li>
+								</ul>
+							</div>
+							<ul class="talkLst">
+								<li class="newDate">
+									<span><!-- 날짜는 스크립트가 정의--></span>
+								</li>
+							</ul>
+						</div>
+						<!-- //.chat_mid -->
+						<!-- .chat_btm -->
+						<div class="chat_btm">
+							<form method="post" action="" id="formChat2" name="formChat2">
+								<textarea class="textArea" placeholder="메세지를 입력해 주세요"></textarea>
+								<input type="button" name="btn_chat2" id="btn_chat2" class="btn_chat" title="전송" value="전송">
+							</form>
+						</div>
+						<!-- //.chat_btm -->
+						<div class="remark">발표: 기상청 &nbsp;&nbsp;&nbsp;제공: 공공데이터포털</div>
+					</div>
+					<!-- //.chatbot_box -->
+				</div>
+				<!-- .demobox -->
+
+                <!--.chatmenu-->
+                <div class="demobox bot_menu" id="chatmenu">
+                    <!--guide_box-->
+					<div class="guide_box">
+						<div class="guide_common">
+							<div class="title">API 공통 가이드</div>
+
+							<p class="sub_title">개발 환경 세팅</p>
+							<p class="sub_txt">1&#41; REST API는 HTTP 요청을 보낼 수 있는 환경이라면 어디에서든 이용할 수 있습니다.</p>
+							<p class="sub_txt">2&#41; 다양한 환경의 웹 서버에서 활용 가능합니다. (Python, Web, Javascript, Java)</p>
+							<p class="sub_title">키 발급</p>
+							<p class="sub_txt">1&#41; Mindslab에서 제공되는 API 서비스를 사용하기 위해서는 키를 선지급 받아야합니다.</p>
+							<p class="sub_txt">2&#41; 마음AI 플랫폼에서 Business Plan 이상 구독 신청을 하셔야합니다. (https://maum.ai) </p>
+							<p class="sub_txt">3&#41; [계정메뉴]에서 본인의 API ID 및 Key를 확인해주세요.</p>
+							<p class="sub_txt">4&#41; 발급받은 API ID 및 Key를 기억하여 아래 매뉴얼에 맞게 사용합니다.</p>
+							<p class="sub_txt">※ Mindslab API를 위한 ID와 키는 외부 유출 및 공유를 금합니다.</p>
+						</div>
+						<div class="guide_group">
+							<div class="title">
+								IRQA (Information Retrieval Question Answering)
+							</div>
+							<p class="sub_txt">마인즈랩의 IR QA는 다양한 분야의 지식 소통이 가능한 인공지능 소프트웨어입니다.</p>
+
+						</div>
+					</div>
+					<!--//.guide_box-->
+                </div>
+                <!--//chatmenu-->
+
+                <!--.chatexample-->
+                <div class="demobox" id="chatexample">
+					<p><em style="color:#2cace5;font-weight: 400;">적용사례</em>  <small>(Use Cases)</small></p>
+					<span class="sub">마인즈랩의 앞선 기술을 다양하게 활용할 수 있습니다.</span>
+					<!-- 날씨봇n위키봇 -->
+					<div class="useCasesBox">
+						<ul class="lst_useCases">
+							<li>
+								<dl>
+									<dt>
+										<em>CASE 01</em>
+										<span>인공지능 비서</span>
+									</dt>
+									<dd class="txt">날씨를 알려주는 챗봇을 바로 갖다 붙이면, 인공지능 비서가 날씨를 알려줍니다.</dd>
+									<dd class="api_itemBox">
+										<ul class="lst_api">
+											<li class="ico_weatherBot"><span>날씨봇</span></li>
+										</ul>
+									</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt>
+										<em>CASE 02</em>
+										<span>AI Tutor</span>
+									</dt>
+									<dd class="txt">다양한 지식 정보를 대화 형식으로 제공받을 수 있는 현존하는 가장 간편한 지식 소통 인공지능 소프트웨어로, 다양한 분야의 콘텐츠에 접목될 수 있습니다.</dd>
+									<dd class="api_itemBox">
+										<ul class="lst_api">
+											<li class="ico_wikiBot"><span>위키봇</span></li>
+										</ul>
+									</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt>
+										<em>CASE 03</em>
+										<span>장학 퀴즈</span>
+									</dt>
+									<dd class="txt">1,300만 건 이상의 비정형 지식베이스와 3,800만 건의 학습 데이터를 통해 정확도 높은 답변을 제공합니다.</dd>
+									<dd class="api_itemBox">
+										<ul class="lst_api">
+											<li class="ico_wikiBot"><span>위키봇</span></li>
+										</ul>
+									</dd>
+								</dl>
+							</li>
+						</ul>
+					</div>
+					<!-- //chatexample -->
+				</div>
+                <!--//.avrexample-->
+            </div>
+            <!-- //.content -->
+        </div>
+        <!-- //.contents -->
+    </div>
+    <!-- //#container -->
+</div>
+<!-- //#wrap -->
+
+<!-- Local Script -->
+<script type="text/javascript">
+    //	챗봇 탭 메뉴
+	function openCity(evt, cityName) {
+		var i, tabcontent, tablinks;
+		chatbot_box = document.getElementsByClassName("chatbot_box");
+		for (i = 0; i < chatbot_box.length; i++) {
+			chatbot_box[i].style.display = "none";
+		}
+		tablinks = document.getElementsByClassName("tablinks");
+		for (i = 0; i < tablinks.length; i++) {
+			tablinks[i].className = tablinks[i].className
+					.replace(" active", "");
+		}
+		document.getElementById(cityName).style.display = "block";
+		evt.currentTarget.className += " active";
+		chatNm = cityName;
+
+		if($('#'+chatNm+' .chat_mid .talkLst li').length===1){
+			$('#'+chatNm+' .bot_infoBox').css({
+				'display':'block'
+			});
+			$('#'+chatNm+' .talkLst').css({
+				'display':'none'
+			});
+		}
+		if(cityName==='weather'){
+			document.getElementById('thumb').value='kr/images/ico_chabot.png';
+			chatOpen("Weather");
+		} else if(cityName==='wiki'){
+			document.getElementById('thumb').value='kr/images/img_wiki.png';
+			chatOpen("Noah");
+		} else{
+            document.getElementById('thumb').value='kr/images/img_news.png';
+			chatOpen("News");
+        }
+	}
+
+	// Get the element with id="defaultOpen" and click on it
+	document.getElementById("defaultOpen").click();
+
+    //API 탭
+    function openTap(evt, menu) {
+        var i, demobox, tablinks;
+        demobox = document.getElementsByClassName("demobox");
+        for (i = 0; i < demobox.length; i++) {
+            demobox[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace("active", "");
+        }
+        document.getElementById(menu).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("default").click();
+
+
+jQuery.event.add(window,"load",function(){
+    $(document).ready(function (){
+        // 페이지 확인을 위한 script로 개발 시에는 무시해주세요.
+        $('.btn_start').on('click', function(){
+            $('.avr_1').css('display', 'none');
+            $('.avr_2').css('display', 'block');
+        });
+        $('.btn_back1').on('click', function(){
+            $('.avr_2').css('display', 'none');
+            $('.avr_3').css('display', 'block');
+        });
+        $('.btn_back2').on('click', function(){
+            $('.avr_3').css('display', 'none');
+            $('.avr_1').css('display', 'block');
+        });
+    });
+});
+</script>
+</body>
+</html>

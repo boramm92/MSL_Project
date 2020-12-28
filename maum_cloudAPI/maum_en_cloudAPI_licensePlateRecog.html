@@ -53,7 +53,7 @@
         <div class="contents">
             <!-- .content -->
             <div class="content api_content">
-                <h1 class="api_tit">Face Detection</h1>
+                <h1 class="api_tit">License Plate Recognition</h1>
                 <ul class="menu_lst vision_lst">
                     <li class="tablinks" onclick="openTap(event, 'avrdemo')" id="defaultOpen">
                         <button type="button">AI Engine</button>
@@ -67,11 +67,11 @@
                 </ul>
 
                 <!-- .avrdemo -->
-                <div class="demobox facedetect_box" id="avrdemo">
+                <div class="demobox" id="avrdemo">
                     <p>
-                        <span>Face Detection</span></small>
+                        <span>License Plate Recognition</span></small>
                     </p>
-                    <span class="sub">After a human face is recognized and detected, it is made unidentifiable.</span>
+                    <span class="sub">It detects the location of the license plate of a moving vehicle and recognizes the number.</span>
 
                     <!--textremoval_box-->
         			<div class="demo_layout avr_box">
@@ -85,7 +85,7 @@
         									<input type="radio" id="sample1" name="avr_option" value="face" checked>
         									<label for="sample1" class="female">
         										<div class="img_area">
-        											<img src="en/images/img_facedetection.png" alt="sample img 1" />
+        											<img src="en/images/img_avr.png" alt="sample img 1" />
         										</div>
         									</label>
         								</div>
@@ -105,8 +105,9 @@
         							<ul>
         								<li>* Supported files: .jpg, .png</li>
         								<li>* Image file size is 2MB or less.</li>
-        								<li>* Face size minimum of 30 pixels, and must be<br>&nbsp;&nbsp;&nbsp;front-facing.</li>
-        								<li>* f the face is covered with a hat or mask, recognition<br>&nbsp;&nbsp;&nbsp;may be difficult.</li>
+                                        <li>* This photo should be taken in a CCTV environment.</li>
+        								<li>* The vehicle must be on the road without being cut off.</li>
+        								<li>* Use images of angles and distances similar to the<br>&nbsp;&nbsp;&nbsp;sample.</li>
         							</ul>
         						</div>
         					</div>
@@ -147,22 +148,21 @@
         				</div>
         				<!--avr_2-->
 
-        				<!--avr_3-->
-        				<div class="avr_3 face_avr" >
+                        <!--avr_3-->
+        				<div class="avr_3" >
+        					<p><em class="far fa-file-image"></em>Result</p>
         					<div class="result_file" >
-        						<div class="origin">
-        							<p><em class="far fa-file-image"></em>Input</p>
-        							<div class="imgBox">
-        								<img id="input_img" src="" alt="원본 이미지" />
-        							</div>
+        						<div class="imgBox">
+        							<img src="" id="resultImg" alt="결과 이미지" />
         						</div>
-        						<div class="result" >
-        							<p><em class="far fa-file-image"></em>Result</p>
-        							<div class="imgBox">
-        								<img src="" id="resultImg" alt="결과 이미지" />
-        							</div>
-        							<a id="save" onclick="downloadResultImg();" class="btn_dwn"><em class="far fa-arrow-alt-circle-down"></em> Download Result</a>
+        						<!-- 차량 번호판 인식일 경우에만 display : blcok  -->
+        						<div class="recogbox" id="recogbox" style="display:block">
+        							<span>Detected Result</span>
+        							<div class="carnumber"><img src="" id="carnumber" alt="번호판 이미지"/></div>
+        							<div class="carnumber_txt">33호 5598</div>
+        							<div class="errortxt"><em class="fas fa-exclamation-triangle"></em>&nbsp; 사진의 크기와 위치를 다시 맞춰주세요. </div>
         						</div>
+        						<a id="save" onclick="downloadResultImg();" class="btn_dwn"><em class="far fa-arrow-alt-circle-down"></em> Download Result</a>
         					</div>
         					<div class="btn_area">
         						<button type="button" class="btn_back2"><em class="fas fa-redo"></em>Reset</button>
@@ -282,9 +282,12 @@ WebKitFormBoundary7MA4YWxkTrZu0gW' \
         						<dl>
         							<dt>
         								<em>CASE 01</em>
-        								<span>CCTV Anomaly Detection</span>
+        								<span>Recognition of old diesel vehicles</span>
         							</dt>
-        							<dd class="txt">Through video recognition, you can recognize and monitor specific objects or people in real time.</dd>
+        							<dd class="txt">
+                                        TAn automatic monitoring system that can detect old diesel vehicles and impose fines through license plate recognition.
+                                        <span><em class="fas fa-book-reader"></em> Reference: Seoul City Government</span>
+                                    </dd>
         							<dd class="api_itemBox">
         								<ul class="lst_api">
         									<li class="ico_avr"><span>AVR</span></li>
@@ -297,9 +300,9 @@ WebKitFormBoundary7MA4YWxkTrZu0gW' \
         						<dl>
         							<dt>
         								<em>CASE 02</em>
-        								<span>De-identifying<strong>video images</strong></span>
+        								<span>Apprehend stolen<strong>and reported vehicles</strong></span>
         							</dt>
-        							<dd class="txt">Protect personal information by automatically de-identifying facial images taken when speeding vehicles are detected.</dd>
+        							<dd class="txt">It is used for real-time CCTV arrests on the road by using the license plate of stolen or reported vehicles.</dd>
         							<dd class="api_itemBox">
         								<ul class="lst_api">
         									<li class="ico_avr"><span>AVR</span></li>
