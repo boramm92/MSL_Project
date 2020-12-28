@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="format-detection" content="telephone=no">
+
+<!-- -------------------- General Resources -------------------- -->
+<!-- General CSS -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+<link rel="stylesheet" href="../comm_resources/css/maum_common.css">
+
+<!-- General Script -->
+<script type="text/javascript" src="../comm_resources/js/jquery-1.11.0.min.js"></script>
+
+<title>maum.ai | API 사용량</title>
+</head>
+
+<body>
+<!-- #wrap -->
+<div id="wrap" class="user_container maumUI">
+    <!-- #header -->
+    <div id="header">
+        <!-- .maum_sta -->
+        <div class="maum_sta">
+            <h1><a href="/">maum.ai</a></h1>
+            <!-- .maum_gnb -->
+            <div class="maum_gnb">
+                <ul class="nav">
+                    <li><a href="/home/krEmployeesMain" class="go_employees" id="Button_Internal">직원용</a></li>
+                    <li><a href="#none" onclick="go(); return false;" class="">서비스</a></li>
+                    <li><a href="http://maumacademy.maum.ai/" class="">마음 아카데미</a></li>
+                </ul>
+            </div>
+            <!-- //.maum_gnb -->
+            <!-- .maum_etc -->
+            <div class="maum_etc">
+                <ul class="nav">
+                    <li><a href="http://bit.ly/mindslab_recruit" target="_blank">채용공고</a></li>
+                    <li><a href="/home/pricingPage?lang=ko" class="">가격정책</a></li>
+                    <!-- 로그인X -->
+
+                    <!-- 로그인O-->
+                    <li><a class="btn_ico user" href="#none">사용자</a>
+                        <div class="lstBox">
+                            <ul class="lst">
+                                <li class="userInfo">
+                                    <span class="thumb"><img src="../comm_resources/images/ico_user_g.svg" alt="사용자"></span>
+                                    <span class="txt">
+                                        <em class="userName">노보람</em>
+                                        <em class="loginID">boramm@mindslab.ai</em>
+                                    </span>
+                                </li>
+                                <li><a href="/user/profileMain" target="_self" title="프로필">프로필</a></li>
+                                <li><a href="/user/apiAccountMain" target="_self" title="API 정보">API 정보</a></li>
+                                <li><a href="/user/paymentInfoMain" target="_self" title="결제정보">결제정보</a></li>
+                                <li><a href="#none" onclick="document.getElementById('logout-form').submit();" title="로그아웃">로그아웃</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- 브라우저의 IP 조회 -->
+                    <li><a class="btn_ico lang" href="#none">언어</a>
+                        <div class="lstBox">
+                            <ul class="lst">
+                                <li class="lang_li"><a href="#none">한국어</a></li>
+                                <li class="lang_li"><a href="/?lang=en" target="_self" title="English">English</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a class="btn_ico app" href="#none">웹 앱 및 서비스</a>
+                        <div class="appBox">
+                            <div class="tit">웹 앱 및 서비스</div>
+                            <ul class="lst">
+                                <li>
+                                    <a href="/main/krMainHome" target="_blank" title="Cloud API">
+                                        <span class="ico"></span>
+                                        <em>Cloud API</em>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://builder.maum.ai/landing?lang=ko" target="_blank" title="AI Builder">
+                                        <span class="ico"></span>
+                                        <em>AI Builder</em>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="https://minutes.maum.ai/" target="_blank" title="maum 회의록">
+                                        <span class="ico"></span>
+                                        <em>maum 회의록</em>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://fast-aicc.maum.ai/login?lang=ko" target="_blank" title="FAST 대화형 AI">
+                                        <span class="ico"></span>
+                                        <em>FAST 대화형 AI</em>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://ava.maum.ai/login" target="_blank">
+                                        <span class="ico"></span>
+                                        <em>AVA</em>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/home/maumEdge" target="_blank">
+                                        <span class="ico"></span>
+                                        <em>Edge AI Platform</em>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://data.maum.ai/?lang=ko" target="_blank" title="maum DATA">
+                                        <span class="ico"></span>
+                                        <em>maum DATA</em>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/home/krEcomindsMain" target="_self" title="eco MINDs">
+                                        <span class="ico"></span>
+                                        <em>eco MINDs</em>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- //.maum_etc -->
+            <a class="btn_maum_ham" href="#none">모바일 전체메뉴
+                <span class="line_top"></span>
+                <span class="line_mid"></span>
+                <span class="line_btm"></span>
+            </a>
+        </div>
+        <!-- //.maum_sta -->
+    </div>
+    <!-- //#header -->
+
+    <!-- .contents -->
+    <div class="contents">
+        <!-- .content -->
+        <div class="content">
+            <h1>서비스 이용현황</h1>
+            <!--.mypageBox-->
+            <div class="mypageBox">
+                <!-- .account -->
+                <div class="account">
+                    <p>API ID,Key</p>
+                    <div class="stn_1 stn">
+                        <dl>
+                            <dt>ID</dt>
+                            <dd>boramm</dd>
+                        </dl>
+                        <dl>
+                            <dt>Key</dt>
+                            <dd>7741ce574445489d9dc3814e1ca782f3</dd>
+                        </dl>
+                    </div>
+
+                    <p>API 전체 사용량<span>서비스 기간 : <em>2020-05-20</em> ~ <em>2020-06-22</em></span></p>
+                    <div class="stn">
+                        <div class="chartBox">
+                            <canvas id="myChart"></canvas>
+                        </div>
+                        <p class="usage_txt">총 사용량<br><span><strong>85</strong>%</span></p>
+                    </div>
+
+                    <p>API 서비스별 사용량</p>
+                    <div class="stn">
+                        <div class="tbl_usage">
+                            <table summary="분류, 사용 서비스, 사용한 양/제공량, 사용비율로 구성">
+                                <caption class="hide">API 서비스별 사용량</caption>
+                                <colgroup>
+                                    <col width="20%"><col width="25%"><col width="35%"><col width="20%">
+                                </colgroup>
+
+                                <thead>
+                                    <tr>
+                                        <th scope="col">분류</th>
+                                        <th scope="col">사용 서비스</th>
+                                        <th scope="col">사용한 양 / 제공량</th>
+                                        <th scope="col">사용비율 (%)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td scope="row">음성</td>
+                                        <td>TTS</td>
+                                        <td>200만자 / 400만자</td>
+                                        <td>50%</td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">음성</td>
+                                        <td>STT</td>
+                                        <td>25분 / 2500분</td>
+                                        <td>5%</td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">시각</td>
+                                        <td>인물포즈인식</td>
+                                        <td>8000건 / 40000건</td>
+                                        <td>10%</td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">음성</td>
+                                        <td>TTS</td>
+                                        <td>200만자 / 400만자</td>
+                                        <td>50%</td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">음성</td>
+                                        <td>STT</td>
+                                        <td>25분 / 2500분</td>
+                                        <td>5%</td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">시각</td>
+                                        <td>인물포즈인식</td>
+                                        <td>8000건 / 40000건</td>
+                                        <td>10%</td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">음성</td>
+                                        <td>TTS</td>
+                                        <td>200만자 / 400만자</td>
+                                        <td>50%</td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">음성</td>
+                                        <td>STT</td>
+                                        <td>25분 / 2500분</td>
+                                        <td>5%</td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">시각</td>
+                                        <td>인물포즈인식</td>
+                                        <td>8000건 / 40000건</td>
+                                        <td>10%</td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">시각</td>
+                                        <td>인물포즈인식</td>
+                                        <td>8000건 / 40000건</td>
+                                        <td>10%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="pageing">
+                            <a class="btn_paging_prev" href="#none">
+                                <span class="hide">이전 페이지로 이동</span>
+                                <em class="fas fa-chevron-left"></em>
+                            </a>
+                            <span class="list">
+                                <a href="#none" class="on">1</a>
+                                <a href="#none">2</a>
+                                <a href="#none">3</a>
+                                <a href="#none">4</a>
+                                <a href="#none">5</a>
+                            </span>
+                            <a class="btn_paging_next" href="#none">
+                                <span class="hide">다음 페이지로 이동</span>
+                                <em class="fas fa-chevron-right"></em>
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <p>API 상세 사용 내역</p>
+                    <div class="stn">
+                        <div class="sort_group">
+                            <span>분류</span>
+                            <select class="select">
+                                <option value="">전체보기</option>
+                                <option value="">음성</option>
+                                <option value="">시각</option>
+                                <option value="">언어</option>
+                                <option value="">대화</option>
+                                <option value="">영어교육</option>
+                            </select>
+
+                            <span>서비스명</span>
+                            <select class="select">
+                                <option value="">AI 스타일링</option>
+                                <option value="">Enhanced Super Resolution</option>
+                                <option value="">서비스명</option>
+                            </select>
+
+                            <button type="submit" class="btn_srch">검색</button>
+                        </div>
+
+                        <div class="tbl_usage">
+                            <table summary="No, 분류, 서비스 명, 사용량, 사용일자로 구성">
+                                <caption class="hide">API 상세 사용 내역</caption>
+                                <colgroup>
+                                    <col width="10%"><col width="15%"><col width="40%"><col width="15%"><col width="20%">
+                                </colgroup>
+
+                                <thead>
+                                    <tr>
+                                        <th scope="col">No</th>
+                                        <th scope="col">분류</th>
+                                        <th scope="col">서비스 명</th>
+                                        <th scope="col">사용량</th>
+                                        <th scope="col">사용일자</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- [D] 검색 데이터 없는 경우 -->
+                                    <!-- <tr>
+                                        <td colspan="5" class="empty_data">서비스 분류 및 서비스 명을 선택하고 확인 버튼을 선택해 주세요.</td>
+                                    </tr> -->
+
+                                    <!-- [D] 검색 데이터 있는 경우 -->
+                                    <tr>
+                                        <td scope="row">1</td>
+                                        <td>음성</td>
+                                        <td>TTS</td>
+                                        <td>10자</td>
+                                        <td>20.05.22</td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">2</td>
+                                        <td>음성</td>
+                                        <td>STT</td>
+                                        <td>1건</td>
+                                        <td>20.05.22</td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">3</td>
+                                        <td>시각</td>
+                                        <td>인물포즈인식</td>
+                                        <td>222자</td>
+                                        <td>20.05.22</td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">1</td>
+                                        <td>음성</td>
+                                        <td>TTS</td>
+                                        <td>10자</td>
+                                        <td>20.05.22</td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">2</td>
+                                        <td>음성</td>
+                                        <td>STT</td>
+                                        <td>1건</td>
+                                        <td>20.05.22</td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">3</td>
+                                        <td>시각</td>
+                                        <td>인물포즈인식</td>
+                                        <td>222자</td>
+                                        <td>20.05.22</td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">1</td>
+                                        <td>음성</td>
+                                        <td>TTS</td>
+                                        <td>10자</td>
+                                        <td>20.05.22</td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">2</td>
+                                        <td>음성</td>
+                                        <td>STT</td>
+                                        <td>1건</td>
+                                        <td>20.05.22</td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">3</td>
+                                        <td>시각</td>
+                                        <td>인물포즈인식</td>
+                                        <td>222자</td>
+                                        <td>20.05.22</td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">3</td>
+                                        <td>시각</td>
+                                        <td>인물포즈인식</td>
+                                        <td>222자</td>
+                                        <td>20.05.22</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="pageing">
+                            <a class="btn_paging_prev" href="#none">
+                                <span class="hide">이전 페이지로 이동</span>
+                                <em class="fas fa-chevron-left"></em>
+                            </a>
+                            <span class="list">
+                                <a href="#none" class="on">1</a>
+                                <a href="#none">2</a>
+                                <a href="#none">3</a>
+                                <a href="#none">4</a>
+                                <a href="#none">5</a>
+                            </span>
+                            <a class="btn_paging_next" href="#none">
+                                <span class="hide">다음 페이지로 이동</span>
+                                <em class="fas fa-chevron-right"></em>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- //.account -->
+            </div>
+            <!-- //.mypageBox -->
+        </div>
+        <!-- //.content -->
+    </div>
+    <!-- //.contents -->
+</div>
+<!-- //#wrap -->
+
+<!-- -------------------- Local Resources -------------------- -->
+<!-- Local CSS -->
+<link rel="stylesheet" href="css/Chart.min.css"/>
+<!-- //Chart -->
+<link rel="stylesheet" href="css/user.css">
+
+<!-- Local Script Library -->
+<script src="js/Chart.min.js"></script>
+<script src="js/utils.js"></script>
+<!-- //Chart -->
+
+<!-- Local Script -->
+<script type="text/javascript">
+jQuery.event.add(window,"load",function(){
+    $(document).ready(function (){
+
+    });
+});
+</script>
+
+<!-- API 전체 사용량 차트 -->
+<script type="text/javascript">
+    var randomScalingFactor = function() {
+        return Math.round(Math.random() * 100);
+    };
+
+    var config = {
+        type: 'doughnut',
+        data: {
+            datasets: [{
+                data: [
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                ],
+                borderWidth: 0,
+                backgroundColor: [
+                    window.chartColors.red,
+                    window.chartColors.green,
+                    window.chartColors.purple,
+                    window.chartColors.blue,
+                    window.chartColors.orange,
+                    window.chartColors.grey,
+                ],
+                label: 'Dataset 1'
+            }],
+            labels: [
+                '음성',
+                '시각',
+                '언어',
+                '대화',
+                '영어교육',
+                '남은 사용량'
+            ],
+            fontColor: '#f7778a',
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+                labels: {
+                    padding: 18,
+					fontColor: '#002b49',
+					fontSize: 13,
+					fontStyle: 500,
+                    boxWidth: 15,
+					// boxHeight: 15,
+                    cornerRadius: 3,
+				},
+                position: 'bottom',
+            },
+            cutoutPercentage: 65,
+            animation: {
+                animateScale: true,
+                animateRotate: true
+            },
+            tooltips: {
+                backgroundColor: '#ffffff',
+                cornerRadius: 3,
+                borderWidth: 1,
+                borderColor: '#cfd5eb',
+                caretSize: 0,
+                titleFontColor: '#cfd5eb',
+                bodyFontColor: '#002b49',
+                bodyFontSize: 14,
+            }
+        }
+    };
+
+    window.onload = function() {
+		var ctx = document.getElementById('myChart').getContext('2d');
+		window.myDoughnut = new Chart(ctx, config);
+	};
+</script>
+</body>
+</html>
