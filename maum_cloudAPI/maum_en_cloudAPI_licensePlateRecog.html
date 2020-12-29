@@ -102,6 +102,7 @@
         								<label for="demoFile" class="demolabel">Upload File</label>
         								<input type="file" id="demoFile" class="demoFile" accept=".jpg, .png" >
         							</div>
+                                    <div class="user_guide"><em class="fas fa-info-circle"></em>&nbsp;&nbsp;View User Guide&nbsp;&nbsp;<em class="fas fa-chevron-right"></em></div>
         							<ul>
         								<li>* Supported files: .jpg, .png</li>
         								<li>* Image file size is 2MB or less.</li>
@@ -153,12 +154,12 @@
         					<p><em class="far fa-file-image"></em>Result</p>
         					<div class="result_file" >
         						<div class="imgBox">
-        							<img src="" id="resultImg" alt="결과 이미지" />
+        							<img src="" id="resultImg" alt="result img" />
         						</div>
         						<!-- 차량 번호판 인식일 경우에만 display : blcok  -->
         						<div class="recogbox" id="recogbox" style="display:block">
         							<span>Detected Result</span>
-        							<div class="carnumber"><img src="" id="carnumber" alt="번호판 이미지"/></div>
+        							<div class="carnumber"><img src="" id="carnumber" alt="lcns_plate img"/></div>
         							<div class="carnumber_txt">33호 5598</div>
         							<div class="errortxt"><em class="fas fa-exclamation-triangle"></em>&nbsp; 사진의 크기와 위치를 다시 맞춰주세요. </div>
         						</div>
@@ -324,6 +325,51 @@ WebKitFormBoundary7MA4YWxkTrZu0gW' \
 </div>
 <!-- //#wrap -->
 
+<!-- popup -->
+<!-- 사용자 가이드 팝업 -->
+<div class="pop_simple" id="user_guide">
+	<div class="pop_bg"></div>
+	<!-- .popWrap -->
+	<div class="popWrap">
+		<div class="pop_hd">
+			License Plate Recognition User Guide
+			<em class="fas fa-times close_layer"></em>
+		</div>
+		<!-- .pop_bd -->
+		<div class="pop_bd">
+			<div class="pop_body">
+
+				<p>The above license plate recognition model is applied to the actual CCTV situation on the road, so please use the following carefully.<br>
+					- The license plate types that can be recognized are the 5 license plates below.<br>&nbsp;&nbsp;&nbsp;(Excluding special license plates used for diplomacy and construction)<br>
+					- License plates according to Korean license plate rules only. In other words, any random or fake license plate are<br>&nbsp;&nbsp;&nbsp;inappropriate.<br>
+					- Recognition becomes difficult due to random changes in font and spacing.<br>
+				</p>
+				<figure>
+					<img class="img2" src="en/images/img_smartX02.png" alt="인식 가능한 5가지 번호판 예시">
+					<figcaption>&lt;Five examples of appropriate license plates&gt;</figcaption>
+				</figure>
+				<figure>
+					<img class="img3" src="en/images/img_smartX03.png" alt="대한민국 번호판 규칙">
+					<figcaption>&lt;Lisence Plate Rules in South Korea&gt;</figcaption>
+				</figure>
+
+				<img class="img4" src="en/images/img_smartX04.png" alt="대한민국 번호판 규칙">
+
+				<figure>
+					<img class="img5" src="en/images/img_smartX05.png" alt="잘못된 번호판의 예">
+					<figcaption>&lt;Example of inappropriate license plate&gt;</figcaption>
+				</figure>
+
+			</div>
+
+		</div>
+		<!-- //.pop_bd -->
+
+	</div>
+	<!-- //.popWrap -->
+</div>
+<!-- //사용자 가이드 팝업 -->
+
 <!-- Local Script -->
 <script type="text/javascript">
     //파일명 변경
@@ -370,6 +416,14 @@ jQuery.event.add(window,"load",function(){
                 element.classList.add( 'btn_change' );
             });
         });
+
+        //사용자 가이드 보기
+		$('.user_guide').on('click', function(){
+			$('#user_guide').fadeIn();
+		});
+		$('.close_layer').on('click', function(){
+			$('#user_guide').fadeOut();
+		});
 
         // 페이지 확인을 위한 script로 개발 시에는 무시해주세요.
         $('.btn_start').on('click', function(){
