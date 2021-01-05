@@ -227,7 +227,7 @@ jQuery.event.add(window,"load",function(){
 
                 $('.sttSrchArea').find('em.findElement').queue(function() {
                     $(this).removeClass('findElement');
-                    $(this).attr('id','');
+                    $(this).parents('li').attr('id','');
                 });
 
                 //검색 단어 표시
@@ -244,7 +244,7 @@ jQuery.event.add(window,"load",function(){
                 });
 
                 //pageing open
-                var findElementAllNum = $('.findElement').length,
+                var findElementAllNum = $('.findElement').parents('li').length,
                     page_prev_num = 1,
                     page_next_num = 2;
 
