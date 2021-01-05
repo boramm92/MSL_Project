@@ -247,74 +247,76 @@
                     <!--guide_box-->
                     <div class="guide_box">
                         <div class="guide_common">
-                            <div class="title">API 공통 가이드</div>
+                            <div class="title">API Guideline</div>
 
-                            <p class="sub_title">개발 환경 세팅</p>
-                            <p class="sub_txt">1&#41; REST API는 HTTP 요청을 보낼 수 있는 환경이라면 어디에서든 이용할 수 있습니다.</p>
-                            <p class="sub_txt">2&#41; 다양한 환경의 웹 서버에서 활용 가능합니다. (Python, Web, Javascript, Java)</p>
-                            <p class="sub_title">키 발급</p>
-                            <p class="sub_txt">1&#41; Mindslab에서 제공되는 API 서비스를 사용하기 위해서는 키를 선지급 받아야합니다.</p>
-                            <p class="sub_txt">2&#41; 마음AI 플랫폼에서 Business Plan 이상 구독 신청을 하셔야합니다. (https://maum.ai) </p>
-                            <p class="sub_txt">3&#41; [계정메뉴]에서 본인의 API ID 및 Key를 확인해주세요.</p>
-                            <p class="sub_txt">4&#41; 발급받은 API ID 및 Key를 기억하여 아래 매뉴얼에 맞게 사용합니다.</p>
-                            <p class="sub_txt">※ Mindslab API를 위한 ID와 키는 외부 유출 및 공유를 금합니다.</p>
+                            <p class="sub_title">Set up Environment</p>
+                            <p class="sub_txt">1&#41; REST API is available wherever you can send HTTP requests.</p>
+                            <p class="sub_txt">2&#41; It can be used in Python, Web, Javascript and Java.</p>
+                            <p class="sub_title">ID & Key</p>
+                            <p class="sub_txt">1&#41; You need a unique ID and key for Minds Lab’s API services.</p>
+                            <p class="sub_txt">2&#41; Subscribe ‘Business Plan’ or ‘Enterprise Plan’ on maum.ai platform. (https://maum.ai)</p>
+                            <p class="sub_txt">3&#41; After subscription, request an ID and key with required information filled in.<br>
+                            <small>(ex. Service description, Requesting API, Company info. etc.)</small></p>
+                            <p class="sub_txt">4&#41; After an agreement, Minds Lab would send you an ID, key within 1-2 business days through email.</p>
+                            <p class="sub_txt">5&#41; Remember the ID and key and follow the instruction below.</p>
+                            <p class="sub_txt">※ Disclosure is prohibited strictly for Minds Lab’s API ID and key.</p>
                         </div>
 
                         <div class="guide_group">
-                            <div class="title">헤어 컬러 인식 <small>(Hair Segmentation)</small></div>
+                            <div class="title">Hair Segmentation</div>
 
-                            <p class="sub_txt">이미지 속 머리카락 영역을 인식하여 표시해주고, 색상을 분류해줍니다.</p>
-                            <span class="sub_title">준비사항</span>
-                            <p class="sub_txt">- Input: 이미지 파일</p>
+                            <p class="sub_txt">Recognizes and displays the area of hair in the image while classifying the color.</p>
+                            <span class="sub_title">Preparation</span>
+                            <p class="sub_txt">- Input: Image File</p>
                             <ul>
-                                <li>확장자 : .jpg</li>
-                                <li>용량 : 3MB 이하 </li>
-                                <li>이미지 사이즈 : 200x200px 이상</li>
-                                <li>얼굴 정면이 인식되어야 인식이 가능합니다.</li>
-                                <li>이미지 해상도가 높을수록 인식의 정확도가 높습니다.</li>
+                                <li>Supported files : .jpg</li>
+                                <li>Image capacity : 3MB or less </li>
+                                <li>Image size : 200x200 or higher</li>
+                                <li>Recognition is possible only when the front face isrecognized.</li>
+                                <li>The higher the image resolution, the higher the accuracy of recognition.</li>
                             </ul>
-                            <span class="sub_title">실행 가이드</span>
+                            <span class="sub_title">API Document</span>
                             <p class="sub_txt">① Request </p>
                             <ul>
                                 <li>Method : POST</li>
                                 <li>URL : https://api.maum.ai/feat/getHairInfo</li>
                             </ul>
-                            <p class="sub_txt">② Request 파라미터 설명 </p>
+                            <p class="sub_txt">② Request parameters</p>
                             <table>
                                 <tr>
-                                    <th>키</th>
-                                    <th>설명</th>
+                                    <th>Name</th>
+                                    <th>Description</th>
                                     <th>type</th>
                                 </tr>
                                 <tr>
                                     <td>apiId </td>
-                                    <td>사용자의 고유 ID. 마인즈랩 담당자에게 이메일로 발급요청 </td>
+                                    <td>Unique API ID. Request from is required for the ID.</td>
                                     <td>string</td>
                                 </tr>
                                 <tr>
                                     <td>apiKey </td>
-                                    <td>사용자의 고유 key. 마인즈랩 담당자에게 이메일로 발급요청 </td>
+                                    <td>Unique API key. Request from is required for the key.</td>
                                     <td>string</td>
                                 </tr>
                                 <tr>
                                     <td>scene_img</td>
-                                    <td>type : file(.jpg) 이미지 파일</td>
+                                    <td>type : Image File(.jpg)</td>
                                     <td>string</td>
                                 </tr>
                             </table>
-                            <p class="sub_txt">③ Request 예제 </p>
+                            <p class="sub_txt">③ Request example </p>
                             <div class="code_box">
                                 <pre>
 curl --location --request POST
 'https://api.maum.ai/feat/getHairInfo' \
 --header 'Content-Type: multipart/form-data' \
---form 'apiId= 발급받은 API ID' \
---form 'apiKey= 발급받은 API KEY' \
+--form 'apiId= Own API Id' \
+--form 'apiKey= Own API Key' \
 --form 'scene_img= 헤어를 인식할 이미지 파일'
 </pre>
                             </div>
 
-                            <p class="sub_txt">④ Response 예제 </p>
+                            <p class="sub_txt">④ Response example </p>
 
                             <div class="code_box">
                                 <pre>
