@@ -243,18 +243,18 @@
 
                             <p class="sub_txt">A naturally speaking avatar is created following the inputted text.</p>
                             <span class="sub_title">Preparation</span>
-                            <p class="sub_txt">- Input 1: 듣고 싶은 문장 텍스트</p>
+                            <p class="sub_txt">- Input 1: Sentence text you want to hear</p>
                             <ul>
-                                <li>제약사항 1) : 1000자 이내의 문장(한글 기준)</li>
-                                <li>제약사항 2) : 긴 문장을 넣을수록 동영상 처리하는 시간이 오래 걸립니다</li>
+                                <li>Restriction 1) : Sentence must be within 1000 characters (Korean standard)</li>
+                                <li>Restriction 2) : The longer the input sentence, the longer it takes to process the video.</li>
                             </ul>
-                            <p class="sub_txt">- Input 2: 배경 이미지 파일</p>
+                            <p class="sub_txt">- Input 2: Background image file</p>
                             <ul>
                                 <li>Supported files : .jpg, .png</li>
                                 <li>Image capacity : 10MB or less </li>
                             </ul>
                             <span class="sub_title">API Document</span>
-                            <em>&#8203;Upload : 발화할 텍스트 및 배경 이미지를 넣고 request key를 받아옵니다.</em>
+                            <em>&#8203;Upload : Insert the text and background image to be spoken and receive a request key.</em>
                             <p class="sub_txt">① Request </p>
                             <ul>
                                 <li>Method : POST</li>
@@ -279,12 +279,12 @@
                                 </tr>
                                 <tr>
                                     <td>text</td>
-                                    <td>문장 (*50자 이내)</td>
+                                    <td>Sentence (*50 characters or less)</td>
                                     <td>file</td>
                                 </tr>
                                 <tr>
                                     <td>image</td>
-                                    <td>배경 이미지</td>
+                                    <td>Background image</td>
                                     <td>file</td>
                                 </tr>
                             </table>
@@ -296,8 +296,8 @@ curl --location --request POST
 --header 'Content-Type: multipart/form-data' \
 --form 'apiId= Own API Id' \
 --form 'apiKey= Own API Key' \
---form 'text= 아바타가 발화할 문장'
---form 'image= 아바타의 배경 이미지 파일'
+--form 'text= sentence to be spoken by avatar'
+--form 'image= background image file for avatar'
 </pre>
                             </div>
 
@@ -311,17 +311,17 @@ curl --location --request POST
                                 </tr>
                                 <tr>
                                     <td>message </td>
-                                    <td>API 동작여부</td>
+                                    <td>API operation</td>
                                     <td>list</td>
                                 </tr>
                                 <tr>
                                     <td>payload</td>
-                                    <td>결과</td>
+                                    <td>result</td>
                                     <td>list</td>
                                 </tr>
                             </table>
 
-                            <span class="table_tit">message: API 동작여부</span>
+                            <span class="table_tit">message: API operation</span>
                             <table>
                                 <tr>
                                     <th>Name</th>
@@ -330,17 +330,17 @@ curl --location --request POST
                                 </tr>
                                 <tr>
                                     <td>message</td>
-                                    <td>요청 처리 상태를 설명하는 문자열  (Success/ Fail)</td>
+                                    <td>String describing the request processing status (Success/Fail)</td>
                                     <td>string</td>
                                 </tr>
                                 <tr>
                                     <td>status</td>
-                                    <td>요청 처리 상태에 대한 status code (0: Success)</td>
+                                    <td>Status code for request processing status (0: Success)</td>
                                     <td>number</td>
                                 </tr>
                             </table>
 
-                            <span class="table_tit">payload: 결과</span>
+                            <span class="table_tit">payload: result</span>
                             <table>
                                 <tr>
                                     <th>Name</th>
@@ -349,7 +349,7 @@ curl --location --request POST
                                 </tr>
                                 <tr>
                                     <td>requestKey</td>
-                                    <td>아바타 생성을 위한 request Key</td>
+                                    <td>Request key for avatar creation</td>
                                     <td>string</td>
                                 </tr>
                             </table>
@@ -364,7 +364,7 @@ curl --location --request POST
 "status": 0
 },
 "payload": {
-"requestKey": "요청 key"
+"requestKey": "request key"
 }
 }
 </pre>
