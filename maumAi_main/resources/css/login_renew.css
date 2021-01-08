@@ -651,16 +651,30 @@
 
 /* lyr_event_ava 200106 UXUI Team NBR 추가 */
 .lyr_event {display:none; overflow:hidden; position:fixed; bottom:0; left:0; width:100%; height:100%; text-align:center; z-index:1000; }
-.lyr_event .lyr_event_bg {position:absolute; top:0; left:0; width:100%; height:100%;  background-color: rgba(0, 0, 0, 0.6); z-index: -10;}
-.lyr_event .lyrWrap {overflow: hidden; position:relative; width:600px; height:722px; margin:250px auto 0; background:url('../images/img_event_lyr.png') 50% 50% no-repeat; background-size:contain; -webkit-animation:lyr_popshow 0.8s 0s ease-out; animation:lyr_popshow 0.8s 0s ease-out;}
-.lyr_event .lyrWrap .btnBox {width:100%; height:94px; position:absolute; bottom:39px;}
-.lyr_event .lyrWrap .btnBox a {width:100%; margin:0; border:none; border-radius:0; background:url('../images/img_event_btn.png') 50% 50% no-repeat; background-size:cover;}
+.lyr_event .lyr_event_bg {position:absolute; top:0; left:0; width:100%; height:100%; background-color: rgba(0, 0, 0, 0.6); z-index: -10;}
+/* .lyr_event .lyrWrap {overflow: hidden; position:relative; top:200px; width:600px; height:722px; margin:0 auto; background:url('../images/img_event_lyr.png') 50% 50% no-repeat; background-size:contain; -webkit-animation:lyr_eventshow 0.5s 0s ease-out; animation:lyr_eventshow 0.5s 0s ease-out;} */
+.lyr_event .lyrWrap {overflow: hidden; position:relative; top:200px; width:600px; height:722px; margin:0 auto; -webkit-animation:lyr_eventshow 0.5s 0s ease-out; animation:lyr_eventshow 0.5s 0s ease-out;}
+.lyr_event .lyrWrap > img {width:100%; object-fit:contain;}
+.lyr_event .lyrWrap .btnBox {position:absolute; bottom:39px; width:100%; height:94px;}
+/* .lyr_event .lyrWrap .btnBox a {width:100%; margin:0; border:none; border-radius:0; background:url('../images/img_event_btn.png') 50% 50% no-repeat; background-size:cover;} */
+.lyr_event .lyrWrap .btnBox a {width:100%; height:auto; margin:0; padding:0; border:none; border-radius:0; background:none;}
+.lyr_event .lyrWrap .btnBox a img {width:100%; height:100%; object-fit:cover;}
 .lyr_event .lyrWrap .checkBox {position:absolute; left:50px; bottom:20px; width:auto; text-align:center; line-height:39px;}
 .lyr_event .lyrWrap .checkBox label {margin:0; padding:0 0 0 25px; color:#fff; font-size:15px; font-weight:400; letter-spacing:-0.7px;}
 .lyr_event .lyrWrap .checkBox input[type="checkbox"] + label:before {width:18px; height:18px; margin: -9px 0 0; border:none; border-radius:4px; box-sizing:border-box; background:#fff; transition:none;}
 .lyr_event .lyrWrap .checkBox input[type="checkbox"]:checked + label {color:#fff;}
 .lyr_event .lyrWrap .checkBox input[type="checkbox"]:checked + label:before {color:#1b2370; line-height:16px;}
 .lyr_event .lyrWrap button {position:absolute; right:50px; bottom:20px; padding:0 0 0 22px; border:none; background:url('../images/img_event_close.svg') 0 50% no-repeat; color:#fff; font-size:15px;}
+
+/* keyframes */
+@-webkit-keyframes lyr_eventshow{
+  0%{top:150px; opacity:0;}
+  100%{top:200px; opacity:1;}
+}
+@keyframes lyr_eventshow{
+  0%{top:150px; opacity:0;}
+  100%{top:200px; opacity:1;}
+}
 /* //lyr_event_ava 200106 UXUI Team NBR 추가 */
 
 .lyr_event_new {display:none; overflow:hidden; position:fixed; bottom:0; left:0; width:100%; height:100%; text-align:center; z-index:1000; }
@@ -1174,18 +1188,11 @@
 	/*	popup*/
 	.lyr_policy .lyrWrap {width:95%; height:350px;}
 	.lyr_term_kr .lyrWrap {width:95%; height:350px;}
-	.lyr_event .lyrWrap {width: 300px;background-size: contain;margin: 30px auto;height: 300px;animation:none;z-index: 1000;}
-	.lyr_event .lyrWrap .lyr_bd {padding:41px 0;}
-	.lyr_event .lyrWrap .lyr_bd h1 {font-size:1.8rem; margin: 0 0 5px 0;height: 33px;line-height: 33px;}
-	.lyr_event .lyrWrap .lyr_bd ul {margin: 0 auto 13px;}
-	.lyr_event .lyrWrap .lyr_bd ul li {font-size:1rem;}
-	.lyr_event .lyrWrap .lyr_bd .checkBox{line-height: 25px;height: 27px;}
-	.lyr_event .lyrWrap .lyr_bd .checkBox div label {font-size:1rem;}
-	.lyr_event .lyrWrap .lyr_bd .checkBox input[type="checkbox"] + label:before{width:12px;height:12px; margin: 0 5px 0 0; line-height: 9px; font-size: 1rem;}
-	.lyr_event .lyrWrap .lyr_bd .checkBox input[type="checkbox"]:checked + label:before { line-height: 9px; font-size: 1rem;}
-	.lyr_event .lyrWrap .lyr_bd .bottom { height: 75px;padding:10px ;}
-	.lyr_event .lyrWrap .lyr_bd .bottom a {font-size:1.2rem;}
-	.lyr_event .lyrWrap .lyr_bd .bottom a span{font-size:1rem;}
+
+	.lyr_event .lyrWrap {top:0; width:320px; height:auto; margin:30px auto; animation:none; z-index: 1000;}
+	.lyr_event .lyrWrap .btnBox {width:100%; height:auto; bottom:26px;}
+	.lyr_event .lyrWrap .checkBox {left:26px; bottom:7px;}
+	.lyr_event .lyrWrap button {right:26px; bottom:7px;}
 
 	.lyr_event_new .lyrWrap { width: 95%;margin: 60px auto;height: auto;animation:none;}
 	.lyr_event_new .lyrWrap:before {width:137px;}
