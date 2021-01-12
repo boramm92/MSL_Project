@@ -1481,8 +1481,11 @@ jQuery.event.add(window,"load",function(){
 
         //오디오 플레이어
         $('audio').audioPlayer();
-        $('.btn_player_play').on('click',function(){
+        $('.player_button .btn_player_play').on('click',function(){
             $(this).toggleClass('pause');
+        });
+        $('.btn_player_play.stop').on('click', function(){
+            $('.player_button .btn_player_play').removeClass('pause');
         });
 
         // 상단 계약정보 - 상품명, 캠페인명 텍스트 영역에 title추가하여  full text 보여주기

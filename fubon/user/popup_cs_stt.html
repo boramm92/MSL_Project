@@ -476,8 +476,11 @@ jQuery.event.add(window,"load",function(){
 
         //오디오 플레이어
         $('audio').audioPlayer();
-        $('.btn_player_play').on('click',function(){
+        $('.player_button .btn_player_play').on('click',function(){
             $(this).toggleClass('pause');
+        });
+        $('.btn_player_play.stop').on('click', function(){
+            $('.player_button .btn_player_play').removeClass('pause');
         });
 
         // STT 결과에서 텍스트 검색하기

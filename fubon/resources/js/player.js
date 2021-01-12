@@ -23,7 +23,7 @@
 
 	$.fn.audioPlayer = function( params )
 	{
-		var params		= $.extend( { classPrefix: 'playerBox', strPlay: 'Play', strPause: 'Pause', strVolume: 'Volume' }, params ),
+		var params		= $.extend( { classPrefix: 'playerBox', strPlay: 'Play', strPause: 'Pause', strStop: 'Stop', strVolume: 'Volume' }, params ),
 			cssClass	= {},
 			cssClassSub =
 			{
@@ -78,6 +78,11 @@
                     <div class="' + cssClass.playPause + '">\
                         <button type="button" class="btn_player_play" title="재생/ 일시정지">\
                             <span>재생/ 일시정지</span>\
+                        </button>\
+                    </div>\
+                    <div class="' + cssClass.stopped + '">\
+                        <button type="button" class="btn_player_play stop" title="정지">\
+                            <span>정지</span>\
                         </button>\
                     </div>\
                 </div>'),
@@ -206,6 +211,14 @@
                     thePlayer.addClass(cssClass.playing);
                     isSupport ? theAudio.play() : theAudio.Play();
                 }
+                return false;
+            });
+            
+            thePlayer.find('.' + cssClass.stopped).on('click', function() {
+                $(this).attr('title', params.strStop).find('a').html(params.strStop);
+                thePlayer.removeClass(cssClass.playing);
+                isSupport ? theAudio.pause() : theAudio.Stop();
+                theAudio.currentTime = 0;
                 return false;
             });
 
