@@ -216,12 +216,12 @@
                 <!-- .srchArea -->
                 <div class="srchArea">
                     <h3>QA 배정 현황</h3>
-                    
-                    <table class="tbl_line_view" summary="청약일자, 센터, 실, 상담원, 담당QA, 증권번호로 구성">
+
+                    <table class="tbl_line_view" summary="청약일자, 상품명, 센터, 실, 상담원, 담당QA, 증권번호로 구성">
                         <caption class="hide">검색조건</caption>
                         <colgroup>
-                            <col width="70"><col width="230"><col width="70"><col><col width="70"><col>
-                            <col width="70"><col><col width="70"><col width="100"><col width="70"><col width="120">
+                            <col width="70"><col width="230"><col width="70"><col><col width="70"><col><col width="70"><col>
+                            <col width="70"><col><col width="70"><col><col width="70"><col>
                         </colgroup>
 
                         <tbody>
@@ -233,6 +233,13 @@
                                         <input type="text" id="fromDate" class="iptDateTime">
                                         <span>&hyphen;</span>
                                         <input type="text" id="toDate" class="iptDateTime">
+                                    </div>
+                                </td>
+
+                                <th scope="row">상품명</th>
+                                <td>
+                                    <div class="iptBox">
+                                        <input type="text">
                                     </div>
                                 </td>
 
@@ -577,7 +584,7 @@
                             <a href="#none" class="btn_search">조회</a>
                         </div>
                     </div>
-                    
+
                     <!-- [D] datatables 라이브러리 영역 -->
                     <!-- [D] 처음 페이지 들어왔을때 목록 순서는 '센터'기준으로 오름차순 정렬됨 -->
                     <!-- [D] 페이지 정보(.dataTables_info) [총 19건 0건]에서의 0건 부분은 계약자명 기준으로 중복제거된 건수로 넣어주어야 함 -->
@@ -885,7 +892,7 @@ jQuery.event.add(window,"load",function(){
                 {targets: [2], width: "150px"},                                    // 상품명
                 {targets: [3], width: "100px"},                                    // 증권번호
                 {targets: [4], width: "100px", orderable: false},                  // 청약상태
-                {targets: [5], width: "100px", orderable: false},                  // 계약자
+                {targets: [5], width: "100px"},                                    // 계약자
                 {targets: [6], width: "100px", orderable: false},                  // 피보험자
                 {targets: [7], width: "100px", orderable: false},                  // 상담원
                 {targets: [8], width: "80px", orderable: false},                  // 사번

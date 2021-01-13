@@ -1163,9 +1163,11 @@ jQuery.event.add(window,"load",function(){
 
         // datatable 렌더링
         var table = $('.dataTable').DataTable({
-            dom: '<"top">t<"bottom"B>', // 옵션 위치 지정
+            dom: 't<"bottom"iB>', // 옵션 위치 지정
             language: { // 테이블 목록 건수 text 한글 설정
                 emptyTable: "조회된 데이터가 없습니다.", // 데이터 없을 경우 노출되는 text 설정
+                infoEmpty: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>0</strong> 건&rbrack;",
+                info: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>0</strong> 건&rbrack;",
                 paginate: {
                     first: "",
                     previous: "",
@@ -1175,7 +1177,6 @@ jQuery.event.add(window,"load",function(){
             },
             responsive: true, // 반응형 허용
             order: [[ 7, 'asc' ]], // 초기 sort 설정
-            info: false,
             paging: false, // 페이징 허용
             pagingType: "full_numbers", // 페이징 버튼 구성 (처음, 이전, 페이지숫자, 다음, 마지막)
             lengthMenu: [25, 50, 100], // 페이지 당 보여질 목록 갯수 select 범위 지정

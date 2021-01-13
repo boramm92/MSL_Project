@@ -206,8 +206,11 @@ jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
         //오디오 플레이어
         $('audio').audioPlayer();
-        $('.btn_player_play').on('click',function(){
+        $('.player_button .btn_player_play').on('click',function(){
             $(this).toggleClass('pause');
+        });
+        $('.btn_player_play.stop').on('click', function(){
+            $('.player_button .btn_player_play').removeClass('pause');
         });
 
         // STT 결과에서 텍스트 검색하기
@@ -216,6 +219,10 @@ jQuery.event.add(window,"load",function(){
         $("#findTxtField").keydown(function(key) {
             if (key.keyCode == 13) {
                 $('#findTxt .btn_srch').trigger("click");
+            }else if(key.keyCode == 38){
+                $('.pageing a.btn_page_prev').trigger("click");
+            }else if(key.keyCode == 40){
+                $('.pageing a.btn_page_next').trigger("click");
             }
         });
 

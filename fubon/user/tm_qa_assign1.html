@@ -216,8 +216,8 @@
                 <!-- .srchArea -->
                 <div class="srchArea">
                     <h3>QA 배정 대상</h3>
-                    
-                    <table class="tbl_line_view" summary="청약일자, 센터, 상담원, 사번, 대상, 대상내용, TA점수(최소-최대), 증권번호, 상품명, 번들유무, 청약상태, 상품발송안내로 구성">
+
+                    <table class="tbl_line_view" summary="청약일자, 센터, 상담원, 상담원 이름, 대상, 대상내용, TA점수(최소-최대), 증권번호, 상품명, 번들유무, 청약상태, 상품발송안내로 구성">
                         <caption class="hide">검색조건</caption>
                         <colgroup>
                             <col width="70"><col width="230"><col width="70"><col><col width="70"><col width="130">
@@ -273,10 +273,10 @@
                                 </td>
 
                                 <!-- [D] 입력값 전체일치 시에만 조회 가능하도록 해야함 -->
-                                <th scope="row">사번</th>
+                                <th scope="row">상담원 이름</th>
                                 <td>
                                     <div class="iptBox">
-                                        <input type="text" numberOnly>
+                                        <input type="text">
                                     </div>
                                 </td>
 
@@ -625,17 +625,17 @@
                                 </tr>
                             </tbody>
                         </table>
-                        
+
                         <!-- [D] 배정('.btn_assign')버튼 클릭 시 배정관리팝업(popup_assign_set.html)열려야함 -->
                         <div class="btnBox">
                             <a href="#none" class="btn_assign">배정</a>
                         </div>
                     </div>
                     <!-- //.dataTableBox -->
-                    
+
                     <div class="assign_status_box">
                             <h3>QA 배정 현황</h3>
-        
+
                             <div class="dateSearch_box">
                                 <!-- [D] QA요청일자 날짜별 조회 가능 -->
                                 <div class="iptBox">
@@ -650,14 +650,14 @@
                                     <a href="#none" class="btn_holiday_set">휴무관리</a>
                                 </div>
                             </div>
-                            
+
                             <table class="tbl_line_view" summary="심사자, 근무관리, 배정으로 구성">
                                 <caption class="hide">QA 배정 현황</caption>
                                 <colgroup>
                                     <col width="120"><col width="90"><col width="90"><col width="90"><col width="90"><col width="90">
                                     <col width="90"><col width="90"><col width="90"><col width="90"><col width="90"><col width="90"><col width="90">
                                 </colgroup>
-    
+
                                 <tbody>
                                     <!-- [D] 근무관리(td span)가 휴무인 사람에게 addclass('off')주면 text color 빨간색으로 변경됨 -->
                                     <tr>
@@ -693,11 +693,11 @@
                                 </tbody>
                             </table>
                         </div>
-    
+
                     <!-- .dataTableBox -->
                     <div class="dataTableBox">
                         <h3>심사자별 상세 현황</h3>
-                        
+
                         <!-- [D] datatables 라이브러리 영역 -->
                         <table class="dataTable qa_detail_status">
                             <thead>
@@ -715,6 +715,7 @@
                                     <th>계약자</th>
                                     <th>피보험자</th>
                                     <th>상담원</th>
+                                    <th>심사자</th>
                                     <th>TA점수</th>
                                     <th>QA상태</th>
                                     <th>QA점수</th>
@@ -722,7 +723,7 @@
                                     <th>콜타임</th>
                                 </tr>
                             </thead>
-    
+
                             <!-- [D] 리스트 더블클릭 시 비활성화된 심사페이지(popup_tm_qa_audit.html) 열려야 함 -->
                             <tbody>
                                 <tr>
@@ -739,6 +740,7 @@
                                     <td>김민정</td>
                                     <td>김민정</td>
                                     <td>천일우</td>
+                                    <td>김민정</td>
                                     <td>2</td>
                                     <td>완료</td>
                                     <td>3</td>
@@ -759,6 +761,7 @@
                                     <td>김민정</td>
                                     <td>김민정</td>
                                     <td>천일우</td>
+                                    <td>김민정</td>
                                     <td>2</td>
                                     <td>완료</td>
                                     <td>3</td>
@@ -779,6 +782,7 @@
                                     <td>김민정</td>
                                     <td>김민정</td>
                                     <td>천일우</td>
+                                    <td>김민정</td>
                                     <td>2</td>
                                     <td>완료</td>
                                     <td>3</td>
@@ -799,6 +803,7 @@
                                     <td>김민정</td>
                                     <td>김민정</td>
                                     <td>천일우</td>
+                                    <td>김민정</td>
                                     <td>2</td>
                                     <td>완료</td>
                                     <td>3</td>
@@ -818,6 +823,7 @@
                                     <td>김민정</td>
                                     <td>김민정</td>
                                     <td>천일우</td>
+                                    <td>김민정</td>
                                     <td>2</td>
                                     <td>완료</td>
                                     <td>3</td>
@@ -826,14 +832,14 @@
                                 </tr>
                             </tbody>
                         </table>
-                        
+
                         <div class="btnBox">
                             <a href="#lyr_assign_cancel" class="btn_assign_cancel btn_lyr_open">배정취소</a>
                         </div>
                     </div>
-                    <!-- //.dataTableBox -->                    
+                    <!-- //.dataTableBox -->
                 </div>
-                <!-- //.tableWrap -->                
+                <!-- //.tableWrap -->
             </div>
             <!-- //.tab_content -->
         </div>
@@ -922,7 +928,7 @@ jQuery.event.add(window,"load",function(){
                 {targets: [0], width: "50px", orderable: false, sortable: false},  // 체크박스
                 {targets: [1], width: "50px", orderable: false},                   // NO
                 {targets: [2], width: "100px"},                                    // 청약일자
-                {targets: [3], width: "200px", orderable: false},                  // 상품명
+                {targets: [3], width: "150px", orderable: false},                  // 상품명
                 {targets: [4], width: "100px"},                                    // 계약자
                 {targets: [5], width: "100px", orderable: false},                  // 피보험자
                 {targets: [6], width: "100px", orderable: false},                  // 증권번호
@@ -966,16 +972,17 @@ jQuery.event.add(window,"load",function(){
                 {targets: [0], width: "50px", orderable: false, sortable: false},  // 체크박스
                 {targets: [1], width: "50px", orderable: false},                   // NO
                 {targets: [2], width: "100px", orderable: false},                  // 청약일자
-                {targets: [3], width: "200px", orderable: false},                  // 상품명
+                {targets: [3], width: "150px", orderable: false},                  // 상품명
                 {targets: [4], width: "100px", orderable: false},                  // 증권번호
                 {targets: [5], width: "100px", orderable: false},                  // 계약자
                 {targets: [6], width: "100px", orderable: false},                  // 피보험자
                 {targets: [7], width: "100px", orderable: false},                  // 상담원
-                {targets: [8], width: "80px", orderable: false},                   // TA 점수
-                {targets: [9], width: "100px", orderable: false},                  // QA 상태
-                {targets: [10], width: "80px", orderable: false},                  // QA 점수
-                {targets: [11], width: "80px", orderable: false},                  // QA 결과
-                {targets: [12], width: "80px", orderable: false},                  // 콜타임
+                {targets: [8], width: "100px", orderable: false},                  // 심사자
+                {targets: [9], width: "80px", orderable: false},                   // TA 점수
+                {targets: [10], width: "100px", orderable: false},                  // QA 상태
+                {targets: [11], width: "80px", orderable: false},                  // QA 점수
+                {targets: [12], width: "80px", orderable: false},                  // QA 결과
+                {targets: [13], width: "80px", orderable: false},                  // 콜타임
             ],
         });
 
