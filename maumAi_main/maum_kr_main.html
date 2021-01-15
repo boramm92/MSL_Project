@@ -178,7 +178,7 @@
     				<label for="check_stop">오늘 하루 이 창 열지 않음</label>
     			</div>
     
-                <button type="button" class="btn_lyrWrap_close">닫기</button>
+                <button type="button" class="btn_lyrWrap_close"></button>
             </div>
             
             <div class="lyr_cont ava_start">
@@ -195,7 +195,7 @@
     				<label for="check_stop">오늘 하루 이 창 열지 않음</label>
     			</div>
     
-                <button type="button" class="btn_lyrWrap_close">닫기</button>
+                <button type="button" class="btn_lyrWrap_close"></button>
             </div>
 		</div>
 		<!-- //.lyrWrap -->
@@ -241,6 +241,11 @@ jQuery.event.add(window,"load",function(){
                 });
                 clicked = true;
             }            
+        });
+        
+        // 팝업 닫기
+        $('.lyr_event_bg').on('click', function () {
+            $(this).parent().remove();            
         });
     });
 });
