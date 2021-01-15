@@ -231,12 +231,11 @@ jQuery.event.add(window,"load",function(){
         });
 
         // 팝업 닫기
-        $('.btn_lyrWrap_close, .lyr_event_bg').on('click', function () {
-            $(this).parent('.lyr_cont').hide();
+        $('.btn_lyrWrap_close').on('click', function () {
+            $(this).parent('.lyr_cont').remove();
             
-            if( $('.lyr_cont').length == 1 ) {
-                console.log('test')
-                $('.lyr_event').hide();
+            if( $('.lyr_cont').length == 0 ) {
+                $('.lyr_event').remove();
                 $('body').css({
                     'overflow': ''
                 });
