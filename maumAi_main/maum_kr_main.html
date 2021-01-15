@@ -164,21 +164,46 @@
 		<div class="lyr_event_bg"></div>
 		<!-- .lyrWrap -->
 		<div class="lyrWrap">
-            <div class="btnBox">
-                <a target="_blank" href="https://bit.ly/2KnBUjK"></a>
+            <div class="lyr_cont">
+                <div class="imgBox">
+                    <img src="resources/images/img_event_lyr_m.png" alt="">
+                </div>
+                                
+                <div class="btnBox">
+                    <a target="_blank" href="https://bit.ly/2KnBUjK"></a>
+                </div>
+    
+                <div class="checkBox">
+                    <input type="checkbox" id="check_stop" onclick="javascript:todaycloseWin();">
+    				<label for="check_stop">오늘 하루 이 창 열지 않음</label>
+    			</div>
+    
+                <button type="button" class="btn_lyrWrap_close">닫기</button>
             </div>
-
-            <div class="checkBox">
-                <input type="checkbox" id="check_stop" onclick="javascript:todaycloseWin();">
-				<label for="check_stop">오늘 하루 이 창 열지 않음</label>
-			</div>
-
-            <button type="button" class="btn_lyrWrap_close">닫기</button>
+            
+            <div class="lyr_cont ava_start">
+                <div class="imgBox">
+                    <img src="resources/images/img_ava_start_m.png" alt="">
+                </div>                
+                
+                <div class="btnBox">
+                    <a target="_blank" href="https://ava.maum.ai/login#/users/sign_in"></a>
+                </div>
+    
+                <div class="checkBox">
+                    <input type="checkbox" id="check_stop" onclick="javascript:todaycloseWin();">
+    				<label for="check_stop">오늘 하루 이 창 열지 않음</label>
+    			</div>
+    
+                <button type="button" class="btn_lyrWrap_close">닫기</button>
+            </div>
 		</div>
 		<!-- //.lyrWrap -->
 	</div>
 	<!-- //.lyr_event -->
 <!-- //AVA 베타테스트 신청 이벤트 -->
+
+
 
 <!-- Local Script -->
 <script type="text/javascript">
@@ -206,12 +231,17 @@ jQuery.event.add(window,"load",function(){
         });
 
         // 팝업 닫기
-        $('.btn_lyrWrap_close, .lyr_consultant_bg, .lyr_service_bg').on('click', function () {
-            $('.lyr_event').hide();
-            $('body').css({
-                'overflow': ''
-            });
-            clicked = true;
+        $('.btn_lyrWrap_close, .lyr_event_bg').on('click', function () {
+            $(this).parent('.lyr_cont').hide();
+            
+            if( $('.lyr_cont').length == 1 ) {
+                console.log('test')
+                $('.lyr_event').hide();
+                $('body').css({
+                    'overflow': ''
+                });
+                clicked = true;
+            }            
         });
     });
 });

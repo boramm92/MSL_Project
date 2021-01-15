@@ -649,19 +649,23 @@
 .ico_plus:before {content: ''; display: block; position: absolute; top: 4px; left: 2px; width: 5px; height: 1px; background-color: rgba(255,255,255,0.8);}
 .ico_plus:after {content: ''; display: block; position: absolute; top: 2px; left: 4px; width: 1px; height: 5px; background-color: rgba(255,255,255,0.8);}
 
-/* lyr_event_ava 200106 UXUI Team NBR 추가 */
+/* AVA 팝업 200106 UXUI Team NBR 추가 */
 .lyr_event {display:none; overflow:hidden; position:fixed; bottom:0; left:0; width:100%; height:100%; text-align:center; z-index:1000; }
 .lyr_event .lyr_event_bg {position:absolute; top:0; left:0; width:100%; height:100%; background-color: rgba(0, 0, 0, 0.6); z-index: -10;}
-.lyr_event .lyrWrap {overflow: hidden; position:relative; top:50px; width:600px; height:722px; margin:0 auto; background:url('../images/img_event_lyr.png') 50% 50% no-repeat; background-size:contain; -webkit-animation:lyr_eventshow 0.5s 0s ease-out; animation:lyr_eventshow 0.5s 0s ease-out;}
-.lyr_event .lyrWrap > img {width:100%; object-fit:contain;}
-.lyr_event .lyrWrap .btnBox {position:absolute; bottom:39px; width:100%; height:94px;}
-.lyr_event .lyrWrap .btnBox a {width:100%; margin:0; border:none; border-radius:0; background:url('../images/img_event_btn.png') 50% 50% no-repeat; background-size:cover;}
+.lyr_event .lyrWrap {position:relative; top:50px; left:50%; width:1290px; height:auto; transform:translate(-50%, 0); z-index:auto;}
+.lyr_event .lyrWrap .lyr_cont {display:inline-block; overflow:hidden; position:relative; width:490px; height:600px; margin:0 20px; background:url('../images/img_event_lyr.png') 50% 50% no-repeat; background-size:contain; -webkit-animation:lyr_eventshow 0.5s 0s ease-out; animation:lyr_eventshow 0.5s 0s ease-out;}
+.lyr_event .lyrWrap .lyr_cont img {display:none; width:100%; object-fit:contain;}
+.lyr_event .lyrWrap .btnBox {position:absolute; bottom:39px; width:100%; height:77px;}
+.lyr_event .lyrWrap .btnBox a {width:100%; margin:0; border:none; border-radius:0; background:url('../images/img_event_btn.png') 50% 50% no-repeat; background-size:100% auto; transition:none;}
 .lyr_event .lyrWrap .checkBox {position:absolute; left:50px; bottom:20px; width:auto; text-align:center; line-height:39px;}
 .lyr_event .lyrWrap .checkBox label {margin:0; padding:0 0 0 25px; color:#fff; font-size:15px; font-weight:400; letter-spacing:-0.7px;}
 .lyr_event .lyrWrap .checkBox input[type="checkbox"] + label:before {width:18px; height:18px; margin: -9px 0 0; border:none; border-radius:4px; box-sizing:border-box; background:#fff; transition:none;}
 .lyr_event .lyrWrap .checkBox input[type="checkbox"]:checked + label {color:#fff;}
 .lyr_event .lyrWrap .checkBox input[type="checkbox"]:checked + label:before {color:#1b2370; line-height:16px;}
 .lyr_event .lyrWrap button {position:absolute; right:50px; bottom:20px; padding:0 0 0 22px; border:none; background:url('../images/img_event_close.svg') 0 50% no-repeat; color:#fff; font-size:15px;}
+
+.lyr_event .lyrWrap .ava_start {background:url('../images/img_ava_start.png') 50% 50% no-repeat; background-size:contain;}
+.lyr_event .lyrWrap .ava_start .btnBox a {width:100%; margin:0; border:none; border-radius:0; background:url('../images/img_avaStart_btn.png') 50% 50% no-repeat; background-size:cover;}
 
 /* keyframes */
 @-webkit-keyframes lyr_eventshow{
@@ -672,7 +676,7 @@
   0%{top:0; opacity:0;}
   100%{top:50px; opacity:1;}
 }
-/* //lyr_event_ava 200106 UXUI Team NBR 추가 */
+/* //팝업 200106 UXUI Team NBR 추가 */
 
 .lyr_event_new {display:none; overflow:hidden; position:fixed; bottom:0; left:0; width:100%; height:100%; text-align:center; z-index:1000; }
 .lyr_event_new .lyr_event_bg {position:absolute; top:0; left:0; width:100%; height:100%;  background-color: rgba(0, 0, 0, 0.6); z-index: -10;}
@@ -1186,13 +1190,20 @@
 	.lyr_policy .lyrWrap {width:95%; height:350px;}
 	.lyr_term_kr .lyrWrap {width:95%; height:350px;}
 
-	.lyr_event .lyrWrap {top:0; width:320px; height:548px; margin:30px auto; background:url('../images/img_event_lyr_m.png') 50% 0 no-repeat; background-size:contain; animation:none; z-index: 1000;}
-	.lyr_event .lyrWrap .btnBox {width:100%; height:66px; bottom:32px;}
+	.lyr_event .lyrWrap {top:30px;}
+	.lyr_event .lyrWrap .lyr_cont {overflow:visible; position:absolute; top:0; left:50%; width:300px; height:auto; margin:0 auto; background:none; animation:none; transform:translate(-50%, 0); z-index: 1000;}
+	.lyr_event .lyrWrap .lyr_cont .imgBox {overflow:auto; width:100%; height:auto;}
+	.lyr_event .lyrWrap .lyr_cont img {display:block; object-fit:none;}
+	.lyr_event .lyrWrap .btnBox {width:100%; height:62px; bottom:0;}
 	.lyr_event .lyrWrap .btnBox a {padding:0; background:url('../images/img_event_btn_m.png') 50% 50% no-repeat; background-size:cover;}
-	.lyr_event .lyrWrap .checkBox {left:18px; bottom:0;}
-	.lyr_event .lyrWrap button {right:18px; bottom:0;}
+	.lyr_event .lyrWrap .checkBox {left:18px; bottom:-30px;}
+	.lyr_event .lyrWrap button {right:18px; bottom:-30px;}
+	
+	.lyr_event .lyrWrap .lyr_cont.ava_start {z-index:999;}
+	/* .lyr_event .lyrWrap .lyr_cont.ava_start .imgBox {overflow:visible;} */
+	.lyr_event .lyrWrap .lyr_cont.ava_start .btnBox a {padding:0; background:url('../images/img_avaStart_btn_m.png') 50% 50% no-repeat; background-size:cover;}
 
-	.lyr_event_new .lyrWrap { width: 95%;margin: 60px auto;height: auto;animation:none;}
+	.lyr_event_new .lyrWrap {width:95%; margin:60px auto; height:auto; animation:none;}
 	.lyr_event_new .lyrWrap:before {width:137px;}
 	.lyr_event_new .lyrWrap .btn_lyrWrap_close {font-size:20px;}
 	.lyr_event_new .lyrWrap .lyr_bd span {text-indent: 30px; margin: 0 0 3px 0;}
