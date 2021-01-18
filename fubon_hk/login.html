@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<!-- css -->
+<link rel="stylesheet" href="resources/css/common.css">
+<link rel="stylesheet" href="resources/css/login.css">
+
+<!-- js -->
+<script src="resources/js/jquery-3.3.1.min.js"></script>
+<script src="resources/js/jquery-migrate-3.3.0.min.js"></script>
+
+<title>Login || 푸본현대생명</title>
+</head>
+<body>
+<!-- .login_wrap -->
+<div id="wrap" class="login_wrap">
+    <!-- .login_area -->
+    <div class="login_area">
+        <!-- .img_box -->
+        <div class="img_box fl">
+            <div class="img_group">
+                <h1>푸본현대생명 STT TM_QA</h1>
+                <img class="logo_img" src="resources/images/img_logo_color.png" alt="푸본현대생명 로고">
+                <img class="bg_img" src="resources/images/bg_login.png" alt="로그인화면 이미지">
+            </div>
+        </div>
+        <!-- //.img_box -->
+
+        <!-- .login_box -->
+        <div class="login_box fr">
+            <div class="login_group">
+                <h2>Login</h2>
+
+                <form method="post">
+                    <fieldset class="login_form">
+                        <legend>로그인</legend>
+                        
+                        <label for="user_id" class="hide">아이디</label>
+                        <input type="text" id="user_id" placeholder="아이디">
+                        
+                        <label for="user_pw" class="hide">비밀번호</label>
+                        <input type="password" id="user_pw" placeholder="비밀번호">
+    
+                        <div class="chkBox">
+                            <input type="checkbox" id="save_id">
+                            <label for="save_id">아이디 저장</label>
+                        </div>
+    
+                        <!-- [D] 아이디, 비밀번호 입력 오류 시 등장하는 안내 문구 / addclass('on')주면 보여짐 -->
+                        <span class="login_error on">아이디 또는 비밀번호를 다시 확인해주세요.</span>
+                        
+                        <div class="btnBox">
+                            <a href="#none" class="bg_blue">로그인</a>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>                            
+        </div>
+        <!-- //.login_box -->
+    </div>
+    <!-- //.login_area -->
+</div>
+<!-- //.login_wrap -->
+
+<!-- script -->
+<script type="text/javascript">
+$(document).ready(function(){
+    // 아이디, 비밀번호 입력여부 확인하여 아이콘 활성화
+    $('.login_form > input').on('keydown', function(){
+        $(this).addClass('on');
+    });
+    $('.login_form > input').on('keyup', function(){
+        if( $(this).val() === ''){
+            $(this).removeClass('on');
+        }
+    });
+});
+</script>
+</body>
+</html>

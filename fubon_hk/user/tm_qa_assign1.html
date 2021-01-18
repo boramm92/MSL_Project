@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="format-detection" content="telephone=no">
+
+<!---------------------- General Resources ---------------------->
+<!-- General CSS -->
+<link rel="stylesheet" href="../resources/css/common.css">
+
+<!-- General Script -->
+<script src="../resources/js/jquery-3.3.1.min.js"></script>
+<script src="../resources/js/jquery-migrate-3.3.0.min.js"></script>
+<script src="../resources/js/common.js"></script>
+
+<title>TM QA배정1_관리자 || 푸본현대생명</title>
+</head>
+<body>
+<!-- #wrap -->
+<div id="wrap">
+    <!-- #header -->
+    <div id="header">
+        <!-- .title_box -->
+        <div class="title_box bg_blue">
+            <h1>
+                <img src="../resources/images/img_logo_w.png" class="logo" alt="푸본현대생명 로고">
+                <p class="title">STT TM_QA</p>
+            </h1>
+
+            <div class="etc_box">
+                <!-- [D] 사용자 계정 표시 영역(.user_account span) / 임의로 '사용자계정 표시'라고 텍스트 넣어둠 -->
+                <div class="user_account">
+                    <span>사용자계정 표시</span>
+                </div>
+                <div class="btnBox btn_logout">
+                    <a href="#none">
+                        <img src="../resources/images/ico_logout_w.png" alt="로그아웃 아이콘">
+                        로그아웃
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- //.title_box -->
+
+        <!-- .gnb -->
+        <!-- [D] 현재 페이지에 해당하는 메뉴(.gnb li)에 addclass('current')주면 활성화됨 -->
+        <!-- [D] 대메뉴(.gnb > li) 마우스오버 시 중메뉴(.sub) slidedown되며 보여짐 -->
+        <!-- [D] 소메뉴(.third)가 존재하는 중메뉴(.snb > li)는 오른쪽에 아래방향 화살표가 추가되며, 클릭 시 소메뉴(.third) slidedown되며 보여짐 -->
+        <ul class="gnb">
+            <li>
+                <h2>Home</h2>
+
+                <ul class="sub">
+                    <li>
+                        <a href="home_dashboard.html">Dashboard</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h2>CS</h2>
+
+                <ul class="sub">
+                    <li>
+                        <a href="cs_stt.html">CS - STT 대상</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h2>TM</h2>
+
+                <ul class="sub">
+                    <li>
+                        <a href="tm_stt.html">TM - STT 대상</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="current">
+                <h2>TM_QA</h2>
+
+                <ul class="sub">
+                    <li>
+                        <a href="tm_qa_target.html">QA 대상</a>
+                    </li>
+                    <li class="current">
+                        <a href="tm_qa_assign1.html">QA 배정</a>
+                    </li>
+                    <li>
+                        <a href="qa_result.html">QA 결과</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h2>통계</h2>
+
+                <ul class="sub">
+                    <li>
+                        <a href="tmr_statistic.html">상담원 통계</a>
+                    </li>
+                    <li>
+                        <a href="qa_statistic.html">심사자 통계</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h2>모니터링</h2>
+
+                <ul class="sub">
+                    <li>
+                        <a href="#none">처리 상태 모니터링</a>
+                    </li>
+                    <li>
+                        <a href="#none">서비스 모니터링</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h2>관리설정</h2>
+
+                <ul class="sub">
+                    <li>
+                        <a href="#none">표준 스크립트 관리</a>
+                        <ul class="third">
+                            <li>
+                                <a href="#none">상품 스크립트 관리</a>
+                            </li>
+                            <li>
+                                <a href="#none">점검 항목 관리</a>
+                            </li>
+                            <li>
+                                <a href="#none">표준 스크립트 관리</a>
+                            </li>
+                            <li>
+                                <a href="#none">금지어&sol;유의어 관리</a>
+                            </li>
+                            <li>
+                                <a href="#none">문장 발화 조건</a>
+                            </li>
+                            <li>
+                                <a href="#none">답변 관리</a>
+                            </li>
+                            <li>
+                                <a href="#none">문장 관리</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#none">시뮬레이션 화면</a>
+                    </li>
+                    <li>
+                        <a href="#none">사용자 관리</a>
+                        <ul class="third">
+                            <li>
+                                <a href="#none">사용자 관리</a>
+                            </li>
+                            <li>
+                                <a href="#none">권한 관리</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#none">재처리 관리</a>
+                        <ul class="third">
+                            <li>
+                                <a href="#none">TA 재처리</a>
+                            </li>
+                            <li>
+                                <a href="#none">STT&sol;TA 재처리</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <!-- //.gnb -->
+    </div>
+    <!-- //#header -->
+
+    <!-- #container -->
+    <div id="container">
+        <!-- #contents -->
+        <div id="contents" class="tm_qa_assign manager">
+            <!-- .tab_title -->
+            <div class="tab_title">
+                <div class="tab_list_wrap">
+                    <ul class="tab_list">
+                        <!-- <li>음성생성<button type="button" class="btn_close">x</button></li>
+                        <li>Text-to-Speech<button type="button" class="btn_close">x</button></li>
+                        <li>텍스트 제거<button type="button" class="btn_close">x</button></li>
+                        <li>Text Removal<button type="button" class="btn_close">x</button></li> -->
+                    </ul>
+                </div>
+
+                <div class="tab_dropdown">
+                    <div class="btnBox">
+                        <a href="#lyr_tab_allDlt_chk" class="btn_tab_allDlt btn_lyr_open">탭 전체삭제</a>
+                        <a href="#none" class="btn_open">
+                            <span>탭버튼</span>
+                            <em></em>
+                        </a>
+                    </div>
+
+                    <ul class="dropdown_list">
+                        <!-- <li>음성생성<button type="button" class="btn_close">x</button></li>
+                        <li>Text-to-Speech<button type="button" class="btn_close">x</button></li>
+                        <li>텍스트 제거<button type="button" class="btn_close">x</button></li>
+                        <li>Text Removal<button type="button" class="btn_close">x</button></li> -->
+                    </ul>
+                </div>
+            </div>
+            <!-- //.tab_title -->
+
+            <!-- .tab_content -->
+            <div class="tab_content">
+                <!-- .srchArea -->
+                <div class="srchArea">
+                    <h3>QA 배정 대상</h3>
+
+                    <table class="tbl_line_view" summary="청약일자, 센터, 상담원, 상담원 이름, 대상, 대상내용, TA점수(최소-최대), 증권번호, 상품명, 번들유무, 청약상태, 상품발송안내로 구성">
+                        <caption class="hide">검색조건</caption>
+                        <colgroup>
+                            <col width="70"><col width="230"><col width="70"><col><col width="70"><col width="130">
+                            <col width="120"><col width="130"><col width="70"><col><col width="70"><col>
+                        </colgroup>
+
+                        <tbody>
+                            <tr>
+                                <th scope="row">청약일자</th>
+                                <!-- [D] 시간 초기 기본값 미정으로 비워둠 -->
+                                <td>
+                                    <div class="iptBox">
+                                        <input type="text" id="fromDate" class="iptDateTime">
+                                        <span>&hyphen;</span>
+                                        <input type="text" id="toDate" class="iptDateTime">
+                                    </div>
+                                </td>
+
+                                <th scope="row">센터</th>
+                                <td>
+                                    <div class="sltBox custom">
+                                        <select class="select">
+                                            <option value="" selected>전체</option>
+                                            <option value="">1센터</option>
+                                            <option value="">2센터</option>
+                                            <option value="">3센터</option>
+                                            <option value="">4센터</option>
+                                            <option value="">5센터</option>
+                                            <option value="">Upsell 센터</option>
+                                        </select>
+                                    </div>
+                                </td>
+
+                                <th scope="row">상담원</th>
+                                <td>
+                                    <div class="sltBox custom">
+                                        <select class="select">
+                                            <option value="">전체</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                            <option value="">상담유형옵션</option>
+                                        </select>
+                                    </div>
+                                </td>
+
+                                <!-- [D] 입력값 전체일치 시에만 조회 가능하도록 해야함 -->
+                                <th scope="row">상담원 이름</th>
+                                <td>
+                                    <div class="iptBox">
+                                        <input type="text">
+                                    </div>
+                                </td>
+
+                                <!-- [D] 입력값 전체일치 시에만 조회 가능하도록 해야함 -->
+                                <th scope="row">계약자</th>
+                                <td>
+                                    <div class="iptBox">
+                                        <input type="text">
+                                    </div>
+                                </td>
+
+                                <!-- [D] 입력값 전체일치 시에만 조회 가능하도록 해야함 -->
+                                <th scope="row">피보험자</th>
+                                <td>
+                                    <div class="iptBox">
+                                        <input type="text">
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <!-- [D] 입력값 한,영 입력으로 일부만 입력하여도 해당되는 상품 조회 가능하도록 해야함 -->
+                                <th scope="row">상품명</th>
+                                <td colspan="3">
+                                    <div class="iptBox">
+                                        <input type="text">
+                                    </div>
+                                </td>
+
+                                <!-- [D] 입력값 전체일치 시에만 조회 가능하도록 해야함 -->
+                                <th scope="row">증권번호</th>
+                                <td>
+                                    <div class="iptBox">
+                                        <input type="text" numberOnly>
+                                    </div>
+                                </td>
+
+                                <th scope="row">TA점수&lpar;최소&hyphen;최대&rpar;</th>
+                                <td>
+                                    <div class="iptBox">
+                                        <input type="text" class="ta_score" numberOnly>
+                                        <span>&hyphen;</span>
+                                        <input type="text" class="ta_score" numberOnly>
+                                    </div>
+                                </td>
+
+                                <th scope="row">대상내용</th>
+                                <td>
+                                    <div class="sltBox custom">
+                                        <select class="select">
+                                            <option value="">전체</option>
+                                            <option value="">TMR</option>
+                                            <option value="">상품</option>
+                                            <option value="">TA구간</option>
+                                            <option value="">TA점수</option>
+                                        </select>
+                                    </div>
+                                </td>
+
+                                <th scope="row">번들유무</th>
+                                <td>
+                                    <div class="sltBox custom">
+                                        <select class="select">
+                                            <option value="">전체</option>
+                                            <option value="">Y</option>
+                                            <option value="">N</option>
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- [D] 조회 버튼(.btn_srch)클릭 시 하단 리스트 오름차순으로 기본 정렬된 상태로 조회되며, 입력된 검색조건 값들은 reset되어야함 -->
+                    <!-- [D] 초기화 버튼(.btn_reset)클릭 시 검색조건 테이블 상 입력값들 모두 reset됨 -->
+                    <div class="btnBox">
+                        <a href="#none" class="btn_srch">조회</a>
+                        <a href="#none" class="btn_reset">초기화</a>
+                    </div>
+                </div>
+                <!-- //.srchArea -->
+
+                <!-- .tableWrap -->
+                <div class="tableWrap">
+                    <!-- .dataTableBox -->
+                    <div class="dataTableBox">
+                        <!-- [D] datatables 라이브러리 영역 -->
+                        <!-- [D] 처음 페이지 들어왔을때 목록 순서는 '센터'기준으로 오름차순 정렬됨 -->
+                        <table class="dataTable qa_assign_target">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <div class="chkBox">
+                                            <input type="checkbox" name="chkGroup1" id="chkGroup1" class="all_chk">
+                                            <label for="chkGroup1"></label>
+                                        </div>
+                                    </th>
+                                    <th>NO</th>
+                                    <th>청약일자</th>
+                                    <th>상품명</th>
+                                    <th>계약자</th>
+                                    <th>피보험자</th>
+                                    <th>증권번호</th>
+                                    <th>청약상태</th>
+                                    <th>TA 점수</th>
+                                    <th>대상내용</th>
+                                    <th>상담원</th>
+                                    <th>사번</th>
+                                    <th>센터</th>
+                                    <th>번들유무</th>
+                                </tr>
+                            </thead>
+
+                            <!-- [D] 조회된 목록(tbody tr) 더블클릭 시 심사 상세페이지로 이동 -->
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="chkBox">
+                                            <input type="checkbox" name="chkGroup1" id="chkone1" class="each_chk">
+                                            <label for="chkone1"></label>
+                                        </div>
+                                    </td>
+                                    <td>1</td>
+                                    <td>2020-08-01</td>
+                                    <td>ZERO 암보험갱신형</td>
+                                    <td>김민정</td>　
+                                    <td>김민정</td>
+                                    <td>201905002108</td>
+                                    <td>신계약</td>
+                                    <td>2</td>
+                                    <td>TMR</td>　
+                                    <td>천일우</td>　
+                                    <td>99308289</td>
+                                    <td>1 센터</td>
+                                    <td>Y</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="chkBox">
+                                            <input type="checkbox" name="chkGroup1" id="chkone2" class="each_chk">
+                                            <label for="chkone2"></label>
+                                        </div>
+                                    </td>
+                                    <td>1</td>
+                                    <td>2020-08-01</td>
+                                    <td>ZERO 암보험갱신형</td>
+                                    <td>김민정</td>　
+                                    <td>김민정</td>
+                                    <td>201905002108</td>
+                                    <td>신계약</td>
+                                    <td>2</td>
+                                    <td>TMR</td>　
+                                    <td>천일우</td>　
+                                    <td>99308289</td>
+                                    <td>1 센터</td>
+                                    <td>Y</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="chkBox">
+                                            <input type="checkbox" name="chkGroup1" id="chkone3" class="each_chk">
+                                            <label for="chkone3"></label>
+                                        </div>
+                                    </td>
+                                    <td>1</td>
+                                    <td>2020-08-01</td>
+                                    <td>ZERO 암보험갱신형</td>
+                                    <td>김민정</td>　
+                                    <td>김민정</td>
+                                    <td>201905002108</td>
+                                    <td>신계약</td>
+                                    <td>2</td>
+                                    <td>TMR</td>　
+                                    <td>천일우</td>　
+                                    <td>99308289</td>
+                                    <td>1 센터</td>
+                                    <td>Y</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="chkBox">
+                                            <input type="checkbox" name="chkGroup1" id="chkone4" class="each_chk">
+                                            <label for="chkone4"></label>
+                                        </div>
+                                    </td>
+                                    <td>1</td>
+                                    <td>2020-08-01</td>
+                                    <td>ZERO 암보험갱신형</td>
+                                    <td>김민정</td>　
+                                    <td>김민정</td>
+                                    <td>201905002108</td>
+                                    <td>신계약</td>
+                                    <td>2</td>
+                                    <td>TMR</td>　
+                                    <td>천일우</td>　
+                                    <td>99308289</td>
+                                    <td>1 센터</td>
+                                    <td>Y</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="chkBox">
+                                            <input type="checkbox" name="chkGroup1" id="chkone5" class="each_chk">
+                                            <label for="chkone5"></label>
+                                        </div>
+                                    </td>
+                                    <td>1</td>
+                                    <td>2020-08-01</td>
+                                    <td>ZERO 암보험갱신형</td>
+                                    <td>김민정</td>　
+                                    <td>김민정</td>
+                                    <td>201905002108</td>
+                                    <td>신계약</td>
+                                    <td>2</td>
+                                    <td>TMR</td>　
+                                    <td>천일우</td>　
+                                    <td>99308289</td>
+                                    <td>1 센터</td>
+                                    <td>Y</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="chkBox">
+                                            <input type="checkbox" name="chkGroup1" id="chkone6" class="each_chk">
+                                            <label for="chkone6"></label>
+                                        </div>
+                                    </td>
+                                    <td>1</td>
+                                    <td>2020-08-01</td>
+                                    <td>ZERO 암보험갱신형</td>
+                                    <td>김민정</td>　
+                                    <td>김민정</td>
+                                    <td>201905002108</td>
+                                    <td>신계약</td>
+                                    <td>2</td>
+                                    <td>TMR</td>　
+                                    <td>천일우</td>　
+                                    <td>99308289</td>
+                                    <td>1 센터</td>
+                                    <td>Y</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="chkBox">
+                                            <input type="checkbox" name="chkGroup1" id="chkone7" class="each_chk">
+                                            <label for="chkone7"></label>
+                                        </div>
+                                    </td>
+                                    <td>1</td>
+                                    <td>2020-08-01</td>
+                                    <td>ZERO 암보험갱신형</td>
+                                    <td>김민정</td>　
+                                    <td>김민정</td>
+                                    <td>201905002108</td>
+                                    <td>신계약</td>
+                                    <td>2</td>
+                                    <td>TMR</td>　
+                                    <td>천일우</td>　
+                                    <td>99308289</td>
+                                    <td>1 센터</td>
+                                    <td>Y</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="chkBox">
+                                            <input type="checkbox" name="chkGroup1" id="chkone7" class="each_chk">
+                                            <label for="chkone7"></label>
+                                        </div>
+                                    </td>
+                                    <td>1</td>
+                                    <td>2020-08-01</td>
+                                    <td>ZERO 암보험갱신형</td>
+                                    <td>김민정</td>　
+                                    <td>김민정</td>
+                                    <td>201905002108</td>
+                                    <td>신계약</td>
+                                    <td>2</td>
+                                    <td>TMR</td>　
+                                    <td>천일우</td>　
+                                    <td>99308289</td>
+                                    <td>1 센터</td>
+                                    <td>Y</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="chkBox">
+                                            <input type="checkbox" name="chkGroup1" id="chkone7" class="each_chk">
+                                            <label for="chkone7"></label>
+                                        </div>
+                                    </td>
+                                    <td>1</td>
+                                    <td>2020-08-01</td>
+                                    <td>ZERO 암보험갱신형</td>
+                                    <td>김민정</td>　
+                                    <td>김민정</td>
+                                    <td>201905002108</td>
+                                    <td>신계약</td>
+                                    <td>2</td>
+                                    <td>TMR</td>　
+                                    <td>천일우</td>　
+                                    <td>99308289</td>
+                                    <td>1 센터</td>
+                                    <td>Y</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="chkBox">
+                                            <input type="checkbox" name="chkGroup1" id="chkone7" class="each_chk">
+                                            <label for="chkone7"></label>
+                                        </div>
+                                    </td>
+                                    <td>1</td>
+                                    <td>2020-08-01</td>
+                                    <td>ZERO 암보험갱신형</td>
+                                    <td>김민정</td>　
+                                    <td>김민정</td>
+                                    <td>201905002108</td>
+                                    <td>신계약</td>
+                                    <td>2</td>
+                                    <td>TMR</td>　
+                                    <td>천일우</td>　
+                                    <td>99308289</td>
+                                    <td>1 센터</td>
+                                    <td>Y</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="chkBox">
+                                            <input type="checkbox" name="chkGroup1" id="chkone7" class="each_chk">
+                                            <label for="chkone7"></label>
+                                        </div>
+                                    </td>
+                                    <td>1</td>
+                                    <td>2020-08-01</td>
+                                    <td>ZERO 암보험갱신형</td>
+                                    <td>김민정</td>　
+                                    <td>김민정</td>
+                                    <td>201905002108</td>
+                                    <td>신계약</td>
+                                    <td>2</td>
+                                    <td>TMR</td>　
+                                    <td>천일우</td>　
+                                    <td>99308289</td>
+                                    <td>1 센터</td>
+                                    <td>Y</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!-- [D] 배정('.btn_assign')버튼 클릭 시 배정관리팝업(popup_assign_set.html)열려야함 -->
+                        <div class="btnBox">
+                            <a href="#none" class="btn_assign">배정</a>
+                        </div>
+                    </div>
+                    <!-- //.dataTableBox -->
+
+                    <div class="assign_status_box">
+                            <h3>QA 배정 현황</h3>
+
+                            <div class="dateSearch_box">
+                                <!-- [D] QA요청일자 날짜별 조회 가능 -->
+                                <div class="iptBox">
+                                    <span>배정일&colon;</span>
+                                    <input type="text" id="fromDate2" class="iptDateTime">
+                                    <span>&hyphen;</span>
+                                    <input type="text" id="toDate2" class="iptDateTime">
+                                </div>
+                                <!-- [D] 휴무관리('.btn_holiday_set')버튼 클릭 시 휴무관리팝업(popup_holiday_set.html)열려야함 -->
+                                <div class="btnBox">
+                                    <a href="#none" class="btn_search">조회</a>
+                                    <a href="#none" class="btn_holiday_set">휴무관리</a>
+                                </div>
+                            </div>
+
+                            <table class="tbl_line_view" summary="심사자, 근무관리, 배정으로 구성">
+                                <caption class="hide">QA 배정 현황</caption>
+                                <colgroup>
+                                    <col width="120"><col width="90"><col width="90"><col width="90"><col width="90"><col width="90">
+                                    <col width="90"><col width="90"><col width="90"><col width="90"><col width="90"><col width="90"><col width="90">
+                                </colgroup>
+
+                                <tbody>
+                                    <!-- [D] 근무관리(td span)가 휴무인 사람에게 addclass('off')주면 text color 빨간색으로 변경됨 -->
+                                    <tr>
+                                        <th scope="row">심사자 &lbrack;근무관리&rbrack;</th>
+                                        <td>김민정<span class="off">&lbrack;휴무&rbrack;</span></td>
+                                        <td>이명욱<span>&lbrack;업무&rbrack;</span></td>
+                                        <td>천일우<span>&lbrack;업무&rbrack;</span></td>
+                                        <td>김정인<span>&lbrack;업무&rbrack;</span></td>
+                                        <td>민성일<span class="off">&lbrack;휴무&rbrack;</span></td>
+                                        <td>이명욱<span>&lbrack;업무&rbrack;</span></td>
+                                        <td>천일우<span>&lbrack;업무&rbrack;</span></td>
+                                        <td>김정인<span>&lbrack;업무&rbrack;</span></td>
+                                        <td>이영인<span>&lbrack;업무&rbrack;</span></td>
+                                        <td>김민정<span>&lbrack;업무&rbrack;</span></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">배정</th>
+                                        <td><a href="#none">0</a></td>
+                                        <td><a href="#none">2</a></td>
+                                        <td><a href="#none">10</a></td>
+                                        <td><a href="#none">8</a></td>
+                                        <td><a href="#none">0</a></td>
+                                        <td><a href="#none">2</a></td>
+                                        <td><a href="#none">8</a></td>
+                                        <td><a href="#none">7</a></td>
+                                        <td><a href="#none">10</a></td>
+                                        <td><a href="#none">5</a></td>
+                                        <td><a href="#none"></a></td>
+                                        <td><a href="#none"></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    <!-- .dataTableBox -->
+                    <div class="dataTableBox">
+                        <h3>심사자별 상세 현황</h3>
+
+                        <!-- [D] datatables 라이브러리 영역 -->
+                        <table class="dataTable qa_detail_status">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <div class="chkBox">
+                                            <input type="checkbox" name="chkGroup2" id="chkGroup2" class="all_chk">
+                                            <label for="chkGroup2"></label>
+                                        </div>
+                                    </th>
+                                    <th>NO</th>
+                                    <th>청약일자</th>
+                                    <th>상품명</th>
+                                    <th>증권번호</th>
+                                    <th>계약자</th>
+                                    <th>피보험자</th>
+                                    <th>상담원</th>
+                                    <th>심사자</th>
+                                    <th>TA점수</th>
+                                    <th>QA상태</th>
+                                    <th>QA점수</th>
+                                    <th>QA결과</th>
+                                    <th>콜타임</th>
+                                </tr>
+                            </thead>
+
+                            <!-- [D] 리스트 더블클릭 시 비활성화된 심사페이지(popup_tm_qa_audit.html) 열려야 함 -->
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="chkBox">
+                                            <input type="checkbox" name="chkGroup2" id="chkone8" class="each_chk">
+                                            <label for="chkone8"></label>
+                                        </div>
+                                    </td>
+                                    <td>1</td>
+                                    <td>2020-08-01</td>
+                                    <td>ZERO 암보험 갱신형</td>
+                                    <td>201905002108</td>
+                                    <td>김민정</td>
+                                    <td>김민정</td>
+                                    <td>천일우</td>
+                                    <td>김민정</td>
+                                    <td>2</td>
+                                    <td>완료</td>
+                                    <td>3</td>
+                                    <td>보완</td>
+                                    <td>40분</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="chkBox">
+                                            <input type="checkbox" name="chkGroup2" id="chkone9" class="each_chk">
+                                            <label for="chkone9"></label>
+                                        </div>
+                                    </td>
+                                    <td>2</td>
+                                    <td>2020-08-01</td>
+                                    <td>ZERO 암보험 갱신형</td>
+                                    <td>201905002108</td>
+                                    <td>김민정</td>
+                                    <td>김민정</td>
+                                    <td>천일우</td>
+                                    <td>김민정</td>
+                                    <td>2</td>
+                                    <td>완료</td>
+                                    <td>3</td>
+                                    <td>보완</td>
+                                    <td>40분</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="chkBox">
+                                            <input type="checkbox" name="chkGroup2" id="chkone10" class="each_chk">
+                                            <label for="chkone10"></label>
+                                        </div>
+                                    </td>
+                                    <td>3</td>
+                                    <td>2020-08-01</td>
+                                    <td>ZERO 암보험 갱신형</td>
+                                    <td>201905002108</td>
+                                    <td>김민정</td>
+                                    <td>김민정</td>
+                                    <td>천일우</td>
+                                    <td>김민정</td>
+                                    <td>2</td>
+                                    <td>완료</td>
+                                    <td>3</td>
+                                    <td>보완</td>
+                                    <td>40분</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="chkBox">
+                                            <input type="checkbox" name="chkGroup2" id="chkone11" class="each_chk">
+                                            <label for="chkone11"></label>
+                                        </div>
+                                    </td>
+                                    <td>4</td>
+                                    <td>2020-08-01</td>
+                                    <td>ZERO 암보험 갱신형</td>
+                                    <td>201905002108</td>
+                                    <td>김민정</td>
+                                    <td>김민정</td>
+                                    <td>천일우</td>
+                                    <td>김민정</td>
+                                    <td>2</td>
+                                    <td>완료</td>
+                                    <td>3</td>
+                                    <td>보완</td>
+                                    <td>40분</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="chkBox">
+                                            <input type="checkbox" name="chkGroup2" id="chkone12" class="each_chk">
+                                            <label for="chkone12"></label>
+                                        </div>
+                                    <td>5</td>
+                                    <td>2020-08-01</td>
+                                    <td>ZERO 암보험 갱신형</td>
+                                    <td>201905002108</td>
+                                    <td>김민정</td>
+                                    <td>김민정</td>
+                                    <td>천일우</td>
+                                    <td>김민정</td>
+                                    <td>2</td>
+                                    <td>완료</td>
+                                    <td>3</td>
+                                    <td>보완</td>
+                                    <td>40분</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="btnBox">
+                            <a href="#lyr_assign_cancel" class="btn_assign_cancel btn_lyr_open">배정취소</a>
+                        </div>
+                    </div>
+                    <!-- //.dataTableBox -->
+                </div>
+                <!-- //.tableWrap -->
+            </div>
+            <!-- //.tab_content -->
+        </div>
+        <!-- //#contents -->
+    </div>
+    <!-- //#container -->
+</div>
+<!-- //#wrap -->
+
+<!-- layer popup -->
+<!-- 배정 취소 팝업 -->
+<div id="lyr_assign_cancel" class="lyrBox">
+    <div class="lyr_hd">
+        <span class="title">QA 심사자 배정</span>
+        <a href="#none" class="btn_lyr_close">닫기</a>
+     </div>
+    <div class="lyr_ct">
+            <p>취소하시겠습니까?</p>
+    </div>
+    <div class="lyr_ft">
+        <div class="btnBox">
+            <a href="#none" class="btn_lyr_confirm">확인</a>
+            <a href="#none" class="btn_lyr_close">취소</a>
+        </div>
+    </div>
+</div>
+<!-- //배정 취소 팝업 -->
+
+<!---------------------- Local Resources ---------------------->
+<!-- Local CSS -->
+<link rel="stylesheet" href="../resources/css/bootstrap.css"/>
+<link rel="stylesheet" href="../resources/css/bootstrap-datetimepicker.css"/>
+<!-- //datetimepicker -->
+<link rel="stylesheet" href="../resources/css/datatables.min.css">
+<link rel="stylesheet" href="../resources/css/buttons.dataTables.min.css">
+<!-- //datatables -->
+<link rel="stylesheet" href="../resources/css/stt_tm_qa.css">
+
+<!-- Local Script Library -->
+<script src="../resources/js/bootstrap-datetimepicker.js"></script>
+<script src="../resources/js/moment.min.js"></script>
+<script src="../resources/js/ko.js"></script>
+<!-- //datetimepicker -->
+<script src="../resources/js/datatables.min.js"></script>
+<script src="../resources/js/dataTables.fixedColumns.min.js"></script>
+<!-- //datatables -->
+
+<!-- Local Script -->
+<script type="text/javascript">
+jQuery.event.add(window,"load",function(){
+    $(document).ready(function(){
+        // datetimepicker 렌더링
+        $('#fromDate, #fromDate2').datetimepicker({
+            language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
+            format: 'yyyy-mm-dd',  // 년-월-일 만 출
+            minView: 'month',
+            pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
+            defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
+            autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
+        });
+
+        $('#toDate, #toDate2').datetimepicker({
+            language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
+            format: 'yyyy-mm-dd',  // 년-월-일 만 출
+            minView: 'month',
+            pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
+            defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
+            autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
+        });
+
+        // datatable 렌더링
+        var firstTable = $('.qa_assign_target').DataTable({
+            dom: 't<"bottom"i>', // 옵션 위치 지정
+            language: { // 테이블 목록 건수 text 한글 설정
+                emptyTable: "조회된 데이터가 없습니다.", // 데이터 없을 경우 노출되는 text 설정
+                infoEmpty: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>0</strong> 건&rbrack;",
+                info: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>0</strong> 건&rbrack;",
+            },
+            responsive: true, // 반응형 허용
+            order: [[ 12, 'asc' ]], // 초기 sort 설정
+            paging: false, // 페이징 허용
+            scrollY: "290px", // 세로 스크롤 허용, 사이즈
+            scrollX: true, //가로 스크롤 허용
+            scrollCollapse: true,
+            columnDefs: [ // 컬럼별 width, 옵션 사용 지정
+                {targets: [0], width: "50px", orderable: false, sortable: false},  // 체크박스
+                {targets: [1], width: "50px", orderable: false},                   // NO
+                {targets: [2], width: "100px"},                                    // 청약일자
+                {targets: [3], width: "150px", orderable: false},                  // 상품명
+                {targets: [4], width: "100px"},                                    // 계약자
+                {targets: [5], width: "100px", orderable: false},                  // 피보험자
+                {targets: [6], width: "100px", orderable: false},                  // 증권번호
+                {targets: [7], width: "100px", orderable: false},                  // 청약상태
+                {targets: [8], width: "80px"},                                    // TA점수
+                {targets: [9], width: "100px"},                                    // 대상내용
+                {targets: [10], width: "100px", orderable: false},                 // 상담원
+                {targets: [11], width: "100px", orderable: false},                 // 사번
+                {targets: [12], width: "100px"},                                   // 센터
+                {targets: [13], width: "80px", orderable: false},                  // 번들유무
+            ],
+        });
+
+        // 왼쪽 2열 고정
+        new $.fn.dataTable.FixedColumns(firstTable, {
+            leftColumns: 2,
+        });
+
+        // 다른 열에서 sort되어도 1열 순번은 그대로 유지
+        firstTable.on('order.dt search.dt', function(){
+            firstTable.column(1, {search:'applied', order:'applied'}).nodes().each(function (cell, i){
+                cell.innerHTML = i+1;
+            });
+        }).draw();
+
+        var secondTable = $('.qa_detail_status').DataTable({
+            dom: 't<"bottom"i>', // 옵션 위치 지정
+            language: { // 테이블 목록 건수 text 한글 설정
+                emptyTable: "조회된 데이터가 없습니다.", // 데이터 없을 경우 노출되는 text 설정
+                infoEmpty: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>0</strong> 건&rbrack;",
+                info: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>0</strong> 건&rbrack;",
+            },
+            responsive: true, // 반응형 허용
+            filter: false, // 검색창 미허용
+            order: false, // 초기 sort 설정
+            paging: false, // 페이징 허용
+            scrollY: "90px", // 세로 스크롤 허용, 사이즈
+            scrollX: true, //가로 스크롤 허용
+            scrollCollapse: true,
+            columnDefs: [ // 컬럼별 width, 옵션 사용 지정
+                {targets: [0], width: "50px", orderable: false, sortable: false},  // 체크박스
+                {targets: [1], width: "50px", orderable: false},                   // NO
+                {targets: [2], width: "100px", orderable: false},                  // 청약일자
+                {targets: [3], width: "150px", orderable: false},                  // 상품명
+                {targets: [4], width: "100px", orderable: false},                  // 증권번호
+                {targets: [5], width: "100px", orderable: false},                  // 계약자
+                {targets: [6], width: "100px", orderable: false},                  // 피보험자
+                {targets: [7], width: "100px", orderable: false},                  // 상담원
+                {targets: [8], width: "100px", orderable: false},                  // 심사자
+                {targets: [9], width: "80px", orderable: false},                   // TA 점수
+                {targets: [10], width: "100px", orderable: false},                  // QA 상태
+                {targets: [11], width: "80px", orderable: false},                  // QA 점수
+                {targets: [12], width: "80px", orderable: false},                  // QA 결과
+                {targets: [13], width: "80px", orderable: false},                  // 콜타임
+            ],
+        });
+
+        // 왼쪽 2열 고정
+        new $.fn.dataTable.FixedColumns(secondTable, {
+            leftColumns: 2,
+        });
+
+        // 다른 열에서 sort되어도 1열 순번은 그대로 유지
+        secondTable.on('order.dt search.dt', function(){
+            secondTable.column(1, {search:'applied', order:'applied'}).nodes().each(function (cell, i){
+                cell.innerHTML = i+1;
+            });
+        }).draw();
+
+        // 데이터 테이블스에서 input 체크가 정상적으로 되지 않아 작성된 코드
+        // 전체 선택 클릭 시 (dataTables_scrollHead에서 상태를 받아와서 DTFC_Cloned에 적용)
+        $('.all_chk').on('click', $('.dataTables_scrollHead'), function(){
+            var thisName = $(this).attr('name');
+            var check = $(this).prop('checked');
+            var $this = $('.DTFC_Cloned .all_chk[name=\''+thisName+'\']');
+            var $childCheck = $('.each_chk[name=\''+thisName+'\']');
+
+            if ( check == false ) { // 전체선택 체크가 false이면 자식들도 false
+                $this.prop('checked', false);
+                $childCheck.prop('checked', false);
+            } else { // 전체선택 체크가 true이면 자식들도 true
+                $this.prop('checked', true);
+                $childCheck.prop('checked', true);
+            }
+        });
+
+        // 개별 체크박스 클릭 시 (dataTables_scrollBody에서 상태를 받아와서 DTFC_Cloned에 적용)
+        $('.each_chk').on('click', $('.dataTables_scrollBody'), function(){
+            var $thisCheckbox = $(this);
+            var thisName = $thisCheckbox.attr('name');
+            var thisId = $thisCheckbox.attr('id');
+            var $this = $('.DTFC_Cloned .each_chk[id=\''+thisId+'\']');
+            var check = $thisCheckbox.prop('checked');
+
+            if ( check == false ) {
+                $this.prop('checked',false);
+            } else {
+                $this.prop('checked', true);
+            }
+
+            var checkboxes = $('.DTFC_Cloned .each_chk[name=\''+thisName+'\']');
+            var $allCheck = $('.DTFC_Cloned .all_chk[name=\''+thisName+'\']');
+            var length = checkboxes.length;
+
+            // 자식 중 체크 false가 있으면 전체선택 false
+            for (var i=0; i<checkboxes.length; i++) {
+                if ( checkboxes[i].checked == false ) {
+                  $allCheck.prop('checked', false);
+                  return;
+                }
+            }
+            // 자식 중 체크 false가 없으면 전체선택 true
+            $allCheck.prop('checked', true);
+        });
+    });
+});
+</script>
+</body>
+</html>

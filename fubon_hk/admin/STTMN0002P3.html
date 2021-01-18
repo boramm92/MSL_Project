@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="format-detection" content="telephone=no">
+
+<!---------------------- General Resources ---------------------->
+<!-- General CSS -->
+<link rel="stylesheet" href="../resources/css/common.css">
+
+<!-- General Script -->
+<script src="../resources/js/jquery-3.3.1.min.js"></script>
+<script src="../resources/js/jquery-migrate-3.3.0.min.js"></script>
+<script src="../resources/js/common.js"></script>
+
+<title>스크립트 설정(팝업) || 푸본현대생명</title>
+</head>
+<body>
+<!-- [D] 팝업 사이즈 920 X 200 -->
+
+<!-- #wrap -->
+<div id="wrap">
+    <!-- #container -->
+    <div id="container">
+        <!-- #popup_wrap -->
+        <div class="popup_wrap admin medium">
+            <!-- .prdt_script_manage -->
+            <div class="prdt_script_manage">
+                <!-- .pop_top -->
+                <div class="pop_top">
+                    <h1>스크립트 설정</h1>
+                    
+                    <div class="btnBox">
+                        <a href="#none" class="btn_delete">삭제</a>
+                    </div>
+                </div>
+                <!-- //.pop_top -->
+
+                <!-- .pop_mdl -->
+                <div class="pop_mdl">
+                    <div class="setBox">
+                        <div class="tbl_popup_set">
+                            <table summary="대분류명, 중분류명, 소분류명, 적용차수, 적용시작일, 적용종료일, 사용여부로 구성됨">
+                                <caption class="hide">스크립트 설정</caption>
+                                <colgroup>
+                                    <col><col><col><col width="80">
+                                    <col width="120"><col width="120"><col width="80">
+                                </colgroup>
+    
+                                <thead>
+                                    <tr>
+                                        <th scope="col">대분류명</th>
+                                        <th scope="col">중분류명</th>
+                                        <th scope="col">소분류명</th>
+                                        <th scope="col">적용차수</th>
+                                        <th scope="col">적용시작일</th>
+                                        <th scope="col">적용종료일</th>
+                                        <th scope="col">사용여부</th>
+                                    </tr>
+                                </thead>
+    
+                                <tbody>
+                                    <tr>
+                                        <td scope="row">고객안내</td>
+                                        <td>알릴의무</td>
+                                        <td>알릴의무1</td>
+                                        <td>1</td>
+                                        <td>
+                                            <div class="iptBox">
+                                                <input type="text" id="fromDate" class="iptDateTime">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="iptBox">
+                                                <input type="text" id="toDate" class="iptDateTime">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <select class="select">
+                                                <option value="">Y</option>
+                                                <option value="">N</option>
+                                            </select>
+                                        </td>
+                                    </tr>                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>                              
+                </div>
+                <!-- //.pop_mdl -->
+                
+                <!-- .pop_btm -->
+                <div class="pop_btm">
+                    <div class="btnBox">
+                        <a href="#none" class="btn_save">저장</a>
+                        <a href="#none" class="btn_close">닫기</a>
+                    </div>
+                </div>
+                <!-- //.pop_btm -->
+            </div>
+            <!-- //.prdt_script_manage -->
+        </div>
+        <!-- //#contents -->
+    </div>
+    <!-- //#container -->
+</div>
+<!-- //#wrap -->
+
+<!---------------------- Local Resources ---------------------->
+<!-- Local CSS -->
+<link rel="stylesheet" href="../resources/css/bootstrap.css"/>
+<link rel="stylesheet" href="../resources/css/bootstrap-datetimepicker.css"/>
+<!-- //datetimepicker -->
+<link rel="stylesheet" href="../resources/css/popup.css">
+
+<!-- Local Script Library -->
+<script src="../resources/js/bootstrap-datetimepicker.js"></script>
+<script src="../resources/js/moment.min.js"></script>
+<script src="../resources/js/ko.js"></script>
+<!-- //datetimepicker -->
+
+<!-- Local Script -->
+<script type="text/javascript">
+jQuery.event.add(window,"load",function(){
+    $(document).ready(function(){
+        // datetimepicker 렌더링
+        $('#fromDate').datetimepicker({
+            language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
+            format: 'yyyy-mm-dd',  // 년-월-일 만 출
+            minView: 'month',
+            pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
+            defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
+            autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
+        });
+
+        $('#toDate').datetimepicker({
+            language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
+            format: 'yyyy-mm-dd',  // 년-월-일 만 출
+            minView: 'month',
+            pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
+            defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
+            autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
+        });
+    });
+});
+</script>
+</body>
+</html>
