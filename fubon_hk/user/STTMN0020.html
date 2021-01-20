@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="format-detection" content="telephone=no">
+
+<!---------------------- General Resources ---------------------->
+<!-- General CSS -->
+<link rel="stylesheet" href="../resources/css/common.css">
+
+<!-- General Script -->
+<script src="../resources/js/jquery-3.3.1.min.js"></script>
+<script src="../resources/js/jquery-migrate-3.3.0.min.js"></script>
+<script src="../resources/js/all.js"></script>
+<script src="../resources/js/common.js"></script>
+
+<title>청약 정보 TA 처리 현황</title>
+</head>
+<body>
+<!-- .page_loading -->
+<div id="page_ldWrap" class="page_loading pageldg_hide">
+	<div class="loading_itemBox">
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+</div>
+<!-- //.page_loading -->
+
+<!-- #wrap -->
+<div id="wrap">
+    <!-- #header -->
+    <div id="header">
+        <!-- .title_box -->
+        <div class="title_box bg_blue">
+            <h1>
+                <img src="../resources/images/img_logo_color.png" class="logo" alt="푸본현대생명 로고">
+                <p class="title">STT TM_QA</p>
+            </h1>
+
+            <div class="etc_box">
+                <!-- [D] 사용자 계정 표시 영역(.user_account span) / 임의로 '사용자계정 표시'라고 텍스트 넣어둠 -->
+                <div class="user_account">
+                    <span>사용자계정 표시</span>
+                </div>
+                <div class="btnBox btn_logout">
+                    <a href="#none">
+                        <img src="../resources/images/ico_logout_w.png" alt="로그아웃 아이콘">
+                        로그아웃
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- //.title_box -->
+
+        <!-- .gnb -->
+        <!-- [D] 현재 페이지에 해당하는 메뉴(.gnb li)에 addclass('current')주면 활성화됨 -->
+        <!-- [D] 대메뉴(.gnb > li) 마우스오버 시 중메뉴(.sub) slidedown되며 보여짐 -->
+        <!-- [D] 소메뉴(.third)가 존재하는 중메뉴(.snb > li)는 오른쪽에 아래방향 화살표가 추가되며, 클릭 시 소메뉴(.third) slidedown되며 보여짐 -->
+        <ul class="gnb">
+            <li>
+                <h2>Home</h2>
+
+                <ul class="sub">
+                    <li>
+                        <a href="home_dashboard.html">Dashboard</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="current">
+                <h2>CS</h2>
+
+                <ul class="sub">
+                    <li class="current">
+                        <a href="cs_stt.html">CS - STT 대상</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h2>TM</h2>
+
+                <ul class="sub">
+                    <li>
+                        <a href="tm_stt.html">TM - STT 대상</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h2>TM_QA</h2>
+
+                <ul class="sub">
+                    <li>
+                        <a href="tm_qa_target.html">QA 대상</a>
+                    </li>
+                    <li>
+                        <a href="tm_qa_assign1.html">QA 배정</a>
+                    </li>
+                    <li>
+                        <a href="qa_result.html">QA 결과</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h2>통계</h2>
+
+                <ul class="sub">
+                    <li>
+                        <a href="tmr_statistic.html">상담원 통계</a>
+                    </li>
+                    <li>
+                        <a href="qa_statistic.html">심사자 통계</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h2>모니터링</h2>
+
+                <ul class="sub">
+                    <li>
+                        <a href="#none">처리 상태 모니터링</a>
+                    </li>
+                    <li>
+                        <a href="#none">서비스 모니터링</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h2>관리설정</h2>
+
+                <ul class="sub">
+                    <li>
+                        <a href="#none">표준 스크립트 관리</a>
+                        <ul class="third">
+                            <li>
+                                <a href="#none">상품 스크립트 관리</a>
+                            </li>
+                            <li>
+                                <a href="#none">점검 항목 관리</a>
+                            </li>
+                            <li>
+                                <a href="#none">표준 스크립트 관리</a>
+                            </li>
+                            <li>
+                                <a href="#none">금지어&sol;유의어 관리</a>
+                            </li>
+                            <li>
+                                <a href="#none">문장 발화 조건</a>
+                            </li>
+                            <li>
+                                <a href="#none">답변 관리</a>
+                            </li>
+                            <li>
+                                <a href="#none">문장 관리</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#none">시뮬레이션 화면</a>
+                    </li>
+                    <li>
+                        <a href="#none">사용자 관리</a>
+                        <ul class="third">
+                            <li>
+                                <a href="#none">사용자 관리</a>
+                            </li>
+                            <li>
+                                <a href="#none">권한 관리</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#none">재처리 관리</a>
+                        <ul class="third">
+                            <li>
+                                <a href="#none">TA 재처리</a>
+                            </li>
+                            <li>
+                                <a href="#none">STT&sol;TA 재처리</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <!-- //.gnb -->
+    </div>
+    <!-- //#header -->
+
+    <!-- #container -->
+    <div id="container">
+        <!-- #contents -->
+        <div id="contents" class="sbcr_stt">
+            <!-- .tab_title -->
+            <div class="tab_title">
+                <div class="tab_list_wrap">
+                    <ul class="tab_list">
+                        <!-- <li>음성생성<button type="button" class="btn_close">x</button></li>
+                        <li>Text-to-Speech<button type="button" class="btn_close">x</button></li>
+                        <li>텍스트 제거<button type="button" class="btn_close">x</button></li>
+                        <li>Text Removal<button type="button" class="btn_close">x</button></li> -->
+                    </ul>
+                </div>
+
+                <div class="tab_dropdown">
+                    <div class="btnBox">
+                        <a href="#lyr_tab_allDlt_chk" class="btn_tab_allDlt btn_lyr_open">탭 전체삭제</a>
+                        <a href="#none" class="btn_open">
+                            <span>탭버튼</span>
+                            <em></em>
+                        </a>
+                    </div>
+
+                    <ul class="dropdown_list">
+                        <!-- <li>음성생성<button type="button" class="btn_close">x</button></li>
+                        <li>Text-to-Speech<button type="button" class="btn_close">x</button></li>
+                        <li>텍스트 제거<button type="button" class="btn_close">x</button></li>
+                        <li>Text Removal<button type="button" class="btn_close">x</button></li> -->
+                    </ul>
+                </div>
+            </div>
+            <!-- //.tab_title -->
+
+            <!-- .tab_content -->
+            <div class="tab_content">
+                <!-- .srchArea -->
+                <div class="srchArea">
+                    <table class="tbl_line_view" summary="청약일자, 사업부, 채널, 실, 상담원, 사번, 대상, 증권번호, 상품명, STT 결과(점검, 답변, 상세)로 구성">
+                        <caption class="hide">검색조건</caption>
+                        <colgroup>
+                            <col width="80"><col width="310"><col width="80"><col><col width="80"><col><col width="80"><col><col width="80"><col><col width="80"><col>
+                        </colgroup>
+
+                        <tbody>
+                            <tr>
+                                <th scope="row">청약일자</th>
+                                <!-- [D] 시간 초기 기본값 미정으로 비워둠 -->
+                                <td>
+                                    <div class="iptBox">
+                                        <input type="text" id="fromDate" class="iptDateTime">
+                                        <span>&hyphen;</span>
+                                        <input type="text" id="toDate" class="iptDateTime">
+                                    </div>
+                                </td>
+
+                                <th scope="row">사업부</th>
+                                <td>
+                                    <select class="select">
+                                        <option value="">사업부옵션</option>
+                                        <option value="">사업부옵션</option>
+                                        <option value="">사업부옵션</option>
+                                        <option value="">사업부옵션</option>
+                                        <option value="">사업부옵션</option>
+                                    </select>
+                                </td>
+
+                                <th scope="row">채널</th>
+                                <td>
+                                    <select class="select">
+                                        <option value="">채널옵션</option>
+                                        <option value="">채널옵션</option>
+                                        <option value="">채널옵션</option>
+                                        <option value="">채널옵션</option>
+                                        <option value="">채널옵션</option>
+                                    </select>
+                                </td>
+
+                                <th scope="row">실</th>
+                                <td>
+                                    <select class="select">
+                                        <option value="">실옵션</option>
+                                        <option value="">실옵션</option>
+                                        <option value="">실옵션</option>
+                                        <option value="">실옵션</option>
+                                        <option value="">실옵션</option>
+                                    </select>
+                                </td>
+
+                                <th scope="row">상담원</th>
+                                <td>
+                                    <div class="iptBox">
+                                        <input type="text">
+                                    </div>
+                                </td>
+
+                                <th scope="row">사번</th>
+                                <td>
+                                    <div class="iptBox">
+                                        <input type="text" numberOnly>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">대상</th>
+                                <td>
+                                    <select class="select">
+                                        <option value="">전체</option>
+                                        <option value="">대상옵션</option>
+                                        <option value="">대상옵션</option>
+                                        <option value="">대상옵션</option>
+                                        <option value="">대상옵션</option>
+                                    </select>
+                                </td>
+
+                                <th scope="row">증권번호</th>
+                                <td colspan="3">
+                                    <div class="iptBox">
+                                        <input type="text" numberOnly>
+                                    </div>
+                                </td>
+
+                                <th scope="row">상품명</th>
+                                <td colspan="3">
+                                    <div class="iptBox">
+                                        <input type="text">
+                                    </div>
+                                </td>
+
+                                <th scope="row">고객번호</th>
+                                <td>
+                                    <div class="iptBox">
+                                        <input type="text" numberOnly>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- [D] 조회 버튼(.btn_srch)클릭 시 하단 리스트 오름차순으로 기본 정렬된 상태로 조회되며, 입력된 검색조건 값들은 reset되어야함 -->
+                    <!-- [D] 초기화 버튼(.btn_reset)클릭 시 검색조건 테이블 상 입력값들 모두 reset됨 -->
+                    <div class="btnBox">
+                        <a href="#none" class="btn_srch">조회</a>
+                        <a href="#none" class="btn_reset">초기화</a>
+                    </div>
+                </div>
+                <!-- //.srchArea -->
+
+                <!-- .dataTableBox -->
+                <div class="dataTableBox">
+                    <!-- [D] datatables 라이브러리 영역 -->
+                    <!-- [D] 'Excel 다운로드' 버튼 클릭 시 파일 다운로드됨 -->
+                    <!-- [D] 처음 페이지 들어왔을때 목록 순서는 '상품명'기준으로 오름차순 정렬됨 -->
+                    <table class="dataTable">
+                        <thead>
+                            <tr>
+                                <th rowspan="2">NO</th>
+                                <th rowspan="2">청약일자</th>
+                                <th rowspan="2">상품명</th>
+                                <th rowspan="2">증권번호</th>
+                                <th rowspan="2">고객 ID</th>
+                                <th rowspan="2">고객명</th>
+                                <th rowspan="2">사번</th>
+                                <th rowspan="2">상담원</th>
+                                <th rowspan="2">상태</th>
+                                <th colspan="3">STT 결과</th>
+                                <th rowspan="2">녹취 리스트</th>
+                                <th colspan="3">관리어</th>
+                            </tr>
+
+                            <tr>
+                                <th>점검</th>
+                                <th>답변</th>
+                                <th>상세</th>
+                                <th>금지</th>
+                                <th>주의</th>
+                                <th>이슈</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-08-01</td>
+                                <td>ZERO 암보험 갱신형</td>
+                                <td>201905002108</td>
+                                <td>99308289</td>
+                                <td>김민정</td>
+                                <td>99308289</td>
+                                <td>천일우</td>
+                                <td>STT 처리</td>
+                                <td>
+                                    <span>탐지</span>
+                                </td>
+                                <td>Y</td>
+                                <td>
+                                    <a href="#none"><em class="fas fa-search"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-file-audio"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-08-01</td>
+                                <td>ZERO 암보험 갱신형</td>
+                                <td>201905002108</td>
+                                <td>99308289</td>
+                                <td>김민정</td>
+                                <td>99308289</td>
+                                <td>천일우</td>
+                                <td>STT 처리</td>
+                                <td>
+                                    <span>탐지</span>
+                                </td>
+                                <td>Y</td>
+                                <td>
+                                    <a href="#none"><em class="fas fa-search"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-file-audio"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-08-01</td>
+                                <td>ZERO 암보험 갱신형</td>
+                                <td>201905002108</td>
+                                <td>99308289</td>
+                                <td>김민정</td>
+                                <td>99308289</td>
+                                <td>천일우</td>
+                                <td>STT 처리</td>
+                                <td>
+                                    <span>탐지</span>
+                                </td>
+                                <td>Y</td>
+                                <td>
+                                    <a href="#none"><em class="fas fa-search"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-file-audio"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-08-01</td>
+                                <td>ZERO 암보험 갱신형</td>
+                                <td>201905002108</td>
+                                <td>99308289</td>
+                                <td>김민정</td>
+                                <td>99308289</td>
+                                <td>천일우</td>
+                                <td>STT 처리</td>
+                                <td>
+                                    <span>탐지</span>
+                                </td>
+                                <td>Y</td>
+                                <td>
+                                    <a href="#none"><em class="fas fa-search"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-file-audio"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-08-01</td>
+                                <td>ZERO 암보험 갱신형</td>
+                                <td>201905002108</td>
+                                <td>99308289</td>
+                                <td>김민정</td>
+                                <td>99308289</td>
+                                <td>천일우</td>
+                                <td>STT 처리</td>
+                                <td>
+                                    <span>탐지</span>
+                                </td>
+                                <td>Y</td>
+                                <td>
+                                    <a href="#none"><em class="fas fa-search"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-file-audio"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-08-01</td>
+                                <td>ZERO 암보험 갱신형</td>
+                                <td>201905002108</td>
+                                <td>99308289</td>
+                                <td>김민정</td>
+                                <td>99308289</td>
+                                <td>천일우</td>
+                                <td>STT 처리</td>
+                                <td>
+                                    <span>탐지</span>
+                                </td>
+                                <td>Y</td>
+                                <td>
+                                    <a href="#none"><em class="fas fa-search"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-file-audio"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-08-01</td>
+                                <td>ZERO 암보험 갱신형</td>
+                                <td>201905002108</td>
+                                <td>99308289</td>
+                                <td>김민정</td>
+                                <td>99308289</td>
+                                <td>천일우</td>
+                                <td>STT 처리</td>
+                                <td>
+                                    <span>탐지</span>
+                                </td>
+                                <td>Y</td>
+                                <td>
+                                    <a href="#none"><em class="fas fa-search"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-file-audio"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-08-01</td>
+                                <td>ZERO 암보험 갱신형</td>
+                                <td>201905002108</td>
+                                <td>99308289</td>
+                                <td>김민정</td>
+                                <td>99308289</td>
+                                <td>천일우</td>
+                                <td>STT 처리</td>
+                                <td>
+                                    <span>탐지</span>
+                                </td>
+                                <td>Y</td>
+                                <td>
+                                    <a href="#none"><em class="fas fa-search"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-file-audio"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-08-01</td>
+                                <td>ZERO 암보험 갱신형</td>
+                                <td>201905002108</td>
+                                <td>99308289</td>
+                                <td>김민정</td>
+                                <td>99308289</td>
+                                <td>천일우</td>
+                                <td>STT 처리</td>
+                                <td>
+                                    <span>탐지</span>
+                                </td>
+                                <td>Y</td>
+                                <td>
+                                    <a href="#none"><em class="fas fa-search"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-file-audio"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-08-01</td>
+                                <td>ZERO 암보험 갱신형</td>
+                                <td>201905002108</td>
+                                <td>99308289</td>
+                                <td>김민정</td>
+                                <td>99308289</td>
+                                <td>천일우</td>
+                                <td>STT 처리</td>
+                                <td>
+                                    <span>탐지</span>
+                                </td>
+                                <td>Y</td>
+                                <td>
+                                    <a href="#none"><em class="fas fa-search"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-file-audio"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-08-01</td>
+                                <td>ZERO 암보험 갱신형</td>
+                                <td>201905002108</td>
+                                <td>99308289</td>
+                                <td>김민정</td>
+                                <td>99308289</td>
+                                <td>천일우</td>
+                                <td>STT 처리</td>
+                                <td>
+                                    <span>탐지</span>
+                                </td>
+                                <td>Y</td>
+                                <td>
+                                    <a href="#none"><em class="fas fa-search"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-file-audio"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-08-01</td>
+                                <td>ZERO 암보험 갱신형</td>
+                                <td>201905002108</td>
+                                <td>99308289</td>
+                                <td>김민정</td>
+                                <td>99308289</td>
+                                <td>천일우</td>
+                                <td>STT 처리</td>
+                                <td>
+                                    <span>탐지</span>
+                                </td>
+                                <td>Y</td>
+                                <td>
+                                    <a href="#none"><em class="fas fa-search"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-file-audio"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-08-01</td>
+                                <td>ZERO 암보험 갱신형</td>
+                                <td>201905002108</td>
+                                <td>99308289</td>
+                                <td>김민정</td>
+                                <td>99308289</td>
+                                <td>천일우</td>
+                                <td>STT 처리</td>
+                                <td>
+                                    <span>탐지</span>
+                                </td>
+                                <td>Y</td>
+                                <td>
+                                    <a href="#none"><em class="fas fa-search"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-file-audio"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-08-01</td>
+                                <td>ZERO 암보험 갱신형</td>
+                                <td>201905002108</td>
+                                <td>99308289</td>
+                                <td>김민정</td>
+                                <td>99308289</td>
+                                <td>천일우</td>
+                                <td>STT 처리</td>
+                                <td>
+                                    <span>탐지</span>
+                                </td>
+                                <td>Y</td>
+                                <td>
+                                    <a href="#none"><em class="fas fa-search"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-file-audio"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-08-01</td>
+                                <td>ZERO 암보험 갱신형</td>
+                                <td>201905002108</td>
+                                <td>99308289</td>
+                                <td>김민정</td>
+                                <td>99308289</td>
+                                <td>천일우</td>
+                                <td>STT 처리</td>
+                                <td>
+                                    <span>탐지</span>
+                                </td>
+                                <td>Y</td>
+                                <td>
+                                    <a href="#none"><em class="fas fa-search"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-file-audio"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-08-01</td>
+                                <td>ZERO 암보험 갱신형</td>
+                                <td>201905002108</td>
+                                <td>99308289</td>
+                                <td>김민정</td>
+                                <td>99308289</td>
+                                <td>천일우</td>
+                                <td>STT 처리</td>
+                                <td>
+                                    <span>탐지</span>
+                                </td>
+                                <td>Y</td>
+                                <td>
+                                    <a href="#none"><em class="fas fa-search"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-file-audio"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-08-01</td>
+                                <td>ZERO 암보험 갱신형</td>
+                                <td>201905002108</td>
+                                <td>99308289</td>
+                                <td>김민정</td>
+                                <td>99308289</td>
+                                <td>천일우</td>
+                                <td>STT 처리</td>
+                                <td>
+                                    <span>탐지</span>
+                                </td>
+                                <td>Y</td>
+                                <td>
+                                    <a href="#none"><em class="fas fa-search"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-file-audio"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-08-01</td>
+                                <td>ZERO 암보험 갱신형</td>
+                                <td>201905002108</td>
+                                <td>99308289</td>
+                                <td>김민정</td>
+                                <td>99308289</td>
+                                <td>천일우</td>
+                                <td>STT 처리</td>
+                                <td>
+                                    <span>탐지</span>
+                                </td>
+                                <td>Y</td>
+                                <td>
+                                    <a href="#none"><em class="fas fa-search"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-file-audio"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-08-01</td>
+                                <td>ZERO 암보험 갱신형</td>
+                                <td>201905002108</td>
+                                <td>99308289</td>
+                                <td>김민정</td>
+                                <td>99308289</td>
+                                <td>천일우</td>
+                                <td>STT 처리</td>
+                                <td>
+                                    <span>탐지</span>
+                                </td>
+                                <td>Y</td>
+                                <td>
+                                    <a href="#none"><em class="fas fa-search"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-file-audio"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-08-01</td>
+                                <td>ZERO 암보험 갱신형</td>
+                                <td>201905002108</td>
+                                <td>99308289</td>
+                                <td>김민정</td>
+                                <td>99308289</td>
+                                <td>천일우</td>
+                                <td>STT 처리</td>
+                                <td>
+                                    <span>탐지</span>
+                                </td>
+                                <td>Y</td>
+                                <td>
+                                    <a href="#none"><em class="fas fa-search"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-file-audio"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-08-01</td>
+                                <td>ZERO 암보험 갱신형</td>
+                                <td>201905002108</td>
+                                <td>99308289</td>
+                                <td>김민정</td>
+                                <td>99308289</td>
+                                <td>천일우</td>
+                                <td>STT 처리</td>
+                                <td>
+                                    <span>탐지</span>
+                                </td>
+                                <td>Y</td>
+                                <td>
+                                    <a href="#none"><em class="fas fa-search"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-file-audio"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>2020-08-01</td>
+                                <td>ZERO 암보험 갱신형</td>
+                                <td>201905002108</td>
+                                <td>99308289</td>
+                                <td>김민정</td>
+                                <td>99308289</td>
+                                <td>천일우</td>
+                                <td>STT 처리</td>
+                                <td>
+                                    <span>탐지</span>
+                                </td>
+                                <td>Y</td>
+                                <td>
+                                    <a href="#none"><em class="fas fa-search"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-file-audio"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#none">
+                                        <em class="far fa-comment-dots"></em>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- //.dataTableBox -->
+            </div>
+            <!-- //.tab_content -->
+        </div>
+        <!-- //#contents -->
+    </div>
+    <!-- //#container -->
+</div>
+<!-- //#wrap -->
+
+<!-- layer popup -->
+<!-- 탭 전체삭제 확인 팝업 -->
+<div id="lyr_tab_allDlt_chk" class="lyrBox">
+    <div class="lyr_hd">
+        <span class="title">탭 전체삭제</span>
+        <a href="#none" class="btn_lyr_close">닫기</a>
+     </div>
+    <div class="lyr_ct">
+            <p>
+                현재 열려있는 모든 탭메뉴가 삭제됩니다.<br>
+                정말 삭제하시겠습니까?
+            </p>
+    </div>
+    <div class="lyr_ft">
+        <div class="btnBox">
+            <a href="#none" id="btn_tab_dlt" class="btn_lyr_confirm">확인</a>
+            <a href="#none" class="btn_lyr_close">취소</a>
+        </div>
+    </div>
+</div>
+<!-- //탭 전체삭제 확인 팝업 -->
+
+<!---------------------- Local Resources ---------------------->
+<!-- Local CSS -->
+<link rel="stylesheet" href="../resources/css/bootstrap.css"/>
+<link rel="stylesheet" href="../resources/css/bootstrap-datetimepicker.css"/>
+<!-- //datetimepicker -->
+<link rel="stylesheet" href="../resources/css/datatables.min.css">
+<link rel="stylesheet" href="../resources/css/buttons.dataTables.min.css">
+<!-- //datatables -->
+<link rel="stylesheet" href="../resources/css/stt_tm_qa.css">
+
+<!-- Local Script Library -->
+<script src="../resources/js/bootstrap-datetimepicker.js"></script>
+<script src="../resources/js/moment.min.js"></script>
+<script src="../resources/js/ko.js"></script>
+<!-- //datetimepicker -->
+<script src="../resources/js/datatables.min.js"></script>
+<script src="../resources/js/dataTables.fixedColumns.min.js"></script>
+<script src="../resources/js/dataTables.buttons.min.js"></script>
+<script src="../resources/js/buttons.html5.min.js"></script>
+<script src="../resources/js/jszip.min.js"></script>
+<!-- //datatables -->
+
+<!-- Local Script -->
+<script type="text/javascript">
+$(window).load(function(){
+	// 로딩바
+	$('.page_loading').addClass('pageldg_hide').delay(300).queue(function() {
+		$(this).remove();
+	});
+});
+</script>
+
+<script type="text/javascript">
+jQuery.event.add(window,"load",function(){
+    $(document).ready(function(){
+        // datetimepicker 렌더링
+        $('#fromDate').datetimepicker({
+            language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
+            pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
+            defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
+            autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
+        });
+
+        $('#toDate').datetimepicker({
+            language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
+            pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
+            defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
+            autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
+        });
+
+        // datatable 렌더링
+        var table = $('.dataTable').DataTable({
+            dom: 't<"bottom"lipB>', // 옵션 위치 지정
+            language: { // 테이블 목록 건수 text 한글 설정
+                emptyTable: "조회된 데이터가 없습니다.", // 데이터 없을 경우 노출되는 text 설정
+                infoEmpty: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>0</strong> 건 &sol; _TOTAL_ 건&rbrack;",
+                info: "&lbrack;총 _TOTAL_ 건&nbsp;&nbsp; <strong>0</strong> 건 &sol; _TOTAL_ 건&rbrack;",
+                lengthMenu: "_MENU_ 건씩 보기",
+                paginate: {
+                    first: "",
+                    previous: "",
+                    next: "",
+                    last: ""
+                },
+            },
+            responsive: true, // 반응형 허용
+            order: [[ 2, 'asc' ]], // 초기 sort 설정
+            paging: true, // 페이징 허용
+            pagingType: "full_numbers", // 페이징 버튼 구성 (처음, 이전, 페이지숫자, 다음, 마지막)
+            lengthMenu: [25, 50, 100], // 페이지 당 보여질 목록 갯수 select 범위 지정
+            // scrollY: "540px", // 세로 스크롤 허용, 사이즈
+            scrollX: true, //가로 스크롤 허용
+            scrollCollapse: true,
+            columnDefs: [ // 컬럼별 width, 옵션 사용 지정
+                {targets: [0], width: "50px", sortable: false},       // NO
+                {targets: [1], width: "100px"},                       // 청약일자
+                {targets: [2], width: "200px"},                       // 상품명
+                {targets: [3], width: "100px", orderable: false},     // 증권번호
+                {targets: [4], width: "100px"},                       // 고객 ID
+                {targets: [5], width: "100px"},                       // 고객명
+                {targets: [6], width: "100px"},                       // 사번
+                {targets: [7], width: "100px"},                       // 상담원
+                {targets: [8], width: "100px"},                       // 상태
+                {targets: [9], maxWidth: "50px", orderable: false},   // STT 결과 - 점검
+                {targets: [10], maxWidth: "50px", orderable: false},  // STT 결과 - 답변
+                {targets: [11], maxWidth: "50px", orderable: false},  // STT 결과 - 상세
+                {targets: [12], width: "60px", orderable: false},     // 녹취 리스트
+                {targets: [13], maxWidth: "50px", orderable: false},  // 관리어 - 금지
+                {targets: [14], maxWidth: "50px", orderable: false},  // 관리어 - 주의
+                {targets: [15], maxWidth: "50px", orderable: false},  // 관리어 - 이슈
+            ],
+            buttons: [{
+                extend: 'excelHtml5',
+                text: '엑셀저장',
+            }]
+        });
+
+        new $.fn.dataTable.FixedColumns(table, {
+            fixedColumns: { // 왼쪽 1열 고정
+                leftColumns: 1,
+            }
+        });
+
+        // 다른 열에서 sort되어도 1열 순번은 그대로 유지
+        table.on('order.dt search.dt', function(){
+            table.column(0, {search:'applied', order:'applied'}).nodes().each(function (cell, i){
+                cell.innerHTML = i+1;
+            });
+        }).draw();
+    });
+});
+</script>
+</body>
+</html>

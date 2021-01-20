@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="format-detection" content="telephone=no">
+
+<!---------------------- General Resources ---------------------->
+<!-- General CSS -->
+<link rel="stylesheet" href="../resources/css/common.css">
+
+<!-- General Script -->
+<script src="../resources/js/jquery-3.3.1.min.js"></script>
+<script src="../resources/js/jquery-migrate-3.3.0.min.js"></script>
+<script src="../resources/js/common.js"></script>
+
+<title>STT 결과 상세</title>
+</head>
+<body>
+<!-- [D] 팝업 사이즈 1640 X 920 -->
+
+<!-- #wrap -->
+<div id="wrap">
+    <!-- #container -->
+    <div id="container">
+        <!-- #contents -->
+        <div class="popup_wrap">
+            <h1>STT 결과 상세</h1>
+
+            <!-- .sbcr_stt_detail -->
+            <div class="sbcr_stt_detail">
+                <div class="rcd_info_area fl">
+                    <!-- .customInfo -->
+                    <div class="customInfo">
+                        <table class="tbl_line_view" summary="계약자명, 증권번호, 고객명, 청약일자, 상품명, 설계자로 구성">
+                            <caption class="hide">심사요약정보</caption>
+                            <colgroup>
+                                <col width="80"><col><col width="80"><col width="120">
+                            </colgroup>
+
+                            <tbody>
+                                <tr>
+                                    <th scope="row">계약자명</th>
+                                    <td>
+                                        <span class="custom_info">홍길동</span>
+                                    </td>
+
+                                    <th scope="row">증권번호</th>
+                                    <td>
+                                        <span class="custom_info">99308289</span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">고객명</th>
+                                    <td>
+                                        <span class="custom_info">홍길동</span>
+                                    </td>
+
+                                    <th scope="row">청약일자</th>
+                                    <td>
+                                        <span class="custom_info">2020-08-01</span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">상품명</th>
+                                    <td>
+                                        <span class="custom_info">ZERO 나를 위한 암보험</span>
+                                    </td>
+
+                                    <th scope="row">설계자</th>
+                                    <td>
+                                        <span class="custom_info">아무개</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- //.customInfo -->
+
+                    <div class="custom_tbl sm_clsf">
+                        <div class="tbl_hd">
+                            <table summary="순번, 소분류, 점검, 답변으로 구성">
+                                <caption class="hide">소분류 상세</caption>
+                                <colgroup>
+                                    <col width="50"><col><col width="50"><col width="50">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>순번</th>
+                                        <th>소분류</th>
+                                        <th>점검</th>
+                                        <th>답변</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+
+                        <div class="tbl_bd">
+                            <table>
+                                <colgroup>
+                                    <col width="50"><col><col width="50"><col width="50">
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>신용정보 동의 (가입설계 및 계약체결)</td>
+                                        <td>탐지</td>
+                                        <td>Y</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>청약동의 (친권자 확인 동의 포함)</td>
+                                        <td>부분</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>예금자보호 설명</td>
+                                        <td>미탐</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>결제방법 누락 및 미흡</td>
+                                        <td>부분</td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="script_area fr">
+
+                </div>
+            </div>
+            <!-- //.sbcr_stt_detail -->
+        </div>
+        <!-- //#contents -->
+    </div>
+    <!-- //#container -->
+</div>
+<!-- //#wrap -->
+
+<!-- SMS 발송내역 팝업 -->
+<div id="lyr_sms_detail" class="lyrBox">
+    <div class="lyr_hd">
+        <span class="title">SMS 발송내역</span>
+        <a href="#none" class="btn_lyr_close">닫기</a>
+     </div>
+    <div class="lyr_ct">
+        <div class="custom_tbl">
+            <div class="tbl_hd">
+                <table summary="NO, 발송일시, 발송자 ID, 발송 전화번호, 발송자 성명, 수신자 전화번호, SMS 내용으로 구성">
+                    <caption class="hide">sms 발송내역</caption>
+                    <colgroup>
+                        <col width="50"><col width="80"><col width="80">
+                        <col width="100"><col width="80"><col width="100"><col>
+                    </colgroup>
+
+                    <thead>
+                        <tr>
+                            <th scope="col">NO</th>
+                            <th scope="col">발송일시</th>
+                            <th scope="col">발송자 ID</th>
+                            <th scope="col">발송<br>전화번호</th>
+                            <th scope="col">발송자 성명</th>
+                            <th scope="col">수신자<br>전화번호</th>
+                            <th scope="col">SMS 내용</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="tbl_bd">
+                <table>
+                    <colgroup>
+                        <col width="50"><col width="80"><col width="80">
+                        <col width="100"><col width="80"><col width="100"><col>
+                    </colgroup>
+
+                    <tbody>
+                        <tr>
+                            <td colspan="7" class="data_empty">SMS 발송내역이 없습니다.</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">1</td>
+                            <td>2020-08-03</td>
+                            <td>AAAAAAAAA</td>
+                            <td>000-0000-0000</td>
+                            <td>홍길동</td>
+                            <td>010-0000-0000</td>
+                            <td>보험료 자동이체 예금주의 계약자, 피보험자가 아닌 제3자 설정하시는 경우 '제3자 예금주 동의 스크립트'를 별도 진행바랍니다.보험료 자동이체 예금주의 계약자, 피보험자가 아닌 제3자 설정하시는 경우 '제3자 예금주 동의 스크립트'를 별도 진행바랍니다.</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">2</td>
+                            <td>2020-08-03</td>
+                            <td>AAAAAAAAA</td>
+                            <td>000-0000-0000</td>
+                            <td>홍길동</td>
+                            <td>010-0000-0000</td>
+                            <td>보험료 자동이체 예금주의 계약자, 피보험자가 아닌 제3자 설정하시는 경우</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">3</td>
+                            <td>2020-08-03</td>
+                            <td>AAAAAAAAA</td>
+                            <td>000-0000-0000</td>
+                            <td>홍길동</td>
+                            <td>010-0000-0000</td>
+                            <td>보험료 자동이체 예금주의 계약자, 피보험자가 아닌 제3자 설정하시는 경우 '제3자 예금주 동의 스크립트'를 별도 진행바랍니다.보험료 자동이체 예금주의 계약자, 피보험자가 아닌 제3자 설정하시는 경우 '제3자 예금주 동의 스크립트'를 별도 진행바랍니다.</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">4</td>
+                            <td>2020-08-03</td>
+                            <td>AAAAAAAAA</td>
+                            <td>000-0000-0000</td>
+                            <td>홍길동</td>
+                            <td>010-0000-0000</td>
+                            <td>보험료 자동이체 예금주의 계약자, 피보험자가 아닌 제3자 설정하시는 경우 '제3자 예금주 동의 스크립트'를 별도 진행바랍니다.보험료 자동이체 예금주의 계약자, 피보험자가 아닌 제3자 설정하시는 경우 '제3자 예금주 동의 스크립트'를 별도 진행바랍니다.</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">5</td>
+                            <td>2020-08-03</td>
+                            <td>AAAAAAAAA</td>
+                            <td>000-0000-0000</td>
+                            <td>홍길동</td>
+                            <td>010-0000-0000</td>
+                            <td>보험료 자동이체 예금주의 계약자, 피보험자가 아닌 제3자 설정하시는 경우 '제3자 예금주 동의 스크립트'를 별도 진행바랍니다..</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">6</td>
+                            <td>2020-08-03</td>
+                            <td>AAAAAAAAA</td>
+                            <td>000-0000-0000</td>
+                            <td>홍길동</td>
+                            <td>010-0000-0000</td>
+                            <td>보험료 자동이체 예금주의 계약자, 피보험자가 아닌 제3자 설정하시는 경우</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">7</td>
+                            <td>2020-08-03</td>
+                            <td>AAAAAAAAA</td>
+                            <td>000-0000-0000</td>
+                            <td>홍길동</td>
+                            <td>010-0000-0000</td>
+                            <td>보험료 자동이체 예금주의 계약자, 피보험자가 아닌 제3자 설정하시는 경우 '제3자 예금주 동의 스크립트'를 별도 진행바랍니다.</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">8</td>
+                            <td>2020-08-03</td>
+                            <td>AAAAAAAAA</td>
+                            <td>000-0000-0000</td>
+                            <td>홍길동</td>
+                            <td>010-0000-0000</td>
+                            <td>보험료 자동이체 예금주의 계약자</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="lyr_ft">
+        <div class="btnBox">
+            <a href="#none" class="btn_lyr_close">닫기</a>
+        </div>
+    </div>
+</div>
+<!-- //SMS 발송내역 팝업 -->
+
+<!-- layer popup -->
+<!-- 질의/응답 팝업 -->
+<div id="lyr_qa_edit" class="lyrBox">
+    <div class="lyr_hd">
+        <span class="title">질의응답</span>
+        <a href="#none" class="btn_lyr_close">닫기</a>
+     </div>
+    <div class="lyr_ct">
+        <div class="fl">
+            <strong>1회차</strong>
+            <div class="textArea_question">
+                <span>질의내용</span>
+                <div class="qa_info">
+                    <em>김나나</em>
+                    <em>기일연장</em>
+                </div>
+                <div class="textBox">
+                    가입설계 체결 위해서 관련 법률에 따라 수집 이용 조회 제공에 동의 얻고자하며 신용등급과 무관하시고 동의 하지 않으실 경우에는 계약상담이 불가능하신데요
+                </div>
+            </div>
+
+            <div class="textArea_answer">
+                <span>응답결과</span>
+                <div class="qa_info">
+                    <div class="iptBox">
+                        <input type="text">
+                    </div>
+
+                    <select class="select">
+                        <option value="">수용</option>
+                        <option value="">부분 수용</option>
+                        <option value="">불수용</option>
+                        <option value="">타부서 검토필요</option>
+                        <option value="">단순문의</option>
+                    </select>
+                </div>
+                <textarea class="textBox"></textarea>
+            </div>
+        </div>
+
+        <!-- [D] 1회차 응답 작성 시 2회차 영역에 addclass('disabled')해주어 비활성화 해야함 -->
+        <div class="fr disabled">
+            <strong>2회차</strong>
+            <div class="textArea_question">
+                <span>질의내용</span>
+                <div class="qa_info">
+                    <em>김나나</em>
+                    <em>기일연장</em>
+                </div>
+                <div class="textBox">
+
+                </div>
+            </div>
+
+            <div class="textArea_answer">
+                <span>응답결과</span>
+                <div class="qa_info">
+                    <div class="iptBox">
+                        <input type="text">
+                    </div>
+
+                    <select class="select">
+                        <option value="">수용</option>
+                        <option value="">부분 수용</option>
+                        <option value="">불수용</option>
+                        <option value="">타부서 검토필요</option>
+                        <option value="">단순문의</option>
+                    </select>
+                </div>
+                <textarea class="textBox"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="lyr_ft">
+        <div class="btnBox">
+            <a href="#none" class="btn_lyr_save">저장</a>
+            <a href="#none" class="btn_lyr_close">취소</a>
+        </div>
+    </div>
+</div>
+<!-- //질의/응답 팝업 팝업 -->
+
+<!-- 임시저장 팝업 -->
+<div id="lyr_tpry_save" class="lyrBox">
+    <div class="lyr_hd">
+        <span class="title">임시저장</span>
+        <a href="#none" class="btn_lyr_close">닫기</a>
+     </div>
+    <div class="lyr_ct">
+        <p>현재 심사내용을 임시저장 하시겠습니까?</p>
+    </div>
+    <div class="lyr_ft">
+        <div class="btnBox">
+            <a href="#none" class="btn_lyr_save">확인</a>
+            <a href="#none" class="btn_lyr_close">취소</a>
+        </div>
+    </div>
+</div>
+<!-- //임시저장 팝업 팝업 -->
+
+<!-- 심사완료 팝업 -->
+<div id="lyr_audit_cplt" class="lyrBox">
+    <div class="lyr_hd">
+        <span class="title">심사완료</span>
+        <a href="#none" class="btn_lyr_close">닫기</a>
+     </div>
+    <div class="lyr_ct">
+        <p>심사를 완료하시겠습니까?</p>
+    </div>
+    <div class="lyr_ft">
+        <div class="btnBox">
+            <a href="#none" class="btn_lyr_cplt">확인</a>
+            <a href="#none" class="btn_lyr_close">취소</a>
+        </div>
+    </div>
+</div>
+<!-- //심사완료 팝업 팝업 -->
+
+<!-- 브라우저 닫기버튼 클릭 시 저장 확인 팝업 -->
+<!-- [D] 브라우저 닫기 버튼 클릭 시 해당팝업 등장시켜주어야하며
+확인버튼 클릭 시 저장하지 않고 팝업창 닫힘, 취소버튼 클릭 시 현재 입력된 내용과 팝업창 유지시켜야함 -->
+<div id="lyr_save_confirm" class="lyrBox">
+    <div class="lyr_hd">
+        <span class="title">TM QA 심사 나가기</span>
+        <a href="#none" class="btn_lyr_close">닫기</a>
+     </div>
+    <div class="lyr_ct">
+        <p>저장하지않고 나가시겠습니까?</p>
+    </div>
+    <div class="lyr_ft">
+        <div class="btnBox">
+            <a href="#none" class="btn_lyr_confirm">확인</a>
+            <a href="#none" class="btn_lyr_close">취소</a>
+        </div>
+    </div>
+</div>
+<!-- //브라우저 닫기버튼 클릭 시 저장 확인 팝업 -->
+
+<!---------------------- Local Resources ---------------------->
+<!-- Local CSS -->
+<link rel="stylesheet" href="../resources/css/bootstrap.css"/>
+<link rel="stylesheet" href="../resources/css/bootstrap-datetimepicker.css"/>
+<!-- //datetimepicker -->
+<link rel="stylesheet" href="../resources/css/datatables.min.css">
+<link rel="stylesheet" href="../resources/css/buttons.dataTables.min.css">
+<!-- //datatables -->
+<link rel="stylesheet" href="../resources/css/popup.css">
+
+<!-- Local Script Library -->
+<script src="../resources/js/player.js"></script>
+<!-- //player -->
+<script src="../resources/js/bootstrap-datetimepicker.js"></script>
+<script src="../resources/js/moment.min.js"></script>
+<script src="../resources/js/ko.js"></script>
+<!-- //datetimepicker -->
+<script src="../resources/js/datatables.min.js"></script>
+<script src="../resources/js/dataTables.fixedColumns.min.js"></script>
+<script src="../resources/js/jszip.min.js"></script>
+<!-- //datatables -->
+
+<!-- Local Script -->
+<script type="text/javascript">
+jQuery.event.add(window,"load",function(){
+    $(document).ready(function(){
+        // datetimepicker 렌더링
+        $('#datePicker').datetimepicker({
+            language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
+            format: 'yyyy-mm-dd',  // 년-월-일 만 출
+            minView: 'month',
+            pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
+            defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
+            autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
+        });
+
+        // datatable 렌더링
+        var table = $('.dataTable').DataTable({
+            dom: 't', // 옵션 위치 지정
+            responsive: true, // 반응형 허용
+            info: false, // 페이지 정보 미허용
+            paging: false, // 페이징 미허용
+            scrollY: "75px", // 세로 스크롤 허용, 사이즈
+            scrollX: true, //가로 스크롤 허용
+            scrollCollapse: true,
+            ordering: true,
+            order: [1, "asc"],
+            columnDefs: [ // 컬럼별 width, 옵션 사용 지정
+                {targets: [0], width: "50px", sortable: false},   // NO
+                {targets: [1], width: "150px", orderable: false},  // 상담일시
+                {targets: [2], width: "100px", orderable: false},  // 통화시간
+                {targets: [3], width: "150px", orderable: false},  // 상담대분류
+                {targets: [4], width: "150px", orderable: false},  // 상담소분류
+                {targets: [5], width: "423px", orderable: false},  // 상담내용
+                {targets: [6], width: "50px", orderable: false},   // 청약
+                {targets: [7], width: "80px", orderable: false},   // STT 상태
+                {targets: [8], width: "100px", orderable: false},  // 센터
+                {targets: [9], width: "50px", orderable: false},   // 실
+                {targets: [10], width: "80px", orderable: false},  // 상담원
+                {targets: [11], width: "150px", orderable: false}  // 콜키
+            ],
+        });
+
+        // 다른 열에서 sort되어도 1열 순번은 그대로 유지
+        table.on('order.dt search.dt', function(){
+            table.column(0, {search:'applied', order:'applied'}).nodes().each(function (cell, i){
+                cell.innerHTML = i+1;
+            });
+        }).draw();
+
+        //오디오 플레이어
+        $('audio').audioPlayer();
+        $('.player_button .btn_player_play').on('click',function(){
+            $(this).toggleClass('pause');
+        });
+        $('.btn_player_play.stop').on('click', function(){
+            $('.player_button .btn_player_play').removeClass('pause');
+        });
+
+        // 상단 계약정보 - 상품명, 캠페인명 텍스트 영역에 title추가하여  full text 보여주기
+        $('.long_text').each(function(){
+            var infoText = $(this).text();
+            $(this).attr('title', infoText);
+        });
+
+        // 평가표 탭버튼 활성화 효과
+        $('.eval_tab_title a').on('click', function(){
+            $('.eval_tab_title a').removeClass('on');
+            $(this).addClass('on');
+        });
+
+        // 심사의견 마지막으로 커서이동
+        var evalComt = $('.eval_score_box textarea');
+        function setCaretEndOfText(ctrl, pos){
+            ctrl = evalComt.get(0);
+            pos  = ctrl.value.length;
+            if(ctrl.setSelectionRange){
+                ctrl.focus();
+                ctrl.setSelectionRange(pos,pos);
+            }
+            else if (ctrl.createTextRange) {
+                var range = ctrl.createTextRange();
+                range.collapse(true);
+                range.moveEnd('character', pos);
+                range.moveStart('character', pos);
+                range.select();
+            }
+        }
+        function setCaretToPos (input, pos) {
+            setCaretEndOfText (input, pos);
+        }
+        $('.stt_result a').on('click', function(){
+            evalComt.focus().scrollTop(evalComt[0].scrollHeight);
+            setCaretToPos();
+        });
+
+        // 적용 확인 레이어 팝업
+        $('.btn_apply').on('click',function(){
+            var thisLayer = $(this).parents('.lyrBox').attr('id');
+            var thisLayerHref = $('#' + thisLayer);
+            $(thisLayerHref).css({'display': 'none'});
+
+            $('body').append(' \
+                <div id="lyr_apply" class="lyrBox lyr_notify">\
+                    <div class="lyr_ct"> \
+                        <p class="massage">적용 되었습니다.</p> \
+                    </div> \
+                </div> \
+            ');
+            $('.lyr_notify').show();
+
+            setTimeout(function(){
+                $('.lyr_notify').addClass('lyr_hide').delay(300).queue(function(){$(this).remove();});
+                $('body').removeClass('lyr_bg_dim');
+            }, 600);
+        });
+
+        // 일반 테이블 스크롤 바
+        // if( $('.tbl_scroll tr').length > 10 ) {
+        //     $('.tbl_scroll').siblings('.tbl_hd').css({'padding-right':'18px'});
+        // }
+    });
+});
+</script>
+</body>
+</html>
