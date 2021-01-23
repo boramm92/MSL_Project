@@ -227,16 +227,16 @@
             <div class="tab_content">
                 <!-- .srchArea -->
                 <div class="srchArea">
-                    <table class="tbl_line_view" summary="통화일자, 사업부, 채널, 실, 상담원, 사번, STT 상태, 고객번호, 고객명, 지점코드 구성">
+                    <table class="tbl_line_view" summary="청약일자, 사업부, 채널, 실, 상담원, 사번, STT 상태, 고객번호, 고객명, 지점코드로 구성">
                         <caption class="hide">검색조건</caption>
                         <colgroup>
-                            <col width="80"><col width="310"><col width="80"><col><col width="80"><col><col width="80"><col><col width="80"><col><col width="80"><col>
+                            <col width="80"><col width="104"><col width="80"><col width="104"><col width="80"><col><col width="80"><col><col width="80"><col><col width="80"><col>
                         </colgroup>
 
                         <tbody>
                             <tr>
-                                <th scope="row">통화일자</th>
-                                <td>
+                                <th scope="row">청약일자</th>
+                                <td colspan="3">
                                     <div class="iptBox">
                                         <input type="text" id="fromDate" class="iptDateTime">
                                         <span>&hyphen;</span>
@@ -245,7 +245,7 @@
                                 </td>
 
                                 <th scope="row">사업부</th>
-                                <td>
+                                <td colspan="3">
                                     <select class="select">
                                         <option value="">사업부옵션</option>
                                         <option value="">사업부옵션</option>
@@ -276,7 +276,9 @@
                                         <option value="">실옵션</option>
                                     </select>
                                 </td>
+                            </tr>
 
+                            <tr>
                                 <th scope="row">상담원</th>
                                 <td>
                                     <div class="iptBox">
@@ -290,9 +292,7 @@
                                         <input type="text" numberOnly>
                                     </div>
                                 </td>
-                            </tr>
 
-                            <tr>
                                 <th scope="row">STT 상태</th>
                                 <td>
                                     <select class="select">
@@ -303,14 +303,14 @@
                                 </td>
 
                                 <th scope="row">고객번호</th>
-                                <td colspan="3">
+                                <td>
                                     <div class="iptBox">
                                         <input type="text" numberOnly>
                                     </div>
                                 </td>
 
                                 <th scope="row">고객명</th>
-                                <td colspan="3">
+                                <td>
                                     <div class="iptBox">
                                         <input type="text">
                                     </div>
@@ -339,6 +339,7 @@
                 <div class="dataTableBox">
                     <!-- [D] datatables 라이브러리 영역 -->
                     <!-- [D] 'Excel 다운로드' 버튼 클릭 시 파일 다운로드됨 -->
+                    <!-- [D] 처음 페이지 들어왔을때 목록 순서는 '상품명'기준으로 오름차순 정렬됨 -->
                     <table class="dataTable">
                         <thead>
                             <tr>
@@ -347,8 +348,8 @@
                                 <th rowspan="2">고객 ID</th>
                                 <th rowspan="2">고객명</th>
                                 <th rowspan="2">상담사</th>
-                                <th rowspan="2">통화시작시간</th>
-                                <th rowspan="2">통화종료시간</th>
+                                <th rowspan="2">통화 시작시간</th>
+                                <th rowspan="2">통화 종료시간</th>
                                 <th rowspan="2">통화길이</th>
                                 <th rowspan="2">상태</th>
                                 <th colspan="3">STT 결과</th>
@@ -362,6 +363,25 @@
                         </thead>
 
                         <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>AA01</td>
+                                <td>99308289</td>
+                                <td>김*라</td>
+                                <td>김상담</td>
+                                <td>2020-09-01 09:50:00</td>
+                                <td>2020-09-01 09:50:00</td>
+                                <td>00:60:00</td>
+                                <td>완료</td>
+                                <td>
+                                    <span>탐지</span>
+                                </td>
+                                <td>Y</td>
+                                <td>
+                                    <a href="#none"><em class="fas fa-search"></em>
+                                    </a>
+                                </td>
+                            </tr>
                             <tr>
                                 <td>1</td>
                                 <td>AA01</td>
@@ -862,26 +882,25 @@ jQuery.event.add(window,"load",function(){
                 },
             },
             responsive: true, // 반응형 허용
-            order: [[ 2, 'asc' ]], // 초기 sort 설정
             paging: true, // 페이징 허용
             pagingType: "full_numbers", // 페이징 버튼 구성 (처음, 이전, 페이지숫자, 다음, 마지막)
             lengthMenu: [25, 50, 100], // 페이지 당 보여질 목록 갯수 select 범위 지정
             scrollY: "540px", // 세로 스크롤 허용, 사이즈
-            // scrollX: true, //가로 스크롤 허용
+            scrollX: false, //가로 스크롤 허용
             scrollCollapse: true,
             columnDefs: [ // 컬럼별 width, 옵션 사용 지정
                 {targets: [0], width: "50px", sortable: false},       // NO
                 {targets: [1], width: "100px"},                       // 지점명
-                {targets: [2], width: "100px"},                            // 고객 ID
-                {targets: [3], width: "100px", orderable: false},     // 고객명
+                {targets: [2], width: "100px"},                       // 고객 ID
+                {targets: [3], width: "100px"},                       // 고객명
                 {targets: [4], width: "100px"},                       // 상담사
-                {targets: [5], width: "200px"},                       // 통화시작시간
-                {targets: [6], width: "200px"},                       // 통화종료시간
+                {targets: [5], width: "200px"},                       // 통화 시작시간
+                {targets: [6], width: "200px"},                       // 통화 종료시간
                 {targets: [7], width: "100px"},                       // 통화길이
-                {targets: [8], width: "50px"},                       // 상태
-                {targets: [9], maxWidth: "60px", orderable: false},   // STT 결과 - 점검
-                {targets: [10], maxWidth: "60px", orderable: false},  // STT 결과 - 답변
-                {targets: [11], maxWidth: "60px", orderable: false},  // STT 결과 - 상세
+                {targets: [8], width: "100px"},                       // 상태
+                {targets: [9], orderable: false},                     // STT 결과 - 점검
+                {targets: [10], orderable: false},                    // STT 결과 - 답변
+                {targets: [11], orderable: false},                    // STT 결과 - 상세
             ],
             buttons: [{
                 extend: 'excelHtml5',
