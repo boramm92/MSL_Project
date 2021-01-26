@@ -15,7 +15,7 @@
 <script src="../resources/js/jquery-migrate-3.3.0.min.js"></script>
 <script src="../resources/js/common.js"></script>
 
-<title>STT 탐지 구간 - STT 결과</title>
+<title>STT 상세보기</title>
 </head>
 <body>
 <!-- [D] 팝업 사이즈 1640 X 780 -->
@@ -25,22 +25,32 @@
     <!-- #container -->
     <div id="container">
         <!-- #contents -->
-        <div class="popup_wrap sbcr_stt_detail stt_result">
-            <h1>STT 탐지 구간</h1>
+        <div class="popup_wrap sbcr_stt_detail stt_view_detail">
+            <h1>STT 상세보기</h1>
 
             <!-- .customInfo -->
             <div class="customInfo">
-                <table class="tbl_line_view" summary="녹취키로 구성">
+                <table class="tbl_line_view" summary="고객명, 상담사명, 녹취파일명으로 구성">
                     <caption class="hide">조회조건</caption>
                     <colgroup>
-                        <col width="80"><col>
+                        <col width="80"><col><col width="80"><col>
                     </colgroup>
 
                     <tbody>
                         <tr>
-                            <th scope="row">녹취키</th>
+                            <th scope="row">고객명</th>
                             <td>
-                                <span class="custom_info">99308289993082899930828999308289</span>
+                                <span class="custom_info">홍길동</span>
+                            </td>
+                            <th scope="row">상담사명</th>
+                            <td>
+                                <span class="custom_info">홍길동</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">고객명</th>
+                            <td colspan="3">
+                                <span class="custom_info">2020202000200000339004940494_234_32435</span>
                             </td>
                         </tr>
                     </tbody>
@@ -54,7 +64,7 @@
                     <source src="../resources/audio/aekukka.mp3">
                 </audio>
 
-                 <!-- [D] 배속 기능 추가필요함 -->
+                <!-- [D] 배속 기능 추가필요함 -->
                 <div class="sltBox pyr_speed">
                     <select class="select">
                         <option value="">1X</option>
@@ -93,6 +103,26 @@
                         <span>검색버튼</span>
                     </a>
                 </div>
+
+                <div class="pageing">
+                    <div class="page">
+                        <span class="nowNum">0</span>/
+                        <span class="allNum">0</span>
+                    </div>
+                    <a class="btn_page_prev disabled" href="#none">이전</a>
+                    <a class="btn_page_next disabled" href="#none">다음</a>
+                </div>
+
+                <div class="sltBox">
+                    <select class="select">
+                        <option value="">전체</option>
+                        <option value="">고객</option>
+                        <option value="">상담원</option>
+                    </select>
+                    <button type="button" class="btn_slt_srch">
+                        <span>검색버튼</span>
+                    </button>
+                </div>
             </div>
             <!-- //.term_srch_box -->
 
@@ -101,10 +131,11 @@
                 <table class="dataTable">
                     <thead>
                         <tr>
-                            <th>순번</th>
-                            <th>구분</th>
+                            <th>NO</th>
+                            <th>콜구분</th>
                             <th>시작시간</th>
-                            <th>STT 결과</th>
+                            <th>STT 텍스트</th>
+                            <th>묵음시간</th>
                             <th>청취</th>
                         </tr>
                     </thead>
@@ -115,6 +146,7 @@
                             <td>상담사</td>
                             <td>0:00:02</td>
                             <td>가입설계 체결 위해서 관련 법률에 따라 수집 이용 조회 제공에 동의 얻고자하며 신용등급과 무관하시고 동의 하지 않으실 경우에는 계약상담이 불가능하신데요</td>
+                            <td>0</td>
                             <td>
                                 <button class="btn_stt_listen">
                                     <em class="fas fa-headphones-alt"></em>
@@ -126,6 +158,7 @@
                             <td>상담사</td>
                             <td>0:00:02</td>
                             <td>고객님의 개인신용 정보이신 이름 주민번호 연락처 주소 구매내역 등을 수집 이용 제공하시는데 동의하십니까</td>
+                            <td>0</td>
                             <td>
                                 <button class="btn_stt_listen">
                                     <em class="fas fa-headphones-alt"></em>
@@ -137,6 +170,7 @@
                             <td>고객</td>
                             <td>0:00:07</td>
                             <td>예예</td>
+                            <td>0</td>
                             <td>
                                 <button class="btn_stt_listen">
                                     <em class="fas fa-headphones-alt"></em>
@@ -148,6 +182,7 @@
                             <td>상담사</td>
                             <td>0:00:07</td>
                             <td>예 수집목적은 상담 체결 유지 관리 등을 위해서 쓰여지시고 업무 위탁을 받은자 및 법률상의 업무수행 계약목적 등을 위해서 제 삼자에게 제공하시는데 동의하십니까</td>
+                            <td>0</td>
                             <td>
                                 <button class="btn_stt_listen">
                                     <em class="fas fa-headphones-alt"></em>
@@ -159,6 +194,7 @@
                             <td>고객</td>
                             <td>0:00:11</td>
                             <td>예예</td>
+                            <td>0</td>
                             <td>
                                 <button class="btn_stt_listen">
                                     <em class="fas fa-headphones-alt"></em>
@@ -170,6 +206,7 @@
                             <td>상담사</td>
                             <td>0:00:13</td>
                             <td>예 고객님의 고유식별정보를 상기의 목적으로 처리하시는 것에 대해서 동의 해주셨어요 맞으십니까</td>
+                            <td>0</td>
                             <td>
                                 <button class="btn_stt_listen">
                                     <em class="fas fa-headphones-alt"></em>
@@ -181,6 +218,7 @@
                             <td>고객</td>
                             <td>0:00:17</td>
                             <td>예예</td>
+                            <td>0</td>
                             <td>
                                 <button class="btn_stt_listen">
                                     <em class="fas fa-headphones-alt"></em>
@@ -192,6 +230,7 @@
                             <td>상담사</td>
                             <td>0:00:19</td>
                             <td>네 수집한 정보는 삼개월 이용 일년 보유이시며 체결 후에는 거래 종료후 오년 이용 보관하구요 각 제공 대상기관 및 이용목적 구체적인 정보는 롯데손해보험 홈페이지 통해서 확인해 보실 수 있으시고</td>
+                            <td>0</td>
                             <td>
                                 <button class="btn_stt_listen">
                                     <em class="fas fa-headphones-alt"></em>
@@ -203,6 +242,7 @@
                             <td>상담사</td>
                             <td>0:00:23</td>
                             <td>계약자님 성함하고 주민번호 말씀해 주시면 되시는데 전화받으신 고객님의 성함이 어떻게 되십니까</td>
+                            <td>0</td>
                             <td>
                                 <button class="btn_stt_listen">
                                     <em class="fas fa-headphones-alt"></em>
@@ -214,6 +254,7 @@
                             <td>고객</td>
                             <td>0:00:25</td>
                             <td>송지영이요</td>
+                            <td>0</td>
                             <td>
                                 <button class="btn_stt_listen">
                                     <em class="fas fa-headphones-alt"></em>
@@ -225,6 +266,7 @@
                             <td>상담사</td>
                             <td>0:00:26</td>
                             <td>네 송지영 고객님께서 계약자님</td>
+                            <td>0</td>
                             <td>
                                 <button class="btn_stt_listen">
                                     <em class="fas fa-headphones-alt"></em>
@@ -236,6 +278,7 @@
                             <td>고객</td>
                             <td>0:00:26</td>
                             <td>송</td>
+                            <td>0</td>
                             <td>
                                 <button class="btn_stt_listen">
                                     <em class="fas fa-headphones-alt"></em>
@@ -247,6 +290,7 @@
                             <td>고객</td>
                             <td>0:00:27</td>
                             <td>송이요</td>
+                            <td>0</td>
                             <td>
                                 <button class="btn_stt_listen">
                                     <em class="fas fa-headphones-alt"></em>
@@ -258,6 +302,7 @@
                             <td>상담사</td>
                             <td>0:00:28</td>
                             <td>송 송나라 송</td>
+                            <td>0</td>
                             <td>
                                 <button class="btn_stt_listen">
                                     <em class="fas fa-headphones-alt"></em>
@@ -269,6 +314,7 @@
                             <td>고객</td>
                             <td>0:00:29</td>
                             <td>네 송이요</td>
+                            <td>0</td>
                             <td>
                                 <button class="btn_stt_listen">
                                     <em class="fas fa-headphones-alt"></em>
@@ -280,6 +326,7 @@
                             <td>고객</td>
                             <td>0:00:29</td>
                             <td>예예</td>
+                            <td>0</td>
                             <td>
                                 <button class="btn_stt_listen">
                                     <em class="fas fa-headphones-alt"></em>
@@ -291,6 +338,7 @@
                             <td>상담사</td>
                             <td>0:00:31</td>
                             <td>예 송지영 고객님께서 계약자님으로 들어가시고 고객님 주민등록번호 말씀해 주시면 되십니다</td>
+                            <td>0</td>
                             <td>
                                 <button class="btn_stt_listen">
                                     <em class="fas fa-headphones-alt"></em>
@@ -302,6 +350,7 @@
                             <td>고객</td>
                             <td>0:00:33</td>
                             <td>칠하나공칠이사 이삼사오 삼사팔</td>
+                            <td>0</td>
                             <td>
                                 <button class="btn_stt_listen">
                                     <em class="fas fa-headphones-alt"></em>
@@ -313,6 +362,7 @@
                             <td>상담사</td>
                             <td>0:00:35</td>
                             <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
+                            <td>0</td>
                             <td>
                                 <button class="btn_stt_listen">
                                     <em class="fas fa-headphones-alt"></em>
@@ -324,6 +374,7 @@
                             <td>상담사</td>
                             <td>0:00:35</td>
                             <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
+                            <td>0</td>
                             <td>
                                 <button class="btn_stt_listen">
                                     <em class="fas fa-headphones-alt"></em>
@@ -335,6 +386,7 @@
                             <td>상담사</td>
                             <td>0:00:35</td>
                             <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
+                            <td>0</td>
                             <td>
                                 <button class="btn_stt_listen">
                                     <em class="fas fa-headphones-alt"></em>
@@ -346,6 +398,7 @@
                             <td>상담사</td>
                             <td>0:00:35</td>
                             <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
+                            <td>0</td>
                             <td>
                                 <button class="btn_stt_listen">
                                     <em class="fas fa-headphones-alt"></em>
@@ -357,6 +410,7 @@
                             <td>상담사</td>
                             <td>0:00:35</td>
                             <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
+                            <td>0</td>
                             <td>
                                 <button class="btn_stt_listen">
                                     <em class="fas fa-headphones-alt"></em>
@@ -368,6 +422,7 @@
                             <td>상담사</td>
                             <td>0:00:35</td>
                             <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
+                            <td>0</td>
                             <td>
                                 <button class="btn_stt_listen">
                                     <em class="fas fa-headphones-alt"></em>
@@ -379,6 +434,7 @@
                             <td>상담사</td>
                             <td>0:00:35</td>
                             <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
+                            <td>0</td>
                             <td>
                                 <button class="btn_stt_listen">
                                     <em class="fas fa-headphones-alt"></em>
@@ -390,6 +446,7 @@
                             <td>상담사</td>
                             <td>0:00:35</td>
                             <td>제가 다시 불러드릴게요 칠일공칠이사 이삼사오 삼사팔이 맞으세요</td>
+                            <td>0</td>
                             <td>
                                 <button class="btn_stt_listen">
                                     <em class="fas fa-headphones-alt"></em>
@@ -410,7 +467,6 @@
 <!---------------------- Local Resources ---------------------->
 <!-- Local CSS -->
 <link rel="stylesheet" href="../resources/css/datatables.min.css">
-<link rel="stylesheet" href="../resources/css/buttons.dataTables.min.css">
 <!-- //datatables -->
 <link rel="stylesheet" href="../resources/css/popup.css">
 
@@ -418,9 +474,7 @@
 <script src="../resources/js/player.js"></script>
 <!-- //player -->
 <script src="../resources/js/datatables.min.js"></script>
-<script src="../resources/js/dataTables.buttons.min.js"></script>
-<script src="../resources/js/buttons.html5.min.js"></script>
-<script src="../resources/js/jszip.min.js"></script>
+
 <!-- //datatables -->
 
 <!-- Local Script -->
@@ -429,7 +483,7 @@ jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
         // datatable 렌더링
         var table = $('.dataTable').DataTable({
-            dom: '<"top">t<"bottom"B>', // 옵션 위치 지정
+            dom: '<"top">t<"bottom">', // 옵션 위치 지정
             responsive: true, // 반응형 허용
             info: false, // 페이지 정보 미허용
             order: false, // 초기 sort 설정
@@ -439,15 +493,12 @@ jQuery.event.add(window,"load",function(){
             scrollCollapse: true,
             columnDefs: [ // 컬럼별 width, 옵션 사용 지정
                 {targets: [0], width: "50px", orderable: false},   // 순번
-                {targets: [1], width: "60px", orderable: false},  // 구분
-                {targets: [2], width: "70px", orderable: false},  // 시작시간
+                {targets: [1], width: "60px", orderable: false},   // 구분
+                {targets: [2], width: "70px", orderable: false},   // 시작시간
                 {targets: [3], width: "", orderable: false},       // STT 결과
-                {targets: [4], width: "60", orderable: false},  // 청취
+                {targets: [4], width: "70px", orderable: false},   // 묵음시간
+                {targets: [5], width: "60px", orderable: false},   // 청취
             ],
-            buttons: [{
-                extend: 'excelHtml5',
-                text: '엑셀저장',
-            }]
         });
 
         //오디오 플레이어
@@ -477,8 +528,6 @@ jQuery.event.add(window,"load",function(){
             var findTxtField = $('#findTxtField').val();
 
             if ( findTxtField != '' ) {
-                $('.pageing').remove();
-
                 $('.sttSrchArea').find('em.findElement').queue(function() {
                     $(this).removeClass('findElement');
                     $(this).parents('tr').attr('id','');
@@ -502,15 +551,13 @@ jQuery.event.add(window,"load",function(){
                     page_prev_num = 1,
                     page_next_num = 2;
 
-                $('#findTxt').parent().append(' \
-                    <div class="pageing"> \
-                        <div class="page"> \
-                            <span class="nowNum">'+ page_prev_num +'</span>/ \
-                            <span class="allNum">'+findElementAllNum+'</span> \
-                        </div> \
-                        <a class="btn_page_prev disabled" href="#findElement'+page_prev_num+'">이전</a> \
-                        <a class="btn_page_next" href="#findElement'+page_next_num+'">다음</a >\
-                    </div>  \
+                $('.pageing').html(' \
+                    <div class="page"> \
+                        <span class="nowNum">'+ page_prev_num +'</span>/ \
+                        <span class="allNum">'+findElementAllNum+'</span> \
+                    </div> \
+                    <a class="btn_page_prev disabled" href="#findElement'+page_prev_num+'">이전</a> \
+                    <a class="btn_page_next" href="#findElement'+page_next_num+'">다음</a >\
                 ');
 
                 //검색 된 1번으로 스크롤 이동
