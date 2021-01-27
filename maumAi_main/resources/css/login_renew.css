@@ -652,20 +652,21 @@
 /* AVA 팝업 200106 UXUI Team NBR 추가 */
 .lyr_event {display:none; overflow:hidden; position:fixed; bottom:0; left:0; width:100%; height:100%; text-align:center; z-index:2000;}
 .lyr_event .lyr_event_bg {position:absolute; top:0; left:0; width:100%; height:100%; background-color: rgba(0, 0, 0, 0.6); z-index: -10;}
-.lyr_event .lyrWrap {position:relative; top:50px; left:50%; width:1290px; height:auto; transform:translate(-50%, 0); z-index:auto; -webkit-animation:lyr_eventshow 0.5s 0s ease-out; animation:lyr_eventshow 0.5s 0s ease-out;}
-.lyr_event .lyrWrap .lyr_cont {display:inline-block; overflow:hidden; position:relative; width:490px; height:600px; margin:0 20px; background:url('../images/img_event_lyr.png') 50% 50% no-repeat; background-size:contain;}
-.lyr_event .lyrWrap .lyr_cont img {display:none; width:100%; object-fit:contain;}
-.lyr_event .lyrWrap .btnBox {position:absolute; bottom:39px; width:100%; height:77px;}
-.lyr_event .lyrWrap .btnBox a {width:100%; margin:0; border:none; border-radius:0; background:url('../images/img_event_btn.png') 50% 50% no-repeat; background-size:100% auto; transition:none;}
-.lyr_event .lyrWrap .checkBox {position:absolute; left:50%; bottom:20px; width:auto; text-align:center; line-height:39px; transform:translate(-50%, 0);}
+.lyr_event .lyrWrap {position:relative; top:50px; left:50%; width:1290px; height:auto; transform:translate(-50%, 0); z-index:auto; -webkit-animation:lyr_eventshow 0.8s 0s ease-out; animation:lyr_eventshow 0.8s 0s ease-out;}
+.lyr_event .lyrWrap .lyr_cont {display:inline-block; overflow:hidden; position:relative; width:490px; height:600px; margin:0 20px;}
+.lyr_event .lyrWrap .lyr_cont .mob {display:none;}
+.lyr_event .lyrWrap .lyr_cont .imgBox {position:absolute; top:0; left:0; width:100%; height:100%;}
+.lyr_event .lyrWrap .lyr_cont img {width:100%; height:100%; object-fit:contain;}
+.lyr_event .lyrWrap .btnBox {position:absolute; bottom:33px; width:100%; height:81px;}
+.lyr_event .lyrWrap .btnBox a {width:100%; margin:0; padding:0; border:none; border-radius:0; background:none; transition:none;}
+.lyr_event .lyrWrap .btnBox a img {width:100%;}
+.lyr_event .lyrWrap .checkBox {position:absolute; left:50%; bottom:17px; width:auto; text-align:center; line-height:39px; transform:translate(-50%, 0);}
 .lyr_event .lyrWrap .checkBox label {margin:0; padding:0 0 0 25px; color:#fff; font-size:15px; font-weight:400; letter-spacing:-0.7px;}
-.lyr_event .lyrWrap .checkBox input[type="checkbox"] + label:before {width:18px; height:18px; margin: -9px 0 0; border:none; border-radius:4px; box-sizing:border-box; background:#fff; transition:none;}
+.lyr_event .lyrWrap .checkBox input[type="checkbox"] + label:before {width:18px; height:18px; margin:0; border:none; border-radius:4px; box-sizing:border-box; background:#fff; transition:none;}
 .lyr_event .lyrWrap .checkBox input[type="checkbox"]:checked + label {color:#fff;}
 .lyr_event .lyrWrap .checkBox input[type="checkbox"]:checked + label:before {color:#1b2370; line-height:16px;}
-.lyr_event .lyrWrap button {position:absolute; right:20px; top:20px; width:18px; height:18px; border:none; background:url('../images/img_event_close.svg') 0 50% no-repeat; color:#fff; font-size:15px;}
-
-.lyr_event .lyrWrap .ava_start {background:url('../images/img_ava_start.png') 50% 50% no-repeat; background-size:contain;}
-.lyr_event .lyrWrap .ava_start .btnBox a {width:100%; margin:0; border:none; border-radius:0; background:url('../images/img_avaStart_btn.png') 50% 50% no-repeat; background-size:cover;}
+.lyr_event .lyrWrap .btn_lyrWrap_close {position:absolute; right:16px; top:16px; width:24px; height:24px; border:none; background:url('../images/img_btn_lyrClose.png') 0 50% no-repeat; color:#fff; font-size:15px;}
+.lyr_event .lyrWrap .btn_lyrWrap_close span {display:inline-block; overflow:hidden; text-indent:-9999px;}
 
 /* keyframes */
 @-webkit-keyframes lyr_eventshow{
@@ -1057,6 +1058,14 @@
 .stn_seminar .seminar_box .download_box.part_2 .dwn_5 {top:640px;}
 .stn_seminar .seminar_box .download_box.part_2 .dwn_6 {top:742px;}
 
+.stn_event_detail {position:relative; border-top:1px solid #cfd5eb; background:#f7f8fc;}
+.stn_event_detail .btnBox {position:absolute; bottom:190px; left:50%; width:100%; transform:translate(-50%, 0);}
+.stn_event_detail .btnBox a {display:inline-block; margin:0 10px; border:none;}
+.stn_event_detail .btnBox a:hover {box-shadow:none;}
+.stn_event_detail .btnBox a span {display:inline-block; overflow:hidden; text-indent:-9999px;}
+.stn_event_detail .btnBox a.btn_go_ava {width:297px; height:72px; background:transparent url('../images/img_btn_goAva_p.png') 50% 50% no-repeat; background-size:contain;}
+.stn_event_detail .btnBox a.btn_video_rgst {width:460px; height:72px; background:transparent url('../images/img_btn_videoRgst.png') 50% 50% no-repeat; background-size:contain;}
+
 /* footer */
 #footer {position:absolute;bottom:0;left: 50%;transform: translateX(-50%);width:100%;height:30px; color:#002b49; font-size:11px; text-align:center; line-height:30px; background:#fff;}
 #footer p {height:30px;line-height: 30px; font-style: normal;}
@@ -1192,12 +1201,13 @@
 
 	.lyr_event .lyrWrap {top:30px;}
 	.lyr_event .lyrWrap .lyr_cont {overflow:visible; position:absolute; top:0; left:50%; width:300px; height:auto; margin:0 auto; background:none; animation:none; transform:translate(-50%, 0); z-index: 1000;}
-	.lyr_event .lyrWrap .lyr_cont .imgBox {overflow:auto; width:100%; height:auto;}
-	.lyr_event .lyrWrap .lyr_cont img {display:block; object-fit:none;}
-	.lyr_event .lyrWrap .btnBox {width:100%; height:62px; bottom:0;}
-	.lyr_event .lyrWrap .btnBox a {padding:0; background:url('../images/img_event_btn_m.png') 50% 50% no-repeat; background-size:cover;}
+	.lyr_event .lyrWrap .lyr_cont .web {display:none;}
+	.lyr_event .lyrWrap .lyr_cont .mob {display:block;}
+	.lyr_event .lyrWrap .lyr_cont .imgBox {overflow:auto; position:static; width:100%; height:auto;}
+	.lyr_event .lyrWrap .btnBox {width:100%; height:46px; bottom:0;}
+	.lyr_event .lyrWrap .btnBox a {padding:0;}
 	.lyr_event .lyrWrap .checkBox {width:100%; bottom:-30px;}
-	.lyr_event .lyrWrap button {top:5px; right:5px; background:url('../images/img_event_close.png') 50% 50% no-repeat; background-size:cover;}
+	.lyr_event .lyrWrap .btn_lyrWrap_close {top:10px; right:10px;}
 	
 	.lyr_event .lyrWrap .lyr_cont.ava_start {z-index:999;}
 	/* .lyr_event .lyrWrap .lyr_cont.ava_start .imgBox {overflow:visible;} */
