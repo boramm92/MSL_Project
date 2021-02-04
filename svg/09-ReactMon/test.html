@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test</title>
+    <style>
+        .react_mon {position:absolute; top:0; right:0; bottom:0; left:0; width:200px; height:200px; margin:auto;}
+
+        .ells {transform-origin:50% 50%;}
+        .ells1 {animation:rotate_ani1 5s linear infinite;}
+        @keyframes rotate_ani1 {
+            100% {transform:rotate3D(0, 1, 0, 360deg);}
+        }
+        .ells2 {animation:rotate_ani2 5s linear infinite;}
+        @keyframes rotate_ani2 {
+            100% {transform:rotate3D(2, 1.22, 0, 360deg);}
+        }
+        .ells3 {animation:rotate_ani3 5s linear infinite;}
+        @keyframes rotate_ani3 {
+            100% {transform:rotate3D(-2, 1.22, 0, 360deg);}
+        }
+
+        .cls {fill:none; stroke:#61dafb; stroke-miterlimit:10; stroke-width:15px; opacity:0.3;}
+        .cls_eff {stroke-dasharray:713px; stroke-dashoffset:-713px; animation:ell_ani 1s infinite ease-in-out; opacity:1;}
+        .cls_eff2 {animation-delay:0.2s;}
+        .cls_eff3 {animation-delay:0.4s;}
+        @keyframes ell_ani {
+            0% {stroke-dashoffset:-713px;}
+            50% {stroke-dashoffset:0;}
+            100% {stroke-dashoffset:713px;}
+        }
+
+        .eye {transform-origin:50% 50%; animation:eye_ani 2s alternate linear infinite;}
+        @keyframes eye_ani {
+            80% {transform:scaleY(1);}
+            90% {transform:scaleY(0.01);}
+            100% {transform:scaleY(0.01);}
+        }
+
+        .eye_ball {animation:eye_ball_ani 1s alternate linear infinite;}
+        @keyframes eye_ball_ani {
+            0% {transform:translateX(-20px);}
+            100% {transform:translateX(20px);}
+        }       
+    </style>
+</head>
+<body>
+    <svg class="react_mon" viewBox="0 0 327 291.84">
+        <defs>
+            <mask id="eye_mask">
+                <ellipse class="eye" cx="163.5" cy="145.92" rx="28" ry="14" fill="#fff"/>
+            </mask>
+        </defs>
+        <g class="ells ells1">
+            <ellipse class="cls" cx="163.5" cy="145.92" rx="156" ry="60"/>
+            <ellipse class="cls cls_eff cls_eff1" cx="163.5" cy="145.92" rx="156" ry="60"/>
+        </g>
+       <g class="ells ells2">
+            <ellipse class="cls" cx="384" cy="384" rx="156" ry="60" transform="matrix(.5 -.87 .87 .5 -361.05 286.47)"/>
+            <ellipse class="cls cls_eff cls_eff2" cx="384" cy="384" rx="156" ry="60" transform="matrix(.5 -.87 .87 .5 -361.05 286.47)"/>
+       </g>
+        <g class="ells ells3">
+            <ellipse class="cls" cx="384" cy="384" rx="60" ry="156" transform="rotate(-30 -170.504 676.413)"/>
+            <ellipse class="cls cls_eff cls_eff3" cx="384" cy="384" rx="60" ry="156" transform="rotate(-30 -170.504 676.413)"/>
+        </g>      
+        <circle cx="163.5" cy="145.92" r="31" fill="#61dafb"/>
+        <ellipse class="eye" cx="163.5" cy="145.92" rx="28" ry="14" fill="#fff"/>
+        <g mask="url(#eye_mask)">
+            <circle class="eye_ball" cx="163.5" cy="145.92" r="13" fill="#333"/>
+        </g>       
+    </svg>
+
+    <script>
+        // stroke 길이 알아내기
+        console.log(document.querySelector('.cls_eff').getTotalLength());
+
+        // 마우스 이동 시 따라오게 하기
+        // 전역변수 사용을 막으려고 아래처럼 소괄호로 감싸줌
+        (() => {
+            const reactMonElem = document.querySelector('.react_mon');  // svg
+            const targetPos = {x:0, y:0};                               // 마우스 위치
+            const easeValue = 0.05;                                     // 
+            const reactMonInfo = {x:0, y:0};
+
+            window.addEventListener('mousemove', (e) => {
+                targetPos.x = e.clientX - innerWidth * 0.5;
+                targetPos.y = e.clientY - innerHeight * 0.5;
+            });
+
+            let dx;
+            let dy;
+            function render(){
+                dx = targetPos.x - reactMonInfo.x;
+                dy = targetPos.y - reactMonInfo.y;
+                reactMonInfo.x = reactMonInfo.x + dx * easeValue;
+                reactMonInfo.y = reactMonInfo.y + dy * easeValue;
+                reactMonElem.style.transform = `translate3d(${reactMonInfo.x}px, ${reactMonInfo.y}px, 0)`;
+                requestAnimationFrame(render);
+            };
+            render();
+        })();
+    </script>
+</body>
+</html>
