@@ -169,7 +169,7 @@
                 </div>
                 <div class="stn use">
                     <div class="contBox">
-                        <h3>회의록 작성을 빠르게 끝내는 방법</h3>
+                        <h3>회의록 작성을 <br>빠르게 끝내는 방법</h3>
                         <ol class="use_lst">
                             <li>
                                 <div class="viewBox">
@@ -284,24 +284,26 @@
 			});
             $('.aside_bg').on('click', function(){
                 $('body').css('overflow', 'visible');
+                $('.btn_ham').removeClass('active');
                 $('.aside').removeClass('on');
 		        $('.aside_bg').css('display', 'none');
             });
             $('.btn_ham.active').on('click', function(){
-                console.log('text')
+                console.log('닫기누름')
                 $('body').css('overflow', 'visible');
+                $(this).removeClass('active');
                 $('.aside').removeClass('on');
 		        $('.aside_bg').css('display', 'none');
             });
 
              // swiper
              var swiper = new Swiper('.swiper-container', {
-                slidesPerGroup : 4,
-                slidesPerView: 4,
+                slidesPerGroup : 1,
+                slidesPerView: 1,
                 spaceBetween: 25,
                 loop: true,
-                // observer: true,
-                // observeParents: true,
+                observer: true,
+                observeParents: true,
                 pagination: {
                     el: '.swiper-pagination',
                     clickable: true,
@@ -310,15 +312,13 @@
                     nextEl: '.swiper-button-next',
                 },
                 breakpoints: {
-                    '@0.75': {
-                        slidesPerView: 2,
+                    480: {
+                        slidesPerGroup : 1,
+                        slidesPerView: 1,
                         spaceBetween: 20,
                     },
-                    '@1.00': {
-                        slidesPerView: 3,
-                        spaceBetween: 20,
-                    },
-                    '@1.50': {
+                    768: {
+                        slidesPerGroup : 4,
                         slidesPerView: 4,
                         spaceBetween: 30,
                     }

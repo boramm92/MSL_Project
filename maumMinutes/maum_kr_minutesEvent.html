@@ -72,6 +72,8 @@
                         <li>
                             <span>자동 업그레이드형<br><strong>소프트웨어</strong></span>     
                         </li>
+                    </ul>
+                    <ul class="invt_card">
                         <li>
                             <span>최고의 속도로<br><strong>실시간 회의 기록</strong></span>                       
                         </li>
@@ -193,8 +195,8 @@
         $(document).ready(function(){
             // swiper
             var swiper = new Swiper('.swiper-container', {
-                slidesPerGroup : 4,
-                slidesPerView: 4,
+                slidesPerGroup : 1,
+                slidesPerView: 1,
                 spaceBetween: 30,
                 loop: true,
                 observer: true,
@@ -204,15 +206,13 @@
                     clickable: true,
                 },
                 breakpoints: {
-                    '@0.75': {
-                        slidesPerView: 2,
+                    480: {
+                        slidesPerGroup : 1,
+                        slidesPerView: 1,
                         spaceBetween: 20,
                     },
-                    '@1.00': {
-                        slidesPerView: 3,
-                        spaceBetween: 20,
-                    },
-                    '@1.50': {
+                    768: {
+                        slidesPerGroup : 4,
                         slidesPerView: 4,
                         spaceBetween: 30,
                     }
@@ -224,12 +224,26 @@
                 $('html').animate({scrollTop: 0,}, 1000);
                 $('.intro').hide();
                 $('.stn:not(:first-child)').fadeIn(900); 
+                $('.btn_goContact_w').fadeIn(900);
             });
             
             // 문의 영역으로 이동
             $('.go_contact button').on('click', function(){       
                 var contactOffset = $('.contact').offset();                  
                 $('html').animate({scrollTop : contactOffset.top}, 1000);
+                console.log(contactOffset.top);
+            });
+
+            $(window).scroll(function(){
+                console.log($(window).scrollTop() )
+                var contactOffset = $('.contact').offset(); 
+                var contactOffsetTop = contactOffset.top - 370;
+                console.log(contactOffsetTop)
+                if( $(window).scrollTop() >= contactOffsetTop ){
+                    $('.go_contact button').fadeOut();
+                }else {
+                    $('.go_contact button').fadeIn();
+                }
             });
 
             // 문의 영역에서 버튼 제거            
