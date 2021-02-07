@@ -278,23 +278,26 @@
     <script type="text/javascript">
     jQuery.event.add(window,"load",function(){
         $(document).ready(function(){
-            // aside 
-			$('.btn_ham').on('click', function(){
-                $('body').css('overflow', 'hidden');
-                $(this).addClass('active');
-                $('.aside').addClass('on');
-		        $('.aside_bg').css('display', 'block');
+            // aside show / hide
+            $('.btn_ham').on('click', function(){
+		        if ($('.aside_bg').css('display') == 'none') {
+		            $('.btn_ham').addClass('active');
+                    $('.aside').addClass('on');
+		            $('.aside_bg').css('display', 'block');
+		            $('body').css('overflow', 'hidden');
+		            clicked=true;
+		        } else {
+		            $('.btn_ham').removeClass('active');
+		            $('.aside').removeClass('on');
+                    $('.aside_bg').css('display', 'none');
+		            $('body').css('overflow', '');
+		            clicked=false;
+		        }
 			});
+            // aside_bg 
             $('.aside_bg').on('click', function(){
                 $('body').css('overflow', 'visible');
                 $('.btn_ham').removeClass('active');
-                $('.aside').removeClass('on');
-		        $('.aside_bg').css('display', 'none');
-            });
-            $('.btn_ham.active').on('click', function(){
-                console.log('닫기누름')
-                $('body').css('overflow', 'visible');
-                $(this).removeClass('active');
                 $('.aside').removeClass('on');
 		        $('.aside_bg').css('display', 'none');
             });
