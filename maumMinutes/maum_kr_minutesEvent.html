@@ -222,36 +222,35 @@
             // intro에서 이벤트 페이지 이동
             $('.btnBox .btn_go_event').on('click', function(){
                 $('html').animate({scrollTop: 0,}, 1000);
-                $('.intro').hide();
+                $('.intro').remove();
                 $('.stn:not(:first-child)').fadeIn(900); 
-                $('.btn_goContact_w').fadeIn(900);
+                if( $(window).width() <= 768 ){
+                    $('.btn_goContact_m').fadeIn();
+                }else {
+                    $('.btn_goContact_w').fadeIn();
+                }
             });
             
             // 문의 영역으로 이동
             $('.go_contact button').on('click', function(){       
-                var contactOffset = $('.contact').offset();                  
+                var contactOffset = $('.contact').offset();                                 
                 $('html').animate({scrollTop : contactOffset.top}, 1000);
-                console.log(contactOffset.top);
             });
 
+            // 문의 영역 이동 시 버튼 제거
             $(window).scroll(function(){
-                console.log($(window).scrollTop() )
                 var contactOffset = $('.contact').offset(); 
-                var contactOffsetTop = contactOffset.top - 370;
-                console.log(contactOffsetTop)
-                if( $(window).scrollTop() >= contactOffsetTop ){
-                    $('.go_contact button').fadeOut();
-                }else {
-                    $('.go_contact button').fadeIn();
-                }
-            });
+                var contactOffsetTop = contactOffset.top;
+                var scrollTop = $('html').scrollTop() + $('.contact').height() * 1.5;
 
-            // 문의 영역에서 버튼 제거            
-            $(window).scroll(function(){
-                if( $(this).scrollTop() >= $('.contact').offset().top ) {
-                    console.log('문의 영역 도달')
-                } else {
-                    console.log('문의 영역 탈출')
+                if( $(window).width() > 768 && scrollTop >= contactOffsetTop ){
+                    $('.btn_goContact_w').fadeOut();
+                }else if( $(window).width() > 768 && scrollTop < contactOffsetTop ){
+                    $('.btn_goContact_w').fadeIn();
+                }else if( $(window).width() <= 768 && scrollTop >= contactOffsetTop ){
+                    $('.btn_goContact_m').fadeOut();
+                }else if( $(window).width() <= 768 && scrollTop < contactOffsetTop ){
+                    $('.btn_goContact_m').fadeIn();
                 }
             });
         });       
