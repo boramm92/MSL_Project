@@ -134,19 +134,19 @@
                 <!-- //.srchArea -->
 
                 <!-- .custom_tbl -->
-                <div class="custom_tbl ctrt_qa">
+                <div class="custom_tbl ct_qa">
                     <div class="tbl_hd">
                         <table summary="사업부, 지점, 채널, 설계사, 사번, 고객명, 고객번호, 계약번호, 상품명, 전체탐지, 미탐지, 부분탐지(건수/소분류값)로 구성">
                             <caption class="hide">계약별 QA 스크립트 점검</caption>
-                            <colgroup>
+                            <colgroup class="colgroup">
                                 <col width="200"><col width="200"><col width="200"><col width="80"><col width="100">
                                 <col width="80"><col width="100"><col width="100"><col width="200"><col width="80"><col width="80">
                             </colgroup>
                             <thead>
                                 <tr>
                                     <th scope="col" rowspan="2">사업부</th>
-                                    <th scope="col" rowspan="2">지점</th>
                                     <th scope="col" rowspan="2">채널</th>
+                                    <th scope="col" rowspan="2">지점</th>                                  
                                     <th scope="col" rowspan="2">설계사</th>
                                     <th scope="col" rowspan="2">사번</th>
                                     <th scope="col" rowspan="2">고객명</th>
@@ -155,7 +155,12 @@
                                     <th scope="col" rowspan="2">상품명</th>
                                     <th scope="col" rowspan="2">전체탐지</th>
                                     <th scope="col" rowspan="2">미탐지</th>
-                                    <th scope="col" colspan="6">부분탐지</th>
+                                    <th scope="col" class="col_th">부분탐지</th>
+                                    <th scope="col" class="col_th">부분탐지</th>
+                                    <th scope="col" class="col_th">부분탐지</th>
+                                    <th scope="col" class="col_th">부분탐지</th>
+                                    <th scope="col" class="col_th">부분탐지</th>
+                                    <th scope="col" class="col_th">부분탐지</th>
                                 </tr>
                                 <tr>
                                     <th>건수</th>
@@ -171,18 +176,19 @@
 
                     <div class="tbl_bd">
                         <table>
-                            <colgroup>
+                            <colgroup class="colgroup">
                                 <col width="200"><col width="200"><col width="200"><col width="80"><col width="100">
                                 <col width="80"><col width="100"><col width="100"><col width="200"><col width="80"><col width="80">
                             </colgroup>
                             <tbody>
-                                <tr>
-                                    <td colspan="17">조회된 목록이 없습니다.</td>
-                                </tr>
+                                <!-- [D] 조회 목록 없는 경우 보여줄 row / colspan 자동으로 부여됨 (하단 script 참고) -->
+                                <!-- <tr>
+                                    <td class="empty_td">조회된 목록이 없습니다.</td>
+                                </tr> -->
                                 <tr>
                                     <td scope="row">사업부</td>
-                                    <td>지점</td>
                                     <td>채널</td>
+                                    <td>지점</td>                                   
                                     <td>설계사</td>
                                     <td>사번</td>
                                     <td>고객명</td>
@@ -200,8 +206,8 @@
                                 </tr>
                                 <tr>
                                     <td scope="row">사업부</td>
-                                    <td>지점</td>
                                     <td>채널</td>
+                                    <td>지점</td>                                   
                                     <td>설계사</td>
                                     <td>사번</td>
                                     <td>고객명</td>
@@ -289,6 +295,26 @@ jQuery.event.add(window,"load",function(){
             $('.paging_num a').removeClass('current');
             $(this).addClass('current');
         });
+
+        // 테이블 가로 스크롤 기능
+		$('.tbl_bd').scroll(function () {
+			var xPoint = $('.tbl_bd').scrollLeft();
+			$('.tbl_hd').scrollLeft(xPoint);
+            console.log(xPoint)
+		});
+
+        // 조회 목록 없는 경우 th 갯수에 따른 colspan 부여
+        $('.empty_td').attr('colspan', $('.tbl_hd thead th').length);
+
+        // 소분류값 분류 개수에 따른 행 병합 - [D] 데이터 불러올때마다 실행시켜 주세요.
+        $('.col_th').each(function() {
+            var rows = $(".col_th:contains('" + $(this).text() + "')");
+            $('.colgroup').append(rows.length, '<col width="80">');
+            if (rows.length > 1) {
+                rows.eq(0).attr("colspan", rows.length);
+                rows.not(':eq(0)').remove();
+            }            
+        }); 
     });
 });
 </script>

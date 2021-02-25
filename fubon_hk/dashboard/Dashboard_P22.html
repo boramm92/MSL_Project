@@ -131,12 +131,13 @@
                             <colgroup>
                                 <col width="200"><col width="200"><col width="200"><col width="80"><col width="100">
                                 <col width="80"><col width="100"><col width="150"><col width="200"><col width="80">
+                                <col width="80"><col width="80"><col width="80"><col width="80"><col width="80">
                             </colgroup>
                             <thead>
                                 <tr>
                                     <th scope="col" rowspan="2">사업부</th>
-                                    <th scope="col" rowspan="2">지점</th>
                                     <th scope="col" rowspan="2">채널</th>
+                                    <th scope="col" rowspan="2">지점</th>                                   
                                     <th scope="col" rowspan="2">설계사</th>
                                     <th scope="col" rowspan="2">사번</th>
                                     <th scope="col" rowspan="2">고객명</th>
@@ -163,15 +164,17 @@
                             <colgroup>
                                 <col width="200"><col width="200"><col width="200"><col width="80"><col width="100">
                                 <col width="80"><col width="100"><col width="150"><col width="200"><col width="80">
+                                <col width="80"><col width="80"><col width="80"><col width="80"><col width="80">
                             </colgroup>
                             <tbody>
-                                <tr>
-                                    <td colspan="15">조회된 목록이 없습니다.</td>
-                                </tr>
+                                <!-- [D] 조회 목록 없는 경우 보여줄 row / colspan 자동으로 부여됨 (하단 script 참고) -->
+                                <!-- <tr>
+                                    <td class="empty_td">조회된 목록이 없습니다.</td>
+                                </tr> -->
                                 <tr>
                                     <td scope="row">사업부</td>
-                                    <td>지점</td>
                                     <td>채널</td>
+                                    <td>지점</td>                                   
                                     <td>설계사</td>
                                     <td>사번</td>
                                     <td>고객명</td>
@@ -187,8 +190,8 @@
                                 </tr>
                                 <tr>
                                     <td scope="row">사업부</td>
-                                    <td>지점</td>
                                     <td>채널</td>
+                                    <td>지점</td>                                   
                                     <td>설계사</td>
                                     <td>사번</td>
                                     <td>고객명</td>
@@ -274,6 +277,9 @@ jQuery.event.add(window,"load",function(){
             $('.paging_num a').removeClass('current');
             $(this).addClass('current');
         });
+
+        // 조회 목록 없는 경우 th 갯수에 따른 colspan 부여
+        $('.empty_td').attr('colspan', $('.tbl_hd thead th').length);
     });
 });
 </script>
