@@ -122,6 +122,7 @@
                                             <p class="svc_desc">고품질의 TTS 음성 생성 기술로 방송을 하였습니다.</p>
                                             <div class="viewBox">
                                                 <div class="viewItem">
+                                                    <button type="button" class="btn_video_play" title="재생버튼"></button>
                                                     <img src="resources/images/img_cases_kbs.png" alt="KBS 성공사례">
                                                     <p>실제 사람과 같이 자연스럽고 매끄러운 AI 보이스</p>
                                                 </div>
@@ -401,7 +402,7 @@ jQuery.event.add(window,"load",function(){
             <div id="lyr_video_player" class="lyrPlayBox">\
                 <div class="lyr_ct">\
                     <video controls autoplay>\
-                        <source src="resources/videos/minutes_review.mp4" type="video/mp4">\
+                        <source src="resources/videos/kbs_success_case.mp4" type="video/mp4">\
                     </video>\
                 </div>\
                 <button type="button" class="btn_lyr_close">\
@@ -414,7 +415,48 @@ jQuery.event.add(window,"load",function(){
                 $('.lyr_bg_dim').remove();
                 $('#lyr_video_player').remove();
             });   
-        });       
+        });
+
+        //Layer popup open 
+        $('.btn_lyr_open').on('click',function(){	
+            var winHeight = $(window).height()*0.7,
+                hrefId = $(this).attr('href');
+
+            $('body').css('overflow','hidden'); 
+            $('body').find(hrefId).wrap('<div class="lyrWrap"></div>');
+            $('body').find(hrefId).before('<div class="lyr_bg"></div>');
+
+            //Layer popup close 
+            $('.btn_lyr_close, .lyr_bg').on('click',function(){
+                $('body').css('overflow','');  
+                $('body').find(hrefId).unwrap();
+                $('.lyr_bg').remove(); 
+            });	
+        });	
+        
+        //Layer popup close 
+        var assentClicked = false;
+        $('#assent').on('click',function(){	
+            if( !assentClicked ){
+				$('#btn_request').prop('disabled', '');
+                assentClicked=true;
+            }else{
+				$('#btn_request').prop('disabled', 'disabled');
+                assentClicked=false
+            }
+        });
+
+        // intro에서 이벤트 페이지 이동
+        $('.btnBox .btn_go_event').on('click', function(){
+            $('html').animate({scrollTop: 0,}, 500);
+            $('.intro').hide();
+            $('.stn:not(.intro)').fadeIn(300); 
+            if( $(window).width() <= 768 ){
+                $('.btn_go_contact').fadeIn();
+            }else {
+                $('.btn_go_contact').fadeIn();
+            }
+        });  
         
         // swiper
         new Swiper('.cases_box', {
@@ -452,19 +494,7 @@ jQuery.event.add(window,"load",function(){
             target.addClass('active');
             successCasesCont.css('display','none');
 			successCasesCont.eq(index).css('display','block');
-        });
-
-        // intro에서 이벤트 페이지 이동
-        $('.btnBox .btn_go_event').on('click', function(){
-            $('html').animate({scrollTop: 0,}, 500);
-            $('.intro').hide();
-            $('.stn:not(.intro)').fadeIn(300); 
-            if( $(window).width() <= 768 ){
-                $('.btn_go_contact').fadeIn();
-            }else {
-                $('.btn_go_contact').fadeIn();
-            }
-        });
+        });       
 
         // 문의 영역으로 이동
         $('.btn_go_contact').on('click', function(){       
@@ -489,37 +519,28 @@ jQuery.event.add(window,"load",function(){
             }
         });
         
+        // 문의하기 연락처 숫자입력 제한
         $('#userTel').on('keyup', function() {
             $(this).val($(this).val().replace(/[^0-9]/g,''));
         });
         
-        //Layer popup open 
-        $('.btn_lyr_open').on('click',function(){	
-            var winHeight = $(window).height()*0.7,
-                hrefId = $(this).attr('href');
+        // 문의 내용 모두 입력 시 버튼 효과
+        var userInfo = $('input#userName, input#userTel');
+        var assentCheck = $('#assent');
 
-            $('body').css('overflow','hidden'); 
-            $('body').find(hrefId).wrap('<div class="lyrWrap"></div>');
-            $('body').find(hrefId).before('<div class="lyr_bg"></div>');
-
-            //Layer popup close 
-            $('.btn_lyr_close, .lyr_bg').on('click',function(){
-                $('body').css('overflow','');  
-                $('body').find(hrefId).unwrap();
-                $('.lyr_bg').remove(); 
-            });	
-        });	
-        
-        //Layer popup close 
-        var assentClicked = false;
-        $('#assent').on('click',function(){	
-            if( !assentClicked ){
-				$('#btn_request').prop('disabled', '');
-                assentClicked=true;
+        userInfo.keydown(function(){
+            if( userInfo.val() != '' && $(this).prop('checked') == true ){
+                $('#inquireBtn').css('background', '#757a8a');                
             }else{
-				$('#btn_request').prop('disabled', 'disabled');
-                assentClicked=false
-            }
+                $('#inquireBtn').css('background', '#1FB5CB');
+            } 
+        });
+        assentCheck.on('click', function(){
+            if( userInfo.val() != '' && $(this).prop('checked') == true ){
+                $('#inquireBtn').css('background', '#757a8a');                
+            }else{
+                $('#inquireBtn').css('background', '#1FB5CB');
+            } 
         });
     });       
 });
