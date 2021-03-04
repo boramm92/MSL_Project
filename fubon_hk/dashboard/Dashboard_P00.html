@@ -587,19 +587,26 @@
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-        
+        // 스크롤 테이블 목록 특정 height 초과일때 스크롤바 추가되면서 어긋나는 테이블 레이아웃 맞춰주기 - [D] 파일추가할때마다 해당함수 함께 실행해주세요.
+        function handleScrollTableAddPdding(){
+            $('.custom_tbl').each(function (){
+                if( $(this).find('.tbl_bd table').height() > 180 ) {
+                    $(this).find('.tbl_hd').css({'padding-right': getScrollBarWidth() + 'px'});
+                }
+            });
+        };
+        handleScrollTableAddPdding();
     });
 });
 </script>
 
-<!-- 금지어 차트 -->
+<!-- 금지어 bar chart -->
 <script type="text/javascript">
     // 표시할 데이터를 임의로 만들어주는 랜덤함수로 개발 시에는 실제 데이터를 넣어주시면 됩니다. 
-    // 하단 datasets 의 data 참고
     var randomScalingFactor = function() {
         return Math.round(Math.random() * 100);
     };
-
+    
     var barChartData = {
         labels: ['전체', 'UM', 'IB', 'OB', 'GT'],
         datasets: [{
@@ -632,67 +639,409 @@ jQuery.event.add(window,"load",function(){
             ]
         }]
     };
-    
-    
-    window.onload = function() {
-        var wordManageBarChart = document.getElementById('bar01').getContext('2d');
-        window.myBar = new Chart(wordManageBarChart, {
-            type: 'bar',
-            data: barChartData,
-            options: {
-                responsive: true,
-                tooltips: {
-                    mode: 'index',
-                    intersect: true
-                },
-                scales: {
-                    yAxes: [{
-                        type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
-                        display: true,
-                        position: 'left',
-                        id: 'y-axis-1',
-                    }, {
-                        type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
-                        display: true,
-                        position: 'right',
-                        id: 'y-axis-2',
-                        gridLines: {
-                            drawOnChartArea: false
-                        }
-                    }],
-                }
+            
+    var barChartDataConfig = {
+        type: 'bar',
+        data: barChartData,
+        options: {
+            responsive: true,
+            tooltips: {
+                mode: 'index',
+                intersect: true
+            },
+            scales: {
+                yAxes: [{
+                    type: 'linear', 
+                    display: true,
+                    position: 'left',
+                    id: 'y-axis-1',
+                    ticks: {
+						beginAtZero: true,
+                        max: 100,
+						fontSize : 12,
+					}
+                }, {
+                    type: 'linear', 
+                    display: false,
+                    position: 'right',
+                    id: 'y-axis-2',
+                    gridLines: {
+                        drawOnChartArea: false
+                    },
+                    ticks: {
+						beginAtZero: true,
+                        max: 100,
+						fontSize : 12,
+					}
+                }], 
             }
-        });
-
-        var counsleSpeedBarChart = document.getElementById('bar02').getContext('2d');
-        window.myBar = new Chart(counsleSpeedBarChart, {
-            type: 'bar',
-            data: barChartData,
-            options: {
-                responsive: true,
-                tooltips: {
-                    mode: 'index',
-                    intersect: true
-                },
-                scales: {
-                    yAxes: [{
-                        type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
-                        display: true,
-                        position: 'left',
-                        id: 'y-axis-1',
-                    }, {
-                        type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
-                        display: true,
-                        position: 'right',
-                        id: 'y-axis-2',
-                        gridLines: {
-                            drawOnChartArea: false
-                        }
-                    }],
-                }
-            }
-        });
-    };
+        }
+    }; 
+    
+    var bar1 = document.getElementById('bar01').getContext('2d');    
+    window.myBar = new Chart(bar1, barChartDataConfig);
 </script>
+<!-- //금지어 chart -->
+
+<!-- 발화속도 bar chart -->
+<script type="text/javascript">
+    // 표시할 데이터를 임의로 만들어주는 랜덤함수로 개발 시에는 실제 데이터를 넣어주시면 됩니다. 
+    var randomScalingFactor = function() {
+        return Math.round(Math.random() * 100);
+    };
+    
+    var barChartData = {
+        labels: ['전체', 'UM', 'IB', 'OB', 'GT'],
+        datasets: [{
+            label: '청약속도',
+            backgroundColor: [
+                window.chartColors.red,
+                window.chartColors.orange,
+                window.chartColors.yellow,
+                window.chartColors.green,
+                window.chartColors.blue
+            ],
+            yAxisID: 'y-axis-1',
+            data: [
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor()
+            ]
+        }, {
+            label: '상담속도',
+            backgroundColor: window.chartColors.grey,
+            yAxisID: 'y-axis-2',
+            data: [
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor()
+            ]
+        }]
+    };
+            
+    var barChartDataConfig = {
+        type: 'bar',
+        data: barChartData,
+        options: {
+            responsive: true,
+            tooltips: {
+                mode: 'index',
+                intersect: true
+            },
+            scales: {
+                yAxes: [{
+                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                    display: true,
+                    position: 'left',
+                    id: 'y-axis-1',
+                }, {
+                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                    display: true,
+                    position: 'right',
+                    id: 'y-axis-2',
+                    gridLines: {
+                        drawOnChartArea: false
+                    }
+                }], 
+            }
+        }
+    }; 
+    
+    var bar2 = document.getElementById('bar02').getContext('2d');    
+    window.myBar = new Chart(bar2, barChartDataConfig);
+</script>
+<!-- //발화속도 chart -->
+
+<!-- 금지어 발화 line chart -->
+<script type="text/javascript">
+    // 표시할 데이터를 임의로 만들어주는 랜덤함수로 개발 시에는 실제 데이터를 넣어주시면 됩니다. 
+    var randomScalingFactor = function() {
+        return Math.round(Math.random() * 100);
+    };
+    
+    var lineChartData = {
+        labels: ['전체', 'UM', 'IB', 'OB', 'GT'],
+        datasets: [{
+            label: '대상계약건수',
+            borderColor: window.chartColors.red,
+            backgroundColor: window.chartColors.red,
+            fill: false,
+            data: [
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor()
+            ],
+            yAxisID: 'y-axis-1',
+        }, {
+            label: '탐지계약건수',
+            borderColor: window.chartColors.blue,
+            backgroundColor: window.chartColors.blue,
+            fill: false,
+            data: [
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor()
+            ],
+            yAxisID: 'y-axis-2'
+        }]
+    };
+            
+    var lineChartDataConfig = {
+        type: 'line',
+        data: lineChartData,
+        options: {
+            responsive: true,
+            hoverMode: 'index',
+            stacked: false,
+            scales: {
+                yAxes: [{
+                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                    display: true,
+                    position: 'left',
+                    id: 'y-axis-1',
+                }, {
+                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                    display: true,
+                    position: 'right',
+                    id: 'y-axis-2',
+
+                    // grid line settings
+                    gridLines: {
+                        drawOnChartArea: false, // only want the grid lines for one axis to show up
+                    },
+                }],
+            }
+        }
+    }; 
+    
+    var line1 = document.getElementById('line01').getContext('2d');    
+    window.myBar = new Chart(line1, lineChartDataConfig);
+</script>
+<!-- //금지어 발화 chart -->
+
+<!-- 발화속도 line chart -->
+<script type="text/javascript">
+    // 표시할 데이터를 임의로 만들어주는 랜덤함수로 개발 시에는 실제 데이터를 넣어주시면 됩니다. 
+    var randomScalingFactor = function() {
+        return Math.round(Math.random() * 100);
+    };
+    
+    var lineChartData = {
+        labels: ['전체', 'UM', 'IB', 'OB', 'GT'],
+        datasets: [{
+            label: '대상계약건수',
+            borderColor: window.chartColors.red,
+            backgroundColor: window.chartColors.red,
+            fill: false,
+            data: [
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor()
+            ],
+            yAxisID: 'y-axis-1',
+        }, {
+            label: '탐지계약건수',
+            borderColor: window.chartColors.blue,
+            backgroundColor: window.chartColors.blue,
+            fill: false,
+            data: [
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor()
+            ],
+            yAxisID: 'y-axis-2'
+        }]
+    };
+            
+    var lineChartDataConfig = {
+        type: 'line',
+        data: lineChartData,
+        options: {
+            responsive: true,
+            hoverMode: 'index',
+            stacked: false,
+            scales: {
+                yAxes: [{
+                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                    display: true,
+                    position: 'left',
+                    id: 'y-axis-1',
+                }, {
+                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                    display: true,
+                    position: 'right',
+                    id: 'y-axis-2',
+
+                    // grid line settings
+                    gridLines: {
+                        drawOnChartArea: false, // only want the grid lines for one axis to show up
+                    },
+                }],
+            }
+        }
+    }; 
+    
+    var line2 = document.getElementById('line02').getContext('2d');    
+    window.myBar = new Chart(line2, lineChartDataConfig);
+</script>
+<!-- //발화속도 chart -->
+
+<!-- 가입설계동의 bar chart -->
+<script type="text/javascript">
+    // 표시할 데이터를 임의로 만들어주는 랜덤함수로 개발 시에는 실제 데이터를 넣어주시면 됩니다. 
+    var randomScalingFactor = function() {
+        return Math.round(Math.random() * 100);
+    };
+    
+    var barChartData = {
+        labels: ['전체', 'UM', 'IB', 'OB', 'GT'],
+        datasets: [{
+            label: '대상계약건수',
+            backgroundColor: [
+                window.chartColors.red,
+                window.chartColors.orange,
+                window.chartColors.yellow,
+                window.chartColors.green,
+                window.chartColors.blue
+            ],
+            yAxisID: 'y-axis-1',
+            data: [
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor()
+            ]
+        }, {
+            label: '탐지계약건수',
+            backgroundColor: window.chartColors.grey,
+            yAxisID: 'y-axis-2',
+            data: [
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor()
+            ]
+        }]
+    };
+            
+    var barChartDataConfig = {
+        type: 'bar',
+        data: barChartData,
+        options: {
+            responsive: true,
+            tooltips: {
+                mode: 'index',
+                intersect: true
+            },
+            scales: {
+                yAxes: [{
+                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                    display: true,
+                    position: 'left',
+                    id: 'y-axis-1',
+                }, {
+                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                    display: true,
+                    position: 'right',
+                    id: 'y-axis-2',
+                    gridLines: {
+                        drawOnChartArea: false
+                    }
+                }], 
+            }
+        }
+    }; 
+    
+    var bar3 = document.getElementById('bar03').getContext('2d');    
+    window.myBar = new Chart(bar3, barChartDataConfig);
+</script>
+<!-- //가입설계동의 chart -->
+
+<!-- QA 점검 bar chart -->
+<script type="text/javascript">
+    // 표시할 데이터를 임의로 만들어주는 랜덤함수로 개발 시에는 실제 데이터를 넣어주시면 됩니다. 
+    var randomScalingFactor = function() {
+        return Math.round(Math.random() * 100);
+    };
+    
+    var barChartData = {
+        labels: ['전체', 'UM', 'IB', 'OB', 'GT'],
+        datasets: [{
+            label: '청약속도',
+            backgroundColor: [
+                window.chartColors.red,
+                window.chartColors.orange,
+                window.chartColors.yellow,
+                window.chartColors.green,
+                window.chartColors.blue
+            ],
+            yAxisID: 'y-axis-1',
+            data: [
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor()
+            ]
+        }, {
+            label: '상담속도',
+            backgroundColor: window.chartColors.grey,
+            yAxisID: 'y-axis-2',
+            data: [
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor()
+            ]
+        }]
+    };
+            
+    var barChartDataConfig = {
+        type: 'bar',
+        data: barChartData,
+        options: {
+            responsive: true,
+            tooltips: {
+                mode: 'index',
+                intersect: true
+            },
+            scales: {
+                yAxes: [{
+                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                    display: true,
+                    position: 'left',
+                    id: 'y-axis-1',
+                }, {
+                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                    display: true,
+                    position: 'right',
+                    id: 'y-axis-2',
+                    gridLines: {
+                        drawOnChartArea: false
+                    }
+                }], 
+            }
+        }
+    }; 
+    
+    var bar4 = document.getElementById('bar04').getContext('2d');    
+    window.myBar = new Chart(bar4, barChartDataConfig);
+</script>
+<!-- //QA 점검 chart -->
 </body>
 </html>
