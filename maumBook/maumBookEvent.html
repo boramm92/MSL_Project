@@ -166,7 +166,7 @@
                                             </div>
                                         </dt>
                                         <dd>
-                                            <p class="svc_name">하나은행 하이(HAI) 뱅킹</p>
+                                            <p class="svc_name svc_label">하나은행 하이(HAI) 뱅킹 <span><strong>5</strong>년 지속</span></p>
                                             <p class="svc_desc"><strong>언어와 시각의 최신 AI 기술</strong>을 총망라한 은행 AI 서비스 하이뱅킹을 오픈하였습니다.</p>
                                             <div class="viewBox">
                                                 <div class="viewItem">
@@ -185,7 +185,7 @@
                                             </div>
                                         </dt>
                                         <dd>
-                                            <p class="svc_name">현대해상</p>
+                                            <p class="svc_name svc_label">현대해상 AI 음성봇 <span><strong>4</strong>년 지속</span></p>
                                             <p class="svc_desc"><strong>실시간 STT 기술</strong>과 <strong>챗봇 기술</strong>이 접목된 AI 상담원 서비스를 구현하였습니다.</p>
                                             <div class="viewBox">
                                                 <div class="viewItem">
@@ -328,20 +328,32 @@
                 <div class="imgBox">
                     <img src="resources/images/img_maumAi_book.png" alt="마음AI북"> 
                 </div>                    
-                <p class=""><strong>마음AI 성공 노하우</strong>를<br>마음AI북에서 확인하실 수 있습니다.</p>     
-                <div class="btnBox">
-                    <!-- [D] e-book 무료 다운로드 클릭 시 파일 다운로드되어야 함 -->
+                <p class="desc_txt">마음 AI 북은 기술 혁신이 절실한 기업들이 어떻게 인공지능을 도입하여<br> 혁신을 이루어냈는지에 대한 AI 도입 성공사례가 담겨있습니다.</p>     
+                <!-- <div class="btnBox">
                     <a href="#none" class="btn_maumBook_download">e-book <strong>무료 다운로드</strong></a>
                     <a href="https://docs.google.com/forms/d/e/1FAIpQLSf3EqG9miZ3QqW1A7ta-oYaT5fYC0kyhIQEKPzemkMuy-xqQA/viewform" class="btn_maumBook_apply">마음 AI북 <strong>무료 신청하기</strong></a>
-                </div>
+                </div> -->
             </div>
         </div>
 
         <div class="stn contact">
             <div class="contBox">
-                <p class="sub_tit">아직도 AI 도입에 어려움이 있으신가요?</p>    
-                <strong class="main_tit">전문상담원이 연락드리겠습니다.</strong>
+                <p class="sub_tit">이미 많은 기업들이 마음 AI를 통해 인공지능 도입에 성공했습니다.</p>    
+                <strong class="main_tit">상담 문의를 남겨주시면 마음 AI북을 무료로 드립니다.</strong>
                 <div class="contactform">
+                    <dl>
+                        <dt>수령 방법<span>(필수)</span></dt>
+                        <dd>
+                            <div class="radioBox">
+                                <input type="radio" name="contact_type" id="eBook" checked>
+                                <label for="eBook">E-book</label>
+                            </div>
+                            <div class="radioBox">
+                                <input type="radio" name="contact_type" id="maumBook">
+                                <label for="maumBook">우편물 발송</label>
+                            </div>
+                        </dd>
+                    </dl>
                     <dl>
                         <dt>이름<span>(필수)</span></dt>
                         <dd><input type="text" id="userName" class="ipt_txt" autocomplete="off" placeholder="이름을 입력해 주세요."></dd>
@@ -349,7 +361,13 @@
                     <dl>
                         <dt>연락처<span>(필수)</span></dt>
                         <dd><input type="tel" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" id="userTel" class="ipt_tel" placeholder="'‐'없이 연락처를 입력해 주세요."></dd>
-                    </dl>
+                    </dl> 
+                    <dl>
+                        <dt>문의내용<em>(선택)</em></dt>
+                        <dd>
+                            <textarea placeholder="문의하실 내용을 입력해 주세요."></textarea>
+                        </dd>
+                    </dl>                  
                     <dl>
                         <dt>개인정보 수집동의</dt>
                         <dd>
@@ -362,13 +380,16 @@
                                     <br>
                                     작성해주시는 <strong>개인 정보는 문의 접수 및 고객 불만 해결을 위해 1년간 보관</strong>됩니다.<br>
                                     본 동의를 거부할 수 있으나, 미동의 시 문의 접수가 불가능합니다.
+                                    <br>
+                                    <br>
+                                    <span class="ft_point01">전문 상담사가 영업일 기준 3일 이내 개별적으로 연락드립니다.</span>
                                 </p>                              
                             </div>
                         </dd>
                     </dl>
                     <!-- [D] 이름, 연락처, 동의체크 모두 완료하면 문의하기 버튼 컬러변경됨 -->
                     <!-- [D] 문의하기 버튼 클릭 시 성공적으로 문의접수 된 경우 alert 등장 (문의가 완료되었습니다. 버튼:확인 -> 확인버튼 클릭 시에는 maum.ai 홈페이지로 이동) -->
-                    <button type="button" id="inquireBtn">문의하기</button>
+                    <button type="button" id="inquireBtn" disabled="true">문의하기</button>
                 </div>
                 <p class="slogan">마음AI는 언제나 당신의 마음까지 생각합니다.</p>
                 <img src="resources/images/logo_maumAi.svg" alt="maum AI logo">
@@ -379,7 +400,7 @@
     
     <!-- 신청 바로가기 버튼 -->
     <button type="button" class="btn_go_contact">
-        <span>무료체험신청<br>바로가기</span>
+        <span>상담 신청하기</span>
     </button>
     <!-- //신청하기 버튼 -->
 </div>
@@ -478,10 +499,16 @@ jQuery.event.add(window,"load",function(){
                 prevEl: '.swiper-button-prev',
                 nextEl: '.swiper-button-next',
             },
-            autoplay: {
-                delay: 6000,
-                disableOnInteraction: false,
-            }
+            // autoplay: {
+            //     delay: 6000,
+            //     disableOnInteraction: false,
+            // },
+            breakpoints: {
+                320: {
+                    spaceBetween: 20,
+                    autoHeight : true,
+                },
+            },
         });
 
         // stn - success_cases 탭메뉴
@@ -530,21 +557,21 @@ jQuery.event.add(window,"load",function(){
         });
         
         // 문의 내용 모두 입력 시 버튼 효과
-        var userInfo = $('input#userName, input#userTel');
+        var userInfo = $('#userName, #userTel');
         var assentCheck = $('#assent');
 
-        userInfo.keydown(function(){
+        userInfo.on('change input', function(){
             if( userInfo.val() != '' && $(this).prop('checked') == true ){
-                $('#inquireBtn').css('background', '#757a8a');                
+                $('#inquireBtn').attr('disabled', false);              
             }else{
-                $('#inquireBtn').css('background', '#1FB5CB');
+                $('#inquireBtn').attr('disabled', true);  
             } 
         });
         assentCheck.on('click', function(){
             if( userInfo.val() != '' && $(this).prop('checked') == true ){
-                $('#inquireBtn').css('background', '#757a8a');                
+                $('#inquireBtn').attr('disabled', false);                 
             }else{
-                $('#inquireBtn').css('background', '#1FB5CB');
+                $('#inquireBtn').attr('disabled', true); 
             } 
         });
     });       
