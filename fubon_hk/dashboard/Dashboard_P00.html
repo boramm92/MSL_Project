@@ -18,7 +18,7 @@
 <title>Dashboard</title>
 </head>
 <body>
-<!-- [D] 팝업 사이즈 1640 X 780 -->
+<!-- [D] 팝업 사이즈 1640 X 900 -->
 
 <!-- #wrap -->
 <div id="wrap">
@@ -280,7 +280,7 @@
                         
                         <div class="view_cont">
                             <div class="chartBox">
-                                <canvas id="bar02"></canvas>                               
+                                <canvas id="bar02" height="200"></canvas>                               
                             </div>
                         </div>
                     </div>
@@ -516,48 +516,102 @@
                     <div class="viewBox">
                         <div class="view_tit">
                             <h3>금지어 발화</h3>
-                            <span class="date">기준일:<span>2020-10-13</span></span>
+                            <div class="standard_slt_box">
+                                <div class="radioBox">
+                                    <input type="radio" name="type01" id="month01" checked>
+                                    <label for="month01">월</label>
+                                </div>
+                                <div class="radioBox">
+                                    <input type="radio" name="type01" id="day01">
+                                    <label for="day01">일</label>
+                                </div>
+                            </div>                            
                         </div>
                         
                         <div class="view_cont">
                             <div class="chartBox">
                                 <canvas id="line01"></canvas>                               
                             </div>
+                            <div class="btnBox">
+                                <a href="#none">기관별</a>
+                                <a href="#none">계약별</a>
+                            </div>
                         </div>
                     </div>
                     <div class="viewBox">
                         <div class="view_tit">
                             <h3>발화속도</h3>
-                            <span class="date">기준일:<span>2020-10-13</span></span>
+                            <div class="standard_slt_box">
+                                <div class="radioBox">
+                                    <input type="radio" name="type02" id="month02" checked>
+                                    <label for="month02">월</label>
+                                </div>
+                                <div class="radioBox">
+                                    <input type="radio" name="type02" id="day02">
+                                    <label for="day02">일</label>
+                                </div>
+                            </div> 
                         </div>
                         
                         <div class="view_cont">
                             <div class="chartBox">
                                 <canvas id="line02"></canvas>                               
                             </div>
+                            <div class="btnBox">
+                                <a href="#none">기관별 발화속도</a>
+                                <a href="#none">기관별 녹취시간</a>
+                                <a href="#none">계약별</a>
+                            </div>
                         </div>
                     </div>
                     <div class="viewBox">
                         <div class="view_tit">
                             <h3>가입설계동의</h3>
-                            <span class="date">기준일:<span>2020-10-13</span></span>
+                            <div class="standard_slt_box">
+                                <div class="radioBox">
+                                    <input type="radio" name="type03" id="month03" checked>
+                                    <label for="month03">월</label>
+                                </div>
+                                <div class="radioBox">
+                                    <input type="radio" name="type03" id="day03">
+                                    <label for="day03">일</label>
+                                </div>
+                            </div> 
                         </div>
                         
                         <div class="view_cont">
                             <div class="chartBox">
                                 <canvas id="bar03"></canvas>                               
                             </div>
+                            <div class="btnBox">
+                                <a href="#none">기관별</a>
+                                <a href="#none">계약별</a>
+                            </div>
                         </div>
                     </div>
                     <div class="viewBox">
                         <div class="view_tit">
                             <h3>QA 점검</h3>
-                            <span class="date">기준일:<span>2020-10-13</span></span>
+                            <div class="standard_slt_box">
+                                <div class="radioBox">
+                                    <input type="radio" name="type04" id="month04" checked>
+                                    <label for="month04">월</label>
+                                </div>
+                                <div class="radioBox">
+                                    <input type="radio" name="type04" id="day04">
+                                    <label for="day04">일</label>
+                                </div>
+                            </div>
                         </div>
                         
                         <div class="view_cont">
                             <div class="chartBox">
                                 <canvas id="bar04"></canvas>                               
+                            </div>
+                            <div class="btnBox">
+                                <a href="#none">기관별 발화속도</a>
+                                <a href="#none">계약별 소분류</a>
+                                <a href="#none">계약별 세부항목</a>
                             </div>
                         </div>
                     </div>
@@ -649,6 +703,7 @@ jQuery.event.add(window,"load",function(){
                 mode: 'index',
                 intersect: true
             },
+            maintainAspectRatio: false,
             scales: {
                 yAxes: [{
                     type: 'linear', 
@@ -732,6 +787,7 @@ jQuery.event.add(window,"load",function(){
                 mode: 'index',
                 intersect: true
             },
+            maintainAspectRatio: false,
             scales: {
                 yAxes: [{
                     type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
@@ -740,7 +796,7 @@ jQuery.event.add(window,"load",function(){
                     id: 'y-axis-1',
                 }, {
                     type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
-                    display: true,
+                    display: false,
                     position: 'right',
                     id: 'y-axis-2',
                     gridLines: {
@@ -809,7 +865,7 @@ jQuery.event.add(window,"load",function(){
                     id: 'y-axis-1',
                 }, {
                     type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
-                    display: true,
+                    display: false,
                     position: 'right',
                     id: 'y-axis-2',
 
@@ -880,7 +936,7 @@ jQuery.event.add(window,"load",function(){
                     id: 'y-axis-1',
                 }, {
                     type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
-                    display: true,
+                    display: false,
                     position: 'right',
                     id: 'y-axis-2',
 
@@ -955,7 +1011,7 @@ jQuery.event.add(window,"load",function(){
                     id: 'y-axis-1',
                 }, {
                     type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
-                    display: true,
+                    display: false,
                     position: 'right',
                     id: 'y-axis-2',
                     gridLines: {
@@ -1028,7 +1084,7 @@ jQuery.event.add(window,"load",function(){
                     id: 'y-axis-1',
                 }, {
                     type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
-                    display: true,
+                    display: false,
                     position: 'right',
                     id: 'y-axis-2',
                     gridLines: {
