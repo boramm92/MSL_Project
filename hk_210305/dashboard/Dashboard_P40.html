@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="format-detection" content="telephone=no">
+
+<!---------------------- General Resources ---------------------->
+<!-- General CSS -->
+<link rel="stylesheet" href="../resources/css/common.css">
+
+<!-- General Script -->
+<script src="../resources/js/jquery-3.3.1.min.js"></script>
+<script src="../resources/js/jquery-migrate-3.3.0.min.js"></script>
+<script src="../resources/js/common.js"></script>
+
+<title>기관별 QA 스크립트 점검</title>
+</head>
+<body>
+<!-- [D] 팝업 사이즈 1640 X 780 -->
+
+<!-- #wrap -->
+<div id="wrap">
+    <!-- #container -->
+    <div id="container">
+        <!-- .popup_wrap -->
+        <div class="popup_wrap admin">
+            <h1>기관별 QA 스크립트 점검</h1>
+
+            <!-- .dashboard_wrap -->
+            <div class="dashboard_wrap">
+                <!-- .srchArea -->
+                <div class="srchArea">
+                    <table class="tbl_line_view" summary="일자, 사업부, 채널, 지점으로 구성">
+                        <caption class="hide">검색조건</caption>
+                        <colgroup>
+                            <col width="80"><col width="330"><col width="80"><col><col width="80"><col>
+                            <col width="80"><col>
+                        </colgroup>
+
+                        <tbody>
+                            <tr>
+                                <th scope="row">청약일자</th>
+                                <td>
+                                    <div class="iptBox">
+                                        <input type="text" id="fromDate" class="iptDateTime">
+                                        <span>&hyphen;</span>
+                                        <input type="text" id="toDate" class="iptDateTime">
+                                    </div>
+                                </td>
+
+                                <th scope="row">사업부</th>
+                                <td>
+                                    <select class="select">
+                                        <option value="">사업부옵션</option>
+                                        <option value="">사업부옵션</option>
+                                        <option value="">사업부옵션</option>
+                                        <option value="">사업부옵션</option>
+                                        <option value="">사업부옵션</option>
+                                    </select>
+                                </td>
+
+                                <th scope="row">채널</th>
+                                <td>
+                                    <select class="select">
+                                        <option value="">채널옵션</option>
+                                        <option value="">채널옵션</option>
+                                        <option value="">채널옵션</option>
+                                        <option value="">채널옵션</option>
+                                        <option value="">채널옵션</option>
+                                    </select>
+                                </td>
+
+                                <th scope="row">지점</th>
+                                <td>
+                                    <select class="select">
+                                        <option value="">지점옵션</option>
+                                        <option value="">지점옵션</option>
+                                        <option value="">지점옵션</option>
+                                        <option value="">지점옵션</option>
+                                        <option value="">지점옵션</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="btnBox">
+                        <a href="#none" class="btn_srch">조회</a>
+                        <a href="#none" class="btn_reset">초기화</a>
+                    </div>
+                </div>
+                <!-- //.srchArea -->
+
+                <!-- .custom_tbl -->
+                <div class="custom_tbl ct_qa">
+                    <div class="tbl_hd">
+                        <table summary="사업부, 지점, 채널, 설계사 수, 계약건수, 전체탐지, 미탐지, 부분탐지(건수/소분류값)로 구성">
+                            <caption class="hide">기관별 QA 스크립트 점검</caption>
+                            <colgroup class="colgroup">
+                                <col width="200"><col width="200"><col width="200"><col width="80"><col width="80">
+                                <col width="80"><col width="80">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th scope="col" rowspan="2">사업부</th>
+                                    <th scope="col" rowspan="2">채널</th>
+                                    <th scope="col" rowspan="2">지점</th>                                   
+                                    <th scope="col" rowspan="2">설계사 수</th>
+                                    <th scope="col" rowspan="2">계약건수</th>
+                                    <th scope="col" rowspan="2">전체탐지</th>
+                                    <th scope="col" rowspan="2">미탐지</th>
+                                    <!-- [D] 금지어 분류 갯수에 따라 colspan 병합을 위해 분류 추가 시 th 태그에는 addClass('col_th') 필요함 -->
+                                    <th scope="col" class="col_th">부분탐지</th>
+                                    <th scope="col" class="col_th">부분탐지</th>
+                                    <th scope="col" class="col_th">부분탐지</th>
+                                    <th scope="col" class="col_th">부분탐지</th>
+                                    <th scope="col" class="col_th">부분탐지</th>
+                                    <th scope="col" class="col_th">부분탐지</th>
+                                </tr>
+                                <tr>
+                                    <th>건수</th>
+                                    <th>소분류값1</th>
+                                    <th>소분류값2</th>
+                                    <th>소분류값3</th>
+                                    <th>소분류값4</th>
+                                    <th>소분류값5</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+                    <div class="tbl_bd">
+                        <table>
+                            <colgroup class="colgroup">
+                                <col width="200"><col width="200"><col width="200"><col width="80"><col width="80">
+                                <col width="80"><col width="80">
+                            </colgroup>
+                            <tbody>
+                                <!-- [D] 조회 목록 없는 경우 보여줄 row / colspan 자동으로 부여됨 (하단 script 참고) -->
+                                <!-- <tr>
+                                    <td class="empty_td">조회된 목록이 없습니다.</td>
+                                </tr> -->
+                                <tr>
+                                    <td scope="row">사업부</td>
+                                    <td>채널</td>
+                                    <td>지점</td>                                   
+                                    <td>설계사 수</td>
+                                    <td>계약건수</td>
+                                    <td>전체탐지</td>
+                                    <td>미탐지</td>
+                                    <td>건수</td>
+                                    <td>소분류값1</td>
+                                    <td>소분류값2</td>
+                                    <td>소분류값3</td>
+                                    <td>소분류값4</td>
+                                    <td>소분류값5</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">사업부</td>
+                                    <td>채널</td>
+                                    <td>지점</td>                                   
+                                    <td>설계사 수</td>
+                                    <td>계약건수</td>
+                                    <td>전체탐지</td>
+                                    <td>미탐지</td>
+                                    <td>건수</td>
+                                    <td>소분류값1</td>
+                                    <td>소분류값2</td>
+                                    <td>소분류값3</td>
+                                    <td>소분류값4</td>
+                                    <td>소분류값5</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <button type="button" class="btn_excel_export">엑셀저장</button>
+                </div>
+                <!-- //.custom_tbl -->
+                
+                <!-- [D] 페이징 기능 개발 필요 -->
+                <div class="paging_wrap">
+                    <a href="#none" class="btn_paging_first disabled"></a>
+                    <a href="#none" class="btn_paging_prev disabled"></a>
+                    <span class="paging_num">
+                        <a href="#none" class="current">1</a>
+                        <a href="#none">2</a>
+                        <a href="#none">3</a>
+                        <a href="#none">4</a>
+                        <a href="#none">5</a>
+                    </span>
+                    <a href="#none" class="btn_paging_next"></a>
+                    <a href="#none" class="btn_paging_last"></a>
+                </div>
+            </div>
+            <!-- //.dashboard_wrap -->
+        </div>
+        <!-- //.popup_wrap -->
+    </div>
+    <!-- //#container -->
+</div>
+<!-- //#wrap -->
+
+<!---------------------- Local Resources ---------------------->
+<!-- Local CSS -->
+<link rel="stylesheet" href="../resources/css/bootstrap.css"/>
+<link rel="stylesheet" href="../resources/css/bootstrap-datetimepicker.css"/>
+<!-- //datetimepicker -->
+<link rel="stylesheet" href="../resources/css/popup.css">
+
+<!-- Local Script Library -->
+<script src="../resources/js/bootstrap-datetimepicker.js"></script>
+<script src="../resources/js/moment.min.js"></script>
+<script src="../resources/js/ko.js"></script>
+<!-- //datetimepicker -->
+
+<!-- Local Script -->
+<script type="text/javascript">
+jQuery.event.add(window,"load",function(){
+    $(document).ready(function(){
+        // datetimepicker 렌더링
+        $('#fromDate').datetimepicker({
+            language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
+            format: 'yyyy-mm-dd',  // 년-월-일 만 출
+            minView: 'month',
+            pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
+            defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
+            autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
+        });
+
+        $('#toDate').datetimepicker({
+            language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
+            format: 'yyyy-mm-dd',  // 년-월-일 만 출
+            minView: 'month',
+            pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
+            defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
+            autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
+        });
+
+        // 페이징 버튼
+        $('.paging_num a').on('click', function(){
+            $('.paging_num a').removeClass('current');
+            $(this).addClass('current');
+        });
+
+        // 테이블 가로 스크롤 기능
+		$('.tbl_bd').scroll(function () {
+			var xPoint = $('.tbl_bd').scrollLeft();
+			$('.tbl_hd').scrollLeft(xPoint);
+            console.log(xPoint)
+		});
+
+        // 조회 목록 없는 경우 th 갯수에 따른 colspan 부여
+        $('.empty_td').attr('colspan', $('.tbl_hd thead th').length);
+
+        // 소분류값 분류 개수에 따른 행 병합 - [D] 데이터 불러올때마다 실행시켜 주세요.
+        $('.col_th').each(function() {
+            var rows = $(".col_th:contains('" + $(this).text() + "')");
+            $('.colgroup').append(rows.length, '<col width="80">');
+            if (rows.length > 1) {
+                rows.eq(0).attr("colspan", rows.length);
+                rows.not(':eq(0)').remove();
+            }            
+        }); 
+    });
+});
+</script>
+</body>
+</html>

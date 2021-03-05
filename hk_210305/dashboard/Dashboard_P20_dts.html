@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="format-detection" content="telephone=no">
+
+<!---------------------- General Resources ---------------------->
+<!-- General CSS -->
+<link rel="stylesheet" href="../resources/css/common.css">
+
+<!-- General Script -->
+<script src="../resources/js/jquery-3.3.1.min.js"></script>
+<script src="../resources/js/jquery-migrate-3.3.0.min.js"></script>
+<script src="../resources/js/common.js"></script>
+
+<title>기관별 발화속도</title>
+</head>
+<body>
+<!-- [D] 팝업 사이즈 1640 X 780 -->
+
+<!-- #wrap -->
+<div id="wrap">
+    <!-- #container -->
+    <div id="container">
+        <!-- .popup_wrap -->
+        <div class="popup_wrap admin">
+            <h1>기관별 발화속도</h1>
+
+            <!-- .dashboard_wrap -->
+            <div class="dashboard_wrap">
+                 <!-- .srchArea -->
+                 <div class="srchArea">
+                    <table class="tbl_line_view" summary="일자, 사업부, 채널, 지점으로 구성">
+                        <caption class="hide">검색조건</caption>
+                        <colgroup>
+                            <col width="80"><col width="330"><col width="80"><col><col width="80"><col>
+                            <col width="80"><col>
+                        </colgroup>
+
+                        <tbody>
+                            <tr>
+                                <th scope="row">청약일자</th>
+                                <td>
+                                    <div class="iptBox">
+                                        <input type="text" id="fromDate" class="iptDateTime">
+                                        <span>&hyphen;</span>
+                                        <input type="text" id="toDate" class="iptDateTime">
+                                    </div>
+                                </td>
+
+                                <th scope="row">사업부</th>
+                                <td>
+                                    <select class="select">
+                                        <option value="">사업부옵션</option>
+                                        <option value="">사업부옵션</option>
+                                        <option value="">사업부옵션</option>
+                                        <option value="">사업부옵션</option>
+                                        <option value="">사업부옵션</option>
+                                    </select>
+                                </td>
+
+                                <th scope="row">채널</th>
+                                <td>
+                                    <select class="select">
+                                        <option value="">채널옵션</option>
+                                        <option value="">채널옵션</option>
+                                        <option value="">채널옵션</option>
+                                        <option value="">채널옵션</option>
+                                        <option value="">채널옵션</option>
+                                    </select>
+                                </td>
+
+                                <th scope="row">지점</th>
+                                <td>
+                                    <select class="select">
+                                        <option value="">지점옵션</option>
+                                        <option value="">지점옵션</option>
+                                        <option value="">지점옵션</option>
+                                        <option value="">지점옵션</option>
+                                        <option value="">지점옵션</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="btnBox">
+                        <a href="#none" class="btn_srch">조회</a>
+                        <a href="#none" class="btn_reset">초기화</a>
+                    </div>
+                </div>
+                <!-- //.srchArea -->
+
+                <!-- .dataTableBox -->
+                <div class="dataTableBox">
+                    <table class="dataTable">
+                        <thead>
+                            <tr>
+                                <th scope="col" rowspan="3">사업부</th>
+                                <th scope="col" rowspan="3">채널</th>
+                                <th scope="col" rowspan="3">지점</th>                                   
+                                <th scope="col" rowspan="3">설계사 수</th>
+                                <th scope="col" rowspan="3">계약건수</th>
+                                <th scope="col" colspan="2">결과</th>
+                                <th scope="col" colspan="8">상담 녹취 속도 <span>(탐지 계약 中)</span></th>
+                                <th scope="col" colspan="8">청약 녹취 속도 <span>(탐지 계약 中)</span></th>
+                            </tr>
+                            <tr>
+                                <th rowspan="2">탐지건수</th>
+                                <th rowspan="2">미탐지건수</th>
+                                <th colspan="2">7분 미만</th>
+                                <th colspan="2">7분~15분</th>
+                                <th colspan="2">15분~30분</th>
+                                <th colspan="2">30분 이상</th>
+                                <th colspan="2">7분 미만</th>
+                                <th colspan="2">7분~15분</th>
+                                <th colspan="2">15분~30분</th>
+                                <th colspan="2">30분 이상</th>
+                            </tr>
+                            <tr>                                   
+                                <th>속도</th>
+                                <th>점유율</th>
+                                <th>속도</th>
+                                <th>점유율</th>
+                                <th>속도</th>
+                                <th>점유율</th>
+                                <th>속도</th>
+                                <th>점유율</th>
+                                <th>속도</th>
+                                <th>점유율</th>
+                                <th>속도</th>
+                                <th>점유율</th>
+                                <th>속도</th>
+                                <th>점유율</th>
+                                <th>속도</th>
+                                <th>점유율</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- [D] 조회 목록 없는 경우 보여줄 row / colspan 자동으로 부여됨 (하단 script 참고) -->
+                            <!-- <tr>
+                                <td class="empty_td">조회된 목록이 없습니다.</td>
+                            </tr> -->
+                            <tr>
+                                <td>사업부</td>
+                                <td>채널</td>
+                                <td>지점</td>                                  
+                                <td>200</td>
+                                <td>500</td>
+                                <td>100</td>
+                                <td>2</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                            </tr>
+                            <tr>
+                                <td>사업부</td>
+                                <td>채널</td>
+                                <td>지점</td>                                  
+                                <td>200</td>
+                                <td>500</td>
+                                <td>100</td>
+                                <td>2</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                            </tr>
+                            <tr>
+                                <td>사업부</td>
+                                <td>채널</td>
+                                <td>지점</td>                                  
+                                <td>200</td>
+                                <td>500</td>
+                                <td>100</td>
+                                <td>2</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                            </tr>
+                            <tr>
+                                <td>사업부</td>
+                                <td>채널</td>
+                                <td>지점</td>                                  
+                                <td>200</td>
+                                <td>500</td>
+                                <td>100</td>
+                                <td>2</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                            </tr>
+                            <tr>
+                                <td>사업부</td>
+                                <td>채널</td>
+                                <td>지점</td>                                  
+                                <td>200</td>
+                                <td>500</td>
+                                <td>100</td>
+                                <td>2</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                            </tr>
+                            <tr>
+                                <td>사업부</td>
+                                <td>채널</td>
+                                <td>지점</td>                                  
+                                <td>200</td>
+                                <td>500</td>
+                                <td>100</td>
+                                <td>2</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                            </tr>
+                            <tr>
+                                <td>사업부</td>
+                                <td>채널</td>
+                                <td>지점</td>                                  
+                                <td>200</td>
+                                <td>500</td>
+                                <td>100</td>
+                                <td>2</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                            </tr>
+                            <tr>
+                                <td>사업부</td>
+                                <td>채널</td>
+                                <td>지점</td>                                  
+                                <td>200</td>
+                                <td>500</td>
+                                <td>100</td>
+                                <td>2</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                            </tr>
+                            <tr>
+                                <td>사업부</td>
+                                <td>채널</td>
+                                <td>지점</td>                                  
+                                <td>200</td>
+                                <td>500</td>
+                                <td>100</td>
+                                <td>2</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                            </tr>
+                            <tr>
+                                <td>사업부</td>
+                                <td>채널</td>
+                                <td>지점</td>                                  
+                                <td>200</td>
+                                <td>500</td>
+                                <td>100</td>
+                                <td>2</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                            </tr>
+                            <tr>
+                                <td>사업부</td>
+                                <td>채널</td>
+                                <td>지점</td>                                  
+                                <td>200</td>
+                                <td>500</td>
+                                <td>100</td>
+                                <td>2</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                            </tr>
+                            <tr>
+                                <td>사업부</td>
+                                <td>채널</td>
+                                <td>지점</td>                                  
+                                <td>200</td>
+                                <td>500</td>
+                                <td>100</td>
+                                <td>2</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                            </tr>
+                            <tr>
+                                <td>사업부</td>
+                                <td>채널</td>
+                                <td>지점</td>                                  
+                                <td>200</td>
+                                <td>500</td>
+                                <td>100</td>
+                                <td>2</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                            </tr>
+                            <tr>
+                                <td>사업부</td>
+                                <td>채널</td>
+                                <td>지점</td>                                  
+                                <td>200</td>
+                                <td>500</td>
+                                <td>100</td>
+                                <td>2</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                            </tr>
+                            <tr>
+                                <td>사업부</td>
+                                <td>채널</td>
+                                <td>지점</td>                                  
+                                <td>200</td>
+                                <td>500</td>
+                                <td>100</td>
+                                <td>2</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                                <td>00</td>
+                                <td>80</td>
+                            </tr>                
+                        </tbody>
+                    </table>
+                </div>
+                <!-- //.dataTableBox -->
+            </div>
+            <!-- //.dashboard_wrap -->
+        </div>
+        <!-- //.popup_wrap -->
+    </div>
+    <!-- //#container -->
+</div>
+<!-- //#wrap -->
+
+<!---------------------- Local Resources ---------------------->
+<!-- Local CSS -->
+<link rel="stylesheet" href="../resources/css/bootstrap.css"/>
+<link rel="stylesheet" href="../resources/css/bootstrap-datetimepicker.css"/>
+<!-- //datetimepicker -->
+<link rel="stylesheet" href="../resources/css/datatables.min.css">
+<link rel="stylesheet" href="../resources/css/buttons.dataTables.min.css">
+<!-- //datatables -->
+<link rel="stylesheet" href="../resources/css/popup.css">
+
+<!-- Local Script Library -->
+<script src="../resources/js/bootstrap-datetimepicker.js"></script>
+<script src="../resources/js/moment.min.js"></script>
+<script src="../resources/js/ko.js"></script>
+<!-- //datetimepicker -->
+<script src="../resources/js/datatables.min.js"></script>
+<script src="../resources/js/dataTables.fixedColumns.min.js"></script>
+<script src="../resources/js/dataTables.buttons.min.js"></script>
+<script src="../resources/js/buttons.html5.min.js"></script>
+<script src="../resources/js/jszip.min.js"></script>
+<!-- //datatables -->
+
+<!-- Local Script -->
+<script type="text/javascript">
+jQuery.event.add(window,"load",function(){
+    $(document).ready(function(){
+        // datetimepicker 렌더링
+        $('#fromDate').datetimepicker({
+            language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
+            format: 'yyyy-mm-dd',  // 년-월-일 만 출
+            minView: 'month',
+            pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
+            defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
+            autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
+        });
+
+        $('#toDate').datetimepicker({
+            language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
+            format: 'yyyy-mm-dd',  // 년-월-일 만 출
+            minView: 'month',
+            pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
+            defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
+            autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
+        });
+
+        // datetimepicker 렌더링
+        $('#fromDate').datetimepicker({
+            language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
+            pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
+            defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
+            autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
+        });
+
+        $('#toDate').datetimepicker({
+            language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
+            pickTime : false, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
+            defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
+            autoclose: 1, // 날짜 선택 시 달력 자동 꺼짐
+        });
+
+        // datatable 렌더링
+        var table = $('.dataTable').DataTable({
+            dom: 't<"bottom"pB>', // 옵션 위치 지정
+            language: { // 테이블 목록 건수 text 한글 설정
+                emptyTable: "조회된 데이터가 없습니다.", // 데이터 없을 경우 노출되는 text 설정
+                paginate: {
+                    first: "",
+                    previous: "",
+                    next: "",
+                    last: ""
+                },
+            },
+            responsive: true, // 반응형 허용
+            order: false, // 초기 sort 설정
+            sort: false, // 초기 sort 설정
+            paging: true, // 페이징 허용
+            pagingType: "full_numbers", // 페이징 버튼 구성 (처음, 이전, 페이지숫자, 다음, 마지막)
+            lengthMenu: [15], // 페이지 당 보여질 목록 갯수 select 범위 지정
+            scrollY: "450px", // 세로 스크롤 허용, 사이즈
+            scrollX: true, //가로 스크롤 허용
+            scrollCollapse: true,
+            columnDefs: [ // 컬럼별 width, 옵션 사용 지정
+                {targets: [0], width: "200px"},     // 사업부
+                {targets: [1], width: "200px"},     // 채널
+                {targets: [2], width: "200px"},     // 지점
+                {targets: [3], width: "80px"},      // 설계사 수
+                {targets: [4], width: "80px"},      // 계약건수
+                {targets: [5], width: "160px"},      // 결과 - 탐지건수
+                // {targets: [6], width: "640px"},      // 결과 - 미탐지건수
+                // {targets: [7], width: "640px"},      // 상담 녹취 속도 - 7분 미만 - 속도
+                // {targets: [8], width: "80px"},      // 상담 녹취 속도 - 7분 미만 - 점유율
+                // {targets: [9], width: "80px"},      // 상담 녹취 속도 - 7분 ~15분 - 속도
+                // {targets: [10], width: "80px"},     // 상담 녹취 속도 - 7분 ~15분 - 점유율
+                // {targets: [11], width: "80px"},     // 상담 녹취 속도 - 15분 ~30분 - 속도
+                // {targets: [12], width: "80px"},     // 상담 녹취 속도 - 15분 ~30분 - 점유율
+                // {targets: [13], width: "80px"},     // 상담 녹취 속도 - 30분 이상 - 속도
+                // {targets: [14], width: "80px"},     // 상담 녹취 속도 - 30분 이상 - 점유율
+                // {targets: [15], width: "80px"},     // 청약 녹취 속도 - 7분 미만 - 속도
+                // {targets: [16], width: "80px"},     // 청약 녹취 속도 - 7분 미만 - 점유율
+                // {targets: [17], width: "80px"},     // 청약 녹취 속도 - 7분 ~15분 - 속도
+                // {targets: [18], width: "80px"},     // 청약 녹취 속도 - 7분 ~15분 - 점유율
+                // {targets: [19], width: "80px"},     // 청약 녹취 속도 - 15분 ~30분 - 속도
+                // {targets: [20], width: "80px"},     // 청약 녹취 속도 - 15분 ~30분 - 점유율
+                // {targets: [21], width: "80px"},     // 청약 녹취 속도 - 30분 이상 - 속도
+                // {targets: [22], width: "80px"},     // 청약 녹취 속도 - 30분 이상 - 점유율
+                // {targets: [23], width: "80px"},     // 청약 녹취 속도 - 30분 이상 - 점유율
+                // {targets: [24], width: "80px"},     // 청약 녹취 속도 - 30분 이상 - 점유율
+                // {targets: [25], width: "80px"},     // 청약 녹취 속도 - 30분 이상 - 점유율
+                // {targets: [26], width: "80px"},     // 청약 녹취 속도 - 30분 이상 - 점유율
+                // {targets: [27], width: "80px"},     // 청약 녹취 속도 - 30분 이상 - 점유율
+                // {targets: [28], width: "80px"},     // 청약 녹취 속도 - 30분 이상 - 점유율
+                // {targets: [29], width: "80px"},     // 청약 녹취 속도 - 30분 이상 - 점유율
+                // {targets: [30], width: "80px"},     // 청약 녹취 속도 - 30분 이상 - 점유율
+                // {targets: [31], width: "80px"},     // 청약 녹취 속도 - 30분 이상 - 점유율
+                // {targets: [32], width: "80px"},     // 청약 녹취 속도 - 30분 이상 - 점유율
+                // {targets: [33], width: "80px"},     // 청약 녹취 속도 - 30분 이상 - 점유율
+            ],
+            buttons: [{
+                extend: 'excelHtml5',
+                text: '엑셀저장',
+            }]
+        });
+
+        // new $.fn.dataTable.FixedColumns(table, {
+        //     fixedColumns: { // 왼쪽 1열 고정
+        //         leftColumns: 1,
+        //     }
+        // });
+    });
+});
+</script>
+</body>
+</html>
