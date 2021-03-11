@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="format-detection" content="telephone=no">
+
+<!-- -------------------- General Resources -------------------- -->
+<!-- General CSS -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+<link rel="stylesheet" href="../comm_resources/css/maum_common.css">
+
+<!-- General Script -->
+<script type="text/javascript" src="../comm_resources/js/jquery-1.11.0.min.js"></script>
+
+<title>maum.ai | 결제정보</title>
+</head>
+
+<body>
+<!-- #wrap -->
+<div id="wrap" class="user_container maumUI">
+    <!-- #header -->
+    <div id="header">
+        <!-- .maum_sta -->
+        <div class="maum_sta">
+            <h1><a href="/">maum.ai</a></h1>
+            <!-- .maum_gnb -->
+            <div class="maum_gnb">
+                <ul class="nav">
+                    <li><a href="/home/krEmployeesMain" class="go_employees" id="Button_Internal">직원용</a></li>
+                    <li><a href="#none" onclick="go(); return false;" class="">서비스</a></li>
+                    <li><a href="http://maumacademy.maum.ai/" class="">마음 아카데미</a></li>
+                </ul>
+            </div>
+            <!-- //.maum_gnb -->
+            <!-- .maum_etc -->
+            <div class="maum_etc">
+                <ul class="nav">
+                    <li><a href="http://bit.ly/mindslab_recruit" target="_blank">채용공고</a></li>
+                    <li><a href="/home/pricingPage?lang=ko" class="">가격정책</a></li>
+                    <!-- 로그인X -->
+
+                    <!-- 로그인O-->
+                    <li><a class="btn_ico user" href="#none">사용자</a>
+                        <div class="lstBox">
+                            <ul class="lst">
+                                <li class="userInfo">
+                                    <span class="thumb"><img src="../comm_resources/images/ico_user_g.svg" alt="사용자"></span>
+                                    <span class="txt">
+                                        <em class="userName">노보람</em>
+                                        <em class="loginID">boramm@mindslab.ai</em>
+                                    </span>
+                                </li>
+                                <li><a href="/user/profileMain" target="_self" title="프로필">프로필</a></li>
+                                <li><a href="/user/apiAccountMain" target="_self" title="API 정보">API 정보</a></li>
+                                <li><a href="/user/paymentInfoMain" target="_self" title="결제정보">결제정보</a></li>
+                                <li><a href="#none" onclick="document.getElementById('logout-form').submit();" title="로그아웃">로그아웃</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- 브라우저의 IP 조회 -->
+                    <li><a class="btn_ico lang" href="#none">언어</a>
+                        <div class="lstBox">
+                            <ul class="lst">
+                                <li class="lang_li"><a href="#none">한국어</a></li>
+                                <li class="lang_li"><a href="/?lang=en" target="_self" title="English">English</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a class="btn_ico app" href="#none">웹 앱 및 서비스</a>
+                        <div class="appBox">
+                            <div class="tit">웹 앱 및 서비스</div>
+                            <ul class="lst">
+                                <li>
+                                    <a href="/main/krMainHome" target="_blank" title="Cloud API">
+                                        <span class="ico"></span>
+                                        <em>Cloud API</em>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://builder.maum.ai/landing?lang=ko" target="_blank" title="AI Builder">
+                                        <span class="ico"></span>
+                                        <em>AI Builder</em>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="https://minutes.maum.ai/" target="_blank" title="maum 회의록">
+                                        <span class="ico"></span>
+                                        <em>maum 회의록</em>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://fast-aicc.maum.ai/login?lang=ko" target="_blank" title="FAST 대화형 AI">
+                                        <span class="ico"></span>
+                                        <em>FAST 대화형 AI</em>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://ava.maum.ai/login" target="_blank">
+                                        <span class="ico"></span>
+                                        <em>AVA</em>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/home/maumEdge" target="_blank">
+                                        <span class="ico"></span>
+                                        <em>Edge AI Platform</em>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://data.maum.ai/?lang=ko" target="_blank" title="maum DATA">
+                                        <span class="ico"></span>
+                                        <em>maum DATA</em>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/home/krEcomindsMain" target="_self" title="eco MINDs">
+                                        <span class="ico"></span>
+                                        <em>eco MINDs</em>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- //.maum_etc -->
+            <a class="btn_maum_ham" href="#none">모바일 전체메뉴
+                <span class="line_top"></span>
+                <span class="line_mid"></span>
+                <span class="line_btm"></span>
+            </a>
+        </div>
+        <!-- //.maum_sta -->
+    </div>
+    <!-- //#header -->
+
+    <!-- .contents -->
+    <div class="contents">
+        <div class="content">
+            <h1>결제 정보</h1>
+
+            <!--.mypageBox-->
+            <div class="mypageBox">
+                <div class="account">
+                    <div class="stn_1">
+                        <ul>
+                            <li>
+                                <span>플랜</span><em id="plan_name">BUSINESS</em>                               
+                                <button type="button" class="unsubscribe">구독해지</button>
+                            </li>
+                            <li>
+                                <span>가격</span><strong id="plan_price">&#8361; 99000</strong> / 1 개월
+                            </li>
+                            <li>
+                                <span>결제 정보</span><em id="plan_pay_info"></em>
+                                <button type="button" class="changeMethod">변경</button>
+                            </li>
+                            <li>
+                                <span id="nextBillingTitle">다음 결제정보</span>
+                                <em id="nextBilling">
+                                    <em id="nextBillingDate"></em>
+                                    <em>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</em>
+                                    <em id="nextBillingGoodName"></em>
+                                    <em>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</em>
+                                    <em id="nextBillingPrice"></em>
+                                </em>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="stn_2">
+                        <p>결제 내역</p>
+                        <table class="payment_tbl">
+                            <colgroup>
+                                <col width="25%"><col width="25%"><col width="16%"><col width="16%"><col width="14%">
+                            </colgroup>
+                            <thead>
+                                <tr class="thead">
+                                    <th scope="col">사용 기간</th>
+                                    <th scope="col">결제 정보</th>
+                                    <th scope="col">가격</th>
+                                    <th scope="col">결제일</th>
+                                    <th scope="col">영수증</th>
+                                </tr>
+                            </thead>
+                            <tbody id="list_body">
+                                <tr>
+                                    <td scope="row">2021-02-22 ~ 2021-03-22</td><td>삼성card 5361 4890 0356 **** </td>
+                                    <td>₩ 99,000</td><td>2021-02-22</td>
+                                    <td><img src="/aiaas/kr/images/ico_receipt.png" alt="receipt" class="receiptPop" data-pano="mindslab01_1613962843902"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--//account-->
+        </div>
+
+    </div>
+    <!-- //.contents -->
+</div>
+<!-- //#wrap -->
+
+<!-- 팝업 -->
+<!-- .lyr_planconf -->
+<div class="lyr_planconf">
+    <div class="lyr_plan_bg"></div>
+    <!-- .lyrWrap -->
+    <div class="lyrWrap">
+        <button class="btn_lyrWrap_close" type="button">
+            <em class="fas fa-times"></em>
+        </button>
+        <!-- .lyr_bd -->
+        <div class="lyr_bd">
+            <div class="lyr_conts">
+                <div class="contBox step01 current">
+                    <strong>마음AI 서비스 구독을 해지하시겠습니까?</strong>
+                    <p>구독이 취소되더라도 구독 결제를 소급하여 환불하지 않으며 이전에 <br>청구된 구독 요금은 취소일에 비례하여 계산되지 않습니다. <br>중도 해지 시 환불은 없고, <br>다음 카드 결제일 전날까지 서비스 이용은 유지됩니다. <br>첫 1달 Free 사용자의 경우, 가입 해지 시 모든 서비스가 즉시 중단됩니다.</p>
+                    <strong>그래도 해지 하시겠습니까?</strong>
+                    <div class="btnBox">
+                        <button type="button" class="btn_cancle">아니오</button>
+                        <button type="button" class="btn_unscribe">네</button>
+                    </div>
+                </div>
+                <div class="contBox step02">
+                    <strong>더 나은 서비스를 만들 수 있도록 의견을 남겨주세요.</strong>
+                    <p>사용 중인 서비스를 선택해 주세요. (중복 선택 가능)</p>
+                    <div class="svc_slt_box">
+                        <div class="checkBox">
+                            <input type="checkbox" id="cloudApi">
+                            <label for="cloudApi">Cloud API</label>
+                        </div>
+                        <div class="checkBox">
+                            <input type="checkbox" id="aiBuilder">
+                            <label for="aiBuilder">AI Builder</label>
+                        </div>
+                        <div class="checkBox">
+                            <input type="checkbox" id="maumMinutes">
+                            <label for="maumMinutes">maum 회의록</label>
+                        </div>
+                        <div class="checkBox">
+                            <input type="checkbox" id="fast">
+                            <label for="fast">FAST 대화형 AI</label>
+                        </div>
+                        <div class="checkBox">
+                            <input type="checkbox" id="ava">
+                            <label for="ava">AVA</label>
+                        </div>
+                        <div class="checkBox">
+                            <input type="checkbox" id="edgeAi">
+                            <label for="edgeAi">Edge AI platform</label>
+                        </div>
+                        <div class="checkBox">
+                            <input type="checkbox" id="maumData">
+                            <label for="maumData">maum DATA</label>
+                        </div>
+                        <div class="checkBox">
+                            <input type="checkbox" id="maumAcademy">
+                            <label for="maumAcademy">마음 아카데미</label>
+                        </div>
+                        <div class="checkBox">
+                            <input type="checkbox" id="slt_none">
+                            <label for="slt_none">없음</label>
+                        </div>
+                    </div>
+                    <p>구체적인 해지 이유를 입력해주세요.</p>
+                    <div class="textarea">
+                        <textarea></textarea>
+                    </div>
+                    <div class="btnBox">
+                        <button type="button" class="btn_cancle">취소</button>
+                        <button type="button" id="terminateBtn" class="btn_unscribe">구독 해지</button>
+                    </div>
+                </div>
+                <div class="contBox step03">
+                    <strong>마음AI 서비스 구독 해지가 정상적으로 완료 되었습니다.</strong>
+                    <p>다음 카드 결제일 전날까지 서비스 이용은 유지 됩니다.<br>첫 1달 Free 사용자의 경우, 가입 해지 시 모든 서비스가 즉시 중단 됩니다.</p>
+                    <div class="btnBox">
+                        <a href="https://maum.ai" class="btn_move_home">홈으로</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //.lyr_bd -->
+    </div>
+    <!-- //.lyrWrap -->
+</div>
+<!-- //.lyr_planconf -->
+
+<!-- -------------------- Local Resources -------------------- -->
+<!-- Local CSS -->
+<link rel="stylesheet" href="css/user.css">
+<link rel="stylesheet" href="css/login_renew.css">
+
+<!-- Local Script -->
+<script type="text/javascript">
+jQuery.event.add(window,"load",function(){
+    $(document).ready(function (){
+        // product layer popup
+        $('.btn_cancle, .btn_lyrWrap_close, .lyr_plan_bg').on('click', function (){
+            $('.lyr_planconf').fadeOut(300);
+            $('body').css({
+                'overflow': ''
+            });
+        });
+
+        // 구독해지 팝업 열기
+        $('.unsubscribe').on('click', function(){
+            $('.lyr_planconf').fadeIn(300);
+        });
+
+        // 구독해지 단계 이동 
+        $('.btn_unscribe').on('click', function(){
+            $(this).parents('.contBox').removeClass('current');
+            $(this).parents('.contBox').next('.contBox').addClass('current');
+        });
+    });
+});
+</script>
+</body>
+</html>
