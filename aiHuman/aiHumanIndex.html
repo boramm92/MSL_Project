@@ -17,34 +17,273 @@
     <div id="wrap">
         <!-- #container -->
         <div id="container">
+            <div class="videoBox">
+                <video src="resources/video/aiHuman.mp4"></video>
+            </div>
+
             <h1 class="logo">
                 <img src="resources/images/logo_aiHuman.svg" alt="AI Human logo">
             </h1>
-            <div class="bg_video_box">                
-                <div class="btnBox top">
-                    <button type="button" class="btn_border_glass">
-                        <img src="resources/images/ico_export.svg" alt="export icon">
-                        <p>내보내기</p>
-                    </button>
-                    <button type="button" class="btn_border_glass">
-                        <img src="resources/images/ico_talk.svg" alt="talk icon">
-                        <p>대화 보기</p>
+               
+            <div class="btnBox top">
+                <button type="button" class="btn_ico_type">
+                    <img src="resources/images/ico_export.svg" alt="export icon">
+                    <p>내보내기</p>
+                </button>
+                <!-- [D] 대화 보기 버튼 클릭 시 .detailViewBox를 보여주고, 해당 버튼은 사라져야 함 -->
+                <button type="button" class="btn_ico_type">
+                    <img src="resources/images/ico_talk.svg" alt="talk icon">
+                    <p>대화 보기</p>
+                </button>
+            </div>
+
+            <div class="btnBox bottom">
+                <!-- [D] 음성 대화 버튼 클릭 시 .voiceConversationBox를 보여주고, 음성 대화 / 텍스트 대화 버튼은 사라져야 함 -->
+                <button type="button" class="btn_ico_type">
+                    <img src="resources/images/ico_mic.svg" alt="mic icon">
+                    <p>음성 대화</p>
+                </button>
+                <!-- [D] 음성 대화 버튼 클릭 시 .textConversationBox를 보여주고, 음성 대화 / 텍스트 대화 버튼은 사라져야 함 -->
+                <button type="button" class="btn_ico_type">
+                    <img src="resources/images/ico_text.svg" alt="text icon">
+                    <p>텍스트 대화</p>
+                </button>
+            </div>
+
+            <div class="scriptBox" style="display:none">
+                <p>마음데이터는 데이터 수집, 가공, 분석 및 검증된 AI데이터 구매까지 할 수 있는 서비스입니다. 합리적인 비용으로 동시에 많은 인력이 작업이 가능한 클라우드 기반의 작업툴을 제공합니다.</p>
+            </div>
+
+            <div class="stt_info_txt" style="display:none">
+                <p>음성을 텍스트로 변환중입니다.</p>
+            </div>
+
+            <div class="borderLyrWrap voiceConversationBox" style="display:none">
+                <div class="lyr_hd">
+                    <button class="btn_close" title="닫기버튼">
+                        <img src="resources/images/ico_close.svg" alt="close icon">
                     </button>
                 </div>
-    
-                <!-- <button type="button" class="btn_close" title="닫기버튼">
-                    <img src="resources/images/ico_close.svg" alt="닫기">
-                </button> -->
-    
-                <div class="btnBox bottom">
-                    <button type="button" class="btn_border_glass">
-                        <img src="resources/images/ico_mic.svg" alt="mic icon">
-                        <p>음성 대화</p>
+                <div class="lyr_bd">
+                    <!-- [D] button과 가이드 문구(.guide_txt p)에 addClass('active')해주면 보여짐 -->
+                    <div class="btnBox">
+                        <button type="button" class="btn_voice_cvst active" title="음성 대화 버튼">
+                            <span><img src="resources/images/ico_mic_eft.svg" alt="mic icon"></span>
+                        </button>
+                        <button type="button" class="btn_voice_cvst" title="음성 대화 버튼">
+                            <span><img src="resources/images/ico_equalizer.svg" alt="vequalizer icon"></span>
+                        </button>
+                    </div>
+                    <div class="guide_txt">
+                        <p class="active">마이크를 클릭하고 아바타에게 말을 걸어보세요.</p>
+                        <p>입력이 끝나면 버튼을 클릭해 대화를 완료해주세요.</p>
+                    </div>
+                </div>      
+            </div>
+
+            <div class="borderLyrWrap textConversationBox" style="display:none">
+                <div class="lyr_hd">
+                    <button class="btn_close" title="닫기버튼">
+                        <img src="resources/images/ico_close.svg" alt="close icon">
                     </button>
-                    <button type="button" class="btn_border_glass">
-                        <img src="resources/images/ico_text.svg" alt="text icon">
-                        <p>텍스트 대화</p>
+                </div>
+                <div class="lyr_bd">
+                    <div class="iptBox">
+                        <input type="text" class="ipt_txt" placeholder="대화하실 내용을 입력해주세요.">
+                        <button type="button" class="btn_text_submit" title="텍스트 입력 버튼">
+                            <img src="resources/images/ico_send.svg" alt="send icon">
+                        </button>
+                    </div>
+                </div>      
+            </div>
+
+            <div class="borderLyrWrap exportBox" style="display:none">
+                <div class="lyr_hd">
+                    <p class="tit">AI Human 내보내기</p>
+                    <button class="btn_close" title="닫기버튼">
+                        <img src="resources/images/ico_close.svg" alt="close icon">
                     </button>
+                </div>
+                <div class="lyr_bd">
+                    <div class="textarea">
+                        <textarea>header에 추가 header에 추가 eader에 추가 header에 추가eader에 추가 header에 추가eader에 추가 header에 추가 eader에 추가 header에 추가 eader에 추가 header에 추가</textarea>
+                    </div>
+                </div>      
+                <div class="lyr_ft">
+                    <div class="btnBox">
+                        <button type="button" class="btn_clipboard">
+                            <span>복사하기</span>
+                        </button>
+                    </div>
+                </div>                         
+            </div>
+
+            <!-- [D] 대화 보기 버튼 클릭 시 .detailViewBox를 보여주고, 해당 버튼은 사라져야 함 -->
+            <div class="detailViewBox" style="display:none">
+                <div class="btnBox">
+                    <!-- [D] button에 addClass('active')하면 활성화됨 -->
+                    <div class="swichGroup">
+                        <button type="button" class="btn_cvst_hsty">대화 History</button>
+                        <button type="button" class="btn_debug active">Debug</button>
+                    </div>                   
+                    <button type="button" class="btn_close" title="닫기버튼">
+                        <img src="resources/images/ico_close.svg" alt="닫기">
+                    </button>
+                </div>
+                <div class="detailCont">
+                    <!-- [D] .scrollBox에 addClass('active')하면 내용 보여짐 -->
+                    <div class="scrollBox conversationView">
+                        <p class="date">2021.03.10</p>
+                        <ul>
+                            <li class="sora">
+                                <p>안녕하세요~<br>마음까지 생각하는 AI Human <strong>Sora</strong> 입니다. 무엇을 도와드릴까요?</p>
+                                <span>07:07:05</span>
+                            </li>
+                            <li class="user">
+                                <p>너는 누구니?</p>
+                                <span>07:07:59</span>
+                            </li>
+                            <li class="sora">
+                                <p>네. 전 마인즈랩 안내를 돕고있는 AI Human Sora 입니다. 무엇을 도와드릴까요?</p>
+                                <span>07:08:00</span>
+                            </li>
+                            <li class="user">
+                                <p>마인즈랩은 어디에 있어?</p>
+                                <span>07:08:05</span>
+                            </li>
+                            <li class="sora">
+                                <p>네. 마인즈랩은 경기도 성남시 분당구 대왕판교로 644번길 다산타워 5층, 6층에 있습니다.</p>
+                                <span>07:08:06</span>
+                            </li>
+                            <li class="user">
+                                <p>마음 데이터가 뭐야?</p>
+                                <span>07:08:05</span>
+                            </li>
+                            <li class="sora loading">
+                                <p>Now Loading…</p>
+                            </li>
+                            <li class="sora">
+                                <p>안녕하세요~<br>마음까지 생각하는 AI Human <strong>Sora</strong> 입니다. 무엇을 도와드릴까요?</p>
+                                <span>07:07:05</span>
+                            </li>
+                            <li class="user">
+                                <p>너는 누구니?</p>
+                                <span>07:07:59</span>
+                            </li>
+                            <li class="sora">
+                                <p>네. 전 마인즈랩 안내를 돕고있는 AI Human Sora 입니다. 무엇을 도와드릴까요?</p>
+                                <span>07:08:00</span>
+                            </li>
+                            <li class="user">
+                                <p>마인즈랩은 어디에 있어?</p>
+                                <span>07:08:05</span>
+                            </li>
+                            <li class="sora">
+                                <p>네. 마인즈랩은 경기도 성남시 분당구 대왕판교로 644번길 다산타워 5층, 6층에 있습니다.</p>
+                                <span>07:08:06</span>
+                            </li>
+                            <li class="user">
+                                <p>마음 데이터가 뭐야?</p>
+                                <span>07:08:05</span>
+                            </li>
+                            <li class="sora loading">
+                                <p>Now Loading…</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="scrollBox debugView active">
+                        <ul>
+                            <li class="stt">
+                                <dl>
+                                    <dt>STT</dt>
+                                    <dd>
+                                        <ul>
+                                            <li>STT 변환 중</li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                                <span>07:07:05</span>
+                            </li>
+                            <li class="stt">
+                                <dl>
+                                    <dt>STT</dt>
+                                    <dd>
+                                        <ul>
+                                            <li>STT 변환 완료</li>
+                                            <li>STT 변환된 문장 :</li>
+                                            <li>마음 AI가 뭐야?</li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                                <span>3sec / 07:07:08</span>
+                            </li>
+                            <li class="sds">
+                                <dl>
+                                    <dt>SDS</dt>
+                                    <dd>
+                                        <ul>
+                                            <li>SDS 의도파악 중</li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                                <span>1sec / 07:07:09</span>
+                            </li>
+                            <li class="sds">
+                                <dl>
+                                    <dt>SDS</dt>
+                                    <dd>
+                                        <ul>
+                                            <li>의도 : 마음 AI 정의</li>
+                                            <li>엔진 :</li>
+                                            <li>- Regex : pass</li>
+                                            <li>- NQA : pass</li>
+                                            <li>- BERT : 마음 AI 정의</li>
+                                            <li>- Prob : 0.98548</li>
+                                            <li>답변 :</li>
+                                            <li>마음AI는 나만을 위한 맞춤형 AI 서비스를 제공합니다.</li>
+                                            <li>클라우드 기반 플랫폼에서 무료로 시작하거나, 비즈니스 문의를 해주세요.</li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                                <span>2sec / 07:07:11</span>
+                            </li>
+                            <li class="lyncAvatar">
+                                <dl>
+                                    <dt>Lync Avatar</dt>
+                                    <dd>
+                                        <ul>
+                                            <li>아바타 생성 1명 대기중</li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                                <span>1sec / 07:07:12</span>
+                            </li>
+                            <li class="lyncAvatar">
+                                <dl>
+                                    <dt>Lync Avatar</dt>
+                                    <dd>
+                                        <ul>
+                                            <li>아바타 생성 중</li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                                <span>1sec / 07:07:13</span>
+                            </li>
+                            <li class="lyncAvatar">
+                                <dl>
+                                    <dt>Lync Avatar</dt>
+                                    <dd>
+                                        <ul>
+                                            <li>아바타 생성 완료</li>
+                                        </ul>
+                                    </dd>
+                                </dl>
+                                <span>1sec / 07:07:43</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
