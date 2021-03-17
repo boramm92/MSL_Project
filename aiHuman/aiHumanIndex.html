@@ -10,6 +10,10 @@
     <!-- General CSS -->
     <link rel="stylesheet" type="text/css" href="resources/css/aiHuman.css">
 
+    <!-- General Script -->
+    <script src="resources/js/jquery-3.5.1.min.js"></script>
+    <script src="resources/js/jquery-migrate-3.3.1.min.js"></script>
+
     <title>Main || AI Human</title>
 </head>
 <body>
@@ -22,17 +26,21 @@
             </h1>
 
             <div class="videoBox detailMode">
-                <video src="resources/video/aiHuman.mp4" autoplay></video>
+                <video src="resources/video/aiHuman.mp4" autoplay loop muted></video>
             </div>
                
             <div class="btnBox top">
                 <button type="button" class="btn_ico_type">
-                    <img src="resources/images/ico_export.svg" alt="export icon">
+                    <span>
+                        <img src="resources/images/ico_export.svg" alt="export icon">
+                    </span>                   
                     <p>내보내기</p>
                 </button>
                 <!-- [D] 대화 보기 버튼 클릭 시 .detailViewBox를 보여주고, 해당 버튼은 사라져야 함 -->
                 <button type="button" class="btn_ico_type">
-                    <img src="resources/images/ico_talk.svg" alt="talk icon">
+                    <span>
+                        <img src="resources/images/ico_talk.svg" alt="talk icon">
+                    </span>                    
                     <p>대화 보기</p>
                 </button>
             </div>
@@ -40,12 +48,16 @@
             <div class="btnBox bottom">
                 <!-- [D] 음성 대화 버튼 클릭 시 .voiceConversationBox를 보여주고, 음성 대화 / 텍스트 대화 버튼은 사라져야 함 -->
                 <button type="button" class="btn_ico_type">
-                    <img src="resources/images/ico_mic.svg" alt="mic icon">
+                    <span>
+                        <img src="resources/images/ico_mic.svg" alt="mic icon">
+                    </span>                    
                     <p>음성 대화</p>
                 </button>
                 <!-- [D] 음성 대화 버튼 클릭 시 .textConversationBox를 보여주고, 음성 대화 / 텍스트 대화 버튼은 사라져야 함 -->
                 <button type="button" class="btn_ico_type">
-                    <img src="resources/images/ico_text.svg" alt="text icon">
+                    <span>
+                        <img src="resources/images/ico_text.svg" alt="text icon">
+                    </span>
                     <p>텍스트 대화</p>
                 </button>
             </div>
@@ -58,70 +70,61 @@
                 <p>음성을 텍스트로 변환중입니다.</p>
             </div>
 
-            <div class="borderLyrWrap voiceConversationBox" style="display:none">
-                <div class="lyr_hd">
+            <div class="conversationRecogBox voice" style="display:none">
+                <div class="script_txt">마음 AI가 뭐야?</div>
+
+                <div class="cvst_ipt">
+                    <!-- <button type="button" class="btn_voice_cvst" title="음성 대화 버튼">
+                        <span><img src="resources/images/ico_mic.svg" alt="mic icon"></span>
+                    </button> -->
+                    <button type="button" class="btn_voice_cvst" title="음성 대화 버튼">
+                        <span><img src="resources/images/ico_equalizer.svg" alt="vequalizer icon"></span>
+                    </button>
+
+                    <div class="guide_txt">
+                        <!-- <p>마이크를 클릭하고<br>아바타에게 말을 걸어보세요.</p> -->
+                        <p>입력이 끝나면 버튼을 클릭해<br>대화를 완료해주세요.</p>
+                    </div>
+    
                     <button class="btn_close" title="닫기버튼">
                         <img src="resources/images/ico_close.svg" alt="close icon">
-                    </button>
-                </div>
-                <div class="lyr_bd">
-                    <!-- [D] button과 가이드 문구(.guide_txt p)에 addClass('active')해주면 보여짐 -->
-                    <div class="btnBox">
-                        <button type="button" class="btn_voice_cvst active" title="음성 대화 버튼">
-                            <span><img src="resources/images/ico_mic_eft.svg" alt="mic icon"></span>
-                        </button>
-                        <button type="button" class="btn_voice_cvst" title="음성 대화 버튼">
-                            <span><img src="resources/images/ico_equalizer.svg" alt="vequalizer icon"></span>
-                        </button>
-                    </div>
-                    <div class="guide_txt">
-                        <p class="active">마이크를 클릭하고 아바타에게 말을 걸어보세요.</p>
-                        <p>입력이 끝나면 버튼을 클릭해 대화를 완료해주세요.</p>
-                    </div>
-                    <div class="script_txt">
-                        <p>마음 AI가 뭐야?</p>
-                    </div>
-                </div>      
+                    </button> 
+                </div> 
             </div>
 
-            <div class="borderLyrWrap textConversationBox" style="display:none">
-                <div class="lyr_hd">
-                    <button class="btn_close" title="닫기버튼">
-                        <img src="resources/images/ico_close.svg" alt="close icon">
-                    </button>
-                </div>
-                <div class="lyr_bd">
-                    <div class="script_txt">
-                        <p>마음 AI가 뭐야?</p>
-                    </div>
+            <div class="conversationRecogBox text" style="display:none">
+                <div class="script_txt">마음 AI가 뭐야?</div>
+
+                <div class="cvst_ipt">
                     <div class="iptBox">
                         <input type="text" class="ipt_txt" placeholder="대화하실 내용을 입력해주세요.">
                         <button type="button" class="btn_text_submit" title="텍스트 입력 버튼">
                             <img src="resources/images/ico_send.svg" alt="send icon">
                         </button>
                     </div>
-                </div>      
-            </div>
-
-            <div class="borderLyrWrap exportBox" style="display:none">
-                <div class="lyr_hd">
-                    <p class="tit">AI Human 내보내기</p>
+    
                     <button class="btn_close" title="닫기버튼">
                         <img src="resources/images/ico_close.svg" alt="close icon">
-                    </button>
-                </div>
-                <div class="lyr_bd">
-                    <div class="textarea">
-                        <textarea>header에 추가 header에 추가 eader에 추가 header에 추가eader에 추가 header에 추가eader에 추가 header에 추가 eader에 추가 header에 추가 eader에 추가 header에 추가</textarea>
-                    </div>
-                </div>      
-                <div class="lyr_ft">
-                    <div class="btnBox">
-                        <button type="button" class="btn_clipboard">
-                            <span><img src="resources/images/ico_copy.svg" alt="copy icon">복사하기</span>
-                        </button>
-                    </div>
-                </div>                         
+                    </button> 
+                </div>    
+            </div>
+
+            <div class="exportBox" style="display:none">
+                <p class="tit">AI Human 내보내기</p>
+                    
+                <div class="textarea">
+                    <textarea>header에 추가 header에 추가 eader에 추가 header에 추가eader에 추가 header에 추가eader에 추가 header에 추가 eader에 추가 header에 추가 eader에 추가 header에 추가</textarea>
+                </div>   
+
+                <button type="button" class="btn_clipboard">
+                    <span>
+                        <img src="resources/images/ico_copy.svg" alt="copy icon">복사하기
+                    </span>
+                </button>
+
+                <button class="btn_close" title="닫기버튼">
+                    <img src="resources/images/ico_close.svg" alt="close icon">
+                </button>                         
             </div>
 
             <!-- [D] 대화 보기 버튼 클릭 시 .detailViewBox를 보여주고, 해당 버튼은 사라져야 함 -->
@@ -129,8 +132,8 @@
                 <div class="btnBox">
                     <!-- [D] button에 addClass('active')하면 활성화됨 -->
                     <div class="swichGroup">
-                        <button type="button" class="btn_cvst_hsty">대화 History</button>
-                        <button type="button" class="btn_debug active">Debug</button>
+                        <button type="button" class="btn_cvst_hsty active">대화 History</button>
+                        <button type="button" class="btn_debug">Debug</button>
                     </div>                   
                     <button type="button" class="btn_close" title="닫기버튼">
                         <img src="resources/images/ico_close.svg" alt="닫기">
@@ -139,8 +142,9 @@
                 <div class="detailCont">
                     <!-- [D] .scrollBox에 addClass('active')하면 내용 보여짐 -->
                     <div class="scrollBox conversationView active">
-                        <p class="date">2021.03.10</p>
+                        <!-- <p class="date">2021.03.10</p> -->
                         <ul>
+                            <li class="date">2021.03.10</li>
                             <li class="sora">
                                 <p>안녕하세요~<br>마음까지 생각하는 AI Human <strong>Sora</strong> 입니다. 무엇을 도와드릴까요?</p>
                                 <span>07:07:05</span>
@@ -296,5 +300,49 @@
         <!-- //#container -->
     </div>
     <!-- //#wrap -->
+
+    <!-- Local Script -->
+    <script type="text/javascript">
+        jQuery.event.add(window,"load",function(){
+            $(document).ready(function(){
+                $('.btnBox.top button').on('click', function(){
+                    console.log($(this).index());
+                    if( $(this).index() == 0 ){
+                        $('.exportBox').show();
+                    }else{
+                        $('.detailViewBox').addClass('open');
+                    }
+                });
+
+                $('.btnBox.bottom button').on('click', function(){
+                    console.log($(this).index());
+                    if( $(this).index() == 0 ){
+                        $('.conversationRecogBox.voice').show();
+                    }else{
+                        $('.conversationRecogBox.text').show();
+                    }
+                });
+
+                $('.btn_close').on('click', function(){
+                    $('.exportBox').hide();
+                    $('.detailViewBox').removeClass('open');
+                    $('.conversationRecogBox').hide();
+                });
+
+                $('.swichGroup button').on('click', function(){
+                    $('.swichGroup button').removeClass('active');
+                    $(this).addClass('active');
+                    if( $('.btn_cvst_hsty').is('active') ){
+                        $('.scrollBox').removeClass('active');
+                        $('.conversationView').addClass('active');
+                    }else {
+                        $('.scrollBox').removeClass('active');
+                        $('.debugView').addClass('active');
+                    }
+                    return false;
+                });
+            });
+        });
+    </script>
 </body>
 </html>
