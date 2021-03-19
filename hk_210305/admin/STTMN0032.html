@@ -448,19 +448,48 @@
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-        // 서버별 엔진 상태 마우스오버 시 상세내용 보여주기
+        // 서버별 엔진 상태 마우스오버 시 상세내용 보여주기 - top 고정
+        // var $serverStatus = $('.service_status_tbl td a');
+
+        // $serverStatus.on('mousemove', function(e){
+        //     e.stopPropagation();
+        //     offsetX = e.offsetX;
+        //     offsetY = e.offsetY;
+
+        //     $(this).siblings('.service_detail').css({
+        //         display: 'inline-block',
+        //         top: offsetY - 85,
+        //         left: offsetX - 100
+        //     });
+        // });
+        // $serverStatus.on('mouseleave', function(){
+        //     $(this).siblings('.service_detail').css({
+        //         display: 'none',
+        //     });
+        // });
+
+        // 서버별 엔진 상태 마우스오버 시 상세내용 보여주기 - 마지막 row만 top 고정
         var $serverStatus = $('.service_status_tbl td a');
+        var rowIndex = $('.service_status_tbl tbody tr:last').index();
 
         $serverStatus.on('mousemove', function(e){
             e.stopPropagation();
             offsetX = e.offsetX;
             offsetY = e.offsetY;
 
-            $(this).siblings('.service_detail').css({
-                display: 'inline-block',
-                top: offsetY + 20,
-                left: offsetX + 15
-            });
+            if( $(this).parents('tr').index() == rowIndex ) {
+                $(this).siblings('.service_detail').css({
+                    display: 'inline-block',
+                    top: offsetY - 85,
+                    left: offsetX - 100
+                });
+            }else {
+                $(this).siblings('.service_detail').css({
+                    display: 'inline-block',
+                    top: offsetY + 30,
+                    left: offsetX - 100
+                });
+            }
         });
         $serverStatus.on('mouseleave', function(){
             $(this).siblings('.service_detail').css({
