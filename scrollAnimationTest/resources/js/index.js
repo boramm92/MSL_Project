@@ -63,15 +63,15 @@
         if(yOffset < prevScrollHeight){
             currentScene--;
         }
-        console.log('currentScene');
     };    
 
     window.addEventListener('scroll', () => {
         yOffset = window.pageYOffset;
         scrollLoop();
+        console.log(yOffset)
     });
 
-    // window.addEventListener('resize', setLayout);
+    window.addEventListener('resize', setLayout);
 
     
 })();
