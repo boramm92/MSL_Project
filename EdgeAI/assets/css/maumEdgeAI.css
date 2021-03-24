@@ -210,6 +210,7 @@
 
 /* container-contents */
 .maumUI #container .contents {display:table-cell; width:calc(100% - 200px); padding:30px; vertical-align:top; box-sizing:border-box;}
+.maumUI #container .contents.analysis_main {padding:0;}
 
 /* container-contents-title / 21.03.23 NBR .mainTit 추가 */
 .maumUI #container .contents .mainTit {width:100%; padding:40px 40px 46px; box-sizing:border-box; background:rgb(31, 165, 238, 0.1); color:#122d3e; font-size:24px; letter-spacing:-0.01px; line-height:1.5;}
@@ -355,15 +356,38 @@
 
 /* dashboard */
 .dashboardBox {max-width:952px; margin:40px auto 0;}
-.maumUI #container .contents .dashboardBox .titArea {margin:0;}
-.dashboardBox .my_edge_list li {overflow:hidden; width:100%; border:1px solid #e2e4e5; border-radius:10px; box-shadow:2px 4px 4px 0 rgba(176, 179, 180, 0.1); background:#fff;}
-.dashboardBox .my_edge_list li .tbl_box {float:left; width:calc(100% - 430px);}
+.maumUI #container .contents .dashboardBox .titArea {margin:0 0 15px;}
+.maumUI #container .contents .dashboardBox .titArea h3 {display:inline-block; margin:0;}
+.maumUI #container .contents .dashboardBox .titArea .infoTxt {display:block; float:right; margin:5px 0 0; padding:0 10px; border-radius:4px; background:rgba(156, 171, 199, 0.14); color:#2e3646; line-height:24px;}
+.maumUI #container .contents .dashboardBox .titArea .infoTxt span.fa-sync-alt {margin:0 5px 0 0;}
+.dashboardBox .my_edge_list > li {overflow:hidden; width:100%; height:294px; border:1px solid #e2e4e5; border-radius:10px; box-shadow:2px 4px 4px 0 rgba(176, 179, 180, 0.1); background:#fff;}
+.dashboardBox .my_edge_list > li + li {margin:30px 0 0;}
+.dashboardBox .my_edge_list li .tbl_box {float:left; width:calc(100% - 430px); height:100%;}
+.dashboardBox .my_edge_list li .tbl_box table {width:100%;}
 .dashboardBox .my_edge_list li .tbl_box table th {padding:6px 20px; background:#525f78; color:#fff; font-size:14px; font-weight:700; line-height:1.43;}
-.dashboardBox .my_edge_list li .camera_status_box {float:left; width:430px; padding:20px 40px; box-sizing:border-box; background:#f8fbfd;}
-.dashboardBox .my_edge_list li .camera_status_box .titArea {padding:0 10px; border-bottom:1px solid #e6e9f2; box-sizing:border-box; text-align:right;}
-.dashboardBox .my_edge_list li .camera_status_box .titArea .tit {float:left; color:#122d3e; font-size:14px; font-weight:700;}
-.dashboardBox .my_edge_list li .camera_status_box .titArea .statusInfo {display:inline-block;}
-.dashboardBox .my_edge_list li .camera_status_box .titArea .statusInfo span {color:#122d3e; font-size:13px;}
+.dashboardBox .my_edge_list li .tbl_box table td {padding:0 30px;}
+.dashboardBox .my_edge_list li .tbl_box table td > span {display:block; min-height:36px; padding:0 10px; border-bottom:1px solid #e6e9f2; box-sizing:border-box; color:#122d3e; font-size:14px; letter-spacing:-0.14px; line-height:35px;}
+.dashboardBox .my_edge_list li .tbl_box table td > span.address {height:56px; padding:6px 10px; line-height:22px;}
+.dashboardBox .my_edge_list li .tbl_box table td .status_usage {position:relative; height:106px; padding:12px 10px;}
+.dashboardBox .my_edge_list li .tbl_box table td .status_usage dl dt {margin:10px 0 5px; color:#122d3e; font-size:13px;}
+.dashboardBox .my_edge_list li .tbl_box table td .status_usage dl dd.gauge {width:100px; height:15px;}
+.dashboardBox .my_edge_list li .tbl_box table td .status_usage .status_edge {position:absolute; top:50%; right:0; transform:translate(0, -50%);}
+.dashboardBox .my_edge_list li .tbl_box table td .status_usage .status_edge span + span {margin:10px 0 0;}
+
+.dashboardBox .my_edge_list li .camera_status_box {float:left; width:430px; height:100%; padding:20px 30px; border-left:1px solid #e2e4e5; box-sizing:border-box; background:#f8fbfd;}
+.dashboardBox .my_edge_list li .camera_status_box .tit_box {margin:0; padding:0 10px; border-bottom:1px solid #e6e9f2; box-sizing:border-box; text-align:right;}
+.dashboardBox .my_edge_list li .camera_status_box .tit_box .tit {float:left; color:#122d3e; font-size:14px; font-weight:700;}
+.dashboardBox .my_edge_list li .camera_status_box .tit_box .statusInfo {display:inline-block;}
+.dashboardBox .my_edge_list li .camera_status_box .tit_box .statusInfo img {display:inline-block; margin:0 5px 0 17px;}
+.dashboardBox .my_edge_list li .camera_status_box .tit_box .statusInfo span {color:#122d3e; font-size:13px;}
+.dashboardBox .my_edge_list li .camera_status_box .spot_box {margin:10px 0 0; padding:0 5px; box-sizing:border-box;}
+.dashboardBox .my_edge_list li .camera_status_box .spot_box ul li {float:left; margin:5px;}
+.dashboardBox .my_edge_list li .camera_status_box .spot_box ul li .item {display:table; table-layout:fixed; overflow:hidden; width:110px; height:45px; border:1px solid #e9eef1; box-sizing:border-box; border-radius:4px; background:#fff;}
+.dashboardBox .my_edge_list li .camera_status_box .spot_box ul li .statusMark {display:table-cell; width:34px; border-right:1px dashed #e9eef1;}
+.dashboardBox .my_edge_list li .camera_status_box .spot_box ul li .spotName {display:table-cell; padding:0 5px; color:#122d3e; font-size:13px; font-weight:500; vertical-align:middle;}
+.dashboardBox .my_edge_list li .camera_status_box .spot_box ul li.normal .statusMark {background:url('../images/ico_circle_chk_normal.svg') 50% 50% no-repeat;}
+.dashboardBox .my_edge_list li .camera_status_box .spot_box ul li.error .statusMark {background:url('../images/ico_circle_chk_error.svg') 50% 50% no-repeat;}
+
 .dashboardBox .pageing a {width:auto; min-width:26px; height:26px; color:#7c8ba7; line-height:26px; vertical-align:top; box-sizing:border-box; margin-left:2px; margin-right:2px}
 .dashboardBox .pageing a.first,.dashboardBox .pageing a.prev,.dashboardBox .pageing a.next,.dashboardBox .pageing a.end {width:26px; border:1px solid #adb8c3; background-color:#fff;}
 .dashboardBox .pageing strong {width:auto; min-width:26px; height:26px; line-height:26px; vertical-align:top; border:none; box-sizing:border-box; margin-left:2px; margin-right:2px}
