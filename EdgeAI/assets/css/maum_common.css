@@ -4,7 +4,7 @@
 /* 기본css */
 @import url("reset.css"); /* css 초기화 */
 @import url("font.css"); /* webfont */
-@import url("all.css"); /* fontawesome */
+@import url("https://use.fontawesome.com/releases/v5.13.0/css/all.css"); /* fontawesome */
 
 /* page loading */
 #pageldg {display:block; position:fixed; top:0px; left:0px; width:100%; height:100%; text-align:center; background-color:#fff; z-index:99999999; opacity:1.0;}
@@ -188,7 +188,8 @@
 /* input(file) */
 .fileBox {display:block; position:relative; clear:both; overflow:hidden;}
 .fileBox input[type="file"] {overflow:hidden; position:absolute; width:1px; height:1px; margin:-1px; padding:0; clip:rect(0,0,0,0); border:0;}
-.fileBox label {overflow:hidden; float:left; width:30px; min-height:32px; padding:0; color:#999; font-size:12px; line-height:normal; vertical-align:middle; text-indent:-99px; border:1px solid #d0dbe6; border-left:none; border-radius:0 3px 3px 0; background:#fff url("../images/ico_search_bk.svg") 50% 50% no-repeat; background-size:40% 40%; box-sizing:border-box; cursor:pointer; opacity:0.7;}
+/* .fileBox label {overflow:hidden; float:left; width:30px; min-height:32px; padding:0; color:#999; font-size:12px; line-height:normal; vertical-align:middle; text-indent:-99px; border:1px solid #d0dbe6; border-left:none; border-radius:0 3px 3px 0; background:#fff url("../../edgeAIPlatform/resources/images/ico_search_bk.svg") 50% 50% no-repeat; background-size:40% 40%; box-sizing:border-box; cursor:pointer; opacity:0.7;} */
+.fileBox label {overflow:hidden; float:left; width:30px; min-height:32px; padding:0; color:#999; font-size:12px; line-height:normal; vertical-align:middle; text-indent:-99px; border:1px solid #d0dbe6; border-left:none; border-radius:0 3px 3px 0; background:#fff; box-sizing:border-box; cursor:pointer; opacity:0.7;}
 /* named upload */
 .fileBox .ipt_file {float:left; width:calc(100% - 30px); min-height:32px; padding:0 5px; color:#98aab9; font-size:12px; line-height:normal; vertical-align:middle; border:1px solid #d0dbe6; border-radius:3px 0 0 3px; background-color:#f5f7f9; box-sizing:border-box; -webkit-appearance:none; -moz-appearance:none; appearance:none;}
 
@@ -295,7 +296,7 @@
 .lyrWrap .contactBox .contact_cnt .contact_form .contact_item_block label span {display:inline-block; margin:0 5px 0 0; opacity:0.6;}
 .lyrWrap .contactBox .contact_btn  {display:block; padding:0 0 30px 0; text-align:center; background:#eff1f7;}
 .lyrWrap .contactBox .contact_btn .btn_inquiry {display:inline-block; padding:10px 30px; color:#fff; font-size:14px; font-weight:500; letter-spacing:-1px; border:none; border-radius:3px; background:#3599ff;}
-.lyrWrap .contactBox .contact_btn .btn_inquiry:disabled {border:1px solid #586c80; background:#586c80;}
+.lyrWrap .contactBox .contact_btn .btn_inquiry:disabled {border:none; background:#586c80;}
 .lyrWrap .contactBox .contact_btn .btn_lyr_close {overflow:hidden; position:absolute; top:10px; right:10px; width:20px; height:20px; margin:0; text-indent:-99px; border:none; background:none; opacity:0.3; transition:all 0.3s ease-out; cursor:pointer;}
 .lyrWrap .contactBox .contact_btn .btn_lyr_close:hover {opacity:0.7; transition:all 0.3s ease-out;}
 .lyrWrap .contactBox .contact_btn .btn_lyr_close:before {content:''; position:absolute; top:50%; left:0%; width:100%; height:2px; background:#35384d; border-radius:3px; transform:rotate(45deg);}
@@ -421,6 +422,7 @@
 .maumUI.transform #header .maum_sta .maum_gnb .nav li {margin:0 20px 0 0;}
 .maumUI.transform #header .maum_sta .maum_gnb .nav li a {height:40px; padding:0; color:#fff; font-size:12px; font-weight:500; line-height:38px;}
 .maumUI.transform #header .maum_sta .maum_gnb .nav li a:hover {color:#3599ff; transition:all 0.3s ease-out;}
+.maumUI.transform #header .maum_gnb .nav li a.go_employees {height:28px; margin:6px 0 0 0; padding:0 10px; border-radius:3px; background:#ffffff; color:#002b49; font-size:12px; line-height:28px;}
 
 .maumUI.transform #header .maum_sta .maum_etc {margin:5px 15px 0 0;}
 .maumUI.transform #header .maum_sta .maum_etc .nav>li {margin:0 0 0 10px;}
@@ -436,14 +438,68 @@
 
 /* -------------------- mobile -------------------- */
 @media screen and (max-width:768px) {
-.maumUI {min-width:320px;}
-.maumUI #header h1 {width:60px; margin:7px 0 0 20px;}
-.maumUI #header .maum_sta {height:50px;}
-.maumUI #header .maum_sta .maum_gnb {display:none;}
-.maumUI #header .maum_sta .maum_etc {display:none;}
-.maumUI #header .maum_sta .btn_maum_ham {display:block; line-height:10px;}
-.maumUI #header .maum_sta .btn_maum_ham.active {right:0;}
-.maumUI #header .maum_sta .btn_maum_ham.active span {width:32px;}
-.maumUI #footer {padding:0;}
-.stn_inquiry .cont_box .inquiry_box {top:320px;}
+    .maumUI {min-width:320px;}
+    .maumUI #header h1 {width:60px; margin:7px 0 0 20px;}
+    .maumUI #header .maum_sta {height:50px;}
+    .maumUI #header .maum_sta .maum_gnb {display:none;}
+    .maumUI #header .maum_sta .maum_etc {display:none;}
+    .maumUI #header .maum_sta .btn_maum_ham {display:block; line-height:10px;}
+    .maumUI #header .maum_sta .btn_maum_ham.active {right:0;}
+    .maumUI #header .maum_sta .btn_maum_ham.active span {width:32px;}
+    .maumUI #footer {padding:0;}
+    .stn_inquiry .cont_box .inquiry_box {top:320px;}
+}
+
+/* UXUI Team AMR 210323 마음 리뉴얼 공통 */
+.text_hide {overflow: hidden; line-height: 0; font-size: 0; text-indent: -999px;}
+
+/* UXUI Team AMR 210323 마음 리뉴얼 헤더 */
+.maum_common #header {position: fixed; z-index: 10; top: 0; left: 0; width: 100%; height: 70px; padding: 22px 25px 0 50px; box-sizing: border-box;}
+.maum_common #header h1 {overflow: hidden; display: inline-block; width: 90px;  background: url(../images/logo_maumAi_w.svg) no-repeat 0 0; background-size: contain; text-indent: -999px; vertical-align: middle;}
+.maum_common #header h1 a {display: block; width: 100%;}
+.maum_common #header .maum_sta {width: calc(100% - 95px); display: inline-block; vertical-align: middle;}
+.maum_common #header .maum_sta a {line-height: normal; font-size: 14px; color: #fff;}
+.maum_common #header .maum_sta .drop_ui {position: relative;}
+.maum_common #header .maum_sta .drop_ui .dropbox {display: none; position: absolute; top: 100%; border: 1px solid #e6e9f3; border-radius: 4px; background: #fff; box-shadow: 0 1px 4px 0 rgb(44, 63, 81, 0.1);}
+.maum_common #header .maum_sta .drop_ui .dropbox a {color: #2c3f51;}
+.maum_common #header .maum_sta .drop_ui.active .dropbox {display: block;}
+
+.maum_common #header .maum_gnb {float: left; margin-left: 75px;}
+.maum_common #header .maum_gnb li {display: inline-block; vertical-align: top;}
+.maum_common #header .maum_gnb a {display: block; padding: 8px 25px;}
+.maum_common #header .maum_etc {float: right;}
+.maum_common #header .maum_etc li {display: inline-block; vertical-align: top;}
+.maum_common #header .maum_etc a {display: block; padding: 8px 25px;}
+.maum_common #header .maum_etc a.lang {font-size: 22px; line-height: 22px;}
+.maum_common #header .maum_etc a.lang i {display: block;}
+.maum_common #header .maum_etc a.app {width: 23px;}
+.maum_common #header .maum_etc .dropbox.lstBox {left: 50%; transform: translate(-50%, 0); padding: 7px 0;}
+.maum_common #header .maum_etc .dropbox.lstBox a {width: 100px; padding: 7px 14px;font-size: 13px;}
+.maum_common #header .maum_etc .dropbox.lstBox a:hover {background:#f3f5fa;}
+.maum_common #header .maum_etc .dropbox.appBox {width: 300px; left: auto; right: 0;text-align: center;}
+.maum_common #header .maum_etc .dropbox.appBox .tit {display: block; padding: 8px 15px; color: #2c3f51; font-size: 13px; border-bottom: 1px solid #e6e9f3;}
+.maum_common #header .maum_etc .dropbox.appBox .lst {clear: both; overflow: hidden; position: relative; margin: 7px 10px; background: #f7f8fc; text-align: left;}
+.maum_common #header .maum_etc .dropbox.appBox .lst li {display: inline-block; width: 90px; text-align: center;}
+.maum_common #header .maum_etc .dropbox.appBox .lst a {display: block; padding: 10px 5px;}
+.maum_common #header .maum_etc .dropbox.appBox .lst .ico {display: inline-block; width: 42px; height: 42px; border: 1px solid #b6c5d1; border-radius: 3px;}
+.maum_common #header .maum_etc .dropbox.appBox .lst em {display: block; font-size: 12px; color: #35384d;}
+.maum_common #header .maum_etc .dropbox.appBox .lst li:hover .ico {border-color: #0078f2;}
+.maum_common #header .maum_etc .dropbox.appBox .lst li:hover em {color: #0078f2;}
+
+.maum_common #header .btn_maum_ham {display: none; overflow: hidden; position: absolute; top: 50%; right: 0; width: 40px; height: 40px; text-indent: -999px; transform: translate(0,-50%);}
+.maum_common #header .btn_maum_ham span {display: block; width: 24px; height: 3px; margin-bottom: 5px; border-radius: 5px; background: #2c3f51; transform: rotate(0deg); transition: .2s ease all;}
+.maumUI.transform.trans .maum_sta .btn_maum_ham span {background: rgba(255,255,255,0.7);}
+.maum_common #header .btn_maum_ham span:nth-child(2) {width: 18px;}
+.maum_common #header .btn_maum_ham span:last-child {width: 12px; margin-bottom: 0;}
+.maum_common #header .btn_maum_ham:focus {outline-width: 0;}
+
+.maum_common #header .btn_maum_ham.active span {background: #2c3f51;}
+.maum_common #header .btn_maum_ham.active span:nth-child(1) {transform: rotate(45deg); -webkit-transform-origin: 15% 15%; transform-origin: 15% 15%;}
+.maum_common #header .btn_maum_ham.active span:nth-child(2) {opacity: 0;}
+.maum_common #header .btn_maum_ham.active span:nth-child(3) {width: 24px;transform: rotate(-45deg); transform-origin: 15% 95%;}
+
+
+/* -------------------- mobile -------------------- */
+@media screen and (max-width:768px) {
+  .maum_common #header .btn_maum_ham {display: block;}
 }
