@@ -19,11 +19,12 @@
 
     <!---------------------- General Resources ---------------------->
     <!-- General CSS -->
-    <link rel="stylesheet" type="text/css" href="assets/css/maum_common.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/maum_common.css">
 
     <!-- General Script -->
-    <script type="text/javascript" src="assets/js/jquery-3.5.1.min.js"></script>
-    <script type="text/javascript" src="assets/js/jquery-migrate-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery-migrate-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../assets/js/maum_common.js"></script>
 
     <style>
         .react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle,
@@ -856,7 +857,7 @@
         }
     </style>
 
-    <title>실시간 인식 및 설정 || Edge Analysis</title>
+    <title>메인(구매자) || Edge Analysis</title>
 </head>
 <body>
 <!-- #wrap -->
@@ -957,14 +958,14 @@
             <div class="svc_visual">
                 <h3>Edge Analysis</h3>
                 <p class="bg_img">
-                    <img src="assets/images/img_visual01.png" alt="Edge AI 이미지">
+                    <img src="../assets/images/img_visual01.png" alt="Edge AI 이미지">
                 </p>
             </div>
             <div class="lnb">
                 <h2><a href="/home">Edge Analysis</a></h2>
                 <ul class="nav_etc">
-                    <li><a href="/">Edge AI Platform</a></li>
-                    <li><a id="btn_contact" class="btn_rou_pstive btn_lyr_open">문의하기</a></li>
+                    <li><a href="maumEdgeAI.html">Edge AI Platform</a></li>
+                    <li><a href="#lyr_contact_us" id="btn_contact" class="btn_rou_pstive btn_lyr_open">문의하기</a></li>
                 </ul>
             </div>
         </div>
@@ -973,261 +974,382 @@
 
     <!-- #container -->
     <div id="container" class="view">
-        <!-- .snb -->
-        <div class="snb ach">
-            <div class="navBox">
-                <!-- [D] div.slt_edge_type 추가 -->
-                <div class="slt_edge_type">
-                    <span class="nav_tit">My Edge</span>
-                    <select class="select">
-                        <option value="">배회</option>
-                        <option value="">실신</option>
-                        <option value="">차량인식</option>                        
-                        <option value="">침입</option>
-                    </select>
-                </div>                    
-
-                <ul class="nav">
-                    <li>
-                        <a>
-                            <span class="fas fa-tachometer-alt"></span>장비 조회
-                        </a>
-                    </li>
-                    <li>
-                        <a class="active">
-                            <span class="fas fa-eye"></span>실시간 인식 및 설정
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <span class="fas fa-file-video"></span>인식 결과
-                        </a>
-                    </li>
-                </ul>
-                <span class="nav_tit">Edge 설치</span>
-                <ul class="nav">
-                    <li>
-                        <a>
-                            <span class="fas fa-wrench"></span>설치 이력 조회
-                        </a>
-                    </li>
-                </ul>
-                <span class="nav_tit">Edge 관리</span>
-                <ul class="nav">
-                    <li>
-                        <a>
-                            <span class="fas fa-cube"></span>장비 관리
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <span class="far fa-address-card"></span>사용자 관리
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <span class="fas fa-city"></span>회사 관리
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!-- //.snb -->
-
-        <!-- .contents -->
-        <div class="contents">
-            <!-- .titArea -->
-        	<div class="titArea">
-            	<h3>실시간 인식 및 설정</h3>
-            </div>
-            <!-- //.titArea -->
-            <!-- .cellBox -->
-            <div class="cellBox">
-                <!-- .cellView -->
-                <div class="cellView">
-                    <!-- .cellCont -->
-                    <div class="cellCont">
-                        <!-- .dlBox -->
-                        <div class="dlBox">
-                            <dl>
-                                <dt>회사명</dt>
-                                <dd>
-                                    <select class="select">
-                                        <option>서울특별시</option>
-                                    </select>
-                                </dd>
-                            </dl>
-                            <dl>
-                                <dt>카메라 정보</dt>
-                                <dd>
-                                    <select class="select">
-                                        <option>서울시 용산구 한남동 삼일대로</option>
-                                    </select>
-                                    <select class="select">
-                                        <option>남산1호터널 남단</option>
-                                    </select>
-                                    <select class="select">
-                                        <option>한남대교 방향</option>
-                                    </select>
-                                    <button type="button">조회</button>
-                                </dd>
-                            </dl>
-                            <button type="button" id="btn_edge_setup" class="btn_rou_pstive">인식 설정</button>
-                        </div>
-                        <!-- //.dlBox -->
-                        <!-- .videoBox -->
-                        <div class="videoBox">
-                            <div class="view">
-                                <!-- [D]영상로드 -->
-                            </div>                            
-                        </div>
-                        <!-- //.videoBox -->                        
-                    </div>
-                    <!-- //.cellCont -->
+        <!-- .contents_home -->
+        <div class="contents_home">            
+            <div class="mainTit">
+                <div class="tit_box">
+                    <strong><span class="userName">마인즈</span>님, Edge Analysis</strong>에 오신 것을 환영합니다.
+                    <p>Edge를 보며 실시간으로 상황을 확인 하실 수 있습니다. Edge Analysis와 함께 삶의 질을 스마트하게 한층 더 높일수 있습니다.</p>
                 </div>
-                <!-- //.cellView -->
             </div>
-            <!-- //.cellBox -->
-        </div>
-        <!-- //.contents -->
+            
+            <div class="dashboardBox">
+                <div class="titArea">
+                    <h3>나의 Edge</h3>
 
-        <!-- .aside -->
-        <div class="asideWrap">
-            <div class="aside_bg"></div>
-            <div class="aside">
-                <!-- .aside_edit(edge설정) -->
-                <div id="aside_setup" class="aside_edit">
-                    <!-- .titArea -->
-                    <div class="titArea">
-                        <h3>인식 설정</h3>
+                    <div class="sort_group">
+                        <select class="select">
+                            <option value="">전체</option>
+                            <option value="">배회</option>
+                            <option value="">실신</option>
+                            <option value="">차량인식</option>                        
+                            <option value="">침입</option>
+                        </select>
+                        <button type="button" class="btn_go_edgeInquiry">바로가기</button>
                     </div>
-                    <!-- //.titArea -->
-                    <!-- .contArea -->
-                    <div class="contArea">
-                        <div class="tit">
-                            <h4>화면 영역 정보</h4>
-                        </div>
-                        <div class="cont">
-                            <table class="tbl_edit">
-                                <caption class="hide">Edge 설정</caption>
+
+                    <p class="infoTxt">
+                        <span class="fas fa-sync-alt"></span>
+                        <span class="timer">2</span>초 후에 자동 새로고침 됩니다.
+                    </p>
+                </div>
+
+                <ul class="my_edge_list">
+                    <li>
+                        <div class="tbl_box">
+                            <table summary="종류, 상태, 설치일, 설치장소, 사용량으로 구성">
+                                <caption class="hide">나의 Edge</caption>
                                 <colgroup>
-                                    <col width="97"><col>
+                                    <col width="92"><col>
                                 </colgroup>
                                 <tbody>
                                     <tr>
-                                        <th scope="row">영역모양</th>
+                                        <th scope="row">종류</th>
                                         <td>
-                                            <small>*실시간으로 인식될 영역을 설정해 주세요.</small>
-                                            <div class="radioBox shape_type">
-                                                <input type="radio" name="shape_type" id="rect" class="ipt_radio" checked>
-                                                <label for="rect">
-                                                    <div class="imgBox">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="-1 -1 22 22">
-                                                            <g class="path" fill="#fff" stroke="#122d3e">
-                                                                <path stroke="none" d="M0 0H20V20H0z"/>
-                                                                <path fill="none" d="M1 1H19V19H1z"/>
-                                                            </g>
-                                                        </svg>
-                                                    </div>
-                                                </label>
-                                                <input type="radio" name="shape_type" id="circle" class="ipt_radio">
-                                                <label for="circle">
-                                                    <div class="imgBox">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="-1 -1 22 22">
-                                                            <g class="path" fill="#fff" stroke="#122d3e">
-                                                                <circle cx="10" cy="10" r="10" stroke="none"/>
-                                                                <circle cx="10" cy="10" r="9.5" fill="none"/>
-                                                            </g>
-                                                        </svg>
-                                                    </div>
-                                                </label>
-                                                <input type="radio" name="shape_type" id="polygon" class="ipt_radio">
-                                                <label for="polygon">
-                                                    <div class="imgBox">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="-1 -1 22 22">
-                                                            <g class="path" fill="#fff">
-                                                                <path d="M15.812 19.5H4.188L.581 7.825 10 .629l9.42 7.196L15.811 19.5z"/>
-                                                                <path fill="#122d3e" d="M10 1.258L1.161 8.011 4.557 19h10.886l3.396-10.99L10 1.259M10 0l10 7.64L16.18 20H3.82L0 7.64 10 0z"/>
-                                                            </g>
-                                                        </svg>
-                                                    </div>
-                                                </label>
-                                                <input type="radio" name="shape_type" id="pencil" class="ipt_radio">
-                                                <label for="pencil">
-                                                    <div class="imgBox">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="-1 -1 22 22">
-                                                            <g>
-                                                                <g>
-                                                                    <path fill="none" d="M0 0H20V20H0z" transform="translate(-1817 -226) translate(1817 226)"/>
-                                                                    <path class="path" fill="#122d3e" d="M32.7 15.776a2.754 2.754 0 0 0-3.892 0l-.974.979L17.467 27.12l-.022.022c-.005.005-.005.011-.011.011-.011.017-.028.033-.038.049s-.006.006-.006.011-.016.028-.028.044-.005.011-.011.017-.011.028-.017.044-.005.005-.005.011l-2.3 6.919a.542.542 0 0 0 .132.561.554.554 0 0 0 .391.16.648.648 0 0 0 .176-.028l6.913-2.306c.005 0 .005 0 .011-.005a.2.2 0 0 0 .049-.022.02.02 0 0 0 .011-.005c.016-.011.038-.022.055-.033s.033-.027.05-.038.011-.006.011-.011.017-.011.022-.022l11.345-11.345a2.754 2.754 0 0 0 0-3.892zM22.465 31.342l-3.831-3.831 9.588-9.588 3.831 3.831zm-4.37-2.813l3.347 3.347-5.025 1.673zm15.324-8.146l-.583.589L29 17.141l.589-.589a1.651 1.651 0 0 1 2.334 0l1.5 1.5a1.656 1.656 0 0 1-.004 2.331z" transform="translate(-1817 -226) translate(1802 211.029)"/>
-                                                                </g>
-                                                            </g>
-                                                        </svg>
-                                                    </div>
-                                                </label>
+                                            <span>실신</span>
+                                        </td>                                            
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">상태</th>
+                                        <td>
+                                            <span>정상</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">설치일</th>
+                                        <td>
+                                            <span>2021-03-21</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">설치장소</th>
+                                        <td>
+                                            <span class="address">경기도 성남시 분당구 동판교로22 휴먼시아 401동 102호</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">사용량</th>
+                                        <td>
+                                            <div class="status_usage">
+                                                <dl>
+                                                    <dt>CPU</dt>
+                                                    <dd class="gauge">
+                                                        <em class="safety" style="width: 44%;"></em>
+                                                        <span>44%</span>
+                                                    </dd>
+                                                </dl>
+                                                <dl>
+                                                    <dt>Main_Mem</dt>
+                                                    <dd class="gauge">
+                                                        <em class="warn" style="width: 24.12%;"></em>
+                                                        <span>24.12%</span>
+                                                    </dd>
+                                                </dl>
+                                                <dl>
+                                                    <dt>GPU</dt>
+                                                    <dd class="gauge">
+                                                        <em style="width: 38%;"></em>
+                                                        <span>38%</span>
+                                                    </dd>
+                                                </dl>
+                                                <dl>
+                                                    <dt>GPU_Mem</dt>
+                                                    <dd class="gauge">
+                                                        <em class="warning" style="width: 13.15%;"></em>
+                                                        <span>13.15%</span>
+                                                    </dd>
+                                                </dl>
+
+                                                <p class="infoTxt status_edge">
+                                                    <span class="normal">정상</span>
+                                                    <span class="abnormal">주의</span>
+                                                    <span class="not">위험</span>
+                                                </p>
                                             </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">알림설정<br><small>*알림 방법 (선택)</small></th>
-                                        <td>
-                                            <div class="checkBox">
-                                                <input type="checkbox" id="tel">
-                                                <label for="tel">전화</label>
-                                                <input type="checkbox" id="email">
-                                                <label for="email">이메일</label>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">알림받을 연락처</th>
-                                        <td>
-                                            <input type="number" class="ipt_txt phone_numHyphen" placeholder="'-'를 제외하고 입력하세요.">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">알림받을 이메일</th>
-                                        <td>
-                                            <input type="text" class="ipt_txt">
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                    </div>
-                    <!-- //.contArea -->
-                    <!-- .foo_btnBox -->
-                    <div class="foo_btnBox">
-                        <button type="button" class="btn_aside_close">취소</button>
-                        <button type="button" class="btn_line">초기화</button>
-                        <button type="button" class="ft_point">저장</button>
-                    </div>
-                    <!-- //.foo_btnBox -->
-                </div>            
-                <!-- .aside_edit(edge설정) -->
-                <button type="button" class="btn_aside_close ico">닫기</button>
+                        <div class="camera_status_box">
+                            <div class="tit_box">
+                                <span class="tit">카메라 상태</span>
+                                <div class="statusInfo">
+                                    <img src="../assets/images/ico_status_normal.svg" alt="정상 작동">
+                                    <span>정상 작동</span>
+                                    <img src="../assets/images/ico_status_error.svg" alt="연결안됨">
+                                    <span>연결안됨</span>
+                                </div>
+                            </div>
+                            <div class="spot_box">
+                                <!-- [D] li에 addClass('normal')하면 정상작동 / addClass('not')하면 연결안됨 아이콘 들어감 -->
+                                <ul>
+                                    <li class="normal">
+                                        <div class="item">
+                                            <span class="statusMark" title="정상 작동"></span>
+                                            <span class="spotName">거실</span>
+                                        </div>                                           
+                                    </li>
+                                    <li class="not">
+                                        <div class="item">
+                                            <span class="statusMark" title="연결안됨"></span>
+                                            <span class="spotName">거실</span>
+                                        </div>
+                                    </li>
+                                    <li class="not">
+                                        <div class="item">
+                                            <span class="statusMark" title="연결안됨"></span>
+                                            <span class="spotName">안방</span>
+                                        </div>
+                                    </li>
+                                    <li class="not">
+                                        <div class="item">
+                                            <span class="statusMark" title="정상 작동"></span>
+                                            <span class="spotName">마당앞고기</span>
+                                        </div>                                           
+                                    </li>
+                                    <li class="normal">
+                                        <div class="item">
+                                            <span class="statusMark" title="연결안됨"></span>
+                                            <span class="spotName">서재</span>
+                                        </div>
+                                    </li>
+                                    <li class="normal">
+                                        <div class="item">
+                                            <span class="statusMark" title="연결안됨"></span>
+                                            <span class="spotName">작은 방</span>
+                                        </div>
+                                    </li>
+                                    <li class="not">
+                                        <div class="item">
+                                            <span class="statusMark" title="정상 작동"></span>
+                                            <span class="spotName">현관문임</span>
+                                        </div>                                           
+                                    </li>
+                                    <li class="not">
+                                        <div class="item">
+                                            <span class="statusMark" title="연결안됨"></span>
+                                            <span class="spotName">베란다</span>
+                                        </div>
+                                    </li>
+                                    <li class="normal">
+                                        <div class="item">
+                                            <span class="statusMark" title="연결안됨"></span>
+                                            <span class="spotName">창고</span>
+                                        </div>
+                                    </li>
+                                    <li class="normal">
+                                        <div class="item">
+                                            <span class="statusMark" title="연결안됨"></span>
+                                            <span class="spotName">다용도실이궁라오기아</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="tbl_box">
+                            <table summary="종류, 상태, 설치일, 설치장소, 사용량으로 구성">
+                                <caption class="hide">나의 Edge</caption>
+                                <colgroup>
+                                    <col width="92"><col>
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">종류</th>
+                                        <td>
+                                            <span>실신</span>
+                                        </td>                                           
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">상태</th>
+                                        <td>
+                                            <span>정상</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">설치일</th>
+                                        <td>
+                                            <span>2021-03-21</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">설치장소</th>
+                                        <td>
+                                            <span class="address">경기도 성남시 분당구 동판교로22 휴먼시아 401동 102호</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">사용량</th>
+                                        <td>
+                                            <div class="status_usage">
+                                                <dl>
+                                                    <dt>CPU</dt>
+                                                    <dd class="gauge">
+                                                        <em class="safety" style="width: 44%;"></em>
+                                                        <span>44%</span>
+                                                    </dd>
+                                                </dl>
+                                                <dl>
+                                                    <dt>Main_Mem</dt>
+                                                    <dd class="gauge">
+                                                        <em class="warn" style="width: 24.12%;"></em>
+                                                        <span>24.12%</span>
+                                                    </dd>
+                                                </dl>
+                                                <dl>
+                                                    <dt>GPU</dt>
+                                                    <dd class="gauge">
+                                                        <em style="width: 38%;"></em>
+                                                        <span>38%</span>
+                                                    </dd>
+                                                </dl>
+                                                <dl>
+                                                    <dt>GPU_Mem</dt>
+                                                    <dd class="gauge">
+                                                        <em class="warning" style="width: 13.15%;"></em>
+                                                        <span>13.15%</span>
+                                                    </dd>
+                                                </dl>
+
+                                                <p class="infoTxt status_edge">
+                                                    <span class="normal">정상</span>
+                                                    <span class="abnormal">주의</span>
+                                                    <span class="not">위험</span>
+                                                </p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="camera_status_box">
+                            <div class="tit_box">
+                                <span class="tit">카메라 상태</span>
+                                <div class="statusInfo">
+                                    <img src="../assets/images/ico_status_normal.svg" alt="정상 작동">
+                                    <span>정상 작동</span>
+                                    <img src="../assets/images/ico_status_error.svg" alt="연결안됨">
+                                    <span>연결안됨</span>
+                                </div>
+                            </div>
+                            <div class="spot_box">
+                                <!-- [D] li에 addClass('normal')하면 정상작동 / addClass('not')하면 연결안됨 아이콘 들어감 -->
+                                <ul>
+                                    <li class="normal">
+                                        <div class="item">
+                                            <span class="statusMark" title="정상 작동"></span>
+                                            <span class="spotName">거실</span>
+                                        </div>                                           
+                                    </li>
+                                    <li class="not">
+                                        <div class="item">
+                                            <span class="statusMark" title="연결안됨"></span>
+                                            <span class="spotName">거실</span>
+                                        </div>
+                                    </li>
+                                    <li class="not">
+                                        <div class="item">
+                                            <span class="statusMark" title="연결안됨"></span>
+                                            <span class="spotName">안방</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="pageing">
+                    <a class="first">맨 처음 페이지로</a>
+                    <a class="prev">10개씩 이동</a>
+                    <strong>1</strong>
+                    <a href="#none">2</a>
+                    <a href="#none">3</a>
+                    <a href="#none">4</a>
+                    <a class="next">10개씩 이동</a>
+                    <a class="end">맨 마지막 페이지로</a>
+                </div>
             </div>
         </div>
-        <!-- //.aside -->
+        <!-- //.contents -->
     </div>
     <!-- //#container -->
 </div>
 <!-- //#wrap -->
 
+<!-- 문의하기 -->  
+<div id="lyr_contact_us" class="lyrBox contactBox">
+    <div class="contact_tit">
+        <h3>Edge Analysis 문의하기</h3>
+        <p class="info_txt">서비스에 관련된 문의를 남겨주시면 담당자가 확인 후, 답변 메일을 보내드리겠습니다.</p>
+    </div>
+    <div class="contact_cnt">        
+        <ul class="contact_lst">
+            <li><a href="tel:1661-3222">1661-3222</a></li>
+            <li><span>hello@mindslab.ai</span></li>
+        </ul>
+        <div class="contact_form">
+            <div class="contact_item">
+                <input type="text" id="user_name" class="ipt_txt" autocomplete="off">
+                <label for="user_name">
+                    <span class="fas fa-user"></span>이름
+                </label>
+            </div>
+            <div class="contact_item">
+                <input type="text" id="user_email" class="ipt_txt" autocomplete="off">
+                <label for="user_email">
+                    <span class="fas fa-envelope"></span>이메일
+                </label>
+            </div>
+            <div class="contact_item">
+                <input type="text" id="user_phone" class="ipt_txt" autocomplete="off">
+                <label for="user_phone">
+                    <span class="fas fa-mobile-alt"></span>연락처
+                </label>
+            </div>
+            <div class="contact_item_block">
+                <textarea id="user_txt" class="textArea" rows="6"></textarea>
+                <label for="textArea"><span class="fas fa-align-left"></span>문의내용</label>
+                <p class="msg">※ 문의내용에 욕설, 성희롱 등의 내용이 포함된 경우 문의가 제한될 수 있습니다.</p>
+            </div>
+        </div>
+    </div>
+    <div class="contact_btn">
+        <button id="btn_sendMail" class="btn_inquiry">문의하기</button>
+        <button class="btn_lyr_close">닫기</button>
+    </div>
+</div>
+<!-- //문의하기 -->   
+
 <!-- -------------------- Local Resources -------------------- -->
 <!-- Local CSS -->
-<link rel="stylesheet" type="text/css" href="assets/css/maumEdgeAI.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/maumEdgeAI.css">
 
-<!-- header 변형 / [D] 기존 스크립트 -->
+<!-- Local Script -->
+<script type="text/javascript" src="../assets/js/maumEdgeAI.js"></script>
+
 <script type="text/javascript">
 $(document).ready(function() {  
+    //header 변형
     $('#wrap').addClass('transform');
     $('#wrap').addClass('trans');
     $('#container').addClass('view');
 });
 </script> 
 
-<!-- page Landing / [D] 기존 스크립트 -->  
+<!-- page Landing -->  
 <script type="text/javascript">   
 $(window).load(function() { 
     //page loading delete  
@@ -1235,41 +1357,53 @@ $(window).load(function() {
 }); 
 </script> 
 
-<!-- Local Script / [D] 기존 스크립트 -->
+<!-- Local Script -->
 <script type="text/javascript">
-    jQuery.event.add(window,"load",function() {
-        $(document).ready(function() {          
-            //Edge목록(active)
-            $('.cellLst ul.lst li a').on('click',function() {
-                //초기화
-                $('.cellLst ul.lst li a').removeClass('active');
-                
-                //active
+jQuery.event.add(window,"load",function() {
+    $(document).ready(function() {
+        //tab
+        $('.serviceBox').each(function(){
+            $('.serviceBox .tab_container .tab_content:first').show();
+            
+            $('.serviceBox .tab_nav li a').on('click', function(){
+                var tabIndex = $(this).parent('li').index()+1;
+
+                $('.serviceBox .tab_container .tab_content').hide();
+                $('.serviceBox .tab_nav li a').removeClass('active');
+
                 $(this).addClass('active');
-            });
-            
-            //aside(Edge정보)
-            $('#btn_edge_setup').on('click',function() {
-                //초기화
-                $('.aside > div').css('display','none');
-                $('.aside .tit h4 span').text('');
-                
-                //show
-                $('.asideWrap').addClass('active');
-                $('#aside_setup').css('display','block');
-                
-                var loadLocation = $(this).parent().find('h5').text();
-                
-                $('.aside .tit h4 span').text(loadLocation);
-            });
-            
-            //aside(hide)
-            $('.aside .btn_aside_close').on('click',function() {
-                $('.asideWrap').removeClass('active');
-                $('.aside > div').css('display','none');
+                $('.tab_container').find('.tab_content:nth-child('+ tabIndex +')').show();
+
+                return false;
             });
         });
-    });	
+        
+        // Edge AI Device 영역 이미지 마우스오버 시 각 성능 리스트 보여주기
+        $('.dvc_detail').on('mousemove', function(e){
+            e.stopPropagation();
+            offsetX = e.offsetX;
+            offsetY = e.offsetY;
+            
+            $(this).find('.specify_list').css({
+                display: 'inline-block',
+                top: offsetY + 10,
+                left: offsetX + 10             
+            });          
+        });
+        $('.dvc_detail').on('mouseleave', function(){
+            $(this).find('.specify_list').css({
+                display: 'none',         
+            });
+        }); 
+        
+        //견적요청
+        $('.productBox .txtBox dl dd.btn a').on('click', function(){
+            var edgeName = $(this).parents('dl').find('dt').text().replace(/ /g, '');;
+
+            $('#lyr_inquiry_estimate #Edge_name').val(edgeName);
+        });
+    });
+});	
 </script>
 </body>
 </html>
