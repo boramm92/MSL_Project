@@ -1016,7 +1016,7 @@
                 <span class="nav_tit">Edge 관리</span>
                 <ul class="nav">
                     <li>
-                        <a href="ansis_set_manage.html">
+                        <a href="ansis_equipment_manage.html">
                             <span class="fas fa-cube"></span>장비 관리
                         </a>
                     </li>
@@ -2372,13 +2372,37 @@ $(window).load(function() {
 <script type="text/javascript">
     jQuery.event.add(window,"load",function() {
         $(document).ready(function() {  
-            //dateTimePicker
-            // $('#pasStartTime, #pasEndTime, #actStartTime, #actEndTime').datetimepicker({
-            //     language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
-            //     pickTime : true, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
-            //     defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
-            //     autoclose: 1,
-            // });
+            //CPU/GPU 사용량
+            $('.status_usage .gauge').each(function() { 
+                var gaugeName = $(this).parent().find('dt').text(),
+                    gaugeNum = $(this).find('span').text().replace('%','');
+                
+                //CPU 
+                if ( gaugeName === 'CPU') {    
+                    if ( 70 <= gaugeNum ) {
+                        $(this).prepend('<em class="warning" style="width:'+ gaugeNum +'%"></em>');  
+                    } else if ( 60 <= gaugeNum && gaugeNum < 70 ) {
+                        $(this).prepend('<em class="warn" style="width:'+ gaugeNum +'%"></em>'); 
+                    } else if ( 0 <= gaugeNum && gaugeNum < 60 ) {
+                        $(this).prepend('<em class="safety" style="width:'+ gaugeNum +'%"></em>'); 
+                    }                
+                }
+                
+                //GPU 
+                if ( gaugeName === 'GPU') {    
+                    if ( 0 < gaugeNum ) {
+                        $(this).prepend('<em style="width:'+ gaugeNum +'%"></em>');  
+                    }              
+                }            
+            });
+            
+            //datepicker
+            // $('#fromDate, #toDate').datepicker({
+            //     format : "yyyy-mm-dd",
+            //     language : "ko",
+            //     autoclose : true,
+            //     todayHighlight : true,
+            // });	
             
             //검색 엔터키 event
             $('.srch_field #ipt_srch_field').keydown(function(key) {
@@ -2386,62 +2410,58 @@ $(window).load(function() {
                     $('.srch_field .srch_btn button:submit').trigger('click');
                 }
             });
-
-            //table(재시작)
-            $('.btn_edge_restart').on('click',function() {
-                $(this).after('<span class="msg_restart">다시 시작하는 중</span>');
+    
+            //table(check선택)
+            $('.checkOnlyBox .ipt_check').on('click',function(){
+                //_check
+                if ( $(this).is('.all') ) {
+                    if ($(this).prop('checked') ) {
+                        $(this).parents('table').find('tbody .checkOnlyBox .ipt_check').prop('checked', true);
+                    } else {
+                        $(this).parents('table').find('tbody .checkOnlyBox .ipt_check').prop('checked', false);
+                    }
+                } else {
+                    $(this).parents('table').find('thead .checkOnlyBox .ipt_check.all').prop('checked', false);
+                }
                 
-                //[D] 재시작 완료시점으로 해당 수정 코드 수정 요망
-                $(this).parent().find('.msg_restart').delay(3000).queue(function() {
-                    $(this).remove(); 
-                });
-            }); 
+                //버튼 활화화
+                var checkLength = $(this).parents('table').find('tbody .checkOnlyBox .ipt_check:checked').length;
+                
+                if ( 1 <= checkLength ) {
+                    $('#btn_lst_remove').removeClass('disabled'); 
+                } else {
+                    $('#btn_lst_remove').addClass('disabled'); 
+                }
+            });
             
-            //aside(설치완료 처리)
-            $('.tbl_filterBox tbody td a.btn_edge_install').on('click',function() {
-                var edgeCompanyTxt = $(this).parents('tr').find('.tbl_company').text(),
-                    edgeUsernameTxt = $(this).parents('tr').find('.tbl_userName').text(),
-                    edgePnoneNumTxt = $(this).parents('tr').find('.tbl_phoneNum').text(),
-                    edgePlaceTxt = $(this).parents('tr').find('.tbl_edgePlace').text(),
-                    edgeIdTxt = $(this).parents('tr').find('.tbl_edgeID').text(),                
-                    edgeInstallStatus = $(this).parents('tr').find('.tbl_installStatus').text();
-                
+            //aside(Edge등록)
+            $('#btn_edge_add').on('click',function() {
                 //초기화
                 $('.aside > div').css('display','none');
-                $('#aside_install .ipt_txt').val('');
-                $('#aside_install span').text('');
-                $('.tbl_filterBox tbody tr').removeClass('active');
+                $('#aside_add .select option:eq(0)').prop('selected', true);
+                $('#aside_add .ipt_txt').val('');
                 
                 //show
                 $('.asideWrap').addClass('active');
-                $('#aside_install').css('display','block');
-                $(this).parents('tr').addClass('active');
-                
-                //정보입력
-                $('#aside_install #install_company .ipt_field').text(edgeCompanyTxt);
-                $('#aside_install #install_userName .ipt_field').text(edgeUsernameTxt);
-                $('#aside_install #install_phoneNum .ipt_field').text(edgePnoneNumTxt);
-                $('#aside_install #install_edgeID .ipt_field').text(edgeIdTxt);
-                $('#aside_install #install_edgePlace .ipt_field').text(edgePlaceTxt);
-                $('#aside_install #install_handle .select').val(edgeInstallStatus).prop('checked', true);
+                $('body').css('overflow', 'hidden');
+                $('#aside_add').css('display','block');
                 
                 //focus이동
-                $('#aside_install input:first').focus(); 
+                $('#aside_add input:first').focus(); 
             });
             
-            //aside(설치완료 수정)
-            $('.tbl_filterBox tbody td a.btn_edge_modify').on('click',function() {
-                var edgeCompanyTxt = $(this).parents('tr').find('.tbl_company').text(),
-                    edgeUsernameTxt = $(this).parents('tr').find('.tbl_userName').text(),
-                    edgePnoneNumTxt = $(this).parents('tr').find('.tbl_phoneNum').text(),
-                    edgePlaceTxt = $(this).parents('tr').find('.tbl_edgePlace').text(),
-                    edgeIdTxt = $(this).parents('tr').find('.tbl_edgeID').text(),                
-                    edgeInstallStatus = $(this).parents('tr').find('.tbl_installStatus').text();
-                
+            //aside(Edge수정)
+            $('.btn_edge_modify').on('click',function() {
+                var edgeUsernameTxt = $(this).parents('tr').find('.tbl_userName').text(),
+                    edgeUserIdTxt = $(this).parents('tr').find('.tbl_userID').text(),
+                    edgePnoneNumTxt = $(this).parents('tr').find('.tbl_phoneNum').text().replace(/[---]/g, ''),
+                    edgeCompanyTxt = $(this).parents('tr').find('.tbl_company').text(),
+                    edgeCompanyIdTxt = $(this).parents('tr').find('.tbl_companyID').text(),
+                    edgeAuthorityTxt = $(this).parents('tr').find('.tbl_authority').text();
+    
                 //초기화
                 $('.aside > div').css('display','none');
                 $('#aside_modify .ipt_txt').val('');
-                $('#aside_modify span').text('');
                 $('.tbl_filterBox tbody tr').removeClass('active');
                 
                 //show
@@ -2451,13 +2471,13 @@ $(window).load(function() {
                 $(this).parents('tr').addClass('active');
                 
                 //정보입력
-                $('#aside_modify #modify_company .ipt_field').text(edgeCompanyTxt);
-                $('#aside_modify #modify_userName .ipt_field').text(edgeUsernameTxt);
-                $('#aside_modify #modify_phoneNum .ipt_field').text(edgePnoneNumTxt);
-                $('#aside_modify #modify_edgeID .ipt_field').text(edgeIdTxt);
-                $('#aside_modify #modify_edgePlace .ipt_field').text(edgePlaceTxt);
-                $('#aside_modify #modify_handle .select').val(edgeInstallStatus).prop('checked', true);
-                
+                $('#aside_modify #modify_userId .ipt_txt_srch').val(edgeUserIdTxt);  
+                $('#aside_modify #modify_userName .ipt_field').text(edgeUsernameTxt);  
+                $('#aside_modify #modify_phoneNum .ipt_txt').val(edgePnoneNumTxt);
+                $('#aside_modify #modify_company .select').val(edgeCompanyTxt).prop('checked', true); 
+                $('#aside_modify #modify_companyID .ipt_field').text(edgeCompanyIdTxt);  
+                $('#aside_modify #modify_authority .select').val(edgeAuthorityTxt).prop('checked', true);
+                            
                 //focus이동
                 $('#aside_modify input:first').focus(); 
             });
@@ -2465,19 +2485,37 @@ $(window).load(function() {
             //aside(hide)
             $('.aside .btn_aside_close').on('click',function() {
                 $('.asideWrap').removeClass('active');
-                $('body').css('overflow', '');
+                $('body').css('overflow', 'hidden');
                 $('.aside > div').css('display','none');
                 $('.tbl_filterBox tbody tr').removeClass('active');
             });
+            
+            //table(재시작)
+            $('.btn_edge_restart').on('click',function() {
+                $(this).after('<span class="msg_restart">다시 시작하는 중</span>');
+                
+                //[D] 재시작 완료시점으로 해당 수정 코드 수정 요망
+                $(this).parent().find('.msg_restart').delay(3000).queue(function() {
+                    $(this).remove(); 
+                });
+            });
+            
+            //사용자 조회
+            $('#modify_userName .btn_ipt_srch').on('click',function(){
+                $('.srchTblBox .ipt_check').prop('checked', false);
+                $('#btn_userFind_select').prop('disabled', true);
+            });
+            
+            //사용자 조회(선택)
+            $('.srchTblBox .ipt_check').on('click',function(){
+                if ( $(this).prop('checked') ) {
+                    $('.srchTblBox .ipt_check').prop('checked', false);
+                    $(this).prop('checked', true);
+                    $('#btn_userFind_select').prop('disabled', false);
+                }
+            });
         });
     });	
-        
-    //percent maxlength
-    function numberMaxLength(e){
-        if(e.value.length > e.maxLength){
-            e.value = e.value.slice(0, e.maxLength);
-        }
-    }  
 </script>
 
 <!-- Local Script / [D] 추가 스크립트 NBR 21.03.24 -->

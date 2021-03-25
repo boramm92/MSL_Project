@@ -857,7 +857,7 @@
         }
     </style>
 
-    <title>사용자 관리 || Edge Analysis</title>
+    <title>회사 관리 || Edge Analysis</title>
 </head>
 <body>
 <!-- #wrap -->
@@ -1021,12 +1021,12 @@
                         </a>
                     </li>
                     <li>
-                        <a class="active" href="ansis_user_manage.html">
+                        <a href="ansis_user_manage.html">
                             <span class="far fa-address-card"></span>사용자 관리
                         </a>
                     </li>
                     <li>
-                        <a href="ansis_company_manage.html">
+                        <a class="active" href="ansis_company_manage.html">
                             <span class="fas fa-city"></span>회사 관리
                         </a>
                     </li>
@@ -1039,7 +1039,7 @@
         <div class="contents">
             <!-- .titArea -->
         	<div class="titArea">
-            	<h3>사용자 관리</h3>
+            	<h3>회사 관리</h3>
             </div>
             <!-- //.titArea -->
             <!-- .tbl_filterBox -->
@@ -1052,16 +1052,14 @@
                             <dd>
                                 <select class="select">
                                     <option>전체</option>
-                                    <option>아이디</option>
-                                    <option>연락처</option>
-                                    <option>이름</option>
-                                    <option>회사</option>
+                                    <option>회사명</option>
+                                    <option>회사ID</option>
                                 </select>
                                 <input type="text" id="ipt_srch_field" class="ipt_txt">
                             </dd>
                         </dl>
                         <dl>
-                            <dt>권한유형</dt>
+                            <dt>시스템 사용여부</dt>
                             <dd>
                                 <select class="select">
                                     <option>전체</option>
@@ -1089,16 +1087,16 @@
                 <!-- //.tblSrchBox -->
                 <!-- .tbl_top -->
                 <div class="tbl_top">
-                    <h4>사용자 목록</h4>  
+                    <h4>회사 목록</h4>  
                 </div>
                 <!-- //.tbl_top -->
                 <!-- .tbl_mid -->
                 <div class="tbl_mid">
                     <table class="tbl_lst">
-                        <caption class="hide">사용자 목록</caption>
+                        <caption class="hide">회사 목록</caption>
                         <colgroup>
-                            <col width="25"><col width="65"><col><col><col>
-                            <col><col><col><col><col width="70">
+                            <col width="25"><col width="120"><col width="200"><col><col width="120">
+                            <col width="120"><col width="120">
                         </colgroup>
                         <thead>
                             <tr>
@@ -1108,13 +1106,10 @@
                                         <label for="ipt_check_all">체크박스</label>
                                     </div> 
                                 </th>
-                                <th scope="col">No.</th> 
-                                <th scope="col">사용자명</th>
-                                <th scope="col">아이디(이메일)</th>
-                                <th scope="col">사용자 연락처</th>
+                                <th scope="col">No.</th>                                
                                 <th scope="col">회사명</th>
-                                <th scope="col">회사ID</th>                                
-                                <th scope="col">권한유형</th>
+                                <th scope="col">회사 ID</th>
+                                <th scope="col">사용여부</th>
                                 <th scope="col">등록일</th>
                                 <th scope="col">수정</th>
                             </tr>
@@ -1127,13 +1122,10 @@
                                         <label for="ipt_check01">체크박스</label>
                                     </div> 
                                 </td>
-                                <td>1111111</td>                                 
-                                <td class="tbl_userName">홍길동</td> 
-                                <td class="tbl_userID">meseungchan@naver.com</td>
-                                <td class="tbl_phoneNum">010-0000-0000</td>
+                                <td>1111111</td> 
                                 <td class="tbl_company">서울특별시</td>
                                 <td class="tbl_companyID">comp01</td>                                
-                                <td class="tbl_authority">일반사용자</td>
+                                <td>사용</td>
                                 <td>2020-10-28</td>
                                 <td>
                                     <a href="#none" class="btn_line btn_edge_modify">수정</a>
@@ -1146,13 +1138,10 @@
                                         <label for="ipt_check02">체크박스</label>
                                     </div> 
                                 </td>
-                                <td>2</td>                                 
-                                <td class="tbl_userName">홍길순</td>
-                                <td class="tbl_userID">baegittug972@gmail.com</td>
-                                <td class="tbl_phoneNum">010-1111-0000</td>
+                                <td>2</td> 
                                 <td class="tbl_company">서초구청</td>
                                 <td class="tbl_companyID">comp02</td>                                
-                                <td class="tbl_authority">일반사용자</td>
+                                <td>사용</td>
                                 <td>2020-10-28</td>
                                 <td>
                                     <a href="#none" class="btn_line btn_edge_modify">수정</a>
@@ -1165,13 +1154,10 @@
                                         <label for="ipt_check03">체크박스</label>
                                     </div> 
                                 </td>
-                                <td>3</td>                                 
-                                <td class="tbl_userName">김영희</td>  
-                                <td class="tbl_userID">thesun6201@gmail.com</td>
-                                <td class="tbl_phoneNum">010-2222-0000</td>
+                                <td>3</td> 
                                 <td class="tbl_company">용인시</td>
-                                <td class="tbl_companyID">comp04</td>                                
-                                <td class="tbl_authority">일반사용자</td>
+                                <td class="tbl_companyID">comp03</td>                                
+                                <td>사용</td>
                                 <td>2020-10-28</td>
                                 <td>
                                     <a href="#none" class="btn_line btn_edge_modify">수정</a>
@@ -1184,39 +1170,17 @@
                                         <label for="ipt_check04">체크박스</label>
                                     </div> 
                                 </td>
-                                <td>4</td>                                 
-                                <td class="tbl_userName">김철수</td> 
-                                <td class="tbl_userID">thesun6201@gmail.com</td>
-                                <td class="tbl_phoneNum">010-333-0000</td>
+                                <td>4</td> 
                                 <td class="tbl_company">성남시</td>
-                                <td class="tbl_companyID">comp05</td>                                
-                                <td class="tbl_authority">설치기사</td>
+                                <td class="tbl_companyID">comp04</td>                                
+                                <td>사용</td>
                                 <td>2020-10-28</td>
                                 <td>
                                     <a href="#none" class="btn_line btn_edge_modify">수정</a>
                                 </td>
                             </tr>
                             <tr>
-                                <td scope="row">
-                                    <div class="checkOnlyBox">                                            
-                                        <input type="checkbox" name="ipt_tbl_check" id="ipt_check05" class="ipt_check">
-                                        <label for="ipt_check05">체크박스</label>
-                                    </div> 
-                                </td>
-                                <td>4</td>                                 
-                                <td class="tbl_userName">박관리</td>  
-                                <td class="tbl_userID">jamesdkkim2100@mindslab.ai</td>
-                                <td class="tbl_phoneNum">010-4444-0000</td>
-                                <td class="tbl_company">마인즈랩</td>
-                                <td class="tbl_companyID">comp06</td>                                
-                                <td class="tbl_authority">관리자</td>
-                                <td>2020-10-28</td>
-                                <td>
-                                    <a href="#none" class="btn_line btn_edge_modify">수정</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td scope="row" colspan="10" class="dataNone">데이터가 없습니다.</td>
+                                <td scope="row" colspan="7" class="dataNone">데이터가 없습니다.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -1225,7 +1189,7 @@
                 <!-- .tbl_btm -->
                 <div class="tbl_btm">
                     <!-- left button -->
-                    <div class="btnBox fl"><!-- 관리자 권한 -->
+                    <div class="btnBox fl">
                         <a href="#alt_edgeLstRemove" id="btn_lst_remove" class="btn_alt_open disabled"><span class="fas fa-times"></span>삭제</a>
                     </div>
                     <!-- //left button -->
@@ -1242,7 +1206,7 @@
                     </div>
                     <!-- //.pageing -->
                     <!-- right button -->
-                    <div class="btnBox fr"><!-- 관리자 권한 -->
+                    <div class="btnBox fr">
                         <a id="btn_edge_add" href="#none"><span class="fas fa-plus"></span>등록</a>
                     </div>
                     <!-- //right button -->
@@ -1259,66 +1223,42 @@
             <div class="aside">
                 <!-- .aside_edit(등록) -->
                 <div id="aside_add" class="aside_edit normal">
+                    <!-- .titArea -->
                     <div class="titArea">
-                        <h3>사용자 등록</h3>
+                        <h3>회사 등록</h3>
                     </div>
+                    <!-- //.titArea -->
+                    <!-- .contArea -->
                     <div class="contArea">
                         <div class="tit">
-                            <h4>사용자 정보</h4>
+                            <h4>회사 정보</h4>
                         </div>
                         <div class="cont">
                             <table class="tbl_edit">
-                                <caption class="hide">사용자 정보</caption>
+                                <caption class="hide">회사 정보</caption>
                                 <colgroup>
-                                    <col width="30%">
-                                    <col>
+                                    <col width="30%"><col>
                                 </colgroup>
                                 <tbody>
                                     <tr>
-                                        <th scope="row">사용자명</th>
-                                        <td>
-                                            <input type="text" class="ipt_txt_srch" name="name" value="">
-                                            <a href="#lyr_user_srch" class="btn_lyr_open btn_ipt_srch"><span class="fas fa-search" title="검색"></span></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">아이디 이메일</th>
-                                        <td><input type="text" class="ipt_txt_srch" name="email" value=""></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">사용자 연락처</th>
-                                        <td><input type="tel" class="ipt_txt phone_numHyphen" maxlength="13" placeholder="'-'를 제외하고 숫자만 입력하세요." name="tel" value=""></td>
-                                    </tr>
-                                    <tr>
                                         <th scope="row">회사명</th>
                                         <td>
-                                            <select class="select" name="clientCompanyId">
-                                                <option value="comp14">선택</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">회사 ID</th>
-                                        <td><span class="ipt_field"></span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">권한유형</th>
-                                        <td>
-                                            <select class="select" name="authId">
-                                                <option value="1">일반사용자</option>
-                                                <option value="2">설치기사</option>
-                                                <option value="3">회사관리자</option>
-                                                <option value="4">관리자</option>
-                                            </select>
+                                            <input type="text" class="ipt_txt_check">
+                                            <button type="button" class="btn_ipt_srch">중복확인</button>
+                                            <!-- 중복확인 체크 메세지
+                                            <p class="msg_check"><span class="usable">사용 가능한 회사명입니다.</span></p>
+                                            <p class="msg_check"><span class="unusable">등록 된 회사명입니다.</span></p>
+                                            -->
                                         </td>
                                     </tr>
                                     <tr>
                                         <th scope="row">사용여부</th>
                                         <td>
-                                            <div class="radioBox"><input type="radio" name="insertUseYn" id="user_insert_use" class="ipt_radio" value="Y" checked="">
-                                                <label for="user_insert_use">사용</label>
-                                                <input type="radio" name="insertUseYn" id="user_insert_unused" class="ipt_radio" value="N">
-                                                <label for="user_insert_unused">미사용</label>
+                                            <div class="radioBox">
+                                                <input type="radio" name="company_add_info" id="company_add_use" class="ipt_radio" checked>
+                                                <label for="company_add_use">사용</label>
+                                                <input type="radio" name="company_add_info" id="company_add_unused" class="ipt_radio">
+                                                <label for="company_add_unused">미사용</label>
                                             </div>
                                         </td>
                                     </tr>
@@ -1326,73 +1266,55 @@
                             </table>
                         </div>
                     </div>
-                    <div class="foo_btnBox"><button type="button" class="btn_aside_close">취소</button>
-                        <button type="button" class="ft_point">등록</button>
+                    <!-- //.contArea -->
+                    <!-- .foo_btnBox -->
+                    <div class="foo_btnBox">
+                        <button type="button" class="btn_aside_close">취소</button>
+                        <button type="button" class="ft_point">저장</button>
                     </div>
-                </div>
+                    <!-- //.foo_btnBox -->
+                </div>            
                 <!-- .aside_edit(등록) -->
 
                 <!-- .aside_edit(수정) -->
                 <div id="aside_modify" class="aside_edit normal">
+                    <!-- .titArea -->
                     <div class="titArea">
-                        <h3>사용자 수정</h3>
+                        <h3>회사 수정</h3>
                     </div>
+                    <!-- //.titArea -->                
+                    <!-- .contArea -->
                     <div class="contArea">
                         <div class="tit">
-                            <h4>사용자 정보</h4>
+                            <h4>회사 정보</h4>
                         </div>
                         <div class="cont">
                             <table class="tbl_edit">
-                                <caption class="hide">사용자 정보</caption>
+                                <caption class="hide">회사 정보</caption>
                                 <colgroup>
-                                    <col width="30%">
-                                    <col>
+                                    <col width="30%"><col>
                                 </colgroup>
                                 <tbody>
                                     <tr>
-                                        <th scope="row">사용자명</th>
-                                        <td>
-                                            <input type="text" class="ipt_txt_srch" name="name" value="">
-                                            <a href="#lyr_user_srch" class="btn_lyr_open btn_ipt_srch"><span class="fas fa-search" title="검색"></span></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">아이디 이메일</th>
-                                        <td><input type="text" class="ipt_txt_srch" name="email" value=""></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">사용자 연락처</th>
-                                        <td><input type="tel" class="ipt_txt phone_numHyphen" maxlength="13" placeholder="'-'를 제외하고 숫자만 입력하세요." name="tel" value=""></td>
-                                    </tr>
-                                    <tr>
                                         <th scope="row">회사명</th>
-                                        <td>
-                                            <select class="select" name="clientCompanyId">
-                                                <option value="comp14">선택</option>
-                                            </select>
+                                        <td id="modify_company">
+                                            <input type="text" class="ipt_txt_check" maxlength="15">
+                                            <button type="button" class="btn_ipt_srch">중복확인</button>
                                         </td>
                                     </tr>
                                     <tr>
                                         <th scope="row">회사 ID</th>
-                                        <td><span class="ipt_field"></span></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">권한유형</th>
-                                        <td>
-                                            <select class="select" name="authId">
-                                                <option value="1">일반사용자</option>
-                                                <option value="2">설치기사</option>
-                                                <option value="3">회사관리자</option>
-                                                <option value="4">관리자</option>
-                                            </select>
+                                        <td id="modify_companyID">
+                                            <span class="ipt_field"></span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <th scope="row">사용여부</th>
                                         <td>
-                                            <div class="radioBox"><input type="radio" name="insertUseYn" id="company_modify_use" class="ipt_radio" value="Y" checked="">
+                                            <div class="radioBox">
+                                                <input type="radio" name="company_modify_info" id="company_modify_use" class="ipt_radio" checked>
                                                 <label for="company_modify_use">사용</label>
-                                                <input type="radio" name="insertUseYn" id="company_modify_unused" class="ipt_radio" value="N">
+                                                <input type="radio" name="company_modify_info" id="company_modify_unused" class="ipt_radio">
                                                 <label for="company_modify_unused">미사용</label>
                                             </div>
                                         </td>
@@ -1402,7 +1324,6 @@
                         </div>
                     </div>
                     <!-- //.contArea -->
-
                     <!-- .foo_btnBox -->
                     <div class="foo_btnBox">
                         <button type="button" class="btn_aside_close">취소</button>
@@ -1419,164 +1340,6 @@
     <!-- //#container -->
 </div>
 <!-- //#wrap -->
-    
-<!-- 사용자 조회 -->  
-<div id="lyr_user_srch" class="lyrBox">
-    <div class="lyr_top">
-        <h3>사용자 조회</h3>
-        <button type="button" class="btn_lyr_close">닫기</button>
-    </div>
-    <div class="lyr_mid">        
-        <div class="srchBox">
-            <select class="select">
-                <option>전체</option>
-                <option>ID(E-mail)</option>
-                <option>이름</option>
-            </select>
-            <input type="text" class="ipt_txt" autocomplete="off">
-            <button type="button" class="btn_ipt_srch"><span class="fas fa-search" title="검색"></span></button>
-        </div>
-        <div class="srchTblBox">
-            <table class="tbl_lst">
-                <caption class="hide">사용자 조회</caption>
-                <colgroup>
-                    <col width="40"><col><col><col>
-                </colgroup>
-                <thead>
-                    <tr>
-                        <th scope="col">선택</th>
-                        <th scope="col">No.</th>                                
-                        <th scope="col">ID(E-mail)</th>
-                        <th scope="col">이름</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td scope="row">
-                            <div class="checkOnlyBox">                                            
-                                <input type="checkbox" name="ipt_lyr_check" id="ipt_lyrCheck01" class="ipt_check">
-                                <label for="ipt_lyrCheck01">체크박스</label>
-                            </div> 
-                        </td>
-                        <td>1</td> 
-                        <td>asdfg1234@google.com</td> 
-                        <td>홍길동</td>
-                    </tr>
-                    <tr>
-                        <td scope="row">
-                            <div class="checkOnlyBox">                                            
-                                <input type="checkbox" name="ipt_lyr_check" id="ipt_lyrCheck02" class="ipt_check">
-                                <label for="ipt_lyrCheck02">체크박스</label>
-                            </div> 
-                        </td>
-                        <td>2</td> 
-                        <td>asdfg1234@google.com</td> 
-                        <td>홍길동</td>
-                    </tr>
-                    <tr>
-                        <td scope="row">
-                            <div class="checkOnlyBox">                                            
-                                <input type="checkbox" name="ipt_lyr_check" id="ipt_lyrCheck03" class="ipt_check">
-                                <label for="ipt_lyrCheck03">체크박스</label>
-                            </div> 
-                        </td>
-                        <td>3</td> 
-                        <td>asdfg1234@google.com</td> 
-                        <td>홍길동</td>
-                    </tr>
-                    <tr>
-                        <td scope="row">
-                            <div class="checkOnlyBox">                                            
-                                <input type="checkbox" name="ipt_lyr_check" id="ipt_lyrCheck04" class="ipt_check">
-                                <label for="ipt_lyrCheck04">체크박스</label>
-                            </div> 
-                        </td>
-                        <td>4</td> 
-                        <td>asdfg1234@google.com</td> 
-                        <td>홍길동</td>
-                    </tr>
-                    <tr>
-                        <td scope="row">
-                            <div class="checkOnlyBox">                                            
-                                <input type="checkbox" name="ipt_lyr_check" id="ipt_lyrCheck05" class="ipt_check">
-                                <label for="ipt_lyrCheck05">체크박스</label>
-                            </div> 
-                        </td>
-                        <td>5</td> 
-                        <td>asdfg1234@google.com</td> 
-                        <td>홍길동</td>
-                    </tr>
-                    <tr>
-                        <td scope="row">
-                            <div class="checkOnlyBox">                                            
-                                <input type="checkbox" name="ipt_lyr_check" id="ipt_lyrCheck06" class="ipt_check">
-                                <label for="ipt_lyrCheck06">체크박스</label>
-                            </div> 
-                        </td>
-                        <td>6</td> 
-                        <td>asdfg1234@google.com</td> 
-                        <td>홍길동</td>
-                    </tr>
-                    <tr>
-                        <td scope="row">
-                            <div class="checkOnlyBox">                                            
-                                <input type="checkbox" name="ipt_lyr_check" id="ipt_lyrCheck07" class="ipt_check">
-                                <label for="ipt_lyrCheck07">체크박스</label>
-                            </div> 
-                        </td>
-                        <td>7</td> 
-                        <td>asdfg1234@google.com</td> 
-                        <td>홍길동</td>
-                    </tr>
-                    <tr>
-                        <td scope="row">
-                            <div class="checkOnlyBox">                                            
-                                <input type="checkbox" name="ipt_lyr_check" id="ipt_lyrCheck08" class="ipt_check">
-                                <label for="ipt_lyrCheck08">체크박스</label>
-                            </div> 
-                        </td>
-                        <td>8</td> 
-                        <td>asdfg1234@google.com</td> 
-                        <td>홍길동</td>
-                    </tr>
-                    <tr>
-                        <td scope="row">
-                            <div class="checkOnlyBox">                                            
-                                <input type="checkbox" name="ipt_lyr_check" id="ipt_lyrCheck09" class="ipt_check">
-                                <label for="ipt_lyrCheck09">체크박스</label>
-                            </div> 
-                        </td>
-                        <td>9</td> 
-                        <td>asdfg1234@google.com</td> 
-                        <td>홍길동</td>
-                    </tr>
-                    <tr>
-                        <td scope="row" class="dataNone" colspan="4">데이터가 없습니다.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <!-- pageing -->
-        <div class="pageing">
-            <a class="first" href="#none">맨 처음 페이지로</a>
-            <a class="prev" href="#none">이전 페이지로</a>
-            <strong>1</strong>
-            <a href="#none">2</a>
-            <a href="#none">3</a>
-            <a href="#none">4</a>
-            <a class="next" href="#none">다음 페이지로</a>
-            <a class="end" href="#none">맨 마지막 페이지로</a>
-        </div>
-        <!-- //.pageing -->
-    </div>
-    <div class="lyr_btm">
-        <div class="btnBox sz_small">
-            <button class="btn_lyr_close">닫기</button>
-            <button id="btn_userFind_select" class="btn_lyr_close" disabled>선택완료</button>
-        </div>
-    </div>
-</div>
-<!-- //사용자 조회 --> 
 
 <!-- 문의하기 -->  
 <div id="lyr_contact_us" class="lyrBox contactBox">
@@ -1659,7 +1422,6 @@ $(window).load(function() {
 </script> 
 
 <!-- Local Script / [D] 기존 스크립트 -->
-<!-- Local Script -->
 <script type="text/javascript">
     jQuery.event.add(window,"load",function() {
         $(document).ready(function() {  
@@ -1701,7 +1463,7 @@ $(window).load(function() {
                     $('.srch_field .srch_btn button:submit').trigger('click');
                 }
             });
-    
+            
             //table(check선택)
             $('.checkOnlyBox .ipt_check').on('click',function(){
                 //_check
@@ -1743,12 +1505,8 @@ $(window).load(function() {
             
             //aside(Edge수정)
             $('.btn_edge_modify').on('click',function() {
-                var edgeUsernameTxt = $(this).parents('tr').find('.tbl_userName').text(),
-                    edgeUserIdTxt = $(this).parents('tr').find('.tbl_userID').text(),
-                    edgePnoneNumTxt = $(this).parents('tr').find('.tbl_phoneNum').text().replace(/[---]/g, ''),
-                    edgeCompanyTxt = $(this).parents('tr').find('.tbl_company').text(),
-                    edgeCompanyIdTxt = $(this).parents('tr').find('.tbl_companyID').text(),
-                    edgeAuthorityTxt = $(this).parents('tr').find('.tbl_authority').text();
+                var edgeCompanyTxt = $(this).parents('tr').find('.tbl_company').text(),
+                    edgeCompanyIdTxt = $(this).parents('tr').find('.tbl_companyID').text();
     
                 //초기화
                 $('.aside > div').css('display','none');
@@ -1762,13 +1520,9 @@ $(window).load(function() {
                 $(this).parents('tr').addClass('active');
                 
                 //정보입력
-                $('#aside_modify #modify_userId .ipt_txt_srch').val(edgeUserIdTxt);  
-                $('#aside_modify #modify_userName .ipt_field').text(edgeUsernameTxt);  
-                $('#aside_modify #modify_phoneNum .ipt_txt').val(edgePnoneNumTxt);
-                $('#aside_modify #modify_company .select').val(edgeCompanyTxt).prop('checked', true); 
+                $('#aside_modify #modify_company .ipt_txt_check').val(edgeCompanyTxt);  
                 $('#aside_modify #modify_companyID .ipt_field').text(edgeCompanyIdTxt);  
-                $('#aside_modify #modify_authority .select').val(edgeAuthorityTxt).prop('checked', true);
-                            
+                
                 //focus이동
                 $('#aside_modify input:first').focus(); 
             });
@@ -1788,21 +1542,6 @@ $(window).load(function() {
                 $(this).parent().find('.msg_restart').delay(3000).queue(function() {
                     $(this).remove(); 
                 });
-            });
-            
-            //사용자 조회
-            $('#modify_userName .btn_ipt_srch').on('click',function(){
-                $('.srchTblBox .ipt_check').prop('checked', false);
-                $('#btn_userFind_select').prop('disabled', true);
-            });
-            
-            //사용자 조회(선택)
-            $('.srchTblBox .ipt_check').on('click',function(){
-                if ( $(this).prop('checked') ) {
-                    $('.srchTblBox .ipt_check').prop('checked', false);
-                    $(this).prop('checked', true);
-                    $('#btn_userFind_select').prop('disabled', false);
-                }
             });
         });
     });	
