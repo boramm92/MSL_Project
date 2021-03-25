@@ -1065,8 +1065,10 @@
                             <dd>
                                 <select class="select">
                                     <option>전체</option>
-                                    <option>사용</option>
-                                    <option>미사용</option>
+                                    <option>개인사용자</option>
+                                    <option>설치기사</option>
+                                    <option>회사관리자</option>
+                                    <option>관리자</option>
                                 </select>
                             </dd>
                         </dl>
@@ -1098,7 +1100,7 @@
                         <caption class="hide">사용자 목록</caption>
                         <colgroup>
                             <col width="25"><col width="65"><col><col><col>
-                            <col><col><col><col><col width="70">
+                            <col><col><col><col><col><col width="70">
                         </colgroup>
                         <thead>
                             <tr>
@@ -1116,6 +1118,7 @@
                                 <th scope="col">회사ID</th>                                
                                 <th scope="col">권한유형</th>
                                 <th scope="col">등록일</th>
+                                <th scope="col">사용여부</th>
                                 <th scope="col">수정</th>
                             </tr>
                         </thead>
@@ -1135,6 +1138,7 @@
                                 <td class="tbl_companyID">comp01</td>                                
                                 <td class="tbl_authority">일반사용자</td>
                                 <td>2020-10-28</td>
+                                <td>사용</td>
                                 <td>
                                     <a href="#none" class="btn_line btn_edge_modify">수정</a>
                                 </td>
@@ -1154,6 +1158,7 @@
                                 <td class="tbl_companyID">comp02</td>                                
                                 <td class="tbl_authority">일반사용자</td>
                                 <td>2020-10-28</td>
+                                <td>사용</td>
                                 <td>
                                     <a href="#none" class="btn_line btn_edge_modify">수정</a>
                                 </td>
@@ -1173,6 +1178,7 @@
                                 <td class="tbl_companyID">comp04</td>                                
                                 <td class="tbl_authority">일반사용자</td>
                                 <td>2020-10-28</td>
+                                <td>사용</td>
                                 <td>
                                     <a href="#none" class="btn_line btn_edge_modify">수정</a>
                                 </td>
@@ -1192,6 +1198,7 @@
                                 <td class="tbl_companyID">comp05</td>                                
                                 <td class="tbl_authority">설치기사</td>
                                 <td>2020-10-28</td>
+                                <td>사용</td>
                                 <td>
                                     <a href="#none" class="btn_line btn_edge_modify">수정</a>
                                 </td>
@@ -1211,6 +1218,7 @@
                                 <td class="tbl_companyID">comp06</td>                                
                                 <td class="tbl_authority">관리자</td>
                                 <td>2020-10-28</td>
+                                <td>사용</td>
                                 <td>
                                     <a href="#none" class="btn_line btn_edge_modify">수정</a>
                                 </td>
@@ -1253,7 +1261,8 @@
         </div>
         <!-- //.contents -->
 
-        <!-- .aside -->
+        <!-- .asideWrap -->
+        <!-- [D] 기존에는 div.aside로만 마크업이 되어있었으나, ui변경으로 div.asideWrap과 div.aside_bg가 추가됨 -->
         <div class="asideWrap">
             <div class="aside_bg"></div>
             <div class="aside">
@@ -1362,11 +1371,13 @@
                                     </tr>
                                     <tr>
                                         <th scope="row">사용자 연락처</th>
-                                        <td><input type="tel" class="ipt_txt phone_numHyphen" maxlength="13" placeholder="'-'를 제외하고 숫자만 입력하세요." name="tel" value=""></td>
+                                        <td id="modify_phoneNum">
+                                            <input type="tel" class="ipt_txt phone_numHyphen" maxlength="13" placeholder="'-'를 제외하고 숫자만 입력하세요." name="tel" value="">
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th scope="row">회사명</th>
-                                        <td>
+                                        <td id="modify_company">
                                             <select class="select" name="clientCompanyId">
                                                 <option value="comp14">선택</option>
                                             </select>
@@ -1374,11 +1385,11 @@
                                     </tr>
                                     <tr>
                                         <th scope="row">회사 ID</th>
-                                        <td><span class="ipt_field"></span></td>
+                                        <td id="modify_companyID"><span class="ipt_field"></span></td>
                                     </tr>
                                     <tr>
                                         <th scope="row">권한유형</th>
-                                        <td>
+                                        <td id="modify_authority">
                                             <select class="select" name="authId">
                                                 <option value="1">일반사용자</option>
                                                 <option value="2">설치기사</option>
@@ -1390,7 +1401,8 @@
                                     <tr>
                                         <th scope="row">사용여부</th>
                                         <td>
-                                            <div class="radioBox"><input type="radio" name="insertUseYn" id="company_modify_use" class="ipt_radio" value="Y" checked="">
+                                            <div class="radioBox">
+                                                <input type="radio" name="insertUseYn" id="company_modify_use" class="ipt_radio" value="Y" checked="">
                                                 <label for="company_modify_use">사용</label>
                                                 <input type="radio" name="insertUseYn" id="company_modify_unused" class="ipt_radio" value="N">
                                                 <label for="company_modify_unused">미사용</label>
@@ -1411,10 +1423,11 @@
                     <!-- //.foo_btnBox -->
                 </div>            
                 <!-- .aside_edit(수정) -->
+
                 <button type="button" class="btn_aside_close ico">닫기</button>
             </div>
         </div>
-        <!-- //.aside -->
+        <!-- //.asideWrap -->
     </div>
     <!-- //#container -->
 </div>
@@ -1641,7 +1654,7 @@
 <!-- Local Script -->
 <script type="text/javascript" src="../assets/js/maumEdgeAI.js"></script>
 
-<!-- header 변형 / [D] 기존 스크립트 -->
+<!-- header 변형 / [D] 기존 스크립트(변동없음) -->
 <script type="text/javascript">
 $(document).ready(function() {  
     $('#wrap').addClass('transform');
@@ -1650,7 +1663,7 @@ $(document).ready(function() {
 });
 </script> 
 
-<!-- page Landing / [D] 기존 스크립트 -->  
+<!-- page Landing / [D] 기존 스크립트(변동없음) -->  
 <script type="text/javascript">   
 $(window).load(function() { 
     //page loading delete  
@@ -1658,8 +1671,7 @@ $(window).load(function() {
 }); 
 </script> 
 
-<!-- Local Script / [D] 기존 스크립트 -->
-<!-- Local Script -->
+<!-- Local Script / [D] 기존 스크립트(수정) -->
 <script type="text/javascript">
     jQuery.event.add(window,"load",function() {
         $(document).ready(function() {  
@@ -1733,7 +1745,9 @@ $(window).load(function() {
                 $('#aside_add .ipt_txt').val('');
                 
                 //show
+                // [D/NBR] 수정 - 기존 $('.aside').addClass('active'); -> $('.asideWrap').addClass('active'); 로 수정
                 $('.asideWrap').addClass('active');
+                // [D/NBR] 추가 - 새로 추가
                 $('body').css('overflow', 'hidden');
                 $('#aside_add').css('display','block');
                 
@@ -1756,7 +1770,9 @@ $(window).load(function() {
                 $('.tbl_filterBox tbody tr').removeClass('active');
                 
                 //show
+                // [D/NBR] 수정 - 기존 $('.aside').addClass('active'); -> $('.asideWrap').addClass('active'); 로 수정
                 $('.asideWrap').addClass('active');
+                // [D/NBR] 추가 - 새로 추가
                 $('body').css('overflow', 'hidden');
                 $('#aside_modify').css('display','block');
                 $(this).parents('tr').addClass('active');
@@ -1775,7 +1791,10 @@ $(window).load(function() {
                     
             //aside(hide)
             $('.aside .btn_aside_close').on('click',function() {
+                // [D/NBR] 수정 - 기존 $('.aside').removeClass('active'); -> $('.asideWrap').removeClass('active'); 로 수정
                 $('.asideWrap').removeClass('active');
+                // [D/NBR] 추가 - 새로 추가
+                $('body').css('overflow', '');
                 $('.aside > div').css('display','none');
                 $('.tbl_filterBox tbody tr').removeClass('active');
             });

@@ -988,15 +988,15 @@
                     <h3>나의 Edge</h3>
 
                     <div class="sort_group">
-                        <select class="select">
-                            <option value="">전체</option>
+                        <select class="select edge_type_slt">
+                            <option value="total">전체</option>
                             <option value="">배회</option>
                             <option value="">실신</option>
                             <option value="">차량인식</option>                        
                             <option value="">침입</option>
                         </select>
                         <!-- [D] 옵션 '전체' 선택 시 바로가기 버튼 비활성화됨  -->
-                        <button type="button" class="btn_go_edgeInquiry">바로가기</button>
+                        <button type="button" class="btn_go_edgeInquiry" disabled>바로가기</button>
                     </div>
 
                     <p class="infoTxt">
@@ -1341,16 +1341,16 @@
 <!-- Local Script -->
 <script type="text/javascript" src="../assets/js/maumEdgeAI.js"></script>
 
+<!-- header 변형 / [D] 기존 스크립트(변동없음) -->
 <script type="text/javascript">
 $(document).ready(function() {  
-    //header 변형
     $('#wrap').addClass('transform');
     $('#wrap').addClass('trans');
     $('#container').addClass('view');
 });
 </script> 
 
-<!-- page Landing -->  
+<!-- page Landing / [D] 기존 스크립트(변동없음) -->  
 <script type="text/javascript">   
 $(window).load(function() { 
     //page loading delete  
@@ -1358,13 +1358,21 @@ $(window).load(function() {
 }); 
 </script> 
 
-<!-- Local Script -->
+<!-- Local Script / [D] 추가 스크립트 -->
 <script type="text/javascript">
-jQuery.event.add(window,"load",function() {
-    $(document).ready(function() {
-        // $('.btn_go_edgeInquiry').
+    // edge selectbox 선택에 따른 바로가기 버튼 활성화
+    var edgeTypeSelectBox = document.querySelector('.edge_type_slt');
+    console.log(edgeTypeSelectBox)
+
+    edgeTypeSelectBox.addEventListener('change', function(){
+        var val = this.value;
+
+        if(val == 'total'){
+            document.querySelector('.btn_go_edgeInquiry').disabled = true;  
+        }else{
+            document.querySelector('.btn_go_edgeInquiry').disabled = false;
+        }
     });
-});	
 </script>
 </body>
 </html>

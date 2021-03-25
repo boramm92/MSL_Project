@@ -45,7 +45,7 @@ $(document).ready(function (){
         $('body').find(altHrefId).css('display','block');
         $('body').find(altHrefId).wrap('<div class="altWrap"></div>');
         
-        //hide [D] 21.03.25 NBR 수정
+        //hide - [D/NBR] 수정 - 21.03.25 NBR 
         $('.btn_alt_close').on('click',function(){
             if($(this).parents().is('.alt_dual')){
                 $('body').find(altHrefId).css('display','none'); 

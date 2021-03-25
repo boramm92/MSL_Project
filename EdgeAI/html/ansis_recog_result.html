@@ -1062,7 +1062,7 @@
                             </dd>
                         </dl>
                         <dl>
-                            <dt>시간</dt>
+                            <dt>인식 시간</dt>
                             <dd>
                                 <div class="date">
                                     <input type="text" name="pasTime" id="pasStartTime" class="ipt_dateTime" autocomplete="off">
@@ -1212,7 +1212,8 @@
         </div>
         <!-- //.contents -->
 
-        <!-- .aside -->
+        <!-- .asideWrap -->
+        <!-- [D] 기존에는 div.aside로만 마크업이 되어있었으나, ui변경으로 div.asideWrap과 div.aside_bg가 추가됨 -->
         <div class="asideWrap">
             <div class="aside_bg"></div>
             <div class="aside">
@@ -1279,10 +1280,11 @@
                     <!-- //.foo_btnBox -->
                 </div>            
                 <!-- .aside_edit(edge수정) -->
+
                 <button type="button" class="btn_aside_close ico">닫기</button>
             </div>
         </div>
-        <!-- //.aside -->
+        <!-- //.asideWrap -->
     </div>
     <!-- //#container -->
 </div>
@@ -1339,7 +1341,7 @@
 <!-- Local Script -->
 <script type="text/javascript" src="../assets/js/maumEdgeAI.js"></script>
 
-<!-- header 변형 / [D] 기존 스크립트 -->
+<!-- header 변형 / [D] 기존 스크립트(변동없음) -->
 <script type="text/javascript">
 $(document).ready(function() {  
     $('#wrap').addClass('transform');
@@ -1348,7 +1350,7 @@ $(document).ready(function() {
 });
 </script> 
 
-<!-- page Landing / [D] 기존 스크립트 -->  
+<!-- page Landing / [D] 기존 스크립트(변동없음) --> 
 <script type="text/javascript">   
 $(window).load(function() { 
     //page loading delete  
@@ -1356,7 +1358,7 @@ $(window).load(function() {
 }); 
 </script> 
 
-<!-- Local Script / [D] 기존 스크립트 -->
+<!-- Local Script / [D] 기존 스크립트(수정) -->
 <script type="text/javascript">
     jQuery.event.add(window,"load",function() {
         $(document).ready(function() {  
@@ -1389,7 +1391,10 @@ $(window).load(function() {
                 $('.tbl_filterBox tbody tr').removeClass('active');
                 
                 //show
+                // [D/NBR] 수정 - 기존 $('.aside').addClass('active'); -> $('.asideWrap').addClass('active'); 로 수정
                 $('.asideWrap').addClass('active');
+                // [D/NBR] 추가 - 새로 추가
+                $('body').css('overflow', 'hidden');
                 $('#aside_modify').css('display','block');
                 $(this).parent().addClass('active');
                 
@@ -1405,7 +1410,10 @@ $(window).load(function() {
                     
             //aside(hide)
             $('.aside .btn_aside_close').on('click',function() {
+                // [D/NBR] 수정 - 기존 $('.aside').removeClass('active'); -> $('.asideWrap').removeClass('active'); 로 수정
                 $('.asideWrap').removeClass('active');
+                // [D/NBR] 추가 - 새로 추가
+                $('body').css('overflow', '');
                 $('.aside > div').css('display','none');
                 $('.tbl_filterBox tbody tr').removeClass('active');
             });

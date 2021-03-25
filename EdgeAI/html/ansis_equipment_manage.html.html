@@ -1049,8 +1049,8 @@
                                 <select class="select" name="searchType">
                                     <option value="all">전체</option>
                                     <option value="companyNm">회사명</option>
-                                    <option value="userNm">사용자명</option>
-                                    <option value="edgeId">Edge Id</option>
+                                    <option value="">회사ID</option>
+                                    <option value="">사용자명</option>
                                     <option value="addrNm">설치장소</option>
                                 </select>&nbsp;
                                 <input type="text" class="ipt_txt" name="searchTxt" value="">
@@ -1517,7 +1517,8 @@
         </div>
         <!-- //.contents -->
 
-        <!-- #aside -->
+        <!-- .asideWrap -->
+        <!-- [D] 기존에는 div.aside로만 마크업이 되어있었으나, ui변경으로 div.asideWrap과 div.aside_bg가 추가됨 -->
         <div class="asideWrap">
             <div class="aside_bg"></div>
             <div id="aside" class="aside active">
@@ -2022,7 +2023,7 @@
                                                     <th scope="row">진출입 설정</th>
                                                     <td>
                                                         <div class="radioBox">
-                                                            <input type="radio" name="camera10" id="usb10"checked>
+                                                            <input type="radio" name="camera10" id="usb10" checked>
                                                             <label for="usb10">USB</label>
                                                             <input type="radio" name="camera10" id="rtsp10">
                                                             <label for="rtsp10">RTSP</label>
@@ -2491,7 +2492,7 @@
                                                     <th scope="row">진출입 설정</th>
                                                     <td>
                                                         <div class="radioBox">
-                                                            <input type="radio" name="camera20" id="usb20"checked>
+                                                            <input type="radio" name="camera20" id="usb20" checked>
                                                             <label for="usb20">USB</label>
                                                             <input type="radio" name="camera20" id="rtsp20">
                                                             <label for="rtsp20">RTSP</label>
@@ -2527,10 +2528,11 @@
                     <!-- //.foo_btnBox -->
                 </div>            
                 <!-- //Edge 등록 -->
+                
                 <button type="button" class="btn_aside_close ico">닫기</button>
             </div>
         </div>
-        <!-- //#aside -->
+        <!-- //.asideWrap -->
     </div>
     <!-- //#container -->
 </div>
@@ -2592,7 +2594,8 @@
 </div>
 <!-- //목록 삭제 --> 
 
-<!-- 카메라 삭제 -->      
+<!-- 카메라 삭제 -->   
+<!-- [D] 카메라 삭제 시 등장하는 alert으로 기존에 'altBox' 클래스에 'alt_dual' 추가됨 -->   
 <div id="alt_edgeCameraRemove" class="altBox alt_dual">
     <div class="msgBox">
         <p class="msgTxt">삭제된 카메라는 복구가 불가능합니다.<span>정말 카메라를 삭제하시겠습니까?</span></p>
@@ -2769,7 +2772,7 @@
 <!-- Local Script -->
 <script type="text/javascript" src="../assets/js/maumEdgeAI.js"></script>
 
-<!-- header 변형 / [D] 기존 스크립트 -->
+<!-- header 변형 / [D] 기존 스크립트(변동없음) -->
 <script type="text/javascript">
 $(document).ready(function() {  
     $('#wrap').addClass('transform');
@@ -2778,7 +2781,7 @@ $(document).ready(function() {
 });
 </script> 
 
-<!-- page Landing / [D] 기존 스크립트 -->  
+<!-- page Landing / [D] 기존 스크립트(변동없음) -->   
 <script type="text/javascript">   
 $(window).load(function() { 
     //page loading delete  
@@ -2786,7 +2789,7 @@ $(window).load(function() {
 }); 
 </script> 
 
-<!-- Local Script / [D] 기존 스크립트 수정 -->
+<!-- Local Script / [D] 기존 스크립트(수정) -->
 <script type="text/javascript">
     jQuery.event.add(window,"load",function() {
         $(document).ready(function() {  
@@ -2859,7 +2862,9 @@ $(window).load(function() {
                 $('.tbl_filterBox tbody tr').removeClass('active');
                 
                 //show
+                // [D/NBR] 수정 - 기존 $('.aside').addClass('active'); -> $('.asideWrap').addClass('active'); 로 수정
                 $('.asideWrap').addClass('active');
+                // [D/NBR] 추가 - 새로 추가
                 $('body').css('overflow', 'hidden');
                 $('.aside_view').css('display','block');
                 $(this).parents('tr').addClass('active');
@@ -2873,7 +2878,9 @@ $(window).load(function() {
                 $('#aside_add .ipt_txt').val('');
                 
                 //show
+                // [D/NBR] 수정 - 기존 $('.aside').addClass('active'); -> $('.asideWrap').addClass('active'); 로 수정
                 $('.asideWrap').addClass('active');
+                // [D/NBR] 추가 - 새로 추가
                 $('body').css('overflow', 'hidden');
                 $('#aside_add').css('display','block');
                 
@@ -2898,7 +2905,9 @@ $(window).load(function() {
                 $('.tbl_filterBox tbody tr').removeClass('active');
                 
                 //show
+                // [D/NBR] 수정 - 기존 $('.aside').addClass('active'); -> $('.asideWrap').addClass('active'); 로 수정
                 $('.asideWrap').addClass('active');
+                // [D/NBR] 추가 - 새로 추가
                 $('body').css('overflow', 'hidden');
                 $('#aside_modify').css('display','block');
                 $(this).parents('tr').addClass('active');
@@ -2906,7 +2915,7 @@ $(window).load(function() {
                 //정보입력
                 $('#aside_modify #modify_edgeID .ipt_txt_check').val(edgeIdTxt);
                 $('#aside_modify #modify_company .select').val(edgeCompanyTxt).prop('checked', true);
-                $('#aside_modify #modify_companyID .ipt_field').text(edgeCompanyIdTxt);
+                $('#aside_modify #modify_companyID .ipt_field').text('ㄴㄹㄴㅇ');
                 $('#aside_modify #modify_userName .ipt_txt_srch').val(edgeUserName);
                 $('#aside_modify #modify_edgePlace .ipt_txt_srch').val(edgePlaceTxt);
                 $('#aside_modify #modify_edgeDetailPlace .ipt_txt').val(edgePlaceDetailTxt);
@@ -2915,7 +2924,9 @@ $(window).load(function() {
                     
             //aside(hide)
             $('.aside .btn_aside_close').on('click',function() {
+                // [D/NBR] 수정 - 기존 $('.aside').removeClass('active'); -> $('.asideWrap').removeClass('active'); 로 수정
                 $('.asideWrap').removeClass('active');
+                // [D/NBR] 추가 - 새로 추가
                 $('body').css('overflow', '');
                 $('.aside > div').css('display','none');
                 $('.tbl_filterBox tbody tr').removeClass('active');
@@ -2949,7 +2960,7 @@ $(window).load(function() {
     });	
 </script>
 
-<!-- Local Script / [D] 추가 스크립트 NBR 21.03.24 -->
+<!-- Local Script / [D] 추가 스크립트 -->
 <script type="text/javascript">   
     // 카메라 상태 슬라이드 토글 기능
     let cameraStatusTitle = document.querySelectorAll('.select_custom .tit');
@@ -2979,23 +2990,6 @@ $(window).load(function() {
             }   
         });
     }
-
-    // var cameraStatusTitle = document.querySelectorAll('.select_custom .tit');
-    // var cameraList = document.querySelectorAll('.select_custom .status_edge');
-
-    // for(i = 0; i < cameraStatusTitle.length; i++){
-    //     cameraStatusTitle[i].addEventListener('click', function(e){
-    //         e.preventDefault();            
-    //         let thisCameraList = this.nextElementSibling;
-    //         thisCameraList.classList.add('open');
-    //         cameraList.classList.remove('open');
-    //     });
-    // }
-
-    // $('.select_custom .tit').on('click', function(){
-    //     $('.select_custom .status_edge').removeClass('open');
-    //     $(this).next('.status_edge').addClass('opne');
-    // });
 </script>
 </body>
 </html>
