@@ -995,6 +995,7 @@
                             <option value="">차량인식</option>                        
                             <option value="">침입</option>
                         </select>
+                        <!-- [D] 옵션 '전체' 선택 시 바로가기 버튼 비활성화됨  -->
                         <button type="button" class="btn_go_edgeInquiry">바로가기</button>
                     </div>
 
@@ -1361,47 +1362,7 @@ $(window).load(function() {
 <script type="text/javascript">
 jQuery.event.add(window,"load",function() {
     $(document).ready(function() {
-        //tab
-        $('.serviceBox').each(function(){
-            $('.serviceBox .tab_container .tab_content:first').show();
-            
-            $('.serviceBox .tab_nav li a').on('click', function(){
-                var tabIndex = $(this).parent('li').index()+1;
-
-                $('.serviceBox .tab_container .tab_content').hide();
-                $('.serviceBox .tab_nav li a').removeClass('active');
-
-                $(this).addClass('active');
-                $('.tab_container').find('.tab_content:nth-child('+ tabIndex +')').show();
-
-                return false;
-            });
-        });
-        
-        // Edge AI Device 영역 이미지 마우스오버 시 각 성능 리스트 보여주기
-        $('.dvc_detail').on('mousemove', function(e){
-            e.stopPropagation();
-            offsetX = e.offsetX;
-            offsetY = e.offsetY;
-            
-            $(this).find('.specify_list').css({
-                display: 'inline-block',
-                top: offsetY + 10,
-                left: offsetX + 10             
-            });          
-        });
-        $('.dvc_detail').on('mouseleave', function(){
-            $(this).find('.specify_list').css({
-                display: 'none',         
-            });
-        }); 
-        
-        //견적요청
-        $('.productBox .txtBox dl dd.btn a').on('click', function(){
-            var edgeName = $(this).parents('dl').find('dt').text().replace(/ /g, '');;
-
-            $('#lyr_inquiry_estimate #Edge_name').val(edgeName);
-        });
+        // $('.btn_go_edgeInquiry').
     });
 });	
 </script>
