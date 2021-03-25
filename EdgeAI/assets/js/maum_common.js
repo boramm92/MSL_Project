@@ -45,11 +45,16 @@ $(document).ready(function (){
         $('body').find(altHrefId).css('display','block');
         $('body').find(altHrefId).wrap('<div class="altWrap"></div>');
         
-        //hide
+        //hide [D] 21.03.25 NBR 수정
         $('.btn_alt_close').on('click',function(){
-            $('body').css('overflow','');  
-            $('body').find(altHrefId).css('display','none'); 
-            $('body').find(altHrefId).unwrap();
+            if($(this).parents().is('.alt_dual')){
+                $('body').find(altHrefId).css('display','none'); 
+                $('body').find(altHrefId).unwrap();
+            }else {
+                $('body').css('overflow','');
+                $('body').find(altHrefId).css('display','none'); 
+                $('body').find(altHrefId).unwrap();
+            }            
         });	
     });	
 	
