@@ -857,7 +857,7 @@
         }
     </style>
 
-    <title>인식 결과 || Edge Analysis</title>
+    <title>메인(구매자) || Edge Analysis</title>
 </head>
 <body>
 <!-- #wrap -->
@@ -974,326 +974,317 @@
 
     <!-- #container -->
     <div id="container" class="view">
-        <!-- .snb -->
-        <div class="snb ach">
-            <div class="navBox">
-                <!-- [D] div.slt_edge_type 추가 -->
-                <div class="slt_edge_type">
-                    <span class="nav_tit">My Edge</span>
-                    <select class="select">
-                        <option value="">배회</option>
-                        <option value="">실신</option>
-                        <option value="">차량인식</option>                        
-                        <option value="">침입</option>
-                    </select>
-                </div>                    
-
-                <ul class="nav">
-                    <li>
-                        <a href="ansis_equipment_check.html">
-                            <span class="fas fa-tachometer-alt"></span>장비 조회
-                        </a>
-                    </li>
-                    <li>
-                        <a href="ansis_realTime_set.html">
-                            <span class="fas fa-eye"></span>실시간 인식 및 설정
-                        </a>
-                    </li>
-                    <li>
-                        <a class="active" href="ansis_recog_result.html">
-                            <span class="fas fa-file-video"></span>인식 결과
-                        </a>
-                    </li>
-                </ul>
-                <span class="nav_tit">Edge 설치</span>
-                <ul class="nav">
-                    <li>
-                        <a href="ansis_install_history.html">
-                            <span class="fas fa-wrench"></span>설치 이력 조회
-                        </a>
-                    </li>
-                </ul>
-                <span class="nav_tit">Edge 관리</span>
-                <ul class="nav">
-                    <li>
-                        <a href="ansis_equipment_manage.html">
-                            <span class="fas fa-cube"></span>장비 관리
-                        </a>
-                    </li>
-                    <li>
-                        <a href="ansis_user_manage.html">
-                            <span class="far fa-address-card"></span>사용자 관리
-                        </a>
-                    </li>
-                    <li>
-                        <a href="ansis_company_manage.html">
-                            <span class="fas fa-city"></span>회사 관리
-                        </a>
-                    </li>
-                </ul>
+        <!-- .contents_home -->
+        <div class="contents_home">            
+            <div class="mainTit">
+                <div class="tit_box">
+                    <strong><span class="userName">마인즈</span>님, Edge Analysis</strong>에 오신 것을 환영합니다.
+                    <p>Edge를 보며 실시간으로 상황을 확인 하실 수 있습니다. Edge Analysis와 함께 삶의 질을 스마트하게 한층 더 높일수 있습니다.</p>
+                </div>
             </div>
-        </div>
-        <!-- //.snb -->
+            
+            <div class="dashboardBox">
+                <div class="titArea">
+                    <h3>나의 Edge</h3>
 
-        <!-- .contents -->
-        <div class="contents">
-            <!-- .titArea -->
-        	<div class="titArea">
-            	<h3>인식 결과</h3>
-            </div>
-            <!-- //.titArea -->
-            <!-- .tbl_filterBox -->
-            <div class="tbl_filterBox">
-                <!-- .tblSrchBox -->
-                <div class="tblSrchBox">
-                    <div class="srch_field">
-                        <dl>
-                            <dt>검색어</dt>
-                            <dd>
-                                <select class="select">
-                                    <option>전체</option>
-                                    <option>회사명</option>
-                                    <option>사용자명</option>
-                                    <option>설치장소</option>
-                                    <option>카메라 위치</option>
-                                    <option>Edge Device ID</option>
-                                </select>
-                                <input type="text" id="ipt_srch_field" class="ipt_txt">
-                            </dd>
-                        </dl>
-                        <dl>
-                            <dt>인식 시간</dt>
-                            <dd>
-                                <div class="date">
-                                    <input type="text" name="pasTime" id="pasStartTime" class="ipt_dateTime" autocomplete="off">
-                                    <span>-</span>
-                                    <input type="text" name="pasTime" id="pasEndTime"  class="ipt_dateTime" autocomplete="off">
-                                </div> 
-                            </dd>
-                        </dl>
-                        <dl>
-                            <dt>인식 신뢰도</dt>
-                            <dd>
-                                <input type="number" class="ipt_txt" style="width:20px;" maxlength="2" autocomplete="off">%
-                                <span>-</span>
-                                <input type="number" class="ipt_txt" style="width:20px;" maxlength="2" autocomplete="off">%
-                            </dd>
-                        </dl>
+                    <div class="sort_group">
+                        <select class="select edge_type_slt">
+                            <option value="total">전체</option>
+                            <option value="">배회</option>
+                            <option value="">실신</option>
+                            <option value="">차량인식</option>                        
+                            <option value="">침입</option>
+                        </select>
+                        <!-- [D] 옵션 '전체' 선택 시 바로가기 버튼 비활성화됨  -->
+                        <button type="button" class="btn_go_edgeInquiry" disabled>바로가기</button>
                     </div>
-                    <div class="srch_btn">
-                        <button type="submit" class="btn_clr">검색</button>
-                        <button type="button">검색 초기화</button>
-                    </div>
-                </div>
-                <!-- //.tblSrchBox -->
-                <!-- .tbl_top -->
-                <div class="tbl_top">
-                    <h4>장비 목록</h4>
-                </div>
-                <!-- //.tbl_top -->
-                <!-- .tbl_mid -->
-                <div class="tbl_mid">
-                    <table class="tbl_lst">
-                        <caption class="hide">인식결과 목록</caption>
-                        <colgroup>
-                            <col><col><col><col>
-                            <col><col><col><col>
-                        </colgroup>
-                        <thead>
-                            <tr>
-                                <th scope="col">No.</th>  
-                                <th scope="col">회사명</th>
-                                <th scope="col">사용자명</th>                                                               
-                                <th scope="col">설치장소</th>
-                                <th scope="col">카메라 위치</th>
-                                <th scope="col">Edge Device ID</th>
-                                <th scope="col">처리 완료 시간</th>               
-                                <th scope="col">인식 신뢰도</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td scope="row">1</td>
-                                <td class="tbl_company">개인사용자</td>
-                                <td class="tbl_user">홍길동</td>
-                                <td class="tbl_edgePlace">
-                                    <p>
-                                        <span>서울시 서초구 방배동</span>                                        
-                                    </p>
-                                    <p>
-                                        <em>이수역사거리</em>
-                                        <strong>강남 방향</strong>
-                                    </p>   
-                                </td> 
-                                <td class="tbl_user">안방</td>
-                                <td class="tbl_edgeID">AS123567890101112134</td>                                 
-                                <td>2020-10-20 13:02:10</td>
-                                <td>9.00%</td>
-                            </tr>
-                            <tr>
-                                <td scope="row">1</td>
-                                <td class="tbl_company">서울특별시</td>
-                                <td class="tbl_user">홍길동</td>
-                                <td class="tbl_edgePlace">
-                                    <p>
-                                        <span>서울시 용산구 한남동 삼일대로</span>                                        
-                                    </p>
-                                    <p>
-                                        <em>남산1호터널 남단</em>
-                                        <strong>한남대교 방향</strong>
-                                    </p>   
-                                </td> 
-                                <td class="tbl_user">안방</td>
-                                <td class="tbl_edgeID">1423420008640</td>                                 
-                                <td>2020-10-20 13:02:10</td>
-                                <td>99.00%</td>
-                            </tr>
-                            <tr>
-                                <td scope="row">1</td>
-                                <td class="tbl_company">서울특별시</td>
-                                <td class="tbl_user">홍길동</td>
-                                <td class="tbl_edgePlace">
-                                    <p>
-                                        <span>서울시 용산구 한남동 삼일대로</span>                                        
-                                    </p>
-                                    <p>
-                                        <em>남산1호터널 남단</em>
-                                        <strong>한남대교 방향</strong>
-                                    </p>   
-                                </td> 
-                                <td class="tbl_user">안방</td>
-                                <td class="tbl_edgeID">1423420008640</td>                                 
-                                <td>2020-10-20 13:02:10</td>
-                                <td>99.00%</td>
-                            </tr>
-                            <tr>
-                                <td scope="row">1</td>
-                                <td class="tbl_company">서울특별시</td>
-                                <td class="tbl_user">홍길동</td>
-                                <td class="tbl_edgePlace">
-                                    <p>
-                                        <span>서울시 용산구 한남동 삼일대로</span>                                        
-                                    </p>
-                                    <p>
-                                        <em>남산1호터널 남단</em>
-                                        <strong>한남대교 방향</strong>
-                                    </p>   
-                                </td> 
-                                <td class="tbl_user">안방</td>
-                                <td class="tbl_edgeID">1423420008640</td>                                 
-                                <td>2020-10-20 13:02:10</td>
-                                <td>99.00%</td>
-                            </tr>
-                            <tr>
-                                <td scope="row" colspan="12" class="dataNone">검색 결과가 없습니다.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <!-- //.tbl_mid -->
-                <!-- .tbl_btm -->
-                <div class="tbl_btm">
-                    <!-- pageing -->
-                    <div class="pageing">
-                        <a class="first" href="#none">맨 처음 페이지로</a>
-                        <a class="prev" href="#none">이전 페이지로</a>
-                        <strong>1</strong>
-                        <a href="#none">2</a>
-                        <a href="#none">3</a>
-                        <a href="#none">4</a>
-                        <a class="next" href="#none">다음 페이지로</a>
-                        <a class="end" href="#none">맨 마지막 페이지로</a>
-                    </div>
-                    <!-- //.pageing -->
-                </div>
-                <!-- //.tbl_btm -->
-            </div>
-            <!-- //.tbl_filterBox -->
-        </div>
-        <!-- //.contents -->
 
-        <!-- .asideWrap -->
-        <!-- [D] 기존에는 div.aside로만 마크업이 되어있었으나, ui변경으로 div.asideWrap과 div.aside_bg가 추가됨 -->
-        <div class="asideWrap">
-            <div class="aside_bg"></div>
-            <div class="aside">
-                <!-- .aside_edit(edge수정) -->
-                <div id="aside_modify" class="aside_edit normal">
-                    <!-- .titArea -->
-                    <div class="titArea">
-                        <h3>인식결과 확인</h3>
-                    </div>
-                    <!-- //.titArea -->
-                    <!-- .contArea -->
-                    <div class="contArea">
-                        <div class="tit">
-                            <h4>인식 정보</h4>
-                        </div>
-                        <div class="cont">
-                            <!-- .img_resultView -->
-                            <div class="img_resultView swiper-container">
-                                <ul class="swiper-wrapper">
-                                    <li class="swiper-slide"><img src="../assets/images/img_recog_result.png" alt="인식 결과 이미지"></li>
-                                    <li class="swiper-slide"><img src="../assets/images/img_recog_result.png" alt="인식 결과 이미지"></li>
-                                    <li class="swiper-slide"><img src="../assets/images/img_recog_result.png" alt="인식 결과 이미지"></li>
-                                    <li class="swiper-slide"><img src="../assets/images/img_recog_result.png" alt="인식 결과 이미지"></li>
-                                    <li class="swiper-slide"><img src="../assets/images/img_recog_result.png" alt="인식 결과 이미지"></li>
-                                </ul> 
-                                <div class="swiper-pagination"></div>       
-                                <div class="swiper-button-next"></div>
-                                <div class="swiper-button-prev"></div>                        
-                            </div>
-                            <!-- //.img_resultView -->
+                    <p class="infoTxt">
+                        <span class="fas fa-sync-alt"></span>
+                        <span class="timer">2</span>초 후에 자동 새로고침 됩니다.
+                    </p>
+                </div>
 
-                            <div class="recog_time">2020-10-20 13:02:10</div>
-
-                            <table class="tbl_edit">
-                                <caption class="hide">인식 정보</caption>
+                <ul class="my_edge_list">
+                    <li>
+                        <div class="tbl_box">
+                            <table summary="종류, 상태, 설치일, 설치장소, 사용량으로 구성">
+                                <caption class="hide">나의 Edge</caption>
                                 <colgroup>
-                                    <col width="97"><col>
+                                    <col width="92"><col>
                                 </colgroup>
                                 <tbody>
                                     <tr>
-                                        <th scope="row">설치장소</th>
-                                        <td id="modify_edgePlace">
-                                            <span class="ipt_field"></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Edge Device ID</th>
-                                        <td id="modify_edgeID">
-                                            <span class="ipt_field"></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">이상행동</th>
-                                        <td id="modify_abnormalBehavior">
-                                            <span class="ipt_field">실신</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">인식된 사진 경로</th>
+                                        <th scope="row">종류</th>
                                         <td>
-                                            <em class="ipt_route">http://10.122.66.179/maumAi_new/edgeAIPlatform/html/ansis_road_result.html</em>
+                                            <span>실신</span>
+                                        </td>                                            
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">상태</th>
+                                        <td>
+                                            <span>정상</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">설치일</th>
+                                        <td>
+                                            <span>2021-03-21</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">설치장소</th>
+                                        <td>
+                                            <span class="address">경기도 성남시 분당구 동판교로22 휴먼시아 401동 102호</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">사용량</th>
+                                        <td>
+                                            <div class="status_usage">
+                                                <dl>
+                                                    <dt>CPU</dt>
+                                                    <dd class="gauge">
+                                                        <em class="safety" style="width: 44%;"></em>
+                                                        <span>44%</span>
+                                                    </dd>
+                                                </dl>
+                                                <dl>
+                                                    <dt>Main_Mem</dt>
+                                                    <dd class="gauge">
+                                                        <em class="warn" style="width: 24.12%;"></em>
+                                                        <span>24.12%</span>
+                                                    </dd>
+                                                </dl>
+                                                <dl>
+                                                    <dt>GPU</dt>
+                                                    <dd class="gauge">
+                                                        <em style="width: 38%;"></em>
+                                                        <span>38%</span>
+                                                    </dd>
+                                                </dl>
+                                                <dl>
+                                                    <dt>GPU_Mem</dt>
+                                                    <dd class="gauge">
+                                                        <em class="warning" style="width: 13.15%;"></em>
+                                                        <span>13.15%</span>
+                                                    </dd>
+                                                </dl>
+
+                                                <p class="infoTxt status_edge">
+                                                    <span class="normal">정상</span>
+                                                    <span class="abnormal">주의</span>
+                                                    <span class="not">위험</span>
+                                                </p>
+                                            </div>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                    </div>
-                    <!-- //.contArea -->
-                    <!-- .foo_btnBox -->
-                    <div class="foo_btnBox">
-                        <button type="button" class="btn_aside_close">닫기</button>
-                    </div>
-                    <!-- //.foo_btnBox -->
-                </div>            
-                <!-- .aside_edit(edge수정) -->
+                        <div class="camera_status_box">
+                            <div class="tit_box">
+                                <span class="tit">카메라 상태</span>
+                                <div class="statusInfo">
+                                    <img src="../assets/images/ico_status_normal.svg" alt="정상 작동">
+                                    <span>정상 작동</span>
+                                    <img src="../assets/images/ico_status_error.svg" alt="연결안됨">
+                                    <span>연결안됨</span>
+                                </div>
+                            </div>
+                            <div class="spot_box">
+                                <!-- [D] li에 addClass('normal')하면 정상작동 / addClass('not')하면 연결안됨 아이콘 들어감 -->
+                                <ul>
+                                    <li class="normal">
+                                        <div class="item">
+                                            <span class="statusMark" title="정상 작동"></span>
+                                            <span class="spotName">거실</span>
+                                        </div>                                           
+                                    </li>
+                                    <li class="not">
+                                        <div class="item">
+                                            <span class="statusMark" title="연결안됨"></span>
+                                            <span class="spotName">거실</span>
+                                        </div>
+                                    </li>
+                                    <li class="not">
+                                        <div class="item">
+                                            <span class="statusMark" title="연결안됨"></span>
+                                            <span class="spotName">안방</span>
+                                        </div>
+                                    </li>
+                                    <li class="not">
+                                        <div class="item">
+                                            <span class="statusMark" title="정상 작동"></span>
+                                            <span class="spotName">마당앞고기</span>
+                                        </div>                                           
+                                    </li>
+                                    <li class="normal">
+                                        <div class="item">
+                                            <span class="statusMark" title="연결안됨"></span>
+                                            <span class="spotName">서재</span>
+                                        </div>
+                                    </li>
+                                    <li class="normal">
+                                        <div class="item">
+                                            <span class="statusMark" title="연결안됨"></span>
+                                            <span class="spotName">작은 방</span>
+                                        </div>
+                                    </li>
+                                    <li class="not">
+                                        <div class="item">
+                                            <span class="statusMark" title="정상 작동"></span>
+                                            <span class="spotName">현관문임</span>
+                                        </div>                                           
+                                    </li>
+                                    <li class="not">
+                                        <div class="item">
+                                            <span class="statusMark" title="연결안됨"></span>
+                                            <span class="spotName">베란다</span>
+                                        </div>
+                                    </li>
+                                    <li class="normal">
+                                        <div class="item">
+                                            <span class="statusMark" title="연결안됨"></span>
+                                            <span class="spotName">창고</span>
+                                        </div>
+                                    </li>
+                                    <li class="normal">
+                                        <div class="item">
+                                            <span class="statusMark" title="연결안됨"></span>
+                                            <span class="spotName">다용도실이궁라오기아</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="tbl_box">
+                            <table summary="종류, 상태, 설치일, 설치장소, 사용량으로 구성">
+                                <caption class="hide">나의 Edge</caption>
+                                <colgroup>
+                                    <col width="92"><col>
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">종류</th>
+                                        <td>
+                                            <span>실신</span>
+                                        </td>                                           
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">상태</th>
+                                        <td>
+                                            <span>정상</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">설치일</th>
+                                        <td>
+                                            <span>2021-03-21</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">설치장소</th>
+                                        <td>
+                                            <span class="address">경기도 성남시 분당구 동판교로22 휴먼시아 401동 102호</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">사용량</th>
+                                        <td>
+                                            <div class="status_usage">
+                                                <dl>
+                                                    <dt>CPU</dt>
+                                                    <dd class="gauge">
+                                                        <em class="safety" style="width: 44%;"></em>
+                                                        <span>44%</span>
+                                                    </dd>
+                                                </dl>
+                                                <dl>
+                                                    <dt>Main_Mem</dt>
+                                                    <dd class="gauge">
+                                                        <em class="warn" style="width: 24.12%;"></em>
+                                                        <span>24.12%</span>
+                                                    </dd>
+                                                </dl>
+                                                <dl>
+                                                    <dt>GPU</dt>
+                                                    <dd class="gauge">
+                                                        <em style="width: 38%;"></em>
+                                                        <span>38%</span>
+                                                    </dd>
+                                                </dl>
+                                                <dl>
+                                                    <dt>GPU_Mem</dt>
+                                                    <dd class="gauge">
+                                                        <em class="warning" style="width: 13.15%;"></em>
+                                                        <span>13.15%</span>
+                                                    </dd>
+                                                </dl>
 
-                <button type="button" class="btn_aside_close ico">닫기</button>
+                                                <p class="infoTxt status_edge">
+                                                    <span class="normal">정상</span>
+                                                    <span class="abnormal">주의</span>
+                                                    <span class="not">위험</span>
+                                                </p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="camera_status_box">
+                            <div class="tit_box">
+                                <span class="tit">카메라 상태</span>
+                                <div class="statusInfo">
+                                    <img src="../assets/images/ico_status_normal.svg" alt="정상 작동">
+                                    <span>정상 작동</span>
+                                    <img src="../assets/images/ico_status_error.svg" alt="연결안됨">
+                                    <span>연결안됨</span>
+                                </div>
+                            </div>
+                            <div class="spot_box">
+                                <!-- [D] li에 addClass('normal')하면 정상작동 / addClass('not')하면 연결안됨 아이콘 들어감 -->
+                                <ul>
+                                    <li class="normal">
+                                        <div class="item">
+                                            <span class="statusMark" title="정상 작동"></span>
+                                            <span class="spotName">거실</span>
+                                        </div>                                           
+                                    </li>
+                                    <li class="not">
+                                        <div class="item">
+                                            <span class="statusMark" title="연결안됨"></span>
+                                            <span class="spotName">거실</span>
+                                        </div>
+                                    </li>
+                                    <li class="not">
+                                        <div class="item">
+                                            <span class="statusMark" title="연결안됨"></span>
+                                            <span class="spotName">안방</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="pageing">
+                    <a class="first">맨 처음 페이지로</a>
+                    <a class="prev">10개씩 이동</a>
+                    <strong>1</strong>
+                    <a href="#none">2</a>
+                    <a href="#none">3</a>
+                    <a href="#none">4</a>
+                    <a class="next">10개씩 이동</a>
+                    <a class="end">맨 마지막 페이지로</a>
+                </div>
             </div>
         </div>
-        <!-- //.asideWrap -->
+        <!-- //.contents -->
     </div>
     <!-- //#container -->
 </div>
@@ -1341,15 +1332,13 @@
         <button class="btn_lyr_close">닫기</button>
     </div>
 </div>
-<!-- //문의하기 --> 
+<!-- //문의하기 -->   
 
 <!-- -------------------- Local Resources -------------------- -->
 <!-- Local CSS -->
-<link rel="stylesheet" type="text/css" href="../assets/css/swiper.min.css">
 <link rel="stylesheet" type="text/css" href="../assets/css/maumEdgeAI.css">
 
 <!-- Local Script -->
-<script type="text/javascript" src="../assets/js/swiper.min.js"></script>
 <script type="text/javascript" src="../assets/js/maumEdgeAI.js"></script>
 
 <!-- header 변형 / [D] 기존 스크립트(변동없음) -->
@@ -1361,7 +1350,7 @@ $(document).ready(function() {
 });
 </script> 
 
-<!-- page Landing / [D] 기존 스크립트(변동없음) --> 
+<!-- page Landing / [D] 기존 스크립트(변동없음) -->  
 <script type="text/javascript">   
 $(window).load(function() { 
     //page loading delete  
@@ -1369,90 +1358,20 @@ $(window).load(function() {
 }); 
 </script> 
 
-<!-- Local Script / [D] 기존 스크립트(수정) -->
-<script type="text/javascript">
-    jQuery.event.add(window,"load",function() {
-        $(document).ready(function() {  
-            //dateTimePicker
-            // $('#pasStartTime, #pasEndTime, #actStartTime, #actEndTime').datetimepicker({
-            //     language : 'ko', // 화면에 출력될 언어를 한국어로 설정합니다.
-            //     pickTime : true, // 사용자로부터 시간 선택을 허용하려면 true를 설정하거나 pickTime 옵션을 생략합니다.
-            //     defalutDate : new Date(), // 기본값으로 오늘 날짜를 입력합니다. 기본값을 해제하려면 defaultDate 옵션을 생략합니다.
-            //     autoclose: 1,
-            // });
-            
-            //검색 엔터키 event
-            $('.srch_field #ipt_srch_field').keydown(function(key) {
-                if (key.keyCode == 13) {
-                    $('.srch_field .srch_btn button:submit').trigger('click');
-                }
-            });
-            
-            //aside(Edge결과수정)
-            $('.tbl_filterBox tbody td').on('click',function() {
-                var edgeCompanyTxt = $(this).parents('tr').find('.tbl_company').text(),
-                    edgePlaceTxt = $(this).parents('tr').find('.tbl_edgePlace').text(),
-                    edgeIdTxt = $(this).parents('tr').find('.tbl_edgeID').text(),                
-                    edgeCarNumber = $(this).parents('tr').find('.tbl_carNumber').text();
-                
-                //초기화
-                $('.aside > div').css('display','none');
-                $('#aside_modify .ipt_txt').val('');
-                $('#aside_modify span').text('');
-                $('.tbl_filterBox tbody tr').removeClass('active');
-                
-                //show
-                // [D/NBR] 수정 - 기존 $('.aside').addClass('active'); -> $('.asideWrap').addClass('active'); 로 수정
-                $('.asideWrap').addClass('active');
-                // [D/NBR] 추가 - 새로 추가
-                $('body').css('overflow', 'hidden');
-                $('#aside_modify').css('display','block');
-                $(this).parent().addClass('active');
-                
-                //정보입력
-                $('#aside_modify #modify_company .ipt_field').text(edgeCompanyTxt);
-                $('#aside_modify #modify_edgeID .ipt_field').text(edgeIdTxt);
-                $('#aside_modify #modify_edgePlace .ipt_field').text(edgePlaceTxt);
-                $('#aside_modify #modify_CarNumber .ipt_txt').val(edgeCarNumber);  
-                
-                //focus이동
-                $('#aside_modify input:first').focus(); 
-            });
-                    
-            //aside(hide)
-            $('.aside .btn_aside_close').on('click',function() {
-                // [D/NBR] 수정 - 기존 $('.aside').removeClass('active'); -> $('.asideWrap').removeClass('active'); 로 수정
-                $('.asideWrap').removeClass('active');
-                // [D/NBR] 추가 - 새로 추가
-                $('body').css('overflow', '');
-                $('.aside > div').css('display','none');
-                $('.tbl_filterBox tbody tr').removeClass('active');
-            });
-        });
-    });	
-        
-    //percent maxlength
-    function numberMaxLength(e){
-        if(e.value.length > e.maxLength){
-            e.value = e.value.slice(0, e.maxLength);
-        }
-    }  
-</script>
-
 <!-- Local Script / [D] 추가 스크립트 -->
 <script type="text/javascript">
-    var swiper = new Swiper('.swiper-container', {
-        slidesPerView: 1,
-        slidesPerGroup: 1,
-        loop: true,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
+    // edge selectbox 선택에 따른 바로가기 버튼 활성화
+    var edgeTypeSelectBox = document.querySelector('.edge_type_slt');
+    console.log(edgeTypeSelectBox)
+
+    edgeTypeSelectBox.addEventListener('change', function(){
+        var val = this.value;
+
+        if(val == 'total'){
+            document.querySelector('.btn_go_edgeInquiry').disabled = true;  
+        }else{
+            document.querySelector('.btn_go_edgeInquiry').disabled = false;
+        }
     });
 </script>
 </body>
