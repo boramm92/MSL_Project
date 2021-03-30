@@ -971,82 +971,109 @@
 
                     <div class="inquiry_box">
                         <div class="inner">
-                            <div class="edge_type">
-                                <span>Edge 종류</span>
-                                <div class="radioBox">
-                                    <input type="radio" name="edge_type" id="numPlate" checked>
-                                    <label for="numPlate">차량인식</label>
-                                </div>
-                               <div class="radioBox">
-                                    <input type="radio" name="edge_type" id="fainting">
-                                    <label for="fainting">실신</label>
-                               </div>
-                                <div class="radioBox">
-                                    <input type="radio" name="edge_type" id="wander">
-                                    <label for="wander">배회</label>
-                                </div>
-                                <div class="radioBox">
-                                    <input type="radio" name="edge_type" id="invasion">
-                                    <label for="invasion">침입</label>
-                                </div>
-                            </div>
+                            <dl class="edge_type estimate_info">
+                                <dt>Edge 종류</dt>
+                                <dd>
+                                    <div class="radioBox">
+                                        <input type="radio" name="edge_type" id="numPlate" checked>
+                                        <label for="numPlate">차량인식</label>
+                                    </div>
+                                    <div class="radioBox">
+                                        <input type="radio" name="edge_type" id="fainting" disabled>
+                                        <label for="fainting">실신</label>
+                                    </div>
+                                    <div class="radioBox">
+                                        <input type="radio" name="edge_type" id="wander" disabled>
+                                        <label for="wander">배회</label>
+                                    </div>
+                                    <div class="radioBox">
+                                        <input type="radio" name="edge_type" id="invasion" disabled>
+                                        <label for="invasion">침입</label>
+                                    </div>
+                                </dd>
+                            </dl>
 
-                            <div class="use_term">
-                                <span>사용 기간</span>
-                                <div class="radioBox">
-                                    <input type="radio" name="use_term" id="oneYear" checked>
-                                    <label for="oneYear">1년</label>
-                                </div>
-                               <div class="radioBox">
-                                    <input type="radio" name="use_term" id="twoYears">
-                                    <label for="twoYears">2년</label>
-                               </div>
-                                <div class="radioBox">
-                                    <input type="radio" name="use_term" id="wander">
-                                    <label for="wander">3년 이상</label>
-                                </div>
-                                <div class="iptBox">
-                                    <input type="number" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}">
-                                    <label>년</label>
-                                </div>
-                            </div>
+                            <dl class="use_term estimate_info">
+                                <dt>사용 기간</dt>
+                                <dd>
+                                    <div class="radioBox">
+                                        <input type="radio" name="use_term" id="oneYear" checked>
+                                        <label for="oneYear">1년</label>
+                                    </div>
+                                    <div class="radioBox">
+                                        <input type="radio" name="use_term" id="twoYears">
+                                        <label for="twoYears">2년</label>
+                                    </div>
+                                    <!-- [D] 3년 이상 체크 시 연도기재 input의 disabled 해제시켜야 함 -->
+                                    <div class="radioBox">
+                                        <input type="radio" name="use_term" id="etcYears">
+                                        <label for="etcYears">3년 이상</label>
+                                    </div>
+                                    <div class="iptBox">
+                                        <input type="number" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" disabled>
+                                        <label>년</label>
+                                    </div>
+                                </dd>
+                            </dl>
 
-                            <div class="estimate_detail">
-                                <span>견적문의 항목</span>
-                                <div class="iptBox">
-                                    <label>Edge 종류</label>
-                                    <input type="text" readonly>
-                                    <label>사용기간</label>
-                                    <input type="text" readonly>
-                                    <label>디바이스</label>
-                                    <input type="text" readonly>
-                                </div>
-                            </div>
+                            <dl class="device_type estimate_info">
+                                <dt>디바이스</dt>
+                                <dd>
+                                    <div class="radioBox">
+                                        <input type="radio" name="device_type" id="ipcSolution" checked>
+                                        <label for="ipcSolution">IPC Solution</label>
+                                    </div>
+                                    <div class="radioBox">
+                                        <input type="radio" name="device_type" id="camera">
+                                        <label for="camera">카메라</label>
+                                    </div>
+                                </dd>
+                            </dl>
+
+                            <dl class="estimate_detail estimate_info">
+                                <dt>견적문의 항목</dt>
+                                <dd>
+                                    <div class="iptBox">
+                                        <label>Edge 종류</label>
+                                        <input type="text" readonly>
+                                        <label>사용기간</label>
+                                        <input type="text" readonly>
+                                        <label>디바이스</label>
+                                        <input type="text" readonly>
+                                    </div>
+                                </dd>
+                            </dl>
 
                             <div class="price_box">
                                 <span class="fl">※금액(설치비 및 부가세 별도)</span>
                                 <span class="fr"><span class="yearNum">1</span>년 계약 시 <strong>월 <span class="priceNum">150,000</span>원</strong></span>
                             </div>
-                            
+                        </div>
+
+                        <div class="inner">
                             <div class="dual">
                                 <div class="my_info">
                                     <label for="name">이름</label>
                                     <input type="text" id="name" placeholder="이름(필수)">
                                 </div>
                                 <div class="my_info">
-                                    <label for="phone">연락처</label>
-                                    <input type="tel" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" id="phone" placeholder="연락처(필수)">
+                                    <label for="company">회사명</label>
+                                    <input type="text" id="company" placeholder="회사명(필수) 및 개인일 경우(개인사용자)">
                                 </div>
                             </div>
                             <div class="dual">
-                                <div class="my_info email_info">
-                                    <label for="mail">이메일</label>
-                                    <input type="email" id="mail" placeholder="이메일(필수)">
+                                <div class="my_info">
+                                    <label for="phone">연락처</label>
+                                    <input type="tel" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" id="phone" placeholder="연락처(필수)">
                                 </div>
                                 <div class="my_info">
-                                    <label for="company">회사명</label>
-                                    <input type="text" id="company" placeholder="회사명(필수)">
+                                    <label for="position">직급</label>
+                                    <input type="text" id="position" placeholder="직급(필수) 및 개인일 경우(해당사항 없음)">
                                 </div>
+                            </div>
+                            <div class="my_info email_info">
+                                <label for="mail">이메일</label>
+                                <input type="email" id="mail" placeholder="이메일(필수)">
                             </div>
                             <div class="my_info my_txt">
                                 <label for="txt">문의</label>
