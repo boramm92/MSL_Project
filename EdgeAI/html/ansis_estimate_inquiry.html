@@ -974,165 +974,165 @@
         <div class="contents_home"> 
             <!-- .stn.inquiry -->
             <div class="stn inquiry estimate">
-                <!-- .content -->
-                <div class="content">
-                    <div class="content_tit">
-                        <p class="tit">견적 문의하기</p>
-                    </div>
+                <div class="content_tit">
+                    <p class="tit">견적 요청하기</p>
+                    <p class="desc">Edge 서비스 견적에 대한 궁금한 내용을 문의 주시면 담당자가 확인 후, 답변 메일을 보내 드리겠습니다.</p>
+                </div>
 
-                    <div class="inquiry_box">
-                        <div class="inner">
-                            <dl class="edge_type estimate_info">
-                                <dt>Edge 종류</dt>
-                                <!-- [D] 메인(ansis_main02.html)의 '견적 문의하기' 버튼 클릭으로 이동하는 경우, 해당 서비스 체크되어있어야 함 -->
-                                <dd>
-                                    <div class="radioBox">
-                                        <input type="radio" name="edge_type" id="numPlate" checked>
-                                        <label for="numPlate">차량인식</label>
-                                    </div>
-                                    <div class="radioBox">
-                                        <input type="radio" name="edge_type" id="fainting">
-                                        <label for="fainting">실신</label>
-                                    </div>
-                                    <div class="radioBox">
-                                        <input type="radio" name="edge_type" id="wander">
-                                        <label for="wander">배회</label>
-                                    </div>
-                                    <div class="radioBox">
-                                        <input type="radio" name="edge_type" id="invasion">
-                                        <label for="invasion">침입</label>
-                                    </div>
-                                </dd>
-                            </dl>
+                <div class="inquiry_box">
+                    <div class="inner">
+                        <dl class="edge_type estimate_info">
+                            <dt>Edge 종류</dt>
+                            <!-- [D] 메인(ansis_main02.html)의 '견적 문의하기' 버튼 클릭으로 이동하는 경우, 해당 서비스 체크되어있어야 함 -->
+                            <dd>
+                                <div class="radioBox">
+                                    <input type="radio" name="edge_type" id="numPlate" checked>
+                                    <label for="numPlate">차량 번호 인식</label>
+                                </div>
+                                <div class="radioBox">
+                                    <input type="radio" name="edge_type" id="fainting">
+                                    <label for="fainting">실신</label>
+                                </div>
+                                <div class="radioBox">
+                                    <input type="radio" name="edge_type" id="wander">
+                                    <label for="wander">배회</label>
+                                </div>
+                                <div class="radioBox">
+                                    <input type="radio" name="edge_type" id="invasion">
+                                    <label for="invasion">침입</label>
+                                </div>
+                            </dd>
+                        </dl>
 
-                            <dl class="use_term estimate_info">
-                                <dt>사용 기간</dt>
-                                <dd>
-                                    <div class="radioBox">
-                                        <input type="radio" name="use_term" id="oneYear" checked>
-                                        <label for="oneYear">1년</label>
-                                    </div>
-                                    <div class="radioBox">
-                                        <input type="radio" name="use_term" id="twoYears">
-                                        <label for="twoYears">2년</label>
-                                    </div>
+                        <dl class="use_term estimate_info">
+                            <dt>사용 기간</dt>
+                            <dd>
+                                <div class="radioBox">
+                                    <input type="radio" name="use_term" id="oneYear" checked>
+                                    <label for="oneYear">1년</label>
+                                </div>
+                                <div class="radioBox">
+                                    <input type="radio" name="use_term" id="twoYears">
+                                    <label for="twoYears">2년</label>
+                                </div>
+                                <div class="etcYears_group">
                                     <!-- [D] 3년 이상 체크 시 연도기재 input의 disabled 해제시켜야 함 -->
                                     <div class="radioBox">
                                         <input type="radio" name="use_term" id="etcYears">
                                         <label for="etcYears">3년 이상</label>
                                     </div>
                                     <div class="iptBox">
-                                        <input type="number" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" disabled>
+                                        <input type="number" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" placeholder="숫자만입력 (ex. 10)" disabled>
                                         <label>년</label>
                                     </div>
-                                </dd>
-                            </dl>
+                                </div>
+                            </dd>
+                        </dl>
 
-                            <dl class="device_type estimate_info">
-                                <dt>디바이스</dt>
-                                <dd>
-                                    <div class="radioBox">
-                                        <input type="radio" name="device_type" id="ipcSolution" checked>
-                                        <label for="ipcSolution">IPC Solution</label>
-                                    </div>
-                                    <div class="radioBox">
-                                        <input type="radio" name="device_type" id="camera">
-                                        <label for="camera">카메라</label>
-                                    </div>
-                                </dd>
-                            </dl>
+                        <dl class="device_type estimate_info">
+                            <dt>디바이스</dt>
+                            <dd>
+                                <ul>
+                                    <li class="dvc_ipcSolution">IPC Solution</li>
+                                    <li class="dvc_camera">카메라</li>
+                                </ul>
+                            </dd>
+                        </dl>
 
-                            <!-- [D] 상단의 Edge 종류, 사용 기간, 디바이스 선택 값이 실시간으로 아래 input박스에 반영되어야 함 -->
-                            <dl class="estimate_detail estimate_info">
-                                <dt>견적문의 항목</dt>
-                                <dd>
-                                    <div class="iptBox">
-                                        <label>Edge 종류</label>
-                                        <input type="text" readonly>
-                                        <label>사용기간</label>
-                                        <input type="text" readonly>
-                                        <label>디바이스</label>
-                                        <input type="text" readonly>
-                                    </div>
-                                </dd>
-                            </dl>
+                        <!-- [D] 상단의 Edge 종류, 사용 기간, 디바이스 선택 값이 실시간으로 아래 input박스에 반영되어야 함 -->
+                        <dl class="estimate_detail estimate_info">
+                            <dt>견적문의 항목</dt>
+                            <dd>
+                                <div class="iptBox">
+                                    <label>Edge 종류</label>
+                                    <input type="text" name="edge_type" readonly>
+                                    <label>사용기간</label>
+                                    <input type="text" name="use_term" readonly>
+                                    <label>디바이스</label>
+                                    <input type="text" name="edge_device" value="IPC Solution + 카메라" readonly>
+                                </div>
+                            </dd>
+                        </dl>
 
-                            <div class="price_box">
-                                <span class="fl">※금액(설치비 및 부가세 별도)</span>
-                                <span class="fr"><span class="yearNum">1</span>년 계약 시 <strong>월 <span class="priceNum">150,000</span>원</strong></span>
-                            </div>
-                        </div>
-
-                        <div class="inner">
-                            <div class="dual">
-                                <div class="my_info">
-                                    <label for="name">이름</label>
-                                    <input type="text" id="name" placeholder="이름(필수)">
+                        <div class="price_box">
+                            <div class="info_txt">※금액(설치비 및 부가세 별도)<br> <small>IPC Solution과 카메라가 포함된 금액입니다.</small></div>
+                            <div class="price_info">
+                                <div class="price">
+                                    <span class="slt_year">1</span>년 계약 시<br> <small>(*총 <span class="year_price">1,800,000</span>원)</small>
                                 </div>
-                                <div class="my_info">
-                                    <label for="company">회사명</label>
-                                    <input type="text" id="company" placeholder="회사명(필수) 및 개인일 경우(개인사용자)">
-                                </div>
+                                <strong class="price">월 <span class="month_price">150,000</span>원</strong>
                             </div>
-                            <div class="dual">
-                                <div class="my_info">
-                                    <label for="phone">연락처</label>
-                                    <input type="tel" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" id="phone" placeholder="연락처(필수)">
-                                </div>
-                                <div class="my_info">
-                                    <label for="position">직급</label>
-                                    <input type="text" id="position" placeholder="직급(필수) 및 개인일 경우(해당사항 없음)">
-                                </div>
-                            </div>
-                            <div class="my_info email_info">
-                                <label for="mail">이메일</label>
-                                <input type="email" id="mail" placeholder="이메일(필수)">
-                            </div>
-                            <div class="my_info my_txt">
-                                <label for="txt">문의</label>
-                                <textarea id="txt" placeholder="문의 내용을 입력해 주세요.(필수)"></textarea>
-                                <p class="info_txt">※ 문의내용에 욕설, 성희롱 등의 내용이 포함된 경우 문의가 제한될 수 있습니다.</p>
-                            </div>
-                            <div class="submit_agree">
-                                <div class="input_box">
-                                    <input type="checkbox" id="personal_info">
-                                    <label for="personal_info">[필수]개인정보 수집 동의</label>
-                                </div>
-                                <div class="agree_contents">
-                                    <p>수집하는 개인정보 항목: 이름, 회사명, 연락처, 이메일 주소 작성해주시는 개인 정보는 문의 접수 및 고객 불만 해결을 위해 1년간 보관됩니다.
-                                        본 동의를 거부할 수 있으나, 미동의 시 문의 접수가 불가능합니다.</p>
-                                </div>
-                            </div>
-                            <div class="btn_box">
-                                <button class="btn_estimate btn_primary large">견적 문의하기</button>
-                            </div>
-                        </div>
-
-                        <div class="contact">
-                            <a href="tel:+8216613222">
-                                <img src="../assets/images/ico_headset_line.svg" alt="전화 걸기">
-                                <span>1661-3222</span>
-                            </a>
-                            <a href="mailto:hello@mindslab.ai">
-                                <img src="../assets/images/ico_email_line.svg" alt="메일 보내기">
-                                <span>hello@mindslab.ai</span>
-                            </a>
                         </div>
                     </div>
 
-                    <div class="use_info_txt">
-                        <p>edge 서비스 이용 안내</p>
-                        <ul>
-                            <li>금액은 부가세 10%가 포함되지 않은 금액입니다.</li>
-                            <li>설치비는 별도로 청구됩니다.</li>
-                            <li>장비 하나 당 1개월 동안 사용했을 때 청구되는 금액입니다.</li>
-                            <li>서비스 견적문의를 통해 서비스를 구매하실 수 있습니다.</li>
-                            <li>중도 해지할 경우 남은 금액의 50%만 환불됩니다.</li>
-                            <li>이용 기간 만료 후에는 서비스를 이용하실 수 없습니다.</li>
-                        </ul>
+                    <div class="inner">
+                        <div class="dual">
+                            <div class="my_info">
+                                <label for="name">이름</label>
+                                <input type="text" id="name" placeholder="(필수) 이름">
+                            </div>
+                            <div class="my_info">
+                                <label for="company">회사명</label>
+                                <input type="text" id="company" placeholder="(필수) 개인일 경우(개인사용자)">
+                            </div>
+                        </div>
+                        <div class="dual">
+                            <div class="my_info">
+                                <label for="phone">연락처</label>
+                                <input type="tel" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" id="phone" placeholder="(필수) 01012345678">
+                            </div>
+                            <div class="my_info">
+                                <label for="position">직급</label>
+                                <input type="text" id="position" placeholder="(필수) 개인일 경우(해당사항 없음)">
+                            </div>
+                        </div>
+                        <div class="my_info email_info">
+                            <label for="mail">이메일</label>
+                            <input type="email" id="mail" placeholder="(필수) hello@mindslab.ai">
+                        </div>
+                        <div class="my_info my_txt">
+                            <label for="txt">문의사항</label>
+                            <textarea id="txt" placeholder="(필수) 문의 내용을 입력해 주세요."></textarea>
+                            <p class="info_txt">※ 문의내용에 욕설, 성희롱 등의 내용이 포함된 경우 문의가 제한될 수 있습니다.</p>
+                        </div>
+                        <div class="submit_agree">
+                            <div class="input_box">
+                                <input type="checkbox" id="personal_info">
+                                <label for="personal_info">[필수]개인정보 수집 동의</label>
+                            </div>
+                            <div class="agree_contents">
+                                <p>수집하는 개인정보 항목: 이름, 회사명, 연락처, 이메일 주소 작성해주시는 개인 정보는 문의 접수 및 고객 불만 해결을 위해 1년간 보관됩니다.
+                                    본 동의를 거부할 수 있으나, 미동의 시 문의 접수가 불가능합니다.</p>
+                            </div>
+                        </div>
+                        <div class="btn_box">
+                            <button class="btn_estimate btn_primary large">문의하기</button>
+                        </div>
+                    </div>
+
+                    <div class="contact">
+                        <a href="tel:+8216613222">
+                            <img src="../assets/images/ico_headset_line.svg" alt="전화 걸기">
+                            <span>1661-3222</span>
+                        </a>
+                        <a href="mailto:hello@mindslab.ai">
+                            <img src="../assets/images/ico_email_line.svg" alt="메일 보내기">
+                            <span>hello@mindslab.ai</span>
+                        </a>
                     </div>
                 </div>
-                <!-- //.content -->
+
+                <div class="use_info_txt">
+                    <p>edge 서비스 이용 안내</p>
+                    <ul>
+                        <li>금액은 부가세 10%가 포함되지 않은 금액입니다.</li>
+                        <li>설치비는 별도로 청구됩니다.</li>
+                        <li>장비 하나 당 1개월 동안 사용했을 때 청구되는 금액입니다.</li>
+                        <li>서비스 견적문의를 통해 서비스를 구매하실 수 있습니다.</li>
+                        <li>중도 해지할 경우 남은 금액의 50%만 환불됩니다.</li>
+                        <li>이용 기간 만료 후에는 서비스를 이용하실 수 없습니다.</li>
+                    </ul>
+                </div>
             </div>
             <!-- //.stn.inquiry -->
         </div>
@@ -1165,5 +1165,10 @@ $(window).load(function() {
 	$('#pageldg').addClass('pageldg_hide').delay(300).queue(function() { $(this).remove(); });
 }); 
 </script> 
+
+<!-- Local Script / [D] 추가 스크립트 -->
+<script type="text/javascript">   
+    // 
+</script>
 </body>
 </html>
