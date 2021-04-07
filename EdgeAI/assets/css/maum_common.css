@@ -327,179 +327,210 @@
 .altBox .btnBox button {min-width:50px; padding:5px 15px; color:#121f3e; font-size:13px; border:1px solid #d7dee7; background:#fff;}
 .altBox .btnBox button.btn_clr {color:#fff; border:1px solid rgba(0,0,0,0.05); background:#3599ff;}
 
-/* -------------------- wrap -------------------- */
-.maumUI {display:block; position:relative; width:100%; min-width:1280px; height:100%; min-height:800px;}
+/* MINDsLab. CSJ. 20210402 */
+/* ==================== wrap ==================== */
+.maumUI{position:relative; width:100%; min-width:1200px; height:100%;}
 
-/* -------------------- header -------------------- */
-/* header */
-.maumUI #header {display:block; clear:both; position:relative; width:100%; text-align:center; background:#fff; z-index:1000; transition:all 0.2s ease-out;}
-.maumUI #header h1 {float:left; overflow:hidden; width:88px; height:35px; margin:15px 0 0 30px; background:url("../images/logo_maumAi_clr.svg") 50% 50% no-repeat; background-size:100% 100%; text-indent:-999px;}
-.maumUI #header h1 a {display:block;width:100%;height:100%;}
+/*Scroll Bar Style*/
+::-webkit-scrollbar{width:5px; height:6px; border-radius:3px;}/* 스크롤바의 width */
+::-webkit-scrollbar-track{background-color:rgba(255,255,255,0.2);}/* 스크롤바의 전체 배경색 */
+::-webkit-scrollbar-thumb{background-color:rgba(187, 187, 187, 0.8); border-radius:3px;}/* 스크롤바 색 */
+::-webkit-scrollbar-button{display:none;}/* 위 아래 버튼 (버튼 없애기를 함) */
 
-/* header-maum_sta */
-.maumUI #header .maum_sta {display:block; height:70px; transition:all 0.2s ease-out;}
+/* ==================== header ==================== */
+/* #header */
+#header{display:block; position:fixed; top:0; width:100%; min-width:1200px; height:76px; padding:6px 0 6px 24px; box-sizing:border-box; transition:all 0.3s ease-out; -webkit-transition:all 0.3s ease-out; -moz-transition:all 0.3s ease-out; -ms-transition:all 0.3s ease-out; -o-transition:all 0.3s ease-out; z-index:300;}
+#header .maum_sta{display:block; width:100%; height:100%;}
+/* maum_left */
+#header .maum_sta .maum_left{display:flex; align-items:center; float:left; height:100%;}
+#header .maum_sta h1{float:left; width:154px; height:28px;}
+#header .maum_sta h1 a{display:block; width:100%; height:100%; background-image:url('../images/logo_Edge_w.svg'); background-size:100%; background-repeat:no-repeat; text-indent:-9999px;}
+#header .maum_sta .maum_gnb{float:left; height:100%; margin-left:25px;}
+#header .maum_sta .nav{width:auto; height:100%;}
+#header .maum_sta .nav::after{display:block; clear:both; content:'';}
+#header .maum_sta .nav > li{float:left; position:relative; display:block; height:100%;}
+#header .maum_sta .nav > li > a{display:flex; height:100%; align-items:center; justify-content:center; padding:0 25px; color:#fff; font-size:16px; font-weight:500; letter-spacing:-0.16px; transition:color 0.2s; -webkit-transition:color 0.2s; -moz-transition:color 0.2s; -ms-transition:color 0.2s; -o-transition:color 0.2s;}
+#header .maum_sta .nav > li:hover > a, #header .maum_sta .nav > li.on > a{color:#1fa5ee;}
+#header .maum_sta .nav > li.on.nav_edgeanalysis > a{font-weight:700;}
+#header .maum_sta .nav > li:hover > a.lang:hover{color:#fff;}
 
-/* header-maum_sta-gnb */
-.maumUI .maum_sta .maum_gnb {float:left; margin:0 0 0 50px;}
-.maumUI .maum_sta .maum_gnb .nav {clear:both; overflow:hidden;}
-.maumUI .maum_sta .maum_gnb .nav li {float:left; margin:0 23px 0 0;}
-.maumUI .maum_sta .maum_gnb .nav li:last-child {margin:0;}
-.maumUI .maum_sta .maum_gnb .nav li a {display:block; position:relative; height:70px; color:#2c3f51; font-size:15px; font-weight:700; line-height:68px; transition:all 0.3s ease-out;}
-.maumUI .maum_sta .maum_gnb .nav li a.go_employees {height:35px; margin:17px 0 0 0; padding:0 10px; color:#fff; font-size:14px; font-weight:500; line-height:35px; border-radius:3px; background:#002b49;}
-.maumUI .maum_sta .maum_gnb .nav li a:after {content:''; position:absolute; bottom:0; left:50%; width:0%; height:3px; background:#0078f2; opacity:0; transition:all 0.3s ease-out;}
-.maumUI .maum_sta .maum_gnb .nav li a:hover {color:#0078f2; transition:all 0.3s ease-out;}
-.maumUI .maum_sta .maum_gnb .nav li a.active:after {left:0; width:100%; opacity:1.0; transition:all 0.3s ease-out;}
-.maumUI .maum_sta .maum_gnb .nav li a.go_employees:hover {color:#fff;}
-/*.maumUI .maum_sta .maum_gnb .nav li:last-child a {font-weight:normal;}*/
-
-/* header-maum_sta-maum_etc */
-.maumUI .maum_sta .maum_etc {float:right; margin:18px 30px 0 0;}
-.maumUI .maum_sta .maum_etc .nav {clear:both;}
-.maumUI .maum_sta .maum_etc .nav>li {position:relative; float:left; margin:0 0 0 12px;}
-.maumUI .maum_sta .maum_etc .nav>li>a {display:block; height:34px; padding:0 7px; color:#2c3f51; font-size:14px; font-weight:500; line-height:30px; border-radius:4px; transition:all 0.3s ease-out;}
-.maumUI .maum_sta .maum_etc .nav>li>a.btn_ico {overflow:hidden; width:34px; text-indent:-999px; box-sizing:border-box; background-size:20px 20px !important;}
-.maumUI .maum_sta .maum_etc .nav>li>a:hover {color:#0078f2; transition:all 0.3s ease-out;}
-.maumUI .maum_sta .maum_etc .nav>li>a>img {width:20px; height:20px; vertical-align:middle;}
-
-.maumUI .maum_sta .maum_etc .nav>li>a.btn_ico.user {background:url("../images/ico_user_g.svg") 50% 50% no-repeat;}
-.maumUI .maum_sta .maum_etc .nav>li>a.btn_ico.lang {background:url("../images/ico_lang_g.svg") 50% 50% no-repeat;}
-.maumUI .maum_sta .maum_etc .nav>li>a.btn_ico.app {background:url("../images/ico_app_g.svg") 50% 50% no-repeat;}
-.maumUI .maum_sta .maum_etc .nav>li>a.btn_ico.mindsLab {padding:0 3px;background:url("../images/ico_mindsLab_g.svg") 50% 50% no-repeat; background-size:28px 20px !important;}
+/* maum_etc */
+#header .maum_sta .maum_etc{display:flex; align-items:center; float:right; height:100%;}
+#header .maum_sta .maum_etc li .nav li a{font-weight:500;}
+#header .btn_ico span{display:none;}
+#header .lang::before{width:16px; font-family:"Font Awesome 5 Free"; -moz-osx-font-smoothing:grayscale; -webkit-font-smoothing:antialiased; display:inline-block; font-style:normal; font-variant:normal; text-rendering:auto; line-height:1; font-weight:900; display:block; content:'\f0ac'; font-size:16px;}
+#header .user{width:16px; background:url('../images/ico_user_w.svg'); background-position:center; background-repeat:no-repeat; background-size:16px;}
+#header .app{width:16px; background:url('../images/ico_app_w.svg'); background-position:center; background-repeat:no-repeat; background-size:16px;}
+#header .btn_maum_ham{display:none;}
+/* #header.on */
+#header.on{height:60px; background:rgba(255,255,255,0.9); border-bottom:1px solid #dbdfef;}
+#header.on.mobile_menu{border-bottom:0;}
+#header.on .maum_sta h1 a{background-image:url('../images/logo_Edge_bk.svg');}
+#header.on .maum_sta .nav > li > a{color:#121f3e;}
+#header.on .maum_sta .nav > li.on > a{color:#1fa5ee;}
+#header.on .maum_sta .nav > li:hover > a, #header.on .maum_sta .nav > li.on{color:#1fa5ee;}
+#header.on .maum_sta .nav > li.on.nav_edgeanalysis{font-weight:700;}
+#header.on .maum_sta .nav > li:hover > a.lang:hover{color:#121f3e;}
+#header.on .user{background:url('../images/ico_user_bk.svg'); background-position:center; background-repeat:no-repeat;}
+#header.on .app{background:url('../images/ico_app_bk.svg'); background-position:center; background-repeat:no-repeat;}
 
 /* header-maum_sta-maum_etc-lstBox */
-.maumUI .maum_sta .maum_etc .nav>li .lstBox {display:none; position:absolute; top:35px; left:50%; border:1px solid #e6e9f3; border-radius:4px; background:#fff; transform:translate(-50%,0); box-shadow:0 1px 4px 0 rgba(44,63,81,0.1);  z-index:10;}
-.maumUI .maum_sta .maum_etc .nav>li .lstBox .lst {display:block; position:relative; min-width:150px; padding:7px 0;}
-.maumUI .maum_sta .maum_etc .nav>li .lstBox .lst:before {content:''; position:absolute; top:0; left:50%; width:6px; height:6px; border-top:1px solid #e6e9f3; border-left:1px solid #e6e9f3; background:#fff; transform-origin:6px -3px; transform:rotate(45deg);}
-.maumUI .maum_sta .maum_etc .nav>li .lstBox .lst li {display:block; clear:both; overflow:hidden;}
-.maumUI .maum_sta .maum_etc .nav>li .lstBox .lst li a {display:block; padding:7px 14px; color:#2c3f51; font-size:13px; text-align:left; transition:all 0.3s ease-out;}
-.maumUI .maum_sta .maum_etc .nav>li .lstBox .lst li a:hover {background:#f3f5fa; transition:all 0.3s ease-out;}
-.maumUI .maum_sta .maum_etc .nav>li .lstBox .lst li.lang_li a {text-align:left;}
-.maumUI .maum_sta .maum_etc .nav>li .lstBox .lst li.userInfo {width:200px; margin:0 0 7px 0; padding:3px 14px 7px 14px; text-align:left; vertical-align:top; border-bottom:1px solid #e6e9f3; box-sizing:border-box;}
-.maumUI .maum_sta .maum_etc .nav>li .lstBox .lst li.userInfo .thumb {float:left; width:30px; height:30px; padding:4px 0 0 0;}
-.maumUI .maum_sta .maum_etc .nav>li .lstBox .lst li.userInfo .txt {float:left; padding:0 0 0 14px;}
-.maumUI .maum_sta .maum_etc .nav>li .lstBox .lst li.userInfo .txt .userName {display:block; color:#2c3f51; font-size:15px; font-weight:700;}
-.maumUI .maum_sta .maum_etc .nav>li .lstBox .lst li.userInfo .txt .loginID {display:block; overflow:hidden; max-width:125px; padding:3px 0; color:#5c688c; font-size:11px; text-overflow:ellipsis; white-space:nowrap; word-wrap:normal;}
+.maumUI .maum_sta .maum_etc .nav>li .lstBox{display:none; position:absolute; top:75%; left:50%; border:1px solid #e6e9f3; border-radius:4px; background:#fff; transform:translate(-50%,0); box-shadow:0 1px 4px 0 rgba(44,63,81,0.1);  z-index:10;}
+.maumUI .maum_sta .maum_etc .nav>li .lstBox .lst{display:block; position:relative; min-width:150px; padding:7px 0;}
+.maumUI .maum_sta .maum_etc .nav>li .lstBox .lst:before{content:''; position:absolute; top:0; left:50%; width:6px; height:6px; border-top:1px solid #e6e9f3; border-left:1px solid #e6e9f3; background:#fff; transform-origin:6px -3px; transform:rotate(45deg);}
+.maumUI .maum_sta .maum_etc .nav>li .lstBox .lst li{display:block; clear:both; overflow:hidden;}
+.maumUI .maum_sta .maum_etc .nav>li .lstBox .lst li a{display:block; padding:7px 14px; color:#2c3f51; font-size:13px; text-align:left; transition:all 0.3s ease-out;}
+.maumUI .maum_sta .maum_etc .nav>li .lstBox .lst li a:hover{background:#f3f5fa; transition:all 0.3s ease-out;}
+.maumUI .maum_sta .maum_etc .nav>li .lstBox .lst li.lang_li a{text-align:left;}
+.maumUI .maum_sta .maum_etc .nav>li .lstBox .lst li.userInfo{display:flex; align-items:center; width:200px; margin:0 0 7px 0; padding:3px 14px 7px 14px; text-align:left; vertical-align:top; border-bottom:1px solid #e6e9f3; box-sizing:border-box;}
+.maumUI .maum_sta .maum_etc .nav>li .lstBox .lst li.userInfo .thumb{float:left; width:30px; height:30px; padding:4px 0 0 0;}
+.maumUI .maum_sta .maum_etc .nav>li .lstBox .lst li.userInfo .txt{float:left; padding:0 0 0 14px;}
+.maumUI .maum_sta .maum_etc .nav>li .lstBox .lst li.userInfo .txt .userName{display:block; color:#2c3f51; font-size:15px; font-weight:700;}
+.maumUI .maum_sta .maum_etc .nav>li .lstBox .lst li.userInfo .txt .loginID{display:block; overflow:hidden; max-width:125px; padding:3px 0; color:#5c688c; font-size:11px; text-overflow:ellipsis; white-space:nowrap; word-wrap:normal;}
 
 /* header-maum_sta-maum_etc-appBox */
-.maumUI .maum_sta .maum_etc .nav>li .appBox {display:none; position:absolute; top:35px; right:-10px; border:1px solid #e6e9f3; border-radius:4px; background:#fff; box-shadow:0 1px 4px 0 rgba(44,63,81,0.1); z-index:10;}
-.maumUI .maum_sta .maum_etc .nav>li .appBox:before {content:''; position:absolute; top:0; right:17px; width:6px; height:6px; border-top:1px solid #e6e9f3; border-left:1px solid #e6e9f3; background:#fff; transform-origin:6px -3px; transform:rotate(45deg);}
-.maumUI .maum_sta .maum_etc .nav>li .appBox .tit {display:block; padding:8px 15px; color:#2c3f51; font-size:11px; font-weight:700; text-align:center; border-bottom:1px solid #e6e9f3;}
-.maumUI .maum_sta .maum_etc .nav>li .appBox .lst {display:block; clear:both; overflow:hidden; position:relative; width:300px; padding:7px 0; background:#f7f8fc;}
-.maumUI .maum_sta .maum_etc .nav>li .appBox .lst li {float:left; width:33.33333%; margin:0 0 10px 0; text-align:center;}
-.maumUI .maum_sta .maum_etc .nav>li .appBox .lst li a {display:block; margin:0 5px; box-sizing:border-box;}
-.maumUI .maum_sta .maum_etc .nav>li .appBox .lst li a span {display:inline-block; width:42px; height:42px; margin:4px 0 0 0;  border-radius:3px;border:solid 1px #b6c5d1; background:#fff url("../images/img_landing_cloudAPI.png") 50% 50% no-repeat ; background-size:29px; transition:all 0.3s ease-out;}
-.maumUI .maum_sta .maum_etc .nav>li .appBox .lst li a em {display:block; line-height:14px;}
-.maumUI .maum_sta .maum_etc .nav>li .appBox .lst li:nth-child(2) a span {display:inline-block; width:42px; height:42px; margin:4px 0 0 0; border-radius:7px; background:#fff url("../images/img_landing_aibuilder.png") 50% 50% no-repeat; background-size:31px;}
-.maumUI .maum_sta .maum_etc .nav>li .appBox .lst li:nth-child(3) a span {display:inline-block; width:42px; height:42px; margin:4px 0 0 0; border-radius:7px; background:#fff url("../images/img_landing_maumMinutes.png") 50% 50% no-repeat; background-size:22px;}
-.maumUI .maum_sta .maum_etc .nav>li .appBox .lst li:nth-child(4) a span {display:inline-block; width:42px; height:42px; margin:4px 0 0 0; border-radius:7px; background:#fff url("../images/img_landing_fastai.png") 50% 50% no-repeat; background-size:28px;}
-.maumUI .maum_sta .maum_etc .nav>li .appBox .lst li:nth-child(5) a span {display:inline-block; width:42px; height:42px; margin:4px 0 0 0; border-radius:7px; background:#fff url("../images/img_landing_tts.svg") 50% 50% no-repeat; background-size:34px;}
-.maumUI .maum_sta .maum_etc .nav>li .appBox .lst li:nth-child(6) a span {display:inline-block; width:42px; height:42px; margin:4px 0 0 0; border-radius:7px; background:#fff url("../images/img_landing_edgeAiPlatform.svg") 50% 50% no-repeat; background-size:34px;}
-.maumUI .maum_sta .maum_etc .nav>li .appBox .lst li:nth-child(7) a span {display:inline-block; width:42px; height:42px; margin:4px 0 0 0; border-radius:7px; background:#fff url("../images/img_landing_mauamdata.svg") 50% 50% no-repeat; background-size:41px;}
-.maumUI .maum_sta .maum_etc .nav>li .appBox .lst li:nth-child(8) a span {display:inline-block; width:42px; height:42px; margin:4px 0 0 0; border-radius:7px; background:#fff url("../images/img_landing_ecominds.svg") 50% 50% no-repeat; background-size:34px;}
-.maumUI .maum_sta .maum_etc .nav>li .appBox .lst li a:hover span {border:1px solid #407ae5;transition:all 0.3s ease-out;}
-.maumUI .maum_sta .maum_etc .nav>li .appBox .lst li a:hover em {color:#407ae5; transition:all 0.3s ease-out;}
-.maumUI .maum_sta .maum_etc .nav>li.active>a.btn_ico {background-color:#f3f5fa !important;}
-.maumUI .maum_sta .maum_etc .nav>li.active .lstBox {display:block;}
-.maumUI .maum_sta .maum_etc .nav>li.active .appBox {display:block;}
+.maumUI .maum_sta .maum_etc .nav>li .appBox{display:none; position:absolute; top:75%; right:-10px; border:1px solid #e6e9f3; border-radius:4px; background:#fff; box-shadow:0 1px 4px 0 rgba(44,63,81,0.1); z-index:10;}
+.maumUI .maum_sta .maum_etc .nav>li .appBox:before{content:''; position:absolute; top:0; right:34px; width:6px; height:6px; border-top:1px solid #e6e9f3; border-left:1px solid #e6e9f3; background:#fff; transform-origin:6px -3px; transform:rotate(45deg);}
+.maumUI .maum_sta .maum_etc .nav>li .appBox .tit{display:block; padding:8px 15px; color:#2c3f51; font-size:11px; font-weight:700; text-align:center; border-bottom:1px solid #e6e9f3;}
+.maumUI .maum_sta .maum_etc .nav>li .appBox .lst{display:block; clear:both; overflow:hidden; position:relative; width:300px; padding:7px 0; background:#f7f8fc;}
+.maumUI .maum_sta .maum_etc .nav>li .appBox .lst li{float:left; width:33.33333%; margin:0 0 10px 0; text-align:center;}
+.maumUI .maum_sta .maum_etc .nav>li .appBox .lst li a{display:block; margin:0 5px; box-sizing:border-box;}
+.maumUI .maum_sta .maum_etc .nav>li .appBox .lst li a span{display:inline-block; width:42px; height:42px; margin:4px 0 0 0;  border-radius:3px;border:solid 1px #b6c5d1; background:#fff url("../images/img_landing_cloudAPI.png") 50% 50% no-repeat ; background-size:29px; transition:all 0.3s ease-out;}
+.maumUI .maum_sta .maum_etc .nav>li .appBox .lst li a em{display:block; line-height:14px; font-size:12px;}
+.maumUI .maum_sta .maum_etc .nav>li .appBox .lst li:nth-child(2) a span{display:inline-block; width:42px; height:42px; margin:4px 0 0 0; border-radius:7px; background:#fff url("../images/img_landing_aibuilder.png") 50% 50% no-repeat; background-size:31px;}
+.maumUI .maum_sta .maum_etc .nav>li .appBox .lst li:nth-child(3) a span{display:inline-block; width:42px; height:42px; margin:4px 0 0 0; border-radius:7px; background:#fff url("../images/img_landing_maumMinutes.png") 50% 50% no-repeat; background-size:22px;}
+.maumUI .maum_sta .maum_etc .nav>li .appBox .lst li:nth-child(4) a span{display:inline-block; width:42px; height:42px; margin:4px 0 0 0; border-radius:7px; background:#fff url("../images/img_landing_fastai.png") 50% 50% no-repeat; background-size:28px;}
+.maumUI .maum_sta .maum_etc .nav>li .appBox .lst li:nth-child(5) a span{display:inline-block; width:42px; height:42px; margin:4px 0 0 0; border-radius:7px; background:#fff url("../images/img_landing_tts.svg") 50% 50% no-repeat; background-size:34px;}
+.maumUI .maum_sta .maum_etc .nav>li .appBox .lst li:nth-child(6) a span{display:inline-block; width:42px; height:42px; margin:4px 0 0 0; border-radius:7px; background:#fff url("../images/img_landing_edgeAiPlatform.svg") 50% 50% no-repeat; background-size:34px;}
+.maumUI .maum_sta .maum_etc .nav>li .appBox .lst li:nth-child(7) a span{display:inline-block; width:42px; height:42px; margin:4px 0 0 0; border-radius:7px; background:#fff url("../images/img_landing_mauamdata.svg") 50% 50% no-repeat; background-size:41px;}
+.maumUI .maum_sta .maum_etc .nav>li .appBox .lst li:nth-child(8) a span{display:inline-block; width:42px; height:42px; margin:4px 0 0 0; border-radius:7px; background:#fff url("../images/img_landing_ecominds.svg") 50% 50% no-repeat; background-size:34px;}
+.maumUI .maum_sta .maum_etc .nav>li .appBox .lst li a:hover span{border:1px solid #407ae5;transition:all 0.3s ease-out;}
+.maumUI .maum_sta .maum_etc .nav>li .appBox .lst li a:hover em{color:#407ae5; transition:all 0.3s ease-out;}
+.maumUI .maum_sta .maum_etc .nav>li.active .lstBox{display:block;}
+.maumUI .maum_sta .maum_etc .nav>li.active .appBox{display:block;}
 
 /* header-maum_sta-모바일 햄버거메뉴 */
-.maumUI .maum_sta .btn_maum_ham {display:none; overflow:hidden; position:absolute; top:50%; right:0; width:40px; height:40px; text-indent:-999px; transform:translate(0,-50%);}
-.maumUI .maum_sta .btn_maum_ham span {display:block; width:24px; height:3px; margin-bottom:5px; border-radius:5px; background:#2c3f51; transform:rotate(0deg); transition:.2s ease all;}
-.maumUI.transform.trans .maum_sta .btn_maum_ham span { background:rgba(255,255,255,0.7);}
-.maumUI .maum_sta .btn_maum_ham span:nth-child(2) {width:18px;}
-.maumUI .maum_sta .btn_maum_ham span:last-child {width:12px; margin-bottom:0;}
-.maumUI .maum_sta .btn_maum_ham:focus {outline-width:0;}
+.maumUI .maum_sta .btn_maum_ham{display:none; overflow:hidden; position:absolute; top:50%; right:0; width:40px; height:40px; line-height:15px; text-indent:-999px; transform:translate(0,-50%);}
+.maumUI .maum_sta .btn_maum_ham span{ display:block; width:20px; height:2px; margin:4px auto 0; background:#fff; transform:rotate(0deg); transition:.2s ease all;}
+.maumUI #header.on .maum_sta .btn_maum_ham span{background:#2c3f51;}
+.maumUI.transform.trans .maum_sta .btn_maum_ham span{background:rgba(255,255,255,0.7);}
+.maumUI .maum_sta .btn_maum_ham span:first-child{margin-top:-2px;}
+.maumUI .maum_sta .btn_maum_ham:focus{outline-width:0;}
 
-.maumUI .maum_sta .btn_maum_ham.active span {background:#2c3f51;}
-.maumUI .maum_sta .btn_maum_ham.active span:nth-child(1) {transform:rotate(45deg); -webkit-transform-origin:15% 15%; transform-origin:15% 15%;}
-.maumUI .maum_sta .btn_maum_ham.active span:nth-child(2) {opacity:0;}
-.maumUI .maum_sta .btn_maum_ham.active span:nth-child(3) {width:24px;transform:rotate(-45deg); transform-origin:15% 95%;}
+.maumUI #header .maum_sta .btn_maum_ham.active{right:0;}
+.maumUI #header .maum_sta .btn_maum_ham.active span{height:2px; background:#99a2b4;}
+.maumUI .maum_sta .btn_maum_ham.active span:nth-child(1){transform:rotate(45deg); transform-origin:19% 3px;}
+.maumUI .maum_sta .btn_maum_ham.active span:nth-child(2){opacity:0;}
+.maumUI .maum_sta .btn_maum_ham.active span:nth-child(3){transform:rotate(-45deg); transform-origin:9% -3px;}
 
-/* header-scroll transform */
-.maumUI.transform #header .maum_sta {position:fixed; top:0; left:0; width:100%; height:40px; background:rgba(17,29,39,0.7); backdrop-filter:saturate(180%) blur(10px); transition:all 0.3s ease-out; z-index:50;}
-.maumUI.transform #header .maum_sta h1 {width:50px; margin:2px 0 0 20px; background:url("../images/logo_maumAi_w.svg") 50% 50% no-repeat; background-size:100% auto;}
-.maumUI.transform #header .maum_sta .maum_gnb {margin:0 0 0 40px;}
-.maumUI.transform #header .maum_sta .maum_gnb .nav li {margin:0 20px 0 0;}
-.maumUI.transform #header .maum_sta .maum_gnb .nav li a {height:40px; padding:0; color:#fff; font-size:12px; font-weight:500; line-height:38px;}
-.maumUI.transform #header .maum_sta .maum_gnb .nav li a:hover {color:#3599ff; transition:all 0.3s ease-out;}
-.maumUI.transform #header .maum_gnb .nav li a.go_employees {height:28px; margin:6px 0 0 0; padding:0 10px; border-radius:3px; background:#ffffff; color:#002b49; font-size:12px; line-height:28px;}
+/* ==================== footer ==================== */
+/* footer */
+#footer{width:100%; padding:60px 24px; background:#0c1329; box-sizing:border-box;}
+#footer .ft_cont{display:flex; flex-direction:row-reverse; align-items:center; justify-content:space-between; max-width:1200px; margin:0 auto;}
+#footer .cont{width:50%;}
+#footer .footer_sns{width:410px;}
+#footer .ft_contact{display:flex; align-items:center; justify-content:space-between; width:410px;}
+#footer .ft_contact a{ display:flex; align-items:center; justify-content:center; width:200px; height:38px; border-radius:19px; -webkit-border-radius:19px; -moz-border-radius:19px; -ms-border-radius:19px; -o-border-radius:19px; background:rgba(144,156,255,0.1); color:#fff; transition:all 0.3s; -webkit-transition:all 0.3s; -moz-transition:all 0.3s; -ms-transition:all 0.3s; -o-transition:all 0.3s; }
+#footer .ft_contact a img{margin-right:10px;}
+#footer .ft_contact a span{color:#fff; font-size:14px; font-weight:500;}
+#footer .ft_sns_btm{display:flex; flex-direction:row-reverse; align-items:center; justify-content:space-between; margin-top:24px;} 
+#footer .ft_sns_btm .ft_sns a{display:block; float:left; width:33px; height:34px; margin-left:15px;}
+#footer .ft_sns_btm .ft_sns a:first-child{margin:0;}
+#footer .ft_sns_btm .ft_cnt a{display:block; float:left; color:#fff; font-size:13px; opacity:0.8; margin-right:25px;}
+#footer .ft_sns_btm .ft_cnt a:last-child{margin:0;}
+#footer .address address span{color:#fff; font-size:13px; line-height:20px;}
+#footer .address .copyright{margin-top:27px; color:#fff; font-size:13px; opacity:0.7;}
 
-.maumUI.transform #header .maum_sta .maum_etc {margin:5px 15px 0 0;}
-.maumUI.transform #header .maum_sta .maum_etc .nav>li {margin:0 0 0 10px;}
-.maumUI.transform #header .maum_sta .maum_etc .nav>li>a {height:30px; color:#fff; font-size:12px;}
-.maumUI.transform #header .maum_sta .maum_etc .nav>li>a:hover {color:#3599ff;}
-.maumUI.transform #header .maum_sta .maum_etc .nav>li>a.btn_ico {width:30px; background-size:16px 16px !important;}
-.maumUI.transform #header .maum_sta .maum_etc .nav>li>a.btn_ico:hover {background-color:rgba(255,255,255,0.1) !important;}
-.maumUI.transform #header .maum_sta .maum_etc .nav>li.active>a.btn_ico {background-color:rgba(255,255,255,0.1) !important;}
-.maumUI.transform #header .maum_sta .maum_etc .nav>li>a.btn_ico.user {background:url("../images/ico_user_w.svg") 50% 50% no-repeat;}
-.maumUI.transform #header .maum_sta .maum_etc .nav>li>a.btn_ico.lang {background:url("../images/ico_lang_w.svg") 50% 50% no-repeat;}
-.maumUI.transform #header .maum_sta .maum_etc .nav>li>a.btn_ico.app {background:url("../images/ico_app_w.svg") 50% 50% no-repeat;}
-.maumUI.transform #header .maum_sta .maum_etc .nav>li>a.btn_ico.mindsLab {background:url("../images/ico_mindsLab_w.svg") 50% 50% no-repeat}
+/* aside */
+.mbl_aside{display:none;}
 
-/* -------------------- mobile -------------------- */
-@media screen and (max-width:768px) {
-    .maumUI {min-width:320px;}
-    .maumUI #header h1 {width:60px; margin:7px 0 0 20px;}
-    .maumUI #header .maum_sta {height:50px;}
-    .maumUI #header .maum_sta .maum_gnb {display:none;}
-    .maumUI #header .maum_sta .maum_etc {display:none;}
-    .maumUI #header .maum_sta .btn_maum_ham {display:block; line-height:10px;}
-    .maumUI #header .maum_sta .btn_maum_ham.active {right:0;}
-    .maumUI #header .maum_sta .btn_maum_ham.active span {width:32px;}
-    .maumUI #footer {padding:0;}
-    .stn_inquiry .cont_box .inquiry_box {top:320px;}
+/* layer */
+.lyr_bg_dim{position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0, 0, 0, 0.5); z-index:999;}
+.lyrPlayBox{display:none; position:fixed; top:50%; left:50%; width:1000px; min-height:150px; border-radius:3px; box-shadow:0 1px 4px 0 rgba(44, 63, 81, 0.1); transform:translate(-50%, -50%); z-index:9999;}
+#lyr_video_player{display:block;}
+#lyr_video_player .lyr_ct{position:relative; width:1000px; padding-bottom:56.25%;}
+#lyr_video_player .lyr_ct iframe{position:absolute; top:0; left:0; width:100%; height:100%;}
+#lyr_video_player .btn_lyr_close{display:inline-block; position:absolute; top:-40px; right:0px; width:40px; height:40px;}
+#lyr_video_player .btn_lyr_close .html_code{display:flex; align-items:center; justify-content:center; height:100%; line-height:1; font-size:42px; color:#fff; cursor:pointer;}
+
+
+@media screen and (max-width:768px){
+    .maumUI{min-width:320px;}
+    /* header */
+    #header{height:60px; min-width:320px; padding:10px 20px; z-index:1001;}
+    #header.mobile_menu .maum_sta h1 a{background-image:url('../images/logo_Edge_bk.svg');}
+    .maumUI #header h1{width:162px; height:30px; transition:all 0.3s ; -webkit-transition:all 0.3s ; -moz-transition:all 0.3s ; -ms-transition:all 0.3s ; -o-transition:all 0.3s ; } 
+    .maumUI #header .maum_sta{position:relative; height:100%;}
+    .maumUI #header .maum_sta .maum_gnb{display:none;}
+    .maumUI #header .maum_sta .maum_etc{display:none;}
+    .maumUI #header .maum_sta .btn_maum_ham{display:block;}
+
+    /* footer */
+    .maumUI #footer{padding:30px;}
+    #footer .cont{width:100%;}
+    #footer .ft_cont{display:block;}
+    #footer .footer_sns{width:100%;}
+    #footer .ft_contact{display:block; width:100%;}
+    #footer .ft_contact a:last-child{margin-top:15px;}
+    #footer .ft_sns_btm{flex-direction:column; align-items:flex-start;}
+    #footer .ft_sns_btm .ft_cnt{margin-top:20px;}
+    #footer .ft_sns_btm .ft_cnt a{margin-right:30px;}
+    #footer .address{margin-top:14px;}
+    #footer .address .copyright{margin-top:6px; font-size:12px;}
+    #footer .address address span{font-size:12px; word-break:keep-all;}
+
+    .mbl_aside{display:block; overflow:auto; position:fixed; top:0; right:-200%; width:100%; height:100vh; box-sizing:border-box; background-color:#f5f6fa; box-shadow:3px 0 7px #000; z-index:200;}
+    .mbl_aside .aside_top{display:block; height:auto; box-sizing:border-box; padding:74px 20px 20px; border-bottom:1px solid #e2e4e5; background:#fff;}
+    .mbl_aside .aside_top .btn_sign{display:block; width:100%; height:40px; border-radius:24px; -webkit-border-radius:24px; -moz-border-radius:24px; -ms-border-radius:24px; -o-border-radius:24px; color:#fff; font-size:16px; text-align:center;  line-height:40px; letter-spacing:-0.72px; background:#00aeee; box-sizing:border-box;}
+    .mbl_aside .aside_top .btn_sign span{height:100%; color:#fff; font-size:16px; text-align:center; line-height:40px; letter-spacing:-0.72px;}
+    .mbl_aside .aside_top .sign_email{background:transparent}
+    .mbl_aside .aside_top .sign_email span{padding-left:32px; color:#00aeee; background:url('../images/ico_user_clr.svg'); background-size:24px; background-position:top left; background-repeat:no-repeat;}
+
+    .mbl_aside .aside_mid{overflow:overlay; width:100%; height:calc(100vh - 249px); padding-bottom:20px; box-sizing:border-box;}
+    .mbl_aside .m_nav{width:100%; height:100%; box-sizing:border-box;}
+    .mbl_aside .m_nav > ul > li{padding:0; box-sizing:border-box;}
+    .mbl_aside .m_nav > ul > li.active{overflow:visible;}
+    .mbl_aside .m_nav > ul > li > a{display:block; position:relative; padding:16px 30px 16px 40px;box-sizing:border-box;}
+    .mbl_aside .m_nav > ul > li > a > img{margin-right:20px; vertical-align:middle;}
+    .mbl_aside .m_nav > ul > li > a > span{font-size:12px; letter-spacing:-0.24px; font-weight:500; color:#121f3e; text-align:left; vertical-align:middle;}
+    .mbl_aside .m_nav > ul > li.nav_dropdown > a::after{display:block; content:''; position:absolute; top:50%; right:30px; width:24px; height:24px; background-image:url('../images/ico_down.svg'); background-repeat:no-repeat; background-size:2.1rem; background-position:center; transform:translateY(-50%); box-sizing:border-box; -webkit-transform:translateY(-50%); -moz-transform:translateY(-50%); -ms-transform:translateY(-50%); -o-transform:translateY(-50%); }
+    .mbl_aside .m_nav > ul > li.nav_dropdown.active > a::after{ transform:translateY(-50%) rotate(180deg); -webkit-transform:translateY(-50%) rotate(180deg); -moz-transform:translateY(-50%) rotate(180deg); -ms-transform:translateY(-50%) rotate(180deg); -o-transform:translateY(-50%) rotate(180deg);}
+    .mbl_aside .m_nav > ul > li > ul{display:none;}
+    .mbl_aside .m_nav > ul > li > ul > li{background-color:rgba(51,59,96,0.1);}
+    .mbl_aside .m_nav > ul > li > ul > li > a{display:block; height:40px; padding-left:84px; line-height:40px;}
+    .mbl_aside .m_nav > ul > li > ul > li:hover{background-color:rgba(33,174,238,0.69);}
+    .mbl_aside .m_nav > ul > li > ul > li > a > span{font-size:12px; letter-spacing:-0.24px; color:#121f3e;}
+    .mbl_aside .m_nav > ul > li > ul > li:hover a span{color:#fff;}
+
+    .mbl_aside .aside_btm{display:block; position:absolute; bottom:0; left:0; width:100%;}
+    .mbl_aside .aside_btm ul{width:100%; height:56px; padding:0 20px; border-top:1px solid #e2e4e5; border-bottom:1px solid #e2e4e5; font-size:0; box-sizing:border-box;}
+    .mbl_aside .aside_btm ul li{display:inline-block; width:50%; height:100%;}
+    .mbl_aside .aside_btm ul li span{display:block; width:100%; height:100%; color:#121f3e; font-size:11px; font-weight:500; line-height:56px; letter-spacing:-0.22px; text-align:center;}
+    .mbl_aside .aside_btm ul li.in_link a{width:100%; height:100%;}
+    .mbl_aside .aside_btm .dn{display:none;}
+    .mbl_aside .aside_btm .maum_logout{width:100%; }
+    .mbl_aside .aside_btm .maum_logout a{display:flex; align-items:center; justify-content:center; width:100%; height:56px;}
+    .mbl_aside .aside_btm .maum_logout a img{margin-right:20px;}
+    .mbl_aside .aside_btm .maum_logout a span{color:#121f3e; font-size:12px; font-weight:500; letter-spacing:-0.24px;}
+    .mbl_aside .aside_btm .dn + .maum_logout{border-top:1px solid #e2e4e5;}
+
+    .mbl_aside.off{right:-200%; animation-name:menu_close; animation-duration:.5s; animation-timing-function:cubic-bezier(0.250, 0.460, 0.450, 0.940);}
+    @keyframes menu_close{
+        from{right:0%;}
+        to{right:-200%;}
+    }
+    .mbl_aside.on{right:0%; animation-name:menu_open; animation-duration:.5s; animation-timing-function:cubic-bezier(0.250, 0.460, 0.450, 0.940); }
+    @keyframes menu_open{
+        from{right:-200%;}
+        to{right:0%;}
+    }
+
+    /* layer */
+    #lyr_video_player.lyrPlayBox {width: calc(100% - 40px);}
+    #lyr_video_player .lyr_ct {width: 100%;}
+    #lyr_video_player .btn_lyr_close .html_code{font-size:28px;}
 }
 
-/* UXUI Team AMR 210323 마음 리뉴얼 공통 */
-.text_hide {overflow: hidden; line-height: 0; font-size: 0; text-indent: -999px;}
-
-/* UXUI Team AMR 210323 마음 리뉴얼 헤더 */
-.maum_common #header {position: fixed; z-index: 10; top: 0; left: 0; width: 100%; height: 70px; padding: 22px 25px 0 50px; box-sizing: border-box;}
-.maum_common #header h1 {overflow: hidden; display: inline-block; width: 90px;  background: url(../images/logo_maumAi_w.svg) no-repeat 0 0; background-size: contain; text-indent: -999px; vertical-align: middle;}
-.maum_common #header h1 a {display: block; width: 100%;}
-.maum_common #header .maum_sta {width: calc(100% - 95px); display: inline-block; vertical-align: middle;}
-.maum_common #header .maum_sta a {line-height: normal; font-size: 14px; color: #fff;}
-.maum_common #header .maum_sta .drop_ui {position: relative;}
-.maum_common #header .maum_sta .drop_ui .dropbox {display: none; position: absolute; top: 100%; border: 1px solid #e6e9f3; border-radius: 4px; background: #fff; box-shadow: 0 1px 4px 0 rgb(44, 63, 81, 0.1);}
-.maum_common #header .maum_sta .drop_ui .dropbox a {color: #2c3f51;}
-.maum_common #header .maum_sta .drop_ui.active .dropbox {display: block;}
-
-.maum_common #header .maum_gnb {float: left; margin-left: 75px;}
-.maum_common #header .maum_gnb li {display: inline-block; vertical-align: top;}
-.maum_common #header .maum_gnb a {display: block; padding: 8px 25px;}
-.maum_common #header .maum_etc {float: right;}
-.maum_common #header .maum_etc li {display: inline-block; vertical-align: top;}
-.maum_common #header .maum_etc a {display: block; padding: 8px 25px;}
-.maum_common #header .maum_etc a.lang {font-size: 22px; line-height: 22px;}
-.maum_common #header .maum_etc a.lang i {display: block;}
-.maum_common #header .maum_etc a.app {width: 23px;}
-.maum_common #header .maum_etc .dropbox.lstBox {left: 50%; transform: translate(-50%, 0); padding: 7px 0;}
-.maum_common #header .maum_etc .dropbox.lstBox a {width: 100px; padding: 7px 14px;font-size: 13px;}
-.maum_common #header .maum_etc .dropbox.lstBox a:hover {background:#f3f5fa;}
-.maum_common #header .maum_etc .dropbox.appBox {width: 300px; left: auto; right: 0;text-align: center;}
-.maum_common #header .maum_etc .dropbox.appBox .tit {display: block; padding: 8px 15px; color: #2c3f51; font-size: 13px; border-bottom: 1px solid #e6e9f3;}
-.maum_common #header .maum_etc .dropbox.appBox .lst {clear: both; overflow: hidden; position: relative; margin: 7px 10px; background: #f7f8fc; text-align: left;}
-.maum_common #header .maum_etc .dropbox.appBox .lst li {display: inline-block; width: 90px; text-align: center;}
-.maum_common #header .maum_etc .dropbox.appBox .lst a {display: block; padding: 10px 5px;}
-.maum_common #header .maum_etc .dropbox.appBox .lst .ico {display: inline-block; width: 42px; height: 42px; border: 1px solid #b6c5d1; border-radius: 3px;}
-.maum_common #header .maum_etc .dropbox.appBox .lst em {display: block; font-size: 12px; color: #35384d;}
-.maum_common #header .maum_etc .dropbox.appBox .lst li:hover .ico {border-color: #0078f2;}
-.maum_common #header .maum_etc .dropbox.appBox .lst li:hover em {color: #0078f2;}
-
-.maum_common #header .btn_maum_ham {display: none; overflow: hidden; position: absolute; top: 50%; right: 0; width: 40px; height: 40px; text-indent: -999px; transform: translate(0,-50%);}
-.maum_common #header .btn_maum_ham span {display: block; width: 24px; height: 3px; margin-bottom: 5px; border-radius: 5px; background: #2c3f51; transform: rotate(0deg); transition: .2s ease all;}
-.maumUI.transform.trans .maum_sta .btn_maum_ham span {background: rgba(255,255,255,0.7);}
-.maum_common #header .btn_maum_ham span:nth-child(2) {width: 18px;}
-.maum_common #header .btn_maum_ham span:last-child {width: 12px; margin-bottom: 0;}
-.maum_common #header .btn_maum_ham:focus {outline-width: 0;}
-
-.maum_common #header .btn_maum_ham.active span {background: #2c3f51;}
-.maum_common #header .btn_maum_ham.active span:nth-child(1) {transform: rotate(45deg); -webkit-transform-origin: 15% 15%; transform-origin: 15% 15%;}
-.maum_common #header .btn_maum_ham.active span:nth-child(2) {opacity: 0;}
-.maum_common #header .btn_maum_ham.active span:nth-child(3) {width: 24px;transform: rotate(-45deg); transform-origin: 15% 95%;}
-
-
-/* -------------------- mobile -------------------- */
-@media screen and (max-width:768px) {
-  .maum_common #header .btn_maum_ham {display: block;}
+@media screen and (max-width:320px){
+    .maumUI #header h1{width:120px; height:22px;}
 }
