@@ -7,8 +7,9 @@
     <meta name="format-detection" content="telephone=no">
 
     <style>
-        body {display:flex; justify-content:space-around; flex-wrap:wrap; background:url('resources/images/bg_gradation.png') 50% 50% no-repeat; background-size:cover;}
-        .box {position:relative; width:700px;}
+        body {margin:0; padding:0; background:url('resources/images/bg_gradation.png') 50% 50% no-repeat; background-size:cover;}
+        .test {width:100%; margin:0 0 30px; text-align:center;}
+        .box {display:inline-block; position:relative; width:700px;}
         .box canvas {position:absolute; top:0; left:0; width:100%; height:100%; color:#ddd;}
         video {outline:none;}
     </style>
@@ -16,59 +17,122 @@
     <title>Chromakey Test || AI Human</title>
 </head>
 <body>
-    <video class="video" src="resources/video/test01.mp4" autoplay loop muted width="700"></video>
-    <div class="box">
-        <canvas class="canvas" width="700"></canvas>
+    <div class="test">
+        <video class="video01" src="resources/video/lipSyncAvatar.mp4" autoplay loop muted width="700"></video>
     </div>
 
+    <div class="test">
+        <video class="video02" src="resources/video/test03.mp4" autoplay loop muted width="700"></video>
+        <div class="box box02" style="height:350px;">
+            <canvas class="canvas02" width="700"></canvas>
+        </div>
+    </div>
+
+    <div class="test">
+        <video class="video03" src="resources/video/test02.mp4" autoplay loop muted width="700"></video>
+        <div class="box box03" style="height:350px;">
+            <canvas class="canvas03" width="700"></canvas>
+        </div>
+    </div>
+
+    <div class="test">
+        <video class="video04" src="resources/video/test02_1.mp4" autoplay loop muted width="700"></video>
+        <div class="box box04" style="height:350px;">
+            <canvas class="canvas04" width="700"></canvas>
+        </div>
+    </div>
+
+    
     <script>
-        const video = document.querySelector('.video');
-        let width = video.clientWidth;
-        let height = video.clientHeight;
+        const video02 = document.querySelector('.video02');
+        let width02 = video02.clientWidth;
+        let height02 = video02.clientHeight;
 
-        const canvas = document.querySelector('.canvas');
-        canvas.setAttribute('height', height);
-        const ctx = canvas.getContext('2d');
-        window.addEventListener('load', drawVideo);
+        const canvas02 = document.querySelector('.canvas02');
+        canvas02.setAttribute('height', height02);
+        const ctx02 = canvas02.getContext('2d');
+        window.addEventListener('load', drawVideo02);
 
-        function drawVideo(){
-            ctx.drawImage(video, 0, 0, width, height);
+        function drawVideo02(){
+            ctx02.drawImage(video02, 0, 0, width02, height02);
 
-            let frame = ctx.getImageData(0, 0, width, height);
-            for(let i = 0; i < frame.data.length; i++){
-                let r = frame.data[i];      // red
-                let g = frame.data[i + 1];  // green
-                let b = frame.data[i + 2];  // blue
-
-                // test01 / rgb(7, 254, 0)
-                if( r > 1 && r < 120 && g > 90 && g < 255 && b < 170 ){
-                    frame.data[i + 3] = 0
-                }
-
-                // test02
-                // if( r > 50 && r < 90 && g > 75 && g < 150 && b < 80 ){
-                //     frame.data[i + 3] = 0;
-                // }
+            let frame02 = ctx02.getImageData(0, 0, width02, height02);
+            for(let i = 0; i < frame02.data.length; i++){
+                let r = frame02.data[i];      // red
+                let g = frame02.data[i + 1];  // green
+                let b = frame02.data[i + 2];  // blue
 
                 // test03
-                // if( r > 60 && r < 140 && g > 120 && g < 170 && b < 90 ){
-                //     frame.data[i + 3] = 0;
-                // }
-
-                // test04
-                // if( r > 60 && r < 140 && g > 120 && g < 170 && b < 90 ){
-                //     frame.data[i + 3] = 0;
-                // }
-
-                // test05 / rgb(7, 254, 0)
-                // if( r > 10 && r < 80 && g > 100 && g < 180 && b < 100 ){
-                //     frame.data[i + 3] = 0
-                // }
+                if( r > 60 && r < 140 && g > 120 && g < 170 && b < 90 ){
+                    frame02.data[i + 3] = 0;
+                }
             }
 
-            ctx.putImageData(frame,0,0);
+            ctx02.putImageData(frame02,0,0);
 
-            requestAnimationFrame(drawVideo);
+            requestAnimationFrame(drawVideo02);
+        }
+    </script>
+
+    <script>
+        const video03 = document.querySelector('.video03');
+        let width03 = video03.clientWidth;
+        let height03 = video03.clientHeight;
+
+        const canvas03 = document.querySelector('.canvas03');
+        canvas03.setAttribute('height', height03);
+        const ctx03 = canvas03.getContext('2d');
+        window.addEventListener('load', drawVideo03);
+
+        function drawVideo03(){
+            ctx03.drawImage(video03, 0, 0, width03, height03);
+
+            let frame03 = ctx03.getImageData(0, 0, width03, height03);
+            for(let i = 0; i < frame03.data.length; i++){
+                let r = frame03.data[i];      // red
+                let g = frame03.data[i + 1];  // green
+                let b = frame03.data[i + 2];  // blue
+
+                // test02
+                if( r > 50 && r < 90 && g > 65 && g < 120 && b < 80 ){
+                    frame03.data[i + 3] = 0;
+                }
+            }
+
+            ctx03.putImageData(frame03,0,0);
+
+            requestAnimationFrame(drawVideo03);
+        }
+    </script>
+
+    <script>
+        const video04 = document.querySelector('.video04');
+        let width04 = video04.clientWidth;
+        let height04 = video04.clientHeight;
+
+        const canvas04 = document.querySelector('.canvas04');
+        canvas04.setAttribute('height', height04);
+        const ctx04 = canvas04.getContext('2d');
+        window.addEventListener('load', drawVideo04);
+
+        function drawVideo04(){
+            ctx04.drawImage(video04, 0, 0, width04, height04);
+
+            let frame04 = ctx04.getImageData(0, 0, width04, height04);
+            for(let i = 0; i < frame04.data.length; i++){
+                let r = frame04.data[i];      // red
+                let g = frame04.data[i + 1];  // green
+                let b = frame04.data[i + 2];  // blue
+
+                // test02_1
+                if( r > 50 && r < 110 && g > 100 && g < 170 && b < 80 ){
+                    frame04.data[i + 3] = 0;
+                }
+            }
+
+            ctx04.putImageData(frame04,0,0);
+
+            requestAnimationFrame(drawVideo04);
         }
     </script>
 </body>
