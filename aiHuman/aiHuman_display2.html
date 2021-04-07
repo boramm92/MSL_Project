@@ -10,6 +10,10 @@
     <!-- General CSS -->
     <link rel="stylesheet" type="text/css" href="resources/css/aiHuman.css">
 
+    <!-- General Script -->
+    <script src="resources/js/jquery-3.5.1.min.js"></script>
+    <script src="resources/js/jquery-migrate-3.3.1.min.js"></script>
+
     <title>Main || AI Human</title>
 </head>
 <body>
@@ -18,8 +22,7 @@
         <!-- #container -->
         <div id="container">            
             <h1 class="logo">
-                <!-- <img src="resources/images/logo_aiHuman.svg" alt="AI Human logo"> -->
-                <img src="resources/images/logo_aiHuman_m.svg" alt="AI Human logo">
+                <img src="resources/images/logo_aiHuman.svg" alt="AI Human logo">
             </h1>
 
             <div class="videoBox detailMode">
@@ -313,31 +316,81 @@
                 <div class="avatar_msg">
                     <span><img src="resources/images/img_sora.png" alt="profile image"></span>
                     <!-- [D] '더보기' 버튼 클릭 시 <p>태그 안 텍스트가 두번째 것으로 변경되어야함 -->
-                    <p>평소 자주 궁금해 하시는 질문이나 키워드를 준비했어요!</p>
-                    <!-- <p>더 자세하게 알아보세요!</p> -->
+                    <p class="on">평소 자주 궁금해 하시는 질문이나 키워드를 준비했어요!</p>
+                    <p>더 자세하게 알아보세요!</p>
                 </div>
-                <p class="avatar_msg_m">더 많은 컨텐츠를 보시려면 스크롤 하세요!</p>
-                <div class="faq_lst_box">
-                    <ul>
-                        <li class="hashtag">AI 아바타</li>
-                        <li class="hashtag">데이터 바우처</li>
-                        <li class="question">마인즈랩 서비스 사용중인 회사 리스트 보여줘</li>
-                        <li class="hashtag">인바운드</li>
-                        <li class="hashtag">AI 독해</li>
-                        <li class="hashtag">회원가입</li>
-                        <li class="hashtag">회원가입</li>
-                        <li class="question">마인즈랩에서 제공하는 서비스를 이용하려면 어디로 문의하나요?</li>
-                    </ul>
-                    <!-- [D] '더보기' 버튼 클릭 시 해당 버튼 사라지고 '처음으로' 버튼 등장해야함 -->
-                    <div class="btnBox">
-                        <button type="button" class="on">더보기</button>
-                        <!-- <button type="button">처음으로</button> -->
-                    </div>
+                <ul class="faq_lst">
+                    <li class="hashtag">AI 아바타</li>
+                    <li class="hashtag">데이터 바우처</li>
+                    <li class="question">마인즈랩 서비스 사용중인 회사 리스트 보여줘</li>
+                    <li class="hashtag">인바운드</li>
+                    <li class="hashtag">AI 독해</li>
+                    <li class="hashtag">회원가입</li>
+                    <li class="hashtag">회원가입</li>
+                    <li class="question">마인즈랩에서 제공하는 서비스를 이용하려면 어디로 문의하나요?</li>
+                </ul>
+                <!-- [D] '더보기' 버튼 클릭 시 해당 버튼 사라지고 '처음으로' 버튼 등장해야함 -->
+                <div class="btnBox">
+                    <button type="button" class="on">더보기</button>
+                    <button type="button">처음으로</button>
                 </div>
             </div>
         </div>
         <!-- //#container -->
     </div>
     <!-- //#wrap -->
+
+    <!-- Local Script -->
+    <script type="text/javascript">
+        jQuery.event.add(window,"load",function(){
+            $(document).ready(function(){
+                // $('.btnBox.top button').on('click', function(){
+                //     console.log($(this).index());
+                //     if( $(this).index() == 0 ){
+                //         $('.exportBox').show();
+                //     }else{
+                //         $('.detailViewBox').addClass('open');
+                //     }
+                // });
+
+                // $('.btnBox.bottom button').on('click', function(){
+                //     console.log($(this).index());
+                //     if( $(this).index() == 0 ){
+                //         $('.conversationRecogBox.voice').show();
+                //     }else{
+                //         $('.conversationRecogBox.text').show();
+                //     }
+                // });
+
+                // $('.btn_close').on('click', function(){
+                //     $('.exportBox').hide();
+                //     $('.detailViewBox').removeClass('open');
+                //     $('.conversationRecogBox').hide();
+                // });
+
+                // $('.swichGroup button').on('click', function(){
+                //     $('.swichGroup button').removeClass('active');
+                //     $(this).addClass('active');
+                //     if( $('.btn_cvst_hsty').is('active') ){
+                //         $('.scrollBox').removeClass('active');
+                //         $('.conversationView').addClass('active');
+                //     }else {
+                //         $('.scrollBox').removeClass('active');
+                //         $('.debugView').addClass('active');
+                //     }
+                //     return false;
+                // });
+
+                $('.scriptBox .btnBox button').on('click', function(){
+                    $('.scriptBox .btnBox button').toggleClass('active');
+                });
+
+                $('.faq_area button').on('click', function(){
+                    $('.faq_area button').toggleClass('on');
+                    $('.avatar_msg p').toggleClass('on');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
