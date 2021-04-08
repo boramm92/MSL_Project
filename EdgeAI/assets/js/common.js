@@ -175,12 +175,6 @@ $(document).ready(function(){
         });
 
     });
-
-    //etc layer open
-    $('.maum_etc .nav>li>a.btn_ico').on('click',function(){
-        $(this).parent().toggleClass('active');
-        return false;
-    });
     
     $(document).mouseup(function (e){
         var container = $('.maum_etc .nav>li.active');
