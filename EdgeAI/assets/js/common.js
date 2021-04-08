@@ -40,13 +40,13 @@ function header(){
 
     if( scroll>0 && container.hasClass('view') == false ){
         $("#header").addClass("on");
-        $("#header .maum_sta h1 a").css("background-image","url('../images/logo_Edge_bk.svg')");
+        $("#header .maum_sta h1 a").css("background-image","url('../assets/images/logo_Edge_bk.svg')");
     } else if ( scroll==0 && container.hasClass('view') == false ) {
         $("#header").removeClass("on");
-        $("#header .maum_sta h1 a").css("background-image","url('../images/logo_Edge_w.svg')");
+        $("#header .maum_sta h1 a").css("background-image","url('../assets/images/logo_Edge_w.svg')");
     } else if ( container.is('view') ) {
         $("#header").addClass("on");
-        $("#header .maum_sta h1 a").css("background-image","url('../images/logo_Edge_bk.svg')");
+        $("#header .maum_sta h1 a").css("background-image","url('../assets/images/logo_Edge_bk.svg')");
     } 
 }
 
@@ -107,9 +107,9 @@ function aside(){
             $("#header").removeClass("mobile_menu");
             $('body').css({overflow : ''});
             if( $("#header").hasClass("on")) {
-                $("#header .maum_sta h1 a").css({"background-image":"url('./resources/images/logo_Edge_bk.svg"});
+                $("#header .maum_sta h1 a").css({"background-image":"url('../assets/images/logo_Edge_bk.svg"});
             } else {
-                $("#header .maum_sta h1 a").css("background-image","url('./resources/images/logo_Edge_w.svg");
+                $("#header .maum_sta h1 a").css("background-image","url('../assets/images/logo_Edge_w.svg");
             }
         }else{
             $(this).addClass('active');
@@ -117,7 +117,7 @@ function aside(){
             $(".mbl_aside").addClass("on");
             
             $("#header").addClass("mobile_menu");
-            $("#header .maum_sta h1 a").css("background-image","url('./resources/images/logo_Edge_bk.svg");
+            $("#header .maum_sta h1 a").css("background-image","url('../assets/images/logo_Edge_bk.svg");
 
             $("body").css({overflow :"hidden"});
         }
