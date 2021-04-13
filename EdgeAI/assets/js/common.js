@@ -255,5 +255,6 @@ $(window).on({
     },
     "scroll":function(){
         header();
+        $('#header').css({left: 0 - $(this).scrollLeft()}); /* 20210413 add */
     }
 });
