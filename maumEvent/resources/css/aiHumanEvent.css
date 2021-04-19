@@ -1,0 +1,253 @@
+@charset "utf-8";
+/* MINDsLab. UX/UI Team NBR 20210416 */
+
+/* -------------------- import -------------------- */
+@import url('reset.css');
+@import url('font.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css');
+
+/* page loading */
+#pageldg {display:block; position:fixed; top:0px; left:0px; width:100%; height:100%; text-align:center; background-color:#fff; z-index:99999999; opacity:1.0;}
+#pageldg:before {content:''; position:absolute; top:50%; left:50%; margin:0 0 0 -30px; border-radius:100%; background:radial-gradient(#e9edf3, #fff); opacity:0; width:60px; height:60px; -webkit-animation:pageldg_wave 1.7s 2.5s linear infinite; animation:pageldg_wave 1.7s 2.5s linear infinite; z-index:444;}
+#pageldg span.out_bg {position:absolute; top:50%; width:180px; height:180px; margin:-90px 0 0 -90px; border-radius:300px; background:#fff; animation:out_bg 1s 0s ease-in-out both; z-index:555;}
+#pageldg span em {overflow:hidden; position:absolute; top:50%; left:50%; width:200px; height:200px; margin:-100px 0 0 -100px; border-radius:300px; background:#fff; animation:em_opacity 3s 0.1s ease-in-out both;}
+#pageldg span em strong:nth-child(1) {content:''; position:absolute; bottom:38%; left:12%; width:0%; height:30%; background:#00aebc; animation:st_move_01 1.5s 0.1s ease-in-out both;}
+#pageldg span em strong:nth-child(2) {content:''; position:absolute; top:52%; left:28%; width:60%; height:18%; border-radius:0; background:#fff; animation:st_move_02 1.5s 1.2s ease-in-out both;}
+#pageldg span em strong:nth-child(3) {content:''; position:absolute; bottom:48%; right:15%; width:20px; height:0%; background:#00aebc; animation:st_move_03 0.5s 2.0s ease-in-out both;}
+#pageldg span em b {content:''; position:absolute; top:50%; left:50%; width:160px; height:160px; margin:-80px 0 0 -80px; background:url("../images/ico_pageldg_trans.svg") 50% 50% no-repeat; background-size:cover; z-index:999;}
+.pageldg_hide {-webkit-animation-duration:1s; animation-duration:1s; -webkit-animation-fill-mode:both; animation-fill-mode:both; -webkit-animation-name:pageldg_hide; animation-name:pageldg_hide;}
+
+/* page loading keyframes */
+@-webkit-keyframes pageldg_wave {
+    0%   {-webkit-transform:scale(0); transform:scale(0); opacity:0;}
+    5%   {opacity:1;}
+    100% {-webkit-transform:scale(1); transform:scale(50); opacity:0;}
+}
+@keyframes pageldg_wave {
+    0%   {-webkit-transform:scale(0); transform:scale(0); opacity:0;}
+    5%   {opacity:1;}
+    100% {-webkit-transform:scale(1); transform:scale(50); opacity:0;}
+}
+@-webkit-keyframes out_bg {
+    0%   {opacity:0; transform:scale(0);}
+    80%  {opacity:0.3; transform:scale(1.2);}
+    100% {opacity:1; transform:scale(1);}
+}
+@keyframes out_bg {
+    0%   {opacity:0; transform:scale(0);}
+    80%  {opacity:0.2; transform:scale(1.2);}
+    100% {opacity:1; transform:scale(1);}
+}
+@-webkit-keyframes st_move_01 {
+    0%   {width:0%;}
+    100% {width:50%;}
+}
+@keyframes st_move_01 {
+    0%   {width:0%;}
+    100% {width:50%;}
+}
+@-webkit-keyframes st_move_02 {
+    0%   {background:#fff;}
+    0%   {background:#fff;}
+    100% {background:#35384d;}
+}
+@keyframes st_move_02 {
+    0%   {background:#fff;}
+    100% {background:#35384d;}
+}
+@-webkit-keyframes st_move_03 {
+    0%   {height:0%;}
+    100% {height:6%;}
+}
+@keyframes st_move_03 {
+    0%   {height:0%;}
+    100% {height:6%;}
+}
+@-webkit-keyframes pageldg_hide {
+    0%   {opacity:1;}
+    100% {opacity:0;}
+}
+@keyframes pageldg_hide {
+    0%   {opacity:1;}
+    100% {opacity:0;}
+}
+
+/* -------------------- common -------------------- */
+/* checkBox */
+.checkBox{display:inline-block; position:relative; min-height:20px; font-size:24px;}
+.checkBox input[type="checkbox"]{position:absolute; overflow:hidden; width:1px; height:1px; padding:0; margin:-1px; clip:rect(0,0,0,0); border:0;}
+.checkBox input[type="checkbox"] + label{display:inline-block; position:relative; margin:0 10px 0 0; padding-left:46px; color:#fff; font-size:25px; font-weight:700; line-height:40px; word-break:keep-all; cursor:pointer; -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none;}
+.checkBox input[type="checkbox"] + label:before{content:''; position:absolute; top:50%; left:0; width:32px; height:32px; border:1px solid #727171; background:#fff; box-sizing:border-box; text-align:center; line-height:32px; transform:translate(0, -50%);}
+.checkBox input[type="checkbox"]:checked + label:before{content:'\f00c'; font-family:'Font Awesome 5 Free'; color:#fff; font-size:22px; font-weight:900; border:1px solid #fea01b; background:#fea01b;}
+
+/* -------------------- Layer Popup -------------------- */
+.lyrWrap {display:block; position:fixed; top:0; left:0; width:100%; height:100%; z-index:8000;}
+.lyrWrap .lyr_bg {position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85);}
+.lyrWrap .lyr_bg2 {position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85);}
+.lyrWrap .lyr_bg.ie9 {position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(255,255,255,1.0);}
+.lyrBox {display:none; overflow:hidden; position:absolute; top:50%; left:50%; width:500px; margin:0; border-radius:7px; background:#eff1f7; box-shadow:0 0 15px rgba(11,42,74,0.3); transform:translate(-50%,-50%); -webkit-animation:lyr_show 0.3s 0s ease-out; animation:lyr_show 0.3s 0s ease-out;}
+.lyrWrap .lyrBox {display:block;}
+
+.lyr_bg_dim {position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:999;}
+.lyrPlayBox {display:none; position:fixed; top:50%; left:50%; width:1000px; min-height:150px; border-radius:3px; box-shadow:0 1px 4px 0 rgba(44, 63, 81, 0.1); transform:translate(-50%, -50%); z-index:9999;}
+#lyr_video_player {display:block;}
+#lyr_video_player .lyr_ct {width:1000px;}
+#lyr_video_player .lyr_ct video {width:100%;}
+#lyr_video_player .btn_lyr_close {display:inline-block; position:absolute; top:-40px; right:-10px; width:40px; height:40px;}
+#lyr_video_player .btn_lyr_close em {color:#fff; font-size:30px;}
+
+/* keyframes */
+@-webkit-keyframes lyr_show {
+    0% {top:45%; opacity:0;}
+    100% {top:50%; opacity:1;}
+}
+@keyframes lyr_show {
+    0% {top:45%; opacity:0;}
+    100% {top:50%; opacity:1;}
+}
+.lyrBox .lyr_top {clear:both; overflow:hidden; position:relative; padding:10px 15px; background:#fff;}
+.lyrBox .lyr_top h3 { display:block; padding:7px 5px; color:#394058; font-size:2em; font-weight:500; text-align:center;}
+.lyrBox .lyr_top .btn_lyr_close { float:right; position:absolute; top:20px; right:20px; overflow:hidden; width:30px; height:30px; margin:3px 0 0 0; text-indent:-99px; border:none; background:none; transition:all 0.3s ease-out; opacity:0.7; cursor:pointer;}
+.lyrBox .lyr_top .btn_lyr_close:hover, .lyrBox .lyr_top .btn_lyr_close:focus {opacity:1.0; transition:all 0.3s ease-out;}
+.lyrBox .lyr_top .btn_lyr_close:before {content:''; position:absolute; top:50%; left:0%; width:100%; height:1px; background:#5f6680; border-radius:3px; transform:rotate(45deg);}
+.lyrBox .lyr_top .btn_lyr_close:after {content:''; position:absolute; top:50%; left:0%; width:100%; height:1px; border-radius:3px; background:#5f6680; transform:rotate(-45deg);}
+
+.lyrWrap .lyrBox .lyr_mid {display:block; overflow:auto; max-height:500px; padding:30px 20px 20px 20px;}
+
+.lyrWrap .lyrBox .lyr_btm {display:block; padding:15px; text-align:center; border-top:1px solid #e4e6ef; background:#fff;}
+.lyrWrap .lyrBox .lyr_btm .btnBox.sz_small button {height:32px; color:#fff; font-size:13px; border:none; background:#3599ff;}
+.lyrWrap .lyrBox .lyr_btm .btnBox.sz_small button:disabled {cursor:default; opacity:0.4; border:1px solid #586c80; background:#586c80;}
+.lyrWrap .lyrBox .lyr_btm .btnBox.sz_small button:first-child {background:#718292;}
+
+.lyr_hide {-webkit-animation-duration:0.5s; animation-duration:0.5s; -webkit-animation-fill-mode:both; animation-fill-mode:both; -webkit-animation-name:lyr_hide; animation-name:lyr_hide;}
+/* keyframes */
+@-webkit-keyframes lyr_hide {
+    0% {opacity:1;}
+    100% {opacity:0;}
+}
+@keyframes lyr_hide {
+    0% {opacity:1;}
+    100% {opacity:0;}
+}
+
+/* -------------------- event -------------------- */
+.pc {display:block;}
+.mobile {display:none;}
+
+#wrap.event {position:relative; width:100%; height:100%; min-height:750px;}
+#wrap.event #container {position:relative; display:block; width:100%; height:100%;}
+#wrap.event .stn {display:table; position:relative; width:100%; box-sizing:border-box;}
+#wrap.event .contBox {width:1200px; margin:0 auto; box-sizing:border-box; text-align:center;}
+
+/* 신청하기 버튼  */
+#wrap.event .btn_go_contact {display:none; position:fixed; right:2%; bottom:2%; width:120px; height:120px; border:none; border-radius:50%; background:#3cc9da; background-size:30%; text-align:center; z-index:10;}
+#wrap.event .btn_go_contact span {display:inline-block; margin:5px 0 0; color:#fff; font-size:1.2em; font-weight:700; line-height:1.2; text-shadow:0 0 5px rgba(0,0,0,0.3);}
+
+/* 이벤트 페이지 본문 */
+#wrap.event .stn:not(.intro) {display:none;}
+
+/* intro */
+#wrap.event .intro {height:100%; background: red url('../images/aiHuman/bg_stn_intro_pc.png') 50% 50% no-repeat; background-size:cover;}
+#wrap.event .intro .contBox {position:relative; height:100%; background:url('../images/aiHuman/img_intro_aiHuman.png') 50% -50px no-repeat; background-size:auto 95%;}
+#wrap.event .intro .svc_tit {position:absolute; top:25%; left:50%; width:100%; color:#fff; font-size:5.67rem; font-weight:700; letter-spacing:47.78px; text-shadow:0px 10px 7px rgba(12, 0, 66, 0.8); transform:translate(-50%, 0);}
+#wrap.event .intro .svc_tit p {font-size:36.5px; letter-spacing:10.95px; line-height:1;}
+#wrap.event .intro .svc_start {display:table; position:absolute; bottom:68px; width:100%; text-align:left;}
+#wrap.event .intro .svc_start > div {display:table-cell;}
+#wrap.event .intro .svc_start .msgBox p {color:#fff;}
+#wrap.event .intro .svc_start .msgBox .msg_lead {display:inline-block; padding:7px 0 0; border-top:7px solid #fea11c; font-size:1.71rem; font-weight:700; letter-spacing:-1.25px; line-height:1.19;}
+#wrap.event .intro .svc_start .msgBox .msg_key {margin:44px 0 0; font-size:0.83rem; letter-spacing:-0.6px; line-height:1.7;}
+#wrap.event .intro .svc_start .btnBox {text-align:right; vertical-align:bottom;}
+#wrap.event .intro .svc_start .btnBox .msg_start {margin:0 0 24px; color:#fff; font-size:0.95rem; letter-spacing:-0.71px; line-height:1.51;}
+#wrap.event .intro .svc_start .btnBox a {display:inline-block; width:143px; border-top:3px solid #5f1cc7; background:#4901ba; color:#804ad4; font-size:22px; letter-spacing:-0.65px; line-height:36px; text-align:center;}
+#wrap.event .intro .svc_start .btnBox a.btn_go_event {margin:0 15px 0 0; border-top:3px solid #fea11c; background:#3c0cc8; color:#fff; font-weight:700;}
+
+/* use_case */
+#wrap.event .contents .imgBox {position:relative; width:100%;}
+#wrap.event .contents .imgBox img {width:100%;}
+#wrap.event .contents .imgBox .use_case {position:absolute; top:12%; left:50%; width:62vw; max-width:1200px; transform:translate(-50%, 0);}
+#wrap.event .contents .imgBox .use_case .videoBox {position:absolute; top:0; left:0; width:49%; height:60%; background:#000;}
+
+/* contact */
+#wrap.event .contact {width:100%; padding:67px 0; background:#07061f;}
+#wrap.event .contact .contBox {width:1347px; margin:0 auto; text-align:left;}
+#wrap.event .contact .contBox .main_tit {display:inline-block; position:relative; top:5px; left:78px; border-bottom:10px solid #fea11c; color:#fff; font-size:97.5px; font-weight:700; letter-spacing:-7.31px; line-height:120px;}
+#wrap.event .contact .contBox .contactform {width:1347px; padding:56px 45px 76px 80px; margin:0 auto; box-sizing:border-box; background:#1a156e; text-align:center;}
+#wrap.event .contact .contBox .contactform .top_box {padding:0 0 36px; border-bottom:2px solid #fff; text-align:left;}
+#wrap.event .contact .contBox .contactform .top_box .tit {color:#fff; font-size:49.5px; font-weight:500; letter-spacing:-1.49px; line-height:1.65;}
+#wrap.event .contact .contBox .contactform .top_box .desc {color:#fff; font-size:29.5px; font-weight:500; letter-spacing:-0.89px; line-height:1.73;}
+#wrap.event .contact .contBox .contactform .top_box .contact_info span {display:inline-block; padding:0 40px 0 0; color:#fea11c; font-size:25px; font-weight:500; letter-spacing:-0.75px; line-height:26px;}
+#wrap.event .contact .contBox .contactform .top_box .contact_info span + span {padding:0 40px; border-left:2px solid #e79324;}
+#wrap.event .contact .contBox .contactform .top_box .contact_info span a {display:inline-block; margin:0 19px 0 0; color:#fea11c; font-size:25px; font-weight:500; letter-spacing:-0.75px; line-height:26px;}
+#wrap.event .contact .contBox .contactform .top_box .contact_info span a img {vertical-align:middle;}
+#wrap.event .contact .contBox .contactform dl {clear:both; width:100%; text-align:left;}
+#wrap.event .contact .contBox .contactform dl + dl {margin:40px 0 0;}
+#wrap.event .contact .contBox .contactform dl dt {display:inline-block; width:350px; color:#fff; font-size:25px; letter-spacing:-0.75px; line-height:44px; vertical-align:top;}
+#wrap.event .contact .contBox .contactform dl dt span {display:inline-block; margin:0 0 0 5px; color:#14b7cc; font-size:1rem;}
+#wrap.event .contact .contBox .contactform dl dt em {display:inline-block; margin:0 0 0 5px; font-weight:400; font-size:1rem;}
+#wrap.event .contact .contBox .contactform dl dd {display:inline-block; width:calc(100% - 355px); line-height:44px;}
+#wrap.event .contact .contBox .contactform dl dd input[type="text"],
+#wrap.event .contact .contBox .contactform dl dd input[type="tel"] {width:100%; height:46px; padding:0 25px; border:1px solid #727171; box-sizing:border-box; color:#1f2f3b; font-size:0.8rem;}
+#wrap.event .contact .contBox .contactform dl dd input::placeholder {color:#808080; font-size:18px;}
+
+#wrap.event .contact .contBox .contactform .btm_box {padding:40px 0 0;}
+#wrap.event .contact .contBox .contactform .btm_box > div {display:inline-block;}
+#wrap.event .contact .contBox .contactform .btm_box .user_info {width:500px;}
+#wrap.event .contact .contBox .contactform .btm_box .user_info dl dt {width:135px;}
+#wrap.event .contact .contBox .contactform .btm_box .user_info dl dd {width:calc(100% - 140px);}
+#wrap.event .contact .contBox .contactform .btm_box .user_info dl:nth-child(3) dt,
+#wrap.event .contact .contBox .contactform .btm_box .user_info dl:nth-child(3) dd {display:block; width:auto;}
+#wrap.event .contact .contBox .contactform .btm_box .assent {width:calc(100% - 505px); padding:0 0 0 74px; box-sizing:border-box;}
+#wrap.event .contact .contBox .contactform .btm_box .assent dl {margin:0;}
+#wrap.event .contact .contBox .contactform .btm_box .assent dl dt {display:block; width:auto;}
+#wrap.event .contact .contBox .contactform .btm_box .assent dl dd {width:auto;}
+#wrap.event .contact .contBox .contactform .btm_box .assent dl dd p {margin:30px 0 67px; color:#fff; font-size:20px; letter-spacing:-0.6px; line-height:1.5; word-break:keep-all;}
+#wrap.event .contact .contBox .contactform .btm_box .assent dl dd p strong {font-size:22px; font-weight:400;}
+#wrap.event .contact .contBox #inquireBtn {width:306px; height:54px; margin:57px 80px 13px; background:#fea11c; color:#fff; font-size:30px; font-weight:500; letter-spacing:-0.9px;}
+#wrap.event .contact .contBox .inquiry_info {padding:0 80px; box-sizing:border-box; color:#fff; font-size:20px; letter-spacing:-0.6px; line-height:1.5;}
+
+/* -------------------- media query -------------------- */
+@media screen and (max-width:768px){
+    html, body {font-size:14px;}
+
+    .pc {display:none;}
+    .mobile {display:block;}
+
+    #wrap.event {min-height:auto;}
+    #wrap.event .contBox {width:auto; min-width:320px;}
+
+    #wrap.event .intro {height:100%; background: red url('../images/aiHuman/bg_stn_intro_mobile.png') 50% 50% no-repeat; background-size:cover;}
+    #wrap.event .intro .contBox {position:relative; height:100%; background:url('../images/aiHuman/img_intro_aiHuman.png') 70% -50px no-repeat; background-size:80% auto;}
+    #wrap.event .intro .svc_tit {top:10%; font-size:38px; letter-spacing:13.3px;}
+    #wrap.event .intro .svc_tit p {font-size:11px; letter-spacing:3.3px;}
+    #wrap.event .intro .svc_start {display:block; bottom:20px; text-align:center;}
+    #wrap.event .intro .svc_start > div {display:block;}
+    #wrap.event .intro .svc_start .msgBox .msg_lead {border:none; font-size:16px; letter-spacing:-0.1px;}
+    #wrap.event .intro .svc_start .msgBox .msg_key {margin:17px 0 0; font-size:10px;}
+    #wrap.event .intro .svc_start .btnBox {text-align:center;}
+    #wrap.event .intro .svc_start .btnBox .msg_start {margin:33px 0 8px; font-size:14px;}
+    #wrap.event .intro .svc_start .btnBox a {width:40%; min-width:143px;}
+
+    #wrap.event .contents .imgBox .use_case {top:8%; width:87.5%; height:13%;}
+    #wrap.event .contents .imgBox .use_case .videoBox {width:100%;}
+
+    #wrap.event .contact .contBox {left:0; width:100%; text-align:center; transform:none;}
+    #wrap.event .contact .contBox .main_tit {left:45px; font-size:30px; letter-spacing:-1.2px; line-height:50px;}
+    #wrap.event .contact .contBox .contactform {width:100%; padding:67px 20px 59px;}
+    #wrap.event .contact .contBox .contactform .top_box .tit {font-size:33px;}
+    #wrap.event .contact .contBox .contactform .top_box .desc {margin:22px 0 26px; font-size:21px;}
+    #wrap.event .contact .contBox .contactform .top_box .contact_info span {display:block; font-size:20px;}
+    #wrap.event .contact .contBox .contactform .top_box .contact_info span + span {padding:0; border:none;}
+    #wrap.event .contact .contBox .contactform .top_box .contact_info span a {font-size:20px;}
+    #wrap.event .contact .contBox .contactform .top_box .contact_info span a img {width:16px;}
+    #wrap.event .contact .contBox .contactform .btm_box > div {display:block; width:100% !important;}
+    #wrap.event .contact .contBox .contactform .btm_box .user_info dl dt {font-size:22px;}
+    #wrap.event .contact .contBox .contactform .btm_box .assent {width:100%; margin:90px 0 0; padding:0;}
+    #wrap.event .contact .contBox .contactform .btm_box .assent dl dd p {margin:12px 0 43px;}
+
+    #wrap.event .contact .contBox #inquireBtn {margin:54px auto 17px;}
+    #wrap.event .contact .contBox .inquiry_info {font-size:10px;}
+}
+
+@media screen and (max-width:480px){
+    #wrap.event .btn_go_contact {right:0; bottom:0; width:100%; height:70px; font-size:1.25rem; border-radius:0;}
+}
