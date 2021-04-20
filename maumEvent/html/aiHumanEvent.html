@@ -78,8 +78,15 @@
                     <img class="pc" src="../resources/images/aiHuman/img_use_case.png" alt="사용사례">
                     <div class="videoBox">
                         <button type="button" class="btn_video_play" title="재생버튼"></button>
-                        <img src="../resources/images/aiHuman/img_youtube_thum.png" alt="유튜브 썸네일">
+                        <img class="thumbnail active" src="../resources/images/aiHuman/img_youtube_thumb01.png" alt="박철민 아나운서 썸네일">
+                        <img class="thumbnail" src="../resources/images/aiHuman/img_youtube_thumb02.png" alt="정소라 아나운서 썸네일">
+                        <img class="thumbnail" src="../resources/images/aiHuman/img_youtube_thumb03.png" alt="민경수 아나운서 썸네일">
                     </div>
+                    <ul class="aiHuman_lst">
+                        <li class="aiHuman01 active"><a href="#none"><span>AI 아나운서 박철민</span></a></li>
+                        <li class="aiHuman02"><a href="#none"><span>AI 아나운서 정소라</span></a></li>
+                        <li class="aiHuman03"><a href="#none"><span>AI 아나운서 민경수</span></a></li>
+                    </ul>
                 </div>
             </div> 
         </div> 
@@ -171,7 +178,7 @@ jQuery.event.add(window,"load",function(){
             '<div class="lyr_bg_dim"></div>\
             <div id="lyr_video_player" class="lyrPlayBox">\
                 <div class="lyr_ct">\
-                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/kEcSLxWFTt0?rel=0&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>\
+                    <iframe width="100%" height="100%" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>\
                 </div>\
                 <button type="button" class="btn_lyr_close">\
                     <em class="fas fa-times" title="닫기버튼"></em>\
@@ -182,25 +189,20 @@ jQuery.event.add(window,"load",function(){
                 $('body').css('overflow', '');
                 $('.lyr_bg_dim').remove();
                 $('#lyr_video_player').remove();
-            });   
+            }); 
+            
+            // 활성화 썸네일에 따라 영상링크 변경
+            var activeThumbnail = $('.thumbnail.active').index();
+            var videoIframe = $('#lyr_video_player .lyr_ct iframe');
+
+            if( activeThumbnail == 1 ){
+                videoIframe.attr('src', 'https://www.youtube.com/embed/kEcSLxWFTt0?rel=0&autoplay=1');
+            }else if( activeThumbnail == 2 ){
+                videoIframe.attr('src', 'https://www.youtube.com/embed/piVI3yxdWno?rel=0&autoplay=1');
+            }else{
+                videoIframe.attr('src', '');
+            }
         });
-
-        //Layer popup open 
-        $('.btn_lyr_open').on('click',function(){	
-            var winHeight = $(window).height()*0.7,
-                hrefId = $(this).attr('href');
-
-            $('body').css('overflow','hidden'); 
-            $('body').find(hrefId).wrap('<div class="lyrWrap"></div>');
-            $('body').find(hrefId).before('<div class="lyr_bg"></div>');
-
-            //Layer popup close 
-            $('.btn_lyr_close, .lyr_bg').on('click',function(){
-                $('body').css('overflow','');  
-                $('body').find(hrefId).unwrap();
-                $('.lyr_bg').remove(); 
-            });	
-        });	
         
         //Layer popup close 
         var assentClicked = false;
@@ -213,6 +215,26 @@ jQuery.event.add(window,"load",function(){
                 assentClicked=false
             }
         });
+
+        // 아나운서 클릭 시 해당 영상 교체
+        var announcer = $('.aiHuman_lst li');
+        var videoThumbnail = $('.videoBox .thumbnail');
+
+        announcer.on('click', function(){
+            var target = $(this);
+            var index = target.index();
+            announcer.removeClass('active');
+            target.addClass('active');
+            videoThumbnail.removeClass('active');
+            videoThumbnail.eq(index).addClass('active');
+
+            if( index == 2 ){
+                $('.btn_video_play').css('display', 'none');
+            }else{
+                $('.btn_video_play').css('display', 'inline-block');
+            }
+        });
+
 
         // intro에서 이벤트 페이지 이동
         $('.btnBox .btn_go_event').on('click', function(){

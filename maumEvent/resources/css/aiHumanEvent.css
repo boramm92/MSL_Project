@@ -166,9 +166,20 @@
 #wrap.event .contents .imgBox img {width:100%;}
 #wrap.event .contents .imgBox .use_case {position:absolute; top:12%; left:50%; width:62vw; min-width:800px; transform:translate(-50%, 0);}
 #wrap.event .contents .imgBox .use_case .videoBox {position:absolute; top:0; left:0; width:49%; height:60%; background:#000;}
-#wrap.event .contents .imgBox .use_case .videoBox:before {content:''; display:block; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0, 0, 0, 0.5);}
-#wrap.event .contents .imgBox .use_case .videoBox img {height:100%; object-fit:cover; object-position:left;}
-#wrap.event .contents .imgBox .use_case .videoBox .btn_video_play {position:absolute; top:50%; left:50%; width:50%; height:50%; background:url('../images/aiHuman/ico_btn_play.svg') 50% 50% no-repeat; background-size:contain; transform:translate(-50%, -50%);}
+#wrap.event .contents .imgBox .use_case .videoBox:before {content:''; display:block; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0, 0, 0, 0.5); z-index:10;}
+#wrap.event .contents .imgBox .use_case .videoBox img {display:none; position:absolute; top:0; left:0; height:100%; object-fit:cover; object-position:left;}
+#wrap.event .contents .imgBox .use_case .videoBox img.active {display:block;}
+#wrap.event .contents .imgBox .use_case .videoBox .btn_video_play {position:absolute; top:50%; left:50%; width:35%; height:35%; background:url('../images/aiHuman/ico_btn_play.svg') 50% 50% no-repeat; background-size:contain; transform:translate(-50%, -50%); z-index:20;}
+#wrap.event .contents .imgBox .use_case .aiHuman_lst {display:table; table-layout:fixed; position:absolute; top:0; right:0; width:51%; height:calc(100% + 1px);}
+#wrap.event .contents .imgBox .use_case .aiHuman_lst li {display:table-cell; position:relative; line-height:0;  vertical-align:bottom;}
+#wrap.event .contents .imgBox .use_case .aiHuman_lst li a {display:inline-block; width:100%; height:100%; transition:all 0.3s ease-out;}
+#wrap.event .contents .imgBox .use_case .aiHuman_lst li a:before {content:''; display:inline-block; position:absolute; width:100%; height:100%; background:rgba(0, 0, 0, 0.5); transition:all 0.3s ease-out;}
+#wrap.event .contents .imgBox .use_case .aiHuman_lst li:hover a:before {background:rgba(0, 0, 0, 0.3);}
+#wrap.event .contents .imgBox .use_case .aiHuman_lst li a span {display:inline-block; overflow:hidden; text-indent:-9999px;}
+#wrap.event .contents .imgBox .use_case .aiHuman_lst li.active a:before {content:none; transition:all 0.3s ease-out;}
+#wrap.event .contents .imgBox .use_case .aiHuman_lst li.auHuman01 {background:url('../images/aiHuman/img_aiHuman01.png') 50% 50% no-repeat; background-size:cover;}
+#wrap.event .contents .imgBox .use_case .aiHuman_lst li.auHuman02 {background:url('../images/aiHuman/img_aiHuman02.png') 50% 50% no-repeat; background-size:cover;}
+#wrap.event .contents .imgBox .use_case .aiHuman_lst li.auHuman03 {background:url('../images/aiHuman/img_aiHuman03.png') 50% 50% no-repeat; background-size:cover;}
 
 /* contact */
 #wrap.event .contact {width:100%; padding:67px 0; background:#07061f;}
