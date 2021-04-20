@@ -91,9 +91,9 @@
 .lyr_bg_dim {position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:999;}
 .lyrPlayBox {display:none; position:fixed; top:50%; left:50%; width:1000px; min-height:150px; border-radius:3px; box-shadow:0 1px 4px 0 rgba(44, 63, 81, 0.1); transform:translate(-50%, -50%); z-index:9999;}
 #lyr_video_player {display:block;}
-#lyr_video_player .lyr_ct {width:1000px;}
-#lyr_video_player .lyr_ct video {width:100%;}
-#lyr_video_player .btn_lyr_close {display:inline-block; position:absolute; top:-40px; right:-10px; width:40px; height:40px;}
+#lyr_video_player .lyr_ct {position:relative; width:1000px; padding-bottom:56.25%;}
+#lyr_video_player .lyr_ct iframe {position:absolute; top:0; left:0; width:100%; height:100%;}
+#lyr_video_player .btn_lyr_close {display:inline-block; position:absolute; top:-40px; right:0; width:40px; height:40px;}
 #lyr_video_player .btn_lyr_close em {color:#fff; font-size:30px;}
 
 /* keyframes */
@@ -136,7 +136,7 @@
 
 #wrap.event {position:relative; width:100%; height:100%; min-height:750px;}
 #wrap.event #container {position:relative; display:block; width:100%; height:100%;}
-#wrap.event .stn {display:table; position:relative; width:100%; box-sizing:border-box;}
+#wrap.event .stn {display:table; position:relative; width:100%; min-width:1347px; box-sizing:border-box;}
 #wrap.event .contBox {width:1200px; margin:0 auto; box-sizing:border-box; text-align:center;}
 
 /* 신청하기 버튼  */
@@ -164,8 +164,11 @@
 /* use_case */
 #wrap.event .contents .imgBox {position:relative; width:100%;}
 #wrap.event .contents .imgBox img {width:100%;}
-#wrap.event .contents .imgBox .use_case {position:absolute; top:12%; left:50%; width:62vw; max-width:1200px; transform:translate(-50%, 0);}
+#wrap.event .contents .imgBox .use_case {position:absolute; top:12%; left:50%; width:62vw; min-width:800px; transform:translate(-50%, 0);}
 #wrap.event .contents .imgBox .use_case .videoBox {position:absolute; top:0; left:0; width:49%; height:60%; background:#000;}
+#wrap.event .contents .imgBox .use_case .videoBox:before {content:''; display:block; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0, 0, 0, 0.5);}
+#wrap.event .contents .imgBox .use_case .videoBox img {height:100%; object-fit:cover; object-position:left;}
+#wrap.event .contents .imgBox .use_case .videoBox .btn_video_play {position:absolute; top:50%; left:50%; width:50%; height:50%; background:url('../images/aiHuman/ico_btn_play.svg') 50% 50% no-repeat; background-size:contain; transform:translate(-50%, -50%);}
 
 /* contact */
 #wrap.event .contact {width:100%; padding:67px 0; background:#07061f;}
@@ -189,7 +192,7 @@
 #wrap.event .contact .contBox .contactform dl dd input[type="tel"] {width:100%; height:46px; padding:0 25px; border:1px solid #727171; box-sizing:border-box; color:#1f2f3b; font-size:0.8rem;}
 #wrap.event .contact .contBox .contactform dl dd input::placeholder {color:#808080; font-size:18px;}
 
-#wrap.event .contact .contBox .contactform .btm_box {padding:40px 0 0;}
+#wrap.event .contact .contBox .contactform .btm_box {padding:90px 0 0;}
 #wrap.event .contact .contBox .contactform .btm_box > div {display:inline-block;}
 #wrap.event .contact .contBox .contactform .btm_box .user_info {width:500px;}
 #wrap.event .contact .contBox .contactform .btm_box .user_info dl dt {width:135px;}
@@ -209,45 +212,58 @@
 @media screen and (max-width:768px){
     html, body {font-size:14px;}
 
+    .lyrPlayBox {width:100%;}
+    #lyr_video_player .lyr_ct {width:100%;}
+
     .pc {display:none;}
     .mobile {display:block;}
 
     #wrap.event {min-height:auto;}
-    #wrap.event .contBox {width:auto; min-width:320px;}
+    #wrap.event .stn {min-width:320px;}
+    #wrap.event .contBox {width:100%;}
 
     #wrap.event .intro {height:100%; background: red url('../images/aiHuman/bg_stn_intro_mobile.png') 50% 50% no-repeat; background-size:cover;}
     #wrap.event .intro .contBox {position:relative; height:100%; background:url('../images/aiHuman/img_intro_aiHuman.png') 70% -50px no-repeat; background-size:80% auto;}
-    #wrap.event .intro .svc_tit {top:10%; font-size:38px; letter-spacing:13.3px;}
-    #wrap.event .intro .svc_tit p {font-size:11px; letter-spacing:3.3px;}
+    #wrap.event .intro .svc_tit {top:25%; font-size:2.1rem; letter-spacing:13.3px;}
+    #wrap.event .intro .svc_tit p {font-size:1.1rem; letter-spacing:3.3px;}
     #wrap.event .intro .svc_start {display:block; bottom:20px; text-align:center;}
     #wrap.event .intro .svc_start > div {display:block;}
-    #wrap.event .intro .svc_start .msgBox .msg_lead {border:none; font-size:16px; letter-spacing:-0.1px;}
-    #wrap.event .intro .svc_start .msgBox .msg_key {margin:17px 0 0; font-size:10px;}
+    #wrap.event .intro .svc_start .msgBox .msg_lead {border:none; font-size:1.4rem; letter-spacing:-0.1px;}
+    #wrap.event .intro .svc_start .msgBox .msg_key {margin:17px 0 0; font-size:0.8rem;}
     #wrap.event .intro .svc_start .btnBox {text-align:center;}
-    #wrap.event .intro .svc_start .btnBox .msg_start {margin:33px 0 8px; font-size:14px;}
-    #wrap.event .intro .svc_start .btnBox a {width:40%; min-width:143px;}
+    #wrap.event .intro .svc_start .btnBox .msg_start {margin:33px 0 8px; font-size:1.2rem;}
+    #wrap.event .intro .svc_start .btnBox a {width:30%; max-width:143px; font-size:1.3rem;}
 
-    #wrap.event .contents .imgBox .use_case {top:8%; width:87.5%; height:13%;}
+    #wrap.event .contents .imgBox .use_case {top:8%; width:87.5%; min-width:auto; height:13%;}
     #wrap.event .contents .imgBox .use_case .videoBox {width:100%;}
 
-    #wrap.event .contact .contBox {left:0; width:100%; text-align:center; transform:none;}
-    #wrap.event .contact .contBox .main_tit {left:45px; font-size:30px; letter-spacing:-1.2px; line-height:50px;}
-    #wrap.event .contact .contBox .contactform {width:100%; padding:67px 20px 59px;}
-    #wrap.event .contact .contBox .contactform .top_box .tit {font-size:33px;}
-    #wrap.event .contact .contBox .contactform .top_box .desc {margin:22px 0 26px; font-size:21px;}
-    #wrap.event .contact .contBox .contactform .top_box .contact_info span {display:block; font-size:20px;}
+    #wrap.event .contact .contBox {left:0; width:100%;}
+    #wrap.event .contact .contBox .main_tit {left:20px; font-size:2.1rem; letter-spacing:-1.2px; line-height:50px;}
+    #wrap.event .contact .contBox .contactform {width:100%; padding:34px 20px 30px;}
+    #wrap.event .contact .contBox .contactform .top_box .tit {font-size:1.8rem;}
+    #wrap.event .contact .contBox .contactform .top_box .desc {margin:11px 0 13px; font-size:1.1rem;}
+    #wrap.event .contact .contBox .contactform .top_box .contact_info span {display:block; font-size:1rem;}
     #wrap.event .contact .contBox .contactform .top_box .contact_info span + span {padding:0; border:none;}
-    #wrap.event .contact .contBox .contactform .top_box .contact_info span a {font-size:20px;}
+    #wrap.event .contact .contBox .contactform .top_box .contact_info span a {font-size:1rem;}
     #wrap.event .contact .contBox .contactform .top_box .contact_info span a img {width:16px;}
     #wrap.event .contact .contBox .contactform .btm_box > div {display:block; width:100% !important;}
-    #wrap.event .contact .contBox .contactform .btm_box .user_info dl dt {font-size:22px;}
-    #wrap.event .contact .contBox .contactform .btm_box .assent {width:100%; margin:90px 0 0; padding:0;}
-    #wrap.event .contact .contBox .contactform .btm_box .assent dl dd p {margin:12px 0 43px;}
+    #wrap.event .contact .contBox .contactform dl + dl {margin:20px 0 0;}
+    #wrap.event .contact .contBox .contactform .btm_box {padding:50px 0 0;}
+    #wrap.event .contact .contBox .contactform .btm_box .user_info dl dt {width:85px; font-size:1.1rem;}
+    #wrap.event .contact .contBox .contactform .btm_box .user_info dl:nth-child(3) dt {line-height:20px;}
+    #wrap.event .contact .contBox .contactform .btm_box .user_info dl dt p {margin:0 0 10px; font-size:1rem;}
+    #wrap.event .contact .contBox .contactform .btm_box .user_info dl dd {width:calc(100% - 90px);}
+    #wrap.event .contact .contBox .contactform .btm_box .assent {width:100%; margin:45px 0 0; padding:0;}
+    #wrap.event .contact .contBox .contactform .btm_box .assent dl dt {font-size:1.3rem;}
+    #wrap.event .contact .contBox .contactform .btm_box .assent dl dd p {margin:12px 0 43px; font-size:1.1rem;}
+    #wrap.event .contact .contBox .contactform .btm_box .assent dl dd p strong {font-size:1.2rem;}
+    .checkBox input[type="checkbox"] + label {font-size:20px;}
 
-    #wrap.event .contact .contBox #inquireBtn {margin:54px auto 17px;}
-    #wrap.event .contact .contBox .inquiry_info {font-size:10px;}
+    #wrap.event .contact .contBox #inquireBtn {display:block; width:80%; max-width:306px; margin:54px auto 17px; font-size:1.8rem;}
+    #wrap.event .contact .contBox .inquiry_info {padding:0; font-size:0.8rem; text-align:center;}
 }
 
 @media screen and (max-width:480px){
     #wrap.event .btn_go_contact {right:0; bottom:0; width:100%; height:70px; font-size:1.25rem; border-radius:0;}
+    #wrap.event .btn_go_contact br {display:none;}
 }

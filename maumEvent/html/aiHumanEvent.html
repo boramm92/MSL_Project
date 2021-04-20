@@ -16,6 +16,11 @@
 <meta property="og:url"           content="이벤트 페이지 링크 넣어주세요">
 <meta property="og:image"         content="../resources/images/aiHuman/img_og_prev.png">
 <meta property="og:description"   content="AI Human의 시대가 열렸습니다.">
+<!-- icon_favicon -->
+<link rel="apple-touch-icon-precomposed" href="../resources/images/aiHuman/apple-touch-icon-128.png">
+<link rel="icon" type="image/png" sizes="64x64" href="../resources/images/aiHuman/favicon-64.png">
+<link rel="icon" type="image/png" sizes="76x76" href="../resources/images/aiHuman/favicon-76.png">
+<link rel="icon" type="image/png" sizes="128x128" href="../resources/images/aiHuman/favicon-128.png">
 
 <!---------------------- General Resources ---------------------->
 <!-- General CSS -->
@@ -72,14 +77,11 @@
                 <div class="use_case">
                     <img class="pc" src="../resources/images/aiHuman/img_use_case.png" alt="사용사례">
                     <div class="videoBox">
-                        <video src=""></video>
+                        <button type="button" class="btn_video_play" title="재생버튼"></button>
+                        <img src="../resources/images/aiHuman/img_youtube_thum.png" alt="유튜브 썸네일">
                     </div>
                 </div>
             </div> 
-
-            <div class="contBox">
-
-            </div>
         </div> 
 
         <div class="stn contact"> 
@@ -142,7 +144,7 @@
     
     <!-- 신청 바로가기 버튼 -->
     <button type="button" class="btn_go_contact">
-        <span>AI Human<br class="pc"> 제작 신청</span>
+        <span>AI Human<br> 제작 신청</span>
     </button>
     <!-- //신청하기 버튼 -->
 </div>
@@ -161,6 +163,57 @@
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
+        // 동영상 레이어 팝업
+        $('.btn_video_play').on('click', function(){
+            $('body').css('overflow', 'hidden');
+
+            $('body').append(
+            '<div class="lyr_bg_dim"></div>\
+            <div id="lyr_video_player" class="lyrPlayBox">\
+                <div class="lyr_ct">\
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/kEcSLxWFTt0?rel=0&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>\
+                </div>\
+                <button type="button" class="btn_lyr_close">\
+                    <em class="fas fa-times" title="닫기버튼"></em>\
+                </button>\
+            </div>');      
+
+            $('.btn_lyr_close, .lyr_bg_dim').on('click', function(){
+                $('body').css('overflow', '');
+                $('.lyr_bg_dim').remove();
+                $('#lyr_video_player').remove();
+            });   
+        });
+
+        //Layer popup open 
+        $('.btn_lyr_open').on('click',function(){	
+            var winHeight = $(window).height()*0.7,
+                hrefId = $(this).attr('href');
+
+            $('body').css('overflow','hidden'); 
+            $('body').find(hrefId).wrap('<div class="lyrWrap"></div>');
+            $('body').find(hrefId).before('<div class="lyr_bg"></div>');
+
+            //Layer popup close 
+            $('.btn_lyr_close, .lyr_bg').on('click',function(){
+                $('body').css('overflow','');  
+                $('body').find(hrefId).unwrap();
+                $('.lyr_bg').remove(); 
+            });	
+        });	
+        
+        //Layer popup close 
+        var assentClicked = false;
+        $('#assent').on('click',function(){	
+            if( !assentClicked ){
+				$('#btn_request').prop('disabled', '');
+                assentClicked=true;
+            }else{
+				$('#btn_request').prop('disabled', 'disabled');
+                assentClicked=false
+            }
+        });
+
         // intro에서 이벤트 페이지 이동
         $('.btnBox .btn_go_event').on('click', function(){
             $('html').animate({scrollTop: 0,}, 500);
