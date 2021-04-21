@@ -53,7 +53,7 @@
         <div class="contents">
             <!-- .content -->
             <div class="content api_content">
-                <h1 class="api_tit ">날씨봇·위키봇</h1>
+                <h1 class="api_tit ">KBQA봇</h1>
 				<ul class="menu_lst bot_lst">
 					<li class="tablink" onclick="openTap(event, 'chatdemo')" id="default">
                         <button type="button">엔진</button>
@@ -68,23 +68,8 @@
 
                 <!-- .demobox -->
                 <div class="demobox" id="chatdemo">
-					<p><span style="color:#2cace5;">챗봇</span>, 필요한 곳에 바로 가져다 쓰세요!</p>
-					<span class="sub">제공 가능: 위키 백과 지식을 알려주는 위키봇, 뉴스기사를 알려주는 뉴스봇, 날씨를 알려주는 날씨봇 (다양한 주제의 봇 확장 중)</span>
-
-					<div class="chatbot_tab">
-                        <button class="tablinks wiki" onclick="openCity(event, 'wiki')">
-							<img src="kr/images/img_chatbot_wiki.png" alt="wikibot">
-							<span>위키봇</span>
-						</button>
-                        <button class="tablinks news" onclick="openCity(event, 'news')">
-							<img src="kr/images/img_chatbot_news.png" alt="newsbot">
-							<span>뉴스봇</span>
-						</button>
-					  	<button class="tablinks weather" onclick="openCity(event, 'weather')" id="defaultOpen">
-							<img src="kr/images/img_chatbot_weather.png" alt="weatherbot">
-							<span>날씨봇</span>
-						</button>
-					</div>
+					<p><span style="color:#2cace5;">KBQA(Knowledge Base Question Answering)</span> 를 이용한 위키봇</p>
+					<span class="sub">위키피디아의 인포박스를 KBQA 엔진을 이용하여 검색하여 답변해줍니다.</span>
 
                     <!-- chatbot_box -->
 					<div class="chatbot_box" id="wiki">
@@ -97,9 +82,9 @@
                                     제 상식을 한번 테스트해 보시겠어요?
                                 </div>
 								<ul class="info_btnBox">
-									<li><button type="button">프랑스 혁명은 언제 일어났어?</button></li>
-									<li><button type="button">김연아 선수는 키가 얼마나 크지?</button></li>
-									<li><button type="button">데미안의 저자는 누구야? </button></li>
+									<li><button type="button">우리나라 국보 1호는?</button></li>
+									<li><button type="button">세종대왕의 아버지는?</button></li>
+									<li><button type="button">호메로스의 주요 작품은?</button></li>
 								</ul>
 							</div>
 							<ul class="talkLst">
@@ -114,76 +99,6 @@
 							<form method="post" action="" id="formChat2" name="formChat2">
 								<textarea class="textArea" placeholder="메세지를 입력해 주세요"></textarea>
 								<input type="button" name="btn_chat2" id="btn_chat2" class="btn_chat" title="전송" value="전송">
-							</form>
-						</div>
-						<!-- //.chat_btm -->
-						<div class="remark">발표: 기상청 &nbsp;&nbsp;&nbsp;제공: 공공데이터포털</div>
-					</div>
-					<!-- //.chatbot_box -->
-
-                    <!-- chatbot_box -->
-					<div class="chatbot_box" id="news">
-						<!-- .chat_mid -->
-						<div class="chat_mid">
-							<div class="bot_infoBox">
-								<div class="thumb"><img src="kr/images/img_chatbot_news.png" alt="chatbot"></div>
-								<div class="txt">
-                                    지난 뉴스가 궁금하시다구요?<br>
-                                    1500만개 기사 중에 관련 내용을 찾아드립니다.
-                                </div>
-								<ul class="info_btnBox">
-									<li><button type="button">2018 동계올림픽 개최지역은?</button></li>
-									<li><button type="button">신조어 소확행의 뜻은?</button></li>
-									<li><button type="button">4월27일 판문점 평화의 집에서 열린 회의는?</button></li>
-								</ul>
-							</div>
-							<ul class="talkLst">
-								<li class="newDate">
-									<span><!-- 날짜는 스크립트가 정의--></span>
-								</li>
-							</ul>
-						</div>
-						<!-- //.chat_mid -->
-						<!-- .chat_btm -->
-						<div class="chat_btm">
-							<form method="post" action="" id="formChat2" name="formChat2">
-								<textarea class="textArea" placeholder="메세지를 입력해 주세요"></textarea>
-								<input type="button" name="btn_chat2" id="btn_chat2" class="btn_chat" title="전송" value="전송">
-							</form>
-						</div>
-						<!-- //.chat_btm -->
-						<div class="remark">발표: 기상청 &nbsp;&nbsp;&nbsp;제공: 공공데이터포털</div>
-					</div>
-					<!-- //.chatbot_box -->
-
-					<!-- chatbot_box -->
-					<div class="chatbot_box" id="weather">
-						<!-- .chat_mid -->
-						<div class="chat_mid">
-							<div class="bot_infoBox">
-								<div class="thumb"><img src="kr/images/img_chatbot_weather.png" alt="chatbot"></div>
-								<div class="txt">
-                                    잠깐!! 우산 챙기셨나요?<br>
-                                    오늘의 날씨가 궁금하시면 저에게 물어보세요.
-                                </div>
-								<ul class="info_btnBox">
-									<li><button type="button">오늘 날씨 알려줘</button></li>
-									<li><button type="button">오늘 성남 날씨는?</button></li>
-									<li><button type="button">내일 비 와?</button></li>
-								</ul>
-							</div>
-							<ul class="talkLst">
-								<li class="newDate">
-									<span><!-- 날짜는 스크립트가 정의--></span>
-								</li>
-							</ul>
-						</div>
-						<!-- //.chat_mid -->
-						<!-- .chat_btm -->
-						<div class="chat_btm">
-							<form method="post" action="" id="formChat" name="formChat">
-								<textarea class="textArea" placeholder="메세지를 입력해 주세요"></textarea>
-								<input type="button" name="btn_chat" id="btn_chat" class="btn_chat" title="전송" value="전송">
 							</form>
 						</div>
 						<!-- //.chat_btm -->
@@ -233,37 +148,9 @@
 								<dl>
 									<dt>
 										<em>CASE 01</em>
-										<span>인공지능 비서</span>
-									</dt>
-									<dd class="txt">날씨를 알려주는 챗봇을 바로 갖다 붙이면, 인공지능 비서가 날씨를 알려줍니다.</dd>
-									<dd class="api_itemBox">
-										<ul class="lst_api">
-											<li class="ico_weatherBot"><span>날씨봇</span></li>
-										</ul>
-									</dd>
-								</dl>
-							</li>
-							<li>
-								<dl>
-									<dt>
-										<em>CASE 02</em>
 										<span>AI Tutor</span>
 									</dt>
 									<dd class="txt">다양한 지식 정보를 대화 형식으로 제공받을 수 있는 현존하는 가장 간편한 지식 소통 인공지능 소프트웨어로, 다양한 분야의 콘텐츠에 접목될 수 있습니다.</dd>
-									<dd class="api_itemBox">
-										<ul class="lst_api">
-											<li class="ico_wikiBot"><span>위키봇</span></li>
-										</ul>
-									</dd>
-								</dl>
-							</li>
-							<li>
-								<dl>
-									<dt>
-										<em>CASE 03</em>
-										<span>장학 퀴즈</span>
-									</dt>
-									<dd class="txt">1,300만 건 이상의 비정형 지식베이스와 3,800만 건의 학습 데이터를 통해 정확도 높은 답변을 제공합니다.</dd>
 									<dd class="api_itemBox">
 										<ul class="lst_api">
 											<li class="ico_wikiBot"><span>위키봇</span></li>
@@ -345,23 +232,23 @@
     document.getElementById("default").click();
 
 
-jQuery.event.add(window,"load",function(){
-    $(document).ready(function (){
-        // 페이지 확인을 위한 script로 개발 시에는 무시해주세요.
-        $('.btn_start').on('click', function(){
-            $('.avr_1').css('display', 'none');
-            $('.avr_2').css('display', 'block');
-        });
-        $('.btn_back1').on('click', function(){
-            $('.avr_2').css('display', 'none');
-            $('.avr_3').css('display', 'block');
-        });
-        $('.btn_back2').on('click', function(){
-            $('.avr_3').css('display', 'none');
-            $('.avr_1').css('display', 'block');
-        });
-    });
-});
+// jQuery.event.add(window,"load",function(){
+//     $(document).ready(function (){
+//         // 페이지 확인을 위한 script로 개발 시에는 무시해주세요.
+//         $('.btn_start').on('click', function(){
+//             $('.avr_1').css('display', 'none');
+//             $('.avr_2').css('display', 'block');
+//         });
+//         $('.btn_back1').on('click', function(){
+//             $('.avr_2').css('display', 'none');
+//             $('.avr_3').css('display', 'block');
+//         });
+//         $('.btn_back2').on('click', function(){
+//             $('.avr_3').css('display', 'none');
+//             $('.avr_1').css('display', 'block');
+//         });
+//     });
+// });
 </script>
 </body>
 </html>
