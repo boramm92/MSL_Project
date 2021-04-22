@@ -1,12 +1,10 @@
 @charset "UTF-8";
 /* MINDsLab. NBR. 20210422 */
 
-@import url("http://www.openhiun.com/hangul/nanumbarungothic.css");
-
 /* -------------------- layout -------------------- */
 #wrap {width:100%; min-width:1240px; height:100%;}
-#header {position:absolute; top:0; left:0; width:100%; height:80px; border-bottom:1px solid #21284b;  background:transparent; z-index:10;}
-#header .contBox {display:flex; width:1194px; height:100%; margin:0 auto;}
+#header {position:fixed; top:0; left:0; width:100%; min-width:1240px; height:80px; padding:30px 0 0; border-bottom:1px solid #21284b; box-sizing:border-box; background:transparent; transition:all 0.3s ease-out; z-index:20;}
+#header .contBox {width:1194px; height:100%; margin:0 auto;}
 #container .contents .stn {position:relative; width:100%; padding:100px 0; box-sizing:border-box;}
 #container .contents .stn .contBox {width:1140px; height:100%; margin:0 auto; text-align:center;}
 
@@ -18,21 +16,28 @@
 
 /* -------------------- landing -------------------- */
 /* header */
-#header .logo {flex:none; height:20px; margin:30px 55px 30px 0;} 
-#header .logo a {display:block; width:100%; height:100%;}
-#header .gnb {flex:none; margin-right:auto;}
-#header .gnb .nav {display:flex;}
-#header .gnb .nav li {-webkit-align-items:center; align-items:center;}
-#header .gnb .nav li:last-child {-webkit-flex-direction:row-revers; flex-direction:row-revers;}
-#header .gnb .nav li a {color:#9196ac; font-size:0.67rem; font-weight:500; letter-spacing:-0.16px; line-height:1.5;}
-#header .etc {flex:none; margin:0 0 0 50px;}
-#header .etc .lang_slt {width:126px; height:40px; border:1px solid #9196ac; border-radius:20px;}
-#header .etc .lang_slt li {display:none;}
+#header.fixed {background:#000;}
+#header .contBox .logo {float:left;} 
+#header .contBox .logo a {height:20px;}
+#header .contBox .gnb {float:left; margin:0 0 0 55px;}
+#header .contBox .etc {float:right;}
+#header .contBox .etc .lang_slt {display:none;}
+#header .contBox .nav li {float:left; }
+#header .contBox .nav li + li {margin:0 0 0 50px;}
+#header .contBox .nav li a {display:block; position:relative; color:#9196ac; font-size:0.67rem; line-height:20px;}
+#header .contBox .nav li a:after {content:''; position:absolute; bottom:-8px; left:50%; width:0; height:2px; transform:translate(-50%); transition:width 0.3s ease-out;}
+#header .contBox .nav li a:hover:after {width:100%; background:#9196ac;}
 
 /* stn - visual */
-#container .contents .visual {height:828px; padding:80px 0 88px; background:linear-gradient(1deg, #0d0b15 77%, #0f152d 91%, #181b40 99%, #000000 106%);}
-#container .contents .visual .contBox {text-align:left;}
-#container .contents .visual .contBox .visual_tit {padding:156px 0 0; color:#fff; font-family:'Nanum Barun Gothic', sans-serif; font-size:2.33rem; font-weight:700; letter-spacing:-1.4px; line-height:1.46;}
-#container .contents .visual .contBox .visual_desc {margin:34px 0 116px; color:#fff; font-size:1rem; letter-spacing:-0.24px; line-height:1.42;}
-#container .contents .visual .contBox .btn_go_inquiry {display:inline-block; width:216px; height:56px; border:1px solid #1054b2; border-radius:28px; box-sizing:border-box; background:#1054b2; color:#fff; font-size:0.83rem; font-weight:700; letter-spacing:-0.2px; line-height:54px; text-align:center; transition:all 0.3s ease-out;}
-#container .contents .visual .contBox .btn_go_inquiry:hover {background:transparent;}
+#container .contents .visual {overflow:hidden; height:828px; padding:80px 0 88px; background:linear-gradient(1deg, #0d0b15 77%, #0f152d 91%, #181b40 99%, #000000 106%);}
+#container .contents .visual .contBox {position:relative; text-align:left;}
+#container .contents .visual .contBox .txtArea {position:absolute; top:50%; left:0; transform:translate(0, -50%); z-index:10;}
+#container .contents .visual .contBox .txtArea .visual_tit {margin:156px 0 0; color:#fff; font-family:'Nanum Barun Gothic', sans-serif; font-size:2.33rem; font-weight:700; letter-spacing:-1.4px; line-height:1.46;}
+#container .contents .visual .contBox .txtArea .visual_desc {margin:34px 0 116px; color:#fff; font-size:1rem; letter-spacing:-0.24px; line-height:1.42;}
+#container .contents .visual .contBox .txtArea .btn_go_inquiry {display:inline-block; width:216px; height:56px; border:1px solid #1054b2; border-radius:28px; box-sizing:border-box; background:#1054b2; color:#fff; font-size:0.83rem; font-weight:700; letter-spacing:-0.2px; line-height:54px; text-align:center; transition:all 0.3s ease-out;}
+#container .contents .visual .contBox .txtArea .btn_go_inquiry:hover {background:transparent;}
+
+#container .contents .visual .contBox .imgArea {position:absolute; right:0; bottom:0; width:902px; height:100%;}
+#container .contents .visual .contBox .imgArea .imgBox {}
+#container .contents .visual .contBox .imgArea .imgBox img.bounding_tool {display:block; position:absolute; right:117px; bottom: 88px; width:785px;}
+#container .contents .visual .contBox .imgArea .imgBox img.keyPoint_tool {display:block; position:absolute; right:-333px; bottom: 218px; width:785px;}
