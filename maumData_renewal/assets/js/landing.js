@@ -3,11 +3,11 @@
 // header fixed, background change
 const header = document.querySelector('#header');
 
-function headerScrollFixed(){ 
+function headerScrollFunc(){ 
     if (pageYOffset > 5){ 
         header.classList.add('fixed'); 
     }else{ 
         header.classList.remove('fixed'); 
     } 
 } 
-window.addEventListener('scroll', headerScrollFixed);
+window.addEventListener('scroll', headerScrollFunc);
