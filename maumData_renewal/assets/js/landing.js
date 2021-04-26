@@ -156,6 +156,35 @@ $('.btn_ham').click(function(){
 // window.addEventListener('load', gnbNavOrderChange);
 // window.addEventListener('resize', gnbNavOrderChange);
 
+// swiper
+new Swiper('.company_wrap', { 
+    slidesPerView: 4, 
+    slidesPerGroup: 1, 
+    spaceBetween: 48,
+    slidesPerColumn: 2,
+    slidesPerColumnFill: 'row',
+    observer: true,
+    observeParents: true,
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    navigation: {
+        prevEl: '.swiper-button-prev',
+        nextEl: '.swiper-button-next',
+    },
+    breakpoints: {
+        320: {
+            spaceBetween: 8,
+            slidesPerColumn: 2,
+        },
+        768: {
+            spaceBetween: 8,
+            slidesPerColumn: 2,
+        },
+    },
+});
+
 
 
 

@@ -20,8 +20,8 @@
 /* -------------------- landing -------------------- */
 /* header */
 #header.fixed {background:#0D0B15;}
-#header .contBox .logo {display:flex; align-items:center; float:left; height:100%;} 
-#header .contBox .logo a {display:block; height:20px;}
+#header .contBox > .logo {display:flex; align-items:center; float:left; height:100%;} 
+#header .contBox > .logo a {display:block; height:20px;}
 #header .contBox .sta {display:flex; justify-content:space-between; align-items:center; position:relative; height:100%;}
 #header .contBox .gnb {width:calc(100% - 226px); margin:0 0 0 55px;}
 #header .contBox .gnb .nav {display:flex; align-items:center; width:100%;}
@@ -40,12 +40,13 @@
 #header .contBox .etc .lang_slt_wrap .slt_box {display:block; position:absolute; top:0; left:0; width:100%; height:100%; text-indent:-9999px;}
 #header .contBox .etc .lang_slt_wrap.open .slt_box {display:none;}
 
-#header .contBox .btn_ham {position:absolute; top:8px; right:10px; width:40px; height:40px; z-index:20;}
-#header .contBox .btn_ham span {display:block; width:20px; height:2px; margin:4px auto 0; background:#fff;}
-#header .contBox .btn_ham.active {position:fixed; top:auto; bottom:8px;}
-#header .contBox .btn_ham.active span:nth-child(1) {margin:15px auto; transform:translateY(5px) rotate(45deg);} 
+#header .contBox .btn_ham {position:absolute; top:8px; right:30px; width:40px; height:40px; z-index:20;}
+#header .contBox .btn_ham span {display:block; position:static; width:20px; height:2px; margin:4px auto 0; background:#fff;}
+#header .contBox .btn_ham.active {top:auto; right:0; bottom:0; width:100%; height:56px;}
+#header .contBox .btn_ham.active span {position:absolute; background:#99a2b4;}
+#header .contBox .btn_ham.active span:nth-child(1) {right:20px; margin:15px auto; transform:translateY(-14px) rotate(45deg);} 
 #header .contBox .btn_ham.active span:nth-child(2) {opacity: 0;}
-#header .contBox .btn_ham.active span:nth-child(3) {margin:11px auto 0; transform:translateY(-25px) rotate(-45deg);}
+#header .contBox .btn_ham.active span:nth-child(3) {right:20px; margin:11px auto 0; transform:translateY(-10px) rotate(-45deg);}
 
 /* stn - visual */
 #container .visual {overflow:hidden; height:828px; padding:80px 0 88px; background-image:url('../images/landing/bg_stn_visual_w.png'), linear-gradient(1deg, #0d0b15 77%, #0f152d 91%, #181b40 99%, #000000 106%); background-position:50% 50%; background-repeat:no-repeat; background-size:cover;}
@@ -190,26 +191,31 @@
 
     #header {min-width:320px; height:56px;}
     #header .contBox {width:100%;}
-    #header .contBox .sta {display:block; position:fixed; top:0; right:-20px; width:0; height:100%; padding:56px 10px 0; box-sizing:border-box; background:#fff; transition:width 0.2s ease-out; z-index:10;}
+    #header .contBox .sta {display:block; position:fixed; top:0; right:-20px; width:0; height:100%; box-sizing:border-box; background:#fff; transition:width 0.2s ease-out; z-index:10;}
     #header .contBox .sta.active {display:block; right:0; width:180px;}
-    #header .contBox .gnb {width:100%; margin:0;}
+    #header .contBox .sta .logo {width:100%; height:56px;}
+    #header .contBox .sta .logo a {display:block; width:100%; height:100%; padding:22px 0; box-sizing:border-box; text-align:center;}
+    #header .contBox .gnb {width:100%; margin:0; padding:0 10px; box-sizing:border-box;}
     #header .contBox .gnb .nav {flex-direction:column; align-items:inherit;}
-    #header .contBox .gnb .nav li a {display:block; width:160px; padding:0 0 0 36px; border-radius:10px; box-sizing:border-box; background-color:#1054b2; color:#fff; font-size:1rem; line-height:42px;}
+    #header .contBox .gnb .nav li {margin:7px 0 0;}
     #header .contBox .gnb .nav li + li {margin:14px 0 0;}
+    #header .contBox .gnb .nav li a {display:block; width:160px; padding:0 0 0 36px; border-radius:10px; box-sizing:border-box; background-color:#1054b2; color:#fff; font-size:1rem; line-height:42px;}
     #header .contBox .gnb .nav li a:after {content:none;}
     #header .contBox .gnb .nav li:nth-child(2) {order:3;}
     #header .contBox .gnb .nav li:nth-child(3) {order:2;}
     #header .contBox .gnb .nav li:nth-child(1) a {background-image:url('../images/landing/ico_gnb_cases.svg'); background-position:11px 50%; background-repeat:no-repeat;}
     #header .contBox .gnb .nav li:nth-child(2) a {background-image:url('../images/landing/ico_gnb_qna.svg'); background-position:11px 50%; background-repeat:no-repeat;}
     #header .contBox .gnb .nav li:nth-child(3) a {background-image:url('../images/landing/ico_gnb_voucher.svg'); background-position:11px 50%; background-repeat:no-repeat;}
-    #header .contBox .etc {position:absolute; bottom:76px; width:100%; height:72px; margin:0;}
-    #header .contBox .etc .lang_slt_wrap {height:72px; border:none; border-radius:0; background:none;}
+    #header .contBox .etc {position:absolute; bottom:76px; width:100%; height:72px; margin:0; padding:0 10px; box-sizing:border-box;}
+    #header .contBox .etc .lang_slt_wrap {position:static; height:72px; border:none; border-radius:0; background:none;}
     #header .contBox .etc .lang_slt_wrap.open {background:transparent;}
     #header .contBox .etc .lang_slt_wrap .slt_box {display:none;}
-    #header .contBox .etc .lang_slt_wrap .btn_lang_slt {display:block; float:left; width:72px; height:72px; padding:52px 0 0; color:#91979f; line-height:20px;}
-    #header .contBox .etc .lang_slt_wrap .lang_ko {margin:0 16px 0 0; background:url('../images/landing/ico_kor.svg') 50% 0 no-repeat;}
-    #header .contBox .etc .lang_slt_wrap .lang_en {margin:0 16px 0 0; background:url('../images/landing/ico_eng.png') 50% 6px no-repeat;}
-    #header .contBox .btn_ham span {background:#99a2b4;}
+    #header .contBox .etc .lang_slt_wrap .btn_lang_slt {display:block; float:left; width:72px; height:72px; padding:52px 0 0; color:#91979f; font-weight:500; line-height:20px;}
+    #header .contBox .etc .lang_slt_wrap .btn_lang_slt.on {color:#0b3496;}
+    #header .contBox .etc .lang_slt_wrap .lang_ko {margin:0 16px 0 0; background:url('../images/landing/ico_kor_gnr.svg') 50% 7px no-repeat;}
+    #header .contBox .etc .lang_slt_wrap .lang_ko.on {background:url('../images/landing/ico_kor_on.svg') 50% 0 no-repeat;}
+    #header .contBox .etc .lang_slt_wrap .lang_en {background:url('../images/landing/ico_eng_gnr.png') 50% 7px no-repeat;}
+    #header .contBox .etc .lang_slt_wrap .lang_en.on {background:url('../images/landing/ico_eng_on.png') 50% 0 no-repeat;}
     #header .contBox .bg_dim {display:block; position:fixed; top:0; right:0; bottom:0; left:0; width:100%; height:100%; background:rgba(0, 0, 0, 0.82);}
 
     #container .contents .stn {padding:50px 0;}
@@ -265,8 +271,8 @@
     #container .strenght .contBox .strt_lst li dl dd {margin:10px 0 0; font-size:0.86rem; letter-spacing:-0.3px;}
 
     #container .data_voucher .contBox .voucher_type {flex-direction:column;}
-    #container .data_voucher .contBox .voucher_type dl {width:100%; height:auto; min-height:106px; padding:16px 16px 16px 128px; text-align:left;}
-    #container .data_voucher .contBox .voucher_type dl + dl {margin:20px 0 0;}
+    #container .data_voucher .contBox .voucher_type dl {width:296px; height:auto; min-height:106px; margin:0 auto; padding:16px 16px 16px 128px; text-align:left;}
+    #container .data_voucher .contBox .voucher_type dl + dl {margin:20px auto 0;}
     #container .data_voucher .contBox .voucher_type dl:nth-child(1) {background-position:16px 50%; background-size:auto 86px;}
     #container .data_voucher .contBox .voucher_type dl:nth-child(2) {background-position:16px 50%; background-size:auto 86px;}
     #container .data_voucher .contBox .voucher_type dl dt {font-size:1.14rem;}
