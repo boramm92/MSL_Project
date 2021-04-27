@@ -172,6 +172,22 @@ new Swiper('.company_wrap', {
     },
 });
 
+// 공통 layer popup
+// $('.btn_lyr_open').on('click',function(){
+//     var lyrHref = $(this).attr('href');
+
+//     // layer open
+//     $('body').css('overflow', 'hidden');
+//     $(lyrHref).wrap('<div class="lyrWrap"></div>').before('<div class="lyr_bg"></div>');
+//     $(lyrHref).css('display', 'block');
+
+//     // layer close
+//     $('.btn_lyr_close, .lyr_bg').on('click', function(){
+//         $('body').css('overflow', '');
+//         $(lyrHref).parent('.lyrWrap').css('display', 'none');
+//     });
+// });
+
 
 
 
