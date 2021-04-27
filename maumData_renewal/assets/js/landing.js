@@ -9,28 +9,15 @@ function headerScrollFunc(e){
     }else{ 
         header.classList.remove('fixed'); 
     } 
-    
-    // var target = e.target;
-    // console.log(target);
-    // var scrollX = window.scrollLeft;
-    // header.style.left = scrollX + 'px';
-    // console.log(scrollX);
 } 
 window.addEventListener('load', headerScrollFunc);
 window.addEventListener('scroll', headerScrollFunc);
-
-// window.addEventListener('scroll', function(){
-//     var header = document.querySelector('#header');
-//     var scrollX = window.scrollLeft;
-//     header.style.left = '500px';
-//     console.log(scrollX)
-// });
 
 // header 좌우 스크롤 처리
 $(window).scroll(function(){
     var scrollX = $(window).scrollLeft()
     $('#header').css('left', - scrollX);
-})
+});
 
 // header 언어선택 (웹, 모바일 별 기능)
 var langSelectWrap = document.querySelector('.lang_slt_wrap'),
