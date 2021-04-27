@@ -21,7 +21,7 @@
 <link rel="stylesheet" type="text/css" href="common/css/font.css">
 <link rel="stylesheet" type="text/css" href="common/css/all.css">
 <link rel="stylesheet" type="text/css" href="common/css/pop_common.css">
-<link rel="stylesheet" type="text/css" href="kr/css/common.css">
+<link rel="stylesheet" type="text/css" href="en/css/common.css">
 
 <!-- General Script -->
 <script type="text/javascript" src="common/js/jquery-1.11.0.min.js"></script>
@@ -52,16 +52,16 @@
         <!-- .contents -->
 		<div class="contents">
 			<div class="content api_content">
-				<h1 class="api_tit">음성인식</h1>
+				<h1 class="api_tit">Speech Recognition</h1>
 				<ul class="menu_lst voice_menulst">
-					<li class="tablinks" onclick="openTap(event, 'sttdemo')" id="defaultOpen"><button type="button">엔진</button></li>
-					<li class="tablinks" onclick="openTap(event, 'sttexample')"><button type="button">적용사례</button></li>
-					<li class="tablinks" onclick="openTap(event, 'sttmenu')"><button type="button">매뉴얼</button></li>
+					<li class="tablinks" onclick="openTap(event, 'sttdemo')" id="defaultOpen"><button type="button">AI Engine</button></li>
+					<li class="tablinks" onclick="openTap(event, 'sttexample')"><button type="button">Use Case</button></li>
+					<li class="tablinks" onclick="openTap(event, 'sttmenu')"><button type="button">Manual</button></li>
 		
 				</ul>
 				<div class="demobox sttdemo apisttdemo" id="sttdemo">
-					<p>정확하고 강력한 <em>음성인식</em> <small>(Speech Recognition)</small></p>
-					<span class="sub">음성을 텍스트로 빠르고 정확하게 변환합니다. </span>
+					<p>The Latest <span>Speech Recognition</span><small>(STT)</small> based on Deep Learning</p>
+					<span class="sub">Convert speech into texts regardless of types of voice or content.</span>
 		
 					<div class="stt_demo">
 						<!-- #demo04 -->
@@ -70,46 +70,50 @@
 							<!-- .rightBox -->
 							<div class="rightBox">
 								<div class="selectarea">
-		
 									<div class="radio" name="level" id="level">
-										<input type="radio" id="1" value="kor_baseline" name="voice" checked="checked">
-										<label for="1"><span>한국어</span></label>
+										<input type="radio" id="3" value="eng_baseline" name="voice" checked="checked">
+										<label for="3"><span>English</span></label>
+									</div>
+									<div class="radio">
+										<input type="radio" id="1" value="kor_baseline" name="voice">
+										<label for="1"><span>Korean</span></label>
 									</div>
 									<div class="radio">
 										<input type="radio" id="2" value="kor_address" name="voice">
-										<label for="2"><span>한국어 주소</span></label>
-									</div>
-									<div class="radio">
-										<input type="radio" id="3" value="eng_baseline" name="voice">
-										<label for="3"><span>영어</span></label>
+										<label for="2"><span>Korean <strong>Address</strong></span></label>
 									</div>
 									<div class="radio minipopbtn">
 										<em class="fas fa-plus-circle"></em>
 										<span>more</span>
-										<strong class="minipop">한국어, 영어 콜센터 전용, 영어 교육용 음성인식 api는 별도 문의 바랍니다. <br>(hello@mindslab.ai)</strong>
+										<strong class="minipop">Please contact us for the following API:  Korean, English(Contact Center), and English(Educational).<br>(hello@mindslab.ai)</strong>
 									</div>
 		
 								</div>
 								<!-- .step01 -->
 								<div class="demo_intro">
-									<div class="demo_fileTxt">녹음 버튼을 클릭하고 인식하고자 하는 문장을 말하거나,<br>음성파일을 업로드 해 주세요.</div>
-									<div class="demo_recordTxt">음성을 듣고 있습니다.<br><strong>완료 버튼</strong>을 클릭하시면 변환을 시작합니다.</div>
+									<div class="demo_fileTxt">Click Record and speak,<br> or upload files</div>
+									<div class="demo_recordTxt">Start speaking.</div>
 									<div class="btnupload">
-										<label for="demoFile"><span><em class="fas fa-file-upload"></em>파일 업로드</span></label>
-										<input type="file" id="demoFile" class="demoFile" onchange="checkSize(this)">
+										<label for="demoFile"><span><em class="fas fa-file-upload"></em>Upload files</span></label>
+										<input type="file" id="demoFile" class="demoFile">
 									</div>
 									<div class="btnBox">
-										<span><em>녹음</em></span>
+										<span><em>Record</em></span>
 									</div>
 									<div class="btnreset">
-										<button class="demoReset"><span>다시하기</span></button>
-										<button class="demoStop"><span>완료</span></button>
-									</div>		
+										<button class="demoReset"><span>Reset</span></button>
+										<button class="demoStop"><span>Stop</span></button>
+									</div>
+		
+		
+		
+		
+		
 								</div>
 								<!-- //.step01 -->
 								<!-- .step03 -->
 								<div class="demo_recording">
-									<div class="demo_infoTxt">파일을 변환 중입니다. <br>잠시만 기다려 주세요.</div>
+									<div class="demo_infoTxt">Please wait.<br> The speech is currently being converted into texts.</div>
 									<!-- recording -->
 									<div class="recording">
 										<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
@@ -120,223 +124,233 @@
 								<!-- //.step03 -->
 								<!-- .step04 -->
 								<div class="demo_result">
-									<div class="resultTxt" id="demo_result_text">음원의 samplerate를 확인해주세요</br>지원가능한 samplerate는 8000입니다
+									<div class="resultTxt" id="demo_result_text">Default text
 									</div>
 									<div class="btnBox btnReset">
-										<button class="demoReset"><span>다시하기</span></button>
+										<button class="demoReset"><span>Reset</span></button>
 									</div>
 									<!-- [D] 21.04.26 버튼 추가영역 -->
 									<div class="btnBox btnPlay">
 										<button class="demoPlay">
 											<span>
 												<em class="fas fa-play-circle"></em>
-												<strong>재생하기</strong></span>
+												<strong>Play</strong></span>
 										</button>
 									</div>
 									<!-- //[D] 21.04.26 버튼 추가영역 -->
-									<div class="btnBox btndwn">
-										<button class="dwn"><a id="save"><span>다운로드</span></a></button>
+									 <div class="btnBox btndwn">
+										<button class="dwn"><a id="save"><span>Download</span></a></button>
 									</div>
 								</div>
-								<!-- //.step04 -->		
+								<!-- //.step04 -->
+		
 							</div>
-							<!-- //.rightBox -->		
+							<!-- //.rightBox -->
+		
 						</div>
-						<!-- //#demo04 -->		
+						<!-- //#demo04 -->
+		
+		
 						<div class="remark">
-							*지원가능한 파일 확장자 : .mp3, .wav, .pcm <br>
-							*5MB 이하의 음성 파일을 이용해 주세요.<br>
-							*한국어, 영어 외 다른 언어가 필요하시면, 고객지원센터로 연락 주세요.
+							*Please upload the file in following format: mp3, wav, pcm less than 5MB.<br>
+							*Please contact us if you inquire languages other than Korean and English.
 						</div>
 					</div>
 				</div>
 		
-				<!--.sttmenu-->
+				<!--.ttsmenu-->
 				<div class="demobox voice_menu" id="sttmenu">
+		
 					<!--guide_box-->
 					<div class="guide_box">
 						<div class="guide_common">
 							<div class="title">
-								API 공통 가이드
+								API Guideline
 							</div>
-							<p class="sub_title">개발 환경 세팅</p>
-							<p class="sub_txt">1&#41; REST API는 HTTP 요청을 보낼 수 있는 환경이라면 어디에서든 이용할 수 있습니다.</p>
-							<p class="sub_txt">2&#41; 다양한 환경의 웹 서버에서 활용 가능합니다. (Python, Web, Javascript, Java)</p>
-							<p class="sub_title">키 발급</p>
-							<p class="sub_txt">1&#41; Mindslab에서 제공되는 API 서비스를 사용하기 위해서는 키를 선지급 받아야합니다.</p>
-							<p class="sub_txt">2&#41; 마음AI 플랫폼에서 Business Plan 이상 구독 신청을 하셔야합니다. (https://maum.ai) </p>
-							<p class="sub_txt">3&#41; [계정메뉴]에서 본인의 API ID 및 Key를 확인해주세요.</p>
-							<p class="sub_txt">4&#41; 발급받은 API ID 및 Key를 기억하여 아래 매뉴얼에 맞게 사용합니다.</p>
-							<p class="sub_txt">※ Mindslab API를 위한 ID와 키는 외부 유출 및 공유를 금합니다.</p>
+							<p class="sub_title">Set up Environment</p>
+							<p class="sub_txt">1&#41; REST API is available wherever you can send HTTP requests.</p>
+							<p class="sub_txt">2&#41; It can be used in Python, Web, Javascript and Java.</p>
+							<p class="sub_title">ID &amp; Key</p>
+							<p class="sub_txt">1&#41; You need a unique ID and key for Minds Lab’s API services.</p>
+							<p class="sub_txt">2&#41; Subscribe ‘Business Plan’ or ‘Enterprise Plan’ on maum.ai platform. (https://maum.ai)</p>
+							<p class="sub_txt">3&#41; After subscription, request an ID and key with required information filled in. <br>
+								<small>(ex. Service description, Requesting API, Company info. etc.)</small></p>
+							<p class="sub_txt">4&#41; After an agreement, Minds Lab would send you an ID, key within 1-2 business days through email.</p>
+							<p class="sub_txt">5&#41; Remember the ID and key and follow the instruction below.</p>
+							<p class="sub_txt">※ Disclosure is prohibited strictly for Minds Lab’s API ID and key.</p>
 						</div>
+						<!--guide_group-->
 						<div class="guide_group">
+		
 							<div class="title">
-								STT <small>(Speech-To-Text)</small>
+								Speech Recognition (Speech-To-Text)
 							</div>
-							<p class="sub_txt">마인즈랩의 STT API는 다양한 환경의 음성을 텍스트로 변환시켜주는 API입니다.</p>
+							<p class="sub_txt">Minds Lab’s STT API transforms speeches into texts</p>
 		
 							<span class="sub_title">
-									준비사항
-								</span>
-							<p class="sub_txt">① Input: 음성파일 (.wav/.pcm/.mp3)  </p>
-							<p class="sub_txt">② 아래 Model 중 택 1  </p>
+							Preparation
+							</span>
+							<p class="sub_txt">① Input: Sound file (.wav/.pcm/.mp3) </p>
+							<p class="sub_txt">② Model: Choose one below </p>
 							<ul>
-								<li>한글 고객센터용 8K (baseline, kor, 8000)</li>
-								<li>한글 일반용 16K (baseline, kor, 16000)</li>
-								<li>영어 고객센터용 8K (baseline, eng, 8000)</li>
-								<li>영어 일반용 16K (baseline, eng, 16000)</li>
-								<li>한글 주소인식 (address, kor, 8000)</li>
-								<li>한글 콩글리시 (konglish, kor, 8000)</li>
+								<li>Korean for customer service center (baseline, kor, 8000)</li>
+								<li>Korean for general use (baseline, kor, 16000)</li>
+								<li>English for customer service center (baseline, eng, 8000)</li>
+								<li>English for general use (baseline, eng, 16000)</li>
+								<li>Korean Address (address, kor, 8000)</li>
 							</ul>
 							<span class="sub_title">
-									 실행 가이드
-								</span>
+							API Document
+							</span>
+		
 							<p class="sub_txt">① Request  </p>
 							<ul>
 								<li>Method : POST</li>
 								<li>URL : https://api.maum.ai/api/stt/</li>
 							</ul>
-							<p class="sub_txt">② Request 파라미터 설명 </p>
+							<p class="sub_txt">② Request parameters </p>
 							<table>
 								<tr>
-									<th>키</th>
-									<th>설명</th>
+									<th>Name</th>
+									<th>Description</th>
 									<th>type</th>
 								</tr>
 								<tr>
 									<td>ID</td>
-									<td>사용자의 고유 ID. 마인즈랩 담당자에게 이메일로 발급요청 </td>
+									<td>Unique API ID. Request from is required for the ID. </td>
 									<td>string</td>
 								</tr>
 								<tr>
 									<td>key</td>
-									<td>사용자의 고유 key. 마인즈랩 담당자에게 이메일로 발급요청 </td>
+									<td>Unique API key. Request from is required for the key.</td>
 									<td>string</td>
 								</tr>
 								<tr>
 									<td>cmd</td>
-									<td>어떤 API 를 사용할지에 대한 간단한 키워드 (runFileStt) </td>
+									<td>Command for the API (runFileStt)</td>
 									<td>string</td>
 								</tr>
 								<tr>
 									<td>lang</td>
-									<td>사용할 모델의 언어 ( kor / eng ) </td>
+									<td>Selected language ( kor / eng )</td>
 									<td>string</td>
 								</tr>
 								<tr>
 									<td>sampling</td>
-									<td>사용할 모델의 sampling rate (8000 / 16000) </td>
+									<td>Selected sampling rate (8000 / 16000) </td>
 									<td>string</td>
 								</tr>
 								<tr>
 									<td>level</td>
-									<td>사용할 모델의 level (baseline / address / * konglish )</td>
+									<td>Selected level (baseline / address)</td>
 									<td>string</td>
 								</tr>
 								<tr>
 									<td>file</td>
-									<td>type:file (wav, pcm, mp3) 음성파일 </td>
+									<td>Input sound file (wav / pcm / mp3) </td>
 									<td>string</td>
 								</tr>
 		
 							</table>
-							<p class="sub_txt">③ Request 예제 </p>
+							<p class="sub_txt">③ Request example </p>
 							<div class="code_box">
-								curl -X POST \<br>
-								https://api.maum.ai/api/stt/ \<br>
-								-H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \<br>
-								-F ID= (*ID 요청 필요) \<br>
-								-F key= (*key 요청 필요) \<br>
-								-F lang=eng \<br>
-								-F sampling=8000 \<br>
-								-F level=baseline \<br>
-								-F 'file=@eng_8k_1.wav' \<br>
-								-F cmd=runFileStt<br>
+								<pre>
+		curl -X POST \ https://api.maum.ai/api/stt/ \
+		  -H 'content-type: multipart/form-data;
+		  boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \ -F ID= (*Request for ID) \
+		  -F key= (*Request for key) \
+		  -F lang=eng \
+		  -F sampling=8000 \ -F level=baseline \
+		  -F 'file=@eng_8k_1.wav' \
+		  -F cmd=runFileStt</pre>
 		
 							</div>
 		
-							<p class="sub_txt">④ Response 파라미터 설명 </p>
+							<p class="sub_txt">④ Response parameters </p>
 							<span class="table_tit">Response</span>
 							<table>
 								<tr>
-									<th>키</th>
-									<th>설명</th>
-									<th>타입</th>
+									<th>Name</th>
+									<th>Description</th>
+									<th>type</th>
 								</tr>
 								<tr>
 									<td>status</td>
-									<td>API 동작여부 (Success / Fail) </td>
+									<td>Status of the API request (Success / Fail)</td>
 									<td>string</td>
 								</tr>
 								<tr>
 									<td>extra_data</td>
-									<td>음성파일에 대한 데이터</td>
+									<td>Data of the input file</td>
 									<td>object</td>
 								</tr>
 								<tr>
 									<td>data</td>
-									<td>인식한 text 결과</td>
+									<td>STT result (text) </td>
 									<td>string</td>
 								</tr>
 							</table>
-							<span class="table_tit">extra_data: 음성파일에 대한 데이터</span>
+							<span class="table_tit">extra_data: Data of the input file</span>
 							<table>
 								<tr>
-									<th>키</th>
-									<th>설명</th>
-									<th>타입</th>
+									<th>Name</th>
+									<th>Description</th>
+									<th>type</th>
 								</tr>
 								<tr>
 									<td>stt_length</td>
-									<td>입력된 글자 수  </td>
+									<td>Character length of the text result</td>
 									<td>int</td>
 								</tr>
 								<tr>
 									<td>stt_data</td>
-									<td>STT 변환 결과</td>
+									<td>STT result (text)</td>
 									<td>string</td>
 								</tr>
 								<tr>
 									<td>stt_duration</td>
-									<td>음성파일 길이(초) </td>
+									<td>Duration of the input file (seconds) </td>
 									<td>number</td>
 								</tr>
 							</table>
-							<p class="sub_txt">⑤ Response 예제 </p>
+							<p class="sub_txt">⑤ Response example </p>
 							<div class="code_box">
-								{ <br>
-								<span> "status": "Success", </span><br>
-								<span>"extra_data": { </span><br>
-								<span class="twoD">"stt_data": "Let's play badminton.\n",</span> <br>
-								<span class="twoD">"stt_duration": "2.387" </span><br>
-								<span>}, </span><br>
-								<span> "data": "Let's play badminton.\n" </span><br>
-								}
-		
+		<pre>
+		{
+			"status": "Success",
+			"extra_data": {
+				"stt_length": 18,
+				"stt_data": "Let's play badminton.\n",
+				"stt_duration": "2.387"
+			},
+			"data": "Let's play badminton.\n"
+		}
+		</pre>
 							</div>
 						</div>
+						<!--//.guide_group-->
 					</div>
 					<!--//.guide_box-->
 				</div>
-				<!--//sttmenu-->
+				<!--//ttsmenu-->
 				<!--.sttexample-->
 				<div class="demobox" id="sttexample">
-					<p><em style="font-weight: 400;">적용사례</em>  <small>(Use Cases)</small></p>
-					<span class="sub">마인즈랩의 앞선 기술을 다양하게 활용할 수 있습니다.</span>
+					<p><em style="font-weight: 400;">Use Cases</em>  </p>
+					<span class="sub">Find out how AI can be applied to diverse area.</span>
 					<div class="useCasesBox">
 						<ul class="lst_useCases">
 							<li>
 								<dl>
 									<dt>
 										<em>CASE 01</em>
-										<span>콜센터 분석</span>
+										<span>Contact Center Analysis</span>
 									</dt>
-									<dd class="txt">콜센터에서 진행된 고객과의 상담 전화를 텍스트로 옮기고 상담 내용을 분석할 수 있습니다.</dd>
+									<dd class="txt">Transcript calls into text and analyze the details of customers’ calls in contact centers.</dd>
 									<dd class="api_itemBox">
 										<ul class="lst_api">
 											<li class="ico_stt"><span>STT</span></li>
 		
-											<li class="ico_nlu"><span>자연어 이해</span></li>
+											<li class="ico_nlu"><span>NLU</span></li>
 											<li class="ico_hmd"><span>HMD</span></li>
 										</ul>
 									</dd>
@@ -346,9 +360,9 @@
 								<dl>
 									<dt>
 										<em>CASE 02</em>
-										<span>고객 주소 관리</span>
+										<span>Address Management</span>
 									</dt>
-									<dd class="txt">음성으로 수집한 고객이나 거래처 등의 주소 정보를 텍스트로 옮겨 체계적으로 관리할 수 있습니다.</dd>
+									<dd class="txt">You can systematically manage the address information collected by calls by transferring into text.</dd>
 									<dd class="api_itemBox">
 										<ul class="lst_api">
 											<li class="ico_stt"><span>STT</span></li>
@@ -361,9 +375,9 @@
 								<dl>
 									<dt>
 										<em>CASE 03</em>
-										<span>인터뷰/면담</span>
+										<span>Interview files</span>
 									</dt>
-									<dd class="txt">녹음파일로 보유하고 있는 인터뷰나 면담, 대화 내용 등을 텍스트로 변환하여 보관할 수 있습니다.</dd>
+									<dd class="txt">Interviews or conversations that you have as a recorded file can be archived after converting into text.</dd>
 									<dd class="api_itemBox">
 										<ul class="lst_api">
 											<li class="ico_stt"><span>STT</span></li>
@@ -377,13 +391,13 @@
 								<dl>
 									<dt>
 										<em>CASE 04</em>
-										<span>강의/강연</span>
+										<span>Lecture materials</span>
 									</dt>
-									<dd class="txt">녹음파일로 보유하고 있는 강의나 강연 등의 내용을 텍스트로 변환하여 보관할 수 있습니다.</dd>
+									<dd class="txt">You can save the contents of lectures that you have as recorded files by converting them into text</dd>
 									<dd class="api_itemBox">
 										<ul class="lst_api">
 											<li class="ico_stt"><span>STT</span></li>
-											<li class="ico_den"><span>음성 정제</span></li>
+											<li class="ico_den"><span>Denoise</span></li>
 										</ul>
 									</dd>
 								</dl>
