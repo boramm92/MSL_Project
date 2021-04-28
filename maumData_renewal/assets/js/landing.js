@@ -1,8 +1,14 @@
 /* MINDsLab. NBR. 20210422 */
 
+// 공통변수
+var htmlBody = document.getElementById('body');
+
 // header 스크롤 효과
 function headerScrollFunc(e){ 
     var header = document.getElementById('header');
+    var scrollX = window.pageXOffset;
+
+    header.style.left = '-' + scrollX +'px';
 
     if (pageYOffset > 5){ 
         header.classList.add('fixed'); 
@@ -12,12 +18,6 @@ function headerScrollFunc(e){
 } 
 window.addEventListener('load', headerScrollFunc);
 window.addEventListener('scroll', headerScrollFunc);
-
-// header 좌우 스크롤 처리
-$(window).scroll(function(){
-    var scrollX = $(window).scrollLeft()
-    $('#header').css('left', - scrollX);
-});
 
 // header 언어선택 (웹, 모바일 별 기능)
 var langSelectWrap = document.querySelector('.lang_slt_wrap'),
@@ -72,37 +72,37 @@ window.addEventListener('resize', function(){
 });   
 
 // header 모바일 메뉴 햄버거 버튼
-// var hamBtn = document.querySelector('.btn_ham'),
-//     sta = document.querySelector('.sta'),
-//     bgDim = document.querySelector('.bg_dim'),
-//     headerCont = document.getElementById('header').childNodes[1],
-//     clicked = false;
+var hamBtn = document.querySelector('.btn_ham'),
+    sta = document.querySelector('.sta'),
+    bgDim = document.querySelector('.bg_dim'),
+    headerCont = document.getElementById('header').childNodes[1],
+    clicked = false;
 
-// hamBtn.addEventListener('click', function(){
-//     if(!clicked){
-//         hamBtn.classList.add('active');
-//         sta.classList.add('active');
-//         // document.getElementsByTagName('body')[0].style.overflow = 'hidden';
-//         var bgDimCreat = document.createElement('div');
-//         bgDimCreat.innerHTML = '<div class="bg_dim"></div>';
-//         headerCont.insertAdjacentText('beforeend', bgDimCreat);
-//         clicked = true;
+hamBtn.addEventListener('click', function(){
+    if(!clicked){
+        hamBtn.classList.add('active');
+        sta.classList.add('active');
+        htmlBody.style.overflow = 'hidden';
+        var bgDimCreat = document.createElement('div');
+        bgDimCreat.innerHTML = '<div class="bg_dim"></div>';
+        headerCont.insertAdjacentText('beforeend', bgDimCreat);
+        clicked = true;
 
-//         bgDim.addEventListener('click', function(){
-//             hamBtn.classList.remove('active');
-//             sta.classList.remove('active');
-//             document.getElementsByTagName('body')[0].style.overflow = '';
-//             bgDim.remove();
-//             clicked = false;
-//         });
-//     }else{
-//         hamBtn.classList.remove('active');
-//         sta.classList.remove('active');
-//         document.getElementsByTagName('body')[0].style.overflow = '';
-//         bgDim.remove();
-//         clicked = false;
-//     }
-// });
+        bgDim.addEventListener('click', function(){
+            hamBtn.classList.remove('active');
+            sta.classList.remove('active');
+            htmlBody.style.overflow = '';
+            bgDim.remove();
+            clicked = false;
+        });
+    }else{
+        hamBtn.classList.remove('active');
+        sta.classList.remove('active');
+        htmlBody.style.overflow = '';
+        bgDim.remove();
+        clicked = false;
+    }
+});
 
 var clicked = false;
 
@@ -129,64 +129,37 @@ $('.btn_ham').click(function(){
     }
 });
 
-// 모바일 gnb nav li 순서 변경
-// function gnbNavOrderChange(){
-//     var navDataVoucher = document.querySelector('.dataVoucher'),
-//         parent = navDataVoucher.parentNode;
-
-//     if(window.innerWidth <= 768){
-//         parent.insertBefore(navDataVoucher, parent.childNodes[2]);
-//     }else{
-//         parent.insertBefore(navDataVoucher, parent.lastChild);
-//     }
-// }
-// window.addEventListener('load', gnbNavOrderChange);
-// window.addEventListener('resize', gnbNavOrderChange);
-
-// swiper
-new Swiper('.company_wrap', { 
-    slidesPerView: 4, 
-    slidesPerGroup: 1, 
-    spaceBetween: 48,
-    slidesPerColumn: 2,
-    slidesPerColumnFill: 'row',
-    observer: true,
-    observeParents: true,
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
-    navigation: {
-        prevEl: '.swiper-button-prev',
-        nextEl: '.swiper-button-next',
-    },
-    breakpoints: {
-        320: {
-            spaceBetween: 8,
-            slidesPerColumn: 2,
-        },
-        768: {
-            spaceBetween: 8,
-            slidesPerColumn: 2,
-        },
-    },
-});
-
 // 공통 layer popup
-// $('.btn_lyr_open').on('click',function(){
-//     var lyrHref = $(this).attr('href');
+var lyrOpenBtn = document.getElementsByClassName('btn_lyr_open');
 
-//     // layer open
-//     $('body').css('overflow', 'hidden');
-//     $(lyrHref).wrap('<div class="lyrWrap"></div>').before('<div class="lyr_bg"></div>');
-//     $(lyrHref).css('display', 'block');
+function layerPopupOpenFunc(){
+    var layerBg = document.createElement('div');
+    layerBg.classList.add('lyr_bg');
 
-//     // layer close
-//     $('.btn_lyr_close, .lyr_bg').on('click', function(){
-//         $('body').css('overflow', '');
-//         $(lyrHref).parent('.lyrWrap').css('display', 'none');
-//     });
-// });
+    for(var i = 0; i < lyrOpenBtn.length; i++){
+        lyrOpenBtn[i].addEventListener('click', function(e){
+            var target = e.target,
+                lyrHref = target.getAttribute('href'),
+                lyrId = document.querySelector(lyrHref),
+                lyrCloseBtn = lyrId.querySelector('.btn_lyr_close');
+                       
+            htmlBody.style.overflow = 'hidden';
+            lyrId.insertBefore(layerBg, lyrId.childNodes[0]);
+            lyrId.style.display = 'block';
+
+            lyrCloseBtn.addEventListener('click', function(){
+                lyrId.style.display = 'none'; 
+                htmlBody.style.overflow = '';       
+            });
+            layerBg.addEventListener('click', function(){               
+                lyrId.style.display = 'none';    
+                htmlBody.style.overflow = '';             
+            });
+        });
+    }    
+}
+window.addEventListener('load', layerPopupOpenFunc);
+ 
 
 
 
