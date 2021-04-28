@@ -74,57 +74,32 @@ window.addEventListener('resize', function(){
 // header 모바일 메뉴 햄버거 버튼
 var hamBtn = document.querySelector('.btn_ham'),
     sta = document.querySelector('.sta'),
-    bgDim = document.querySelector('.bg_dim'),
     headerCont = document.getElementById('header').childNodes[1],
     clicked = false;
 
 hamBtn.addEventListener('click', function(){
-    if(!clicked){
+    if(!hamBtn.classList.contains('active')){
+        var bgDim = document.createElement('div');
+        bgDim.classList.add('bg_dim');
+
         hamBtn.classList.add('active');
         sta.classList.add('active');
-        htmlBody.style.overflow = 'hidden';
-        var bgDimCreat = document.createElement('div');
-        bgDimCreat.innerHTML = '<div class="bg_dim"></div>';
-        headerCont.insertAdjacentText('beforeend', bgDimCreat);
+        htmlBody.style.overflow = 'hidden';       
+        headerCont.insertBefore(bgDim, headerCont.childNodes[0]);
         clicked = true;
 
         bgDim.addEventListener('click', function(){
             hamBtn.classList.remove('active');
             sta.classList.remove('active');
             htmlBody.style.overflow = '';
-            bgDim.remove();
+            headerCont.removeChild(headerCont.childNodes[0]);
             clicked = false;
         });
-    }else{
+    }else if(hamBtn.classList.contains('active')){
         hamBtn.classList.remove('active');
         sta.classList.remove('active');
         htmlBody.style.overflow = '';
-        bgDim.remove();
-        clicked = false;
-    }
-});
-
-var clicked = false;
-
-$('.btn_ham').click(function(){
-    if(!clicked){
-        $(this).addClass('active');
-        $('.sta').addClass('active');
-        $('body').css('overflow', 'hidden');
-        $('#header .contBox').append('<div class="bg_dim"></div>');
-        clicked = true;
-        $('.bg_dim').on('click', function(){
-            $('.btn_ham').removeClass('active');
-            $('.sta').removeClass('active');
-            $('body').css('overflow', '');
-            $(this).remove();
-            clicked = false;
-        });       
-    }else{
-        $(this).removeClass('active');
-        $('.sta').removeClass('active');
-        $('body').css('overflow', '');
-        $('.bg_dim').remove();
+        headerCont.removeChild(headerCont.childNodes[0]);
         clicked = false;
     }
 });
