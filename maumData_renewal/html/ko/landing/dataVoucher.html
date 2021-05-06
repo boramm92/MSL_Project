@@ -86,8 +86,8 @@
                 <div class="stn visual">
                     <div class="contBox">
                         <div class="txtArea">
-                            <h2 class="visual_tit">2021 데이터바우처 지원사업<br> 데이터 바우처 공급기업 마인즈랩과 함께하세요!</h2>
-                            <p class="visual_desc">인공지능 기업에게만 AI 데이터가 필요할까요? 아닙니다!<br>  데이터만 있으면 다양한 분야에 인공지능 서비스를 도입할 수 있습니다.<br> 서비스 고도화, 신규 서비스 개발에 필요한 데이터 가공 비용 <strong>최대 7,000만원</strong> 지원받고,<br> 비즈니스에 가치를 더하세요.</p>
+                            <h2 class="visual_tit">2021 데이터바우처 지원사업<br> 데이터 바우처 공급기업<br class="mobile"> 마인즈랩과 함께하세요!</h2>
+                            <p class="visual_desc">인공지능 기업에게만 AI 데이터가 필요할까요?<br class="mobile"> 아닙니다!<br class="pc"><br class="mobile">  데이터만 있으면 다양한 분야에 인공지능<br class="mobile"> 서비스를 도입할 수 있습니다.<br class="pc"><br class="mobile"> 서비스 고도화, 신규 서비스 개발에 필요한<br class="mobile"> 데이터 가공 비용 <strong>최대 7,000만원</strong> 지원받고,<br class="pc"><br class="mobile"> 비즈니스에 가치를 더하세요.</p>
                             <a href="#none" class="btn_link">문의하기</a>
                         </div>
                     </div>
@@ -174,21 +174,38 @@
                     <div class="contBox">
                         <h3 class="stn_tit">마음 데이터가 도와드리겠습니다.</h3>
                         <p class="stn_desc">데이터 바우처 수행 과정을 함께하면서 고객의 마음에 꼭 맞는 데이터를 제공하겠습니다.</p>
-                        <div class="process_wrap swiper-container">
-                            <ol class="swiper-wrapper">
-                                <li class="swiper-slide prcs_lst on">
+                        <div class="process_wrap">
+                            <ol>
+                                <li class="prcs_lst on">
                                     <p>수요기업과 공급기업이<br> 사전협의 후 신청 접수</p>
                                 </li>
-                                <li class="swiper-slide prcs_lst">
+                                <li class="prcs_lst">
                                     <p>심사평가를 통한<br> 수요기업 선정 평가</p>
                                 </li>
-                                <li class="swiper-slide prcs_lst">
+                                <li class="prcs_lst">
                                     <p>수요기업, 공급기업,<br> K-DATA 다자간 협약 체결</p>
                                 </li>
-                                <li class="swiper-slide prcs_lst">
+                                <li class="prcs_lst">
                                     <p>공급기업의 지원을 받아<br> 사업 추진, 결과 평가</p>
                                 </li>
                             </ol>
+                        </div>
+                        <div class="process_wrap mobile swiper-container">
+                            <ol class="swiper-wrapper">
+                                <li class="swiper-slide">
+                                    <p>수요기업과 공급기업이<br> 사전협의 후 신청 접수</p>
+                                </li>
+                                <li class="swiper-slide">
+                                    <p>심사평가를 통한<br> 수요기업 선정 평가</p>
+                                </li>
+                                <li class="swiper-slide">
+                                    <p>수요기업, 공급기업,<br> K-DATA 다자간 협약 체결</p>
+                                </li>
+                                <li class="swiper-slide">
+                                    <p>공급기업의 지원을 받아<br> 사업 추진, 결과 평가</p>
+                                </li>
+                            </ol>
+                            <div class="swiper-pagination"></div>
                         </div>
                     </div>
                 </div>
@@ -595,122 +612,18 @@
 
     <!-- Local Script -->
     <script type="text/javascript">
-    var windowSize = window.matchMedia('screen and (max-width: 768px)');
-
-    function test(){
-        for(i = 0; i < processList.length; i++){
-            processList[i].classList.remove('on');
-        }
-        processList[orderNum].classList.add('on');
-        orderNum++;    
-        if(orderNum >= processList.length){
-            orderNum = 0;               
-        }
-    }
-
-    function windowSizeAddFunc(){
-        if(windowSize.matches){
-            console.log("화면의 너비가 768px 보다 작습니다.");
-
-            clearInterval(test);
-        }else{
-            console.log("화면의 너비가 768px 보다 큽니다.");
-
-            setInterval(test, 3000);
-        }
-    }
-
-    window.addEventListener('load', function(){
-        window.dispatchEvent(new Event('resize'));
-    });
-    window.addEventListener('resize', windowSizeAddFunc);
-    
-
-
-
-        // window.addEventListener("load", function(){
-        //     // var swiper = new Swiper('.process_wrap', {                    
-        //     //     slidesPerView: 1.2, 
-        //     //     spaceBetween: 16,
-        //     //     observer: true,
-        //     //     observeParents: true,
-        //     //     pagination: {
-        //     //         el: '.swiper-pagination',
-        //     //         clickable: true
-        //     //     }
-        //     // });
-
-        //     // if(window.innerWidth > 768){
-        //     //     swiper.destroy();
-        //     // }
-            
-        //     window.dispatchEvent(new Event('resize'));
-        // });
+        // swiper 
+        new Swiper('.swiper-container', {                    
+            slidesPerView: 1.28, 
+            spaceBetween: 16,
+            observer: true,
+            observeParents: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true
+            }
+        });
         
-        // window.onresize = function(){
-        //     // var swiper = new Swiper('.process_wrap', {                    
-        //     //     slidesPerView: 1.2, 
-        //     //     spaceBetween: 16,
-        //     //     observer: true,
-        //     //     observeParents: true,
-        //     //     pagination: {
-        //     //         el: '.swiper-pagination',
-        //     //         clickable: true
-        //     //     }
-        //     // });
-
-        //     // if(window.innerWidth > 768){
-        //     //     console.log('창커짐')
-        //     //     swiper.destroy();
-        //     // }
-            
-        //     if(window.innerWidth <= 768){
-        //         new Swiper('.process_wrap', {                    
-        //             slidesPerView: 1.2, 
-        //             spaceBetween: 16,
-        //             observer: true,
-        //             observeParents: true,
-        //             pagination: {
-        //                 el: '.swiper-pagination',
-        //                 clickable: true
-        //             }
-        //         });
-        //     }else{
-        //         new Swiper('.process_wrap', {                    
-        //             slidesPerView: 1.2, 
-        //             spaceBetween: 16,
-        //             observer: true,
-        //             observeParents: true,
-        //             pagination: {
-        //                 el: '.swiper-pagination',
-        //                 clickable: true
-        //             }
-        //         });
-        //         Swiper.destroy();
-        //     }
-        // }
-
-        // swiper
-        // function swiperFunc(){
-        //     if(window.innerWidth <= 768){
-        //         new Swiper('.process_wrap', {                    
-        //             slidesPerView: 1.2, 
-        //             spaceBetween: 16,
-        //             observer: true,
-        //             observeParents: true,
-        //             pagination: {
-        //                 el: '.swiper-pagination',
-        //                 clickable: true
-        //             }
-        //         });
-        //     }else{
-        //         Swiper.destroy();
-        //     }
-        // }   
-        
-        // window.addEventListener("load", swiperFunc);
-        // window.addEventListener("resize", swiperFunc);
-
         // visual 영역 이미지 슬라이드 fade 효과
         var current = 0,
             slides = document.getElementsByClassName('slideItem');
@@ -728,16 +641,16 @@
             processList = document.querySelectorAll('.prcs_lst'),
             orderNum = 0; 
 
-        // setInterval(function(){
-        //     for(i = 0; i < processList.length; i++){
-        //         processList[i].classList.remove('on');
-        //     }
-        //     processList[orderNum].classList.add('on');
-        //     orderNum++;    
-        //     if(orderNum >= processList.length){
-        //         orderNum = 0;               
-        //     }
-        // }, 3000);	
+        setInterval(function(){
+            for(i = 0; i < processList.length; i++){
+                processList[i].classList.remove('on');
+            }
+            processList[orderNum].classList.add('on');
+            orderNum++;    
+            if(orderNum >= processList.length){
+                orderNum = 0;               
+            }
+        }, 3000);	
 
         // FAQ 목록 toggle 
         var faqList = document.querySelectorAll('.lst_item'),
