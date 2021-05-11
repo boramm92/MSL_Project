@@ -74,7 +74,7 @@ window.addEventListener('resize', function(){
 // header 모바일 메뉴 햄버거 버튼
 var hamBtn = document.querySelector('.btn_ham'),
     sta = document.querySelector('.sta'),
-    headerCont = document.getElementById('header').childNodes[1],
+    headerCont = document.getElementById('header'),
     clicked = false;
 
 hamBtn.addEventListener('click', function(){
