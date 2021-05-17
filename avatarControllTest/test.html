@@ -95,17 +95,22 @@
         .videoWrap {
             overflow:hidden;
             position:relative;
-            width:400px;
+            /* width:400px;
             height:300px;
-            border:2px solid yellowgreen;
+            border:2px solid yellowgreen; */
         }
 
-        .videoWrap video {
-            position:absolute;
+        video.element {
+            /* position:absolute;
             top:50%;
             left:50%;
             width:auto;
-            transform:translate(-50%, -50%);
+            transform:translate(-50%, -50%); */
+
+            /* width:400px;
+            height:300px;
+            object-fit:cover;
+            border:2px solid yellowgreen; */
         }
     </style>
 
@@ -159,7 +164,7 @@
                     // Preload Images
                     for (video in floors) {
                         if (typeof floors[video] !== 'function') {
-                        $('.panzoom').append('<video class="element" src="' + imgDir + floors[video].video + '" />');
+                        $('.panzoom').append('<video class="element" src="' + imgDir + floors[video].video + '"  autoplay loop muted/>');
                         }
                     }
                 },
