@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+
+    <style>
+        body { margin: 0; }
+
+        #pan-u {
+            width: 0;
+            height: 0;
+            border-left: 9px solid transparent;
+            border-right: 9px solid transparent;
+            border-bottom: 18px solid white;
+        }
+
+        #pan-r {
+            width: 0;
+            height: 0;
+            border-bottom: 9px solid transparent;
+            border-left: 18px solid white;
+            border-top: 9px solid transparent;
+        }
+
+        #pan-d {
+            width: 0;
+            height: 0;
+            border-left: 9px solid transparent;
+            border-right: 9px solid transparent;
+            border-top: 18px solid white;
+        }
+
+        #pan-l {
+            width: 0;
+            height: 0;
+            border-bottom: 9px solid transparent;
+            border-right: 18px solid white;
+            border-top: 9px solid transparent;
+        }
+
+        #reset {
+            width: 18px;
+            height: 18px;
+            background: white;
+            -moz-border-radius: 9px;
+            -webkit-border-radius: 9px;
+            border-radius: 9px;
+        }
+
+        #pan-ctl {
+            width: 62px;
+            height: 62px;
+            background: rgba(68,92,111,0.5);
+            -moz-border-radius: 31px;
+            -webkit-border-radius: 31px;
+            border-radius: 31px;
+        }
+
+        #map-ctl .icon {
+        background-image: url("http://www.kurtmeredith.com/img/MapButtonsCropped.png");
+        background-size: 100%; 
+        }
+
+        #zoomin-ctl>.icon {
+        background-position: 0px 0px;
+        }
+
+        #zoomout-ctl>.icon {
+        background-position: 0px -37px;
+        }
+
+        .element {
+        width: 100%;
+        }
+
+        .panzoom {
+        position: absolute;
+        text-align: center;
+        background: #708690;
+        }
+
+        #panzoom-parent {
+        position: absolute;
+        background: #708690;
+        border: 1px solid #445C6F;
+        width: 760px;
+        height: 570px;
+        margin-right: auto;
+        margin-left: auto;
+        }
+
+        .videoWrap {
+            overflow:hidden;
+            position:relative;
+            width:400px;
+            height:300px;
+            border:2px solid yellowgreen;
+        }
+
+        .videoWrap video {
+            position:absolute;
+            top:50%;
+            left:50%;
+            width:auto;
+            transform:translate(-50%, -50%);
+        }
+    </style>
+
+    <title>Document</title>
+</head>
+<body>
+    <div id="msg"></div>
+    <section id="panzoom-parent">
+        <div id="map-ctl" style="width: 90px; height: 339px; z-index: 0; text-align: left; position: absolute; left: -1px; top: 5px; z-index: 10000;">
+            <!--<div style="position: absolute; left: 0px; top: 0px; width: 90px; height: 90px;">
+              <div id="pan-ctl" style="position: absolute; left: 16px; top: 17px; overflow: hidden;">
+              </div>
+            </div>-->
+            <div id="pan-ctl" style="position: absolute; left: 15px; top: 15px;">
+              <div title="Pan up" id="pan-u" style="position: absolute; left: 22px; top: 3px; cursor: pointer;"></div>
+              <div title="Pan left" id="pan-l" style="position: absolute; left: 2px; top: 23px; cursor: pointer;"></div>
+              <div title="Pan right" id="pan-r" style="position: absolute; left: 42px; top: 23px; cursor: pointer;"></div>
+              <div title="Pan down" id="pan-d" style="position: absolute; left: 22px; top: 43px; cursor: pointer;"></div>
+              <div title="Reset" id="reset" style="position: absolute; left: 22px; top: 23px; cursor: pointer;"></div>
+            </div>
+            <div id="zoomin-ctl" style="position: absolute; left: 34px; top: 100px; width: 22px; height: 22px; overflow: hidden; z-index: 10001; background-color: transparent;">
+              <div title="Zoom In" class="icon" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 22px; cursor: pointer;"></div>
+            </div>
+            <div id="zoomout-ctl" style="position: absolute; left: 34px; top: 130px; width: 22px; height: 22px; text-align: left; z-index: 10003; background-color: transparent;">
+              <div title="Zoom Out" class="icon" style="position: absolute; left: 0px; top: 0px; width: 22px; height: 22px; cursor: pointer;"></div>
+            </div>
+        </div>
+        <div class="panzoom">
+            <!-- <div class="videoWrap"></div> -->
+        </div>
+    </section>
+    
+    <!---------------------- Local Resources ---------------------->
+    <!-- Local Script Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="assets/js/jquery.panzoom.js"></script>
+
+    <!-- Local Script -->
+    <script type="text/javascript">
+       (function () {
+            'use strict';
+            var imgDir = "assets/",
+                floors = {
+                    first: {
+                        video: "video/lipSyncAvatar.mp4"
+                    },
+                },
+                loadvideo = function () {
+                    var video,
+                        imgPreload
+                    // Preload Images
+                    for (video in floors) {
+                        if (typeof floors[video] !== 'function') {
+                        $('.panzoom').append('<video class="element" src="' + imgDir + floors[video].video + '" />');
+                        }
+                    }
+                },
+                section = $('#panzoom-parent'),
+                panzoom = section.find('.panzoom').panzoom({
+                    $zoomIn: $("#zoomin-ctl"),
+                    $zoomOut: $("#zoomout-ctl"),
+                    $reset: $("#reset"),
+                    contain: "invert", //"invert",
+                    minScale: 0.5,
+                    maxScale: 2,
+                    // contain: 'inside'
+                }),
+                doPan = function (x, y, rel, anim) {
+                    panzoom.panzoom("pan", x, y, { relative: rel, animate: anim });
+                },
+                changeFloor = function (floor) {
+                    $('.element').hide();
+                    $('.element[src*="' + floor + '"]').show();
+                };
+            loadvideo();
+            section.on('mousewheel.focal', function (e) {
+                e.preventDefault();
+                panzoom.panzoom('zoom', e.originalEvent.wheelDelta < 0, {
+                    increment: 0.1,
+                    focal: e
+                });
+            });
+            $('#pan-u').click(function () {
+                doPan(0, -100, true, true);
+            });
+            $('#pan-r').click(function () {
+                doPan(100, 0, true, true);
+            });
+            $('#pan-d').click(function () {
+                doPan(0, 100, true, true);
+            });
+            $('#pan-l').click(function () {
+                doPan(-100, 0, true, true);
+            });
+        })();
+    </script>
+</body>
+</html>
