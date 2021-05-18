@@ -1,0 +1,42 @@
+.annotation {
+
+  .handle {
+    @include position(absolute, 0px rem(-35px) 0px rem(-35px));
+    background: transparent;
+    overflow: hidden;
+    z-index: 100;
+
+    button {
+      @extend %img-handle;
+      @extend %transition-fast;
+      @extend %user-select-none;
+      @include position(absolute, 50% 0 0 50%);
+      @include size(rem(63px));
+      @include transition-property(background, box-shadow);
+      background: #fff center no-repeat;
+      border-radius: 50%;
+      box-shadow: 0 0 8px rgba(#000, .15);
+      cursor: pointer;
+      left: 50% important;
+      margin: rem(-32px) 0 0 rem(-32px);
+      pointer-events: auto;
+      top: 50% !important;
+      z-index: 10;
+
+      &:before {
+        @include position(absolute, 50% 0 0 rem(31px));
+        @include size(3px, 800px);
+        background: #fff;
+        content: '';
+        margin-top: -400px;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      &:hover, &:active {
+        @extend %img-handle-active;
+        box-shadow: 0 0 40px rgba(#000, .35);
+      }
+    }
+  }
+}
