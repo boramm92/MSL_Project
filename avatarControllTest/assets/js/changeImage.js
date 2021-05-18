@@ -4527,7 +4527,7 @@
 
         function a() {
             var i, o, r;
-            $annotator = $("#annotator"), $annotator.find(".handle button").each(function () {
+            $annotator = $("#annotator"), $annotator.find(".btn_handle").each(function () {
                 var e = $(this).parent(),
                     i = 0,
                     o = e.next().find(".origin");
