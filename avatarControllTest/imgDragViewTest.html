@@ -7,12 +7,12 @@
     <meta name="format-detection" content="telephone=no">
 
     <style>
-        .imgSet {overflow:hidden; position:relative; width:480px; height:300px; margin:50px auto; border:#ddd; border-radius:20px;}
+        .imgSet {overflow:hidden; position:relative; width:480px; height:300px; margin:50px auto; border:2px solid #ddd; border-radius:20px;}
         .imgBox {overflow:hidden; position:absolute; top:0; left:0; width:100%; height:100%;}
         .imgBox img {display:block; position:absolute; top:0; left:0; width:480px;}
         .imgBox.origin {width:240px; z-index:10;}
-        .btn_handle {position:absolute; top:50%; left:50%; width:80px; height:80px; border:none; border-radius:50%; background:#fff; transform:translate(-50%, -50%); cursor:pointer; z-index:100;}
-        .btn_handle:before {content:''; display:block; position:absolute; top:-107px; left:50%; width:6px; height:298px; margin:0 0 0 -3px; background:#fff;}
+        .btn_handle {position:absolute; top:50%; left:50%; width:80px; height:80px; border:none; border-radius:50%; background:#ddd; transform:translate(-50%, -50%); cursor:pointer; z-index:100;}
+        .btn_handle:before {content:''; display:block; position:absolute; top:-112px; left:50%; width:6px; height:302px; margin:0 0 0 -3px; background:#ddd;}
     </style>
 
     <title>Document</title>
@@ -20,10 +20,10 @@
 <body>
     <div class="imgSet">
         <div class="imgBox origin">
-            <img src="assets/images/img_fr_sample1_2.png">
+            <img src="assets/images/test01.gif">
         </div>
         <div class="imgBox change">
-            <img src="assets/images/img_fr_sample2_2.png">
+            <img src="assets/images/test02.gif">
         </div>
         <button type="button" class="btn_handle"></button>
     </div>
@@ -49,23 +49,22 @@
             for(var i = 0; i < handleBtn.length; i++){
                 handleBtn[i].addEventListener('mousedown', function(e){
                     initX = this.offsetLeft;
-                    mousePressX = e.clientX;                    
-                });
+                    mousePressX = e.clientX;  
+                    
+                    this.addEventListener('mousemove', repositionFunc);
 
-                handleBtn[i].addEventListener('mousemove', function(e){
-                    var originImageBox = this.previousSibling.previousSibling.previousSibling.previousSibling;
-                    this.style.left = initX + e.clientX - mousePressX + 'px';
-                    originImageBox.style.width = initX + e.clientX - mousePressX + 'px';
-                });
+                    function repositionFunc(e){
+                        var originImageBox = this.previousSibling.previousSibling.previousSibling.previousSibling;
+                        this.style.left = initX + e.clientX - mousePressX + 'px';
+                        originImageBox.style.width = initX + e.clientX - mousePressX + 'px';
+                    }
 
-                handleBtn[i].addEventListener('mouseup', function(e){
-                    var originImageBox = this.previousSibling.previousSibling.previousSibling.previousSibling;
-                    this.style.left = initX + e.clientX - mousePressX + 'px';
-                    originImageBox.style.width = initX + e.clientX - mousePressX + 'px';
-                });
+                    this.addEventListener('mouseup', function(e){
+                        this.removeEventListener('mousemove', repositionFunc, false);
+                    }, false);
+                });                
             }
         }
-
         window.addEventListener('load', imageChangeViewFunc);
     </script>
 </body>
