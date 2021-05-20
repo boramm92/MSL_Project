@@ -6,66 +6,67 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="format-detection" content="telephone=no">
 
-    <link rel="stylesheet" href="assets/css/imgDragViewTest.css">
+    <style>
+        .imgSet {overflow:hidden; position:relative; width:480px; height:300px; margin:50px auto; border:#ddd; border-radius:20px;}
+        .imgBox {overflow:hidden; position:absolute; top:0; left:0; width:100%; height:100%;}
+        .imgBox img {display:block; position:absolute; top:0; left:0; width:480px;}
+        .imgBox.origin {width:240px; z-index:10;}
+        .btn_handle {position:absolute; top:50%; left:50%; width:80px; height:80px; border:none; border-radius:50%; background:#fff; transform:translate(-50%, -50%); cursor:pointer; z-index:100;}
+        .btn_handle:before {content:''; display:block; position:absolute; top:-107px; left:50%; width:6px; height:298px; margin:0 0 0 -3px; background:#fff;}
+    </style>
 
     <title>Document</title>
 </head>
 <body>
-    <div class="annotation-standalones" id="annotator">
-        <div class="annotation annotation-standalone">
-            <div class="image-set rounded-big shaded">
-                <div class="handle">
-                    <button type="button" class="btn_handle"></button>
-                </div>
-                <div class="figures">
-                    <figure class="bbox">
-                        <img class="lazy-load" src="assets/images/img_fr_sample1_2.png"
-                            data-lazy="assets/images/img_fr_sample1_2.png"
-                            alt="2D bounding boxes - image before and after annotation" style="opacity: 1;">
-                    </figure>
-                    <figure class="origin" style="width: 223.5px;">
-                        <img class="lazy-load" src="assets/images/img_fr_sample2_2.png"
-                            data-lazy="assets/images/img_fr_sample2_2.png"
-                            alt="2D bounding boxes - image before and after annotation" style="opacity: 1;">
-                    </figure>
-                </div>
-            </div>
+    <div class="imgSet">
+        <div class="imgBox origin">
+            <img src="assets/images/img_fr_sample1_2.png">
         </div>
+        <div class="imgBox change">
+            <img src="assets/images/img_fr_sample2_2.png">
+        </div>
+        <button type="button" class="btn_handle"></button>
     </div>
-   
-    <!---------------------- Local Resources ---------------------->
-    <!-- Local Script Library -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/js/changeImage.js"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <div class="imgSet">
+        <div class="imgBox origin">
+            <img src="assets/images/img_fr_sample1_2.png">
+        </div>
+        <div class="imgBox change">
+            <img src="assets/images/img_fr_sample2_2.png">
+        </div>
+        <button type="button" class="btn_handle"></button>
+    </div>
 
     <!-- Local Script -->
     <script type="text/javascript">
-    $(function(){
-        $(".handle button").draggable();
+        // 이미지 교차 view 기능        
+        function imageChangeViewFunc(){
+            var imageSet = document.getElementsByClassName('imgSet'),
+                handleBtn = document.getElementsByClassName('btn_handle');
+            var initX, mousePressX;
 
+            for(var i = 0; i < handleBtn.length; i++){
+                handleBtn[i].addEventListener('mousedown', function(e){
+                    initX = this.offsetLeft;
+                    mousePressX = e.clientX;                    
+                });
 
-        // var i, o, r;
-        // $annotator = $("#annotator"), $annotator.find(".handle button").each(function () {
-        //     var e = $(this).parent(),
-        //         i = 0,
-        //         o = e.next().find(".origin");
+                handleBtn[i].addEventListener('mousemove', function(e){
+                    var originImageBox = this.previousSibling.previousSibling.previousSibling.previousSibling;
+                    this.style.left = initX + e.clientX - mousePressX + 'px';
+                    originImageBox.style.width = initX + e.clientX - mousePressX + 'px';
+                });
 
+                handleBtn[i].addEventListener('mouseup', function(e){
+                    var originImageBox = this.previousSibling.previousSibling.previousSibling.previousSibling;
+                    this.style.left = initX + e.clientX - mousePressX + 'px';
+                    originImageBox.style.width = initX + e.clientX - mousePressX + 'px';
+                });
+            }
+        }
 
-        //         console.log($(this))
-
-        //     // $(this).draggable({
-        //     //     axis: "x",
-        //     //     containment: e.get(0)
-        //     // }), $(this).on("dragStart", function (e, t, n) {
-        //     //     i = o.width()
-        //     // }).on("dragEnd", function (e, t, n) {
-        //     //     o.width(parseInt($(this).css("left"), 10) - 2 - $(this).width() / 2)
-        //     // }).on("dragMove", function (e, t, n) {
-        //     //     o.width(i + Math.round(n.x) - 1)
-        //     // })
-        // });
-    });
+        window.addEventListener('load', imageChangeViewFunc);
     </script>
 </body>
 </html>
