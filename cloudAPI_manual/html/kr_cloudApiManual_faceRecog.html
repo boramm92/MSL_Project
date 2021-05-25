@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- Cache reset -->
+    <meta http-equiv="Expires" content="Mon, 06 Jan 2016 00:00:01 GMT">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+
+    <!-- Open Graph Tag -->
+    <meta property="og:title" content="maum.ai" />
+    <meta property="og:type" content="website" /><!-- 웹 페이지 타입 -->
+    <meta property="og:url" content="https://maum.ai" />
+    <meta property="og:image" content="/aiaas/kr/images/maum.ai_web.png" />
+    <meta property="og:description" content="웹인공지능이 필요할땐 마음AI" />
+
+    <!-- icon_favicon -->
+    <link rel="apple-touch-icon-precomposed" href="/aiaas/kr/images/ico_maumAI_60x60.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/aiaas/kr/images/ico_maumAI_60x60.ico">
+
+    <!---------------------- General Resources ---------------------->
+    <!-- General CSS -->
+    <link rel="stylesheet" type="text/css" href="/aiaas/common/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/aiaas/common/css/font.css">
+    <link rel="stylesheet" type="text/css" href="/aiaas/common/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/aiaas/kr/css/common.css">
+
+    <!-- General Script -->
+    <script type="text/javascript" src="/aiaas/common/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="/aiaas/common/js/common.js"></script>
+    <script type="text/javascript" src="/aiaas/common/js/jsrender.min.js"></script>
+    <script type="text/javascript" src="/aiaas/common/js/menu.js"></script>
+
+    <title>Face Recognition || Cloud API Manual</title>
+</head>
+
+<body>
+    <!-- #wrap -->
+    <div id="wrap">
+        <!-- #header -->
+        <div id="header">
+            <h1><a href="/main/krMainHome"><img src="/aiaas/common/images/logo_cloudAPI.svg" alt="cloudAPI"></a></h1>
+            <div class="sta">
+                <!-- .titArea -->
+                <div class="titArea">
+                    <div class="path">
+                        <span><img src="/aiaas/kr/images/ico_path_home_bk.png" alt="HOME"></span>
+                        <span>음성</span>
+                        <span>음성생성(TTS)</span>
+                    </div>
+                </div>
+                <!-- //.titArea -->
+
+                <!-- .etcmenu -->
+                <div class="etcmenu">
+                    <div class="userBox">
+                        <dl>
+                            <dt class="ico_user"><em class="far fa-user"></em></dt>
+                            <dd>
+                                <a target="_self" href="#none">boramm@mindslab.ai<em class="fas fa-chevron-down"></em></a>
+                            </dd>
+                            <ul class="lst">
+                                <li class="ico_profile"><a target="_blank" href="/user/profileMain">프로필</a></li>
+                                <li class="ico_account"><a target="_blank" href="/user/apiAccountMain">API 정보</a></li>
+                                <li class="ico_payment"><a target="_blank" href="/user/paymentInfoMain">결제정보</a></li>
+                                <li class="ico_logout"><a href="#" onclick="document.getElementById('logout-form').submit();">로그아웃</a></li>
+                            </ul>
+                        </dl>
+                    </div>
+                </div>
+                <!-- //.etcmenu -->
+
+                <div class="lang_box">
+                    <span>한국어</span>
+                    <span><a href="/main/enMainHome" target="_self">English</a></span>
+                </div>
+            </div>
+        </div>
+        <!-- //#header -->
+
+        <!-- #container -->
+        <div id="container">
+            <!-- .snb -->
+            <div class="snb">
+                <!-- API Services 리스트 -->   
+                <ul class="api_list">
+                    <!-- 공통 -->    
+                    <li class="collapsible list_comm dropdwn">
+                        <span>HOME</span>
+                        <div class="ico_menu">
+                            <span title="공통 가이드"><a href="kr_cloudApiManual_comm.html"><img src="/aiaas/kr/images/menu/ico_spe_1_fold.svg" alt="공통 가이드"></a></span>
+                        </div>
+                    </li>
+                    <li class="sublist list_comm_sub">
+                        <!-- [공통 가이드] -->   
+                        <a class="twodepth active" href="kr_cloudApiManual_comm.html">공통 가이드</a>          
+                    </li>
+
+                    <!-- 음성 -->    
+                    <li class="collapsible list1 dropdwn">
+                        <span>음성</span>
+                        <div class="ico_menu">
+                            <span title="음성생성(TTS)"><a href="kr_cloudApiManual_tts.html"><img src="/aiaas/kr/images/menu/ico_spe_1_fold.svg" alt="음성생성(TTS)"></a></span>
+                            <span title="음성인식(STT)"><a href="kr_cloudApiManual_stt.html"><img src="/aiaas/kr/images/menu/ico_spe_2_fold.svg" alt="음성인식(STT)"></a></span>
+                            <span title="음성 정제"><a href="kr_cloudApiManual_denoise.html"><img src="/aiaas/kr/images/menu/ico_spe_3_fold.svg" alt="음성 정제"></a></span>   
+                            <span title="Voice Filter"><a href="kr_cloudApiManual_voiceFilter.html"><img src="/aiaas/kr/images/menu/ico_spe_5_fold.svg" alt="Voice Filter"></a></span>
+                            <span title="Voice Recognition"><a href="kr_cloudApiManual_voiceRecog.html"><img src="/aiaas/kr/images/menu/ico_spe_6_fold_.svg" alt="Voice Recognition" style="width:20px;"></a></span>
+                        </div>
+                    </li>
+                    <li class="sublist list1_sub">
+                        <!-- [API Services/음성 생성] -->   
+                        <a class="twodepth active" href="kr_cloudApiManual_tts.html">음성생성(TTS)</a>       
+                        <!-- [API Services/음성 인식] -->   
+                        <a class="twodepth" href="kr_cloudApiManual_stt.html">음성인식(STT)</a>    
+                        <!-- [API Services/음성 정제] -->    
+                        <a class="twodepth" href="kr_cloudApiManual_denoise.html">음성 정제</a>    
+                        <!-- [API Services/화자 분리] -->    
+                        <!-- [API Services/음성 분리] -->   
+                        <a class="twodepth" href="kr_cloudApiManual_voiceFilter.html">Voice Filter</a>   
+                        <!-- [API Services/음성 분리] -->    
+                        <a class="twodepth" href="kr_cloudApiManual_voiceRecog.html">Voice Recognition</a>    
+                    </li>
+
+                    <!-- 시각 -->    
+                    <li class="collapsible list2 dropdwn">
+                        <span>시각</span>
+                        <div class="ico_menu">
+                            <span title="Lip Sync Avatar"><a href="kr_cloudApiManual_lipSyncAvatar.html"><img src="/aiaas/kr/images/menu/ico_vis_lipSyncAvatar.svg" alt="Lip Sync Avatar" style="width:17px;"></a></span>
+                            <span title="Face-to-Face Avatar"><a href="kr_cloudApiManual_faceToFaceAvatar.html"><img src="/aiaas/kr/images/menu/ico_vis_avatar.svg" alt="Face-to-Face Avatar" style="width:17px;"></a></span>
+                            <span title="Face Recognition "><a href="kr_cloudApiManual_faceRecog.html"><img src="/aiaas/kr/images/menu/ico_vis_6_fold_.svg" alt="Face Recognition " style="width:19px;"></a></span>
+                            <span title="Enhanced Super Resolution"><a href="kr_cloudApiManual_enhancedSuperResolution.html"><img src="/aiaas/kr/images/menu/ico_vis_5_fold.svg" alt="Enhanced Super Resolution " style="width:23px;"></a></span>
+                            <span title="Video Super Resolution"><a href="kr_cloudApiManual_videoSuperResolution.html"><img src="/aiaas/kr/images/menu/ico_vis_vsr.svg" alt="Video Super Resolution" style="width:19px;"></a></span>
+                            <span title="AI 스타일링"><a href="kr_cloudApiManual_tti.html"><img src="/aiaas/kr/images/menu/ico_vis_2_fold.svg" alt="AI 스타일링"></a></span>
+                            <span title="텍스트 제거"><a href="kr_cloudApiManual_textRemoval.html"><img src="/aiaas/kr/images/menu/ico_vis_1_fold.svg" alt="텍스트 제거"></a></span>
+                            <span title="이미지 자막 인식"><a href="kr_cloudApiManual_subtitlesRecog.html"><img src="/aiaas/kr/images/menu/ico_vis_10_fold_.svg" alt="이미지 자막 인식" style="width:19px;"></a></span>                            
+                            <span title="인물 포즈 인식"><a href="kr_cloudApiManual_recogOfPoses.html"><img src="/aiaas/kr/images/menu/ico_vis_7_fold_.svg" alt="인물 포즈 인식" style="width:19px;"></a></span>
+                            <span title="얼굴 추적"><a href="kr_cloudApiManual_faceTracking.html"><img src="/aiaas/kr/images/menu/ico_vis_8_fold.svg" alt="얼굴 추적" style="width:19px;"></a></span>
+                            <span title="얼굴 마스킹 "><a href="kr_cloudApiManual_faceDetection.html"><img src="/aiaas/kr/images/menu/ico_vis_face.svg" alt="얼굴 마스킹 " style="width:19px;"></a></span>
+                            <span title="헤어 컬러 인식"><a href="kr_cloudApiManual_hairSegmentation.html"><img src="/aiaas/kr/images/menu/ico_vis_hair.svg" alt="헤어 컬러 인식" style="width:18px;"></a></span>
+                            <span title="의상 특징 인식"><a href="kr_cloudApiManual_clothDetection.html"><img src="/aiaas/kr/images/menu/ico_vis_clothes.svg" alt="의상 특징 인식" style="width:20px;"></a></span>
+                            <span title="차량 번호판 의식"><a href="kr_cloudApiManual_licensePlateRecog.html"><img src="/aiaas/kr/images/menu/ico_vis_4_fold.svg" alt="차량 번호판 의식 " style="width:26px;"></a></span>
+                            <span title="차량 유리창 마스킹"><a href="kr_cloudApiManual_windshieldDetection.html"><img src="/aiaas/kr/images/menu/ico_vis_windshield.svg" alt="차량 유리창 마스킹 " style="width:23px;"></a></span>
+                            <span title="이상행동 감지"><a href="kr_cloudApiManual_anomalyDetection.html"><img src="/aiaas/kr/images/menu/ico_vis_9_fold_.svg" alt="이상행동 감지" style="width: 16px;margin: 0 0 0 7px;"></a></span>
+                            <span title="치아 교정기 포지셔닝"><a href="kr_cloudApiManual_bracketPositioning.html"><img src="/aiaas/kr/images/menu/ico_vis_positioning.svg" alt="치아 교정기 포지셔닝" style="width:18px;"></a></span>
+                        </div>
+                    </li>
+                    <li class="sublist list2_sub">
+                        <!-- [API Services/Lip Sync Avatar ] -->    
+                        <a class="twodepth" href="kr_cloudApiManual_lipSyncAvatar.html">Lip Sync Avatar</a>                        
+                        <!-- [API Services/Face-to-Face Avatar ] -->   
+                        <a class="twodepth" href="kr_cloudApiManual_faceToFaceAvatar.html">Face-to-Face Avatar</a>    
+                        <!-- [API Services/Face Recognition] -->    
+                        <a class="twodepth" href="kr_cloudApiManual_faceRecog.html">Face Recognition</a>    
+                        <!-- [API Services/Super Resolution] -->    
+                        <a class="twodepth" href="kr_cloudApiManual_enhancedSuperResolution.html">Enhanced Super Resolution</a>    
+                        <!-- [API Services/vsr ] -->    
+                        <a class="twodepth" href="kr_cloudApiManual_videoSuperResolution.html">Video Super Resolution</a>   
+                        <!-- [API Services/이미지 생성] -->    
+                        <a class="twodepth" href="kr_cloudApiManual_tti.html">AI 스타일링</a>    
+                        <!-- [API Services/텍스트 제거] -->    
+                        <a class="twodepth" href="kr_cloudApiManual_textRemoval.html">텍스트 제거</a>    
+                        <!-- [API Services/이미지 자막 인식 ] -->    
+                        <a class="twodepth" href="kr_cloudApiManual_subtitlesRecog.html">이미지 자막 인식</a>    
+                        <!-- [API Services/화폐 · 고지서 인식] -->    
+                        <!-- [API Services/인물 포즈 인식] -->   
+                        <a class="twodepth" href="kr_cloudApiManual_recogOfPoses.html">인물 포즈 인식</a>    
+                        <!-- [API Services/얼굴 추적] -->    
+                        <a class="twodepth" href="kr_cloudApiManual_faceTracking.html">얼굴 추적</a>   
+                        <!-- [API Services/물체/얼굴 검출] -->    
+                        <a class="twodepth" href="kr_cloudApiManual_faceDetection.html">얼굴 마스킹</a>    
+                        <!-- [API Services/ 헤어 컬러 인식 ] -->    
+                        <a class="twodepth" href="kr_cloudApiManual_hairSegmentation.html">헤어 컬러 인식</a>    
+                        <!-- [API Services/의상 특징 인식] -->    
+                        <a class="twodepth" href="kr_cloudApiManual_clothDetection.html">의상 특징 인식</a>    
+                        <!-- [API Services/물체/얼굴 검출] -->    
+                        <a class="twodepth" href="kr_cloudApiManual_licensePlateRecog.html">차량 번호판 인식</a>    
+                        <!-- [API Services/물체/얼굴 검출] -->    
+                        <a class="twodepth" href="kr_cloudApiManual_windshieldDetection.html">차량 유리창 마스킹</a>    
+                        <!-- [API Services/이상 행동 감지] -->    
+                        <a class="twodepth" href="kr_cloudApiManual_anomalyDetection.html">이상행동 감지</a>    
+                        <!-- [API Services/치아 교정기 포지셔닝 ] -->    
+                        <a class="twodepth" href="kr_cloudApiManual_bracketPositioning.html">치아 교정기 포지셔닝</a>   
+                    </li> 
+
+                    <!--언어-->    
+                    <li class="collapsible list3 dropdwn">
+                        <span>언어</span>
+                        <div class="ico_menu">
+                            <span title="문장 교정"><a href="kr_cloudApiManual_bertCorrection.html"><img src="/aiaas/kr/images/menu/ico_lan_correct.svg" alt="문장 교정"></a></span>
+                            <span title="한글 변환"><a href="kr_cloudApiManual_konglish.html"><img src="/aiaas/kr/images/menu/ico_lan_convers.svg" alt="한글 변환"></a></span>
+                            <span title="자연어 이해"><a href="kr_cloudApiManual_nlu.html"><img src="/aiaas/kr/images/menu/ico_lan_1_fold.svg" alt="자연어 이해"></a></span>
+                            <span title="AI 독해"><a href="kr_cloudApiManual_bertMrc.html"><img src="/aiaas/kr/images/menu/ico_lan_2_fold.svg" alt="AI 독해"></a></span>
+                            <span title="텍스트 분류"><a href="kr_cloudApiManual_bertXdc.html"><img src="/aiaas/kr/images/menu/ico_lan_3_fold.svg" alt="텍스트 분류"></a></span>
+                            <span title="문장 생성"><a href="kr_cloudApiManual_gpt.html"><img src="/aiaas/kr/images/menu/ico_lan_5_fold.svg" alt="문장 생성"></a></span>
+                            <span title="패턴 분류"><a href="kr_cloudApiManual_hmd.html"><img src="/aiaas/kr/images/menu/ico_lan_6_fold.svg" alt="패턴 분류"></a></span>
+                            <span title="의도 분류"><a href="kr_cloudApiManual_intendFinder.html"><img src="/aiaas/kr/images/menu/ico_lan_itf.svg" alt="의도 분류"></a></span>
+                        </div>
+                    </li>					
+                    <li class="sublist list3_sub">
+                        <!-- [API Services/문장 교정] -->    
+                        <a class="twodepth" href="kr_cloudApiManual_bertCorrection.html">문장 교정 </a>    
+                        <!-- [API Services/한글 변환] -->    
+                        <a class="twodepth" href="kr_cloudApiManual_konglish.html">한글 변환</a>    
+                        <!-- [API Services/자연어 이해] -->    
+                        <a class="twodepth" href="kr_cloudApiManual_nlu.html">자연어 이해</a>        
+                        <!-- [API Services/AI 독해] -->    
+                        <a class="twodepth" href="kr_cloudApiManual_bertMrc.html">AI 독해</a>    
+                        <!-- [API Services/텍스트 분류] -->    
+                        <a class="twodepth" href="kr_cloudApiManual_bertXdc.html">텍스트 분류</a>    
+                        <!-- [API Services/AI 작문] -->    
+                        <a class="twodepth" href="kr_cloudApiManual_gpt.html">문장 생성</a>    
+                        <!-- [API Services/패턴 분류] -->    
+                        <a class="twodepth" href="kr_cloudApiManual_hmd.html">패턴 분류</a>    
+                        <!-- [API Services/의도 분류] -->    
+                        <a class="twodepth" href="kr_cloudApiManual_intendFinder.html">의도 분류</a>    
+                    </li>
+
+                    <!--분석-->    
+                    <li class="collapsible list6 dropdwn">
+                        <span>분석</span>
+                        <div class="ico_menu">
+                            <span title="데이터 상관분석"><a href="kr_cloudApiManual_featureSelection.html"><img src="/aiaas/kr/images/menu/ico_data_analysis.svg" alt="데이터 상관분석" style="width:19px;"></a></span>
+                        </div>
+                    </li>
+                    <li class="sublist list6_sub">
+                        <!-- [Data/데이터 관계분석] -->
+                        <a class="twodepth" href="kr_cloudApiManual_featureSelection.html">데이터 상관분석</a>   
+                    </li>
+
+                    <!--대화-->   
+                    <li class="collapsible list4 dropdwn">
+                        <span>대화</span>
+                        <div class="ico_menu">
+                            <span title="NQA 봇"><a href="#none"><img src="/aiaas/kr/images/menu/ico_bot_1_fold.svg" alt="NQA 봇"></a></span>
+                            <span title="MRC 봇"><a href="#none"><img src="/aiaas/kr/images/menu/ico_bot_2_fold.svg" alt="MRC 봇"></a></span>
+                            <span title="KBQA 봇"><a href="#none"><img src="/aiaas/kr/images/menu/ico_bot_2_fold.svg" alt="KBQA 봇"></a></span>
+                            <span title="호텔 컨시어지 챗봇"><a href="#none"><img src="/aiaas/kr/images/menu/ico_bot_3_fold.svg" alt="호텔 컨시어지 챗봇" style="width: 18px;"></a></span>
+                        </div>
+                    </li>					
+                    <li class="sublist list4_sub">
+                        <!-- [API Services/NQA 봇] -->    
+                        <a class="twodepth" href="#none">NQA 봇</a>	    
+                        <!-- [API Services/MRC봇(위키봇 · 뉴스봇) · 날씨봇] -->    
+                        <a class="twodepth" href="#none">MRC 봇</a>   
+                        <!-- [API Services/KBQA봇] -->    
+                        <a class="twodepth" href="#none">KBQA 봇</a>    
+                        <!-- [API Services/호텔 컨시어지 챗봇] -->   
+                        <a class="twodepth" href="#none">호텔 컨시어지 챗봇</a>                    
+                    </li>
+
+                    <!--영어 교육-->    
+                    <li class="collapsible list5 dropdwn">
+                        <span>영어 교육</span>
+                        <div class="ico_menu">
+                            <span title="교육용 STT"><a href="kr_cloudApiManual_englishEdu.html"><img src="/aiaas/kr/images/menu/ico_eng_1.svg" alt="교육용 STT"></a></span>
+                            <span title="문장 발음 평가"><a href="kr_cloudApiManual_pronunciationScoring.html"><img src="/aiaas/kr/images/menu/ico_eng_2.svg" alt="문장 발음 평가"></a></span>
+                            <span title="파닉스 평가"><a href="kr_cloudApiManual_phonicsEval.html"><img src="/aiaas/kr/images/menu/ico_eng_3.svg" alt="파닉스 평가"></a></span>
+                        </div>			
+                    </li>					
+                    <li class="sublist list5_sub">
+                        <!-- [API Services/영어교육 STT] -->   
+                        <a class="twodepth" href="kr_cloudApiManual_englishEdu.html">교육용 STT</a>    
+                        <!-- [API Services/영어교육 발음평가] -->    
+                        <a class="twodepth" href="kr_cloudApiManual_pronunciationScoring.html">문장 발음 평가</a>   
+                        <!-- [API Services/영어교육 파닉스] -->    
+                        <a class="twodepth" href="kr_cloudApiManual_phonicsEval.html">파닉스 평가</a>                    
+                    </li>
+                </ul>
+                <!-- //API Services 리스트 -->
+            </div>
+            <!-- //.snb -->
+
+            <!-- .contents -->
+            <div class="contents">
+                <!-- .content -->
+                <div class="content">
+                    <!-- .demobox -->
+                    <div class="demobox vision_menu">
+                        <!--guide_box-->
+                        <div class="guide_box">
+                            <div class="guide_group">
+                                <div class="title">얼굴 인식(Face Recognition)</div>
+                                <p class="sub_txt">얼굴 이미지를 512차원 벡터화하여 그 값을 저장하고, 대조하여 인식해줍니다.</p>
+
+                                <span class="sub_title">준비사항</span>
+                                <p class="sub_txt">① Input: 얼굴 이미지 파일</p>
+                                <ul>
+                                    <li>확장자: .jpg, .png.</li>
+                                    <li>용량: 3MB 이하</li>
+                                </ul>
+
+                                <span class="sub_title">실행 가이드</span>
+                                <em>​setFace : 사람의 얼굴 이미지를 512차원 벡터화하여 지정한 DB에 저장합니다. (API 서버 내에 Json 타입으로 저장)</em>
+                                <p class="sub_txt">① Request</p>
+                                <ul>
+                                    <li>Method : PUT</li>
+                                    <li>URL : ​https://api.maum.ai/insight/app/setFace</li>
+                                </ul>
+                                <p class="sub_txt">② Request 파라미터 설명</p>
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <th>키</th>
+                                            <th>설명</th>
+                                            <th>type</th>
+                                        </tr>
+                                        <tr>
+                                            <td>apiId</td>
+                                            <td>사용자의 고유 ID. 마인즈랩 담당자에게 이메일로 발급요청</td>
+                                            <td>string</td>
+                                        </tr>
+                                        <tr>
+                                            <td>apiKey </td>
+                                            <td>사용자의 고유 key. 마인즈랩 담당자에게 이메일로 발급요청</td>
+                                            <td>string</td>
+                                        </tr>
+                                        <tr>
+                                            <td>faceId</td>
+                                            <td>해당 얼굴 이미지에 부여할 Face ID</td>
+                                            <td>string</td>
+                                        </tr>
+                                        <tr>
+                                            <td>file </td>
+                                            <td>type:file (.jpg,.png) 등록할 얼굴 이미지 파일</td>
+                                            <td>string</td>
+                                        </tr>
+                                        <tr>
+                                            <td>dbId </td>
+                                            <td>해당 Vector를 저장 할 DB의 ID (생략 시 ‘default’로 자동 저장)</td>
+                                            <td>string</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p class="sub_txt">③ Request 예제</p>
+                                <div class="code_box">
+<pre>
+curl -X PUT \
+https://api.maum.ai/insight/app/setFace \
+    -H 'content-type: multipart/form-data;
+boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
+    -F apiId=(*ID 요청 필요) \
+    -F apiKey=(*key 요청 필요) \
+    -F faceId=Anne \
+    -F 'file=@/Anne.JPG' \
+    -F dbId=default
+</pre>
+                                </div>
+                                <p class="sub_txt">④ Response 예제</p>
+                                <div class="code_box">
+<pre>
+{
+    "message": {
+        "message": "success",
+        "status": 0
+    }
+}
+</pre>
+                                </div>            
+                                <em>​getFaceList :지정한 DB 내 등록한 Face ID 값과 벡터값을 조회합니다.</em>
+                                <p class="sub_txt">① Request</p>
+                                <ul>
+                                    <li>Method : POST</li>
+                                    <li>URL : ​https://api.maum.ai/insight/app/getFaceList</li>
+                                </ul>
+                                <p class="sub_txt">② Request 파라미터 설명</p>
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <th>키</th>
+                                            <th>설명</th>
+                                            <th>type</th>
+                                        </tr>
+                                        <tr>
+                                            <td>apiId</td>
+                                            <td>사용자의 고유 ID. 마인즈랩 담당자에게 이메일로 발급요청</td>
+                                            <td>string</td>
+                                        </tr>
+                                        <tr>
+                                            <td>apiKey </td>
+                                            <td>사용자의 고유 key. 마인즈랩 담당자에게 이메일로 발급요청</td>
+                                            <td>string</td>
+                                        </tr>
+                                        <tr>
+                                            <td>dbId </td>
+                                            <td>조회할 DB의 ID (생략 시, ‘default’로 자동 조회)</td>
+                                            <td>string</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p class="sub_txt">③ Request 예제</p>
+                                <div class="code_box">
+<pre>
+curl -X POST \
+https://api.maum.ai/insight/app/getFaceList \
+    -H 'content-type: multipart/form-data;
+boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
+    -F apiId=(*ID 요청 필요) \
+    -F apiKey=(*key 요청 필요) \
+    -F dbId=default
+</pre>
+                                </div>
+                                <p class="sub_txt">④ Response 예제</p>
+                                <div class="code_box" style="height: 400px; overflow: auto;">
+            <pre>{
+               "message": {
+                   "message": "Success",
+                   "status": 0
+               },
+               "payload": [
+                   {
+                       "id": "Anne",
+                       "faceVector": [
+                           0.023167092,
+                           -0.115254715,
+                           0.08202046,
+                           0.001044756,
+                           -0.02246941,
+                           -0.019141976,
+                           0.011437614,
+                           0.007085758,
+                           -0.014657473,
+                           0.04635392,
+                           0.020367756,
+                           0.043749213,
+                           -0.022320237,
+                           0.019732887,
+                           0.002116495,
+                           0.03075867,
+                           -0.024357634,
+                           0.056279372,
+                           -0.03210935,
+                           0.053253915,
+                           -0.09179587,
+                           -0.086102426,
+                           0.06759939,
+                           -0.07893096,
+                           0.03427303,
+                           -1.3085711E-4,
+                           0.05103928,
+                           0.009508202,
+                           0.04113041,
+                           0.040643256,
+                           0.029497173,
+                           -0.0126817655,
+                           -0.041648213,
+                           -0.061418727,
+                           -0.019942183,
+                           -0.023390496,
+                           0.08268916,
+                           0.0039425725,
+                           0.06694857,
+                           0.1072623,
+                           -0.036651153,
+                           -0.008873752,
+                           0.06416556,
+                           -0.057824623,
+                           -4.618484E-5,
+                           0.09921391,
+                           0.09543958,
+                           0.03410048,
+                           -8.2083757E-4,
+                           0.076666825,
+                           -0.010248741,
+                           8.977514E-4,
+                           -0.014961588,
+                           -0.031114716,
+                           -0.13343535,
+                           -0.004074133,
+                           0.06964459,
+                           0.05354242,
+                           0.095347285,
+                           -0.065555945,
+                           -0.013562023,
+                           0.03169847,
+                           -0.0302061,
+                           -0.06787956,
+                           -0.03990423,
+                           0.053340875,
+                           -0.0043947264,
+                           -0.03660058,
+                           -0.047947466,
+                           0.06309527,
+                           0.015022342,
+                           -0.010542474,
+                           -0.0035227893,
+                           -0.038298097,
+                           -0.05221859,
+                           -0.0060932767,
+                           -0.10106471,
+                           -0.06309463,
+                           0.04153377,
+                           -0.004335563,
+                           0.012127833,
+                           -0.050130602,
+                           0.0266069,
+                           0.006579191,
+                           -0.030298294,
+                           0.016160946,
+                           -0.017390853,
+                           0.058132935,
+                           0.0336268,
+                           -0.029526541,
+                           -0.07501074,
+                           -0.0070177643,
+                           0.02737674,
+                           0.043103673,
+                           0.007905191,
+                           -0.09930914,
+                           -0.050705567,
+                           -5.4536684E-4,
+                           0.033203866,
+                           0.02715944,
+                           0.049818713,
+                           -0.06374101,
+                           0.032529052,
+                           -0.039107732,
+                           -0.0029863722,
+                           0.053573973,
+                           -0.010010016,
+                           -0.026318658,
+                           -0.025683483,
+                           0.05171802,
+                           -0.037741978,
+                           0.029352238,
+                           0.029053757,
+                           0.019211093,
+                           0.022695784,
+                           -0.010631512,
+                           -0.028454328,
+                           1.6133417E-4,
+                           0.0077320337,
+                           0.09075321,
+                           -0.007603046,
+                           -0.015462602,
+                           0.059029024,
+                           -8.1657973E-4,
+                           0.022252427,
+                           0.0086037265,
+                           0.059548505,
+                           0.01513373,
+                           -0.05137191,
+                           0.054786835,
+                           -0.05088807,
+                           0.05706986,
+                           0.007890585,
+                           -0.027286263,
+                           0.024344597,
+                           0.047551345,
+                           0.057653513,
+                           -0.02318205,
+                           0.055194803,
+                           0.073232055,
+                           -0.062192373,
+                           -0.0135084605,
+                           0.022299895,
+                           0.06176941,
+                           0.049360126,
+                           -0.06282301,
+                           -0.009969664,
+                           -0.03374739,
+                           0.07846086,
+                           -0.012234006,
+                           -0.03874076,
+                           0.0014987268,
+                           -0.10988321,
+                           -0.057132393,
+                           -0.10998137,
+                           -0.015612805,
+                           0.027333993,
+                           0.007387177,
+                           -0.044020943,
+                           -0.0612183,
+                           0.031655826,
+                           0.023451053,
+                           0.0072870012,
+                           -0.042236336,
+                           -0.030708138,
+                           -0.056328133,
+                           -0.055621564,
+                           -0.01066452,
+                           0.027662158,
+                           0.033985976,
+                           -0.0042240885,
+                           -0.021312179,
+                           0.020406447,
+                           -0.0025303902,
+                           -0.009251404,
+                           0.024459984,
+                           0.03507456,
+                           -0.022096686,
+                           0.061165474,
+                           0.052819803,
+                           0.056497,
+                           0.051449325,
+                           -0.0505657,
+                           -0.013971086,
+                           -0.0055697765,
+                           -0.06400767,
+                           -0.05389608,
+                           -0.015635466,
+                           -0.023459248,
+                           6.953899E-4,
+                           -0.010743064,
+                           -0.07353776,
+                           0.0055057774,
+                           -0.0029300796,
+                           -0.017097294,
+                           0.0033097242,
+                           -0.060925283,
+                           -0.026520684,
+                           0.0016056226,
+                           -0.048362628,
+                           0.057096463,
+                           0.021302301,
+                           0.010100532,
+                           0.0014430038,
+                           0.056857705,
+                           0.02452753,
+                           0.0035000066,
+                           -0.020710006,
+                           0.0073646987,
+                           -0.060540404,
+                           0.025239352,
+                           -0.049564417,
+                           -0.007160646,
+                           0.018419117,
+                           0.05861748,
+                           0.0070769503,
+                           0.047355503,
+                           -0.055157274,
+                           -0.007050639,
+                           0.06620086,
+                           0.04056888,
+                           0.04328784,
+                           -0.018623149,
+                           0.0317184,
+                           0.005828237,
+                           -0.063460834,
+                           0.06030988,
+                           0.031550404,
+                           0.013154197,
+                           -0.043500323,
+                           0.07499053,
+                           0.052237794,
+                           -0.05870544,
+                           0.025030969,
+                           -0.01023555,
+                           -0.07074299,
+                           9.707069E-4,
+                           0.010643247,
+                           -0.045120846,
+                           -0.04881968,
+                           -0.048648953,
+                           0.011253874,
+                           0.036477037,
+                           0.09364169,
+                           -0.033800356,
+                           0.09829834,
+                           0.028485795,
+                           0.0149018355,
+                           -0.0552856,
+                           0.047994602,
+                           -0.03082233,
+                           0.009615533,
+                           -0.053342357,
+                           -0.08532182,
+                           0.03521669,
+                           0.0011604187,
+                           0.07526233,
+                           0.026803147,
+                           -0.028000494,
+                           -0.07601295,
+                           0.041947804,
+                           0.04664299,
+                           0.027810346,
+                           0.07543727,
+                           -0.017133687,
+                           -0.016625557,
+                           0.06483988,
+                           -0.017907854,
+                           0.006202642,
+                           0.044200517,
+                           -0.031476688,
+                           0.07696336,
+                           -0.021167722,
+                           0.05962276,
+                           -0.041302953,
+                           0.0076100626,
+                           0.04798449,
+                           0.074620165,
+                           0.058078982,
+                           0.059685495,
+                           0.0756498,
+                           0.07335814,
+                           0.034310453,
+                           -0.015010034,
+                           -0.011788979,
+                           -0.0066372557,
+                           0.051395796,
+                           0.067961864,
+                           -0.042972974,
+                           0.0745315,
+                           -0.06603147,
+                           -0.020393997,
+                           0.026484333,
+                           -0.005974925,
+                           -0.020143542,
+                           -0.03268443,
+                           -0.059448782,
+                           -0.0027974371,
+                           -0.055005513,
+                           1.9769161E-4,
+                           -0.009609283,
+                           0.026451744,
+                           0.05365843,
+                           0.038251735,
+                           -0.04787063,
+                           -0.017397715,
+                           0.021315709,
+                           -0.058446266,
+                           -0.0831932,
+                           0.005557264,
+                           0.038382147,
+                           0.0072101397,
+                           0.051127546,
+                           -0.04582469,
+                           -0.07705488,
+                           -0.042968422,
+                           0.035531335,
+                           0.020826882,
+                           0.008471408,
+                           -0.033835053,
+                           -0.007820141,
+                           -0.05387035,
+                           -0.014328999,
+                           0.021965396,
+                           0.033354662,
+                           -0.05487349,
+                           -0.059148032,
+                           0.096668296,
+                           -0.07204274,
+                           0.015318253,
+                           -0.003845828,
+                           0.075987354,
+                           -0.023312097,
+                           -0.047881868,
+                           0.054666176,
+                           -0.075121485,
+                           -0.037285052,
+                           -0.033664625,
+                           -0.0023204042,
+                           0.014487357,
+                           -0.056785483,
+                           0.033835776,
+                           0.026353411,
+                           -0.005145729,
+                           -0.061521288,
+                           -0.02851029,
+                           -0.035496064,
+                           0.027655624,
+                           -0.024589835,
+                           0.022662628,
+                           0.043995842,
+                           -0.0781266,
+                           0.005838281,
+                           0.08220852,
+                           0.029178862,
+                           -0.0033926058,
+                           0.07003067,
+                           -0.07525622,
+                           0.012243703,
+                           0.028661752,
+                           -0.011349861,
+                           -0.049175836,
+                           -0.013229356,
+                           0.002191643,
+                           -0.035274815,
+                           0.01973845,
+                           -0.065804236,
+                           0.05360816,
+                           -0.018776115,
+                           -0.08475356,
+                           0.11633688,
+                           -0.020687552,
+                           0.059917502,
+                           0.0502454,
+                           -0.032284718,
+                           -0.038167767,
+                           0.034840316,
+                           -0.008403738,
+                           -0.007186281,
+                           -0.07328257,
+                           -0.051551566,
+                           0.029770255,
+                           -0.025993172,
+                           0.06453481,
+                           -0.006645028,
+                           -0.022681227,
+                           0.04500692,
+                           -0.0241867,
+                           -0.00295331,
+                           0.0013727389,
+                           -0.060668368,
+                           -0.036308262,
+                           0.012066404,
+                           -0.021471677,
+                           0.0022921723,
+                           -0.010132039,
+                           0.102131836,
+                           0.019166553,
+                           -0.05383503,
+                           0.0055506295,
+                           0.040335733,
+                           -0.04532261,
+                           0.020013854,
+                           0.035218444,
+                           0.022464646,
+                           -0.037503123,
+                           -0.081479624,
+                           0.017131379,
+                           0.0018825663,
+                           0.01021113,
+                           -0.0062930086,
+                           -0.03639585,
+                           0.011250401,
+                           0.023327418,
+                           -0.01616823,
+                           -0.056673683,
+                           0.08645165,
+                           0.044445906,
+                           0.043543063,
+                           0.028504493,
+                           -0.0024755727,
+                           -0.015981259,
+                           0.0021801814,
+                           0.014207466,
+                           0.012415407,
+                           0.029083926,
+                           0.0025190383,
+                           -0.045329027,
+                           0.031095749,
+                           -0.07973883,
+                           4.309128E-4,
+                           -0.0013110137,
+                           -0.00538488,
+                           -0.018520819,
+                           -0.03623377,
+                           -0.048993178,
+                           -0.064825974,
+                           0.06767473,
+                           0.010198464,
+                           -0.010286229,
+                           -0.027689995,
+                           0.07593468,
+                           0.026554974,
+                           -0.09786561,
+                           0.060423937,
+                           0.057520885,
+                           -0.015027954,
+                           0.03333951,
+                           -3.580078E-4,
+                           -0.025554705,
+                           0.027524233,
+                           -0.024604607,
+                           0.055392444,
+                           -0.0074907043,
+                           -0.034262516,
+                           -0.021061435,
+                           -0.027852945,
+                           0.045237016,
+                           -0.09501191,
+                           0.020249689,
+                           -0.026050106,
+                           -0.04334567,
+                           -0.045527212,
+                           -0.0065695904,
+                           0.003966235,
+                           9.931349E-4,
+                           7.60192E-4,
+                           0.053473186,
+                           0.04921206,
+                           0.013119134,
+                           0.0024566038,
+                           -0.010320417,
+                           0.063494146,
+                           -0.034440786,
+                           -0.04512646,
+                           0.057532318,
+                           0.06361217,
+                           0.013200267,
+                           0.005639555,
+                           0.025194317,
+                           -0.027318474,
+                           -0.016809192,
+                           0.0596016,
+                           -0.020202404,
+                           0.039479893,
+                           0.08869942,
+                           -0.013668791,
+                           0.09906185,
+                           0.010461471,
+                           -0.0059573967,
+                           0.0029956137,
+                           0.023400621,
+                           -0.026552832,
+                           -0.025335154,
+                           -0.018261647,
+                           0.020680927,
+                           0.02366516,
+                           -0.008152542,
+                           0.04288542,
+                           -0.008806061,
+                           0.062963985,
+                           0.01937117,
+                           0.019644747,
+                           -0.017688153,
+                           0.016495755,
+                           0.03978591,
+                           0.001936359,
+                           -0.043246184,
+                           0.07139622,
+                           0.0102169495,
+                           0.024172332,
+                           -0.012250714
+                       ],
+                       "metaData": {
+                           "createTime": "2019-10-14 11:50:27",
+                           "updateTime": "2019-10-14 11:50:27"
+                       }
+                   }
+               ]
+            }
+            </pre>
+                                </div>           
+                                <em>​recogFace : 사람의 얼굴 이미지를 512차원 벡터화하여 DB 내의 데이터와 대조합니다.</em>
+                                <p class="sub_txt">① Request</p>
+                                <ul>
+                                    <li>Method : POST</li>
+                                    <li>URL : ​https://api.maum.ai/insight/app/recogFace</li>
+                                </ul>
+                                <p class="sub_txt">② Request 파라미터 설명</p>
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <th>키</th>
+                                            <th>설명</th>
+                                            <th>type</th>
+                                        </tr>
+                                        <tr>
+                                            <td>apiId</td>
+                                            <td>사용자의 고유 ID. 마인즈랩 담당자에게 이메일로 발급요청</td>
+                                            <td>string</td>
+                                        </tr>
+                                        <tr>
+                                            <td>apiKey </td>
+                                            <td>사용자의 고유 key. 마인즈랩 담당자에게 이메일로 발급요청</td>
+                                            <td>string</td>
+                                        </tr>
+                                        <tr>
+                                            <td>dbId </td>
+                                            <td>조회할 DB의 ID (생략 시, ‘default’로 자동 조회)</td>
+                                            <td>string</td>
+                                        </tr>
+                                        <tr>
+                                            <td>file </td>
+                                            <td>type:file (.jpg,.png) DB내 벡터값과와 대조할 얼굴 이미지 파일</td>
+                                            <td>string</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p class="sub_txt">③ Request 예제</p>
+                                <div class="code_box">
+<pre>
+curl -X POST \
+https://api.maum.ai/insight/app/recogFace \
+    -H 'content-type: multipart/form-data;
+boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
+    -F apiId=(*ID 요청 필요) \
+    -F apiKey=(*key 요청 필요) \
+    -F dbId=default
+    -F 'file=@/sample.JPG' \
+</pre>
+                                </div>
+                                <p class="sub_txt">④ Response 예제</p>
+                                <div class="code_box">
+<pre>
+{
+    "message": {
+        "message": "success",
+        "status": 0 },
+    "result": {
+        "id": "__no__match__",
+        "metaData": {
+            "createTime": "1970-01-01 00:00:00",
+            "updateTime": "1970-01-01 00:00:00"
+        }
+    }
+}
+</pre>
+                                </div>           
+                                <em>​deleteFace : 특정 DB내의 Face ID 벡터값을 삭제합니다.</em>
+                                <p class="sub_txt">① Request</p>
+                                <ul>
+                                    <li>Method : POST</li>
+                                    <li>URL : ​https://api.maum.ai/insight/app/deleteFace</li>
+                                </ul>
+                                <p class="sub_txt">② Request 파라미터 설명 </p>
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <th>키</th>
+                                            <th>설명</th>
+                                            <th>type</th>
+                                        </tr>
+                                        <tr>
+                                            <td>apiId</td>
+                                            <td>사용자의 고유 ID. 마인즈랩 담당자에게 이메일로 발급요청</td>
+                                            <td>string</td>
+                                        </tr>
+                                        <tr>
+                                            <td>apiKey</td>
+                                            <td>사용자의 고유 key. 마인즈랩 담당자에게 이메일로 발급요청</td>
+                                            <td>string</td>
+                                        </tr>
+                                        <tr>
+                                            <td>dbId</td>
+                                            <td>삭제할 값이 있는 DB의 ID (생략 시, ‘default’로 자동 조회)</td>
+                                            <td>string</td>
+                                        </tr>
+                                        <tr>
+                                            <td>faceId </td>
+                                            <td>삭제할 벡터값의 Face ID</td>
+                                            <td>string</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                                <p class="sub_txt">③ Request 예제</p>
+                                <div class="code_box">
+<pre>
+curl -X POST \
+https://api.maum.ai/insight/app/deleteFace \
+    -H 'content-type: multipart/form-data;
+boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
+    -F apiId=(*ID 요청 필요) \
+    -F apiKey=(*key 요청 필요) \
+    -F dbId=default
+    -F 'faceId=Anne'
+</pre>
+                                </div>
+                                <p class="sub_txt">④ Response 예제</p>
+                                <div class="code_box">
+<pre>
+{
+    "message": {
+        "message": "success",
+        "status": 0
+    }
+}
+</pre>
+                                </div>           
+                            </div>
+                        </div>
+                        <!--//.guide_box-->
+                    </div>
+                    <!-- //.demobox -->
+                </div>
+                <!-- //.content -->
+            </div>
+            <!-- //.contents -->
+        </div>
+        <!-- //#container -->
+    </div>
+    <!-- //#wrap -->
+
+    <!---------------------- Local Resources ---------------------->
+    <!-- Local CSS -->
+    <link rel="stylesheet" type="text/css" href="/aiaas/kr/css/menu.css">
+    <link rel="stylesheet" type="text/css" href="/aiaas/kr/css/manual.css">
+
+    <!-- Local Script Library -->
+    <script type="text/javascript" src="/aiaas/common/js/menu.js"></script>
+</body>
+
+</html>
