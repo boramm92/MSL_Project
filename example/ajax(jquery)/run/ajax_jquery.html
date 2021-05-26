@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ajax jquery</title>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+
+<h1>jQuery Ajax Introduction</h1>
+<p>https://www.w3schools.com/jquery/jquery_ajax_intro.asp</p>
+
+<div id="ajax_div" style="position:relative;box-sizing:border-box;margin:2rem auto;padding:2rem;background-color:#fafafa;border:1px solid #d2d2d2;">{text}</div>
+
+<div style="position:relative">
+    <button class="btn_ajax">1번 텍스트 부르기</button>
+    <button class="btn_ajax">2번 텍스트 부르기</button>
+    <button class="btn_ajax">3번 텍스트 부르기</button>
+</div>
+
+<!--  -->
+<script>
+$(document).ready(function(){
+    $('.btn_ajax').click(function(){
+        var this_eq = $(this).index() + 1;
+        var file_name = '../ajax_include/num_' + this_eq + '.html';
+
+        $('#ajax_div').load(file_name);
+    });//click
+});//ready
+</script>
+</body>
+</html>
