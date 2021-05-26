@@ -1,458 +1,157 @@
-<!DOCTYPE html>
-<html lang="ko">
+<!-- .demobox -->
+<div class="demobox">
+    <!--guide_box-->
+    <div class="guide_box">
+        <div class="guide_group">
+            <div class="title">Bert MRC <small>(Machine Reading Comprehension)</small></div>
+            <p class="sub_txt">마인즈랩의 MRC는 내용이나 분량에 관계없이 어떠한 문서든 즉시 독해하고 사용자의 질문에 정확하게 답할 수 있는 혁신적인 인공지능(AI) 기술입니다.</p>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="format-detection" content="telephone=no">
+            <span class="sub_title">준비사항</span>
+            <p class="sub_txt">① Input: 지문 (텍스트), 질문 (텍스트)</p>
+            <p class="sub_txt">② 아래 Model 중 택 1</p>
+            <ul>
+                <li>한글 (kor)</li>
+                <li>영어 (eng)</li>
 
-    <!-- Cache reset -->
-    <meta http-equiv="Expires" content="Mon, 06 Jan 2016 00:00:01 GMT">
-    <meta http-equiv="Expires" content="-1">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Cache-Control" content="no-cache">
+            </ul>
 
-    <!-- Open Graph Tag -->
-    <meta property="og:title" content="maum.ai" />
-    <meta property="og:type" content="website" /><!-- 웹 페이지 타입 -->
-    <meta property="og:url" content="https://maum.ai" />
-    <meta property="og:image" content="/aiaas/kr/images/maum.ai_web.png" />
-    <meta property="og:description" content="웹인공지능이 필요할땐 마음AI" />
-
-    <!-- icon_favicon -->
-    <link rel="apple-touch-icon-precomposed" href="/aiaas/kr/images/ico_maumAI_60x60.png">
-    <link rel="shortcut icon" type="image/x-icon" href="/aiaas/kr/images/ico_maumAI_60x60.ico">
-
-    <!---------------------- General Resources ---------------------->
-    <!-- General CSS -->
-    <link rel="stylesheet" type="text/css" href="/aiaas/common/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="/aiaas/common/css/font.css">
-    <link rel="stylesheet" type="text/css" href="/aiaas/common/css/all.css">
-    <link rel="stylesheet" type="text/css" href="/aiaas/kr/css/common.css">
-
-    <!-- General Script -->
-    <script type="text/javascript" src="/aiaas/common/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="/aiaas/common/js/common.js"></script>
-    <script type="text/javascript" src="/aiaas/common/js/jsrender.min.js"></script>
-    <script type="text/javascript" src="/aiaas/common/js/menu.js"></script>
-
-    <title>AI 독해 || Cloud API Manual</title>
-</head>
-
-<body>
-    <!-- #wrap -->
-    <div id="wrap">
-        <!-- #header -->
-        <div id="header">
-            <h1><a href="/main/krMainHome"><img src="/aiaas/common/images/logo_cloudAPI.svg" alt="cloudAPI"></a></h1>
-            <div class="sta">
-                <!-- .titArea -->
-                <div class="titArea">
-                    <div class="path">
-                        <span><img src="/aiaas/kr/images/ico_path_home_bk.png" alt="HOME"></span>
-                        <span>음성</span>
-                        <span>음성생성(TTS)</span>
-                    </div>
-                </div>
-                <!-- //.titArea -->
-
-                <!-- .etcmenu -->
-                <div class="etcmenu">
-                    <div class="userBox">
-                        <dl>
-                            <dt class="ico_user"><em class="far fa-user"></em></dt>
-                            <dd>
-                                <a target="_self" href="#none">boramm@mindslab.ai<em class="fas fa-chevron-down"></em></a>
-                            </dd>
-                            <ul class="lst">
-                                <li class="ico_profile"><a target="_blank" href="/user/profileMain">프로필</a></li>
-                                <li class="ico_account"><a target="_blank" href="/user/apiAccountMain">API 정보</a></li>
-                                <li class="ico_payment"><a target="_blank" href="/user/paymentInfoMain">결제정보</a></li>
-                                <li class="ico_logout"><a href="#" onclick="document.getElementById('logout-form').submit();">로그아웃</a></li>
-                            </ul>
-                        </dl>
-                    </div>
-                </div>
-                <!-- //.etcmenu -->
-
-                <div class="lang_box">
-                    <span>한국어</span>
-                    <span><a href="/main/enMainHome" target="_self">English</a></span>
-                </div>
+            <span class="sub_title">실행 가이드</span>
+            <p class="sub_txt">① Request</p>
+            <ul>
+                <li>Method : POST</li>
+                <li>URL : https://api.maum.ai/api/bert.mrc/</li>
+            </ul>
+            <p class="sub_txt">② Request 파라미터 설명</p>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>키</th>
+                        <th>설명</th>
+                        <th>type</th>
+                    </tr>
+                    <tr>
+                        <td>apiId</td>
+                        <td>사용자의 고유 ID. 마인즈랩 담당자에게 이메일로 발급요청</td>
+                        <td>string</td>
+                    </tr>
+                    <tr>
+                        <td>apiKey</td>
+                        <td>사용자의 고유 key. 마인즈랩 담당자에게 이메일로 발급요청</td>
+                        <td>string</td>
+                    </tr>
+                    <tr>
+                        <td>lang</td>
+                        <td>사용할 모델의 언어 (kor / eng)</td>
+                        <td>string</td>
+                    </tr>
+                    <tr>
+                        <td>context</td>
+                        <td>기계 독해를 실행할 지문 (텍스트)</td>
+                        <td>string</td>
+                    </tr>
+                    <tr>
+                        <td>question</td>
+                        <td>답을 요구하는 질문 (텍스트)</td>
+                        <td>string</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="sub_txt">③ Request 예제</p>
+            <div class="code_box">
+                curl -X POST \ <br>
+                https://api.maum.ai/api/bert.mrc/ \<br>
+                -H 'Content-Type: application/json' \<br>
+                -d '{<br>
+                <span>"apiId":"(*ID 요청 필요)",</span><br>
+                <span>"apiKey":"(*key 요청 필요)",</span><br>
+                <span>"lang":"eng",</span><br>
+                <span>"context":"Born in Hungary in 1913 as Friedmann
+Endre Ernő, Capa was forced to leave his native country
+after his involvement in anti government protests. Capa
+had originally wanted to become a writer, but after his arrival in Berlin had first found work as a photographer.
+He later left Germany and moved to France due to the rise
+in Nazism. He tried to find work as a freelance
+journalist and it was here that he changed his name to
+Robert Capa, mainly because he thought it would sound
+more American.",</span><br>
+                <span>"question":"Why did Capa changed his name?"</span><br>
+                }'            
             </div>
-        </div>
-        <!-- //#header -->
 
-        <!-- #container -->
-        <div id="container">
-            <!-- .snb -->
-            <div class="snb">
-                <!-- API Services 리스트 -->   
-                <ul class="api_list">
-                    <!-- 공통 -->    
-                    <li class="collapsible list_comm dropdwn">
-                        <span>HOME</span>
-                        <div class="ico_menu">
-                            <span title="공통 가이드"><a href="kr_cloudApiManual_comm.html"><img src="/aiaas/kr/images/menu/ico_spe_1_fold.svg" alt="공통 가이드"></a></span>
-                        </div>
-                    </li>
-                    <li class="sublist list_comm_sub">
-                        <!-- [공통 가이드] -->   
-                        <a class="twodepth active" href="kr_cloudApiManual_comm.html">공통 가이드</a>          
-                    </li>
+            <p class="sub_txt">④ Response 파라미터 설명</p>
+            <span class="table_tit">Response</span>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>키</th>
+                        <th>설명</th>
+                        <th>타입</th>
+                    </tr>
+                    <tr>
+                        <td>message</td>
+                        <td>API 동작여부 </td>
+                        <td>list</td>
+                    </tr>
+                    <tr>
+                        <td>answer</td>
+                        <td>지문 독해 후 입력한 질문에 대한 답변</td>
+                        <td>string</td>
+                    </tr>
+                    <tr>
+                        <td>prob</td>
+                        <td>답변의 신뢰도 (0~1)</td>
+                        <td>number</td>
+                    </tr>
+                    <tr>
+                        <td>startIdx</td>
+                        <td>지문 내 답변 위치의 시작 지점</td>
+                        <td>number</td>
+                    </tr>
+                    <tr>
+                        <td>endIdx</td>
+                        <td>지문 내 답변 위치의 끝 지점</td>
+                        <td>number</td>
+                    </tr>
+                </tbody>
+            </table>
+            <span class="table_tit">message: API 동작여부</span>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>키</th>
+                        <th>설명</th>
+                        <th>타입</th>
+                    </tr>
+                    <tr>
+                        <td>message</td>
+                        <td>요청 처리 상태를 설명하는 문자열 (Success/ Fail)</td>
+                        <td>string</td>
+                    </tr>
+                    <tr>
+                        <td>status</td>
+                        <td>요청 처리 상태에 대한 status code (0: Success)</td>
+                        <td>number</td>
+                    </tr>
+                </tbody>
+            </table>
 
-                    <!-- 음성 -->    
-                    <li class="collapsible list1 dropdwn">
-                        <span>음성</span>
-                        <div class="ico_menu">
-                            <span title="음성생성(TTS)"><a href="kr_cloudApiManual_tts.html"><img src="/aiaas/kr/images/menu/ico_spe_1_fold.svg" alt="음성생성(TTS)"></a></span>
-                            <span title="음성인식(STT)"><a href="kr_cloudApiManual_stt.html"><img src="/aiaas/kr/images/menu/ico_spe_2_fold.svg" alt="음성인식(STT)"></a></span>
-                            <span title="음성 정제"><a href="kr_cloudApiManual_denoise.html"><img src="/aiaas/kr/images/menu/ico_spe_3_fold.svg" alt="음성 정제"></a></span>   
-                            <span title="Voice Filter"><a href="kr_cloudApiManual_voiceFilter.html"><img src="/aiaas/kr/images/menu/ico_spe_5_fold.svg" alt="Voice Filter"></a></span>
-                            <span title="Voice Recognition"><a href="kr_cloudApiManual_voiceRecog.html"><img src="/aiaas/kr/images/menu/ico_spe_6_fold_.svg" alt="Voice Recognition" style="width:20px;"></a></span>
-                        </div>
-                    </li>
-                    <li class="sublist list1_sub">
-                        <!-- [API Services/음성 생성] -->   
-                        <a class="twodepth active" href="kr_cloudApiManual_tts.html">음성생성(TTS)</a>       
-                        <!-- [API Services/음성 인식] -->   
-                        <a class="twodepth" href="kr_cloudApiManual_stt.html">음성인식(STT)</a>    
-                        <!-- [API Services/음성 정제] -->    
-                        <a class="twodepth" href="kr_cloudApiManual_denoise.html">음성 정제</a>    
-                        <!-- [API Services/화자 분리] -->    
-                        <!-- [API Services/음성 분리] -->   
-                        <a class="twodepth" href="kr_cloudApiManual_voiceFilter.html">Voice Filter</a>   
-                        <!-- [API Services/음성 분리] -->    
-                        <a class="twodepth" href="kr_cloudApiManual_voiceRecog.html">Voice Recognition</a>    
-                    </li>
-
-                    <!-- 시각 -->    
-                    <li class="collapsible list2 dropdwn">
-                        <span>시각</span>
-                        <div class="ico_menu">
-                            <span title="Lip Sync Avatar"><a href="kr_cloudApiManual_lipSyncAvatar.html"><img src="/aiaas/kr/images/menu/ico_vis_lipSyncAvatar.svg" alt="Lip Sync Avatar" style="width:17px;"></a></span>
-                            <span title="Face-to-Face Avatar"><a href="kr_cloudApiManual_faceToFaceAvatar.html"><img src="/aiaas/kr/images/menu/ico_vis_avatar.svg" alt="Face-to-Face Avatar" style="width:17px;"></a></span>
-                            <span title="Face Recognition "><a href="kr_cloudApiManual_faceRecog.html"><img src="/aiaas/kr/images/menu/ico_vis_6_fold_.svg" alt="Face Recognition " style="width:19px;"></a></span>
-                            <span title="Enhanced Super Resolution"><a href="kr_cloudApiManual_enhancedSuperResolution.html"><img src="/aiaas/kr/images/menu/ico_vis_5_fold.svg" alt="Enhanced Super Resolution " style="width:23px;"></a></span>
-                            <span title="Video Super Resolution"><a href="kr_cloudApiManual_videoSuperResolution.html"><img src="/aiaas/kr/images/menu/ico_vis_vsr.svg" alt="Video Super Resolution" style="width:19px;"></a></span>
-                            <span title="AI 스타일링"><a href="kr_cloudApiManual_tti.html"><img src="/aiaas/kr/images/menu/ico_vis_2_fold.svg" alt="AI 스타일링"></a></span>
-                            <span title="텍스트 제거"><a href="kr_cloudApiManual_textRemoval.html"><img src="/aiaas/kr/images/menu/ico_vis_1_fold.svg" alt="텍스트 제거"></a></span>
-                            <span title="이미지 자막 인식"><a href="kr_cloudApiManual_subtitlesRecog.html"><img src="/aiaas/kr/images/menu/ico_vis_10_fold_.svg" alt="이미지 자막 인식" style="width:19px;"></a></span>                            
-                            <span title="인물 포즈 인식"><a href="kr_cloudApiManual_recogOfPoses.html"><img src="/aiaas/kr/images/menu/ico_vis_7_fold_.svg" alt="인물 포즈 인식" style="width:19px;"></a></span>
-                            <span title="얼굴 추적"><a href="kr_cloudApiManual_faceTracking.html"><img src="/aiaas/kr/images/menu/ico_vis_8_fold.svg" alt="얼굴 추적" style="width:19px;"></a></span>
-                            <span title="얼굴 마스킹 "><a href="kr_cloudApiManual_faceDetection.html"><img src="/aiaas/kr/images/menu/ico_vis_face.svg" alt="얼굴 마스킹 " style="width:19px;"></a></span>
-                            <span title="헤어 컬러 인식"><a href="kr_cloudApiManual_hairSegmentation.html"><img src="/aiaas/kr/images/menu/ico_vis_hair.svg" alt="헤어 컬러 인식" style="width:18px;"></a></span>
-                            <span title="의상 특징 인식"><a href="kr_cloudApiManual_clothDetection.html"><img src="/aiaas/kr/images/menu/ico_vis_clothes.svg" alt="의상 특징 인식" style="width:20px;"></a></span>
-                            <span title="차량 번호판 의식"><a href="kr_cloudApiManual_licensePlateRecog.html"><img src="/aiaas/kr/images/menu/ico_vis_4_fold.svg" alt="차량 번호판 의식 " style="width:26px;"></a></span>
-                            <span title="차량 유리창 마스킹"><a href="kr_cloudApiManual_windshieldDetection.html"><img src="/aiaas/kr/images/menu/ico_vis_windshield.svg" alt="차량 유리창 마스킹 " style="width:23px;"></a></span>
-                            <span title="이상행동 감지"><a href="kr_cloudApiManual_anomalyDetection.html"><img src="/aiaas/kr/images/menu/ico_vis_9_fold_.svg" alt="이상행동 감지" style="width: 16px;margin: 0 0 0 7px;"></a></span>
-                            <span title="치아 교정기 포지셔닝"><a href="kr_cloudApiManual_bracketPositioning.html"><img src="/aiaas/kr/images/menu/ico_vis_positioning.svg" alt="치아 교정기 포지셔닝" style="width:18px;"></a></span>
-                        </div>
-                    </li>
-                    <li class="sublist list2_sub">
-                        <!-- [API Services/Lip Sync Avatar ] -->    
-                        <a class="twodepth" href="kr_cloudApiManual_lipSyncAvatar.html">Lip Sync Avatar</a>                        
-                        <!-- [API Services/Face-to-Face Avatar ] -->   
-                        <a class="twodepth" href="kr_cloudApiManual_faceToFaceAvatar.html">Face-to-Face Avatar</a>    
-                        <!-- [API Services/Face Recognition] -->    
-                        <a class="twodepth" href="kr_cloudApiManual_faceRecog.html">Face Recognition</a>    
-                        <!-- [API Services/Super Resolution] -->    
-                        <a class="twodepth" href="kr_cloudApiManual_enhancedSuperResolution.html">Enhanced Super Resolution</a>    
-                        <!-- [API Services/vsr ] -->    
-                        <a class="twodepth" href="kr_cloudApiManual_videoSuperResolution.html">Video Super Resolution</a>   
-                        <!-- [API Services/이미지 생성] -->    
-                        <a class="twodepth" href="kr_cloudApiManual_tti.html">AI 스타일링</a>    
-                        <!-- [API Services/텍스트 제거] -->    
-                        <a class="twodepth" href="kr_cloudApiManual_textRemoval.html">텍스트 제거</a>    
-                        <!-- [API Services/이미지 자막 인식 ] -->    
-                        <a class="twodepth" href="kr_cloudApiManual_subtitlesRecog.html">이미지 자막 인식</a>    
-                        <!-- [API Services/화폐 · 고지서 인식] -->    
-                        <!-- [API Services/인물 포즈 인식] -->   
-                        <a class="twodepth" href="kr_cloudApiManual_recogOfPoses.html">인물 포즈 인식</a>    
-                        <!-- [API Services/얼굴 추적] -->    
-                        <a class="twodepth" href="kr_cloudApiManual_faceTracking.html">얼굴 추적</a>   
-                        <!-- [API Services/물체/얼굴 검출] -->    
-                        <a class="twodepth" href="kr_cloudApiManual_faceDetection.html">얼굴 마스킹</a>    
-                        <!-- [API Services/ 헤어 컬러 인식 ] -->    
-                        <a class="twodepth" href="kr_cloudApiManual_hairSegmentation.html">헤어 컬러 인식</a>    
-                        <!-- [API Services/의상 특징 인식] -->    
-                        <a class="twodepth" href="kr_cloudApiManual_clothDetection.html">의상 특징 인식</a>    
-                        <!-- [API Services/물체/얼굴 검출] -->    
-                        <a class="twodepth" href="kr_cloudApiManual_licensePlateRecog.html">차량 번호판 인식</a>    
-                        <!-- [API Services/물체/얼굴 검출] -->    
-                        <a class="twodepth" href="kr_cloudApiManual_windshieldDetection.html">차량 유리창 마스킹</a>    
-                        <!-- [API Services/이상 행동 감지] -->    
-                        <a class="twodepth" href="kr_cloudApiManual_anomalyDetection.html">이상행동 감지</a>    
-                        <!-- [API Services/치아 교정기 포지셔닝 ] -->    
-                        <a class="twodepth" href="kr_cloudApiManual_bracketPositioning.html">치아 교정기 포지셔닝</a>   
-                    </li> 
-
-                    <!--언어-->    
-                    <li class="collapsible list3 dropdwn">
-                        <span>언어</span>
-                        <div class="ico_menu">
-                            <span title="문장 교정"><a href="kr_cloudApiManual_bertCorrection.html"><img src="/aiaas/kr/images/menu/ico_lan_correct.svg" alt="문장 교정"></a></span>
-                            <span title="한글 변환"><a href="kr_cloudApiManual_konglish.html"><img src="/aiaas/kr/images/menu/ico_lan_convers.svg" alt="한글 변환"></a></span>
-                            <span title="자연어 이해"><a href="kr_cloudApiManual_nlu.html"><img src="/aiaas/kr/images/menu/ico_lan_1_fold.svg" alt="자연어 이해"></a></span>
-                            <span title="AI 독해"><a href="kr_cloudApiManual_bertMrc.html"><img src="/aiaas/kr/images/menu/ico_lan_2_fold.svg" alt="AI 독해"></a></span>
-                            <span title="텍스트 분류"><a href="kr_cloudApiManual_bertXdc.html"><img src="/aiaas/kr/images/menu/ico_lan_3_fold.svg" alt="텍스트 분류"></a></span>
-                            <span title="문장 생성"><a href="kr_cloudApiManual_gpt.html"><img src="/aiaas/kr/images/menu/ico_lan_5_fold.svg" alt="문장 생성"></a></span>
-                            <span title="패턴 분류"><a href="kr_cloudApiManual_hmd.html"><img src="/aiaas/kr/images/menu/ico_lan_6_fold.svg" alt="패턴 분류"></a></span>
-                            <span title="의도 분류"><a href="kr_cloudApiManual_intendFinder.html"><img src="/aiaas/kr/images/menu/ico_lan_itf.svg" alt="의도 분류"></a></span>
-                        </div>
-                    </li>					
-                    <li class="sublist list3_sub">
-                        <!-- [API Services/문장 교정] -->    
-                        <a class="twodepth" href="kr_cloudApiManual_bertCorrection.html">문장 교정 </a>    
-                        <!-- [API Services/한글 변환] -->    
-                        <a class="twodepth" href="kr_cloudApiManual_konglish.html">한글 변환</a>    
-                        <!-- [API Services/자연어 이해] -->    
-                        <a class="twodepth" href="kr_cloudApiManual_nlu.html">자연어 이해</a>        
-                        <!-- [API Services/AI 독해] -->    
-                        <a class="twodepth" href="kr_cloudApiManual_bertMrc.html">AI 독해</a>    
-                        <!-- [API Services/텍스트 분류] -->    
-                        <a class="twodepth" href="kr_cloudApiManual_bertXdc.html">텍스트 분류</a>    
-                        <!-- [API Services/AI 작문] -->    
-                        <a class="twodepth" href="kr_cloudApiManual_gpt.html">문장 생성</a>    
-                        <!-- [API Services/패턴 분류] -->    
-                        <a class="twodepth" href="kr_cloudApiManual_hmd.html">패턴 분류</a>    
-                        <!-- [API Services/의도 분류] -->    
-                        <a class="twodepth" href="kr_cloudApiManual_intendFinder.html">의도 분류</a>    
-                    </li>
-
-                    <!--분석-->    
-                    <li class="collapsible list6 dropdwn">
-                        <span>분석</span>
-                        <div class="ico_menu">
-                            <span title="데이터 상관분석"><a href="kr_cloudApiManual_featureSelection.html"><img src="/aiaas/kr/images/menu/ico_data_analysis.svg" alt="데이터 상관분석" style="width:19px;"></a></span>
-                        </div>
-                    </li>
-                    <li class="sublist list6_sub">
-                        <!-- [Data/데이터 관계분석] -->
-                        <a class="twodepth" href="kr_cloudApiManual_featureSelection.html">데이터 상관분석</a>   
-                    </li>
-
-                    <!--대화-->   
-                    <li class="collapsible list4 dropdwn">
-                        <span>대화</span>
-                        <div class="ico_menu">
-                            <span title="NQA 봇"><a href="#none"><img src="/aiaas/kr/images/menu/ico_bot_1_fold.svg" alt="NQA 봇"></a></span>
-                            <span title="MRC 봇"><a href="#none"><img src="/aiaas/kr/images/menu/ico_bot_2_fold.svg" alt="MRC 봇"></a></span>
-                            <span title="KBQA 봇"><a href="#none"><img src="/aiaas/kr/images/menu/ico_bot_2_fold.svg" alt="KBQA 봇"></a></span>
-                            <span title="호텔 컨시어지 챗봇"><a href="#none"><img src="/aiaas/kr/images/menu/ico_bot_3_fold.svg" alt="호텔 컨시어지 챗봇" style="width: 18px;"></a></span>
-                        </div>
-                    </li>					
-                    <li class="sublist list4_sub">
-                        <!-- [API Services/NQA 봇] -->    
-                        <a class="twodepth" href="#none">NQA 봇</a>	    
-                        <!-- [API Services/MRC봇(위키봇 · 뉴스봇) · 날씨봇] -->    
-                        <a class="twodepth" href="#none">MRC 봇</a>   
-                        <!-- [API Services/KBQA봇] -->    
-                        <a class="twodepth" href="#none">KBQA 봇</a>    
-                        <!-- [API Services/호텔 컨시어지 챗봇] -->   
-                        <a class="twodepth" href="#none">호텔 컨시어지 챗봇</a>                    
-                    </li>
-
-                    <!--영어 교육-->    
-                    <li class="collapsible list5 dropdwn">
-                        <span>영어 교육</span>
-                        <div class="ico_menu">
-                            <span title="교육용 STT"><a href="kr_cloudApiManual_englishEdu.html"><img src="/aiaas/kr/images/menu/ico_eng_1.svg" alt="교육용 STT"></a></span>
-                            <span title="문장 발음 평가"><a href="kr_cloudApiManual_pronunciationScoring.html"><img src="/aiaas/kr/images/menu/ico_eng_2.svg" alt="문장 발음 평가"></a></span>
-                            <span title="파닉스 평가"><a href="kr_cloudApiManual_phonicsEval.html"><img src="/aiaas/kr/images/menu/ico_eng_3.svg" alt="파닉스 평가"></a></span>
-                        </div>			
-                    </li>					
-                    <li class="sublist list5_sub">
-                        <!-- [API Services/영어교육 STT] -->   
-                        <a class="twodepth" href="kr_cloudApiManual_englishEdu.html">교육용 STT</a>    
-                        <!-- [API Services/영어교육 발음평가] -->    
-                        <a class="twodepth" href="kr_cloudApiManual_pronunciationScoring.html">문장 발음 평가</a>   
-                        <!-- [API Services/영어교육 파닉스] -->    
-                        <a class="twodepth" href="kr_cloudApiManual_phonicsEval.html">파닉스 평가</a>                    
-                    </li>
-                </ul>
-                <!-- //API Services 리스트 -->
-            </div>
-            <!-- //.snb -->
-
-            <!-- .contents -->
-            <div class="contents">
-                <!-- .content -->
-                <div class="content">
-                    <!-- .demobox -->
-                    <div class="demobox">
-                        <!--guide_box-->
-                        <div class="guide_box">
-                            <div class="guide_group">
-                                <div class="title">Bert MRC <small>(Machine Reading Comprehension)</small></div>
-                                <p class="sub_txt">마인즈랩의 MRC는 내용이나 분량에 관계없이 어떠한 문서든 즉시 독해하고 사용자의 질문에 정확하게 답할 수 있는 혁신적인 인공지능(AI) 기술입니다.</p>
-            
-                                <span class="sub_title">준비사항</span>
-                                <p class="sub_txt">① Input: 지문 (텍스트), 질문 (텍스트)</p>
-                                <p class="sub_txt">② 아래 Model 중 택 1</p>
-                                <ul>
-                                    <li>한글 (kor)</li>
-                                    <li>영어 (eng)</li>
-            
-                                </ul>
-
-                                <span class="sub_title">실행 가이드</span>
-                                <p class="sub_txt">① Request</p>
-                                <ul>
-                                    <li>Method : POST</li>
-                                    <li>URL : https://api.maum.ai/api/bert.mrc/</li>
-                                </ul>
-                                <p class="sub_txt">② Request 파라미터 설명</p>
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <th>키</th>
-                                            <th>설명</th>
-                                            <th>type</th>
-                                        </tr>
-                                        <tr>
-                                            <td>apiId</td>
-                                            <td>사용자의 고유 ID. 마인즈랩 담당자에게 이메일로 발급요청</td>
-                                            <td>string</td>
-                                        </tr>
-                                        <tr>
-                                            <td>apiKey</td>
-                                            <td>사용자의 고유 key. 마인즈랩 담당자에게 이메일로 발급요청</td>
-                                            <td>string</td>
-                                        </tr>
-                                        <tr>
-                                            <td>lang</td>
-                                            <td>사용할 모델의 언어 (kor / eng)</td>
-                                            <td>string</td>
-                                        </tr>
-                                        <tr>
-                                            <td>context</td>
-                                            <td>기계 독해를 실행할 지문 (텍스트)</td>
-                                            <td>string</td>
-                                        </tr>
-                                        <tr>
-                                            <td>question</td>
-                                            <td>답을 요구하는 질문 (텍스트)</td>
-                                            <td>string</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <p class="sub_txt">③ Request 예제</p>
-                                <div class="code_box">
-                                    curl -X POST \ <br>
-                                    https://api.maum.ai/api/bert.mrc/ \<br>
-                                    -H 'Content-Type: application/json' \<br>
-                                    -d '{<br>
-                                    <span>"apiId":"(*ID 요청 필요)",</span><br>
-                                    <span>"apiKey":"(*key 요청 필요)",</span><br>
-                                    <span>"lang":"eng",</span><br>
-                                    <span>"context":"Born in Hungary in 1913 as Friedmann
-            Endre Ernő, Capa was forced to leave his native country
-            after his involvement in anti government protests. Capa
-            had originally wanted to become a writer, but after his arrival in Berlin had first found work as a photographer.
-            He later left Germany and moved to France due to the rise
-            in Nazism. He tried to find work as a freelance
-            journalist and it was here that he changed his name to
-            Robert Capa, mainly because he thought it would sound
-            more American.",</span><br>
-                                    <span>"question":"Why did Capa changed his name?"</span><br>
-                                    }'            
-                                </div>
-            
-                                <p class="sub_txt">④ Response 파라미터 설명</p>
-                                <span class="table_tit">Response</span>
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <th>키</th>
-                                            <th>설명</th>
-                                            <th>타입</th>
-                                        </tr>
-                                        <tr>
-                                            <td>message</td>
-                                            <td>API 동작여부 </td>
-                                            <td>list</td>
-                                        </tr>
-                                        <tr>
-                                            <td>answer</td>
-                                            <td>지문 독해 후 입력한 질문에 대한 답변</td>
-                                            <td>string</td>
-                                        </tr>
-                                        <tr>
-                                            <td>prob</td>
-                                            <td>답변의 신뢰도 (0~1)</td>
-                                            <td>number</td>
-                                        </tr>
-                                        <tr>
-                                            <td>startIdx</td>
-                                            <td>지문 내 답변 위치의 시작 지점</td>
-                                            <td>number</td>
-                                        </tr>
-                                        <tr>
-                                            <td>endIdx</td>
-                                            <td>지문 내 답변 위치의 끝 지점</td>
-                                            <td>number</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <span class="table_tit">message: API 동작여부</span>
-                                <table>
-                                    <tbody>
-                                        <tr>
-                                            <th>키</th>
-                                            <th>설명</th>
-                                            <th>타입</th>
-                                        </tr>
-                                        <tr>
-                                            <td>message</td>
-                                            <td>요청 처리 상태를 설명하는 문자열 (Success/ Fail)</td>
-                                            <td>string</td>
-                                        </tr>
-                                        <tr>
-                                            <td>status</td>
-                                            <td>요청 처리 상태에 대한 status code (0: Success)</td>
-                                            <td>number</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-            
-                                <p class="sub_txt">⑤ Response 예제</p>
-                                <div class="code_box">
+            <p class="sub_txt">⑤ Response 예제</p>
+            <div class="code_box">
 <pre>
 {
-    "message": {
-        "message": "Success",
-        "status": 0
-    },
-    "answer": "he thought it would sound more American",
-    "prob": 0.2143673,
-    "startIdx": 105,
-    "endIdx": 111
+"message": {
+"message": "Success",
+"status": 0
+},
+"answer": "he thought it would sound more American",
+"prob": 0.2143673,
+"startIdx": 105,
+"endIdx": 111
 }
 </pre>
-                                </div>
-                            </div>
-                        </div>
-                        <!--//.guide_box-->
-                    </div>
-                    <!-- //.demobox -->
-                </div>
-                <!-- //.content -->
             </div>
-            <!-- //.contents -->
         </div>
-        <!-- //#container -->
     </div>
-    <!-- //#wrap -->
-
-    <!---------------------- Local Resources ---------------------->
-    <!-- Local CSS -->
-    <link rel="stylesheet" type="text/css" href="/aiaas/kr/css/menu.css">
-    <link rel="stylesheet" type="text/css" href="/aiaas/kr/css/manual.css">
-
-    <!-- Local Script Library -->
-    <script type="text/javascript" src="/aiaas/common/js/menu.js"></script>
-</body>
-
-</html>
+    <!--//.guide_box-->
+</div>
+<!-- //.demobox -->
