@@ -80,15 +80,15 @@
             <div class="code_box">
 <pre>
 curl --location --request POST
-'https://api.maum.ai/lipsync/upload' \
---header 'Content-Type: multipart/form-data' \
---form 'apiId= "발급받은 API ID"' \
---form 'apiKey= "발급받은 API KEY"' \
---form 'text= "안녕하세요? 2021년 마인즈랩 마음 AI 아바타 인사드립니다."' \
---form 'image= @"{이미지 파일}"' \
---form 'model="baseline"' \
---form 'transparent="true"' \
---form 'resolution="HD"'
+    'https://api.maum.ai/lipsync/upload' \
+    --header 'Content-Type: multipart/form-data' \
+    --form 'apiId= "발급받은 API ID"' \
+    --form 'apiKey= "발급받은 API KEY"' \
+    --form 'text= "안녕하세요? 2021년 마인즈랩 마음 AI 아바타 인사드립니다."' \
+    --form 'image= @"{이미지 파일}"' \
+    --form 'model="baseline"' \
+    --form 'transparent="true"' \
+    --form 'resolution="HD"'
 </pre>
             </div>            
             <p class="sub_txt">④ Response 파라미터 설명</p>
@@ -155,13 +155,13 @@ curl --location --request POST
             <div class="code_box">
 <pre>
 {
-"message": {
-"message": "Success",
-"status": 0
-},
-"payload": {
-"requestKey": "요청 key"
-}
+    "message": {
+        "message": "Success",
+        "status": 0
+    },
+    "payload": {
+        "requestKey": "요청 key"
+    }
 }
 </pre>
             </div>
@@ -203,11 +203,11 @@ curl --location --request POST
             <div class="code_box">
 <pre>
 curl --location --request POST
-'https://api.maum.ai/lipsync/statusCheck' \
---header 'Content-Type: application/json' \
---form 'apiId= "발급받은 API ID"' \
---form 'apiKey= "발급받은 API KEY"' \
---form 'requestKey= "Upload 요청시 발급받은 요청 식별용 key"'
+    'https://api.maum.ai/lipsync/statusCheck' \
+    --header 'Content-Type: application/json' \
+    --form 'apiId= "발급받은 API ID"' \
+    --form 'apiKey= "발급받은 API KEY"' \
+    --form 'requestKey= "Upload 요청시 발급받은 요청 식별용 key"'
 </pre>
             </div>           
             <p class="sub_txt">④ Response 파라미터 설명</p>
@@ -290,15 +290,15 @@ curl --location --request POST
             <div class="code_box">
 <pre>
 {
-"message": {
-"message": "Success",
-"status": 0
-},
-"payload": {
-"statusCode": 1,
-"message": "Now Processing",
-"waiting": 0
-}
+    "message": {
+        "message": "Success",
+        "status": 0
+    },
+    "payload": {
+        "statusCode": 1,
+        "message": "Now Processing",
+        "waiting": 0
+    }
 }
 </pre>
             </div>
@@ -330,7 +330,7 @@ curl --location --request POST
             <div class="code_box">
 <pre>
 curl --location --request GET
-'https://api.maum.ai/lipsync/download?requestKey= Upload 요청시 발급받은 요청 식별용 key'
+    'https://api.maum.ai/lipsync/download?requestKey= Upload 요청시 발급받은 요청 식별용 key'
 </pre>
             </div>
             <p class="sub_txt">④ Response 설명</p>
