@@ -535,26 +535,12 @@
 
 jQuery.event.add(window,"load",function(){
     $(document).ready(function (){
-        // [D] 페이지 확인을 위한 script로 개발 시에는 무시해주세요.
-        $('.btn_transfer').on('click', function(){
-            $('.step01').css('display', 'none');
-            $('.loading_wrap').css('display', 'block');
-        });
-		$('.btn_back1').on('click', function(){
-			$('.loading_wrap').css('display', 'none');
-			$('.step02').css('display', 'block');
-		});
-		$('.btn_reset').on('click', function(){
-			$('.step02').css('display', 'none');
-			$('.step01').css('display', 'block');
-		});
-
 		// [D] step1의 예문 선택 중 직접 입력 시 라디오 체크 trigger
 		$('.iptTxt').on('focus', function(){
 			$('#radio3').trigger('click');
 		});
 
-		// step1의 예문 선택 중 직접 입력 글자수 제한
+		// [D] step1의 예문 선택 중 직접 입력 글자수 제한
         $('.iptTxt').keyup(function(e){
 			var content = $(this).val();
         	$('.txtCount span').html(content.length);
@@ -564,12 +550,14 @@ jQuery.event.add(window,"load",function(){
                 $('.txtCount span').html(80);
             }
         });
-		// $('.iptTxt').focusout(function(e){
-		// 	var content = $(this).val();
-		// 	if(content.length < 5){
-		// 		alert("최소 5자 이상 입력해 주세요.");
-		// 	}
-		// });
+
+		// [D] 예문 직접 입력 후 '변환 하기' 버튼 클릭 시 5자 미만 alert 띄우기 
+        $('.btn_transfer').on('click', function(){
+            var content = $('.iptTxt').val();
+			if(content.length < 5){
+				alert('최소 5자 이상 입력해 주세요.');
+			}
+        });
     });
 });
 </script>
