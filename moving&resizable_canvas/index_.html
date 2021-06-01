@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="shortcut icon" href="data:image/x-icon" type="image/x-icon">
+
+    <!-- Open Graph Tag -->
+    <meta property="og:title" content="maum AI Human" /> 
+    <meta property="og:url" content="웹페이지 URL" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="resources/images/img_aiHuman.png" />    
+    <meta property="og:description" content="The First AI Human" /> 
+
+    <!---------------------- General Resources ---------------------->
+    <!-- General CSS -->
+    <link rel="stylesheet" type="text/css" href="resources/css/aiHuman.css">
+    <style>
+        .pane{position:absolute; bottom:0; width:360px; height:740px; border:8px dotted; overflow:hidden; z-index:10; background:transparent;}
+        .videoWholeBody .video_vid{transform:translate(-52%,0); z-index:0;}
+        /* .canvas_box{position:relative; bottom:0; width:100%; height:100%;} */
+        
+        /* .pane2{position: absolute; width:30%; height: 45%; top: 20%; left:40%;   margin: 0; padding: 0; z-index: 10; border:8px solid purple; background: #fefefe;} */
+    </style>
+
+    <title>Main || AI Human</title>
+</head>
+<body>
+    <!-- #wrap -->
+    <div id="wrap">
+        <!-- #container -->
+        <div id="container">    
+            <div class="videoBox detailMode">
+                <div class="video videoWholeBody">
+                    <video class="video_base" src="resources/video/motion.mp4" autoplay loop muted width="1280"  height="640" crossorigin="anonymous"></video>
+                    
+                    <!-- <div class="pane">
+                        <canvas class="video_vid" width="1280" height=""></canvas>
+                    </div> -->
+                    <div class="pane pane1"></div>
+                    <div class="pane pane2"></div>
+                </div>
+            </div>
+        </div>
+        <!-- //#container -->
+    </div>
+    <!-- //#wrap -->
+    <script>
+        // const video05 = document.querySelector('.video_base');
+        // let width05 = video05.clientWidth;
+        // let height05 = video05.clientHeight;
+        
+        // const canvas05 = document.querySelector('.video_vid');
+        // canvas05.setAttribute('height', height05);
+        // const ctx05 = canvas05.getContext('2d');
+        // window.addEventListener('load', drawVideo05);
+        
+        // function drawVideo05(){
+        //     ctx05.drawImage(video05,0,0, width05, height05);
+        
+        //     let frame05 = ctx05.getImageData(0,0, width05, height05);
+        //     for(let i = 0; i < frame05.data.length; i += 4){
+        //         let r = frame05.data[i];      // red
+        //         let g = frame05.data[i + 1];  // green
+        //         let b = frame05.data[i + 2];  // blue               
+        
+        //         if( r < 140 && g >= 170 && b < 131 ){
+        //             frame05.data[i + 3] = 0;
+        //         }
+        //     }
+        //     ctx05.putImageData(frame05,0,0);
+        
+        //     requestAnimationFrame(drawVideo05);
+        // }
+
+
+        window.onload = function() {
+            // var pane = document.getElementById("pane");
+            var panes = document.getElementsByClassName("pane");
+            // Minimum resizable area
+            var minWidth = 60;
+            var minHeight = 40;
+
+            // Thresholds
+            // var FULLSCREEN_MARGINS = -10;
+            var MARGINS = 4;
+
+            // End of what's configurable.
+            var clicked = null;
+            var onRightEdge, onBottomEdge, onLeftEdge, onTopEdge;
+
+            var rightScreenEdge, bottomScreenEdge;
+
+            var preSnapped;
+
+            var b, x, y;
+
+            var redraw = false;
+            
+            var currentZIndex = 20;
+            
+            for(var i = 0; i < panes.length; i++){
+                var pane = panes[i];
+                // console.log(pane);
+                
+                function setBounds(element, x, y, w, h) {
+                    element.style.left = x + 'px';
+                    element.style.top = y + 'px';
+                    element.style.width = w + 'px';
+                    element.style.height = h + 'px';
+                }
+
+                // Mouse events
+                // pane.onmousedown = function() {
+                //     this.style.zIndex = "" + ++currentZIndex;
+                //     onMouseDown;
+                // };
+                pane.addEventListener('mousedown', onMouseDown);
+                document.addEventListener('mousemove', onMove);
+                document.addEventListener('mouseup', onUp);
+
+                // Touch events	
+                pane.addEventListener('touchstart', onTouchDown);
+                document.addEventListener('touchmove', onTouchMove);
+                document.addEventListener('touchend', onTouchEnd);
+
+                // var ww = (window.innerWidth / 2) - (pane.clientWidth/2);
+                // pane.style.left = ww + "px";
+
+                // window.onresize = function(event) {
+                //     var ww = (window.innerWidth / 2) - (pane.clientWidth/2);
+                //     pane.style.left = ww + "px";
+                // };
+
+                function onTouchDown(e) {
+                    onDown(e.touches[0]);
+                    e.preventDefault();
+                }
+
+                function onTouchMove(e) {
+                    onMove(e.touches[0]);		
+                }
+
+                function onTouchEnd(e) {
+                    if (e.touches.length ==0) onUp(e.changedTouches[0]);
+                }
+
+                function onMouseDown(e) {
+                    onDown(e);
+                    e.target.style.zIndex = "" + ++currentZIndex;
+                    e.preventDefault();
+                }
+
+                function onDown(e) {
+                    calc(e);
+
+                    var isResizing = onRightEdge || onBottomEdge || onTopEdge || onLeftEdge;
+
+                    clicked = {
+                        x: x,
+                        y: y,
+                        cx: e.clientX,
+                        cy: e.clientY,
+                        w: b.width,
+                        h: b.height,
+                        isResizing: isResizing,
+                        isMoving: !isResizing && canMove(),
+                        onTopEdge: onTopEdge,
+                        onLeftEdge: onLeftEdge,
+                        onRightEdge: onRightEdge,
+                        onBottomEdge: onBottomEdge,
+                    };
+                    
+                    console.log(canMove());
+                }
+
+                function canMove() {
+                    return x > 0 && x < b.width && y > 0 && y < b.height;
+                }
+
+                function calc(e) {
+                    // b = e.target.getBoundingClientRect();
+                    // // b = pane.getBoundingClientRect();
+                    // console.log(b);
+                    // x = e.clientX - b.left;
+                    // y = e.clientY - b.top;
+
+                    // onTopEdge = y < MARGINS;
+                    // onLeftEdge = x < MARGINS;
+                    // onRightEdge = x >= b.width - MARGINS;
+                    // onBottomEdge = y >= b.height - MARGINS;
+
+                    // rightScreenEdge = window.innerWidth - MARGINS;
+                    // bottomScreenEdge = window.innerHeight - MARGINS;
+                   
+                    b = e.target.getBoundingClientRect();
+                    x = e.clientX - b.left;
+                    y = e.clientY - b.top;
+                    // console.log(x);
+
+                    onTopEdge = y < MARGINS;
+                    onLeftEdge = x < MARGINS;
+                    onRightEdge = x >= b.width - MARGINS;
+                    onBottomEdge = y >= b.height - MARGINS;
+                    
+                    rightScreenEdge = window.innerWidth - MARGINS;
+                    bottomScreenEdge = window.innerHeight - MARGINS;
+                    /* 
+                    target = e.target.classList;
+                    if ( target.contains("pane") ){
+                        // console.log(b.contains("pane"))
+                        b = e.target.getBoundingClientRect();
+                        x = e.clientX - b.left;
+                        y = e.clientY - b.top;
+                        console.log(x, y);
+
+                        onTopEdge = y < MARGINS;
+                        onLeftEdge = x < MARGINS;
+                        onRightEdge = x+10 >= b.width - MARGINS;
+                        onBottomEdge = y +10 >= b.height - MARGINS;
+                        zInedx = "" + currentZIndex;
+                        
+                        rightScreenEdge = window.innerWidth - MARGINS;
+                        bottomScreenEdge = window.innerHeight - MARGINS;
+                    } */
+                }
+
+                var e;
+
+                function onMove(ee) {
+                    calc(ee);
+                    e = ee;
+                    redraw = true;
+                }
+
+                function animate() {
+                    requestAnimationFrame(animate);
+
+                    if (!redraw) return;
+
+                    redraw = false;
+                    
+                    target = e.target;
+                    startHeight = parseInt(
+                        document.defaultView.getComputedStyle(target).height,10
+                    );
+                    // console.log(startHeight)
+                    if ( target.classList.contains("pane") ){
+                        if (clicked && clicked.isResizing) {
+                            // if (clicked.onRightEdge) { 
+                            //     var currentWidth = Math.max(clicked.cx - e.clientX  + clicked.w, minWidth);
+                            //     target.style.width = Math.max(x, minWidth) + 'px';
+                            // }
+                            if (clicked.onRightEdge){
+                                target.style.width = Math.max(x, minWidth) + 'px';
+                            }
+                            // if (clicked.onRightEdge) target.style.width = Math.max(x, minWidth) + 'px';
+                            if (clicked.onBottomEdge) target.style.height = Math.max(y, minHeight) + 'px';
+                            // if (clicked.onLeftEdge) target.style.width = Math.max(e.clientX, minWidth) + 'px';
+
+                            // if (clicked.onLeftEdge) { 
+                            //     var currentWidth = Math.max(clicked.cx - e.clientX  + clicked.w, minWidth);
+                            //     target.style.width = Math.max(x, minWidth) + 'px';
+                            // }
+                            // var parent = document.getElementsByTagName("body");
+                            // console.log(parent);
+                            if (clicked.onLeftEdge) {
+                                var currentWidth = Math.max(clicked.cx - e.clientX  + clicked.w, minWidth);
+                                if (currentWidth > minWidth) {
+                                    target.style.width = currentWidth + 'px';
+                                    target.style.left = (e.clientX - 5) + 'px';	
+                                }
+                                // console.log(clicked.cx,  e.clientX , clicked.w, currentWidth, minWidth , e.screenX ,x)
+                                // console.log(e.clientX)
+                            }
+
+                            if (clicked.onTopEdge) {
+                                var currentHeight = Math.max(clicked.cy - e.clientY  + clicked.h, minHeight);
+                                // console.log(clicked.cy,  e.clientY , clicked.h)
+                                if (currentHeight > minHeight) {
+                                    target.style.height = currentHeight + 'px';
+                                    target.style.top = (e.clientY - 5)+ 'px';	
+                                }
+                            }
+
+                            return;
+                        }
+
+                        if (clicked && clicked.isMoving) {
+                            if (preSnapped) {
+                                setBounds(pane,
+                                    e.clientX - preSnapped.width / 2,
+                                    e.clientY - Math.min(clicked.y, preSnapped.height),
+                                    preSnapped.width,
+                                    preSnapped.height
+                                );
+                                return;
+                            }
+
+                            // moving
+                            target.style.top = (e.clientY - clicked.y) + 'px';
+                            target.style.left = (e.clientX - clicked.x) + 'px';
+                            return;
+                        }
+                        // style cursor
+                        if (onRightEdge && onBottomEdge || onLeftEdge && onTopEdge) {
+                            target.style.cursor = 'nwse-resize';
+                        } else if (onRightEdge && onTopEdge || onBottomEdge && onLeftEdge) {
+                            target.style.cursor = 'nesw-resize';
+                        } else if (onRightEdge || onLeftEdge) {
+                            target.style.cursor = 'ew-resize';
+                        } else if (onBottomEdge || onTopEdge) {
+                            target.style.cursor = 'ns-resize';
+                        } else if (canMove()) {
+                            target.style.cursor = 'move';
+                        } else {
+                            target.style.cursor = 'default';
+                        }
+                    }
+
+
+                   /*  if (clicked && clicked.isResizing) {
+                        if (clicked.onRightEdge) { 
+                            var currentWidth = Math.max(clicked.cx - e.clientX  + clicked.w, minWidth);
+                            target.style.width = Math.max(x, minWidth) + 'px';
+                        }
+                        // if (clicked.onRightEdge) target.style.width = Math.max(x, minWidth) + 'px';
+                        if (clicked.onBottomEdge) target.style.height = Math.max(y, minHeight) + 'px';
+
+                        if (clicked.onLeftEdge) {
+                            var currentWidth = Math.max(clicked.cx - e.clientX  + clicked.w, minWidth);
+                            console.log(e.clientX - clicked.x);
+                            if (currentWidth > minWidth) {
+                                pane.style.width = currentWidth + 'px';
+                                pane.style.left = e.clientX + 'px';	
+                            }
+                        }
+                        if (clicked.onTopEdge) {
+                            var currentHeight = Math.max(clicked.cy - e.clientY  + clicked.h, minHeight);
+                            console.log(clicked.cy , e.clientY  , clicked.h);
+                            if (currentHeight > minHeight) {
+                                pane.style.height = currentHeight + 'px';
+                                pane.style.top = e.clientY + 'px';	
+                            }
+                        }
+                        // if (preSnapped) {
+                        //     setBounds(pane,
+                        //     );
+                        // return;
+                    }
+
+                    if (clicked && clicked.isMoving) {
+                        if (preSnapped) {
+                            setBounds(pane,
+                                e.clientX - preSnapped.width / 2,
+                                e.clientY - Math.min(clicked.y, preSnapped.height),
+                                preSnapped.width,
+                                preSnapped.height
+                            );
+                            return;
+                        }
+
+                        // moving
+                        target.style.top = (e.clientY - clicked.y) + 'px';
+                        target.style.left = (e.clientX - clicked.x) + 'px';
+                        return;
+                    }
+
+                    // style cursor
+                    if (onRightEdge && onBottomEdge || onLeftEdge && onTopEdge) {
+                        target.style.cursor = 'nwse-resize';
+                    } else if (onRightEdge && onTopEdge || onBottomEdge && onLeftEdge) {
+                        target.style.cursor = 'nesw-resize';
+                    } else if (onRightEdge || onLeftEdge) {
+                        target.style.cursor = 'ew-resize';
+                    } else if (onBottomEdge || onTopEdge) {
+                        target.style.cursor = 'ns-resize';
+                    } else if (canMove()) {
+                        target.style.cursor = 'move';
+                    } else {
+                        target.style.cursor = 'default';
+                    }
+                    return; */
+
+                    /* if (clicked && clicked.isResizing) {
+                        // console.log(target);
+                        if (clicked.onRightEdge) pane.style.width = Math.max(x, minWidth) + 'px';
+                        if (clicked.onBottomEdge) pane.style.height = Math.max(y, minHeight) + 'px';
+
+                        if (clicked.onLeftEdge) {
+                            var currentWidth = Math.max(clicked.cx - e.clientX  + clicked.w, minWidth);
+                            console.log(clicked.cx,  e.clientX , clicked.w);
+                            if (currentWidth > minWidth) {
+                                pane.style.width = currentWidth + 'px';
+                                pane.style.left = e.clientX + 'px';	
+                            }
+                        }
+
+                        if (clicked.onTopEdge) {
+                            var currentHeight = Math.max(clicked.cy - e.clientY  + clicked.h, minHeight);
+                            console.log(clicked.cy , e.clientY  , clicked.h);
+                            if (currentHeight > minHeight) {
+                                pane.style.height = currentHeight + 'px';
+                                pane.style.top = e.clientY + 'px';	
+                            }
+                        }
+
+                        return;
+                    }
+
+                    if (clicked && clicked.isMoving) {
+                        if (preSnapped) {
+                            setBounds(pane,
+                                e.clientX - preSnapped.width / 2,
+                                e.clientY - Math.min(clicked.y, preSnapped.height),
+                                preSnapped.width,
+                                preSnapped.height
+                            );
+                            return;
+                        }
+
+                        // moving
+                        target.style.top = (e.clientY - clicked.y) + 'px';
+                        target.style.left = (e.clientX - clicked.x) + 'px';
+                        return;
+                    }
+
+                    // style cursor
+                    if (onRightEdge && onBottomEdge || onLeftEdge && onTopEdge) {
+                        pane.style.cursor = 'nwse-resize';
+                    } else if (onRightEdge && onTopEdge || onBottomEdge && onLeftEdge) {
+                        pane.style.cursor = 'nesw-resize';
+                    } else if (onRightEdge || onLeftEdge) {
+                        pane.style.cursor = 'ew-resize';
+                    } else if (onBottomEdge || onTopEdge) {
+                        pane.style.cursor = 'ns-resize';
+                    } else if (canMove()) {
+                        pane.style.cursor = 'move';
+                    } else {
+                        pane.style.cursor = 'default';
+                    } */
+                    
+                    // This code executes when mouse moves without clicking
+
+                }
+
+                animate();
+
+                function onUp(e) {
+                    calc(e);
+
+                    if (clicked && clicked.isMoving) {
+                        // Snap
+                        var snapped = {
+                            width: b.width,
+                            height: b.height
+                        };
+                    }
+                    clicked = null;
+                }   
+                
+                
+            }
+        };
+
+    </script>
+</body>
+</html>
