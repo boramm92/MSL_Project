@@ -9,11 +9,11 @@
 <meta property="og:title"            content="maum.ai" />
 <meta property="og:type"             content="website" /><!-- 웹 페이지 타입 -->
 <meta property="og:url"              content="https://maum.ai" />
-<meta property="og:image"            content="/aiaas/kr/images/maum.ai_web.png" />
+<meta property="og:image"            content="/aiaas/common/images/maum.ai_web.png" />
 <meta property="og:description"      content="웹인공지능이 필요할땐 마음AI" />
 <!-- icon_favicon -->
-<link rel="apple-touch-icon-precomposed" href="/aiaas/kr/images/ico_maumAI_60x60.png">
-<link rel="shortcut icon" type="image/x-icon" href="/aiaas/kr/images/ico_maumAI_60x60.ico">
+<link rel="apple-touch-icon-precomposed" href="/aiaas/en/images/ico_maumAI_60x60.png">
+<link rel="shortcut icon" type="image/x-icon" href="/aiaas/en/images/ico_maumAI_60x60.ico">
 
 <!-- -------------------- General Resources -------------------- -->
 <!-- General CSS -->
@@ -135,7 +135,13 @@
 					<span title="Clothing Multi-Attributes Detection"><a href="/clothingDetection/enclothingDetectionMain"><img src="/aiaas/kr/images/menu/ico_vis_clothes.svg" alt="의상 특징 인식" style="width:20px;"></a></span>
 					<span title="License Plate Recognition"><a href="/avr/enPlateRecogMain"><img src="/aiaas/kr/images/menu/ico_vis_4_fold.svg" alt="License Plate Recognition " style="width:26px;"></a></span>
 					<span title="Windshield Detection"><a href="/avr/enAvrMain"><img src="/aiaas/kr/images/menu/ico_vis_windshield.svg" alt="Windshield Detection" style="width:23px;"></a></span>
-					<span title="Anomaly Detection"><a href="/anomalyReverse/enAnomalyReverseMain"><img src="/aiaas/kr/images/menu/ico_vis_9_fold_.svg" alt="Anomaly Detection" style="width: 16px;margin: 0 0 0 7px;"></a></span>
+					<span title="Reverse Direction Detection"><a href="/anomalyReverse/enAnomalyReverseMain"><img src="/aiaas/kr/images/menu/ico_vis_9_fold_.svg" alt="Reverse Direction Detection" style="width: 16px;margin: 0 0 0 7px;"></a></span>
+					<!-- [D] 배회 감지 메뉴(span 영역) 추가해주세요. -->
+					<span title="Loitering Detection"><a href="해당 페이지 링크 넣어주세요"><img src="/aiaas/kr/images/menu/ico_vis_loiteringDetect.svg" alt="Loitering Detection" style="width:18px;"></a></span>
+					<!-- [D] 실신 감지 메뉴(span 영역) 추가해주세요. -->
+					<span title="Fall Down Detection"><a href="해당 페이지 링크 넣어주세요"><img src="/aiaas/kr/images/menu/ico_vis_fallDownDetect.svg" alt="Fall Down Detection" style="width:18px;"></a></span>
+					<!-- [D] 침입 감지 메뉴(span 영역) 추가해주세요. -->
+					<span title="Intrusion Detection"><a href="해당 페이지 링크 넣어주세요"><img src="/aiaas/kr/images/menu/ico_vis_IntrusionDetect.svg" alt="Intrusion Detection" style="width:18px;"></a></span>
 					<span title="Bracket Positioning"><a href="/positioning/positioningMain"><img src="/aiaas/kr/images/menu/ico_vis_positioning.svg" alt="Bracket Positioning" style="width:18px;"></a></span>
 				</div>
 			</li>					
@@ -173,7 +179,16 @@
 				<!-- [API Services/물체/얼굴 검출] -->				
 				<a class="twodepth" href="/avr/enAvrMain">Windshield Detection</a>
 				<!-- [API Services/이상 행동 감지] -->
-				<a class="twodepth active" href="/anomalyReverse/enAnomalyReverseMain">Anomaly Detection</a>
+				<a class="twodepth" href="/anomalyReverse/enAnomalyReverseMain">Reverse Direction Detection</a>
+				<!-- [API Services/배회 감지] -->
+				<!-- [D] 배회 감지 메뉴(a 영역) 추가해주세요. -->
+				<a class="twodepth" href="해당 페이지 링크 넣어주세요">Loitering Detection</a>
+				<!-- [API Services/실신 감지] -->
+				<!-- [D] 실신 감지 메뉴(a 영역) 추가해주세요. -->
+				<a class="twodepth" href="해당 페이지 링크 넣어주세요">Fall Down Detection</a>
+				<!-- [API Services/침입 감지] -->
+				<!-- [D] 침입 감지 메뉴(a 영역) 추가해주세요. -->
+				<a class="twodepth" href="해당 페이지 링크 넣어주세요">Intrusion Detection</a>
 				<!-- [API Services/치아 교정기 포지셔닝 ] -->
 				<a class="twodepth" href="/positioning/enPositioningMain">Bracket Positioning</a>
 			</li>
@@ -222,8 +237,8 @@
 				</div>
 			</li>
 			<li class="sublist list6_sub">
-					<!-- [Data/데이터 관계분석] -->				
-					<a class="twodepth" href="/dataAnalysis/enDataAnalysis">Correlation analysis</a>
+				<!-- [Data/데이터 관계분석] -->				
+				<a class="twodepth" href="/dataAnalysis/enDataAnalysis">Correlation analysis</a>
 			</li>
 
 			<!--대화-->
@@ -274,228 +289,177 @@
         <!-- .contents -->
 		<div class="contents">        	
 			<div class="content api_content">
-				<h1 class="api_tit">Text Style Transfer</h1>
-				<ul class="menu_lst">
-					<li class="tablinks active" onclick="openTap(event, 'txtStyTrans_demo')" id="defaultOpen"><button type="button">AI Engine</button></li>
-					<li class="tablinks" onclick="openTap(event, 'txtStyTrans_example')"><button type="button">Use Case</button></li>
-					<li class="tablinks" onclick="openTap(event, 'txtStyTrans_menu')"><button type="button">Manual</button></li>					
+				<h1 class="api_tit">Fall Down Detection</h1>
+				<ul class="menu_lst vision_lst">
+					<li class="tablinks active" onclick="openTap(event, 'dtndemo')" id="defaultOpen">
+						<button type="button">AI Engine</button>
+					</li>
+					<li class="tablinks" onclick="openTap(event, 'dtnexample')">
+						<button type="button">Use Case</button>
+					</li>
+					<li class="tablinks" onclick="openTap(event, 'dtnmenu')">
+						<button type="button">Manual</button>
+					</li>		
 				</ul>
-				<!--.conv_demo-->
-				<div class="demobox demobox_nlu" id="txtStyTrans_demo">
-					<p><span>Text Style Transfer</span> </p>
-					<span class="sub">It changes the sentence to the desired style while conveying the meaning consistently.</span>
-		
-					<!--.itf_box-->
-					<div class="itf_box correct_box txtStyTrans_box">
-						<!--.step01-->
-						<div class="step01">
-							<div class="demo_top">
-								<span>Step 1. Sample</span>
-							</div>
-							<div class="ift_topbox">
-								<p>Select the sentence you wish to convert.</p>
-								<ul class="ift_lst">
-									<li>
+				<!-- .demobox -->
+				<div class="demobox" id="dtndemo">
+					<p><span>Fall Down Detection</span></p>
+					<span class="sub">Recognizes people fainting in a specific area.</span>
+					<!--faceTracking_box-->
+					<div class="demo_layout detection_box">
+						<!--tr_1-->
+						<div class="tr_1">
+							<div class="fl_box">
+								<p><em class="far fa-file-video"></em>Use Sample File</p>
+								<div class="sample_box">
+									<div class="sample_1">
 										<div class="radio">
-											<input type="radio" id="radio" name="sentence" value="내일 저녁으로 삼겹살 어때?" checked="checked">
-											<label for="radio">내일 저녁으로 삼겹살 어때?</label>
+											<input type="radio" id="sample1" name="anomaly_option" value="1" checked="">
+											<label for="sample1" class="female">
+												<video controls>
+													<source src="/aiaas/common/video/lipSync_sample.mp4" type="video/mp4">													
+													IE 8 and below does not produce video. Please update the IE version.
+												</video>
+											</label>
 										</div>
-									</li>
-									<li>
-										<div class="radio">
-											<input type="radio" id="radio2" name="sentence" value="끝나고 시간이 되면 참석하도록 하겠습니다.">
-											<label for="radio2">끝나고 시간이 되면 참석하도록 하겠습니다. </label>
-										</div>
-									</li>
-									<li>
-										<div class="radio">
-											<input type="radio" id="radio3" name="sentence">
-											<label for="radio3"></label>
-										</div>
-										<input type="text" class="iptTxt" placeholder="Type in (Input at least five characters.)">
-										<div class="txtCount">(<span>0</span>/80 characters)</div>
-									</li>
-								</ul>
-							</div>
-
-							<div class="btm_box">
-								<div class="fl">
-									<div class="demo_top">Step 2. Text Style</div>
-									<div class="demo_slt_box">
-										<div class="radioBox">
-											<!-- [D] 성경구절 checked default -->
-											<input type="radio" id="style01" name="txtStyle" checked>
-											<label for="style01">Bible</label>
-											<input type="radio" id="style02" name="txtStyle">
-											<label for="style02">Hashtag</label>
-											<input type="radio" id="style03" name="txtStyle">
-											<label for="style03">Twit</label>
-											<input type="radio" id="style04" name="txtStyle">
-											<label for="style04">Messenger</label>
-											<input type="radio" id="style05" name="txtStyle">
-											<label for="style05">Speech</label>
-											<input type="radio" id="style06" name="txtStyle">
-											<label for="style06">Non-fiction</label>
-											<input type="radio" id="style07" name="txtStyle">
-											<label for="style07">Conversation</label>
-											<input type="radio" id="style08" name="txtStyle">
-											<label for="style08">Script</label>
-										</div>
-									</div>
+									</div>		
 								</div>
-
-								<div class="fr">
-									<div class="demo_top">Step 3. of Sentences</div>
-									<div class="demo_slt_box">
-										<div class="sltBox">
-											<select class="select">
-												<option value="1">1</option>
-												<option value="2">2</option>
-												<!-- [D] 3문장 selected default -->
-												<option value="3" selected>3</option>
-												<option value="4">4</option>
-												<option value="5">5</option>
-											</select>
-											<em class="fas fa-caret-down"></em>
-										</div>
+							</div>
+							<div class="fr_box">
+								<p><em class="far fa-file-video"></em>Use My file</p>
+								<div class="uplode_box">
+									<div class="btn" id="uploadFile">
+										<em class="fas fa-times hidden close"></em>
+										<em class="far fa-file-video hidden"></em>
+										<label for="demoFile" class="demolabel">Upload Video</label>
+										<input type="file" id="demoFile" class="demoFile" accept=".mp4">
 									</div>
+									<ul>
+										<li>* Supported files: .mp4</li>
+										<li>* Video file size under 50MB</li>
+										<li>* The video must be taken in accordance with the CCTV environment.</li>
+										<li>* A person should be positioned inside the frame without being cut off.</li>
+										<li>* Use an angle and illumination image similar to the sample.</li>
+										<li>* With only one object to be detected in the video, the accuracy is high.</li>
+									</ul>
 								</div>
 							</div>
 		
 							<div class="btn_area">
-								<!-- [D] 예문 직접 입력 시 5자 미만인 경우 'Transfer' 버튼 클릭 시 alert('최소한 5자 이상의 문장을 입력해주세요.') 띄워주세요 -->
-								<button type="button" class="btn_transfer">Transfer</button>
+								<button type="button" class="btn_start" id="sub">Set Zone</button>
 							</div>
 						</div>
-						<!--//.step01-->
+						<!--tr_1-->
 
-						<div class="loading_wrap">
-							<p><em class="far fa-file-alt"></em> In progress</p>
-							<div class="loding_box">
-								<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="144px" height="18px" viewBox="0 0 128 16" xml:space="preserve"><path fill="#c9c3ec" fill-opacity="0.42" d="M6.4,4.8A3.2,3.2,0,1,1,3.2,8,3.2,3.2,0,0,1,6.4,4.8Zm12.8,0A3.2,3.2,0,1,1,16,8,3.2,3.2,0,0,1,19.2,4.8ZM32,4.8A3.2,3.2,0,1,1,28.8,8,3.2,3.2,0,0,1,32,4.8Zm12.8,0A3.2,3.2,0,1,1,41.6,8,3.2,3.2,0,0,1,44.8,4.8Zm12.8,0A3.2,3.2,0,1,1,54.4,8,3.2,3.2,0,0,1,57.6,4.8Zm12.8,0A3.2,3.2,0,1,1,67.2,8,3.2,3.2,0,0,1,70.4,4.8Zm12.8,0A3.2,3.2,0,1,1,80,8,3.2,3.2,0,0,1,83.2,4.8ZM96,4.8A3.2,3.2,0,1,1,92.8,8,3.2,3.2,0,0,1,96,4.8Zm12.8,0A3.2,3.2,0,1,1,105.6,8,3.2,3.2,0,0,1,108.8,4.8Zm12.8,0A3.2,3.2,0,1,1,118.4,8,3.2,3.2,0,0,1,121.6,4.8Z"></path><g><path fill="#27c1c1" fill-opacity="1" d="M-42.7,3.84A4.16,4.16,0,0,1-38.54,8a4.16,4.16,0,0,1-4.16,4.16A4.16,4.16,0,0,1-46.86,8,4.16,4.16,0,0,1-42.7,3.84Zm12.8-.64A4.8,4.8,0,0,1-25.1,8a4.8,4.8,0,0,1-4.8,4.8A4.8,4.8,0,0,1-34.7,8,4.8,4.8,0,0,1-29.9,3.2Zm12.8-.64A5.44,5.44,0,0,1-11.66,8a5.44,5.44,0,0,1-5.44,5.44A5.44,5.44,0,0,1-22.54,8,5.44,5.44,0,0,1-17.1,2.56Z"></path><animateTransform attributeName="transform" type="translate" values="23 0;36 0;49 0;62 0;74.5 0;87.5 0;100 0;113 0;125.5 0;138.5 0;151.5 0;164.5 0;178 0" calcMode="discrete" dur="1820ms" repeatCount="indefinite"></animateTransform></g></svg>
-		
-								<p>AI processing takes a while..</p>
+						<!-- edit_box -->
+						<div class="edit_box">
+							<p><em class="far fa-file-image"></em>Set Zone</p>
+							<div class="img_box">
+								<!-- [D] 이미지 들어갈 곳 -->
+								<img src="/aiaas/kr/images/img_avr_resualt.png" alt="edit image">
+							</div>
+							<p class="desc">* Please specify the area to detect loitering. (ex. nearby parks etc.)</p>
+							<p class="desc">* Click the line to add the vertex.</p>
+							<div class="btn_area">
+								<a class="btn_start btn_cancel" href="">Reset</a>
+								<a class="btn_start" id="recogButton">Process</a>
+							</div>
+						</div>
+						<!-- //.edit_box -->
+
+						<!--tr_2-->
+						<div class="tr_2">
+							<p><em class="far fa-file-video"></em>In Progress</p>
+							<div class="loding_box ">
+								<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="144px" height="18px" viewBox="0 0 128 16" xml:space="preserve"><path fill="#fcc6ce" fill-opacity="0.42" d="M6.4,4.8A3.2,3.2,0,1,1,3.2,8,3.2,3.2,0,0,1,6.4,4.8Zm12.8,0A3.2,3.2,0,1,1,16,8,3.2,3.2,0,0,1,19.2,4.8ZM32,4.8A3.2,3.2,0,1,1,28.8,8,3.2,3.2,0,0,1,32,4.8Zm12.8,0A3.2,3.2,0,1,1,41.6,8,3.2,3.2,0,0,1,44.8,4.8Zm12.8,0A3.2,3.2,0,1,1,54.4,8,3.2,3.2,0,0,1,57.6,4.8Zm12.8,0A3.2,3.2,0,1,1,67.2,8,3.2,3.2,0,0,1,70.4,4.8Zm12.8,0A3.2,3.2,0,1,1,80,8,3.2,3.2,0,0,1,83.2,4.8ZM96,4.8A3.2,3.2,0,1,1,92.8,8,3.2,3.2,0,0,1,96,4.8Zm12.8,0A3.2,3.2,0,1,1,105.6,8,3.2,3.2,0,0,1,108.8,4.8Zm12.8,0A3.2,3.2,0,1,1,118.4,8,3.2,3.2,0,0,1,121.6,4.8Z"></path>
+									<g>
+										<path fill="#f7778a" fill-opacity="1" d="M-42.7,3.84A4.16,4.16,0,0,1-38.54,8a4.16,4.16,0,0,1-4.16,4.16A4.16,4.16,0,0,1-46.86,8,4.16,4.16,0,0,1-42.7,3.84Zm12.8-.64A4.8,4.8,0,0,1-25.1,8a4.8,4.8,0,0,1-4.8,4.8A4.8,4.8,0,0,1-34.7,8,4.8,4.8,0,0,1-29.9,3.2Zm12.8-.64A5.44,5.44,0,0,1-11.66,8a5.44,5.44,0,0,1-5.44,5.44A5.44,5.44,0,0,1-22.54,8,5.44,5.44,0,0,1-17.1,2.56Z"></path>
+										<animateTransform attributeName="transform" type="translate" values="23 0;36 0;49 0;62 0;74.5 0;87.5 0;100 0;113 0;125.5 0;138.5 0;151.5 0;164.5 0;178 0" calcMode="discrete" dur="1820ms" repeatCount="indefinite"></animateTransform>
+									</g></svg>		
+								<p>AI processing takes a while...(about 3 seconds)</p>
 							</div>
 							<div class="btn_area">
 								<button type="button" class="btn_back1"><em class="fas fa-redo"></em>Reset</button>
 							</div>
 		
 						</div>
+						<!--tr_2-->
 
-						<!--.step02-->
-						<div class="step02">
-							<div class="demo_top">
-								<em class="far fa-file-alt"></em><span>Result</span>
+						<!--tr_3-->
+						<div class="tr_3">
+							<div class="result_file">
+								<p><em class="far fa-file-image"></em>Result</p>
+								<div class="result_box">
+									<div class="status">
+										<span>Fall Down</span>
+										<!-- [D] 감지 없는경우에는 아래 문구 보여주기 -->
+										<!-- <span>Normal (Undetected)</span> -->
+									</div>
+									<div class="img">
+										<!-- [D] img가 없는경우 후면에 체크아이콘 보여짐 -->
+										<img src="/aiaas/kr/images/img_avr_resualt.png" alt="result image">
+									</div>
+								</div>		
 							</div>
-							<div class="result_box">
-								<ul>
-									<li>
-										<dl>
-											<dt><span>Input</span></dt>
-											<dd>
-												<p>오늘따라 웬지 분위기가 달라 보인당</p>
-											</dd>
-										</dl>
-									</li>
-									<li>
-										<dl>
-											<dt><span>Result</span></dt>
-											<dd>
-												<p>오늘따라 왠지 분위기가 달라 보인다</p>
-												<p>오늘따라 왠지 분위기가 달라 보인다</p>
-											</dd>
-										</dl>
-									</li>
-								</ul>
-							</div>
-		
 							<div class="btn_area">
-								<button type="button" class="btn_reset" id="btn_reset"><em class="fas fa-redo-alt"></em>Reset</button>
+								<button type="button" class="btn_back2"><em class="fas fa-redo"></em>Reset</button>
 							</div>
 						</div>
-						<!--//.step02-->
+						<!--tr_3-->
 					</div>
-					<!--//.itf_box-->
+					<!--//.faceTracking_box-->
 		
 				</div>
-				<!-- .conv_demo -->
-		
-				<!--.conv_menu-->
-				<div class="demobox" id="txtStyTrans_menu">
+				<!-- //.demobox -->
+
+				<!--.ftmenu-->
+				<div class="demobox vision_menu" id="dtnmenu">
 					<!--guide_box-->
 					<div class="guide_box">
 						<div class="guide_common">
-							<div class="title">API Guideline</div>
+							<div class="title">API Guideline</div>		
 							<p class="sub_title">Set up Environment</p>
 							<p class="sub_txt">1) REST API is available wherever you can send HTTP requests.</p>
 							<p class="sub_txt">2) It can be used in Python, Web, Javascript and Java.</p>
 							<p class="sub_title">ID &amp; Key</p>
 							<p class="sub_txt">1) You need a unique ID and key for Minds Lab’s API services.</p>
 							<p class="sub_txt">2) Subscribe ‘Business Plan’ or ‘Enterprise Plan’ on maum.ai platform. (https://maum.ai)</p>
-							<p class="sub_txt">3) After subscription, request an ID and key with required information filled in. <br>
+							<p class="sub_txt">3) After subscription, request an ID and key with required information filled in.<br>
 								<small>(ex. Service description, Requesting API, Company info. etc.)</small></p>
 							<p class="sub_txt">4) After an agreement, Minds Lab would send you an ID, key within 1-2 business days through email.</p>
 							<p class="sub_txt">5) Remember the ID and key and follow the instruction below.</p>
 							<p class="sub_txt">※ Disclosure is prohibited strictly for Minds Lab’s API ID and key.</p>
 						</div>
 						<div class="guide_group">
-							<div class="title">Text Style Transfer</div>
-							<p class="sub_txt">It changes the sentence to the desired style while conveying the meaning consistently.</p>
+							<div class="title">Fall Down Detection</div>
+							<p class="sub_txt">Recognizes people fainting in a specific area.</p>		
 						</div>
-					</div>		
+					</div>
+					<!--//.guide_box-->
 				</div>
-				<!--//conv_menu-->
+				<!--.ftmenu-->
 
-				<!--.conv_example-->
-				<div class="demobox" id="txtStyTrans_example">
-					<p><em style="color:#27c1c1;font-weight: 400;">Use Cases</em></p>
-					<span class="sub">Find out how AI can be applied to diverse area.</span>
-					
+				<!--.ftexample-->
+				<div class="demobox" id="dtnexample">
+					<p><em style="color:#f7778a; font-weight:500;">Fall Down Detection</em></p>
+					<span class="sub">Recognizes people fainting in a specific area.</span>
 					<div class="useCasesBox">
+						<!-- 이상행동 감지-->
 						<ul class="lst_useCases">
 							<li>
 								<dl>
 									<dt>
 										<em>CASE 01</em>
-										<span>YouTube Creator</span>
+										<span>Rapid detection of danger</span>
 									</dt>
-									<dd class="txt">Immediately reflect the content style by converting the content style to suit the video concept such as YouTube or Vlog.</dd>
-									<dd class="api_itemBox">
-										<ul class="lst_api">
-											<li class="ico_tts"><span>TTS</span></li>
-										</ul>
-									</dd>
-								</dl>
-							</li>
-							<li>
-								<dl>
-									<dt>
-										<em>CASE 02</em>
-										<span>Virtual Assistant</span>
-									</dt>
-									<dd class="txt">It is used together with an avatar to help you use the tone that fits your avatar concept.</dd>
-									<dd class="api_itemBox">
-										<ul class="lst_api">
-											<li class="ico_lipSyncAvt"><span>Lip-Sync Avatar</span></li>
-											<li class="ico_bot"><span>Chatbot</span></li>
-										</ul>
-									</dd>
-								</dl>
-							</li>
-							<li>
-								<dl>
-									<dt>
-										<em>CASE 03</em>
-										<span>Personal Blog</span>
-									</dt>
-									<dd class="txt">Various texts are converted into styles that suit individuality and used in personal blogs.</dd>
+									<dd class="txt">Recognizes people who fall down due to illness, assault, and others in real time and alerts you to dangerous situations.</dd>
 								</dl>
 							</li>
 						</ul>
+						<!--이상행동 감지-->
 					</div>
-					<!-- //conversion -->
 				</div>
-				<!--//.conv_example-->
+				<!--//.ftexample-->		
 			</div>
 		</div>
 		<!-- //.contents -->
@@ -510,7 +474,7 @@
 
 <!-- Local Script -->
 <script type="text/javascript">
-    // API 탭 - [D] 기존에 개발되어있는 script로 추가하지 않으셔도 됩니다.
+    // API 탭 - [D] 기존 작성된 script
     function openTap(evt, menu) {
         var i, demobox, tablinks;
         demobox = document.getElementsByClassName("demobox");
@@ -529,29 +493,84 @@
 
 jQuery.event.add(window,"load",function(){
     $(document).ready(function (){
-        // [D] step1의 예문 선택 중 직접 입력 시 라디오 체크 trigger
-		$('.iptTxt').on('focus', function(){
-			$('#radio3').trigger('click');
+		// 파일 업로드 기능 - [D] 기존 작성된 script
+		document.querySelector("#demoFile").addEventListener('change', function (ev) {
+			//파일명 변경
+			$('.fl_box').on('click', function () {
+				$(this).css("opacity", "1");
+				$('.tr_1 .btn_area .disBox').remove();
+			});
+
+			//파일 용량 체크
+			var demoFileInput = document.getElementById('demoFile');
+			var demoFile = demoFileInput.files[0];
+			var demoFileSize = demoFile.size;
+			var max_demoFileSize = 1024 * 1024 * 50;//1kb는 1024바이트
+			var demofile = document.querySelector("#demoFile");
+
+			if (demoFileSize > max_demoFileSize || !demofile.files[0].type.match(/video.mp4/)) {
+				$('.pop_simple').show();
+				// 팝업창 닫기
+				$('.pop_close, .pop_bg, .btn a').on('click', function () {
+					$('.pop_simple').fadeOut(300);
+					$('body').css({
+						'overflow': '',
+					});
+				});
+				$('.fl_box').css("opacity", "0.5");
+				$('#demoFile').val('');
+				$('.tr_1 .btn_area').append('<span class="disBox"></span>');
+
+			} else {
+				document.querySelector(".demolabel").innerHTML = ev.target.files[0].name;
+				var element = document.getElementById('uploadFile');
+				element.classList.remove('btn');
+				element.classList.add('btn_change');
+				$('.fl_box').css("opacity", "0.5");
+				$('.tr_1 .btn_area .disBox').remove();
+			}
 		});
 
-		// [D] step1의 예문 선택 중 직접 입력 글자수 제한
-        $('.iptTxt').keyup(function(e){
-			var content = $(this).val();
-        	$('.txtCount span').html(content.length);
+		// 업로드된 파일명박스 제거 - [D] 기존 작성된 script
+		$('em.close').on('click', function () {
+			$('.fl_box').css("opacity", "1");
+			$(this).parent().removeClass("btn_change");
+			$(this).parent().addClass("btn");
+			$(this).parent().children('.demolabel').text('동영상 업로드');
+			$('#demoFile').val('');
 
-            if(content.length > 80){
-                $(this).val(content.substring(0, 80));
-                $('.txtCount span').html(80);
-            }
-        });
+			//파일명 변경
+			document.querySelector("#demoFile").addEventListener('change', function (ev) {
+				document.querySelector(".demolabel").innerHTML = ev.target.files[0].name;
+				var element = document.getElementById('uploadFile');
+				element.classList.remove('btn');
+				element.classList.add('btn_change');
+				$('#sample1').prop('checked', false);
+			});
+		});
 
-		// [D] 예문 직접 입력 후 '변환 하기' 버튼 클릭 시 5자 미만 alert 띄우기 
-        $('.btn_transfer').on('click', function(){
-            var content = $('.iptTxt').val();
-			if(content.length < 5){
-				alert('Input at least five characters.');
-			}
-        });
+		// [D] 기존 작성된 script
+		$('.radio input').on('click', function () {
+			$('em.close').trigger('click');
+		});
+
+		// [D] 단계별 화면 확인을 위한 임시 script로 추가하지 않으셔도 됩니다.
+		$('.btn_start').on('click', function(){
+			$('.tr_1').hide();
+			$('.edit_box').show();
+		});
+		$('#recogButton').on('click', function(){
+			$('.edit_box').hide();
+			$('.tr_2').show();
+		});
+		$('.btn_back1').on('click', function(){
+			$('.tr_2').hide();
+			$('.tr_3').show();
+		});
+		$('.btn_back2').on('click', function(){
+			$('.tr_3').hide();
+			$('.tr_1').show();
+		});
     });
 });
 </script>
