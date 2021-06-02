@@ -430,9 +430,86 @@
 							<p class="sub_txt">5) Remember the ID and key and follow the instruction below.</p>
 							<p class="sub_txt">※ Disclosure is prohibited strictly for Minds Lab’s API ID and key.</p>
 						</div>
+
 						<div class="guide_group">
 							<div class="title">Fall Down Detection</div>
-							<p class="sub_txt">Recognizes people fainting in a specific area.</p>		
+							<p class="sub_txt">Recognizes people fainting in a specific area.</p>	
+
+							<span class="sub_title">Preparation</span>
+							<p class="sub_txt">- Input: video file</p>
+							<ul>
+								<li>File type : .mp4</li>
+								<li>Size : Under 50MB</li>
+							</ul>
+							<span class="sub_title">API Document</span>
+		
+							<!-- Upload START-->
+							<p class="sub_txt">① Request </p>
+							<ul>
+								<li>Method : POST</li>
+								<li>URL : https://api.maum.ai/abnormal-behavior/falldown:detect</li>
+							</ul>
+							<p class="sub_txt">② Request parameters</p>
+							<table>
+								<tbody>
+									<tr>
+										<th>Key</th>
+										<th>Description</th>
+										<th>type</th>
+									</tr>
+									<tr>
+										<td>apiId </td>
+										<td>Unique API  ID. Request from is required for the ID.</td>
+										<td>string</td>
+									</tr>
+									<tr>
+										<td>apiKey </td>
+										<td>Unique API key. Request from is required for the key.</td>
+										<td>string</td>
+									</tr>
+									<tr>
+										<td>video</td>
+										<td>type:file (.mp4) video file</td>
+										<td>file</td>
+									</tr>
+									<tr>
+										<td>roiList</td>
+										<td>area of interest information, Area information to detect falldown</td>
+										<td>string</td>
+									</tr>								
+								</tbody>
+							</table>
+							<p class="sub_txt">③ Request example </p>
+							<div class="code_box">
+<pre>
+curl --location --request POST 'https://api.maum.ai/abnormal-behavior/falldown:detect' \
+--header 'Content-Type: multipart/form-data' \
+--form 'apiId= Own API Id'
+--form 'apiKey= Own API Key'
+--form 'video= Input video file'
+--form 'roiList="{\"overall\":[0,130,1280,130,1280,720,0,720]}"'		
+</pre>
+							</div>
+
+							<p class="sub_txt">④ Response example </p>
+		
+							<div class="code_box">
+<pre>
+{
+	"message": {
+		"message": "Success",
+		"status": 0
+	},
+	"payload": {
+		"status": "falldown",
+		"abnormalImg": "w7/DmMO/w6AAEEpGSUYAAQEAAAEAAQAAw7/..."
+	}
+}
+		"result_text": "0:0:6.000"
+}	
+</pre>
+							</div>
+							<!-- Upload END-->	
 						</div>
 					</div>
 					<!--//.guide_box-->
