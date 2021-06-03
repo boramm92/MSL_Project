@@ -202,7 +202,7 @@
 					<span title="NLU"><a href="/nlu/enNluMain"><img src="/aiaas/en/images/menu/ico_lan_1_fold.svg" alt="NLU"></a></span>
 					<span title="MRC"><a href="/mrc/enMrcMain"><img src="/aiaas/en/images/menu/ico_lan_2_fold.svg" alt="MRC"></a></span>
 					<span title="XDC"><a href="/xdc/enXdcMain"><img src="/aiaas/en/images/menu/ico_lan_3_fold.svg" alt="XDC"></a></span>
-					<span title="Clickbait"><a href="해당 페이지 링크 넣어주세요"><img src="/aiaas/en/images/menu/ico_lan_clickbait.svg" alt="Clickbait"></a></span>
+					<span title="Clickbait News"><a href="해당 페이지 링크 넣어주세요"><img src="/aiaas/en/images/menu/ico_lan_clickbait.svg" alt="Clickbait News"></a></span>
 					<span title="GPT-2"><a href="/gpt/enGptMain"><img src="/aiaas/en/images/menu/ico_lan_5_fold.svg" alt="GPT-2"></a></span>
 					<span title="HMD"><a href="/hmd/enHmdMain"><img src="/aiaas/en/images/menu/ico_lan_6_fold.svg" alt="HMD"></a></span>
 					<span title="ITF"><a href="/itf/enItfMain"><img src="/aiaas/en/images/menu/ico_lan_itf.svg" alt="ITF"></a></span>
@@ -220,8 +220,8 @@
 				<a class="twodepth" href="/mrc/enMrcMain">MRC</a>
 				<!-- [API Services/Text Classifier] -->
 				<a class="twodepth" href="/xdc/enXdcMain">XDC</a>
-				<!-- [API Services/Clickbait] -->
-				<a class="twodepth" href="해당 페이지 링크 넣어주세요">Clickbait</a>
+				<!-- [API Services/Clickbait News] -->
+				<a class="twodepth" href="해당 페이지 링크 넣어주세요">Clickbait News</a>
 				<!-- [API Services/AI 작문] -->
 				<a class="twodepth" href="/gpt/enGptMain">GPT-2</a>
 				<!-- [API Services/Pattern Recognition] -->
@@ -292,131 +292,104 @@
         <!-- .contents -->
 		<div class="contents">        	
 			<div class="content api_content">
-				<h1 class="api_tit">Intrusion Detection</h1>
-				<ul class="menu_lst vision_lst">
-					<li class="tablinks active" onclick="openTap(event, 'dtndemo')" id="defaultOpen">
-						<button type="button">AI Engine</button>
-					</li>
-					<li class="tablinks" onclick="openTap(event, 'dtnexample')">
-						<button type="button">Use Case</button>
-					</li>
-					<li class="tablinks" onclick="openTap(event, 'dtnmenu')">
-						<button type="button">Manual</button>
-					</li>		
-				</ul>
-				<!-- .demobox -->
-				<div class="demobox" id="dtndemo">
-					<p><span>Intrusion Detection</span></p>
-					<span class="sub">In a specific area, you will be notified when someone breaks into the zone.</span>
-					<!--faceTracking_box-->
-					<div class="demo_layout detection_box">
-						<!--tr_1-->
-						<div class="tr_1">
-							<div class="fl_box">
-								<p><em class="far fa-file-video"></em>Use Sample File</p>
-								<div class="sample_box">
-									<div class="sample_1">
-										<div class="radio">
-											<input type="radio" id="sample1" name="anomaly_option" value="1" checked="">
-											<label for="sample1" class="female">
-												<video controls>
-													<source src="/aiaas/common/video/lipSync_sample.mp4" type="video/mp4">													
-													IE 8 and below does not produce video. Please update the IE version.
-												</video>
-											</label>
-										</div>
-									</div>		
-								</div>
-							</div>
-							<div class="fr_box">
-								<p><em class="far fa-file-video"></em>Use My file</p>
-								<div class="uplode_box">
-									<div class="btn" id="uploadFile">
-										<em class="fas fa-times hidden close"></em>
-										<em class="far fa-file-video hidden"></em>
-										<label for="demoFile" class="demolabel">Upload Video</label>
-										<input type="file" id="demoFile" class="demoFile" accept=".mp4">
-									</div>
-									<ul>
-										<li>* Supported files: .mp4</li>
-										<li>* Video file size under 50MB</li>
-										<li>* The video must be taken in accordance with the CCTV environment.</li>
-										<li>* A person should be positioned inside the frame without being cut off.</li>
-										<li>* Use an angle and illumination image similar to the sample.</li>
-										<li>* With only one object to be detected in the video, the accuracy is high.</li>
-									</ul>
-								</div>
-							</div>
+				<h1 class="api_tit">Clickbait News</h1>
+				<ul class="menu_lst">
+					<li class="tablinks active" onclick="openTap(event, 'clbtdemo')" id="defaultOpen"><button type="button">엔진</button></li>
+					<li class="tablinks" onclick="openTap(event, 'clbtexample')"><button type="button">적용사례</button></li>
+					<li class="tablinks" onclick="openTap(event, 'clbtmenu')"><button type="button">매뉴얼</button></li>
 		
+				</ul>
+				<!--.demobox_mrc-->
+				<div class="demobox demobox_mrc clickbait" id="clbtdemo">
+					<p><span>Clickbait News</span></p>
+					<span class="sub">If the title of the news and the content of the body are different, it determines whether it is a clickbait news.</span>
+					<p class="temp_txt">The service is currently available only in Korean. Other languages will be available soon.</p>
+					<!--.mrc_box-->
+					<div class="mrc_box">		
+						<!--.step01-->
+						<div class="step01">
+							<div class="demo_top">
+								<p>Insert Text</p>
+							</div>				
+							<div class="tab">
+								<button class="tablink active" onclick="clickTap(this, 'example')" id="defaultOpen2">Example</button>
+								<button class="tablink" onclick="clickTap(this, 'userWrite')">Insert</button>
+							</div>
+							<div class="tabcontent" id="example">
+								<dl>
+									<dt>Title</dt>
+									<dd>여의도 순복음교회에 불지른 20대 무죄</dd>
+								</dl>
+								<dl>
+									<dt>Body</dt>
+									<dd>서울 영등포경찰서는 여의도 순복음교회에 불을 지른 혐의(현존건조물방화)로 A(28) 씨를 붙잡아 구속했다고 2일 밝혔다. A씨는 지난달 25일 오후 7시 40분쯤 여의도 순복음교희 5층 복도에 불을 지른 혐의를 받고 있다. 당시 소방당국이 출동해 화재는 20분 만에 진화됐다. 인명피해는 없었지만, 신도 450여명이 급하게 대피하는 소동이 벌어졌다. 화재 직후, 경찰은 현장 주변 폐쇄회로(CC)TV를 통해 A씨가 화재장소에 다녀간 직후 불이 시작됐고 또 화재 2시간 전에도 다녀간 사실을 파악했다. 경찰은 이후 27일 서초동 자택에 있던 A 씨를 붙잡아 전날 구속했다. 경찰에 따르면 A씨는 '예배를 보러 갔다가 내부 지리를 몰라 5층에 갔을 뿐 붙을 지르지 않았다'고 부인했다. 경찰은 A씨가 2013년 교회에 신자로 등록하고 다녔던 사실을 바탕으로 진술의 신빙성이 떨어진다고 판단했다. 당 핵심 관계자는 연합뉴스와의 통화에서 “’대구ㆍ경북(TK) 지역은 경선할 예정이지만 나머지 지역은 공관위의 심사를 거쳐 전략공천과 경선 사이에 고려 중＂이라며 ＂수도권 등 주요 지역은 여권의 공천 결과를 지켜본 뒤 결정할 가능성도 있다"고 말했다, 경찰은 A씨가 수년 전부터 정신이상 중세를 보였다는 부친의 진술을 확보했다. A씨는 체포된 이후에도 영어로만 말을 하는 등 이상 행동을 보인 것으로 알려졌다. 경찰 관계자는 “A씨가 방화 혐의를 전면 부인하고 있다며 “붙을 지른 동기와 방화 방법을 조사 중이다. 현장에서 유증반응이 없어 인화성 물질을 뿌린 것으로는 보이지 않는다＂고 설명했다.</dd>
+								</dl>
+							</div>							
+							<div class="tabcontent" id="userWrite">
+								<dl>
+									<dt>Title</dt>
+									<dd>
+										<input type="text" class="iptTxt" placeholder="기사 제목을 입력해 주세요.">
+									</dd>
+								</dl>
+								<dl>
+									<dt>Body</dt>
+									<dd>
+										<textarea class="textarea" placeholder="기사 본문 내용을 입력해 주세요. (Input at least five characters.)"></textarea>
+									</dd>
+								</dl>								
+							</div>
+							
 							<div class="btn_area">
-								<button type="button" class="btn_start" id="sub">Set Zone</button>
+								<button type="button" class="btn_clsf">
+									<em class="fas fa-file-invoice"></em>Process
+								</button>
 							</div>
 						</div>
-						<!--tr_1-->
+						<!--//.step01-->
 
-						<!-- edit_box -->
-						<div class="edit_box">
-							<p><em class="far fa-file-image"></em>Set Zone</p>
-							<div class="img_box">
-								<!-- [D] 이미지 들어갈 곳 -->
-								<img src="/aiaas/kr/images/img_avr_resualt.png" alt="edit image">
-							</div>
-							<p class="desc">* Please specify the area to detect intrusion. (ex. private property, etc.)</p>
-							<p class="desc">* Click the line to add the vertex.</p>
-							<div class="btn_area">
-								<a class="btn_start btn_cancel" href="">Reset</a>
-								<a class="btn_start" id="recogButton">Process</a>
-							</div>
-						</div>
-						<!-- //.edit_box -->
-
-						<!--tr_2-->
-						<div class="tr_2">
-							<p><em class="far fa-file-video"></em>In Progress</p>
-							<div class="loding_box ">
-								<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="144px" height="18px" viewBox="0 0 128 16" xml:space="preserve"><path fill="#fcc6ce" fill-opacity="0.42" d="M6.4,4.8A3.2,3.2,0,1,1,3.2,8,3.2,3.2,0,0,1,6.4,4.8Zm12.8,0A3.2,3.2,0,1,1,16,8,3.2,3.2,0,0,1,19.2,4.8ZM32,4.8A3.2,3.2,0,1,1,28.8,8,3.2,3.2,0,0,1,32,4.8Zm12.8,0A3.2,3.2,0,1,1,41.6,8,3.2,3.2,0,0,1,44.8,4.8Zm12.8,0A3.2,3.2,0,1,1,54.4,8,3.2,3.2,0,0,1,57.6,4.8Zm12.8,0A3.2,3.2,0,1,1,67.2,8,3.2,3.2,0,0,1,70.4,4.8Zm12.8,0A3.2,3.2,0,1,1,80,8,3.2,3.2,0,0,1,83.2,4.8ZM96,4.8A3.2,3.2,0,1,1,92.8,8,3.2,3.2,0,0,1,96,4.8Zm12.8,0A3.2,3.2,0,1,1,105.6,8,3.2,3.2,0,0,1,108.8,4.8Zm12.8,0A3.2,3.2,0,1,1,118.4,8,3.2,3.2,0,0,1,121.6,4.8Z"></path>
-									<g>
-										<path fill="#f7778a" fill-opacity="1" d="M-42.7,3.84A4.16,4.16,0,0,1-38.54,8a4.16,4.16,0,0,1-4.16,4.16A4.16,4.16,0,0,1-46.86,8,4.16,4.16,0,0,1-42.7,3.84Zm12.8-.64A4.8,4.8,0,0,1-25.1,8a4.8,4.8,0,0,1-4.8,4.8A4.8,4.8,0,0,1-34.7,8,4.8,4.8,0,0,1-29.9,3.2Zm12.8-.64A5.44,5.44,0,0,1-11.66,8a5.44,5.44,0,0,1-5.44,5.44A5.44,5.44,0,0,1-22.54,8,5.44,5.44,0,0,1-17.1,2.56Z"></path>
-										<animateTransform attributeName="transform" type="translate" values="23 0;36 0;49 0;62 0;74.5 0;87.5 0;100 0;113 0;125.5 0;138.5 0;151.5 0;164.5 0;178 0" calcMode="discrete" dur="1820ms" repeatCount="indefinite"></animateTransform>
-									</g></svg>		
-								<p>AI processing takes a while...(about 3 seconds)</p>
+						<!--.step02-->
+						<div class="step02">
+							<p><em class="far fa-file-alt"></em> In progress</p>
+							<div class="loding_box">
+								<svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="144px" height="18px" viewBox="0 0 128 16" xml:space="preserve"><path fill="#c9c3ec" fill-opacity="0.42" d="M6.4,4.8A3.2,3.2,0,1,1,3.2,8,3.2,3.2,0,0,1,6.4,4.8Zm12.8,0A3.2,3.2,0,1,1,16,8,3.2,3.2,0,0,1,19.2,4.8ZM32,4.8A3.2,3.2,0,1,1,28.8,8,3.2,3.2,0,0,1,32,4.8Zm12.8,0A3.2,3.2,0,1,1,41.6,8,3.2,3.2,0,0,1,44.8,4.8Zm12.8,0A3.2,3.2,0,1,1,54.4,8,3.2,3.2,0,0,1,57.6,4.8Zm12.8,0A3.2,3.2,0,1,1,67.2,8,3.2,3.2,0,0,1,70.4,4.8Zm12.8,0A3.2,3.2,0,1,1,80,8,3.2,3.2,0,0,1,83.2,4.8ZM96,4.8A3.2,3.2,0,1,1,92.8,8,3.2,3.2,0,0,1,96,4.8Zm12.8,0A3.2,3.2,0,1,1,105.6,8,3.2,3.2,0,0,1,108.8,4.8Zm12.8,0A3.2,3.2,0,1,1,118.4,8,3.2,3.2,0,0,1,121.6,4.8Z"></path><g><path fill="#27c1c1" fill-opacity="1" d="M-42.7,3.84A4.16,4.16,0,0,1-38.54,8a4.16,4.16,0,0,1-4.16,4.16A4.16,4.16,0,0,1-46.86,8,4.16,4.16,0,0,1-42.7,3.84Zm12.8-.64A4.8,4.8,0,0,1-25.1,8a4.8,4.8,0,0,1-4.8,4.8A4.8,4.8,0,0,1-34.7,8,4.8,4.8,0,0,1-29.9,3.2Zm12.8-.64A5.44,5.44,0,0,1-11.66,8a5.44,5.44,0,0,1-5.44,5.44A5.44,5.44,0,0,1-22.54,8,5.44,5.44,0,0,1-17.1,2.56Z"></path><animateTransform attributeName="transform" type="translate" values="23 0;36 0;49 0;62 0;74.5 0;87.5 0;100 0;113 0;125.5 0;138.5 0;151.5 0;164.5 0;178 0" calcMode="discrete" dur="1820ms" repeatCount="indefinite"></animateTransform></g></svg>		
+								<p>AI processing takes a while...</p>
 							</div>
 							<div class="btn_area">
 								<button type="button" class="btn_back1"><em class="fas fa-redo"></em>Reset</button>
-							</div>
+							</div>		
+						</div>
+						<!-- //.step02 -->
 		
-						</div>
-						<!--tr_2-->
-
-						<!--tr_3-->
-						<div class="tr_3">
-							<div class="result_file">
-								<p><em class="far fa-file-image"></em>Result</p>
-								<div class="result_box">
-									<div class="status">
-										<span>Intrusion</span>
-										<!-- [D] 감지 없는경우에는 아래 문구 보여주기 -->
-										<!-- <span>Normal (Undetected)</span> -->
-									</div>
-									<div class="img">
-										<!-- [D] img가 없는경우 후면에 체크아이콘 보여짐 -->
-										<img src="/aiaas/kr/images/img_avr_resualt.png" alt="result image">
-									</div>
-								</div>		
+						<!--.step03-->
+						<div class="step03">
+							<div class="demo_top">
+								<p>Result</p>
 							</div>
-							<div class="btn_area">
-								<button type="button" class="btn_back2"><em class="fas fa-redo"></em>Reset</button>
+							<div class="resultBox"><em>Clickbait</em> (Validity: <span>93.25%</span>)</div>
+							<div class="result_txt">
+								<dl>
+									<dt>Title</dt>
+									<dd>여의도 순복음교회에 불지른 20대 무죄</dd>
+								</dl>
+								<dl>
+									<dt>Body</dt>
+									<dd>서울 영등포경찰서는 여의도 순복음교회에 불을 지른 혐의(현존건조물방화)로 A(28) 씨를 붙잡아 구속했다고 2일 밝혔다. A씨는 지난달 25일 오후 7시 40분쯤 여의도 순복음교희 5층 복도에 불을 지른 혐의를 받고 있다. 당시 소방당국이 출동해 화재는 20분 만에 진화됐다. 인명피해는 없었지만, 신도 450여명이 급하게 대피하는 소동이 벌어졌다. 화재 직후, 경찰은 현장 주변 폐쇄회로(CC)TV를 통해 A씨가 화재장소에 다녀간 직후 불이 시작됐고 또 화재 2시간 전에도 다녀간 사실을 파악했다. 경찰은 이후 27일 서초동 자택에 있던 A 씨를 붙잡아 전날 구속했다. 경찰에 따르면 A씨는 '예배를 보러 갔다가 내부 지리를 몰라 5층에 갔을 뿐 붙을 지르지 않았다'고 부인했다. 경찰은 A씨가 2013년 교회에 신자로 등록하고 다녔던 사실을 바탕으로 진술의 신빙성이 떨어진다고 판단했다. 당 핵심 관계자는 연합뉴스와의 통화에서 “’대구ㆍ경북(TK) 지역은 경선할 예정이지만 나머지 지역은 공관위의 심사를 거쳐 전략공천과 경선 사이에 고려 중＂이라며 ＂수도권 등 주요 지역은 여권의 공천 결과를 지켜본 뒤 결정할 가능성도 있다"고 말했다, 경찰은 A씨가 수년 전부터 정신이상 중세를 보였다는 부친의 진술을 확보했다. A씨는 체포된 이후에도 영어로만 말을 하는 등 이상 행동을 보인 것으로 알려졌다. 경찰 관계자는 “A씨가 방화 혐의를 전면 부인하고 있다며 “붙을 지른 동기와 방화 방법을 조사 중이다. 현장에서 유증반응이 없어 인화성 물질을 뿌린 것으로는 보이지 않는다＂고 설명했다.</dd>
+								</dl>
+							</div>
+							<div class="btn_area">		
+								<button type="button" class="btn_reset"><em class="fas fa-redo"></em>Reset</button>
 							</div>
 						</div>
-						<!--tr_3-->
+						<!--//.step03-->
 					</div>
-					<!--//.faceTracking_box-->
+					<!--//.mrc_box-->
 		
 				</div>
-				<!-- //.demobox -->
-
-				<!--.ftmenu-->
-				<div class="demobox vision_menu" id="dtnmenu">
+				<!-- .demobox_mrc -->
+		
+				<!--.clbtmenu-->
+				<div class="demobox" id="clbtmenu">		
 					<!--guide_box-->
 					<div class="guide_box">
 						<div class="guide_common">
@@ -433,111 +406,54 @@
 							<p class="sub_txt">5) Remember the ID and key and follow the instruction below.</p>
 							<p class="sub_txt">※ Disclosure is prohibited strictly for Minds Lab’s API ID and key.</p>
 						</div>
-
 						<div class="guide_group">
-							<div class="title">Intrusion Detection</div>
-							<p class="sub_txt">In a specific area, you will be notified when someone breaks into the zone.</p>
-
-							<span class="sub_title">Preparation</span>
-							<p class="sub_txt">- Input: video file</p>
-							<ul>
-								<li>File type : .mp4</li>
-								<li>Size : Under 50MB </li>
-							</ul>
-							<span class="sub_title">API Document</span>
-		
-							<!-- Upload START-->
-							<p class="sub_txt">① Request </p>
-							<ul>
-								<li>Method : POST</li>
-								<li>URL : https://api.maum.ai/abnormal-behavior/intrusion:detect</li>
-							</ul>
-							<p class="sub_txt">② Request 파라미터 설명 </p>
-							<table>
-								<tbody>
-									<tr>
-										<th>Key</th>
-										<th>Description</th>
-										<th>type</th>
-									</tr>
-									<tr>
-										<td>apiId </td>
-										<td>Unique API  ID. Request from is required for the ID.</td>
-										<td>string</td>
-									</tr>
-									<tr>
-										<td>apiKey </td>
-										<td>Unique API key. Request from is required for the key.</td>
-										<td>string</td>
-									</tr>
-									<tr>
-										<td>video</td>
-										<td>type:file (.mp4) video file</td>
-										<td>file</td>
-									</tr>
-									<tr>
-										<td>roiList</td>
-										<td>area of interest information, Area information to detect intrusions</td>
-										<td>string</td>
-									</tr>								
-								</tbody>
-							</table>
-							<p class="sub_txt">③ Request example </p>
-							<div class="code_box">
-<pre>
-url --location --request POST 'https://api.maum.ai/abnormal-behavior/intrusion:detect' \
---header 'Content-Type: multipart/form-data' \
---form 'apiId= Own API Id'
---form 'apiKey= Own API Key'
---form 'video= Input video file'
---form 'roiList="{\"overall\":[0,130,1280,130,1280,720,0,720]}"'				
-</pre>
-							</div>
-
-							<p class="sub_txt">④ Response example </p>
-		
-							<div class="code_box">
-<pre>
-{
-	"message": {
-		"message": "Success",
-		"status": 0
-	},
-	"payload": {
-		"status": "intrusion",
-		"abnormalImg": "w7/DmMO/w6AAEEpGSUYAAQEAAAEAAQAAw7/..."
-	}
-}		
-</pre>
-							</div>
-							<!-- Upload END-->	
+							<div class="title">Clickbait News</div>
+							<p class="sub_txt">If the title of the news and the content of the body are different, it determines whether it is a clickbait news.</p>
 						</div>
 					</div>
 					<!--//.guide_box-->
 				</div>
-				<!--.ftmenu-->
+				<!--//clbtmenu-->
 
-				<!--.ftexample-->
-				<div class="demobox" id="dtnexample">
-					<p><em style="color:#f7778a; font-weight:500;">Intrusion Detection</em></p>
-					<span class="sub">In a specific area, you will be notified when someone breaks into the zone.</span>
+				<!--.clbtexample-->
+				<div class="demobox" id="clbtexample">
+					<p><em style="color:#27c1c1;font-weight: 400;">Use Cases</em></p>
+					<span class="sub">Find out how AI can be applied to diverse area.</span>
 					<div class="useCasesBox">
-						<!-- 이상행동 감지-->
 						<ul class="lst_useCases">
 							<li>
 								<dl>
 									<dt>
 										<em>CASE 01</em>
-										<span>Rapid detection of danger</span>
+										<span>Clickbait News Detection</span>
 									</dt>
-									<dd class="txt">It recognizes in real time a person who intrudes into a designated area due to theft or intrusion, and alerts you to a dangerous situation.</dd>
+									<dd class="txt">SNS is spreading rapidly, and it can be used to prevent the spread of clickbait news in the form of disguised as the media.</dd>
+									<dd class="api_itemBox">
+										<ul class="lst_api">
+											<li class="ico_mrc"><span>MRC</span></li>
+											<li class="ico_xdc"><span>XDC</span></li>
+										</ul>
+									</dd>
+								</dl>
+							</li>
+							<li>
+								<dl>
+									<dt>
+										<em>CASE 02</em>
+										<span>Advertising News Detection</span>
+									</dt>
+									<dd class="txt">It detects news containing advertising content and blocks the intrusion of incorrect or unnecessary information.</dd>
+									<dd class="api_itemBox">
+										<ul class="lst_api">
+											<li class="ico_mrc"><span>MRC</span></li>
+											<li class="ico_xdc"><span>XDC</span></li>
+										</ul>
+									</dd>
 								</dl>
 							</li>
 						</ul>
-						<!--이상행동 감지-->
 					</div>
-				</div>
-				<!--//.ftexample-->		
+				</div>		
 			</div>
 		</div>
 		<!-- //.contents -->
@@ -569,86 +485,52 @@ url --location --request POST 'https://api.maum.ai/abnormal-behavior/intrusion:d
 
     document.getElementById("defaultOpen").click();
 
+	// mrc Demo tab - [D] 기존 작성된 script	
+	function clickTap(evt, tapName) {
+		if(tapName === 'userWrite'){
+			$('.mrc_box .step02').hide();
+			$('.mrc_box .step03').hide();
+		}else if(tapName === 'example'){
+			$('#id_input_text').trigger('keyup');
+		}
+
+		var i, tabcontent, tablinks;
+		tabcontent = document.getElementsByClassName("tabcontent");
+		for (i = 0; i < tabcontent.length; i++) {
+			tabcontent[i].style.display = "none";
+		}
+		tablinks = document.getElementsByClassName("tablink");
+		for (i = 0; i < tablinks.length; i++) {
+			tablinks[i].className = tablinks[i].className.replace(" active", "");
+		}
+		document.getElementById(tapName).style.display = "block";
+		evt.className += " active";
+	}	
+	document.getElementById("defaultOpen2").click();	
+
 jQuery.event.add(window,"load",function(){
     $(document).ready(function (){
-		// 파일 업로드 기능 - [D] 기존 작성된 script
-		document.querySelector("#demoFile").addEventListener('change', function (ev) {
-			//파일명 변경
-			$('.fl_box').on('click', function () {
-				$(this).css("opacity", "1");
-				$('.tr_1 .btn_area .disBox').remove();
-			});
-
-			//파일 용량 체크
-			var demoFileInput = document.getElementById('demoFile');
-			var demoFile = demoFileInput.files[0];
-			var demoFileSize = demoFile.size;
-			var max_demoFileSize = 1024 * 1024 * 50;//1kb는 1024바이트
-			var demofile = document.querySelector("#demoFile");
-
-			if (demoFileSize > max_demoFileSize || !demofile.files[0].type.match(/video.mp4/)) {
-				$('.pop_simple').show();
-				// 팝업창 닫기
-				$('.pop_close, .pop_bg, .btn a').on('click', function () {
-					$('.pop_simple').fadeOut(300);
-					$('body').css({
-						'overflow': '',
-					});
-				});
-				$('.fl_box').css("opacity", "0.5");
-				$('#demoFile').val('');
-				$('.tr_1 .btn_area').append('<span class="disBox"></span>');
-
-			} else {
-				document.querySelector(".demolabel").innerHTML = ev.target.files[0].name;
-				var element = document.getElementById('uploadFile');
-				element.classList.remove('btn');
-				element.classList.add('btn_change');
-				$('.fl_box').css("opacity", "0.5");
-				$('.tr_1 .btn_area .disBox').remove();
-			}
-		});
-
-		// 업로드된 파일명박스 제거 - [D] 기존 작성된 script
-		$('em.close').on('click', function () {
-			$('.fl_box').css("opacity", "1");
-			$(this).parent().removeClass("btn_change");
-			$(this).parent().addClass("btn");
-			$(this).parent().children('.demolabel').text('동영상 업로드');
-			$('#demoFile').val('');
-
-			//파일명 변경
-			document.querySelector("#demoFile").addEventListener('change', function (ev) {
-				document.querySelector(".demolabel").innerHTML = ev.target.files[0].name;
-				var element = document.getElementById('uploadFile');
-				element.classList.remove('btn');
-				element.classList.add('btn_change');
-				$('#sample1').prop('checked', false);
-			});
-		});
-
-		// [D] 기존 작성된 script
-		$('.radio input').on('click', function () {
-			$('em.close').trigger('click');
-		});
-
 		// [D] 단계별 화면 확인을 위한 임시 script로 추가하지 않으셔도 됩니다.
-		$('.btn_start').on('click', function(){
-			$('.tr_1').hide();
-			$('.edit_box').show();
-		});
-		$('#recogButton').on('click', function(){
-			$('.edit_box').hide();
-			$('.tr_2').show();
+		$('.btn_clsf').on('click', function(){
+			$('.step01').hide();
+			$('.step02').show();
 		});
 		$('.btn_back1').on('click', function(){
-			$('.tr_2').hide();
-			$('.tr_3').show();
+			$('.step02').hide();
+			$('.step03').show();
 		});
-		$('.btn_back2').on('click', function(){
-			$('.tr_3').hide();
-			$('.tr_1').show();
+		$('.btn_reset').on('click', function(){
+			$('.step03').hide();
+			$('.step01').show();
 		});
+
+		// [D] 예문 직접 입력 후 '분류 하기' 버튼 클릭 시 5자 미만 alert 띄우기 
+        $('.btn_clsf').on('click', function(){
+            var content = $('.textarea').val();
+			if(content.length < 5){
+				alert('최소 5자 이상 입력해 주세요.');
+			}
+        });
     });
 });
 </script>
