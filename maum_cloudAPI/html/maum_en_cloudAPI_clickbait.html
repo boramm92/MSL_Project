@@ -313,7 +313,7 @@
 							</div>				
 							<div class="tab">
 								<button class="tablink active" onclick="clickTap(this, 'example')" id="defaultOpen2">Example</button>
-								<button class="tablink" onclick="clickTap(this, 'userWrite')">Insert</button>
+								<button class="tablink userWrite" onclick="clickTap(this, 'userWrite')">Insert</button>
 							</div>
 							<div class="tabcontent" id="example">
 								<dl>
@@ -364,7 +364,7 @@
 						<!--.step03-->
 						<div class="step03">
 							<div class="demo_top">
-								<p>Result</p>
+								<p><em class="fas fa-sitemap"></em> Result</p>
 							</div>
 							<div class="resultBox"><em>Clickbait</em> (Validity: <span>93.25%</span>)</div>
 							<div class="result_txt">
@@ -526,9 +526,11 @@ jQuery.event.add(window,"load",function(){
 
 		// [D] 예문 직접 입력 후 '분류 하기' 버튼 클릭 시 5자 미만 alert 띄우기 
         $('.btn_clsf').on('click', function(){
-            var content = $('.textarea').val();
-			if(content.length < 5){
-				alert('최소 5자 이상 입력해 주세요.');
+			if($('.userWrite').is('.active')){
+				var content = $('.textarea').val();
+				if(content.length < 5){
+					alert('최소 5자 이상 입력해 주세요.');
+				}
 			}
         });
     });
