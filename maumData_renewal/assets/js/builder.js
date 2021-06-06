@@ -1,24 +1,31 @@
 /* MINDsLab. NBR. 20210604 */
 $(document).ready(function(){
+    // header scrollX func
+    $(window).scroll(function () {
+		$('#header').css('left', 0 - $(this).scrollLeft());
+	});
+
     // tool menu active func
-    var toolMenuBtn = $('.tool_list li button');
+    var toolMenuBtn = $('.menu_list li button');
+    var classBox = $('.menu_list li .classBox');
 
     toolMenuBtn.on('click', function(){
-        var classBox = $(this).siblings('.classBox');  
-             
-        if($(this).is('.active')){
+        var thisClassBox = $(this).next('.classBox');
+
+        if($(this).hasClass('active')){
             $(this).removeClass('active');
-            classBox.removeClass('open'); 
-            setTimeout(function(){                 
-                classBox.css('display', 'none');              
+            thisClassBox.removeClass('active');
+            setTimeout(function(){
+                thisClassBox.css('display', 'none');
             },200);
         }else{
             toolMenuBtn.removeClass('active');
-            $(this).addClass('active');            
-            classBox.css('display', 'block');
-            setTimeout(function(){
-                classBox.addClass('open');
-            },200);           
+            classBox.removeClass('active');
+            $(this).addClass('active');
+            thisClassBox.css('display', 'block');
+            setTimeout(function(){                
+                thisClassBox.addClass('active');
+            },200);            
         }
     });
 
