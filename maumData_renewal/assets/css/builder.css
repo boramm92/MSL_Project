@@ -3,13 +3,17 @@
 
 /* -------------------- layout -------------------- */
 #wrap {width:100%; min-width:1280px; height:100%; min-height:768px; background:#000;}
-#header {position:fixed; top:0; left:0; width:100%; min-width:1280px; height:72px; border-bottom:1px solid #1d2026; box-sizing:border-box; background:#151b27;}
-#container {display:table; width:100%; height:100%; padding:72px 0 0; box-sizing:border-box;}
+#header {position:relative; top:0; left:0; width:100%; min-width:1280px; height:72px; border-bottom:1px solid #1d2026; box-sizing:border-box; background:#151b27;}
+#container {display:table; position:relative; width:100%; height:calc(100% - 72px); box-sizing:border-box;}
 #container .toolMenuBar {display:table-cell; width:52px; height:100%; background:#151b27; vertical-align:top;}
-#container #contents {display:table-cell; position:relative; width:calc(100% - 52px); vertical-align:top;}
+#container #contents {display:table-cell; width:calc(100% - 52px); vertical-align:top;}
 
 /* -------------------- common -------------------- */
-
+/* radio */
+input[type="radio"] {display:none; width:1px; height:1px; margin:0 0 0 -1px; border:none; background:none; opacity:0;}
+input[type="radio"] + label {color:#adafc1; font-size:14px; letter-spacing:-0.14px; line-height:32px; cursor:pointer;}
+input[type="radio"] + label:before {content:''; display:inline-block; width:12px; height:12px; margin:0 12px 0 0; border:1px solid #2d333c; border-radius:50%; box-sizing:border-box; background:transparent;}
+input[type="radio"]:checked + label:before {border:3px solid #1f242e; background:#4175ff;}
 
 /* -------------------- header -------------------- */
 #header .sta {display:flex; justify-content:space-between; align-items:center; position:relative; height:100%; margin:0 14px;}
@@ -18,30 +22,42 @@
 #header .sta .btnBox button.btn_unable_work {position:relative; margin:0 22px; background:#262d3c url('../images/builder/ico_uabWork.svg') 12px 50% no-repeat;}
 #header .sta .btnBox button.btn_unable_work:before {content:''; display:inline-block; position:absolute; top:7px; right:-26px; width:1px; height:28px; border-left:1px solid #2d3136;}
 #header .sta .btnBox button.btn_temporary_save {margin:0 22px; background:#262d3c url('../images/builder/ico_tprySave.svg') 12px 50% no-repeat;}
-#header .sta .btnBox button.btn_edit_complete {background:#3340a8 url('../images/builder/ico_editCplt.svg') 12px 50% no-repeat;}
-#header .sta .titBox {overflow:hidden; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%);}
-#header .sta .titBox .pjt_name {display:inline-block; overflow:hidden; width:250px; color:#fff; font-size:15px; font-weight:500; line-height:70px; text-align:center; white-space:nowrap; text-overflow:ellipsis;}
+#header .sta .btnBox button.btn_edit_complete {background:#3340a8 url('../images/builder/ico_editCplt.svg') 12px 50% no-repeat; font-weight:500;}
+#header .sta .titBox {position:absolute; top:50%; left:50%; text-align:center; transform:translate(-50%, -50%);}
+#header .sta .titBox .pjt_name {display:inline-block; overflow:hidden; max-width:300px; color:#fff; font-size:15px; font-weight:500; line-height:70px; text-align:center; white-space:nowrap; text-overflow:ellipsis;}
+#header .sta .titBox .guideViewer {display:inline-block; position:absolute; top:50%; width:20px; height:20px; margin:0 0 0 16px; transform:translate(0, -50%); cursor:pointer;}
+#header .sta .titBox .guideViewer em {color:#aaaeb2; font-size:20px; transition:all 0.3s ease-out; vertical-align:top;}
+#header .sta .titBox .guideViewer:hover em {color:#3d4cc9;}
+#header .sta .titBox .guideViewer .guideBox {display:none; position:absolute; top:30px; right:0; width:auto; min-width:300px; height:auto; min-height:250px; padding:16px; border-radius:6px; box-shadow:0 3px 6px 0 rgba(20, 21, 38, 0.69); box-sizing:border-box; background:#fff; z-index:1020;}
+#header .sta .titBox .guideViewer .guideBox .guideDetail {text-align:left;}
+#header .sta .titBox .guideViewer .guideBox .guideDetail dt {box-sizing:border-box; color:#26282b; font-size:14px; font-weight:700; letter-spacing:-0.14px;}
+#header .sta .titBox .guideViewer .guideBox .guideDetail dd ul {margin:26px 0 0; padding:0 0 0 16px; box-sizing:border-box;}
+#header .sta .titBox .guideViewer .guideBox .guideDetail dd ul li {color:#26282b; font-size:12px; letter-spacing:-0.12px; line-height:22px; word-break:keep-all;}
+#header .sta .titBox .guideViewer .guideBox .guideDetail dd ul.decimal li {list-style:decimal;}
+#header .sta .titBox .guideViewer .guideBox .guideDetail dd ul.disc li {list-style:disc;}
+#header .sta .titBox .guideViewer:hover .guideBox {display:block;}
 
 /* -------------------- toolMenuBar -------------------- */
 .toolMenuBar .menu_list {display:flex; flex-direction:column; justify-content:center; position:relative;}
-.toolMenuBar .menu_list li {width:100%; height:52px;}
-.toolMenuBar .menu_list li button {width:100%; height:100%; transition:background-color 0.2s ease-out;}
-.toolMenuBar .menu_list li button.btn_bounding_box {background:url('../images/builder/ico_tool_bdBox.svg') 50% 50% no-repeat;}
-.toolMenuBar .menu_list li button.btn_bounding_box:before {content:''; display:block; position:absolute; width:0; height:0; border-top:10px solid transparent; border-right:10px solid transparent; border-bottom:10px solid transparent; border-left:10px solid #20252e;}
-.toolMenuBar .menu_list li button.btn_segmentation {background:url('../images/builder/ico_tool_segmt.svg') 50% 50% no-repeat;}
-.toolMenuBar .menu_list li button.btn_keyPoint {background:url('../images/builder/ico_tool_keyPit.svg') 50% 50% no-repeat;}
-.toolMenuBar .menu_list li button.btn_move_object {background:url('../images/builder/ico_tool_moveObj.svg') 50% 50% no-repeat;}
-.toolMenuBar .menu_list li button.btn_zoomIn {background:url('../images/builder/ico_tool_zoomIn.svg') 50% 50% no-repeat;}
-.toolMenuBar .menu_list li button.btn_zoomOut {background:url('../images/builder/ico_tool_zoomOut.svg') 50% 50% no-repeat;}
-.toolMenuBar .menu_list li button.btn_reset {background:url('../images/builder/ico_tool_reset.svg') 50% 50% no-repeat;}
-.toolMenuBar .menu_list li button.btn_undo {background:url('../images/builder/ico_tool_undo.svg') 50% 50% no-repeat;}
-.toolMenuBar .menu_list li button.btn_redo {background:url('../images/builder/ico_tool_redo.svg') 50% 50% no-repeat;}
-.toolMenuBar .menu_list li button.active {background-color:#3340a8;}
-.toolMenuBar .menu_list li button span {display:inline-block; overflow:hidden; text-indent:-9999px; line-height:0; white-space:nowrap;}
-.toolMenuBar .menu_list li .classBox {display:none; position:absolute; top:6px; right:-164px; width:164px; border:1px solid #3b3d45; border-radius:6px; box-sizing:border-box; background:#20252e; z-index:1000; transition:all 0.2s ease-out; opacity:0;}
-.toolMenuBar .menu_list li .classBox.active {right:-176px; opacity:1;}
-.toolMenuBar .menu_list li .classBox .tit {padding:0 11px; border-bottom:1px solid #3b3d45; color:#adafc1; font-size:14px; line-height:39px;}
-.toolMenuBar .menu_list li .classBox .class_list {overflow:auto; width:100%; max-height:480px;}
+.toolMenuBar .menu_list > li {width:100%; height:52px;}
+.toolMenuBar .menu_list > li button {position:relative; width:100%; height:100%; transition:background-color 0.2s ease-out;}
+.toolMenuBar .menu_list > li button.btn_bounding_box {background:url('../images/builder/ico_tool_bdBox.svg') 50% 50% no-repeat, url('../images/builder/ico_triangle_g.svg') 100% 50% no-repeat;}
+.toolMenuBar .menu_list > li button.btn_segmentation {background:url('../images/builder/ico_tool_segmt.svg') 50% 50% no-repeat, url('../images/builder/ico_triangle_g.svg') 100% 50% no-repeat;}
+.toolMenuBar .menu_list > li button.btn_keyPoint {background:url('../images/builder/ico_tool_keyPit.svg') 50% 50% no-repeat, url('../images/builder/ico_triangle_g.svg') 100% 50% no-repeat;}
+.toolMenuBar .menu_list > li button.btn_move_object {background:url('../images/builder/ico_tool_moveObj.svg') 50% 50% no-repeat;}
+.toolMenuBar .menu_list > li button.btn_zoomIn {background:url('../images/builder/ico_tool_zoomIn.svg') 50% 50% no-repeat;}
+.toolMenuBar .menu_list > li button.btn_zoomOut {background:url('../images/builder/ico_tool_zoomOut.svg') 50% 50% no-repeat;}
+.toolMenuBar .menu_list > li button.btn_reset {background:url('../images/builder/ico_tool_reset.svg') 50% 50% no-repeat;}
+.toolMenuBar .menu_list > li button.btn_undo {background:url('../images/builder/ico_tool_undo.svg') 50% 50% no-repeat;}
+.toolMenuBar .menu_list > li button.btn_redo {background:url('../images/builder/ico_tool_redo.svg') 50% 50% no-repeat;}
+.toolMenuBar .menu_list > li button.active {background-color:#3340a8;}
+.toolMenuBar .menu_list > li button.active.open:before {content:''; display:block; position:relative; top:10px; right:-57px; width:8px; height:12px; background:url('../images/builder/ico_tipPoint.svg') 100% 50% no-repeat; z-index:1010;}
+.toolMenuBar .menu_list > li .classBox {display:none; position:absolute; top:6px; right:-176px; width:164px; border:1px solid #3b3d45; border-radius:6px; box-sizing:border-box; background:#20252e; z-index:1000; transition:all 0.2s ease-out;}
+.toolMenuBar .menu_list > li .classBox.active {display:block;}
+.toolMenuBar .menu_list > li .classBox .tit {padding:0 11px; border-bottom:1px solid #3b3d45; color:#adafc1; font-size:14px; line-height:39px;}
+.toolMenuBar .menu_list > li .classBox .class_list {overflow:auto; width:100%; max-height:320px;}
+.toolMenuBar .menu_list > li .classBox .class_list li input[type="radio"] + label {display:block; padding:0 12px; box-sizing:border-box;}
+.toolMenuBar .menu_list > li .classBox .class_list li input[type="radio"]:checked + label {background:#2e3748;}
 
 /* -------------------- content -------------------- */
 /* common */
@@ -53,7 +69,25 @@
 
 
 /* -------------------- aside -------------------- */
-.aside {position:fixed; top:72px; right:-300px; width:300px; height:calc(100% - 72px); background:#151b27; transition:right 0.3s ease-out;}
+.aside {position:fixed; top:72px; right:-304px; width:304px; height:calc(100% - 72px); background:#151b27; transition:right 0.3s ease-out;}
 .aside.on {right:0;}
 .aside .btn_expand {display:block; position:absolute; bottom:150px; left:-24px; width:24px; height:50px; border:2px solid #1e2229; border-radius:5px 0 0 5px; box-sizing:border-box; background:#151b27 url('../images/builder/ico_seeMore_arw.svg') 50% 50% no-repeat;}
-.aside .btn_expand span {display:inline-block; overflow:hidden; text-indent:-9999px; line-height:0; white-space:nowrap;}
+
+.aside .currentFile {height:50px; padding:0 16px; border-bottom:1px solid #060c17; box-sizing:border-box; color:#adafc1; font-size:13px; letter-spacing:-0.13px; line-height:48px;}
+.aside .currentFile span {display:inline-block; overflow:hidden; width:225px; color:#adafc1; font-size:13px; letter-spacing:-0.13px; white-space:nowrap; text-overflow:ellipsis; vertical-align:middle;}
+
+.aside .guideFile {height:50px; padding:0 16px; border-bottom:1px solid #060c17; box-sizing:border-box; color:#adafc1; font-size:13px; letter-spacing:-0.13px; line-height:48px;}
+.aside .guideFile .fileName {display:inline-block; overflow:hidden; width:245px; color:#adafc1; font-size:13px; letter-spacing:-0.13px; white-space:nowrap; text-overflow:ellipsis; vertical-align:middle;}
+.aside .guideFile .btn_guide_download {width:24px; height:24px; background:url('../images/builder/ico_download.svg') 50% 50% no-repeat;}
+
+.aside .comments {border-bottom:2px solid #16212e; box-sizing:border-box;}
+.aside .comments .tit {height:50px; padding:0 16px; box-sizing:border-box; background:#2a354a url('../images/builder/ico_caret_down_g.svg') top 50% right 16px no-repeat; color:#adafc1; font-size:13px; letter-spacing:-0.13px; line-height:48px; cursor:pointer;}
+.aside .comments .cmt_box {display:none; padding:20px;}
+.aside .comments .cmt_box .textarea {width:100%; height:66px; padding:12px; border:1px solid #3b3d45; border-radius:10px; box-sizing:border-box; background:#232831; color:#adafc1; font-size:14px; letter-spacing:-0.14px; line-height:22px;}
+
+.aside .tabWrap .tab_btn {display:flex; border-bottom:2px solid #16212e; box-sizing:border-box; background:#060c17;}
+.aside .tabWrap .tab_btn li button {width:50px; height:50px; transition:background-color 0.2s ease-out;}
+.aside .tabWrap .tab_btn li button.btn_tag {background:url('../images/builder/ico_list.svg') 50% 50% no-repeat;}
+.aside .tabWrap .tab_btn li button.btn_reject {background:url('../images/builder/ico_notice.svg') 50% 50% no-repeat;}
+.aside .tabWrap .tab_btn li button.active {background-color:#151b27;}
+.aside .tabWrap .tab_cont ul {width:100%; height:calc()}
