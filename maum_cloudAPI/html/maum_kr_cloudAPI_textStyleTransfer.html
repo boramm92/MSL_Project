@@ -463,7 +463,130 @@
 
 						<div class="guide_group">
 							<div class="title">스타일 변환 <small>(Text Style Transfer)</small></div>
-							<p class="sub_txt">문장을 원하는 스타일로 변경하는 동시에 의미는 일관성 있게 전달해줍니다.</p>		
+							<p class="sub_txt">문장을 원하는 스타일로 변경하는 동시에 의미는 일관성 있게 전달해줍니다.</p>			
+
+							<span class="sub_title">준비사항</span>
+							<p class="sub_txt">- Input: 한글 문장</p>
+
+							<span class="sub_title">실행 가이드</span>
+		
+							<!-- Upload START-->
+							<p class="sub_txt">① Request </p>
+							<ul>
+								<li>Method : POST</li>
+								<li>URL : https://api.maum.ai/text-style/transfer</li>
+							</ul>
+							<p class="sub_txt">② Request 파라미터 설명 </p>
+							<table>
+								<tbody>
+									<tr>
+										<th>키</th>
+										<th>설명</th>
+										<th>type</th>
+									</tr>
+									<tr>
+										<td>apiId</td>
+										<td>사용자의 고유 ID. 마인즈랩 담당자에게 이메일로 발급요청</td>
+										<td>string</td>
+									</tr>
+									<tr>
+										<td>apiKey</td>
+										<td>사용자의 고유 key. 마인즈랩 담당자에게 이메일로 발급요청</td>
+										<td>string</td>
+									</tr>
+									<tr>
+										<td>originalText</td>
+										<td>스타일 변환 대상 문장</td>
+										<td>string</td>
+									</tr>
+									<tr>
+										<td>numReturnSequences</td>
+										<td>리턴 받을 변환된 문장의 갯수</td>
+										<td>int</td>
+									</tr>
+									<tr>
+										<td>targetStyle</td>
+										<td>변환할 스타일</td>
+										<td>string</td>
+									</tr>								
+								</tbody>
+							</table>
+							<p class="sub_txt">③ Request 예제 </p>
+							<div class="code_box">
+<pre>
+curl --location --request POST 'http://api.maum.ai/text-style/transfer' \
+--header 'Content-Type: multipart/form-data' \
+--data-raw '{
+	"apiId": "{발급받은 API ID}",
+	"apiKey": "{발급받은 API KEY}",
+	"originalText": "내일 저녁으로 삼겹살 어때?",
+	"numReturnSequences": "3",
+	"targetStyle": "bible"
+}’		
+</pre>
+							</div>
+
+							<p class="sub_txt">④ Response 파라미터 설명</p>
+							<span class="table_tit">Response</span>
+							<table>
+								<tbody>
+									<tr>
+										<th>키</th>
+										<th>설명</th>
+										<th>type</th>
+									</tr>
+									<tr>
+										<td>message</td>
+										<td>API 동작여부</td>
+										<td>string</td>
+									</tr>
+									<tr>
+										<td>payload</td>
+										<td>변환된 문장 배열</td>
+										<td>string</td>
+									</tr>								
+								</tbody>
+							</table>
+
+							<span class="table_tit">message: API 동작여부</span>
+							<table>
+								<tbody>
+									<tr>
+										<th>키</th>
+										<th>설명</th>
+										<th>type</th>
+									</tr>
+									<tr>
+										<td>message</td>
+										<td>요청 처리 상태를 설명하는 문자열  (Success/ Fail)</td>
+										<td>string</td>
+									</tr>
+									<tr>
+										<td>status</td>
+										<td>요청 처리 상태에 대한 status code (0: Success)</td>
+										<td>int</td>
+									</tr>								
+								</tbody>
+							</table>
+
+							<p class="sub_txt">⑤ Response 예제 </p>
+		
+							<div class="code_box">
+<pre>
+{
+	"message": {
+		"message": "Success",
+		"status": 0
+	},
+	"payload": [
+		"내일 저녁으로 삼겹살을 드시겠습니까",
+		"내일 저녁으로 삼겹살을 드시겠습니까?",
+		"내일 저녁으로 삼겹살을 먹는 것이 어떠하뇨"
+	]
+}		
+</pre>
+							</div>
+							<!-- Upload END-->	
 						</div>
 					</div>		
 				</div>
