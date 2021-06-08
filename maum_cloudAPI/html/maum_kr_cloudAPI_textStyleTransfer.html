@@ -334,6 +334,7 @@
 											<label for="radio3"></label>
 										</div>
 										<input type="text" class="iptTxt" placeholder="직접 입력 (최소 5자 이상 입력해 주세요.)">
+										<div class="guide_txt">* 예문보다 쉬운 문장으로 입력해보세요. 예문보다 복잡한 문장은 스타일 변환이 어려울 수 있습니다.</div>
 										<div class="txtCount">(<span>0</span>/80 자)</div>
 									</li>
 								</ul>
@@ -581,6 +582,20 @@ jQuery.event.add(window,"load",function(){
 				alert('최소 5자 이상 입력해 주세요.');
 			}
         });
+
+		// [D] 단계별 화면 확인을 위한 임시 script로 추가하지 않으셔도 됩니다.
+		$('.btn_transfer').on('click', function(){
+			$('.step01').hide();
+			$('.loading_wrap').show();
+		});
+		$('.btn_back1').on('click', function(){
+			$('.loading_wrap').hide();
+			$('.step02').show();
+		});
+		$('.btn_reset').on('click', function(){
+			$('.step02').hide();
+			$('.step01').show();
+		});
     });
 });
 </script>

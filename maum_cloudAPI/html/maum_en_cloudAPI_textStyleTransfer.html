@@ -331,6 +331,7 @@
 											<label for="radio3"></label>
 										</div>
 										<input type="text" class="iptTxt" placeholder="Type in (Input at least five characters.)">
+										<div class="guide_txt">* Please enter a sentence that is easier than the example sentence.<br> &nbsp;&nbsp;&nbsp;Sentences more complex than example sentences may be difficult to style.</div>
 										<div class="txtCount">(<span>0</span>/80 characters)</div>
 									</li>
 								</ul>
@@ -577,6 +578,20 @@ jQuery.event.add(window,"load",function(){
 				alert('Input at least five characters.');
 			}
         });
+
+		// [D] 단계별 화면 확인을 위한 임시 script로 추가하지 않으셔도 됩니다.
+		$('.btn_transfer').on('click', function(){
+			$('.step01').hide();
+			$('.loading_wrap').show();
+		});
+		$('.btn_back1').on('click', function(){
+			$('.loading_wrap').hide();
+			$('.step02').show();
+		});
+		$('.btn_reset').on('click', function(){
+			$('.step02').hide();
+			$('.step01').show();
+		});
     });
 });
 </script>
