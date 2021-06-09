@@ -132,7 +132,7 @@
 					<span title="얼굴 추적"><a href="/faceTracking/krFaceTrackingMain"><img src="../aiaas/kr/images/menu/ico_vis_8_fold.svg" alt="얼굴 추적" style="width:19px;"></a></span>
 					<span title="얼굴 마스킹 "><a href="/avr/krFaceDetectionMain"><img src="../aiaas/kr/images/menu/ico_vis_face.svg" alt="얼굴 마스킹" style="width:19px;"></a></span>
 					<!-- [D] 얼굴 애니메이션 필터 메뉴(span 영역) 해당 위치에 추가해주세요. -->
-					<span title="얼굴 애니메이션 필터 "><a href="해당 페이지 링크 넣어주세요"><img src="../aiaas/kr/images/menu/ico_vis_aniFace.svg" alt="얼굴 애니메이션 필터" style="width:19px;"></a></span>
+					<span title="얼굴 애니메이션 필터 "><a href="해당 페이지 링크 넣어주세요"><img src="../aiaas/kr/images/menu/ico_vis_animeFace.svg" alt="얼굴 애니메이션 필터" style="width:19px;"></a></span>
 					<span title="헤어 컬러 인식"><a href="/hairSegmentation/hairSegmentationMain"><img src="../aiaas/kr/images/menu/ico_vis_hair.svg" alt="헤어 컬러 인식" style="width:18px;"></a></span>
 					<span title="의상 특징 인식"><a href="/clothingDetection/clothingDetectionMain"><img src="../aiaas/kr/images/menu/ico_vis_clothes.svg" alt="의상 특징 인식" style="width:20px;"></a></span>
 					<span title="차량 번호판 의식"><a href="/avr/krPlateRecogMain"><img src="../aiaas/kr/images/menu/ico_vis_4_fold.svg" alt="차량 번호판 의식" style="width:26px;"></a></span>
@@ -394,6 +394,7 @@
 									<div class="effect_control on">
 										<div class="range_slider"> 
 											<label>애니메이션 효과</label>
+											<!-- [D] 초기값은 30으로 맞춰져 있음 -->
 											<input class="slide_bar" type="range" value="30" min="10" max="60" step="10">
 										</div>
 										<ul class="range_value">
@@ -414,7 +415,8 @@
 									<div class="style_control">
 										<div class="range_slider"> 
 											<label>Style 조절</label>
-											<input class="slide_bar" type="range" value="2" min="0" max="5" step="1">
+											<!-- [D] 초기값은 0으로 맞춰져 있음 -->
+											<input class="slide_bar" type="range" value="0" min="0" max="5" step="1">
 										</div>
 										<ul class="range_value">
 											<li></li>
@@ -473,6 +475,7 @@
 												<li>
 													<select class="select">
 														<option value="" selected>악세사리</option>
+														<option value="">장신구</option>
 														<option value="">머리 장식</option>
 														<option value="">모자</option>
 													</select>
@@ -516,24 +519,26 @@
 						</div>
 
 						<div class="guide_group">
-							<div class="title">침입 감지 <small>(Intrusion Detection)</small></div>
-							<p class="sub_txt">특정 지역에 침입하는 사람을 인식합니다.</p>		
+							<div class="title">얼굴 애니메이션 필터 <small>(Anime Face)</small></div>
+							<p class="sub_txt">나의 얼굴을 애니메이션으로 생성하고, style 값을 조정하여 애니메이션을 꾸밀 수 있습니다.</p>		
 
 							<span class="sub_title">준비사항</span>
-							<p class="sub_txt">- Input: 비디오 파일</p>
+							<p class="sub_txt">- Input: 이미지 파일</p>
 							<ul>
-								<li>확장자 : .mp4</li>
-								<li>용량 : 50MB 이하 </li>
+								<li>확장자 : .png, .jpg, .bmp</li>
+								<li>용량 : 4MB 이하</li>
 							</ul>
+
 							<span class="sub_title">실행 가이드</span>
+							<em>Sample Make : Random한 Anime Face를 생성합니다.</em>
 		
 							<!-- Upload START-->
 							<p class="sub_txt">① Request </p>
 							<ul>
 								<li>Method : POST</li>
-								<li>URL : https://api.maum.ai/abnormal-behavior/intrusion:detect</li>
+								<li>URL : https://api.maum.ai/anime/sample:make</li>
 							</ul>
-							<p class="sub_txt">② Request 파라미터 설명 </p>
+							<p class="sub_txt">② Request 파라미터 설명</p>
 							<table>
 								<tbody>
 									<tr>
@@ -542,41 +547,93 @@
 										<th>type</th>
 									</tr>
 									<tr>
-										<td>apiId </td>
-										<td>사용자의 고유 ID. 마인즈랩 담당자에게 이메일로 발급요청 </td>
+										<td>apiId</td>
+										<td>사용자의 고유 ID. 마인즈랩 담당자에게 이메일로 발급요청</td>
 										<td>string</td>
 									</tr>
 									<tr>
-										<td>apiKey </td>
-										<td>사용자의 고유 key. 마인즈랩 담당자에게 이메일로 발급요청 </td>
-										<td>string</td>
-									</tr>
-									<tr>
-										<td>video</td>
-										<td>type:file (.mp4) 비디오 파일</td>
-										<td>file</td>
-									</tr>
-									<tr>
-										<td>roiList</td>
-										<td>관심 영역 정보, 침입을 감지할 영역 정보</td>
+										<td>apiKey</td>
+										<td>사용자의 고유 key. 마인즈랩 담당자에게 이메일로 발급요청</td>
 										<td>string</td>
 									</tr>								
 								</tbody>
 							</table>
-							<p class="sub_txt">③ Request 예제 </p>
+
+							<p class="sub_txt">③ Request 예제</p>
 							<div class="code_box">
 <pre>
-curl --location --request POST 'https://api.maum.ai/abnormal-behavior/intrusion:detect' \
+curl --location --request POST 'https://api.maum.ai/anime/sample:make' \
 --header 'Content-Type: multipart/form-data' \
 --form 'apiId= 발급받은 API ID' \
---form 'apiKey= 발급받은 API KEY' \
---form 'video= 침입을 감지할 비디오' \
---form 'roiList="{\"overall\":[0,130,1280,130,1280,720,0,720]}"'			
+--form 'apiKey= 발급받은 API KEY' \			
 </pre>
 							</div>
 
-							<p class="sub_txt">④ Response 예제 </p>
-		
+							<p class="sub_txt">④ Response 파라미터 설명</p>		
+							<span class="table_tit">Response</span>
+							<table>
+								<tbody>
+									<tr>
+										<th>키</th>
+										<th>설명</th>
+										<th>type</th>
+									</tr>
+									<tr>
+										<td>message</td>
+										<td>API 동작여부</td>
+										<td>Object</td>
+									</tr>
+									<tr>
+										<td>payload</td>
+										<td>결과 </td>
+										<td>Object</td>
+									</tr>								
+								</tbody>
+							</table>
+
+							<span class="table_tit">message: API 동작여부</span>
+							<table>
+								<tbody>
+									<tr>
+										<th>키</th>
+										<th>설명</th>
+										<th>type</th>
+									</tr>
+									<tr>
+										<td>message</td>
+										<td>요청 처리 상태를 설명하는 문자열  (Success/ Fail)</td>
+										<td>string</td>
+									</tr>
+									<tr>
+										<td>status</td>
+										<td>요청 처리 상태에 대한 status code (0: Success)</td>
+										<td>int</td>
+									</tr>								
+								</tbody>
+							</table>
+
+							<span class="table_tit">payload: 결과</span>
+							<table>
+								<tbody>
+									<tr>
+										<th>키</th>
+										<th>설명</th>
+										<th>type</th>
+									</tr>
+									<tr>
+										<td>img</td>
+										<td>AnimeFace Image Byte Array</td>
+										<td>byte</td>
+									</tr>
+									<tr>
+										<td>latent</td>
+										<td>AnimeFace .pkl File Byte Array</td>
+										<td>byte</td>
+									</tr>								
+								</tbody>
+							</table>
+
+							<p class="sub_txt">⑤ Response 예제</p>
 							<div class="code_box">
 <pre>
 {
@@ -585,13 +642,272 @@ curl --location --request POST 'https://api.maum.ai/abnormal-behavior/intrusion:
 		"status": 0
 	},
 	"payload": {
-		"status": "intrusion",
-		"abnormalImg": "w7/DmMO/w6AAEEpGSUYAAQEAAAEAAQAAw7/..."
+		"img": "byte[]",
+		"latent": "byte[]"
 	}
-}		
+}			
 </pre>
 							</div>
-							<!-- Upload END-->	
+
+							<em>Face Make : Human Face Image를 Input으로 넣을 때, 비슷한 모습의 Anime Face Image를 생성합니다.</em>
+							<p class="sub_txt">① Request</p>
+							<ul>
+								<li>Method : POST</li>
+								<li>URL : https://api.maum.ai/anime/face:make</li>
+							</ul>
+
+							<p class="sub_txt">② Request 파라미터 설명</p>
+							<table>
+								<tbody>
+									<tr>
+										<th>키</th>
+										<th>설명</th>
+										<th>type</th>
+									</tr>
+									<tr>
+										<td>apiId</td>
+										<td>사용자의 고유 ID. 마인즈랩 담당자에게 이메일로 발급요청</td>
+										<td>string</td>
+									</tr>
+									<tr>
+										<td>apiKey</td>
+										<td>사용자의 고유 key. 마인즈랩 담당자에게 이메일로 발급요청</td>
+										<td>string</td>
+									</tr>
+									<tr>
+										<td>image</td>
+										<td>type:file (.png, .jpg, .bmp) 이미지 파일</td>
+										<td>file</td>
+									</tr>
+									<tr>
+										<td>steps</td>
+										<td>비슷한 모습의 Image를 찾기 위해 사용할 step수(not required, default = 500)</td>
+										<td>int</td>
+									</tr>								
+								</tbody>
+							</table>
+
+							<p class="sub_txt">③ Request 예제</p>
+							<div class="code_box">
+<pre>
+curl --location --request POST 'https://api.maum.ai/anime/face:make' \
+--header 'Content-Type: multipart/form-data' \
+--form 'apiId= 발급받은 API ID' \
+--form 'apiKey= 발급받은 API KEY' \
+--form 'image= 인식할 얼굴 이미지 파일' \
+--form 'steps= default= 500' \			
+</pre>
+							</div>
+
+							<p class="sub_txt">④ Response 파라미터 설명</p>		
+							<span class="table_tit">Response</span>
+							<table>
+								<tbody>
+									<tr>
+										<th>키</th>
+										<th>설명</th>
+										<th>type</th>
+									</tr>
+									<tr>
+										<td>message</td>
+										<td>API 동작여부</td>
+										<td>Object</td>
+									</tr>
+									<tr>
+										<td>payload</td>
+										<td>결과 </td>
+										<td>Object</td>
+									</tr>								
+								</tbody>
+							</table>
+
+							<span class="table_tit">message: API 동작여부</span>
+							<table>
+								<tbody>
+									<tr>
+										<th>키</th>
+										<th>설명</th>
+										<th>type</th>
+									</tr>
+									<tr>
+										<td>message</td>
+										<td>요청 처리 상태를 설명하는 문자열  (Success/ Fail)</td>
+										<td>string</td>
+									</tr>
+									<tr>
+										<td>status</td>
+										<td>요청 처리 상태에 대한 status code (0: Success)</td>
+										<td>int</td>
+									</tr>								
+								</tbody>
+							</table>
+
+							<span class="table_tit">payload: 결과</span>
+							<table>
+								<tbody>
+									<tr>
+										<th>키</th>
+										<th>설명</th>
+										<th>type</th>
+									</tr>
+									<tr>
+										<td>img</td>
+										<td>AnimeFace Image Byte Array</td>
+										<td>byte</td>
+									</tr>
+									<tr>
+										<td>latent</td>
+										<td>AnimeFace .pkl File Byte Array</td>
+										<td>byte</td>
+									</tr>								
+								</tbody>
+							</table>
+
+							<p class="sub_txt">⑤ Response 예제</p>
+							<div class="code_box">
+<pre>
+{
+	"message": {
+		"message": "Success",
+		"status": 0
+	},
+	"payload": {
+		"img": "byte[]",
+		"latent": "byte[]"
+	}
+}				
+</pre>
+							</div>
+
+							<em>Style Edit : Anime Face Image와 정해진 Style key값(open_mouth, blonde_hair, ...)들의 세기를 조절한 이미지를 생성합니다.</em>
+							<p class="sub_txt">① Request</p>
+							<ul>
+								<li>Method : POST</li>
+								<li>URL : https://api.maum.ai/anime/style:edit</li>
+							</ul>
+
+							<p class="sub_txt">② Request 파라미터 설명</p>
+							<table>
+								<tbody>
+									<tr>
+										<th>키</th>
+										<th>설명</th>
+										<th>type</th>
+									</tr>
+									<tr>
+										<td>apiId</td>
+										<td>사용자의 고유 ID. 마인즈랩 담당자에게 이메일로 발급요청</td>
+										<td>string</td>
+									</tr>
+									<tr>
+										<td>apiKey</td>
+										<td>사용자의 고유 key. 마인즈랩 담당자에게 이메일로 발급요청</td>
+										<td>string</td>
+									</tr>
+									<tr>
+										<td>latent</td>
+										<td>얼굴 애니메이션 .pkl File</td>
+										<td>file</td>
+									</tr>
+									<tr>
+										<td>dict</td>
+										<td>style 편집을 위한 .txt file</td>
+										<td>file</td>
+									</tr>								
+								</tbody>
+							</table>
+
+							<p class="sub_txt">③ Request 예제</p>
+							<div class="code_box">
+<pre>
+curl --location --request POST 'https://api.maum.ai/anime/style:edit' \
+--header 'Content-Type: multipart/form-data' \
+--form 'apiId= 발급받은 API ID' \
+--form 'apiKey= 발급받은 API KEY' \
+--form 'latent= .pkl 파일' \
+--form 'dict= .txt 파일' \			
+</pre>
+							</div>
+
+							<p class="sub_txt">④ Response 파라미터 설명</p>		
+							<span class="table_tit">Response</span>
+							<table>
+								<tbody>
+									<tr>
+										<th>키</th>
+										<th>설명</th>
+										<th>type</th>
+									</tr>
+									<tr>
+										<td>message</td>
+										<td>API 동작여부</td>
+										<td>Object</td>
+									</tr>
+									<tr>
+										<td>payload</td>
+										<td>결과 </td>
+										<td>Object</td>
+									</tr>								
+								</tbody>
+							</table>
+
+							<span class="table_tit">message: API 동작여부</span>
+							<table>
+								<tbody>
+									<tr>
+										<th>키</th>
+										<th>설명</th>
+										<th>type</th>
+									</tr>
+									<tr>
+										<td>message</td>
+										<td>요청 처리 상태를 설명하는 문자열  (Success/ Fail)</td>
+										<td>string</td>
+									</tr>
+									<tr>
+										<td>status</td>
+										<td>요청 처리 상태에 대한 status code (0: Success)</td>
+										<td>int</td>
+									</tr>								
+								</tbody>
+							</table>
+
+							<span class="table_tit">payload: 결과</span>
+							<table>
+								<tbody>
+									<tr>
+										<th>키</th>
+										<th>설명</th>
+										<th>type</th>
+									</tr>
+									<tr>
+										<td>img</td>
+										<td>AnimeFace Image Byte Array</td>
+										<td>byte</td>
+									</tr>
+									<tr>
+										<td>latent</td>
+										<td>AnimeFace .pkl File Byte Array</td>
+										<td>byte</td>
+									</tr>								
+								</tbody>
+							</table>
+
+							<p class="sub_txt">⑤ Response 예제</p>
+							<div class="code_box">
+<pre>
+{
+	"message": {
+		"message": "Success",
+		"status": 0
+	},
+	"payload": {
+		"img": "byte[]",
+		"latent": "byte[]"
+	}
+}				
+</pre>
+							</div>
 						</div>
 					</div>
 					<!--//.guide_box-->
@@ -622,7 +938,7 @@ curl --location --request POST 'https://api.maum.ai/abnormal-behavior/intrusion:
 							<li>
 								<dl>
 									<dt>
-										<em>CASE 01</em>
+										<em>CASE 02</em>
 										<span>유튜버</span>
 									</dt>
 									<dd class="txt">애니메이션 캐릭터를 유튜브나 브이로그 등 영상 컨셉에 맞게 스타일을 꾸며 사용할 수 있습니다.</dd>
