@@ -389,84 +389,97 @@
 										<!-- [D] 결과 이미지 들어가는 곳, 현재 들어간 이미지는 예시용 -->
 										<img src="../aiaas/common/images/img_animeFace_sample02.png" id="resultImg" alt="result image">
 									</div>
-									<div class="effect_control">
+
+									<!-- [D] input file이 사진인 경우 보여줄 요소로 addClass('on')하면 보여짐 -->
+									<!-- [D] 현재 임시로 화면확인을 위해 label을 클릭하면 애니메이션 결과 요소가 보여짐 (하단 script 참고) -->
+									<div class="effect_control on">
 										<div class="range_slider"> 
-											<input class="range_slider_range" type="range" value="30" min="10" max="60" step="10">
-											<ul class="range_value">
-												<li>10</li>
-												<li>20</li>
-												<li>30</li>
-												<li>40</li>
-												<li>50</li>
-											</ul>
+											<label>애니메이션 효과</label>
+											<input class="slide_bar" type="range" value="30" min="10" max="60" step="10">
 										</div>
+										<ul class="range_value">
+											<li></li>
+											<li></li>
+											<li></li>
+											<li></li>
+											<li></li>
+										</ul>
 									</div>
+
+									<!-- [D] input file이 애니메이션인 경우 보여줄 요소로 addClass('on')하면 보여짐 -->
+									<!-- [D] 현재 임시로 화면확인을 위해 button을 클릭하면 사진 결과 요소가 보여짐 (하단 script 참고) -->
+									<button type="button" class="btn_creat_newImg"><em class="fas fa-sync-alt"></em>새 이미지 생성</button>
 								</div>
 
 								<div class="style_adjust">
 									<div class="style_control">
 										<div class="range_slider"> 
-											<input class="range_slider_range" type="range" value="2" min="0" max="5" step="1">
-											<ul class="range_value">
-												<li>10</li>
-												<li>20</li>
-												<li>30</li>
-												<li>40</li>
-												<li>50</li>
-											</ul>
+											<label>Style 조절</label>
+											<input class="slide_bar" type="range" value="2" min="0" max="5" step="1">
 										</div>
+										<ul class="range_value">
+											<li></li>
+											<li></li>
+											<li></li>
+											<li></li>
+											<li></li>
+										</ul>
 									</div>
 
 									<div class="style_slt">
-										<ul class="btn_list">
-											<li><button type="button" class="btn_contrast">대비</button></li>
-											<li><button type="button" class="btn_variation">변형</button></li>
-											<li><button type="button" class="btn_individuality">개성</button></li>
-										</ul>
-										
-										<ul class="slt_list">
-											<li>
-												<select class="select">
-													<option value="" selected>헤어 스타일</option>
-													<option value="">앞머리 일자</option>
-													<option value="">긴 머리</option>
-												</select>
-											</li>
-											<li>
-												<select class="select">
-													<option value="" selected>헤어 컬러</option>
-													<option value="">금발</option>
-													<option value="">검정</option>
-													<option value="">갈색</option>
-													<option value="">붉은색</option>
-													<option value="">보라색</option>
-													<option value="">분홍색</option>
-													<option value="">은색</option>
-												</select>
-											</li>
-											<li>
-												<select class="select">
-													<option value="" selected>눈동자</option>
-													<option value="">파란색</option>
-													<option value="">녹색</option>
-												</select>
-											</li>
-											<li>
-												<select class="select">
-													<option value="" selected>입</option>
-													<option value="">미소</option>
-													<option value="">입 다물기</option>
-													<option value="">입 벌리기</option>
-												</select>
-											</li>
-											<li>
-												<select class="select">
-													<option value="" selected>악세사리</option>
-													<option value="">머리 장식</option>
-													<option value="">모자</option>
-												</select>
-											</li>
-										</ul>
+										<div class="tit">Style 선택 :</div>
+
+										<div class="list_wrap">
+											<ul class="btn_list">
+												<li><button type="button" class="btn_contrast active">대비</button></li>
+												<li><button type="button" class="btn_variation">변형</button></li>
+												<li><button type="button" class="btn_individuality">개성</button></li>
+											</ul>
+											
+											<ul class="slt_list">
+												<li>
+													<select class="select">
+														<option value="" selected>헤어 스타일</option>
+														<option value="">앞머리 일자</option>
+														<option value="">긴 머리</option>
+													</select>
+												</li>
+												<li>
+													<select class="select">
+														<option value="" selected>헤어 컬러</option>
+														<option value="">금발</option>
+														<option value="">검정</option>
+														<option value="">갈색</option>
+														<option value="">붉은색</option>
+														<option value="">보라색</option>
+														<option value="">분홍색</option>
+														<option value="">은색</option>
+													</select>
+												</li>
+												<li>
+													<select class="select">
+														<option value="" selected>눈동자</option>
+														<option value="">파란색</option>
+														<option value="">녹색</option>
+													</select>
+												</li>
+												<li>
+													<select class="select">
+														<option value="" selected>입</option>
+														<option value="">미소</option>
+														<option value="">입 다물기</option>
+														<option value="">입 벌리기</option>
+													</select>
+												</li>
+												<li>
+													<select class="select">
+														<option value="" selected>악세사리</option>
+														<option value="">머리 장식</option>
+														<option value="">모자</option>
+													</select>
+												</li>
+											</ul>
+										</div>
 									</div>
 								</div>
 
@@ -661,58 +674,65 @@ jQuery.event.add(window,"load",function(){
     $(document).ready(function (){
 		// 파일 업로드 기능 - [D] 기존 작성된 script
 		document.querySelector("#demoFile").addEventListener('change', function (ev) {
-			//파일명 변경
-			$('.fl_box').on('click', function () {
-				$(this).css("opacity", "1");
-				$('.tr_1 .btn_area .disBox').remove();
-			});
-
-			//파일 용량 체크
-			var demoFileInput = document.getElementById('demoFile');
-			var demoFile = demoFileInput.files[0];
-			var demoFileSize = demoFile.size;
-			var max_demoFileSize = 1024 * 1024 * 50;//1kb는 1024바이트
-			var demofile = document.querySelector("#demoFile");
-
-			if (demoFileSize > max_demoFileSize || !demofile.files[0].type.match(/video.mp4/)) {
-				$('.pop_simple').show();
-				// 팝업창 닫기
-				$('.pop_close, .pop_bg, .btn a').on('click', function () {
-					$('.pop_simple').fadeOut(300);
-					$('body').css({
-						'overflow': '',
-					});
-				});
-				$('.fl_box').css("opacity", "0.5");
-				$('#demoFile').val('');
-				$('.tr_1 .btn_area').append('<span class="disBox"></span>');
-
-			} else {
-				document.querySelector(".demolabel").innerHTML = ev.target.files[0].name;
-				var element = document.getElementById('uploadFile');
-				element.classList.remove('btn');
-				element.classList.add('btn_change');
-				$('.fl_box').css("opacity", "0.5");
-				$('.tr_1 .btn_area .disBox').remove();
-			}
+			document.querySelector(".demolabel").innerHTML = ev.target.files[0].name;
+			var element = document.getElementById( 'uploadFile' );
+			element.classList.remove( 'btn' );
+			element.classList.add( 'btn_change' );
+			$('.fl_box').css("opacity", "0.5");
 		});
 
-		// 업로드된 파일명박스 제거 - [D] 기존 작성된 script
 		$('em.close').on('click', function () {
-			$('.fl_box').css("opacity", "1");
 			$(this).parent().removeClass("btn_change");
 			$(this).parent().addClass("btn");
-			$(this).parent().children('.demolabel').text('동영상 업로드');
-			$('#demoFile').val('');
-
+			$(this).parent().children('.demolabel').text('이미지 업로드');
+			$('.fl_box').css('opacity', '1');
 			//파일명 변경
 			document.querySelector("#demoFile").addEventListener('change', function (ev) {
 				document.querySelector(".demolabel").innerHTML = ev.target.files[0].name;
-				var element = document.getElementById('uploadFile');
-				element.classList.remove('btn');
-				element.classList.add('btn_change');
-				$('#sample1').prop('checked', false);
+				var element = document.getElementById( 'uploadFile' );
+				element.classList.remove( 'btn' );
+				element.classList.add( 'btn_change' );
 			});
+		});
+
+		// [D] 결과화면의 애니메이션 효과 & style 조절 slide bar
+		var settings = {
+			fill: '#2c3f51',
+			background: '#cfd5eb'
+		}
+
+		const sliders01 = document.querySelector('.effect_control .range_slider');
+		const sliders02 = document.querySelector('.style_control .range_slider');
+
+
+		sliders01.querySelector('input').addEventListener('input', (event) => {
+			applyFill01(event.target);
+		});
+		applyFill01(sliders01.querySelector('input'));
+
+		function applyFill01(sliders01) {
+			const percentage = 100*(sliders01.value-sliders01.min)/(sliders01.max-sliders01.min);
+			const bg = `linear-gradient(90deg, ${settings.fill} ${percentage}%, ${settings.background} ${percentage+0.1}%)`;
+			sliders01.style.background = bg;
+		}
+
+		sliders02.querySelector('input').addEventListener('input', (event) => {
+			applyFill02(event.target);
+		});
+		applyFill02(sliders02.querySelector('input'));
+
+		function applyFill02(sliders02) {
+			const percentage = 100*(sliders02.value-sliders02.min)/(sliders02.max-sliders02.min);
+			const bg = `linear-gradient(90deg, rgba(247, 119, 138) ${percentage}%, ${settings.background} ${percentage+0.1}%)`;
+			sliders02.style.background = bg;
+		}
+
+		// [D] 결과화면의 style 선택 영역의 button과 select 선택 시 효과
+		var styleSelect = $('.btn_list li button, .slt_list li .select');
+
+		styleSelect.on('click', function(){
+			styleSelect.removeClass('active');
+			$(this).addClass('active');
 		});
 
 		// [D] 단계별 화면 확인을 위한 임시 script로 추가하지 않으셔도 됩니다.
@@ -727,6 +747,15 @@ jQuery.event.add(window,"load",function(){
 		$('.btn_back2').on('click', function(){
 			$('.avr_3').hide();
 			$('.avr_1').show();
+		});
+		// [D] input file에 따라 다른 결과화면을 보여주기 위한 script로 추가하지 않으셔도 됩니다. html의 주석 참고
+		$('.effect_control label').on('click', function(){
+			$('.effect_control').removeClass('on');
+			$('.btn_creat_newImg').addClass('on');
+		});
+		$('.btn_creat_newImg').on('click', function(){
+			$(this).removeClass('on');
+			$('.effect_control').addClass('on');
 		});
     });
 });
