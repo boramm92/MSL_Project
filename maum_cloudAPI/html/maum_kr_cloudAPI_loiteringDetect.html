@@ -360,12 +360,38 @@
 						<!-- edit_box -->
 						<div class="edit_box">
 							<p><em class="far fa-file-image"></em>영역 설정</p>
-							<div class="img_box">
-								<!-- [D] 이미지 들어갈 곳 -->
-								<img src="../aiaas/kr/images/img_avr_resualt.png" alt="edit image">
+							<div id="edit_box" class="img_box">
+								<div id="draw_area" style="position: relative; z-index: 5; width: 100%; height: 100%">
+									<svg id="theSVG" width="100%" height="100%" style="/*border: 2px inset #CCC;*/">
+										<polygon id="x" points="100,100 200,100 200,200 100,200" fill="#ffea00" style="position:absolute; left:0; top:0; fill-opacity:0; stroke:#ffea00; stroke-width:2; z-index:5"></polygon>
+									</svg>
+								</div>
+								<video id="editVideo" style="position: absolute; left: 0; top: 0">
+									<!-- [D] 개발소스와 다른 src 경로가 들어가 있음!!!! 퍼블에서의 경로는 무시하고 개발대로 진행하시면 됩니다. -->
+									<source src="../aiaas/common/video/sample_loiteringDetect.mp4" type="video/mp4">
+									IE 8 이하는 비디오가 나오지 않습니다. IE 버전을 업데이트 하시길 바랍니다.
+								</video>
 							</div>
 							<p class="desc">* 배회를 감지할 영역을 지정해주세요. (ex. 인근 공원, 주차장 등)</p>
-							<p class="desc">* 선을 클릭하여 꼭지점을 추가해보세요.</p>
+							
+							<!-- [D] 21.06.04 추가 - UI변경으로 추가되는 영역 -->
+							<div class="shape_select">
+								<p class="tit">영역 모양 선택</p>
+								<div class="btnBox">
+									<button type="button" class="btn_rect active">
+										<span>사각형</span>
+									</button>
+									<button type="button" class="btn_ptg">
+										<span>오각형</span>
+									</button>
+									<button type="button" class="btn_hxg">
+										<span>육각형</span>
+									</button>
+								</div>
+								<p class="guide_txt">꼭지점을 선택하여 영역 지정을 세밀하게 조정 할 수 있습니다.</p>
+							</div>
+							<!-- //[D] 21.06.04 추가 - UI변경으로 추가되는 영역 -->
+
 							<div class="btn_area">
 								<a class="btn_start btn_cancel" href="">취소</a>
 								<a class="btn_start" id="recogButton">결과보기</a>
@@ -554,11 +580,182 @@ curl --location --request POST 'https://api.maum.ai/abnormal-behavior/loitering:
 
 <!---------------------- Local Resources ---------------------->
 <!-- Local Script Library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 <script type="text/javascript" src="../aiaas/common/js/menu.js"></script>
 
 <!-- Local Script -->
-<script type="text/javascript">
-    // API 탭 - [D] 기존 작성된 script
+<script>
+    jQuery.event.add(window,"load",function(){
+
+        document.getElementById("defaultOpen").click();
+        loadSample1();
+
+        $(document).ready(function (){
+
+            draggablePolygon(document.getElementById("x"));
+
+
+            // 샘플 클릭시 업로드된 파일 제거
+            $('.radio input, .radio video').on('click', function () {
+                $('em.close').trigger('click');
+                $('#sample1').prop('checked', true);
+            });
+
+            // 파일 업로드
+            document.querySelector("#demoFile").addEventListener('change', function () {
+                let demoFileInput = document.getElementById('demoFile');
+                let demoFile = demoFileInput.files[0];
+                let demoFileSize = demoFile.size;
+                let max_demoFileSize = 1024 * 1024 * 50;//1kb는 1024바이트
+                //파일 용량, 확장자 체크
+                if (demoFileSize > max_demoFileSize || !demoFile.type.match(/video.mp4/)) {
+                    $('.pop_simple').show();
+                    $('#demoFile').val('');
+                } else {
+                    $('.demolabel').html(demoFile.name);
+                    $('#uploadFile').removeClass('btn');
+                    $('#uploadFile').addClass('btn_change');
+                    $('.fl_box').css("opacity", "0.5");
+                    $('#sample1').prop('checked', false);
+                }
+            });
+
+            // 업로드된 파일명박스 제거
+            $('em.close').on('click', function () {
+                $('.fl_box').css("opacity", "1");
+                $('#uploadFile').removeClass("btn_change");
+                $('#uploadFile').addClass("btn");
+                $('.demolabel').html('동영상 업로드');
+                $('#demoFile').val('');
+            });
+
+            // 팝업창 닫기
+            $('.pop_close, .pop_bg, .btn a').on('click', function () {
+                $('.pop_simple').fadeOut(300);
+                $('body').css({ 'overflow': '', });
+            });
+
+            // [D] 단계별 화면 확인을 위한 임시 script로 추가하지 않으셔도 됩니다.
+            $('.btn_start').on('click', function(){
+                $('.tr_1').hide();
+                $('.edit_box').show();
+            });
+            $('#recogButton').on('click', function(){
+                $('.edit_box').hide();
+                $('.tr_2').show();
+            });
+            $('.btn_back1').on('click', function(){
+                $('.tr_2').hide();
+                $('.tr_3').show();
+            });
+            $('.btn_back2').on('click', function(){
+                $('.tr_3').hide();
+                $('.tr_1').show();
+            });
+
+			// [D] 21.06.14 추가 - 영역 모양 선택 버튼
+			$('.shape_select button').on('click', function(){
+				$('.shape_select button').removeClass('active');
+				$(this).addClass('active');
+			});
+
+            $('.radio video').get(0).addEventListener('loadedmetadata', function(e){
+                console.log($('.radio video').get(0).videoWidth);
+            });
+
+
+            $('#x').dblclick(function(){
+                $('#x').attr('points', '122,94 312,74 377,203 178,227 200,200');
+                for(let i=0; i < handles.length; i++){
+                    handles[i].remove();
+                }
+                handles = [];
+                draggablePolygon(document.getElementById("x"));
+            });
+
+        });
+    });
+
+    let handles = [];
+
+    function draggablePolygon(polygon) {
+        let points = polygon.points;
+        let svgRoot = $(polygon).closest("svg");
+
+        for (let i = 0; i < points.numberOfItems; i++) {
+            (function (i) { // close over variables for drag call back
+                let point = points.getItem(i);
+
+                let handle = document.createElement("div");
+                handle.className = "handle";
+                // document.body.appendChild(handle);
+                document.getElementById("edit_box").appendChild(handle);
+                handles.push(handle);
+
+                let base = svgRoot.position();
+                base.left = 0;
+                base.top = 0;
+                // center handles over polygon
+                let cs = window.getComputedStyle(handle, null);
+                base.left -= (parseInt(cs.width) + parseInt(cs.borderLeftWidth) + parseInt(cs.borderRightWidth))/2;
+                base.top -= (parseInt(cs.height) + parseInt(cs.borderTopWidth) + parseInt(cs.borderBottomWidth))/2;
+
+
+                handle.style.left = base.left + point.x + "px";
+                handle.style.top = base.top + point.y + "px";
+
+                $(handle).draggable({
+                    drag: function (event) {
+                        setTimeout(function () { // jQuery apparently calls this *before* setting position, so defer
+                            let pointX = parseInt(handle.style.left) - base.left;
+                            let pointY = parseInt(handle.style.top) - base.top;
+                            let svgWidth = svgRoot.width;
+                            let svgHeight = svgRoot.height;
+
+                            if(pointX >= svgWidth ){
+                                handle.style.left = base.left + svgWidth + "px";
+                                point.x = svgWidth;
+                            }else if(pointX <= 0){
+                                handle.style.left = "0px";
+                                point.x = 0;
+                            }else{
+                                point.x = pointX;
+                            }
+
+                            if(pointY >= svgHeight ){
+                                handle.style.top = base.top + svgHeight + "px";
+                                point.y = svgHeight;
+                            }else if(pointY <= 0) {
+                                handle.style.top = "0px";
+                                point.y = 0;
+                            }else{
+                                point.y = pointY;
+                            }
+
+                            // point.x = (parseInt(handle.style.left) - base.left) >= svgRoot.width() ? svgRoot.width() : (parseInt(handle.style.left) - base.left);
+                            // point.y = (parseInt(handle.style.top) - base.top) >= svgRoot.height() ? svgRoot.height() : (parseInt(handle.style.top) - base.top);
+                        },0);
+                    }
+                });
+            }(i));
+        }
+    }
+
+    var sampleVideo;
+    function loadSample1() {
+        var blob = null;
+        var xhr = new XMLHttpRequest();
+		// [D] 개발소스와 다른 src 경로가 들어가 있음!!!! 퍼블에서의 경로는 무시하고 개발대로 진행하시면 됩니다.
+        xhr.open("GET", "../aiaas/common/video/sample_loiteringDetect.mp4");
+        xhr.responseType = "blob";
+        xhr.onload = function () {
+            blob = xhr.response;
+            sampleVideo = new File([blob], "sample_loiteringDetect.mp4");
+        }
+        xhr.send();
+    }
+    //API 탭
     function openTap(evt, menu) {
         var i, demobox, tablinks;
         demobox = document.getElementsByClassName("demobox");
@@ -567,96 +764,11 @@ curl --location --request POST 'https://api.maum.ai/abnormal-behavior/loitering:
         }
         tablinks = document.getElementsByClassName("tablinks");
         for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace("active", "");
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
         }
         document.getElementById(menu).style.display = "block";
         evt.currentTarget.className += " active";
     }
-
-    document.getElementById("defaultOpen").click();
-
-jQuery.event.add(window,"load",function(){
-    $(document).ready(function (){
-		// 파일 업로드 기능 - [D] 기존 작성된 script
-		document.querySelector("#demoFile").addEventListener('change', function (ev) {
-			//파일명 변경
-			$('.fl_box').on('click', function () {
-				$(this).css("opacity", "1");
-				$('.tr_1 .btn_area .disBox').remove();
-			});
-
-			//파일 용량 체크
-			var demoFileInput = document.getElementById('demoFile');
-			var demoFile = demoFileInput.files[0];
-			var demoFileSize = demoFile.size;
-			var max_demoFileSize = 1024 * 1024 * 50;//1kb는 1024바이트
-			var demofile = document.querySelector("#demoFile");
-
-			if (demoFileSize > max_demoFileSize || !demofile.files[0].type.match(/video.mp4/)) {
-				$('.pop_simple').show();
-				// 팝업창 닫기
-				$('.pop_close, .pop_bg, .btn a').on('click', function () {
-					$('.pop_simple').fadeOut(300);
-					$('body').css({
-						'overflow': '',
-					});
-				});
-				$('.fl_box').css("opacity", "0.5");
-				$('#demoFile').val('');
-				$('.tr_1 .btn_area').append('<span class="disBox"></span>');
-
-			} else {
-				document.querySelector(".demolabel").innerHTML = ev.target.files[0].name;
-				var element = document.getElementById('uploadFile');
-				element.classList.remove('btn');
-				element.classList.add('btn_change');
-				$('.fl_box').css("opacity", "0.5");
-				$('.tr_1 .btn_area .disBox').remove();
-			}
-		});
-
-		// 업로드된 파일명박스 제거 - [D] 기존 작성된 script
-		$('em.close').on('click', function () {
-			$('.fl_box').css("opacity", "1");
-			$(this).parent().removeClass("btn_change");
-			$(this).parent().addClass("btn");
-			$(this).parent().children('.demolabel').text('동영상 업로드');
-			$('#demoFile').val('');
-
-			//파일명 변경
-			document.querySelector("#demoFile").addEventListener('change', function (ev) {
-				document.querySelector(".demolabel").innerHTML = ev.target.files[0].name;
-				var element = document.getElementById('uploadFile');
-				element.classList.remove('btn');
-				element.classList.add('btn_change');
-				$('#sample1').prop('checked', false);
-			});
-		});
-
-		// [D] 기존 작성된 script
-		$('.radio input').on('click', function () {
-			$('em.close').trigger('click');
-		});
-
-		// [D] 단계별 화면 확인을 위한 임시 script로 추가하지 않으셔도 됩니다.
-		$('.btn_start').on('click', function(){
-			$('.tr_1').hide();
-			$('.edit_box').show();
-		});
-		$('#recogButton').on('click', function(){
-			$('.edit_box').hide();
-			$('.tr_2').show();
-		});
-		$('.btn_back1').on('click', function(){
-			$('.tr_2').hide();
-			$('.tr_3').show();
-		});
-		$('.btn_back2').on('click', function(){
-			$('.tr_3').hide();
-			$('.tr_1').show();
-		});
-    });
-});
 </script>
 </body>
 </html>
