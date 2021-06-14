@@ -375,57 +375,38 @@
 						</div>
 						<!--tr_2-->
 
+						<!-- [D] 결과화면(tr_3)으로 넘어갈 때는 tr_00를 감싸는 .hlst3D_box에 addClass('result_ver')해줘야하고, 다시 초기 화면으로 돌아갈 경우 removeClass 해줘야 합니다. -->
 						<!--tr_3-->
-						<div class="tr_3 tr_3_sample">		
-							<div class="result_file">
-								<div class="fl">
-									<p><em class="far fa-file-image"></em>입력 파일</p>
-									<div class="inner_box">
-										<img src="/aiaas/common/images/img_bp_1.png" alt="입력 파일" />
-									</div>
+						<!-- [D] 샘플파일 결과화면 -->
+						<div class="tr_3 tr_3_sample">
+							<p><em class="fas fa-cube"></em>결과 파일</p>	
+
+							<div class="result_file">									
+								<div class="imgBox">
+									<img src="../aiaas/common/images/img_hlst_result.png" alt="Result image">
 								</div>
-								<div class="fr">
-									<p><em class="far fa-file-image"></em>결과 파일</p>
-									<div class="inner_box">
-										<div>
-											<img src="/aiaas/common/images/img_bp_2.png" alt="결과 파일 위치 영역" />
-											<span>위치 영역</span>
-											<a class="resultposition" href="" ><em class="far fa-arrow-alt-circle-down"></em>결과 파일 다운로드</a>
-										</div>
-										<div>
-											<img src="/aiaas/common/images/img_bp_3.png" alt="결과 파일 브라켓" />
-											<span>브라켓</span>
-											<a id="resultbracket" class="resultbracket" href="" ><em class="far fa-arrow-alt-circle-down"></em>결과 파일 다운로드</a>
-										</div>
-										<p>결과 파일은 .obj파일로 지원합니다.</p>
-									</div>
+								<div class="btnBox">
+									<a class="btn_result_download" href="#none"><em class="far fa-arrow-alt-circle-down"></em>결과 파일 다운로드</a>
 								</div>
-								<div class="unfloat">
-									<span>Meshmixer로 3D 이미지를 mix한 이미지</span>
-									<img src="/aiaas/common/images/img_bp_4.png" alt="Meshmixer로 3D 이미지를 mix한 이미지" />
-									<p>치아 전면 브라켓 위치</p>
-								</div>
+								<div class="source_info">* 결과 파일은 <strong>.pcd</strong> 파일로 지원합니다. (.pcd 파일은 https://www.creators3d.com/online-viewer 에서 파일을 업로드하여 확인 하실 수 있습니다.)</div>
 							</div>
+
 							<div class="btn_area">
 								<button type="button" class="btn_back2"><em class="fas fa-redo"></em>처음으로</button>
 							</div>
 						</div>
 		
+						<!-- [D] 내파일 결과화면 -->
 						<div class="tr_3 tr_3_upload">		
-							<div class="result_file">
-								<p><em class="far fa-file-image"></em>결과 파일</p>
-								<div class="inner_box">
-									<div class="dwn_box">
-										<span>위치 영역</span>
-										<a class="resultposition" href="" ><em class="far fa-arrow-alt-circle-down"></em>결과 파일 다운로드</a>
-									</div>
-									<div class="dwn_box">
-										<span>브라켓</span>
-										<a class="resultbracket" href="" ><em class="far fa-arrow-alt-circle-down"></em>결과 파일 다운로드</a>
-									</div>
-									<p>결과 파일은 .obj파일로 지원합니다.</p>
-								</div>		
+							<p><em class="fas fa-cube"></em>결과 파일</p>	
+
+							<div class="result_file">									
+								<div class="btnBox">
+									<a class="btn_result_download" href="#none"><em class="far fa-arrow-alt-circle-down"></em>결과 파일 다운로드</a>
+								</div>
+								<div class="source_info">* 결과 파일은 <strong>.pcd</strong> 파일로 지원합니다. (.pcd 파일은 <span>https://www.creators3d.com/online-viewer</span> 에서 파일을 업로드하여 확인 하실 수 있습니다.)</div>
 							</div>
+
 							<div class="btn_area">
 								<button type="button" class="btn_reset"><em class="fas fa-redo"></em>처음으로</button>
 							</div>
@@ -456,26 +437,26 @@
 						</div>
 						<div class="guide_group">
 							<div class="title">
-								치아 교정기 포지셔닝  <small>(Bracket Positioning)</small>
+								3D 인테리어 <small>(Holistic 3D)</small>
 							</div>
-							<p class="sub_txt">주어진 치아에 교정기를 부착할 위치를 선정합니다.</p>
-							<span class="sub_title">
-										준비사항
-							</span>
-							<p class="sub_txt">- Input: 치아 .obj 파일 </p>
+							<p class="sub_txt">방 안을 360도에서 촬영한 파노라마 이미지를 3D 모델로 생성합니다.</p>
+
+							<span class="sub_title">준비사항</span>
+							<p class="sub_txt">- Input: 이미지 파일</p>
 							<ul>
-								<li>확장자: .obj</li>
-								<li>치아 모델이 수직으로 정렬되어 있어야 합니다. </li>
+								<li>확장자: .png</li>
+								<li>용량: 2MB 이하</li>
 							</ul>
-							<span class="sub_title">
-										 실행 가이드
-									</span>
-							<p class="sub_txt">① Request  </p>
+
+							<span class="sub_title">실행 가이드</span>
+							<em>Upload : pcd 3d model 생성 요청을 통해 생성 요청을 만들고, 처리 상태를 알기 위한 request key를 받습니다.</em>
+							<p class="sub_txt">① Request</p>
 							<ul>
 								<li>Method : POST</li>
-								<li>URL :  https://api.maum.ai/bracket/downloadZip</li>
+								<li>URL :  https://api.maum.ai/holistic3d/upload</li>
 							</ul>
-							<p class="sub_txt">② Request 파라미터 설명 </p>
+
+							<p class="sub_txt">② Request 파라미터 설명</p>
 							<table>
 								<tr>
 									<th>키</th>
@@ -483,39 +464,276 @@
 									<th>type</th>
 								</tr>
 								<tr>
-									<td>apiId </td>
-									<td>사용자의 고유 ID. 마인즈랩 담당자에게 이메일로 발급요청 </td>
+									<td>apiId</td>
+									<td>사용자의 고유 ID. 마인즈랩 담당자에게 이메일로 발급요청</td>
 									<td>string</td>
 								</tr>
 								<tr>
-									<td>apiKey </td>
-									<td>사용자의 고유 key. 마인즈랩 담당자에게 이메일로 발급요청 </td>
+									<td>apiKey</td>
+									<td>사용자의 고유 key. 마인즈랩 담당자에게 이메일로 발급요청</td>
 									<td>string</td>
 								</tr>
 								<tr>
-									<td>file</td>
-									<td>치아 obj 파일 </td>
+									<td>image</td>
+									<td>type:file (.png) 이미지 파일</td>
 									<td>file</td>
 								</tr>
 							</table>
-							<p class="sub_txt">③ Request 예제 </p>
+
+							<p class="sub_txt">③ Request 예제</p>
 							<div class="code_box">
-								<pre>
-		curl --location --request POST 'http://api.maum.ai/bracket/downloadZip' \
-		--form 'apiId= {발급받은 API ID}' \
-		--form 'apiKey= {발급받은 API KEY}' \
-		--form 'file= {obj 파일 path}'</pre>
+<pre>
+curl --location --request POST 'https://api.maum.ai/holistic3d/upload' \
+--header 'Content-Type: multipart/form-data' \
+--form 'apiId= 발급받은 API ID' \
+--form 'apiKey= 발급받은 API KEY' \
+--form 'image= 3D를 인식할 이미지 파일' \	
+</pre>
 							</div>
 		
-							<p class="sub_txt">④ Response 예제 (Zip File Download)  </p>
-		
+							<p class="sub_txt">④ Response 파라미터 설명</p>
+							<span class="table_tit">Response</span>
+							<table>
+								<tr>
+									<th>키</th>
+									<th>설명</th>
+									<th>type</th>
+								</tr>
+								<tr>
+									<td>message</td>
+									<td>API 동작여부</td>
+									<td>object</td>
+								</tr>
+								<tr>
+									<td>payload</td>
+									<td>결과</td>
+									<td>object</td>
+								</tr>
+							</table>
+
+							<span class="table_tit">message: API 동작여부</span>
+							<table>
+								<tr>
+									<th>키</th>
+									<th>설명</th>
+									<th>type</th>
+								</tr>
+								<tr>
+									<td>message</td>
+									<td>요청 처리 상태를 설명하는 문자열  (Success/ Fail)</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>status</td>
+									<td>요청 처리 상태에 대한 status code (0: Success)</td>
+									<td>int</td>
+								</tr>
+							</table>
+
+							<span class="table_tit">payload: 결과</span>
+							<table>
+								<tr>
+									<th>키</th>
+									<th>설명</th>
+									<th>type</th>
+								</tr>
+								<tr>
+									<td>status</td>
+									<td>
+										follow status code of mmsr<br>
+										status(1): message -&gt; file_key<br>
+										status(2): upload error
+									</td>
+									<td>int</td>
+								</tr>
+								<tr>
+									<td>fileKey</td>
+									<td>요청 식별용 고유 Key</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>msg</td>
+									<td>요청에 대한 msg</td>
+									<td>string</td>
+								</tr>
+							</table>
+
+							<p class="sub_txt">⑤ Response 예제</p>
 							<div class="code_box">
-		<pre>
-		확장자: .obj
-		ab: 브라켓 region: 브라켓 선정 위치
-		</pre>
+<pre>
+{
+	"message": {
+		"message": "Success",
+		"status": 0
+	},
+	"payload": {
+		"status": "1"
+		"fileKey": "369f5394-dca7-4356-813e-60ae9a74be80"
+		"msg": "success"
+	}
+}		
+</pre>
 							</div>
-		
+
+							<em>Check process : 요청의 처리 상태를 확인합니다.</em>
+							<p class="sub_txt">① Request</p>
+							<ul>
+								<li>Method : POST</li>
+								<li>URL : https://api.maum.ai/holistic3d/check:process</li>
+							</ul>
+							
+							<p class="sub_txt">② Request 파라미터 설명</p>
+							<table>
+								<tr>
+									<th>키</th>
+									<th>설명</th>
+									<th>type</th>
+								</tr>
+								<tr>
+									<td>apiId</td>
+									<td>사용자의 고유 ID. 마인즈랩 담당자에게 이메일로 발급요청</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>apiKey</td>
+									<td>사용자의 고유 key. 마인즈랩 담당자에게 이메일로 발급요청</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>fileKey</td>
+									<td>요청시 발급받은 요청 식별용 key</td>
+									<td>string</td>
+								</tr>
+							</table>
+
+							<p class="sub_txt">③ Request 예제</p>
+							<div class="code_box">
+<pre>
+curl --location --request POST 'https://api.maum.ai/holistic3d/check:process' \
+--header 'Content-Type: application/json' \
+--form 'apiId= 발급받은 API ID' \
+--form 'apiKey= 발급받은 API KEY' \
+--form 'fileKey= 요청시 발급받은 요청 식별용 key' \	
+</pre>
+							</div>
+
+							<p class="sub_txt">④ Response 파라미터 설명</p>
+							<span class="table_tit">Response</span>
+							<table>
+								<tr>
+									<th>키</th>
+									<th>설명</th>
+									<th>type</th>
+								</tr>
+								<tr>
+									<td>message</td>
+									<td>API 동작여부</td>
+									<td>object</td>
+								</tr>
+								<tr>
+									<td>payload</td>
+									<td>결과</td>
+									<td>object</td>
+								</tr>
+							</table>
+
+							<span class="table_tit">message: API 동작여부</span>
+							<table>
+								<tr>
+									<th>키</th>
+									<th>설명</th>
+									<th>type</th>
+								</tr>
+								<tr>
+									<td>message</td>
+									<td>요청 처리 상태를 설명하는 문자열  (Success/ Fail)</td>
+									<td>string</td>
+								</tr>
+								<tr>
+									<td>status</td>
+									<td>요청 처리 상태에 대한 status code (0: Success)</td>
+									<td>int</td>
+								</tr>
+							</table>
+
+							<span class="table_tit">payload: 결과</span>
+							<table>
+								<tr>
+									<th>키</th>
+									<th>설명</th>
+									<th>type</th>
+								</tr>
+								<tr>
+									<td>status</td>
+									<td>
+										NOT_YET = 6;<br>
+										PROCESSING = 7;<br>
+										DONE = 8;<br>
+										WRONG_KEY = 10;<br>
+										ERROR = 11;<br>
+										DELETED = 9;
+									</td>
+									<td>int</td>
+								</tr>
+								<tr>
+									<td>message</td>
+									<td>상태 코드에 따른 문구</td>
+									<td>string</td>
+								</tr>
+							</table>
+
+							<p class="sub_txt">⑤ Response 예제</p>
+							<div class="code_box">
+<pre>
+{
+	"message": {
+		"message": "Success",
+		"status": 0
+	},
+	"payload": {
+		"status": 8,
+		"message": "Process Completed(can download)"
+	}
+}		
+</pre>
+							</div>
+
+							<em>Download: 처리 완료된 3D .pcd 파일을 다운로드 받습니다.</em>
+							<p class="sub_txt">① Request</p>
+							<ul>
+								<li>Method : POST</li>
+								<li>URL : https://api.maum.ai/holistic3d/download</li>
+							</ul>
+
+							<p class="sub_txt">② Request 파라미터 설명</p>
+							<table>
+								<tr>
+									<th>키</th>
+									<th>설명</th>
+									<th>type</th>
+								</tr>
+								<tr>
+									<td>fileKey</td>
+									<td>요청시 발급받은 요청 식별용 key</td>
+									<td>string</td>
+								</tr>
+							</table>
+
+							<p class="sub_txt">③ Request 예제</p>
+							<div class="code_box">
+<pre>
+curl --location --request GET
+'https://api.maum.ai/holistic3d/download?fileKey= 요청시 발급받은 요청 식별용 key'	
+</pre>
+							</div>
+
+							<p class="sub_txt">④ Response 예제</p>
+							<div class="code_box">
+<pre>
+Content-Type: application/octet-stream
+(.pcd File Download)	
+</pre>
+							</div>
 						</div>
 					</div>
 					<!--//.guide_box-->
@@ -527,38 +745,24 @@
 					<p><em style="color:#f7778a;font-weight: 400;">적용사례</em> <small>(Use Cases)</small></p>
 					<span class="sub">마인즈랩의 앞선 기술을 다양하게 활용할 수 있습니다.</span>
 					<div class="useCasesBox">
-						<!-- 얼굴 애니메이션 필터-->
+						<!-- 3D 인테리어 -->
 						<ul class="lst_useCases">
 							<li>
 								<dl>
 									<dt>
 										<em>CASE 01</em>
-										<span>캐릭터 콘텐츠</span>
+										<span>3D 인테리어 모델링</span>
 									</dt>
-									<dd class="txt">애니메이션 캐릭터를 활용하여 영화, 게임 등에 활용할 수 있습니다.</dd>
+									<dd class="txt">3D 모델링 된 공간을 확인하여 가상 인테리어를 체험할 수 있습니다.</dd>
 									<dd class="api_itemBox">
 										<ul class="lst_api">
-											<li class="ico_anmFc"><span>얼굴 애니메이션 필터</span></li>
-										</ul>
-									</dd>
-								</dl>
-							</li>
-							<li>
-								<dl>
-									<dt>
-										<em>CASE 02</em>
-										<span>유튜버</span>
-									</dt>
-									<dd class="txt">애니메이션 캐릭터를 유튜브나 브이로그 등 영상 컨셉에 맞게 스타일을 꾸며 사용할 수 있습니다.</dd>
-									<dd class="api_itemBox">
-										<ul class="lst_api">
-											<li class="ico_anmFc"><span>얼굴 애니메이션 필터</span></li>
+											<li class="ico_hlst3D"><span>3D 인테리어</span></li>
 										</ul>
 									</dd>
 								</dl>
 							</li>
 						</ul>
-						<!--얼굴 애니메이션 필터-->
+						<!-- 3D 인테리어 -->
 					</div>
 				</div>
 				<!--//.afexample-->		
@@ -626,12 +830,14 @@ jQuery.event.add(window,"load",function(){
 		$('.btn_back1').on('click', function(){
 			$('.tr_2').hide();
 			$('.tr_3_sample').show();
+			$('.hlst3D_box').addClass('result_ver');
 		});
 		$('.btn_back2').on('click', function(){
 			$('.tr_3_sample').hide();
 			$('.tr_3_upload').show();
 		});
 		$('.btn_reset').on('click', function(){
+			$('.hlst3D_box').removeClass('result_ver');
 			$('.tr_3_upload').hide();
 			$('.tr_1').show();
 		});
