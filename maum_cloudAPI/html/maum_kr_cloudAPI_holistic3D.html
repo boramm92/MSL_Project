@@ -314,6 +314,7 @@
 					<p><span>3D 인테리어 </span><small>(Holistic 3D)</small></p>
 					<span class="sub">방 안을 360도에서 촬영한 파노라마 이미지를 3D 모델로 생성합니다.</span>
 					<!--hlst3D_box-->
+					<!-- [D] 결과화면(tr_3)으로 넘어갈 때는 .hlst3D_box에 addClass('result_ver')해줘야하고, 다시 초기 화면으로 돌아갈 경우 removeClass 해줘야 합니다. -->
 					<div class="demo_layout hlst3D_box">
 						<!--tr_1-->
 						<div class="tr_1">
@@ -375,10 +376,10 @@
 						</div>
 						<!--tr_2-->
 
-						<!-- [D] 결과화면(tr_3)으로 넘어갈 때는 tr_00를 감싸는 .hlst3D_box에 addClass('result_ver')해줘야하고, 다시 초기 화면으로 돌아갈 경우 removeClass 해줘야 합니다. -->
 						<!--tr_3-->
-						<!-- [D] 샘플파일 결과화면 -->
-						<div class="tr_3 tr_3_sample">
+						<!-- [D] 결과화면(tr_3)으로 넘어갈 때는 .hlst3D_box에 addClass('result_ver')해줘야하고, 다시 초기 화면으로 돌아갈 경우 removeClass 해줘야 합니다. -->
+						<!-- [D] addClass('input_sample')하면 샘플파일 결과화면이고, removeClass('input_sample')하면 내 파일 결과화면입니다. -->
+						<div class="tr_3 input_sample">
 							<p><em class="fas fa-cube"></em>결과 파일</p>	
 
 							<div class="result_file">									
@@ -392,26 +393,9 @@
 							</div>
 
 							<div class="btn_area">
-								<button type="button" class="btn_back2"><em class="fas fa-redo"></em>처음으로</button>
-							</div>
-						</div>
-		
-						<!-- [D] 내파일 결과화면 -->
-						<div class="tr_3 tr_3_upload">		
-							<p><em class="fas fa-cube"></em>결과 파일</p>	
-
-							<div class="result_file">									
-								<div class="btnBox">
-									<a class="btn_result_download" href="#none"><em class="far fa-arrow-alt-circle-down"></em>결과 파일 다운로드</a>
-								</div>
-								<div class="source_info">* 결과 파일은 <strong>.pcd</strong> 파일로 지원합니다. (.pcd 파일은 <span>https://www.creators3d.com/online-viewer</span> 에서 파일을 업로드하여 확인 하실 수 있습니다.)</div>
-							</div>
-
-							<div class="btn_area">
 								<button type="button" class="btn_reset"><em class="fas fa-redo"></em>처음으로</button>
 							</div>
 						</div>
-						<!--tr_3-->
 					</div>
 					<!--//.hlst3D_box-->		
 				</div>
@@ -829,16 +813,12 @@ jQuery.event.add(window,"load",function(){
 		});
 		$('.btn_back1').on('click', function(){
 			$('.tr_2').hide();
-			$('.tr_3_sample').show();
-			$('.hlst3D_box').addClass('result_ver');
-		});
-		$('.btn_back2').on('click', function(){
-			$('.tr_3_sample').hide();
-			$('.tr_3_upload').show();
+			$('.input_sample').show();
+			$('.hlst3D_box').addClass('result_ver');  // [D] 해당 라인 script는 추가필요 (상단 주석 확인부탁드립니다.)
 		});
 		$('.btn_reset').on('click', function(){
-			$('.hlst3D_box').removeClass('result_ver');
-			$('.tr_3_upload').hide();
+			$('.hlst3D_box').removeClass('result_ver');  // [D] 해당 라인 script는 추가필요 (상단 주석 확인부탁드립니다.)
+			$('.input_sample').hide();
 			$('.tr_1').show();
 		});
     });

@@ -313,6 +313,7 @@
 					<p><span>Holistic 3D</span></p>
 					<span class="sub">3D Model Synthesis from a 360 degree view panoramic image.</span>
 					<!--hlst3D_box-->
+					<!-- [D] 결과화면(tr_3)으로 넘어갈 때는 .hlst3D_box에 addClass('result_ver')해줘야하고, 다시 초기 화면으로 돌아갈 경우 removeClass 해줘야 합니다. -->
 					<div class="demo_layout hlst3D_box">
 						<!--tr_1-->
 						<div class="tr_1">
@@ -374,10 +375,10 @@
 						</div>
 						<!--tr_2-->
 
-						<!-- [D] 결과화면(tr_3)으로 넘어갈 때는 tr_00를 감싸는 .hlst3D_box에 addClass('result_ver')해줘야하고, 다시 초기 화면으로 돌아갈 경우 removeClass 해줘야 합니다. -->
 						<!--tr_3-->
-						<!-- [D] 샘플파일 결과화면 -->
-						<div class="tr_3 tr_3_sample">
+						<!-- [D] 결과화면(tr_3)으로 넘어갈 때는 .hlst3D_box에 addClass('result_ver')해줘야하고, 다시 초기 화면으로 돌아갈 경우 removeClass 해줘야 합니다. -->
+						<!-- [D] addClass('input_sample')하면 샘플파일 결과화면이고, removeClass('input_sample')하면 내 파일 결과화면입니다. -->
+						<div class="tr_3 input_sample">
 							<p><em class="fas fa-cube"></em>Result</p>	
 
 							<div class="result_file">									
@@ -388,22 +389,6 @@
 									<a class="btn_result_download" href="#none"><em class="far fa-arrow-alt-circle-down"></em>Download Result</a>
 								</div>
 								<div class="source_info">* <strong>.pcd</strong> You can see the file in detail if you upload the file in a 3D viewer website (Sample webpage: https://www.creators3d.com/online-viewer)</div>
-							</div>
-
-							<div class="btn_area">
-								<button type="button" class="btn_back2"><em class="fas fa-redo"></em>Reset</button>
-							</div>
-						</div>
-		
-						<!-- [D] 내파일 결과화면 -->
-						<div class="tr_3 tr_3_upload">		
-							<p><em class="fas fa-cube"></em>Result</p>	
-
-							<div class="result_file">									
-								<div class="btnBox">
-									<a class="btn_result_download" href="#none"><em class="far fa-arrow-alt-circle-down"></em>Download Result</a>
-								</div>
-								<div class="source_info">* <strong>.pcd</strong> You can see the file in detail if you upload the file in a 3D viewer website (Sample webpage: <span>https://www.creators3d.com/online-viewer</span>)</div>
 							</div>
 
 							<div class="btn_area">
@@ -827,16 +812,12 @@ jQuery.event.add(window,"load",function(){
 		});
 		$('.btn_back1').on('click', function(){
 			$('.tr_2').hide();
-			$('.tr_3_sample').show();
+			$('.input_sample').show();
 			$('.hlst3D_box').addClass('result_ver');
-		});
-		$('.btn_back2').on('click', function(){
-			$('.tr_3_sample').hide();
-			$('.tr_3_upload').show();
 		});
 		$('.btn_reset').on('click', function(){
 			$('.hlst3D_box').removeClass('result_ver');
-			$('.tr_3_upload').hide();
+			$('.input_sample').hide();
 			$('.tr_1').show();
 		});
     });
