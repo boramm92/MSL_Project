@@ -2,7 +2,8 @@
 /* MINDsLab. NBR. 20210604 */
 
 /* -------------------- layout -------------------- */
-#wrap {width:100%; min-width:1280px; height:100%; min-height:768px; background:#000;}
+body {overflow:hidden;}
+#wrap {overflow:hidden; width:100%; min-width:1280px; height:100%; min-height:760px; background:#000;}
 #header {position:relative; top:0; left:0; width:100%; min-width:1280px; height:72px; border-bottom:1px solid #1d2026; box-sizing:border-box; background:#151b27;}
 #container {display:table; position:relative; width:100%; height:calc(100% - 72px); box-sizing:border-box;}
 #container .toolMenuBar {display:table-cell; width:52px; height:100%; background:#151b27; vertical-align:top;}
@@ -69,9 +70,10 @@ input[type="radio"]:checked + label:before {border:3px solid #1f242e; background
 
 
 /* -------------------- aside -------------------- */
-.aside {position:fixed; top:72px; right:-304px; width:304px; height:calc(100% - 72px); background:#151b27; transition:right 0.3s ease-out;}
+.aside {display:flex; flex-direction:column; position:absolute; top:0; right:-304px; width:304px; height:100%; background:#151b27; transition:right 0.3s ease-out;}
+.aside .btn_expand {display:block; position:absolute; bottom:150px; left:-24px; width:24px; height:50px; border:2px solid #1e2229; border-radius:5px 0 0 5px; box-sizing:border-box; background:#151b27 url('../images/builder/ico_expd_left.svg') 50% 50% no-repeat;}
 .aside.on {right:0;}
-.aside .btn_expand {display:block; position:absolute; bottom:150px; left:-24px; width:24px; height:50px; border:2px solid #1e2229; border-radius:5px 0 0 5px; box-sizing:border-box; background:#151b27 url('../images/builder/ico_seeMore_arw.svg') 50% 50% no-repeat;}
+.aside.on .btn_expand {background:#151b27 url('../images/builder/ico_expd_right.svg') 50% 50% no-repeat;}
 
 .aside .currentFile {height:50px; padding:0 16px; border-bottom:1px solid #060c17; box-sizing:border-box; color:#adafc1; font-size:13px; letter-spacing:-0.13px; line-height:48px;}
 .aside .currentFile span {display:inline-block; overflow:hidden; width:225px; color:#adafc1; font-size:13px; letter-spacing:-0.13px; white-space:nowrap; text-overflow:ellipsis; vertical-align:middle;}
@@ -85,9 +87,23 @@ input[type="radio"]:checked + label:before {border:3px solid #1f242e; background
 .aside .comments .cmt_box {display:none; padding:20px;}
 .aside .comments .cmt_box .textarea {width:100%; height:66px; padding:12px; border:1px solid #3b3d45; border-radius:10px; box-sizing:border-box; background:#232831; color:#adafc1; font-size:14px; letter-spacing:-0.14px; line-height:22px;}
 
+.aside .tabWrap {width:100%; height:calc(100% - 202px);}
 .aside .tabWrap .tab_btn {display:flex; border-bottom:2px solid #16212e; box-sizing:border-box; background:#060c17;}
-.aside .tabWrap .tab_btn li button {width:50px; height:50px; transition:background-color 0.2s ease-out;}
-.aside .tabWrap .tab_btn li button.btn_tag {background:url('../images/builder/ico_list.svg') 50% 50% no-repeat;}
-.aside .tabWrap .tab_btn li button.btn_reject {background:url('../images/builder/ico_notice.svg') 50% 50% no-repeat;}
-.aside .tabWrap .tab_btn li button.active {background-color:#151b27;}
-.aside .tabWrap .tab_cont ul {width:100%; height:calc()}
+.aside .tabWrap .tab_btn button {width:50px; height:50px; transition:background-color 0.2s ease-out;}
+.aside .tabWrap .tab_btn button.btn_tag {background:url('../images/builder/ico_list.svg') 50% 50% no-repeat;}
+.aside .tabWrap .tab_btn button.btn_reject {background:url('../images/builder/ico_notice.svg') 50% 50% no-repeat;}
+.aside .tabWrap .tab_btn button.active {background-color:#151b27;}
+.aside .tabWrap .tab_cont {width:100%; height:calc(100% - 50px);}
+.aside .tabWrap .tab_cont > ul {display:none; overflow:auto; width:100%; height:100%;}
+.aside .tabWrap .tab_cont > ul li {display:flex; align-items:center; height:64px; padding:0 16px; box-sizing:border-box; transition:background-color 0.3s ease-out;}
+.aside .tabWrap .tab_cont > ul li .tagPoint {display:inline-block; width:10px; height:10px; border-radius:50%; background:#00ffa7;}
+.aside .tabWrap .tab_cont > ul li .tagNum {display:inline-block; width:20px; margin:0 0 0 16px; color:#adafc1; font-size:14px; letter-spacing:-0.14px;}
+.aside .tabWrap .tab_cont > ul li .select {width:180px; height:32px; margin:0 0 0 12px; padding:0 12px; border:1px solid #3b3d45; border-radius:4px; box-sizing:border-box; background:#20252e url('../images/builder/ico_caret_down_g.svg') top 50% right 4px no-repeat; color:#adafc1; font-size:13px; letter-spacing:-0.13px;}
+.aside .tabWrap .tab_cont > ul li.reject {background:url('../images/builder/ico_dropDown.svg') bottom 0 left 0 no-repeat;}
+.aside .tabWrap .tab_cont > ul li.active {background:#3340a8;}
+.aside .tabWrap .tab_cont > ul.reject_list li {display:none;}
+.aside .tabWrap .tab_cont > ul.reject_list li.reject {display:flex;}
+
+.aside .deleteBox {display:flex; align-items:center; justify-content:space-between; height:50px; padding:0 24px; box-sizing:border-box; background:#060c17;}
+.aside .deleteBox .btn_select_delete {width:24px; height:24px; background:url('../images/builder/ico_dlt_slt.svg') 50% 50% no-repeat;}
+.aside .deleteBox .btn_all_delete {height:38px; padding:0 12px 0 34px; border-radius:6px; background:#262d3c url('../images/builder/ico_dlt_all.svg') top 50% left 6px no-repeat; color:#adafc1; font-size:14px; letter-spacing:-0.14px;}
