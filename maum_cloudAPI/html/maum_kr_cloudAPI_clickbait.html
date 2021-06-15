@@ -408,9 +408,151 @@
 							<p class="sub_txt">4) 발급받은 API ID 및 Key를 기억하여 아래 매뉴얼에 맞게 사용합니다.</p>
 							<p class="sub_txt">※ Mindslab API를 위한 ID와 키는 외부 유출 및 공유를 금합니다.</p>
 						</div>
+						
 						<div class="guide_group">
 							<div class="title">낚시성 뉴스 분류</div>
 							<p class="sub_txt">뉴스의 제목과 본문의 내용이 다른 낚시성 뉴스 여부를 판별해줍니다.</p>
+		
+							<span class="sub_title">준비사항</span>
+							<p class="sub_txt">- Input: 한글 문장</p>
+
+							<span class="sub_title">실행 가이드</span>
+							<p class="sub_txt">① Request</p>
+							<ul>
+								<li>Method : POST</li>
+								<li>URL : https://api.maum.ai/fake/prediction:make</li>
+							</ul>
+
+							<p class="sub_txt">② Request 파라미터 설명</p>
+							<table>
+								<tbody>
+									<tr>
+										<th>키</th>
+										<th>설명</th>
+										<th>type</th>
+									</tr>
+									<tr>
+										<td>apiId</td>
+										<td>사용자의 고유 ID. 마인즈랩 담당자에게 이메일로 발급요청</td>
+										<td>string</td>
+									</tr>
+									<tr>
+										<td>apiKey</td>
+										<td>사용자의 고유 key. 마인즈랩 담당자에게 이메일로 발급요청</td>
+										<td>string</td>
+									</tr>
+									<tr>
+										<td>title</td>
+										<td>기사 제목</td>
+										<td>string</td>
+									</tr>
+									<tr>
+										<td>description</td>
+										<td>기사 본문</td>
+										<td>string</td>
+									</tr>
+								</tbody>
+							</table>
+
+							<p class="sub_txt">③ Request 예제</p>
+							<div class="code_box">
+<pre>
+curl --location --request POST 'http://api.maum.ai/fake/prediction:make' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+	"apiId": "{발급받은 API ID}",
+	"apiKey": "{발급받은 API KEY}",
+	"title": " \"중국 바이러스\" LA 한인타운서 한국계 남 무차별 폭행 당해",
+	"description": "미국 로스앤젤레스 한인타운에서 한국인으로 추정되는 아시 아계 남성이 인종차별적 발언과 함께 폭행을 당했다. 미 경찰은 신종 코로나바이러스 감염증(코로나19) 혐오범죄 가능성을 두고 수사에 나섰다. 최근 미국에선 코로나19 팬데믹(세계적 대유행) 기간 매일 한인을 대상으로 한 증오범죄 사건이 발생했다는 분석도 나왔다. 또한 허창수 회장은 여러 가지로 힘든 환경 속에서 전경련을 잘 이끌어 왔고, 앞으로도 국내외적으로 경제여건이 좋지 않은 상황에서 전경련과 민간 경제계를 이끌어 갈 수 있는 최적임자라는 것이 일치된 의견이었다고 덧붙였다."
+}’	
+</pre>
+							</div>
+		
+							<p class="sub_txt">④ Response 파라미터 설명</p>	
+							<span class="table_tit">Response</span>	
+							<table>
+								<tbody>
+									<tr>
+										<th>키</th>
+										<th>설명</th>
+										<th>type</th>
+									</tr>
+									<tr>
+										<td>message</td>
+										<td>API 동작여부</td>
+										<td>string</td>
+									</tr>
+									<tr>
+										<td>payload</td>
+										<td>변환된 문장 배열</td>
+										<td>string</td>
+									</tr>
+								</tbody>
+							</table>
+
+							<span class="table_tit">message: API 동작여부</span>	
+							<table>
+								<tbody>
+									<tr>
+										<th>키</th>
+										<th>설명</th>
+										<th>type</th>
+									</tr>
+									<tr>
+										<td>message</td>
+										<td>요청 처리 상태를 설명하는 문자열  (Success/ Fail)</td>
+										<td>string</td>
+									</tr>
+									<tr>
+										<td>status</td>
+										<td>요청 처리 상태에 대한 status code (0: Success)</td>
+										<td>int</td>
+									</tr>
+								</tbody>
+							</table>
+
+							<span class="table_tit">payload: 결과</span>	
+							<table>
+								<tbody>
+									<tr>
+										<th>키</th>
+										<th>설명</th>
+										<th>type</th>
+									</tr>
+									<tr>
+										<td>category</td>
+										<td>낚시성 뉴스를 판단하여 설명하는 문자열 (none/Clickbait)</td>
+										<td>string</td>
+									</tr>
+									<tr>
+										<td>label</td>
+										<td>낚시성 뉴스에 대한 status code(0: none, 1: clickbait)</td>
+										<td>int</td>
+									</tr>
+									<tr>
+										<td>reliability</td>
+										<td>낚시성 뉴스 가능성 확률을 나타내는 수치</td>
+										<td>float</td>
+									</tr>
+								</tbody>
+							</table>
+
+							<p class="sub_txt">⑤ Request 예제</p>
+							<div class="code_box">
+<pre>
+{
+	"message": {
+		"message": "Success",
+		"status": 0
+	},
+	"payload": {
+		"category": "clickbait",
+		"label": "1",
+		"reliability": 0.9981736
+	}
+}	
+</pre>
+							</div>
 						</div>
 					</div>
 					<!--//.guide_box-->
