@@ -1,0 +1,409 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <!-- Cache reset -->
+    <meta http-equiv="Expires" content="Mon, 06 Jan 2016 00:00:01 GMT">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <!-- icon_favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/ico_favicon_60x60.png">
+    
+    <!-- -------------------- General Resources -------------------- -->
+    <!-- General CSS -->
+    <link rel="stylesheet" type="text/css" href="css/font.css">
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/menu.css">
+    <link rel="stylesheet" type="text/css" href="css/pop_common.css">
+    <link rel="stylesheet" type="text/css" href="css/maum_admin.css">
+    <link rel="stylesheet" type="text/css" href="css/datepicker.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+
+    <!-- General Script -->
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/all.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/jsrender.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="js/waypoints.min.js"></script>
+    <script type="text/javascript" src="js/jquery.counterup.min.js"></script>
+
+    <title>ADMIN</title>
+</head>
+
+<body>
+<!-- .page loading -->
+<div id="page_ldWrap" class="page_loading">
+    <div class="loading_itemBox">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+<!-- //.page loading -->
+
+<!-- #wrap -->
+<div id="wrap">
+    <!-- .snb -->
+    <div class="snb">
+        <h1><a target="_self" href="#none">maum.ai Admin</a></h1>
+        <ul class="nav" id="leftMenuList">       
+            <li class="active">
+                <a href="#none">
+                    <em class="fas fa-chart-line" aria-hidden="true"></em>
+                    <span>DASHBOARD</span>
+                </a>
+            </li>
+            <li>
+                <a href="#none">
+                    <em class="fas fa-user-friends" aria-hidden="true"></em>
+                    <span>회원관리</span>
+                </a>
+                <ul class="sub_nav">
+                    <li><a href="#none">회원조회</a></li>
+                </ul>
+            </li>
+            <!-- [D] 'AI 제작 관리' 메뉴 추가  -->
+            <li>
+                <a href="#none">
+                    <em class="fas fa-user-friends" aria-hidden="true"></em>
+                    <span>AI 제작 관리</span>
+                </a>
+                <ul class="sub_nav">
+                    <!-- [D] href에 해당 페이지 링크 넣어주세요 -->
+                    <li class="active"><a href="admin_aiPrdtChk_video.html">영상 AI Human</a></li>
+                    <li><a href="admin_aiPrdtChk_csl.html">상담 AI Human</a></li>
+                </ul>
+            </li>
+            <!-- //[D] 'AI 제작 관리' 메뉴 추가  -->
+            <li>
+                <a href="#none">
+                    <em class="far fa-credit-card" aria-hidden="true"></em>
+                    <span>결제내역</span>
+                </a>
+                <ul class="sub_nav">
+                    <li><a href="#none">결제내역조회</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#none">
+                    <em class="fas fa-users-cog" aria-hidden="true"></em>
+                    <span>설정</span>
+                </a>
+                <ul class="sub_nav">
+                    <li><a href="#none">계정관리</a></li>
+                    <li><a href="#none">권한그룹관리</a></li>
+                    <li><a href="#none">메뉴관리</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!-- //.snb -->
+
+    <!-- .potalWrap -->
+    <div class="potalWrap">
+        <!-- #header -->
+        <div id="header">
+            <div class="path">
+                <ul class="path_nav">
+                    <li><a class="home" href="#none">Home</a></li>
+                    <li><a href="#none"><span>DASHBOARD</span></a></li>
+                    <li><span><span></span></span></li>
+                </ul>
+            </div>
+            <!-- .etcmenu -->
+            <div class="etcmenu">
+                <div class="userBox">
+                    <dl>
+                        <dt class="ico_user"><em class="far fa-user"></em></dt>
+                        <dd>
+                            <a target="_self" href="#none"><span>wldms30612@mindslab.ai</span><em class="fas fa-chevron-down"></em></a>
+                        </dd>
+                        <ul class="lst">
+                            <li><a class="ico_profile btn_lyr_open" href="#none">프로필</a></li>
+                            <li class="ico_logout"><a target="_self" href="/logout">로그아웃</a></li>
+                        </ul>
+                    </dl>
+                </div>
+            </div>
+            <!-- //.etcmenu -->
+        </div>
+        <!-- //#header -->
+
+        <!-- #container -->
+        <div id="container">
+            <!-- #contents -->
+            <div id="contents">
+                <!-- .content -->
+                <div class="content">
+                    <!-- .section -->
+                    <div class="stn contBoxType">
+                        <!-- .stn_cont -->
+                        <div class="stn_cont">
+                            <p class="tbl_tit">영상 AI Human 제작</p>
+
+                            <div class="tbl_box">
+                                <table class="tbl_line_lst" summary="No, 구매자, 구매일, 촬영 예약, 영상 촬영, 학습 데이터 제작, AI 학습, 고객검토, 제작 완료로 구성됨">
+                                    <caption class="hide">영상 AI Human 제작</caption>
+                                    <colgroup>
+                                        <col width="">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">No.</th>
+                                            <th scope="col">구매자</th>
+                                            <th scope="col">구매일</th>
+                                            <th scope="col">촬영 예약</th>
+                                            <th scope="col">영상 촬영</th>
+                                            <th scope="col">학습 데이터 제작</th>
+                                            <th scope="col">AI 학습</th>
+                                            <th scope="col">고객검토</th>
+                                            <th scope="col">제작 완료</th>
+                                            <th scope="col">수정</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td scope="row" colspan="10">판매된 상품이 없습니다.</td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row">1</td>
+                                            <td>김영희</td>
+                                            <td>2010-20-20</td>
+                                            <td>완료</td>
+                                            <td>진행중</td>
+                                            <td>대기</td>
+                                            <td>대기</td>
+                                            <td>대기</td>
+                                            <td>대기</td>
+                                            <td><a id="btn_mody" class="btn_lyr_open" href="#none" title="수정">수정</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div id="pagination">
+                                <div class="tbl_btm_info">
+                                    <div class="tbl_path">전체 <strong>1</strong> / 3</div>
+                                    <div class="paging">
+                                        <a class="btn_paging_first" href="javascript:getAdminUserList(1);">처음 페이지로 이동</a>
+                                        <a class="btn_paging_prev" href="javascript:getAdminUserList(0);">이전 페이지로 이동</a>
+                                        <span class="list">
+                                            <strong>1</strong>
+                                            <a href="javascript:getAdminUserList(2);">2</a>
+                                            <a href="javascript:getAdminUserList(3);">3</a>
+                                        </span>
+                                        <a class="btn_paging_next" href="javascript:getAdminUserList(2);">다음 페이지로 이동</a>
+                                        <a class="btn_paging_last" href="javascript:getAdminUserList(3);">마지막 페이지로 이동</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //.stn_cont -->
+                    </div>
+                    <!-- //.section -->
+                </div>
+                <!-- //.content -->
+            </div>
+            <!-- //.contents -->
+        </div>
+        <!-- //#container -->
+
+        <!-- #footer -->
+        <div id="footer">
+            <div class="cyrt"><span>&copy; MINDsLab. All rights reserved.</span></div>
+        </div>
+        <!-- //#footer -->
+    </div>
+</div>
+<!-- //#wrap -->
+
+<!-- lyrWrap -->
+<div class="lyrWrap">
+    <div class="lyr_bg"></div>
+    <!-- 사용자 공통 프로필 -->
+    <div class="lyrBox lyr_profile">
+        <div class="lyr_top">
+            <h3>프로필</h3>
+            <button class="btn_lyr_close">닫기</button>
+        </div>
+        <div class="lyr_mid">
+            <dl class="dlBox">
+                <dt>아이디</dt>
+                <dd>
+                    <div class="iptBox">
+                        <input type="text" class="ipt_txt" value="wldms30612@mindslab.ai" disabled>
+                    </div>
+                </dd>
+            </dl>
+            <dl class="dlBox">
+                <dt>이름</dt>
+                <dd>
+                    <div class="iptBox">
+                        <input type="text" class="ipt_txt" value="성지은" disabled>
+                    </div>
+                </dd>
+            </dl>
+            <dl class="dlBox">
+                <dt>비밀번호</dt>
+                <dd>
+                    <div class="iptBox" style="margin-bottom:7px;">
+                        <input type="password" id="password1" class="ipt_txt" placeholder="비밀번호" maxlength="20" autocomplete="new-password">
+                        <!-- [D] 에러메세지 -->
+                        <p class="error_msg" id="pw_check_msg" style="display:none">패스워드 생성규칙이 올바르지 않습니다. 8~20자 이내, 대소문자 숫자 포함</p>
+                    </div>
+                    <div class="iptBox">
+                        <input type="password" id="password2"  class="ipt_txt" placeholder="비밀번호 확인" maxlength="20" autocomplete="new-password">
+                        <!-- [D] 에러메세지 -->
+                        <p class="error_msg" id="pw_not_match_msg" style="display:none">패스워드가 일치하지 않습니다.</p>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+        <div class="lyr_btm">
+            <div class="btnBox sz_small">
+                <button class="" onclick="javascript:updateAdminUserPwd();" >확인</button>
+            </div>
+        </div>
+    </div>
+    <!-- //사용자 공통 프로필 -->
+
+    <!-- lyr_user_mody -->
+    <div class="lyrBox lyr_user_mody ai_prdt_chk">
+        <div class="lyr_top">
+            <h3>수정하기</h3>
+            <button class="btn_lyr_close">닫기</button>
+        </div>
+        <div class="lyr_mid">
+            <dl class="dlBox">
+                <dt>구매자</dt>
+                <dd>
+                    <div class="iptBox">
+                        <input type="text" class="ipt_txt" disabled>
+                    </div>
+                </dd>
+            </dl>
+            <dl class="dlBox">
+                <dt>구매일</dt>
+                <dd>
+                    <div class="iptBox">
+                        <input type="text" class="ipt_txt" disabled>
+                    </div>
+                </dd>
+            </dl>
+            <dl class="dlBox">
+                <dt>촬영 예약</dt>
+                <dd>
+                    <select class="select">
+                        <option value="">대기</option>
+                        <option value="">진행중</option>
+                        <option value="">완료</option>
+                    </select>
+                </dd>
+            </dl>
+            <dl class="dlBox">
+                <dt>영상 촬영</dt>
+                <dd>
+                    <select class="select">
+                        <option value="">대기</option>
+                        <option value="">진행중</option>
+                        <option value="">완료</option>
+                    </select>
+                </dd>
+            </dl>
+            <dl class="dlBox">
+                <dt>학습 데이터 제작</dt>
+                <dd>
+                    <select class="select">
+                        <option value="">대기</option>
+                        <option value="">진행중</option>
+                        <option value="">완료</option>
+                    </select>
+                </dd>
+            </dl>
+            <dl class="dlBox">
+                <dt>AI 학습</dt>
+                <dd>
+                    <select class="select">
+                        <option value="">대기</option>
+                        <option value="">진행중</option>
+                        <option value="">완료</option>
+                    </select>
+                </dd>
+            </dl>
+            <dl class="dlBox">
+                <dt>고객검토</dt>
+                <dd>
+                    <select class="select">
+                        <option value="">대기</option>
+                        <option value="">진행중</option>
+                        <option value="">완료</option>
+                    </select>
+                </dd>
+            </dl>
+            <dl class="dlBox">
+                <dt>제작 완료</dt>
+                <dd>
+                    <select class="select">
+                        <option value="">대기</option>
+                        <option value="">진행중</option>
+                        <option value="">완료</option>
+                    </select>
+                </dd>
+            </dl>
+        </div>
+        <div class="lyr_btm">
+            <div class="btnBox sz_small">
+                <button class="btn_lyr_close">확인</button>
+                <button class="cancel btn_lyr_close">취소</button>
+            </div>
+        </div>
+    </div>
+    <!-- //lyr_user_mody -->
+</div>
+<!-- //lyrWrap(사용자 프로필) -->
+
+<!-- Local Script -->
+<script type="text/javascript">
+$(window).load(function() {
+    $('.page_loading').addClass('pageldg_hide').delay(300).queue(function() {
+        $(this).remove();
+    });
+});
+
+jQuery.event.add(window,"load",function(){
+    $(document).ready(function (){
+        // header user
+        $('#header .etcmenu .userBox dl dd > a').on('click',function(){
+            $(this).parent().parent().addClass('active');
+        });
+        $('#header .etcmenu .userBox').on('mouseleave',function(){
+            $('#header .etcmenu .userBox dl').removeClass('active');
+        });
+
+        // snb
+        $('.snb ul.nav li a').on('click',function(){
+            $('.snb ul.nav li').removeClass('active');
+            $(this).parents('li').addClass('active');
+        });
+        $('.snb ul.sub_nav > li > a').on('click',function(){
+            $('.snb ul.sub_nav li').removeClass('active');
+            $(this).parent('li').addClass('active');
+            $(this).parents('li').parents('ul.sub_nav').parents('li').addClass('active');
+        });
+
+        // [D] 수정 팝업 열기
+        $('#btn_mody').on('click', function(){
+            $('.lyr_user_mody').show();
+        });
+    });
+});
+</script>
+</body>
+</html>
