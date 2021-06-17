@@ -1,631 +1,651 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="format-detection" content="telephone=no">
-    
-    <!-- Cache reset -->
-    <meta http-equiv="Expires" content="Mon, 06 Jan 2016 00:00:01 GMT">
-    <meta http-equiv="Expires" content="-1">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Cache-Control" content="no-cache">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no">
 
-    <!-- Open Graph Tag -->
-    <meta property="og:title"         content="마음데이터 - AI 데이터 가공의 시작">
-    <meta property="og:type"          content="website"> <!-- 웹 페이지 타입 -->
-    <!-- <meta property="og:url"           content=""> -->
-    <meta property="og:image"         content="">
-    <meta property="og:description"   content="비즈니스 맞춤형 AI 데이터를 제공합니다.">
+<!-- Cache reset -->
+<meta http-equiv="Expires" content="Mon, 06 Jan 2016 00:00:01 GMT">
+<meta http-equiv="Expires" content="-1">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
 
-    <!-- icon_favicon -->
-    <!-- <link rel="apple-touch-icon-precomposed" href="">
-    <link rel="shortcut icon" type="image/x-icon" href=""> -->
+<!-- Open Graph Tag -->
+<meta property="og:title"         content="마음데이터 - AI 데이터 가공의 시작">
+<meta property="og:type"          content="website"> <!-- 웹 페이지 타입 -->
+<!-- <meta property="og:url"           content=""> -->
+<meta property="og:image"         content="">
+<meta property="og:description"   content="비즈니스 맞춤형 AI 데이터를 제공합니다.">
 
-    <!---------------------- General Resources ---------------------->
-    <!-- General CSS -->
-    <link rel="stylesheet" type="text/css" href="../../../assets/css/common.css">
+<!-- icon_favicon -->
+<!-- <link rel="apple-touch-icon-precomposed" href="">
+<link rel="shortcut icon" type="image/x-icon" href=""> -->
 
-    <!-- General Script -->
-    <script type="text/javascript" src="../../../assets/js/jquery-3.5.1.min.js"></script>
-    <script type="text/javascript" src="../../../assets/js/jquery-migrate-3.3.1.min.js"></script>
+<!---------------------- General Resources ---------------------->
+<!-- General CSS -->
+<link rel="stylesheet" type="text/css" href="../../../assets/css/common.css">
 
-    <title>Common || Builder</title>
+<!-- General Script -->
+<script type="text/javascript" src="../../../assets/js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="../../../assets/js/jquery-migrate-3.3.1.min.js"></script>
+
+<title>Common || Builder</title>
 </head>
 <body>
-    <!-- #wrap -->
-    <div id="wrap">
-        <!-- #header -->
-        <div id="header">
-            <div class="sta">
-                <div class="btnBox">
-                    <button type="button" class="btn_move_list">목록으로 나가기</button>
-                </div>
-                <div class="titBox">
-                    <span class="pjt_name">Bounding Box Sample Project</span>
+<!-- #wrap -->
+<div id="wrap">
+    <!-- #header -->
+    <div id="header">
+        <div class="sta">
+            <div class="btnBox">
+                <button type="button" class="btn_move_list">목록으로 나가기</button>
+            </div>
+            <div class="titBox">
+                <span class="pjt_name">Bounding Box Sample Project</span>
 
-                    <div class="guideViewer" title="Quick Guide">
-                        <em class="fas fa-info-circle"><span class="hide">퀵가이드 보기</span></em>                        
-                        <div class="guideBox">
-                            <dl class="guideDetail">
-                                <dt>Quick 작업자 가이드</dt>
-                                <dd>
-                                    <ul class="decimal">
-                                        <li>실외/실내 및 장소선택</li>
-                                        <li>방해물 유형 선택</li>
-                                        <li>더블 클릭하여 영역박스 생성</li>
-                                        <li>방해물 크기에 맞게 영역지정</li>
-                                    </ul>
-                                    <ul class="disc">
-                                        <li>한 이미지에 방해물의 최대 개수는 4개</li>
-                                        <li>작업 중간중간 임시저장 버튼을 눌러 작업한 내용을 저장.</li>
-                                    </ul>
-                                </dd>
-                            </dl>       
-                        </div>
+                <div class="guideViewer" title="Quick Guide">
+                    <em class="fas fa-info-circle"><span class="hide">퀵가이드 보기</span></em>                        
+                    <div class="guideBox">
+                        <dl class="guideDetail">
+                            <dt>Quick 작업자 가이드</dt>
+                            <dd>
+                                <ul class="decimal">
+                                    <li>실외/실내 및 장소선택</li>
+                                    <li>방해물 유형 선택</li>
+                                    <li>더블 클릭하여 영역박스 생성</li>
+                                    <li>방해물 크기에 맞게 영역지정</li>
+                                </ul>
+                                <ul class="disc">
+                                    <li>한 이미지에 방해물의 최대 개수는 4개</li>
+                                    <li>작업 중간중간 임시저장 버튼을 눌러 작업한 내용을 저장.</li>
+                                </ul>
+                            </dd>
+                        </dl>       
                     </div>
                 </div>
-                <div class="btnBox">
-                    <button type="button" class="btn_unable_work">작업불가</button>
-                    <button type="button" class="btn_temporary_save">임시저장</button>
-                    <button type="button" class="btn_edit_complete">가공완료</button>
-                </div>
+            </div>
+            <div class="btnBox">
+                <button type="button" class="btn_unable_work btn_lyr_open" name="unableWork">작업불가</button>
+                <button type="button" class="btn_temporary_save">임시저장</button>
+                <button type="button" class="btn_edit_complete">가공완료</button>
             </div>
         </div>
-        <!-- //#header -->
+    </div>
+    <!-- //#header -->
 
-        <!-- #container -->
-        <div id="container">
-            <!-- .toolMenuBar -->
-            <div class="toolMenuBar">
-                <ul class="menu_list">
-                    <li>
-                        <button type="button" class="btn_bounding_box" title="Bounding Box">
-                            <span class="hide">Bounding Box</span>
-                        </button>
-                        <div class="classBox">
-                            <div class="tit">Class</div>
-                            <ul class="class_list">
-                                <li>
-                                    <input type="radio" id="" name="boundingBox_class" checked>
-                                    <label for="">자동차자동차</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="boundingBox_class">
-                                    <label for="">건물건물</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="boundingBox_class">
-                                    <label for="">오토바이오토바이</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="boundingBox_class">
-                                    <label for="">사람</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="boundingBox_class">
-                                    <label for="">강아지강아지</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="boundingBox_class">
-                                    <label for="">자전거</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="boundingBox_class">
-                                    <label for="">전봇대</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="boundingBox_class">
-                                    <label for="">건물</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="boundingBox_class">
-                                    <label for="">가스레인지입니다</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="boundingBox_class">
-                                    <label for="">그릇장</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="boundingBox_class">
-                                    <label for="">김치냉장고</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="boundingBox_class">
-                                    <label for="">돌침대</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="boundingBox_class">
-                                    <label for="">박스</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="boundingBox_class">
-                                    <label for="">밥솥</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="boundingBox_class">
-                                    <label for="">서랍장</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="boundingBox_class">
-                                    <label for="">서랍장</label>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <button type="button" class="btn_segmentation" title="Segmentation">
-                            <span class="hide">Segmentation</span>
-                        </button>
-                        <div class="classBox">
-                            <div class="tit">Class</div>
-                            <ul class="class_list">
-                                <li>
-                                    <input type="radio" id="" name="segmentation_class" checked>
-                                    <label for="">자동차</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="segmentation_class">
-                                    <label for="">건물</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="segmentation_class">
-                                    <label for="">오토바이</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="segmentation_class">
-                                    <label for="">사람</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="segmentation_class">
-                                    <label for="">강아지</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="segmentation_class">
-                                    <label for="">자전거</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="segmentation_class">
-                                    <label for="">전봇대</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="segmentation_class">
-                                    <label for="">건물</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="segmentation_class">
-                                    <label for="">가스레인지입니다</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="segmentation_class">
-                                    <label for="">그릇장</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="segmentation_class">
-                                    <label for="">김치냉장고</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="segmentation_class">
-                                    <label for="">돌침대</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="segmentation_class">
-                                    <label for="">박스</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="segmentation_class">
-                                    <label for="">밥솥</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="segmentation_class">
-                                    <label for="">서랍장</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="segmentation_class">
-                                    <label for="">서랍장</label>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <button type="button" class="btn_keyPoint" title="Keypoint">
-                            <span class="hide">Keypoint</span>
-                        </button>
-                        <div class="classBox">
-                            <div class="tit">Class</div>
-                            <ul class="class_list">
-                                <li>
-                                    <input type="radio" id="" name="Keypoint_class" checked>
-                                    <label for="">dfgdsfg</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="Keypoint_class">
-                                    <label for="">건dfgsdf물</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="Keypoint_class">
-                                    <label for="">오토바이</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="Keypoint_class">
-                                    <label for="">사람</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="Keypoint_class">
-                                    <label for="">강아지</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="Keypoint_class">
-                                    <label for="">자전거</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="Keypoint_class">
-                                    <label for="">전봇대</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="Keypoint_class">
-                                    <label for="">건물</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="Keypoint_class">
-                                    <label for="">가스레인지입니다</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="Keypoint_class">
-                                    <label for="">그릇장</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="Keypoint_class">
-                                    <label for="">김치냉장고</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="Keypoint_class">
-                                    <label for="">돌침대</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="Keypoint_class">
-                                    <label for="">박스</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="Keypoint_class">
-                                    <label for="">밥솥</label>
-                                </li>
-                                <li>
-                                    <input type="radio" id="" name="Keypoint_class">
-                                    <label for="">서랍장</label>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <button type="button" class="btn_move_object" title="Move Object">
-                            <span class="hide">Move Object</span>
-                        </button>
-                    </li>
-                    <li>
-                        <button type="button" class="btn_zoomIn" title="Zoom in">
-                            <span class="hide">Zoom in</span>
-                        </button>
-                    </li>
-                    <li>
-                        <button type="button" class="btn_zoomOut" title="Zoom out">
-                            <span class="hide">Zoom out</span>
-                        </button>
-                    </li>
-                    <li>
-                        <button type="button" class="btn_reset" title="Reset">
-                            <span class="hide">Reset</span>
-                        </button>
-                    </li>
-                    <li>
-                        <button type="button" class="btn_undo" title="Undo">
-                            <span class="hide">Undo</span>
-                        </button>
-                    </li>
-                    <li>
-                        <button type="button" class="btn_redo" title="Redo">
-                            <span class="hide">Redo</span>
-                        </button>
-                    </li>
-                </ul>
-            </div>
-            <!-- //#toolMenuBar -->
-
-            <!-- #contents -->
-            <div id="contents" class="edit_image">
-                <!-- .content -->
-                <div class="content">
-                    <!-- .work_space -->
-                    <div class="work_space">
-
+    <!-- #container -->
+    <div id="container">
+        <!-- .toolMenuBar -->
+        <div class="toolMenuBar">
+            <ul class="menu_list">
+                <li>
+                    <button type="button" class="btn_bounding_box" title="Bounding Box">
+                        <span class="hide">Bounding Box</span>
+                    </button>
+                    <div class="classBox">
+                        <div class="tit">Class</div>
+                        <ul class="class_list">
+                            <li>
+                                <input type="radio" id="" name="boundingBox_class" checked>
+                                <label for="">자동차자동차</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="boundingBox_class">
+                                <label for="">건물건물</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="boundingBox_class">
+                                <label for="">오토바이오토바이</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="boundingBox_class">
+                                <label for="">사람</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="boundingBox_class">
+                                <label for="">강아지강아지</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="boundingBox_class">
+                                <label for="">자전거</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="boundingBox_class">
+                                <label for="">전봇대</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="boundingBox_class">
+                                <label for="">건물</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="boundingBox_class">
+                                <label for="">가스레인지입니다</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="boundingBox_class">
+                                <label for="">그릇장</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="boundingBox_class">
+                                <label for="">김치냉장고</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="boundingBox_class">
+                                <label for="">돌침대</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="boundingBox_class">
+                                <label for="">박스</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="boundingBox_class">
+                                <label for="">밥솥</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="boundingBox_class">
+                                <label for="">서랍장</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="boundingBox_class">
+                                <label for="">서랍장</label>
+                            </li>
+                        </ul>
                     </div>
-                    <!-- //.work_space -->
+                </li>
+                <li>
+                    <button type="button" class="btn_segmentation" title="Segmentation">
+                        <span class="hide">Segmentation</span>
+                    </button>
+                    <div class="classBox">
+                        <div class="tit">Class</div>
+                        <ul class="class_list">
+                            <li>
+                                <input type="radio" id="" name="segmentation_class" checked>
+                                <label for="">자동차</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="segmentation_class">
+                                <label for="">건물</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="segmentation_class">
+                                <label for="">오토바이</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="segmentation_class">
+                                <label for="">사람</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="segmentation_class">
+                                <label for="">강아지</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="segmentation_class">
+                                <label for="">자전거</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="segmentation_class">
+                                <label for="">전봇대</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="segmentation_class">
+                                <label for="">건물</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="segmentation_class">
+                                <label for="">가스레인지입니다</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="segmentation_class">
+                                <label for="">그릇장</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="segmentation_class">
+                                <label for="">김치냉장고</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="segmentation_class">
+                                <label for="">돌침대</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="segmentation_class">
+                                <label for="">박스</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="segmentation_class">
+                                <label for="">밥솥</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="segmentation_class">
+                                <label for="">서랍장</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="segmentation_class">
+                                <label for="">서랍장</label>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <button type="button" class="btn_keyPoint" title="Keypoint">
+                        <span class="hide">Keypoint</span>
+                    </button>
+                    <div class="classBox">
+                        <div class="tit">Class</div>
+                        <ul class="class_list">
+                            <li>
+                                <input type="radio" id="" name="Keypoint_class" checked>
+                                <label for="">dfgdsfg</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="Keypoint_class">
+                                <label for="">건dfgsdf물</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="Keypoint_class">
+                                <label for="">오토바이</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="Keypoint_class">
+                                <label for="">사람</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="Keypoint_class">
+                                <label for="">강아지</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="Keypoint_class">
+                                <label for="">자전거</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="Keypoint_class">
+                                <label for="">전봇대</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="Keypoint_class">
+                                <label for="">건물</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="Keypoint_class">
+                                <label for="">가스레인지입니다</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="Keypoint_class">
+                                <label for="">그릇장</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="Keypoint_class">
+                                <label for="">김치냉장고</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="Keypoint_class">
+                                <label for="">돌침대</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="Keypoint_class">
+                                <label for="">박스</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="Keypoint_class">
+                                <label for="">밥솥</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="" name="Keypoint_class">
+                                <label for="">서랍장</label>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <button type="button" class="btn_move_object" title="Move Object">
+                        <span class="hide">Move Object</span>
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="btn_zoomIn" title="Zoom in">
+                        <span class="hide">Zoom in</span>
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="btn_zoomOut" title="Zoom out">
+                        <span class="hide">Zoom out</span>
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="btn_reset" title="Reset">
+                        <span class="hide">Reset</span>
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="btn_undo" title="Undo">
+                        <span class="hide">Undo</span>
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="btn_redo" title="Redo">
+                        <span class="hide">Redo</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <!-- //#toolMenuBar -->
+
+        <!-- #contents -->
+        <div id="contents" class="edit_image">
+            <!-- .content -->
+            <div class="content">
+                <!-- .work_space -->
+                <div class="work_space">
+
                 </div>
-                <!-- //.content -->
+                <!-- //.work_space -->
+            </div>
+            <!-- //.content -->
 
-                <!-- .aside -->
-                <div class="aside on">
-                    <div class="currentFile">파일명: <span>image_sample_001.jpg</span></div>
-                    <div class="guideFile">
-                        <span class="fileName">BoundingBox_작업가이드.pdf</span>
-                        <button type="button" class="btn_guide_download" title="Guide Download">
-                            <span class="hide">Guide Download</span>
-                        </button>
-                    </div>
-                    <div class="comments">
-                        <div class="tit">Comments</div>
-                        <div class="cmt_box">
-                            <textarea class="textarea" placeholder="텍스트를 입력하세요."></textarea>
-                        </div>
-                    </div>
-                    <div class="tabWrap">
-                        <div class="tab_btn">
-                            <button type="button" class="btn_tag active" title="Tag List">
-                                <span class="hide">Tag List Button</span>
-                            </button>
-                            <button type="button" class="btn_reject" title="Reject List">
-                                <span class="hide">Reject List Button</span>
-                            </button>
-                        </div>
-                        <div class="tab_cont">
-                            <ul class="tag_list">
-                                <li class="reject active">
-                                    <span class="tagPoint"></span>
-                                    <span class="tagNum">1</span>
-                                    <select class="select">
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                    </select>
-                                </li>
-                                <li>
-                                    <span class="tagPoint"></span>
-                                    <span class="tagNum">2</span>
-                                    <select class="select">
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                    </select>
-                                </li>
-                                <li>
-                                    <span class="tagPoint"></span>
-                                    <span class="tagNum">3</span>
-                                    <select class="select">
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                    </select>
-                                </li>
-                                <li>
-                                    <span class="tagPoint"></span>
-                                    <span class="tagNum">44</span>
-                                    <select class="select">
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                    </select>
-                                </li>
-                                <li class="reject">
-                                    <span class="tagPoint"></span>
-                                    <span class="tagNum">1</span>
-                                    <select class="select">
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                    </select>
-                                </li>
-                                <li>
-                                    <span class="tagPoint"></span>
-                                    <span class="tagNum">2</span>
-                                    <select class="select">
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                    </select>
-                                </li>
-                                <li>
-                                    <span class="tagPoint"></span>
-                                    <span class="tagNum">3</span>
-                                    <select class="select">
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                    </select>
-                                </li>
-                                <li>
-                                    <span class="tagPoint"></span>
-                                    <span class="tagNum">44</span>
-                                    <select class="select">
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                    </select>
-                                </li>
-                                <li class="reject">
-                                    <span class="tagPoint"></span>
-                                    <span class="tagNum">1</span>
-                                    <select class="select">
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                    </select>
-                                </li>
-                                <li>
-                                    <span class="tagPoint"></span>
-                                    <span class="tagNum">2</span>
-                                    <select class="select">
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                    </select>
-                                </li>
-                                <li>
-                                    <span class="tagPoint"></span>
-                                    <span class="tagNum">3</span>
-                                    <select class="select">
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                    </select>
-                                </li>
-                                <li>
-                                    <span class="tagPoint"></span>
-                                    <span class="tagNum">44</span>
-                                    <select class="select">
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                    </select>
-                                </li>
-                            </ul>
-                            <ul class="reject_list">
-                                <li class="reject">
-                                    <span class="tagPoint"></span>
-                                    <span class="tagNum">1</span>
-                                    <select class="select">
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                    </select>
-                                </li>
-                                <li>
-                                    <span class="tagPoint"></span>
-                                    <span class="tagNum">2</span>
-                                    <select class="select">
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                    </select>
-                                </li>
-                                <li>
-                                    <span class="tagPoint"></span>
-                                    <span class="tagNum">3</span>
-                                    <select class="select">
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                    </select>
-                                </li>
-                                <li>
-                                    <span class="tagPoint"></span>
-                                    <span class="tagNum">44</span>
-                                    <select class="select">
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                    </select>
-                                </li>
-                                <li class="reject">
-                                    <span class="tagPoint"></span>
-                                    <span class="tagNum">1</span>
-                                    <select class="select">
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                    </select>
-                                </li>
-                                <li>
-                                    <span class="tagPoint"></span>
-                                    <span class="tagNum">2</span>
-                                    <select class="select">
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                    </select>
-                                </li>
-                                <li>
-                                    <span class="tagPoint"></span>
-                                    <span class="tagNum">3</span>
-                                    <select class="select">
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                    </select>
-                                </li>
-                                <li>
-                                    <span class="tagPoint"></span>
-                                    <span class="tagNum">44</span>
-                                    <select class="select">
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                    </select>
-                                </li>
-                                <li class="reject">
-                                    <span class="tagPoint"></span>
-                                    <span class="tagNum">1</span>
-                                    <select class="select">
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                    </select>
-                                </li>
-                                <li>
-                                    <span class="tagPoint"></span>
-                                    <span class="tagNum">2</span>
-                                    <select class="select">
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                    </select>
-                                </li>
-                                <li>
-                                    <span class="tagPoint"></span>
-                                    <span class="tagNum">3</span>
-                                    <select class="select">
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                    </select>
-                                </li>
-                                <li>
-                                    <span class="tagPoint"></span>
-                                    <span class="tagNum">44</span>
-                                    <select class="select">
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                    </select>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="deleteBox">
-                        <button type="button" class="btn_select_delete" title="선택삭제"><span class="hide">선택삭제</span></button>
-                        <button type="button" class="btn_all_delete">전체삭제</button>
-                    </div>
-                    <button type="button" class="btn_expand" title="Expand">
-                        <span class="hide">Expand</span>
+            <!-- .aside -->
+            <div class="aside on">
+                <div class="currentFile">파일명: <span>image_sample_001.jpg</span></div>
+                <div class="guideFile">
+                    <span class="fileName">BoundingBox_작업가이드.pdf</span>
+                    <button type="button" class="btn_guide_download" title="Guide Download">
+                        <span class="hide">Guide Download</span>
                     </button>
                 </div>
-                <!-- //.aside -->
-            </div> 
-            <!-- //#contents -->
-        </div>
-        <!-- //#container -->
+                <div class="comments">
+                    <div class="tit">Comments</div>
+                    <div class="cmt_box">
+                        <textarea class="textarea" placeholder="텍스트를 입력하세요."></textarea>
+                    </div>
+                </div>
+                <div class="tabWrap">
+                    <div class="tab_btn">
+                        <button type="button" class="btn_tag active" title="Tag List">
+                            <span class="hide">Tag List Button</span>
+                        </button>
+                        <button type="button" class="btn_reject" title="Reject List">
+                            <span class="hide">Reject List Button</span>
+                        </button>
+                    </div>
+                    <div class="tab_cont">
+                        <ul class="tag_list">
+                            <li class="reject active">
+                                <span class="tagPoint"></span>
+                                <span class="tagNum">1.</span>
+                                <select class="select">
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                </select>
+                            </li>
+                            <li>
+                                <span class="tagPoint"></span>
+                                <span class="tagNum">2.</span>
+                                <select class="select">
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                </select>
+                            </li>
+                            <li>
+                                <span class="tagPoint"></span>
+                                <span class="tagNum">3.</span>
+                                <select class="select">
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                </select>
+                            </li>
+                            <li>
+                                <span class="tagPoint"></span>
+                                <span class="tagNum">44.</span>
+                                <select class="select">
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                </select>
+                            </li>
+                            <li class="reject">
+                                <span class="tagPoint"></span>
+                                <span class="tagNum">1.</span>
+                                <select class="select">
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                </select>
+                            </li>
+                            <li>
+                                <span class="tagPoint"></span>
+                                <span class="tagNum">2.</span>
+                                <select class="select">
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                </select>
+                            </li>
+                            <li>
+                                <span class="tagPoint"></span>
+                                <span class="tagNum">3.</span>
+                                <select class="select">
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                </select>
+                            </li>
+                            <li>
+                                <span class="tagPoint"></span>
+                                <span class="tagNum">44.</span>
+                                <select class="select">
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                </select>
+                            </li>
+                            <li class="reject">
+                                <span class="tagPoint"></span>
+                                <span class="tagNum">1.</span>
+                                <select class="select">
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                </select>
+                            </li>
+                            <li>
+                                <span class="tagPoint"></span>
+                                <span class="tagNum">2.</span>
+                                <select class="select">
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                </select>
+                            </li>
+                            <li>
+                                <span class="tagPoint"></span>
+                                <span class="tagNum">3.</span>
+                                <select class="select">
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                </select>
+                            </li>
+                            <li>
+                                <span class="tagPoint"></span>
+                                <span class="tagNum">44.</span>
+                                <select class="select">
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                </select>
+                            </li>
+                        </ul>
+                        <ul class="reject_list">
+                            <li class="reject">
+                                <span class="tagPoint"></span>
+                                <span class="tagNum">1.</span>
+                                <select class="select">
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                </select>
+                            </li>
+                            <li>
+                                <span class="tagPoint"></span>
+                                <span class="tagNum">2.</span>
+                                <select class="select">
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                </select>
+                            </li>
+                            <li>
+                                <span class="tagPoint"></span>
+                                <span class="tagNum">3.</span>
+                                <select class="select">
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                </select>
+                            </li>
+                            <li>
+                                <span class="tagPoint"></span>
+                                <span class="tagNum">44.</span>
+                                <select class="select">
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                </select>
+                            </li>
+                            <li class="reject">
+                                <span class="tagPoint"></span>
+                                <span class="tagNum">1.</span>
+                                <select class="select">
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                </select>
+                            </li>
+                            <li>
+                                <span class="tagPoint"></span>
+                                <span class="tagNum">2.</span>
+                                <select class="select">
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                </select>
+                            </li>
+                            <li>
+                                <span class="tagPoint"></span>
+                                <span class="tagNum">3.</span>
+                                <select class="select">
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                </select>
+                            </li>
+                            <li>
+                                <span class="tagPoint"></span>
+                                <span class="tagNum">44.</span>
+                                <select class="select">
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                </select>
+                            </li>
+                            <li class="reject">
+                                <span class="tagPoint"></span>
+                                <span class="tagNum">1.</span>
+                                <select class="select">
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                </select>
+                            </li>
+                            <li>
+                                <span class="tagPoint"></span>
+                                <span class="tagNum">2.</span>
+                                <select class="select">
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                </select>
+                            </li>
+                            <li>
+                                <span class="tagPoint"></span>
+                                <span class="tagNum">3.</span>
+                                <select class="select">
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                </select>
+                            </li>
+                            <li>
+                                <span class="tagPoint"></span>
+                                <span class="tagNum">44.</span>
+                                <select class="select">
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                    <option value="">건물</option>
+                                </select>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="deleteBox">
+                    <button type="button" class="btn_select_delete" title="선택삭제"><span class="hide">선택삭제</span></button>
+                    <button type="button" class="btn_all_delete">전체삭제</button>
+                </div>
+                <button type="button" class="btn_expand" title="Expand">
+                    <span class="hide">Expand</span>
+                </button>
+            </div>
+            <!-- //.aside -->
+        </div> 
+        <!-- //#contents -->
     </div>
-    <!-- //#wrap -->
-    
-    <!---------------------- Local Resources ---------------------->
-    <!-- Local CSS -->
-    <link rel="stylesheet" href="../../../assets/css/builder.css">
+    <!-- //#container -->
+</div>
+<!-- //#wrap -->
 
-    <!-- Local Script Library -->
-    <script type="text/javascript" src="../../../assets/js/builder.js"></script>
+<!---------------------- layer popup ---------------------->
+<!-- 작업 불가지정 팝업 -->
+<div id="unableWork" class="lyrWrap">
+    <div class="lyrCont">
+        <div class="lyr_top">
+            <p class="tit">작업 불가지정</p>
+            <button type="button" class="btn_lyr_close"><span class="hide">닫기버튼</span></button>
+        </div>
+        <div class="lyr_mid">
+            <p>사유를 입력하고 <span class="ft_point_blue">‘작업 불가’</span> 버튼을 누르면 작업 불가 항목으로 지정됩니다.</p>
+            <input type="text" placeholder="작업 불가 사유를 입력해주세요.">
+        </div>
+        <div class="lyr_btm">
+            <button tyle="button" class="btn_lyr_close">취소</button>
+            <button tyle="button" class="btn_confirm btn_unable_work">작업 불가</button>
+        </div>
+    </div>
+</div>
+<!-- //작업 불가지정 팝업 -->
 
-    <!-- Local Script -->
-    <script type="text/javascript">
-    jQuery.event.add(window,"load",function(){
-        $(document).ready(function(){
-            // classBox radio id와 for 값 동일한 값으로 부여하기
-            $('.class_list li input[type="radio"]').each(function(i){
-                var indexNum = i + 1;
-                $(this).attr('id', 'radio' + indexNum);
-                $(this).siblings('label').attr('for', 'radio' + indexNum);
-            });
+<!---------------------- Local Resources ---------------------->
+<!-- Local CSS -->
+<link rel="stylesheet" href="../../../assets/css/builder.css">
+
+<!-- Local Script Library -->
+<script type="text/javascript" src="../../../assets/js/builder.js"></script>
+
+<!-- Local Script -->
+<script type="text/javascript">
+jQuery.event.add(window,"load",function(){
+    $(document).ready(function(){
+        // classBox radio id와 for 값 동일한 값으로 부여하기
+        $('.class_list li input[type="radio"]').each(function(i){
+            var indexNum = i + 1;
+            $(this).attr('id', 'radio' + indexNum);
+            $(this).siblings('label').attr('for', 'radio' + indexNum);
         });
     });
-    </script>
+});
+</script>
 </body>
 </html>

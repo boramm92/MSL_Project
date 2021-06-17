@@ -28,8 +28,22 @@ $(document).ready(function(){
     });    
 
     // comments slide toggle & tab height 
+    var clicked = false; 
     $('.comments .tit').on('click', function(){
-        $('.cmt_box').slideToggle(200);
+        var asideHeight = $('.aside').height();
+        var commentsHeight = $('.comments').height();
+
+        if(!clicked){
+            var height = commentsHeight + 260;
+            $('.comments .cmt_box').slideDown(200);
+            clicked = true;
+            $('.aside .tabWrap').animate({height: asideHeight - height}, 200);
+        }else{
+            var height = commentsHeight + 44;
+            $('.comments .cmt_box').slideUp(200);  
+            $('.aside .tabWrap').animate({height: asideHeight - height}, 200);         
+            clicked = false;
+        }
     });
 
     // aside tab
@@ -57,4 +71,22 @@ $(document).ready(function(){
     $('.tabWrap .tab_cont > ul li .select').on('click', function(e){
         e.stopPropagation();
     });
+
+    // 공통 layer popup 
+	$('.btn_lyr_open').on('click',function(){	
+        var btnName = $(this).attr('name'),
+            popId = '#' + btnName;
+        
+        // popup open
+        $('body').css('overflow','hidden'); 
+        $('body').find(popId).css('display', 'block');
+        $('body').find(popId).prepend('<div class="lyr_bg"></div>');
+        
+        // popup close 
+        $('.btn_lyr_close, .lyr_bg').on('click',function(){
+            $('body').css('overflow',''); 
+            $('body').find(popId).css('display', 'none'); 
+            $('.lyr_bg').remove(); 
+        });	
+    });	
 });
