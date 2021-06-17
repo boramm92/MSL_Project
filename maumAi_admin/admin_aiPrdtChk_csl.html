@@ -145,10 +145,15 @@
                     <!-- .section -->
                     <div class="stn contBoxType">
                         <!-- .stn_cont -->
-                        <div class="stn_cont">
+                        <div class="stn_cont ai_prdt_chk">
                             <p class="tbl_tit">상담 AI Human 제작</p>
+                            <div class="btnBox list_view">
+                                <button type="button" class="btn_list_all active">전체</button>
+                                <button type="button" class="btn_list_prcs">진행중</button>
+                                <button type="button" class="btn_list_cplt">완료</button>
+                            </div>
 
-                            <div class="tbl_box ai_prdt_chk">
+                            <div class="tbl_box">
                                 <table class="tbl_line_lst" summary="No, 구매자, 구매일, 촬영 예약, 영상 촬영, 학습 데이터 제작, AI 학습, 고객검토, 제작 완료로 구성됨">
                                     <caption class="hide">상담 AI Human 제작</caption>
                                     <colgroup>
@@ -334,7 +339,7 @@
                 </dd>
             </dl>
             <dl class="dlBox">
-                <dt>촬영 예약</dt>
+                <dt>시나리오 협의</dt>
                 <dd>
                     <select class="select">
                         <option value="">대기</option>
@@ -344,7 +349,7 @@
                 </dd>
             </dl>
             <dl class="dlBox">
-                <dt>영상 촬영</dt>
+                <dt>데이터 전달</dt>
                 <dd>
                     <select class="select">
                         <option value="">대기</option>
@@ -396,8 +401,8 @@
         </div>
         <div class="lyr_btm">
             <div class="btnBox sz_small">
-                <button class="btn_lyr_close">확인</button>
                 <button class="cancel btn_lyr_close">취소</button>
+                <button class="btn_lyr_close">저장</button>               
             </div>
         </div>
     </div>
@@ -437,6 +442,12 @@ jQuery.event.add(window,"load",function(){
         // [D] 수정 팝업 열기
         $('#btn_mody').on('click', function(){
             $('.lyr_user_mody').show();
+        });
+
+        // [D] 우측 상단 목록 필터 버튼
+        $('.list_view button').on('click', function(){
+            $('.list_view button').removeClass('active');
+            $(this).addClass('active');
         });
     });
 });
