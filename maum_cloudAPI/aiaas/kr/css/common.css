@@ -2230,8 +2230,34 @@ html,body {-ms-overflow-style: none;}
 .animeFace_box .avr_3 .result_file .effect_view .btn_creat_newImg {display:none; width:167px; height:40px; margin:10px 0 18px; border:1px solid #576068; border-radius:5px; box-shadow:1px 1px 2px 0 rgba(154, 154, 154, 0.5); background:#fff; color:#576068; font-size:14px; font-weight:500; letter-spacing:-0.22px;}
 .animeFace_box .avr_3 .result_file .effect_view .btn_creat_newImg.on {display:inline-block;}
 .animeFace_box .avr_3 .result_file .effect_view .btn_creat_newImg em {margin:0 5px 0 0;}
-.animeFace_box .avr_3 .result_file .effect_view .imgBox {width:200px; height:200px; margin:0 auto; border:1px solid #cfd5eb; box-sizing:border-box;}
+.animeFace_box .avr_3 .result_file .effect_view .imgBox {position:relative; width:200px; height:200px; margin:0 auto; border:1px solid #cfd5eb; box-sizing:border-box;}
+.animeFace_box .avr_3 .result_file .effect_view .imgBox.loading:before {content:''; display:block; position:absolute; top:0; left:0; width:100%; height:100%; background:rgb(44, 63, 81, 0.4);}
 .animeFace_box .avr_3 .result_file .effect_view .imgBox img {width:100%; height:100%; object-fit:contain;}
+
+/* animeFace_box(result page loading css) 21.06.18 NBR 추가  */
+@keyframes inner_circle {
+  0% {transform:rotate(0)}
+  100% {transform:rotate(360deg)}
+}
+
+.inner_circle div {box-sizing:border-box !important;}
+.inner_circle > div {position:absolute; top:14px; left:14px; width:72px; height:72px; border:8px solid #000; border-color:#f7778a transparent#f7778a transparent; border-radius:50%; animation:inner_circle 1s linear infinite;}
+.inner_circle > div:nth-child(2),
+.inner_circle > div:nth-child(4) {top:23px; left:23px; width:54px; height:54px; animation:inner_circle 1s linear infinite reverse;}
+.inner_circle > div:nth-child(2) {border-color:transparent #97a2bc transparent #97a2bc;}
+.inner_circle > div:nth-child(3) {border-color:transparent;}
+.inner_circle > div:nth-child(3) div {position:absolute; width:100%; height:100%; transform:rotate(45deg);}
+.inner_circle > div:nth-child(3) div:before, .inner_circle > div:nth-child(3) div:after {content:''; display:block; position:absolute; top:-8px; left:24px; width:8px; height:8px; border-radius:50%; box-shadow:0 64px 0 0 #f7778a;background:#f7778a;}
+.inner_circle > div:nth-child(3) div:after {top:24px; left:-8px; box-shadow:64px 0 0 0 #f7778a;}
+.inner_circle > div:nth-child(4) {border-color: transparent;}
+.inner_circle > div:nth-child(4) div {position:absolute; width:100%; height:100%; transform: rotate(45deg);}
+.inner_circle > div:nth-child(4) div:before,
+.inner_circle > div:nth-child(4) div:after {content:''; display:block; position:absolute; top:-8px; left:15px; width:8px; height:8px; border-radius:50%; box-shadow:0 46px 0 0 #97a2bc; background:#97a2bc;}
+.inner_circle > div:nth-child(4) div:after {top:15px; left:-8px; box-shadow:46px 0 0 0 #97a2bc;}
+.circle_loading {display:none; position:absolute; top:50%; left:50%; overflow:hidden; width:60px; height:60px; background:none; transform:translate(-50%, -50%);}
+.inner_circle {position:relative; width:100%; height:100%; backface-visibility:hidden; transform:translateZ(0) scale(0.6); transform-origin:0 0;}
+.inner_circle div {box-sizing:content-box;}
+.animeFace_box .avr_3 .result_file .effect_view .imgBox.loading .circle_loading {display:inline-block;}
 
 .animeFace_box .avr_3 .range_slider {position:relative; width:200px; margin:7px auto 0; z-index:100;}
 .animeFace_box .avr_3 .range_slider label {position:absolute; top:1px; right:calc(100% + 10px); width:82px; color:#2c3f51; font-size:12px; font-weight:500; text-align:right;}
@@ -2279,6 +2305,8 @@ html,body {-ms-overflow-style: none;}
 .animeFace_box.demo_layout .avr_3 .result_file a.btn_reset {border:1px solid #576068; color:#576068;}
 
 .animeFace_box.demo_layout .avr_3 .btn_area button {margin:30px auto 0;}
+/* //animeFace_box */
+
 
 /*vsr*/
 .vsr_box .fl_box, .vsr_box .fr_box {width:100%;float:none;}
