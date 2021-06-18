@@ -1,6 +1,12 @@
 @charset "UTF-8";
 /* MINDsLab. NBR. 20210604 */
 
+/* 공통 CSS */
+@import url("reset.css"); 
+@import url("font.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css");
+
+
 /* -------------------- layout -------------------- */
 body {overflow:hidden;}
 #wrap {overflow:hidden; width:100%; min-width:1280px; height:100%; min-height:760px; background:#000;}
@@ -11,6 +17,22 @@ body {overflow:hidden;}
 
 
 /* -------------------- common -------------------- */
+/* scroll bar */
+::-webkit-scrollbar {width: 6px; height: 6px; border-radius: 3px;}  /* 스크롤바의 width */
+::-webkit-scrollbar-track {background: transparent;}  /* 스크롤바의 전체 배경색 */
+::-webkit-scrollbar-thumb {border-radius: 3px; background: rgb(174, 176, 179);}  /* 스크롤바 색 */
+::-webkit-scrollbar-button {display: none;}  /* 위 아래 버튼 (버튼 없애기를 함) */
+
+/* float */
+.fl {float:left;}
+.fr {float:right;}
+
+/* hide */
+.hide {display:inline-block; overflow:hidden; text-indent:-9999px; line-height:0; white-space:nowrap;}
+
+/* font point */
+.ft_point_blue {color:#3340a8;}
+
 /* radio */
 input[type="radio"] {display:none; width:1px; height:1px; margin:0 0 0 -1px; border:none; background:none; opacity:0;}
 input[type="radio"] + label {color:#adafc1; font-size:14px; letter-spacing:-0.14px; line-height:32px; cursor:pointer;}
@@ -18,14 +40,52 @@ input[type="radio"] + label:before {content:''; display:inline-block; width:12px
 input[type="radio"]:checked + label:before {border:3px solid #1f242e; background:#4175ff;}
 
 
+/* -------------------- layer popup -------------------- */
+/* common */
+.lyrWrap {display:none; position:fixed; top:0; right:0; bottom:0; left:0; width:100%; height:100%; z-index:100;}
+.lyr_bg {position:absolute; top:0; right:0; bottom:0; left:0; width:100%; height:100%; background:rgba(0, 0, 0, 0.65);}
+.lyrCont {overflow:hidden; position:absolute; top:50%; left:50%; min-width:340px; min-height:180px; border-radius:10px; background:#fff; transform:translate(-50%, -50%);}
+.lyrCont .lyr_top {position:relative; padding:11px; background:#3340a8;}
+.lyrCont .lyr_top .tit {color:#fff; font-size:16px; font-weight:500; line-height:24px; text-align:center;}
+.lyrCont .lyr_top .btn_lyr_close {position:absolute; top:6px; right:6px; width:20px; height:20px; background:url('../images/builder/ico_close.svg') 50% 50% no-repeat;}
+.lyrCont .lyr_top .btn_lyr_close span {display:block; overflow:hidden; text-indent:-9999px; white-space:nowrap;}
+.lyrCont .lyr_mid {padding:20px 30px;}
+.lyrCont .lyr_mid .alert_txt {color:#26282b; font-size:13px; letter-spacing:-0.13px; line-height:20px; text-align:center;}
+.lyrCont .lyr_btm {padding:0 30px 20px; text-align:center;}
+.lyrCont .lyr_btm button.btn_primary {width:138px; height:40px; margin:0 7px; border:1px solid #3340a8; border-radius:4px; box-sizing:border-box; background:#fff; color:#3340a8; font-size:13px; font-weight:500; transition:all 0.3s ease-out;}
+.lyrCont .lyr_btm button.btn_primary:hover {background:#3340a8; color:#fff;}
+.lyrCont .lyr_btm button.btn_lyr_close {width:96px; border:none; background:#dddee0; color:#565e6a; font-weight:400;}
+.lyrCont .lyr_btm button.btn_lyr_close:hover {background:#dddee0; color:#565e6a;}
+
+.lyrToast {position:absolute; top:90px; right:-500px; min-width:200px; padding:9px 10px 9px 20px; border-radius:4px; background:#3340a8; transition:all 1s ease-out;}
+.lyrToast .msg {display:inline-block; margin:0 4px 0 0; color:#fff; font-size:16px; font-weight:500; letter-spacing:-0.16px; line-height:20px; vertical-align:top;}
+.lyrToast .btn_toast_close {float:right; width:20px; height:20px; background:url('../images/builder/ico_close.svg') 50% 50% no-repeat;}
+.lyrToast .btn_toast_close span {display:block; overflow:hidden; text-indent:-9999px; white-space:nowrap;}
+.lyrToast.on {right:16px;}
+
+/* 작업불가 */
+#unableWork .lyrCont .lyr_mid .alert_txt {margin:0 0 20px;}
+#unableWork .lyrCont .lyr_mid .ipt_txt {width:100%; height:36px; padding:0 11px; border:1px solid #abaeb9; border-radius:4px; box-sizing:border-box; background:#edeff4; color:#26282b; font-size:12px; letter-spacing:-0.12px;}
+#unableWork .lyrCont .lyr_mid .ipt_txt::placeholder {color:#7f848b; font-size:12px;}
+
+
+
 /* -------------------- header -------------------- */
 #header .sta {display:flex; justify-content:space-between; align-items:center; position:relative; height:100%; margin:0 14px;}
-#header .sta .btnBox button {display:inline-block; height:42px; padding:0 12px 0 40px; border-radius:6px; color:#adafc1; font-size:14px; line-height:42px;}
-#header .sta .btnBox button.btn_move_list {background:#262d3c url('../images/builder/arw_left_g.svg') 12px 50% no-repeat;}
-#header .sta .btnBox button.btn_unable_work {position:relative; margin:0 22px; background:#262d3c url('../images/builder/ico_uabWork.svg') 12px 50% no-repeat;}
-#header .sta .btnBox button.btn_unable_work:before {content:''; display:inline-block; position:absolute; top:7px; right:-26px; width:1px; height:28px; border-left:1px solid #2d3136;}
-#header .sta .btnBox button.btn_temporary_save {margin:0 22px; background:#262d3c url('../images/builder/ico_tprySave.svg') 12px 50% no-repeat;}
-#header .sta .btnBox button.btn_edit_complete {background:#3340a8 url('../images/builder/ico_editCplt.svg') 12px 50% no-repeat; font-weight:500;}
+#header .sta .btnBox .history_list {display:none; overflow:hidden; position:absolute; top:81px; left:254px; width:202px; height:320px; border:1px solid #3b3d45; border-radius:6px; box-sizing:border-box; background:#20252e; z-index:1000;}
+#header .sta .btnBox .history_list:before {content:''; display:block; position:absolute; top:-8px; left:14px; width:12px; height:8px; background:url('../images/builder/ico_tipPoint_top.svg') 50% 50% no-repeat; z-index:1010;}
+#header .sta .btnBox .history_list.active {display:block;}
+#header .sta .btnBox .history_list li a {display:block; height:32px; padding:0 23px 0 30px; box-sizing:border-box; color:#adafc1; font-size:14px; letter-spacing:-0.14px; line-height:30px; transition:all 0.3s ease-out;}
+#header .sta .btnBox .history_list li a.active {background:#2e3748;}
+#header .sta .btnBox button {display:inline-block; height:42px; padding:0 13px 0 40px; border-radius:6px; color:#adafc1; font-size:14px; line-height:42px;}
+#header .sta .btnBox button.btn_move_list {margin:0 22px 0 0; padding:0 20px 0 40px; background:#262d3c url('../images/builder/arw_left_g.svg') 12px 50% no-repeat;}
+#header .sta .btnBox button.btn_history {position:relative; margin:0 22px; padding:0 20px 0 40px; background:#262d3c url('../images/builder/ico_badge_g.svg') 12px 50% no-repeat;}
+#header .sta .btnBox button.btn_history:before {content:''; display:inline-block; position:absolute; top:7px; left:-26px; width:1px; height:28px; border-left:1px solid #2d3136;}
+
+#header .sta .btnBox button.btn_temporary_save {position:relative; margin:0 22px; background:#262d3c url('../images/builder/ico_tprySave.svg') 12px 50% no-repeat;}
+#header .sta .btnBox button.btn_temporary_save:before {content:''; display:inline-block; position:absolute; top:7px; right:-26px; width:1px; height:28px; border-left:1px solid #2d3136;}
+#header .sta .btnBox button.btn_unable_work {margin:0 22px; background:#262d3c url('../images/builder/ico_uabWork.svg') 12px 50% no-repeat;}
+#header .sta .btnBox button.btn_work_complete {padding:0 20px 0 40px; background:#3340a8 url('../images/builder/ico_workCplt.svg') 12px 50% no-repeat; font-weight:500;}
 #header .sta .titBox {position:absolute; top:50%; left:50%; text-align:center; transform:translate(-50%, -50%);}
 #header .sta .titBox .pjt_name {display:inline-block; overflow:hidden; max-width:300px; color:#fff; font-size:15px; font-weight:500; line-height:70px; text-align:center; white-space:nowrap; text-overflow:ellipsis;}
 #header .sta .titBox .guideViewer {display:inline-block; position:absolute; top:50%; width:20px; height:20px; margin:0 0 0 16px; transform:translate(0, -50%); cursor:pointer;}
@@ -60,7 +120,7 @@ input[type="radio"]:checked + label:before {border:3px solid #1f242e; background
 .toolMenuBar .menu_list > li .classBox.active {display:block;}
 .toolMenuBar .menu_list > li .classBox .tit {padding:0 11px; border-bottom:1px solid #3b3d45; color:#adafc1; font-size:14px; line-height:39px;}
 .toolMenuBar .menu_list > li .classBox .class_list {overflow:auto; width:100%; max-height:320px;}
-.toolMenuBar .menu_list > li .classBox .class_list li input[type="radio"] + label {display:block; padding:0 12px; box-sizing:border-box;}
+.toolMenuBar .menu_list > li .classBox .class_list li input[type="radio"] + label {display:block; padding:0 12px; box-sizing:border-box; transition:all 0.3s ease-out;}
 .toolMenuBar .menu_list > li .classBox .class_list li input[type="radio"]:checked + label {background:#2e3748;}
 
 

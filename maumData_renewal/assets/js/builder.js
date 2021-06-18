@@ -74,19 +74,43 @@ $(document).ready(function(){
 
     // 공통 layer popup 
 	$('.btn_lyr_open').on('click',function(){	
-        var btnName = $(this).attr('name'),
-            popId = '#' + btnName;
+        var btnLyrName = $(this).data('lyr-name'),
+            popId = '#' + btnLyrName;
         
-        // popup open
-        $('body').css('overflow','hidden'); 
-        $('body').find(popId).css('display', 'block');
-        $('body').find(popId).prepend('<div class="lyr_bg"></div>');
+        // open
+        $(popId).css('display', 'block');
+        $(popId).prepend('<div class="lyr_bg"></div>');
         
-        // popup close 
+        // close 
         $('.btn_lyr_close, .lyr_bg').on('click',function(){
-            $('body').css('overflow',''); 
-            $('body').find(popId).css('display', 'none'); 
+            $(popId).css('display', 'none'); 
             $('.lyr_bg').remove(); 
         });	
     });	
+
+    // toast notification
+    $('.btn_toast_open').on('click', function(){
+        var btnLyrName = $(this).data('toast-name'),
+            toastId = '#' + btnLyrName;
+    
+        // open
+        $(toastId).addClass('on');
+        setTimeout(function(){
+            $(toastId).removeClass('on');
+        }, 3000);
+        
+        // close 
+        $('.btn_toast_close').on('click',function(){
+            $(toastId).removeClass('on');
+        });	
+    });
+
+    // history
+    $('.btn_history').on('click', function(){
+        if($('.history_list').is('.active')){
+            $('.history_list').removeClass('active');
+        }else{
+            $('.history_list').addClass('active');
+        }
+    });
 });
