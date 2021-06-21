@@ -42,10 +42,29 @@
         <div class="sta">
             <div class="btnBox">
                 <button type="button" class="btn_move_list">목록으로 나가기</button>
-                <button type="button" class="btn_history"><span class="notify_badge"></span>히스토리</button>
+                <span class="line"></span>
+                <!-- [D] .btn_history에 addClass('reject')하면 빨간색 뱃지 보여짐 -->
+                <button type="button" class="btn_history">히스토리</button>
+
+                <div class="historyBox">
+                    <ul class="history_list">
+                        <li><a href="#none" class="active">image_sample_001.jpg</a></li>
+                        <li><a href="#none">image_sample_002.jpg</a></li>
+                        <!-- [D] li에 addClass('rejectFile')하면 빨간색 뱃지 보여짐 -->
+                        <li class="rejectFile"><a href="#none">image_sample_003.jpg</a></li>
+                        <li><a href="#none">image_sample_004.jpg</a></li>
+                        <li><a href="#none">image_sample_005.jpg</a></li>
+                        <li><a href="#none">image_sample_006.jpg</a></li>
+                        <li><a href="#none">image_sample_007.jpg</a></li>
+                        <li><a href="#none">image_sample_008.jpg</a></li>
+                        <li><a href="#none">image_sample_009.jpg</a></li>
+                        <li><a href="#none">image_sample_010.jpg</a></li>
+                        <li><a href="#none">image_sample_010.jpg</a></li>
+                    </ul>
+                </div>
             </div>
             <div class="titBox">
-                <span class="pjt_name">Layer popup Test</span>
+                <span class="pjt_name">Annotation Sample Project</span>
 
                 <div class="guideViewer" title="Quick Guide">
                     <em class="fas fa-info-circle"><span class="hide">퀵가이드 보기</span></em>                        
@@ -70,8 +89,11 @@
             </div>
             <div class="btnBox">
                 <button type="button" class="btn_temporary_save btn_toast_open" data-toast-name="temporarySave">임시저장</button>
-                <button type="button" class="btn_unable_work btn_lyr_open" data-lyr-name="unableWork">작업불가</button>                
-                <button type="button" class="btn_work_complete">가공완료</button>
+                <span class="line"></span>
+                <button type="button" class="btn_unable_work btn_lyr_open" data-lyr-name="unableWork">작업불가</button>  
+                <!-- [D] '가공완료', '수정하기' 버튼은 최초작업 및 재작업 여부에 따라 addClass('on')하면 보여짐 -->
+                <button type="button" class="btn_work_complete on">가공완료</button>
+                <button type="button" class="btn_edit_complete">수정하기</button>
             </div>
         </div>
     </div>
