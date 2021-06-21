@@ -129,7 +129,9 @@ $(document).ready(function(){
     // 태그 리스트 
     $('.tag_list li.reject').clone().appendTo('.reject_list');  // 반려건만 클론해서 반려목록에 넣기
 
-    $('.tabWrap .tab_cont > ul li .tagBox').on('click', function(){
+    $('.tabWrap .tab_cont > ul li .tagBox').on('click', function(e){
+        e.stopPropagation();
+        
         var thisParentList = $(this).parent('li');
 
         if(thisParentList.is('.active')){
