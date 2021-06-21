@@ -1,6 +1,6 @@
 /* MINDsLab. NBR. 20210604 */
 $(document).ready(function(){
-    // tool menu active func
+    // tool menu 활성화
     var toolMenuBtn = $('.menu_list li button');
     var classBox = $('.menu_list li .classBox');
 
@@ -22,28 +22,47 @@ $(document).ready(function(){
         }
     });
 
-    // aside expand func
+    // aside 영역 확장 버튼
     $('.btn_expand').on('click', function(){
         $('.aside').toggleClass('on');
     });    
 
-    // comments slide toggle & tab height 
+    // comments 클릭 시 박스 슬라이드 & height 조절
     var clicked = false; 
+
     $('.comments .tit').on('click', function(){
-        var asideHeight = $('.aside').height();
-        var commentsHeight = $('.comments').height();
+        var asideHeight = $('.aside').outerHeight(),
+            currentFileHeight = $('.aside .currentFile').outerHeight(),
+            guideFileHeight = $('.aside .guideFile').outerHeight(), 
+            commentsHeight = $('.aside .comments').outerHeight(), 
+            commentBoxHeight = $('.aside .comments .cmt_box').outerHeight(),            
+            deleteBoxHeight = $('.aside .deleteBox').outerHeight();
 
         if(!clicked){
-            var height = commentsHeight + 260;
+            var height = currentFileHeight + guideFileHeight + commentsHeight + deleteBoxHeight + commentBoxHeight;
+
             $('.comments .cmt_box').slideDown(200);
-            clicked = true;
             $('.aside .tabWrap').animate({height: asideHeight - height}, 200);
+            clicked = true;
         }else{
-            var height = commentsHeight + 44;
+            var height = currentFileHeight + guideFileHeight + commentsHeight + deleteBoxHeight - commentBoxHeight;
+
             $('.comments .cmt_box').slideUp(200);  
             $('.aside .tabWrap').animate({height: asideHeight - height}, 200);         
             clicked = false;
         }
+    });
+
+    // resize 시 박스 슬라이드 & height 조절
+    $(window).resize(function(){
+        var asideHeight = $('.aside').outerHeight(),
+            currentFileHeight = $('.aside .currentFile').outerHeight(),
+            guideFileHeight = $('.aside .guideFile').outerHeight(), 
+            commentsHeight = $('.aside .comments').outerHeight(),            
+            deleteBoxHeight = $('.aside .deleteBox').outerHeight();
+
+            var height = currentFileHeight + guideFileHeight + commentsHeight + deleteBoxHeight;
+            $('.aside .tabWrap').css({height: asideHeight - height});
     });
 
     // aside tab
@@ -59,13 +78,25 @@ $(document).ready(function(){
         asideTabCont.eq(index).css('display','block');
     });
 
-    // 
-    $('.tabWrap .tab_cont > ul li').on('click', function(){
-        if($(this).is('.active')){
-            $(this).removeClass('active');
+    // 태그 리스트 
+    $('.tag_list li.reject').clone().appendTo('.reject_list');  // 반려건만 클론해서 반려목록에 넣기
+
+    $('.tabWrap .tab_cont > ul li .tagBox').on('click', function(){
+        var thisParentList = $(this).parent('li');
+
+        if(thisParentList.is('.active')){
+            thisParentList.removeClass('active');
+
+            if(thisParentList.find('.reject_txt').length){
+                thisParentList.find('.reject_txt').slideToggle(200);
+            }
         }else{
             $('.tabWrap .tab_cont > ul li').removeClass('active');
-            $(this).addClass('active');
+            thisParentList.addClass('active');
+
+            if(thisParentList.find('.reject_txt').length){
+                thisParentList.find('.reject_txt').slideToggle(200);
+            }
         }
     });
     $('.tabWrap .tab_cont > ul li .select').on('click', function(e){
@@ -88,7 +119,7 @@ $(document).ready(function(){
         });	
     });	
 
-    // toast notification
+    // 공통 토스트 알림 
     $('.btn_toast_open').on('click', function(){
         var btnLyrName = $(this).data('toast-name'),
             toastId = '#' + btnLyrName;
@@ -105,12 +136,17 @@ $(document).ready(function(){
         });	
     });
 
-    // history
+    // 작업 히스토리 파일 목록
     $('.btn_history').on('click', function(){
-        if($('.history_list').is('.active')){
-            $('.history_list').removeClass('active');
+        if($('.historyBox').is('.active')){
+            $('.historyBox').removeClass('active');
         }else{
-            $('.history_list').addClass('active');
+            $('.historyBox').addClass('active');
         }
+
+        $('.history_list li a').on('click', function(){
+            $('.history_list li a').removeClass('active');
+            $(this).addClass('active');
+        });
     });
 });
