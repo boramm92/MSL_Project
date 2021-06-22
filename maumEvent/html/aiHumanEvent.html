@@ -71,19 +71,21 @@
         <div class="stn contents">
             <div class="imgBox">
                 <img class="pc" src="../resources/images/aiHuman/img_contents_pc.png" alt="이벤트 상세 배너">
-                <img class="mobile" src="../resources/images/aiHuman/img_contents_mobile.png" alt="이벤트 상세 배너">
+                <img class="mobile" src="../resources/images/aiHuman/img_contents_mobile02.png" alt="이벤트 상세 배너">
                 <div class="use_case">
-                    <img class="pc" src="../resources/images/aiHuman/img_use_case.png" alt="사용사례">
+                    <img class="pc" src="../resources/images/aiHuman/img_use_case02.png" alt="사용사례">
                     <div class="videoBox">
                         <button type="button" class="btn_video_play" title="재생버튼"></button>
-                        <img class="thumbnail active" src="../resources/images/aiHuman/img_youtube_thumb01.png" alt="박철민 아나운서 썸네일">
+                        <img class="thumbnail active" src="../resources/images/aiHuman/img_youtube_thumb04.png" alt="김미경 강사 썸네일">
+                        <img class="thumbnail" src="../resources/images/aiHuman/img_youtube_thumb01.png" alt="박철민 아나운서 썸네일">
                         <img class="thumbnail" src="../resources/images/aiHuman/img_youtube_thumb02.png" alt="정소라 아나운서 썸네일">
                         <img class="thumbnail" src="../resources/images/aiHuman/img_youtube_thumb03.png" alt="민경수 아나운서 썸네일">
                     </div>
                     <ul class="aiHuman_lst">
-                        <li class="aiHuman01 active"><a href="#none"><span>AI 아나운서 박철민</span></a></li>
-                        <li class="aiHuman02"><a href="#none"><span>AI 아나운서 정소라</span></a></li>
-                        <li class="aiHuman03"><a href="#none"><span>AI 아나운서 민경수</span></a></li>
+                        <li class="aiHuman01 active"><a href="#none"><span>AI 강사<br>김미경</span></a></li>
+                        <li class="aiHuman02"><a href="#none"><span>AI 아나운서<br>박철민</span></a></li>
+                        <li class="aiHuman03"><a href="#none"><span>AI 아나운서<br>정소라</span></a></li>
+                        <li class="aiHuman04"><a href="#none"><span>AI 아나운서<br>민경수</span></a></li>
                     </ul>
                 </div>
             </div> 
@@ -152,6 +154,7 @@
                 </div>
                 <div class="btnBox">
                     <button type="button" id="inquireBtn" disabled="true">문의하기</button>
+                    <!-- [D] 21.06.22 추가 -->
                     <a href="https://human.maum.ai/event" target="_blank" title="maum store 바로가기" class="btn_go_store">스토어 바로가기</a>
                 </div>
                 <p class="inquiry_info">※ 전문 상담사가 영업일 기준 3일 이내 개별적으로 연락드립니다.</p>
@@ -203,16 +206,19 @@ jQuery.event.add(window,"load",function(){
             }); 
             
             // 활성화 썸네일에 따라 영상링크 변경
+            // [D] 21.06.22 수정
             var activeThumbnail = $('.thumbnail.active').index();
             var videoIframe = $('#lyr_video_player .lyr_ct iframe');
 
             if( activeThumbnail == 1 ){
-                videoIframe.attr('src', 'https://www.youtube.com/embed/kEcSLxWFTt0?rel=0&autoplay=1');
+                videoIframe.attr('src', 'https://www.youtube.com/embed/gKOICgRIc1I?rel=0&autoplay=1');
             }else if( activeThumbnail == 2 ){
+                videoIframe.attr('src', 'https://www.youtube.com/embed/kEcSLxWFTt0?rel=0&autoplay=1');
+            }else if( activeThumbnail == 3 ){
                 videoIframe.attr('src', 'https://www.youtube.com/embed/piVI3yxdWno?rel=0&autoplay=1');
             }else{
                 videoIframe.attr('src', '');
-            }
+            }           
         });
         
         //Layer popup close 
@@ -228,6 +234,7 @@ jQuery.event.add(window,"load",function(){
         });
 
         // 아나운서 클릭 시 해당 영상 교체
+        // [D] 21.06.22 수정
         var announcer = $('.aiHuman_lst li');
         var videoThumbnail = $('.videoBox .thumbnail');
 
@@ -239,7 +246,7 @@ jQuery.event.add(window,"load",function(){
             videoThumbnail.removeClass('active');
             videoThumbnail.eq(index).addClass('active');
 
-            if( index == 2 ){
+            if( index == 3 ){
                 $('.btn_video_play').css('display', 'none');
             }else{
                 $('.btn_video_play').css('display', 'inline-block');
