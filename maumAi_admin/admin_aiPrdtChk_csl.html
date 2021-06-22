@@ -146,16 +146,20 @@
                     <div class="stn contBoxType">
                         <!-- .stn_cont -->
                         <div class="stn_cont ai_prdt_chk">
-                            <p class="tbl_tit">상담 AI Human 제작</p>
-                            <!-- [D] 버튼 별 클릭 시 리스트 리스트 필터링 되어야함 -->
-                            <div class="btnBox list_view">
-                                <button type="button" class="btn_list_all active">전체</button>
-                                <button type="button" class="btn_list_prcs">진행중</button>
-                                <button type="button" class="btn_list_cplt">완료</button>
+                            <div class="topBox">
+                                <p class="tbl_tit">상담 AI Human 제작</p>
+                                <!-- [D] 클릭 시 등록 팝업(#user_add) 등장해야함 -->
+                                <button type="button" class="btn_lyr_open btn_user_add">등록</button>
+                                <!-- [D] 버튼 별 클릭 시 리스트 리스트 필터링 되어야함 -->
+                                <div class="btnBox list_view">
+                                    <button type="button" class="btn_list_all active">전체</button>
+                                    <button type="button" class="btn_list_prcs">진행중</button>
+                                    <button type="button" class="btn_list_cplt">완료</button>
+                                </div>
                             </div>
 
                             <div class="tbl_box">
-                                <table class="tbl_line_lst" summary="No, 구매자, 구매일, 촬영 예약, 영상 촬영, 학습 데이터 제작, AI 학습, 고객검토, 제작 완료로 구성됨">
+                                <table class="tbl_line_lst" summary="No, 고객명, 등록일, 유입경로, 시나리오 협의, 데이터 전달, 학습 데이터 제작, AI 학습, 고객검토, 제작 완료, 완료 상태, 삭제로 구성됨">
                                     <caption class="hide">상담 AI Human 제작</caption>
                                     <colgroup>
                                         <col width="">
@@ -163,8 +167,9 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">No.</th>
-                                            <th scope="col">구매자</th>
-                                            <th scope="col">구매일</th>
+                                            <th scope="col">고객명</th>
+                                            <th scope="col">등록일</th>
+                                            <th scope="col">유입경로</th>
                                             <th scope="col">
                                                 시나리오 협의
                                                 <div class="help_msg">
@@ -207,7 +212,8 @@
                                                     <p>고객 의견을 반영하여, 최종 AI Human 제작을 완료 후 전달합니다.</p>
                                                 </div>
                                             </th>
-                                            <th scope="col">수정</th>
+                                            <th scope="col">완료 상태</th>
+                                            <th scope="col">삭제</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -220,6 +226,7 @@
                                             <td scope="row">1</td>
                                             <td>김영희</td>
                                             <td>2010-20-20</td>
+                                            <td>스토어</td>
                                             <td>완료 <p class="cplt_date">2020-02-02</p></td>
                                             <td>진행중</td>
                                             <td>대기</td>
@@ -228,11 +235,14 @@
                                             <td>대기</td>
                                             <!-- [D] 클릭 시 수정 팝업(#ai_prdt_chk) 등장해야함 -->
                                             <td><a class="btn_lyr_open btn_modify" href="#none" title="수정">수정</a></td>
+                                            <!-- [D] 클릭 시 삭제 확인 팝업(#delt_chk) 등장해야함 -->
+                                            <td><a class="btn_lyr_open btn_delete" href="#none" title="삭제">삭제</a></td>
                                         </tr>
                                         <tr>
-                                            <td scope="row">1</td>
+                                            <td scope="row">2</td>
                                             <td>김영희</td>
                                             <td>2010-20-20</td>
+                                            <td>스토어</td>
                                             <td>완료 <p class="cplt_date">2020-02-02</p></td>
                                             <td>진행중</td>
                                             <td>대기</td>
@@ -241,19 +251,8 @@
                                             <td>대기</td>
                                             <!-- [D] 클릭 시 수정 팝업(#ai_prdt_chk) 등장해야함 -->
                                             <td><a class="btn_lyr_open btn_modify" href="#none" title="수정">수정</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td scope="row">1</td>
-                                            <td>김영희</td>
-                                            <td>2010-20-20</td>
-                                            <td>완료 <p class="cplt_date">2020-02-02</p></td>
-                                            <td>진행중</td>
-                                            <td>대기</td>
-                                            <td>대기</td>
-                                            <td>대기</td>
-                                            <td>대기</td>
-                                            <!-- [D] 클릭 시 수정 팝업(#ai_prdt_chk) 등장해야함 -->
-                                            <td><a class="btn_lyr_open btn_modify" href="#none" title="수정">수정</a></td>
+                                            <!-- [D] 클릭 시 삭제 확인 팝업(#delt_chk) 등장해야함 -->
+                                            <td><a class="btn_lyr_open btn_delete" href="#none" title="삭제">삭제</a></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -261,7 +260,11 @@
 
                             <div id="pagination">
                                 <div class="tbl_btm_info">
-                                    <div class="tbl_path">전체 <strong>1</strong> / 3</div>
+                                    <div class="count_info">
+                                        <div class="totalNum">Total : <span class="number ft_point_blue">122</span><span class="ft_point_blue">명</span></div>
+                                        <div class="inflowPathNum">(스토어 : <span class="number">1</span>명 &sol; 직접등록 : <span class="number">1</span>명)</div>
+                                    </div>
+
                                     <div class="paging">
                                         <a class="btn_paging_first" href="javascript:getAdminUserList(1);">처음 페이지로 이동</a>
                                         <a class="btn_paging_prev" href="javascript:getAdminUserList(0);">이전 페이지로 이동</a>
@@ -345,6 +348,42 @@
     </div>
     <!-- //사용자 공통 프로필 -->
 
+    <!-- lyr_user_add -->
+    <div id="user_add" class="lyrBox lyr_user_add">
+        <div class="lyr_top">
+            <h3>등록하기</h3>
+            <button class="btn_lyr_close">닫기</button>
+        </div>
+        <div class="lyr_mid">
+            <dl class="dlBox">
+                <dt>고객명</dt>
+                <dd>
+                    <div class="iptBox">
+                        <input type="text" class="ipt_txt">
+                    </div>
+                </dd>
+            </dl>
+            <dl class="dlBox">
+                <dt>이메일</dt>
+                <dd>
+                    <div class="iptBox">
+                        <input type="text" class="ipt_txt">
+                        <!-- [D] 메일 조회불가 시 .alert_msg에 addClass('on')하면 문구 보여짐 -->
+                        <p class="alert_msg on">조회 할 수 없는 계정 입니다.</p>
+                    </div>
+                    <button type="button" class="btn_srch">조회</button>
+                </dd>
+            </dl>
+        </div>
+        <div class="lyr_btm">
+            <div class="btnBox sz_small">
+                <button class="cancel btn_lyr_close">취소</button>
+                <button class="btn_lyr_close">등록</button>                
+            </div>
+        </div>
+    </div>
+    <!-- //lyr_user_add -->
+
     <!-- lyr_user_mody -->
     <div id="ai_prdt_chk" class="lyrBox lyr_user_modify">
         <div class="lyr_top">
@@ -353,15 +392,15 @@
         </div>
         <div class="lyr_mid">
             <dl class="dlBox">
-                <dt>구매자</dt>
+                <dt>고객명</dt>
                 <dd>
                     <div class="iptBox">
-                        <input type="text" class="ipt_txt" disabled>
+                        <input type="text" class="ipt_txt">
                     </div>
                 </dd>
             </dl>
             <dl class="dlBox">
-                <dt>구매일</dt>
+                <dt>이메일</dt>
                 <dd>
                     <div class="iptBox">
                         <input type="text" class="ipt_txt" disabled>
@@ -437,8 +476,26 @@
         </div>
     </div>
     <!-- //lyr_user_mody -->
+
+    <!-- lyr_user_delete -->
+    <div id="delt_chk" class="lyrBox lyr_user_delete">
+        <div class="lyr_top">
+            <h3>삭제</h3>
+            <button class="btn_lyr_close">닫기</button>
+        </div>
+        <div class="lyr_mid">
+            <p>해당 목록을 삭제하시면, 이후 복구는 불가능합니다.<br> 정말 삭제하시겠습니까?</p>
+        </div>
+        <div class="lyr_btm">
+            <div class="btnBox sz_small">
+                <button class="cancel btn_lyr_close">취소</button>
+                <button class="btn_lyr_close">삭제</button>                
+            </div>
+        </div>
+    </div>
+    <!-- //lyr_user_delete -->
 </div>
-<!-- //lyrWrap(사용자 프로필) -->
+<!-- //lyrWrap -->
 
 <!-- Local Script -->
 <script type="text/javascript">
@@ -469,9 +526,17 @@ jQuery.event.add(window,"load",function(){
             $(this).parents('li').parents('ul.sub_nav').parents('li').addClass('active');
         });
 
+        // [D] 등록 팝업 열기
+        $('.btn_user_add').on('click', function(){
+            $('#user_add').show();
+        });
         // [D] 수정 팝업 열기
         $('.btn_modify').on('click', function(){
-            $('.lyr_user_modify').show();
+            $('#ai_prdt_chk').show();
+        });
+        // [D] 삭제 팝업 열기
+        $('.btn_delete').on('click', function(){
+            $('#delt_chk').show();
         });
 
         // [D] 우측 상단 목록 필터 버튼
