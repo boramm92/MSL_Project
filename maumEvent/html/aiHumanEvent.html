@@ -71,9 +71,13 @@
         <div class="stn contents">
             <div class="imgBox">
                 <img class="pc" src="../resources/images/aiHuman/img_contents_pc.png" alt="이벤트 상세 배너">
-                <img class="mobile" src="../resources/images/aiHuman/img_contents_mobile02.png" alt="이벤트 상세 배너">
+                <img class="mobile instructor on" src="../resources/images/aiHuman/img_contents_mobile02.png" alt="이벤트 상세 배너">
+                <img class="mobile announcer" src="../resources/images/aiHuman/img_contents_mobile03.png" alt="이벤트 상세 배너">
+
                 <div class="use_case">
-                    <img class="pc" src="../resources/images/aiHuman/img_use_case02.png" alt="사용사례">
+                    <img class="pc instructor on" src="../resources/images/aiHuman/img_use_case02.png" alt="사용사례">
+                    <img class="pc announcer" src="../resources/images/aiHuman/img_use_case03.png" alt="사용사례">
+                    
                     <div class="videoBox">
                         <button type="button" class="btn_video_play" title="재생버튼"></button>
                         <img class="thumbnail active" src="../resources/images/aiHuman/img_youtube_thumb04.png" alt="김미경 강사 썸네일">
@@ -246,9 +250,14 @@ jQuery.event.add(window,"load",function(){
             videoThumbnail.removeClass('active');
             videoThumbnail.eq(index).addClass('active');
 
-            if( index == 3 ){
+            if( index == 0 ){
+                $('.imgBox img').removeClass('on');
+                $('img.instructor').addClass('on');
+            }else if( index == 3 ){
                 $('.btn_video_play').css('display', 'none');
             }else{
+                $('.imgBox img').removeClass('on');
+                $('img.announcer').addClass('on');
                 $('.btn_video_play').css('display', 'inline-block');
             }
         });
