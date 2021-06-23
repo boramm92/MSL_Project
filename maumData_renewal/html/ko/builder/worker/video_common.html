@@ -32,7 +32,7 @@
 <script type="text/javascript" src="../../../../assets/js/jquery-migrate-3.3.1.min.js"></script>
 <script type="text/javascript" src="../../../../assets/js/builder.js"></script>
 
-<title>Image Inspector || Builder</title>
+<title>Video Worker || Builder</title>
 </head>
 <body>
 <!-- #wrap -->
@@ -88,16 +88,19 @@
                 </div>
             </div>
             <div class="btnBox">
-                <button type="button" class="btn_reject">반려</button>  
+                <button type="button" class="btn_temporary_save btn_toast_open" data-toast-name="temporarySave">임시저장</button>
                 <span class="line"></span>
-                <button type="button" class="btn_approval">승인</button>  
+                <button type="button" class="btn_unable_work btn_lyr_open" data-lyr-name="unableWork">작업불가</button>  
+                <!-- [D] '가공완료', '수정하기' 버튼은 최초작업 및 재작업 여부에 따라 addClass('on')하면 보여짐 -->
+                <button type="button" class="btn_work_complete on">가공완료</button>
+                <button type="button" class="btn_edit_complete">수정하기</button>
             </div>
         </div>
     </div>
     <!-- //#header -->
 
     <!-- #container -->
-    <div id="container" class="inspector">
+    <div id="container">
         <!-- .toolMenuBar -->
         <div class="toolMenuBar">
             <ul class="menu_list">
@@ -339,12 +342,22 @@
                         <span class="hide">Reset</span>
                     </button>
                 </li>
+                <li>
+                    <button type="button" class="btn_undo" title="Undo">
+                        <span class="hide">Undo</span>
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="btn_redo" title="Redo">
+                        <span class="hide">Redo</span>
+                    </button>
+                </li>
             </ul>
         </div>
         <!-- //#toolMenuBar -->
 
         <!-- #contents -->
-        <div id="contents" class="edit_image">
+        <div id="contents" class="edit_video">
             <!-- .content -->
             <div class="content">
                 <!-- .work_space -->
@@ -355,6 +368,123 @@
                     <!-- //.imgArea -->
                 </div>
                 <!-- //.work_space -->
+
+                <!-- .videoFrameArea -->
+                <div class="videoFrameArea on">
+                    <div class="frame_pagination">
+                        <button type="button" class="btn_paging btn_prev" title="이전 프레임으로 이동">
+                            <span class="hide">이전 프레임으로 이동</span>
+                        </button>
+
+                        <div class="frameInfo">
+                            <span class="currentNum">000</span>
+                            &sol;
+                            <span class="totalNum">312</span>
+                        </div>
+
+                        <button type="button" class="btn_paging btn_next" title="다음 프레임으로 이동">
+                            <span class="hide">다음 프레임으로 이동</span>
+                        </button>
+                    </div>
+
+                    <div class="frame_list_wrap">
+                        <button type="button" class="btn_paging btn_prev" title="이전 프레임으로 이동">
+                            <span class="hide">이전 프레임으로 이동</span>
+                        </button>
+
+                        <ol class="frame_list">
+                            <li class="active">
+                                <div class="frameBox">
+                                    <img src="../../../../assets/images/builder/img_sample_frame.png" alt="Frame Image">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="frameBox">
+                                    <img src="../../../../assets/images/builder/img_sample_frame.png" alt="Frame Image">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="frameBox">
+                                    <img src="../../../../assets/images/builder/img_sample_frame.png" alt="Frame Image">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="frameBox">
+                                    <img src="../../../../assets/images/builder/img_sample_frame.png" alt="Frame Image">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="frameBox">
+                                    <img src="../../../../assets/images/builder/img_sample_frame.png" alt="Frame Image">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="frameBox">
+                                    <img src="../../../../assets/images/builder/img_sample_frame.png" alt="Frame Image">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="frameBox">
+                                    <img src="../../../../assets/images/builder/img_sample_frame.png" alt="Frame Image">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="frameBox">
+                                    <img src="../../../../assets/images/builder/img_sample_frame.png" alt="Frame Image">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="frameBox">
+                                    <img src="../../../../assets/images/builder/img_sample_frame.png" alt="Frame Image">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="frameBox">
+                                    <img src="../../../../assets/images/builder/img_sample_frame.png" alt="Frame Image">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="frameBox">
+                                    <img src="../../../../assets/images/builder/img_sample_frame.png" alt="Frame Image">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="frameBox">
+                                    <img src="../../../../assets/images/builder/img_sample_frame.png" alt="Frame Image">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="frameBox">
+                                    <img src="../../../../assets/images/builder/img_sample_frame.png" alt="Frame Image">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="frameBox">
+                                    <img src="../../../../assets/images/builder/img_sample_frame.png" alt="Frame Image">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="frameBox">
+                                    <img src="../../../../assets/images/builder/img_sample_frame.png" alt="Frame Image">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="frameBox">
+                                    <img src="../../../../assets/images/builder/img_sample_frame.png" alt="Frame Image">
+                                </div>
+                            </li>
+                        </ol>
+
+                        <button type="button" class="btn_paging btn_next" title="다음 프레임으로 이동">
+                            <span class="hide">다음 프레임으로 이동</span>
+                        </button>
+                    </div>
+
+                    <button type="button" class="btn_expand" title="Expand">
+                        <span class="hide">Expand</span>
+                    </button>
+                </div>
+                <!-- //.videoFrameArea -->
             </div>
             <!-- //.content -->
 
@@ -378,14 +508,35 @@
                         <button type="button" class="btn_tag active" title="Tag List">
                             <span class="hide">Tag List Button</span>
                         </button>
+                        <button type="button" class="btn_reject" title="Reject List">
+                            <span class="hide">Reject List Button</span>
+                        </button>
                     </div>
                     <div class="tab_cont">
                         <ul class="tag_list">
-                            <li>
+                            <li class="reject">
                                 <div class="tagBox">
                                     <span class="tagPoint"></span>
                                     <span class="tagNum">1.</span>
-                                    <select class="select" disabled>
+                                    <select class="select">
+                                        <option value="">건물</option>
+                                        <option value="">건물</option>
+                                        <option value="">건물</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="reject_txt">
+                                    <pre>
+                                        1. 자동차 태그를 좀 더 자동차에 맞게 줄여주세요.
+                                        1. 자동차 태그를 좀 더 자동차에 맞게 줄여주세요.
+                                    </pre>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tagBox">
+                                    <span class="tagPoint"></span>
+                                    <span class="tagNum">2.</span>
+                                    <select class="select">
                                         <option value="">건물</option>
                                         <option value="">건물</option>
                                         <option value="">건물</option>
@@ -396,44 +547,13 @@
                                     <button type="button" class="btn_segmentation" title="Segmentation">
                                         <span class="hide">Segmentation</span>
                                     </button>
-                                    <button type="button" class="btn_add_comment" title="수정사항 입력">
-                                        <span class="hide">수정사항 입력</span>
-                                    </button>
-                                </div>
-
-                                <div class="editCommentBox">
-                                    <div class="iptBox">
-                                        <input type="text" class="ipt_txt" placeholder="수정사항을 입력해주세요.">
-                                        <button type="submit" class="btn_send" title="전송하기">
-                                            <span class="hide">전송하기</span>
-                                        </button>
-                                    </div>
-                                    <ul class="cmt_list">
-                                        <li class="unRead">자동차 태그를 자동차에 더 가깝게 영역 조절 해주세요.</li>
-                                        <li>건물에 키포인트 클래스 영역이 너무 넓어 잘 보이지 않습니다. 조금 더 간격 넓게 조절해주세요.</li>
-                                        <li>자동차 태그를 자동차에 더 가깝게 영역 조절 해주세요.</li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="tagBox">
-                                    <span class="tagPoint"></span>
-                                    <span class="tagNum">2.</span>
-                                    <select class="select" disabled>
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                        <option value="">건물</option>
-                                    </select>
-                                    <button type="button" class="btn_add_comment" title="수정사항 입력">
-                                        <span class="hide">수정사항 입력</span>
-                                    </button>
                                 </div>
                             </li>
                             <li>
                                 <div class="tagBox">
                                     <span class="tagPoint"></span>
                                     <span class="tagNum">3.</span>
-                                    <select class="select" disabled>
+                                    <select class="select">
                                         <option value="">건물</option>
                                         <option value="">건물</option>
                                         <option value="">건물</option>
@@ -447,82 +567,73 @@
                                     <button type="button" class="btn_keyPoint" title="Keypoint">
                                         <span class="hide">Keypoint</span>
                                     </button>
-                                    <button type="button" class="btn_add_comment" title="수정사항 입력">
-                                        <span class="hide">수정사항 입력</span>
-                                    </button>
                                 </div>
                             </li>
                             <li>
                                 <div class="tagBox">
                                     <span class="tagPoint"></span>
                                     <span class="tagNum">4.</span>
-                                    <select class="select" disabled>
+                                    <select class="select">
                                         <option value="">건물</option>
                                         <option value="">건물</option>
                                         <option value="">건물</option>
                                     </select>
-                                    <button type="button" class="btn_add_comment" title="수정사항 입력">
-                                        <span class="hide">수정사항 입력</span>
-                                    </button>
                                 </div>
                             </li>
-                            <li>
+                            <li class="reject">
                                 <div class="tagBox">
                                     <span class="tagPoint"></span>
                                     <span class="tagNum">5.</span>
-                                    <select class="select" disabled>
+                                    <select class="select">
                                         <option value="">건물</option>
                                         <option value="">건물</option>
                                         <option value="">건물</option>
                                     </select>
-                                    <button type="button" class="btn_add_comment" title="수정사항 입력">
-                                        <span class="hide">수정사항 입력</span>
-                                    </button>
+                                </div>
+                                
+                                <div class="reject_txt">
+                                    <pre>
+                                        1. 자동차 태그를 좀 더 자동차에 맞게 줄여주세요.
+                                        1. 자동차 태그를 좀 더 자동차에 맞게 줄여주세요.
+                                    </pre>
                                 </div>
                             </li>
                             <li>
                                 <div class="tagBox">
                                     <span class="tagPoint"></span>
                                     <span class="tagNum">6.</span>
-                                    <select class="select" disabled>
+                                    <select class="select">
                                         <option value="">건물</option>
                                         <option value="">건물</option>
                                         <option value="">건물</option>
                                     </select>
-                                    <button type="button" class="btn_add_comment" title="수정사항 입력">
-                                        <span class="hide">수정사항 입력</span>
-                                    </button>
                                 </div>
                             </li>
                             <li>
                                 <div class="tagBox">
                                     <span class="tagPoint"></span>
                                     <span class="tagNum">7.</span>
-                                    <select class="select" disabled>
+                                    <select class="select">
                                         <option value="">건물</option>
                                         <option value="">건물</option>
                                         <option value="">건물</option>
                                     </select>
-                                    <button type="button" class="btn_add_comment" title="수정사항 입력">
-                                        <span class="hide">수정사항 입력</span>
-                                    </button>
                                 </div>
                             </li>
                             <li>
                                 <div class="tagBox">
                                     <span class="tagPoint"></span>
                                     <span class="tagNum">8.</span>
-                                    <select class="select" disabled>
+                                    <select class="select">
                                         <option value="">건물</option>
                                         <option value="">건물</option>
                                         <option value="">건물</option>
                                     </select>
-                                    <button type="button" class="btn_add_comment" title="수정사항 입력">
-                                        <span class="hide">수정사항 입력</span>
-                                    </button>
                                 </div>
                             </li>
                         </ul>
+                        <!-- [D] .tag_list에서 반려목록(li.reject)만 clone해서 그려옴 -->
+                        <ul class="reject_list"></ul>
                     </div>
                 </div>
                 <div class="deleteBox">
