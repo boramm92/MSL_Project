@@ -318,23 +318,62 @@ $(document).ready(function(){
 
 
     // -------------------- 검수자 화면 -------------------- //
-    // 태그 리스트 세부 코멘트 리스트 확인 버튼 클릭 시 
-    $('.editCommentBox .cmt_list_box ul li .btn_check').on('click', function(){
-        $(this).parent('li').toggleClass('checked');
+    // 태그 리스트 세부 코멘트 리스트 내 버튼 클릭 시 
+    $('.editCommentBox .cmt_list_box ul li button').on('click', function(){
+        if($(this).is('.btn_check')){   // 확인 처리 하기
+            $(this).parent('li').toggleClass('checked');
+        }else if($(this).is('.btn_delete')){    // 삭제 하기
+            $(this).parent('li').remove();
+
+            $('.cmt_list').each(function(){
+                var length = $(this).find('li').length;
+
+                if(length == 0){
+                    $(this).parent('.cmt_list_box').find('.unprocessed').addClass('empty');
+                }
+            });
+        }
     });
 
-    // 태그 리스트 세부 코멘트 리스트 삭제 버튼 클릭 시 
-    $('.editCommentBox .cmt_list_box ul li .btn_delete').on('click', function(){
-        $(this).parent('li').remove();
+    // 태그 리스트 세부 코멘트 리스트 입력 후 추가
+    $('.editCommentBox .btn_send').on('click', function(){
+        var commentText = $(this).prev('.ipt_txt').val();
 
-        $('.cmt_list').each(function(){
-            var length = $(this).find('li').length;
+        $(this).parents('.editCommentBox').find('.unprocessed').prepend('\
+            <li>\
+                <button type="button" class="btn_check" title="확인하기">\
+                    <span class="hide">확인하기</span>\
+                </button>\
+                <p class="cmt_txt">' + commentText + '</p>\
+                <button type="button" class="btn_delete" title="삭제하기">\
+                    <span class="hide">삭제하기</span>\
+                </button>\
+            </li>\
+        ');
 
-            if(length == 0){
-                $(this).parent('.cmt_list_box').find('.unprocessed').addClass('empty');
+        // 태그 리스트 세부 코멘트 리스트 내 버튼 클릭 시 
+        $('.editCommentBox .cmt_list_box ul li button').on('click', function(e){
+            e.stopPropagation();
+            
+            if($(this).is('.btn_check')){   // 확인 처리 하기
+                $(this).parent('li').toggleClass('checked');
+            }else if($(this).is('.btn_delete')){    // 삭제 하기
+                $(this).parent('li').remove();
+
+                $('.cmt_list').each(function(){
+                    var length = $(this).find('li').length;
+
+                    if(length == 0){
+                        $(this).parent('.cmt_list_box').find('.unprocessed').addClass('empty');
+                    }
+                });
             }
         });
-        
+    });
+    $('.editCommentBox .ipt_txt').on("keyup",function(key){
+        if(key.keyCode==13) {
+            $(this).next('.btn_send').trigger('click');
+        }
     });
 });
 
