@@ -66,7 +66,7 @@
             <div class="titBox">
                 <span class="pjt_name">Annotation Sample Project</span>
 
-                <div class="guideViewer" title="Quick Guide">
+                <div class="guideViewer">
                     <em class="fas fa-info-circle"><span class="hide">퀵가이드 보기</span></em>                        
                     <div class="guideBox">
                         <dl class="guideDetail">
@@ -369,14 +369,15 @@
                 </div>
                 <div class="comments">
                     <div class="tit">Comments</div>
-                    <div class="cmt_box">
+                    <!-- [D] 검수화면에서는 열림 상태가 디폴트 -->
+                    <div class="cmt_box open">
                         <textarea class="textarea" placeholder="코멘트를 입력해주세요."></textarea>
                     </div>
                 </div>
                 <div class="tabWrap">
                     <div class="tab_btn">
-                        <button type="button" class="btn_tag active" title="Tag List">
-                            <span class="hide">Tag List Button</span>
+                        <button type="button" class="btn_tag active" title="태그 리스트">
+                            <span class="hide">태그 리스트</span>
                         </button>
                     </div>
                     <div class="tab_cont">
@@ -408,11 +409,51 @@
                                             <span class="hide">전송하기</span>
                                         </button>
                                     </div>
-                                    <ul class="cmt_list">
-                                        <li class="unRead">자동차 태그를 자동차에 더 가깝게 영역 조절 해주세요.</li>
-                                        <li>건물에 키포인트 클래스 영역이 너무 넓어 잘 보이지 않습니다. 조금 더 간격 넓게 조절해주세요.</li>
-                                        <li>자동차 태그를 자동차에 더 가깝게 영역 조절 해주세요.</li>
-                                    </ul>
+                                    <div class="cmt_list_box">
+                                        <!-- [D] 미처리된 코멘트 영역 -->
+                                        <ul class="cmt_list unprocessed">
+                                            <li>
+                                                <button type="button" class="btn_check" title="확인하기">
+                                                    <span class="hide">확인하기</span>
+                                                </button>
+                                                <p class="cmt_txt">자동차 태그를 자동차에 더 가깝게 영역 조절 해주세요.</p>
+                                                <button type="button" class="btn_delete" title="삭제하기">
+                                                    <span class="hide">삭제하기</span>
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button type="button" class="btn_check" title="확인하기">
+                                                    <span class="hide">확인하기</span>
+                                                </button>
+                                                <p class="cmt_txt">건물 왼쪽이 잘려있습니다.</p>
+                                                <button type="button" class="btn_delete" title="삭제하기">
+                                                    <span class="hide">삭제하기</span>
+                                                </button>
+                                            </li>
+                                        </ul>
+
+                                        <!-- [D] 처리된 코멘트 영역 -->
+                                        <ul class="cmt_list">
+                                            <li class="checked">
+                                                <button type="button" class="btn_check" title="확인하기">
+                                                    <span class="hide">확인하기</span>
+                                                </button>
+                                                <p class="cmt_txt">반려할건데 사유는 없다.</p>
+                                                <button type="button" class="btn_delete" title="삭제하기">
+                                                    <span class="hide">삭제하기</span>
+                                                </button>
+                                            </li>
+                                            <li class="checked">
+                                                <button type="button" class="btn_check" title="확인하기">
+                                                    <span class="hide">확인하기</span>
+                                                </button>
+                                                <p class="cmt_txt">이것은 내맘대로 쓰는 코멘트 이것은 내맘대로 쓰는 코멘트 이것은 내맘대로 쓰는 코멘트</p>
+                                                <button type="button" class="btn_delete" title="삭제하기">
+                                                    <span class="hide">삭제하기</span>
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </li>
                             <li>
@@ -427,6 +468,15 @@
                                     <button type="button" class="btn_add_comment" title="수정사항 입력">
                                         <span class="hide">수정사항 입력</span>
                                     </button>
+                                </div>
+
+                                <div class="editCommentBox">
+                                    <div class="iptBox">
+                                        <input type="text" class="ipt_txt" placeholder="수정사항을 입력해주세요.">
+                                        <button type="submit" class="btn_send" title="전송하기">
+                                            <span class="hide">전송하기</span>
+                                        </button>
+                                    </div>
                                 </div>
                             </li>
                             <li>
@@ -451,6 +501,15 @@
                                         <span class="hide">수정사항 입력</span>
                                     </button>
                                 </div>
+
+                                <div class="editCommentBox">
+                                    <div class="iptBox">
+                                        <input type="text" class="ipt_txt" placeholder="수정사항을 입력해주세요.">
+                                        <button type="submit" class="btn_send" title="전송하기">
+                                            <span class="hide">전송하기</span>
+                                        </button>
+                                    </div>
+                                </div>
                             </li>
                             <li>
                                 <div class="tagBox">
@@ -464,6 +523,15 @@
                                     <button type="button" class="btn_add_comment" title="수정사항 입력">
                                         <span class="hide">수정사항 입력</span>
                                     </button>
+                                </div>
+
+                                <div class="editCommentBox">
+                                    <div class="iptBox">
+                                        <input type="text" class="ipt_txt" placeholder="수정사항을 입력해주세요.">
+                                        <button type="submit" class="btn_send" title="전송하기">
+                                            <span class="hide">전송하기</span>
+                                        </button>
+                                    </div>
                                 </div>
                             </li>
                             <li>
@@ -479,6 +547,15 @@
                                         <span class="hide">수정사항 입력</span>
                                     </button>
                                 </div>
+
+                                <div class="editCommentBox">
+                                    <div class="iptBox">
+                                        <input type="text" class="ipt_txt" placeholder="수정사항을 입력해주세요.">
+                                        <button type="submit" class="btn_send" title="전송하기">
+                                            <span class="hide">전송하기</span>
+                                        </button>
+                                    </div>
+                                </div>
                             </li>
                             <li>
                                 <div class="tagBox">
@@ -492,6 +569,15 @@
                                     <button type="button" class="btn_add_comment" title="수정사항 입력">
                                         <span class="hide">수정사항 입력</span>
                                     </button>
+                                </div>
+
+                                <div class="editCommentBox">
+                                    <div class="iptBox">
+                                        <input type="text" class="ipt_txt" placeholder="수정사항을 입력해주세요.">
+                                        <button type="submit" class="btn_send" title="전송하기">
+                                            <span class="hide">전송하기</span>
+                                        </button>
+                                    </div>
                                 </div>
                             </li>
                             <li>
@@ -507,6 +593,15 @@
                                         <span class="hide">수정사항 입력</span>
                                     </button>
                                 </div>
+
+                                <div class="editCommentBox">
+                                    <div class="iptBox">
+                                        <input type="text" class="ipt_txt" placeholder="수정사항을 입력해주세요.">
+                                        <button type="submit" class="btn_send" title="전송하기">
+                                            <span class="hide">전송하기</span>
+                                        </button>
+                                    </div>
+                                </div>
                             </li>
                             <li>
                                 <div class="tagBox">
@@ -521,6 +616,15 @@
                                         <span class="hide">수정사항 입력</span>
                                     </button>
                                 </div>
+
+                                <div class="editCommentBox">
+                                    <div class="iptBox">
+                                        <input type="text" class="ipt_txt" placeholder="수정사항을 입력해주세요.">
+                                        <button type="submit" class="btn_send" title="전송하기">
+                                            <span class="hide">전송하기</span>
+                                        </button>
+                                    </div>
+                                </div>
                             </li>
                         </ul>
                     </div>
@@ -529,8 +633,8 @@
                     <button type="button" class="btn_select_delete" title="선택삭제"><span class="hide">선택 삭제</span></button>
                     <button type="button" class="btn_all_delete">전체삭제</button>
                 </div>
-                <button type="button" class="btn_expand" title="Expand">
-                    <span class="hide">Expand</span>
+                <button type="button" class="btn_expand" title="접기/열기">
+                    <span class="hide">접기/열기</span>
                 </button>
             </div>
             <!-- //.aside -->
