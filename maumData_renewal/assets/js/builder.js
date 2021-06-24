@@ -197,31 +197,63 @@ $(document).ready(function(){
     handleVideoFrameAreaWidth();
 
     // frame pagination number 가져오기
-    function handleframeNumInfo(){
+    function getframeNumInfo(){
         var totalFrameNum = $('.frame_list li').length,
             currentFrameNum = $('.frame_list li.active').index();
 
         $('.frameInfo .currentNum').text(currentFrameNum + 1);
         $('.frameInfo .totalNum').text(totalFrameNum);
     }
-    handleframeNumInfo();
+    getframeNumInfo();
 
     // frame pagination 버튼 이동
-    $('.frame_pagination .btn_paging').on('click', function(){
-        var currentFrameNum = $('.frame_list li.active').index();            
+    function clickPrevBtn(){    // 이전 버튼 
+        var currentFrameIndex = $('.frame_list li.active').index();
+            currentFrameIndex = currentFrameIndex - 1;
 
-        if($(this).is('.btn_prev')){     
-            // currentFrameNum = currentFrameNum - 1; 
-            $('.frameInfo .currentNum').text(currentFrameNum--);
-            $('.frame_list li').eq(currentFrameNum--).trigger('click');
-        }else if($(this).is('.btn_next')){
-            // currentFrameNum = currentFrameNum + 1;
-            $('.frameInfo .currentNum').text(currentFrameNum++);
-            $('.frame_list li').eq(currentFrameNum++).trigger('click');
+        var currentFrameNum = $('.frameInfo .currentNum').text();
+            currentFrameNum = parseInt(currentFrameNum);
+
+        if(currentFrameNum == 1){
+            return false;
         }
-        console.log(currentFrameNum)
 
-        $('.frame_list').animate({scrollLeft: $('.frame_list li.active').offset().left})
+        $('.frameInfo .currentNum').text(currentFrameIndex);
+        $('.frame_list li').eq(currentFrameIndex).trigger('click');
+    }
+
+    function clickNextBtn(){    // 다음 버튼 
+        var currentFrameIndex = $('.frame_list li.active').index();
+            currentFrameIndex = currentFrameIndex + 1;
+
+        var totalFrameNum = $('.frame_list li').length;
+        var currentFrameNum = $('.frameInfo .currentNum').text();
+            currentFrameNum = parseInt(currentFrameNum);
+
+        if(totalFrameNum == currentFrameNum){
+            return false;
+        }
+        
+        $('.frameInfo .currentNum').text(currentFrameIndex);
+        $('.frame_list li').eq(currentFrameIndex).trigger('click');
+    }
+
+    function activeFrameMoveScroll(){   // 현재 프레임으로 스크롤 이동
+        var currentOffsetLeft = $('.frame_list li.active').offset().left,
+            frameListOffsetLeft = $('.frame_list').offset().left,
+            frameListScrollLeft = $('.frame_list').scrollLeft();
+
+        $('.frame_list').animate({scrollLeft: currentOffsetLeft - frameListOffsetLeft * 2 + frameListScrollLeft + 40}, 200);
+    }
+
+    $('.frame_pagination .btn_paging').on('click', function(){
+        if($(this).is('.btn_prev')){
+            clickPrevBtn();
+            activeFrameMoveScroll();
+        }else if($(this).is('.btn_next')){
+            clickNextBtn();
+            activeFrameMoveScroll();
+        }       
     });
 
     // frame list scroll 이동 버튼
@@ -237,7 +269,8 @@ $(document).ready(function(){
     $('.frame_list li').on('click', function(){
         $('.frame_list li').removeClass('active');
         $(this).addClass('active');
-        handleframeNumInfo();
+        getframeNumInfo();
+        activeFrameMoveScroll();
     });
 
     (function(){
