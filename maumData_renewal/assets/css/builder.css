@@ -24,6 +24,7 @@ body {overflow:hidden;}
 ::-webkit-scrollbar-button {display:none;}  /* 위 아래 버튼 (버튼 없애기를 함) */
 /* scroll bar - Firefox */
 .history_list,
+.class_list,
 .textarea,
 .aside .tabWrap .tab_cont > ul,
 .frame_list {scrollbar-width:thin; scrollbar-color:#aeb0b3;}
@@ -34,6 +35,11 @@ body {overflow:hidden;}
 
 /* hide */
 .hide {display:inline-block; overflow:hidden; text-indent:-9999px; line-height:0; white-space:nowrap;}
+
+/* input[type="text"] */
+.ipt_txt {width:100%; border:1px solid #3b3d45; border-radius:4px; box-sizing:border-box; background:#232831; color:#adafc1; font-size:14px; letter-spacing:-0.14px;}
+.ipt_txt::placeholder {color:#6f7077; font-size:14px;}
+
 
 /* font point */
 .ft_point_blue {color:#3340a8;}
@@ -82,7 +88,7 @@ input[type="radio"]:checked + label:before {border:3px solid #1f242e; background
 
 /* 작업불가 */
 #unableWork .lyrCont .lyr_mid .alert_txt {margin:0 0 20px;}
-#unableWork .lyrCont .lyr_mid .ipt_txt {width:100%; height:36px; padding:0 11px; border:1px solid #abaeb9; border-radius:4px; box-sizing:border-box; background:#edeff4; color:#26282b; font-size:12px; letter-spacing:-0.12px;}
+#unableWork .lyrCont .lyr_mid .ipt_txt {height:36px; padding:0 11px; border:1px solid #abaeb9; background:#edeff4; color:#26282b; font-size:12px; letter-spacing:-0.12px;}
 #unableWork .lyrCont .lyr_mid .ipt_txt::placeholder {color:#7f848b; font-size:12px;}
 
 
@@ -133,6 +139,7 @@ input[type="radio"]:checked + label:before {border:3px solid #1f242e; background
 /* worker */
 .toolMenuBar .menu_list {display:flex; flex-direction:column; justify-content:center; position:relative;}
 .toolMenuBar .menu_list > li {width:100%; height:52px;}
+
 .toolMenuBar .menu_list > li button {position:relative; width:100%; height:100%; transition:background-color 0.2s ease-out;}
 .toolMenuBar .menu_list > li button.btn_bounding_box {background:url('../images/builder/ico_tool_bdBox.svg') 50% 50% no-repeat, url('../images/builder/ico_triangle_g.svg') 100% 50% no-repeat;}
 .toolMenuBar .menu_list > li button.btn_segmentation {background:url('../images/builder/ico_tool_segmt.svg') 50% 50% no-repeat, url('../images/builder/ico_triangle_g.svg') 100% 50% no-repeat;}
@@ -143,8 +150,10 @@ input[type="radio"]:checked + label:before {border:3px solid #1f242e; background
 .toolMenuBar .menu_list > li button.btn_reset {background:url('../images/builder/ico_tool_reset.svg') 50% 50% no-repeat;}
 .toolMenuBar .menu_list > li button.btn_undo {background:url('../images/builder/ico_tool_undo.svg') 50% 50% no-repeat;}
 .toolMenuBar .menu_list > li button.btn_redo {background:url('../images/builder/ico_tool_redo.svg') 50% 50% no-repeat;}
+.toolMenuBar .menu_list > li button.btn_add_textTag {background:url('../images/builder/ico_tool_textTag.svg') 50% 50% no-repeat;}
 .toolMenuBar .menu_list > li button.active {background-color:#3340a8;}
 .toolMenuBar .menu_list > li button.active.open:before {content:''; display:block; position:relative; top:10px; right:-57px; width:8px; height:12px; background:url('../images/builder/ico_tipPoint.svg') 100% 50% no-repeat; z-index:1010;}
+
 .toolMenuBar .menu_list > li .classBox {display:none; position:absolute; top:6px; right:-176px; width:164px; border:1px solid #3b3d45; border-radius:6px; box-sizing:border-box; background:#20252e; z-index:1000; transition:all 0.2s ease-out;}
 .toolMenuBar .menu_list > li .classBox.active {display:block;}
 .toolMenuBar .menu_list > li .classBox .tit {padding:0 11px; border-bottom:1px solid #3b3d45; color:#adafc1; font-size:14px; line-height:39px;}
@@ -154,8 +163,9 @@ input[type="radio"]:checked + label:before {border:3px solid #1f242e; background
 .toolMenuBar .menu_list > li .classBox .class_list li input[type="radio"]:checked + label {background:#2e3748;}
 
 /* inspactor */
-.toolMenuBar .menu_list > li .classBox .class_list li input[type="radio"] + label:before {display:none;}
-.toolMenuBar .menu_list > li .classBox .class_list li input[type="radio"]:checked + label {background:transparent;}
+.inspector .toolMenuBar .menu_list > li .classBox .class_list li input[type="radio"] + label {cursor:default;}
+.inspector .toolMenuBar .menu_list > li .classBox .class_list li input[type="radio"] + label:before {display:none;}
+.inspector .toolMenuBar .menu_list > li .classBox .class_list li input[type="radio"]:checked + label {background:transparent;}
 
 
 /* -------------------- content -------------------- */
@@ -192,14 +202,14 @@ input[type="radio"]:checked + label:before {border:3px solid #1f242e; background
 /* -------------------- aside -------------------- */
 /* worker - image */
 .aside {display:flex; flex-direction:column; position:absolute; top:0; right:-336px; width:336px; height:100%; background:#151b27; transition:right 0.3s ease-out;}
-.aside.on {right:0;}
+.aside.on {right:0 !important;}
 .aside .btn_expand {bottom:150px; left:-24px;}
 
 .aside .currentFile {height:50px; padding:0 16px; border-bottom:1px solid #060c17; box-sizing:border-box; color:#adafc1; font-size:13px; letter-spacing:-0.13px; line-height:48px;}
-.aside .currentFile span {display:inline-block; overflow:hidden; width:240px; color:#adafc1; font-size:13px; letter-spacing:-0.13px; white-space:nowrap; text-overflow:ellipsis; vertical-align:middle;}
+.aside .currentFile span {display:inline-block; overflow:hidden; width:calc(100% - 45px); color:#adafc1; font-size:13px; letter-spacing:-0.13px; white-space:nowrap; text-overflow:ellipsis; vertical-align:middle;}
 
 .aside .guideFile {display:flex; align-items:center; height:50px; padding:0 16px; border-bottom:1px solid #060c17; box-sizing:border-box; color:#adafc1; font-size:13px; letter-spacing:-0.13px; line-height:48px;}
-.aside .guideFile .fileName {display:inline-block; overflow:hidden; width:270px; color:#adafc1; font-size:13px; letter-spacing:-0.13px; white-space:nowrap; text-overflow:ellipsis; vertical-align:middle;}
+.aside .guideFile .fileName {display:inline-block; overflow:hidden; width:calc(100% - 35px); color:#adafc1; font-size:13px; letter-spacing:-0.13px; white-space:nowrap; text-overflow:ellipsis; vertical-align:middle;}
 .aside .guideFile .btn_guide_download {width:24px; height:24px; margin:0 0 0 10px; background:url('../images/builder/ico_download.svg') 50% 50% no-repeat;}
 
 .aside .comments {border-bottom:2px solid #16212e;}
@@ -239,13 +249,30 @@ input[type="radio"]:checked + label:before {border:3px solid #1f242e; background
 .aside .deleteBox .btn_select_delete {width:24px; height:24px; background:url('../images/builder/ico_dlt_slt.svg') 50% 50% no-repeat;}
 .aside .deleteBox .btn_all_delete {height:38px; margin:6px 0; padding:0 12px 0 34px; border-radius:6px; background:#262d3c url('../images/builder/ico_dlt_all.svg') top 50% left 6px no-repeat; color:#adafc1; font-size:14px; letter-spacing:-0.14px;}
 
-/* inspactor */
+/* worker - video */
+.edit_video .aside {right:-422px; width:422px;}
+.edit_video .aside .tabWrap {height:calc(50% - 202px);}
+.edit_video .aside .tabWrap .tab_cont > ul li .tagBox {height:82px;}
+.edit_video .aside .tabWrap .tab_cont > ul li .tagBox .ipt_txt {height:42px; padding:0 12px;}
+.edit_video .aside .script {display:flex; flex-direction:column; height:50%; border-bottom:2px solid #16212e;}
+.edit_video .aside .script .tit {height:50px; padding:0 16px; box-sizing:border-box; background:#2a354a url('../images/builder/ico_caret_down_g.svg') top 50% right 16px no-repeat; color:#adafc1; font-size:13px; letter-spacing:-0.13px; line-height:48px; cursor:pointer;}
+.edit_video .aside .script .script_box {padding:0 20px 16px; box-sizing:border-box;}
+.edit_video .aside .script .script_box .srch_box {display:flex; padding:6px 12px; border:1px solid #3b3d45; border-radius:4px; box-sizing:border-box; background:#232831;}
+.edit_video .aside .script .script_box .srch_box .ipt_txt {width:auto; height:42px; padding:0 12px; border:none;}
+.edit_video .aside .script .script_box .srch_box .srch_txt_index {color:#aaaeb2; font-size:14px;}
+.edit_video .aside .script .script_box .srch_box .btnBox {display:flex;}
+.edit_video .aside .script .script_box .srch_box .btnBox button {width:24px; height:24px;}
+.edit_video .aside .script .script_box .srch_box .btnBox button.btn_txt_prev {background:url('../images/builder/ico_arw_up.svg') 50% 50% no-repeat;}
+.edit_video .aside .script .script_box .srch_box .btnBox button.btn_txt_next {background:url('../images/builder/ico_arw_down.svg') 50% 50% no-repeat;}
+.edit_video .aside .script .script_box .srch_box .btnBox button.btn_srch {background:url('../images/builder/ico_srch.svg') 50% 50% no-repeat;}
+
+
+/* inspactor - image */
 .inspector .aside .tabWrap {height:calc(100% - 380px);}
 .inspector .aside .comments .cmt_box .textarea {height:135px;}
 .inspector .aside .tabWrap .tab_cont > ul li .editCommentBox {display:none; padding:16px 20px 20px; border-bottom:1px solid #303740;}
 .inspector .aside .tabWrap .tab_cont > ul li .editCommentBox .iptBox {position:relative; width:100%; height:42px;}
-.inspector .aside .tabWrap .tab_cont > ul li .editCommentBox .iptBox .ipt_txt {width:100%; height:100%; padding:0 40px 0 12px; border:1px solid #3b3d45; border-radius:4px; box-sizing:border-box; background:#232831; color:#adafc1; font-size:14px; letter-spacing:-0.14px;}
-.inspector .aside .tabWrap .tab_cont > ul li .editCommentBox .iptBox .ipt_txt::placeholder {color:#6f7077; font-size:14px;}
+.inspector .aside .tabWrap .tab_cont > ul li .editCommentBox .iptBox .ipt_txt {height:100%; padding:0 40px 0 12px;}
 .inspector .aside .tabWrap .tab_cont > ul li .editCommentBox .iptBox .btn_send {position:absolute; top:10px; right:10px; width:20px; height:20px; margin:0 0 0 20px; background:url('../images/builder/ico_send.svg') 50% 50% no-repeat;}
 .inspector .aside .tabWrap .tab_cont > ul li .editCommentBox .cmt_list li {position:relative; margin:16px 0; padding:0 20px;}
 .inspector .aside .tabWrap .tab_cont > ul li .editCommentBox .cmt_list li:last-child {margin:16px 0 0;}

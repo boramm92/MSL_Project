@@ -94,15 +94,16 @@ $(document).ready(function(){
             guideFileHeight = $('.aside .guideFile').outerHeight(), 
             commentsHeight = $('.aside .comments').outerHeight(), 
             commentBoxHeight = $('.aside .comments .cmt_box').outerHeight(),            
-            deleteBoxHeight = $('.aside .deleteBox').outerHeight();
+            deleteBoxHeight = $('.aside .deleteBox').outerHeight(),
+            scriptHeight = $('.aside .script').outerHeight();
 
         if(commentsHeight < 55){
-            var height = currentFileHeight + guideFileHeight + commentsHeight + deleteBoxHeight + commentBoxHeight;
+            var height = currentFileHeight + guideFileHeight + commentsHeight + commentBoxHeight + deleteBoxHeight + scriptHeight;
 
             $('.comments .cmt_box').slideDown(200);
             $('.aside .tabWrap').animate({height: asideHeight - height}, 200);
         }else{
-            var height = currentFileHeight + guideFileHeight + commentsHeight + deleteBoxHeight - commentBoxHeight;
+            var height = currentFileHeight + guideFileHeight + commentsHeight + deleteBoxHeight + scriptHeight - commentBoxHeight;
 
             $('.comments .cmt_box').slideUp(200);  
             $('.aside .tabWrap').animate({height: asideHeight - height}, 200);         
