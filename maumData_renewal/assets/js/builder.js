@@ -300,26 +300,21 @@ $(document).ready(function(){
         activeFrameMoveScroll();
     });
 
-    // (function(){
-    //     function scrollHorizontally(e){
-    //         e.preventDefault();
-    //         e = window.event || e;
-    //         var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
-    //         document.querySelector('.frame_list').scrollLeft -= (delta * 94);           
-    //     }
-        
-    //     if(document.querySelector('.frame_list').addEventListener) {
-    //         document.querySelector('.frame_list').addEventListener("mousewheel", scrollHorizontally, false);    // IE9, Chrome, Safari, Opera
-    //         document.querySelector('.frame_list').addEventListener("DOMMouseScroll", scrollHorizontally, false);    // Firefox
-    //     }else{
-    //         document.querySelector('.frame_list').attachEvent("onmousewheel", scrollHorizontally);  // IE 6/7/8
-    //     }
-    // })();
+    // frame list mouse wheel scroll
+    function scrollHorizontally(e){
+        e.preventDefault();
+        e = window.event || e;
+        var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+        document.querySelector('.frame_list').scrollLeft -= (delta * 94);           
+    }   
+    $('.frame_list').on('mousewheel DOMMouseScroll', scrollHorizontally);    // IE9, Chrome, Safari, Opera, Firefox
 
 
     // -------------------- 검수자 화면 -------------------- //
     // 태그 리스트 세부 코멘트 리스트 내 버튼 클릭 시 
-    $('.editCommentBox .cmt_list_box ul li button').on('click', function(){
+    $('.editCommentBox .cmt_list li button').on('click', function(e){
+        e.stopPropagation();
+
         if($(this).is('.btn_check')){   // 확인 처리 하기
             $(this).parent('li').toggleClass('checked');
         }else if($(this).is('.btn_delete')){    // 삭제 하기
@@ -332,47 +327,6 @@ $(document).ready(function(){
                     $(this).parent('.cmt_list_box').find('.unprocessed').addClass('empty');
                 }
             });
-        }
-    });
-
-    // 태그 리스트 세부 코멘트 리스트 입력 후 추가
-    $('.editCommentBox .btn_send').on('click', function(){
-        var commentText = $(this).prev('.ipt_txt').val();
-
-        $(this).parents('.editCommentBox').find('.unprocessed').prepend('\
-            <li>\
-                <button type="button" class="btn_check" title="확인하기">\
-                    <span class="hide">확인하기</span>\
-                </button>\
-                <p class="cmt_txt">' + commentText + '</p>\
-                <button type="button" class="btn_delete" title="삭제하기">\
-                    <span class="hide">삭제하기</span>\
-                </button>\
-            </li>\
-        ');
-
-        // 태그 리스트 세부 코멘트 리스트 내 버튼 클릭 시 
-        $('.editCommentBox .cmt_list_box ul li button').on('click', function(e){
-            e.stopPropagation();
-            
-            if($(this).is('.btn_check')){   // 확인 처리 하기
-                $(this).parent('li').toggleClass('checked');
-            }else if($(this).is('.btn_delete')){    // 삭제 하기
-                $(this).parent('li').remove();
-
-                $('.cmt_list').each(function(){
-                    var length = $(this).find('li').length;
-
-                    if(length == 0){
-                        $(this).parent('.cmt_list_box').find('.unprocessed').addClass('empty');
-                    }
-                });
-            }
-        });
-    });
-    $('.editCommentBox .ipt_txt').on("keyup",function(key){
-        if(key.keyCode==13) {
-            $(this).next('.btn_send').trigger('click');
         }
     });
 });
