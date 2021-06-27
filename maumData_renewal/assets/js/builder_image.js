@@ -37,27 +37,24 @@ $(document).ready(function(){
     // comments 클릭 시 박스 슬라이드 & height 조절
     $('.comments .tit').on('click', function(){
         var asideHeight = $('.aside').outerHeight(),
-            commentBoxHeight = $('.aside .comments .cmt_box').outerHeight();
-        var heightSum = 0;
+            currentFileHeight = $('.aside .currentFile').outerHeight(),
+            guideFileHeight = $('.aside .guideFile').outerHeight(), 
+            commentsHeight = $('.aside .comments').outerHeight(), 
+            commentBoxHeight = $('.aside .comments .cmt_box').outerHeight(),            
+            deleteBoxHeight = $('.aside .deleteBox').outerHeight();
 
-        $('.aside > div').each(function(){
-            heightSum = heightSum + $(this).outerHeight();            
-        });
+        if(commentsHeight < 55){
+            var height = currentFileHeight + guideFileHeight + commentsHeight + commentBoxHeight + deleteBoxHeight;
 
-        console.log(heightSum)
-
-        if($('.comments .cmt_box').css('display') == 'none'){
-            // console.log('닫혀있음')                      
-            
             $('.comments .cmt_box').slideDown(200);
-            $('.aside .tabWrap').animate({height: asideHeight - heightSum}, 200);
+            $('.aside .tabWrap').animate({height: asideHeight - height}, 200);
         }else{
-            // console.log('열려있음')
+            var height = currentFileHeight + guideFileHeight + commentsHeight + deleteBoxHeight - commentBoxHeight;
 
             $('.comments .cmt_box').slideUp(200);  
-            $('.aside .tabWrap').animate({height: asideHeight - heightSum - commentBoxHeight}, 200);         
+            $('.aside .tabWrap').animate({height: asideHeight - height}, 200);         
         }
-    });
+    });  
 
     // videoFrameArea 영역 확장 버튼
     $('.videoFrameArea .btn_expand').on('click', function(){
