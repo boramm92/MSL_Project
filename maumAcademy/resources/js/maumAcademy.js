@@ -60,13 +60,13 @@ $(document).ready(function (){
 	});   
     
     //이미지 위치
-    $('.svc_visual .bg_img').each(function(){
-        var bgPstion = $('.svc_visual .bg_img').height()/2;
+    // $('.svc_visual .bg_img').each(function(){
+    //     var bgPstion = $('.svc_visual .bg_img').height()/2;
         
-		$('.svc_visual .bg_img').css({
-			'top': -bgPstion+70
-		});
-    }); 
+	// 	$('.svc_visual .bg_img').css({
+	// 		'top': -bgPstion+70
+	// 	});
+    // }); 
 }); 
 
 $(window).scroll(function(){
