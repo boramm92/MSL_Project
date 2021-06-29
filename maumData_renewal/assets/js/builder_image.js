@@ -18,6 +18,7 @@ $(document).ready(function(){
     });    
 
     // tabWrap height 조절
+    // [D] 21.06.29 NBR 수정
     function handleTabWrapHeight(){
         var asideHeight = $('.aside').outerHeight();
         var heightSum = 0;
@@ -25,7 +26,7 @@ $(document).ready(function(){
         $('.aside > div').not('.tabWrap').each(function(){
             heightSum = heightSum + $(this).outerHeight();            
         });       
-        $('.aside .tabWrap').css({height: asideHeight - heightSum});
+        $('.aside .tabWrap .tab_cont > ul').css({height: asideHeight - heightSum - 50});
     } 
     handleTabWrapHeight();  
 
@@ -35,24 +36,18 @@ $(document).ready(function(){
     });
 
     // comments 클릭 시 박스 슬라이드 & height 조절
+    // [D] 21.06.29 NBR 수정
     $('.comments .tit').on('click', function(){
-        var asideHeight = $('.aside').outerHeight(),
-            currentFileHeight = $('.aside .currentFile').outerHeight(),
-            guideFileHeight = $('.aside .guideFile').outerHeight(), 
-            commentsHeight = $('.aside .comments').outerHeight(), 
+        var commentsHeight = $('.aside .comments').outerHeight(), 
             commentBoxHeight = $('.aside .comments .cmt_box').outerHeight(),            
-            deleteBoxHeight = $('.aside .deleteBox').outerHeight();
+            tabContHeight = $('.aside .tabWrap .tab_cont > ul').outerHeight();
 
         if(commentsHeight < 55){
-            var height = currentFileHeight + guideFileHeight + commentsHeight + commentBoxHeight + deleteBoxHeight;
-
             $('.comments .cmt_box').slideDown(200);
-            $('.aside .tabWrap').animate({height: asideHeight - height}, 200);
+            $('.aside .tabWrap .tab_cont > ul').animate({height: tabContHeight - commentBoxHeight}, 200);
         }else{
-            var height = currentFileHeight + guideFileHeight + commentsHeight + deleteBoxHeight - commentBoxHeight;
-
             $('.comments .cmt_box').slideUp(200);  
-            $('.aside .tabWrap').animate({height: asideHeight - height}, 200);         
+            $('.aside .tabWrap .tab_cont > ul').animate({height: tabContHeight + commentBoxHeight}, 200);         
         }
     });  
 
