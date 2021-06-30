@@ -199,13 +199,14 @@ input[type="radio"]:checked + label:before {border:3px solid #1f242e; background
 /* worker - video */
 .edit_video .work_space .videoArea {height:90%; padding:144px 75px 0; box-sizing:border-box;}
 .edit_video .work_space .videoArea .videoBox {height:calc(100% - 80px); background:#1d1e21;}
-.edit_video .work_space .videoArea .videoBox video {width:100%; height:100%; object-fit:contain;}
+.edit_video .work_space .videoArea .videoBox video {display:block; max-width:100%; height:100%; margin:0 auto;}
 .edit_video .work_space .videoArea .controlBox {width:100%; height:80px; padding:20px 34px 0; box-sizing:border-box; background:#141519;} 
 .edit_video .work_space .videoArea .controlBox .player .player_bar {position:relative; width:100%; height:3px; background:#3e3e3e; cursor:pointer;}
 .edit_video .work_space .videoArea .controlBox .player .player_bar .buffer_bar {position:absolute; top:0; left:0; width:0; height:100%; background:#878889;}
 .edit_video .work_space .videoArea .controlBox .player .player_bar .slider_bar {position:absolute; top:0; left:0; width:0; height:100%; background:#3d4cbf;}
 .edit_video .work_space .videoArea .controlBox .player .player_bar .slider_bar:before {content:''; display:block; position:absolute; top:-5px; right:-5px; width:13px; height:13px; border-radius:50%; background:#3d4cbf;}
-.edit_video .work_space .videoArea .controlBox .player .player_control {display:flex; justify-content:flex-start; margin:9px 0 0;}
+.edit_video .work_space .videoArea .controlBox .player .player_control {display:flex; justify-content:flex-start; position:relative; margin:9px 0 0;}
+.edit_video .work_space .videoArea .controlBox .player .player_control .btnBox {display:flex;}
 .edit_video .work_space .videoArea .controlBox .player .player_control button {position:relative; width:40px; height:40px; margin:0 5px; transition:all 0.3s ease-out;}
 .edit_video .work_space .videoArea .controlBox .player .player_control button.btn_play {margin:0 5px 0 0; background:url('../images/builder/ico_play.svg') 50% 50% no-repeat;}
 .edit_video .work_space .videoArea .controlBox .player .player_control button.btn_play.pause {background:url('../images/builder/ico_pause.svg') 50% 50% no-repeat;}
@@ -217,8 +218,8 @@ input[type="radio"]:checked + label:before {border:3px solid #1f242e; background
 .edit_video .work_space .videoArea .controlBox .player .player_control button.btn_speed {background:url('../images/builder/ico_speed.svg') 50% 50% no-repeat;}
 .edit_video .work_space .videoArea .controlBox .player .player_control button.btn_repeat {margin:0 0 0 5px; background:url('../images/builder/ico_repeat.svg') 50% 50% no-repeat;}
 .edit_video .work_space .videoArea .controlBox .player .player_control button.btn_repeat.on {background:url('../images/builder/ico_repeat_b.svg') 50% 50% no-repeat;}
-.edit_video .work_space .videoArea .controlBox .player .player_control button .tooltip {display:none; position:absolute; top:-104px; left:50%; padding:6px; border-radius:4px; background:rgb(3, 3, 3, 0.84); color:#fff; font-size:13px; letter-spacing:-0.13px; transform:translate(-50%, 0);}
-/* .edit_video .work_space .videoArea .controlBox .player .player_control button:hover .tooltip {display:block;} */
+.edit_video .work_space .videoArea .controlBox .player .player_control button .tooltip {display:none; position:absolute; top:-74px; left:50%; padding:6px 12px; border-radius:4px; box-sizing:border-box; background:rgb(3, 3, 3, 0.84); color:#fff; font-size:13px; letter-spacing:-0.13px; white-space:nowrap; transform:translate(-50%, 0);}
+.edit_video .work_space .videoArea .controlBox .player .player_control button:hover .tooltip {display:block;}
 .edit_video .work_space .videoArea .controlBox .player .player_control .player_volume {display:flex; align-items:center;}
 .edit_video .work_space .videoArea .controlBox .player .player_control .player_volume .volume_bar {position:relative; width:124px; height:3px; margin:0 10px 0 5px; background:#949596; cursor:pointer;}
 .edit_video .work_space .videoArea .controlBox .player .player_control .player_volume .volume_bar .slider_bar {position:absolute; top:0; left:0; width:0; height:100%; background:#fff;}
@@ -227,6 +228,12 @@ input[type="radio"]:checked + label:before {border:3px solid #1f242e; background
 .edit_video .work_space .videoArea .controlBox .player .player_control .player_time span {padding:0 10px; color:#fff; font-size:13px; letter-spacing:-0.13px;}
 .edit_video .work_space .videoArea .controlBox .player .player_control .player_time .current {border-right:1px solid #626467;}
 .edit_video .work_space .videoArea .controlBox .player .player_control .btnBox:last-child {margin-left:auto;}
+.edit_video .work_space .videoArea .controlBox .player .player_control .speedSet {display:none; position:absolute; right:0; bottom:102px; width:196px; background:rgba(0, 0, 0, 0.84);}
+.edit_video .work_space .videoArea .controlBox .player .player_control .speedSet.on {display:block;}
+.edit_video .work_space .videoArea .controlBox .player .player_control .speedSet .tit {padding:0 30px; border-bottom:1px solid #4f5056; box-sizing:border-box; color:#fff; font-size:13px; letter-spacing:-0.13px; line-height:39px;}
+.edit_video .work_space .videoArea .controlBox .player .player_control .speedSet .speed_list li {padding:0 30px; box-sizing:border-box; color:#fff; font-size:13px; letter-spacing:-0.13px; line-height:30px; transition:background-color 0.3s ease-out; cursor:pointer;}
+.edit_video .work_space .videoArea .controlBox .player .player_control .speedSet .speed_list li:hover {background:rgba(255, 255, 255, 0.17);}
+.edit_video .work_space .videoArea .controlBox .player .player_control .speedSet .speed_list li.active {background:rgba(255, 255, 255, 0.17) url('../images/builder/ico_chk_w.svg') 4px 50% no-repeat;}
 
 
 /* -------------------- aside -------------------- */

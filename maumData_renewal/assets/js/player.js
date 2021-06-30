@@ -16,14 +16,20 @@ $(document).ready(function(){
         speedBtn = $('.btn_speed'),
         repeatBtn = $('.btn_repeat');
 
-    // play, pause button func
+    // 재생, 일시정지 
     function togglePlay() {
         var method = video.paused ? 'play' : 'pause'; // 비디오 재생 상태에 따른 메소드 호출
         video[method]();
         $(this).toggleClass('pause');
+
+        if($(this).is('.pause')){
+            $(this).find('.tooltip').text('일시 정지');
+        }else{
+            $(this).find('.tooltip').text('재생');
+        }
     }
 
-    // volume update func
+    // 볼륨 조절
     function updateVolume(x, vol) {
         if(vol){
             percentage = vol * 100;
@@ -46,14 +52,17 @@ $(document).ready(function(){
 
         if(video.volume == 0){
             volumeBtn.removeClass('down').addClass('mute');
+            volumeBtn.find('.tooltip').text('음소거 해제(m)');
         }else if(video.volume > 0.5){
             volumeBtn.removeClass('mute').removeClass('down');
+            volumeBtn.find('.tooltip').text('음소거(m)');
         }else{
-            volumeBtn.removeClass('mute').addClass('down');                
+            volumeBtn.removeClass('mute').addClass('down'); 
+            volumeBtn.find('.tooltip').text('음소거(m)');               
         }
     }
 
-    // video time format func
+    // 비디오 시간 세팅
     function timeFormat(seconds){
         var m = Math.floor(seconds / 60) < 10
             ? '0' + Math.floor(seconds / 60)
@@ -64,6 +73,7 @@ $(document).ready(function(){
         return m + ':' + s;
     }
 
+    // 버퍼링 바 계산
     function startBuffer(){
         current_buffer = video.buffered.end(0);
         max_duration = video.duration;
@@ -75,6 +85,7 @@ $(document).ready(function(){
         }
     }
 
+    // 재생중 바 업데이트
     function updatebar(x){
         position = x - playerSliderBar.offset().left;
         percentage = 100 * position / playerBar.width();
@@ -88,6 +99,7 @@ $(document).ready(function(){
         video.currentTime = video.duration * percentage / 100;
     }
 
+    // 비디오 시간 초기입력
     video.addEventListener('loadedmetadata', function(){
         current.text(timeFormat(0));
         duration.text(timeFormat(video.duration));
@@ -95,10 +107,10 @@ $(document).ready(function(){
         setTimeout(startBuffer, 150);
     });
 
-    // Video Play
+    // 재생 버튼 클릭 시
     playBtn.on('click', togglePlay);
 
-    // Video duration timer
+    // 비디오 시간 업데이트
     video.addEventListener('timeupdate', function(){
         current.text(timeFormat(video.currentTime));
         duration.text(timeFormat(video.duration));
@@ -108,7 +120,7 @@ $(document).ready(function(){
         playerSliderBar.css('width', perc + '%');
     });
 
-    // Video Bar Drag
+    // 비디오 바 드래그 시
     var timeDrag = false;
 
     playerBar.on('mousedown', function(e){
@@ -127,7 +139,7 @@ $(document).ready(function(){
         }
     });    
 
-    // Volume Bar Drag
+    // 볼륨 바 드래그 시
     var volumeDrag = false;
 
     volumeBar.on('mousedown', function(e){
@@ -148,25 +160,32 @@ $(document).ready(function(){
         }
     });
 
-    // Volume Drag
+    // 볼륨 버튼 클릭 시
     volumeBtn.on('click', function(){
         video.muted = !video.muted;
         $(this).toggleClass('mute');
         if(video.muted){
             volumeSliderBar.css('width', 0);
+            $(this).find('.tooltip').text('음소거 해제(m)');
         }else{
             volumeSliderBar.css('width', video.volume * 100 + '%');
+            $(this).find('.tooltip').text('음소거(m)');
         }
     });
 
+    // 속도설정 버튼 클릭 시
+    speedBtn.on('click', function(){
+        $('.speedSet').toggleClass('on');
+
+        $('.speed_list li').on('click', function(){
+            $('.speed_list li').removeClass('active');
+            $(this).addClass('active');
+        });
+    });
+
+    // 반복재생 버튼 클릭 시
     repeatBtn.on('click', function(){
         $(this).toggleClass('on');
-
-        if($(this).is('on')){
-            // video.removeAttribute(loop);
-        }else{
-            video.prop('loop', true);
-        }
     }); 
 });
 
