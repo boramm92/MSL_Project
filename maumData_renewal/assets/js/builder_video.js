@@ -3,24 +3,24 @@ $(document).ready(function(){
     // aside 영역 확장 버튼
     $('.aside .btn_expand').on('click', function(){
         $('.aside').toggleClass('on');
-        // handleVideoAreaWidth();
+        handleVideoAreaWidth();
     });
     
     // videoArea width 조절
-    // function handleVideoAreaWidth(){
-    //     var contentWidth = $('.content').outerWidth(),
-    //         asideWidth = $('.aside').outerWidth(),
-    //         videoAreaWidth = $('.videoArea').outerWidth();
+    function handleVideoAreaWidth(){
+        var contentWidth = $('.content').outerWidth(),
+            asideWidth = $('.aside').outerWidth(),
+            videoAreaWidth = $('.videoArea').outerWidth();
 
-    //     if($('.aside').hasClass('on') == true){
-    //         videoAreaWidth = videoAreaWidth - asideWidth;
-    //         $('.videoArea').animate({width: videoAreaWidth}, 300);
-    //     }else{
-    //         videoAreaWidth = contentWidth;
-    //         $('.videoArea').animate({width: videoAreaWidth}, 300);
-    //     }
-    // }
-    // handleVideoAreaWidth();
+        if($('.aside').hasClass('on') == true){
+            videoAreaWidth = videoAreaWidth - asideWidth;
+            $('.videoArea').animate({width: videoAreaWidth}, 300);
+        }else{
+            videoAreaWidth = contentWidth;
+            $('.videoArea').animate({width: videoAreaWidth}, 300);
+        }
+    }
+    handleVideoAreaWidth();
 
     // // videoArea width 조절 - resize 시
     // $(window).resize(function(){
