@@ -3,13 +3,9 @@ $(document).ready(function(){
     // aside 영역 확장 버튼
     $('.aside .btn_expand').on('click', function(){
         $('.aside').toggleClass('on');
-        handleVideoAreaWidth();
-    });
-    
-    // videoArea width 조절
-    function handleVideoAreaWidth(){
-        var contentWidth = $('.content').width(),
-            asideWidth = $('.aside').width(),
+        
+        var contentWidth = $('.content').outerWidth(),
+            asideWidth = $('.aside').outerWidth(),
             videoAreaWidth = $('.videoArea').outerWidth();
 
         if($('.aside').hasClass('on') == true){
@@ -19,13 +15,28 @@ $(document).ready(function(){
             videoAreaWidth = contentWidth;
             $('.videoArea').animate({width: videoAreaWidth}, 300);
         }
+    });  
+
+    // videoArea width 조절
+    function handleVideoAreaWidth(){
+        var contentWidth = $('.content').outerWidth(),
+            asideWidth = $('.aside').width(),
+            videoAreaWidth = $('.videoArea').outerWidth();
+
+        if($('.aside').hasClass('on') == true){
+            videoAreaWidth = contentWidth - asideWidth;
+            $('.videoArea').css('width', videoAreaWidth);
+        }else{
+            videoAreaWidth = contentWidth;
+            $('.videoArea').css('width', videoAreaWidth);
+        }
     }
     handleVideoAreaWidth();
 
-    // videoArea width 조절 - resize 시
-    // $(window).resize(function(){
-    //     handleVideoAreaWidth();
-    // });
+    // videoFrameArea width 조절 - resize 시
+    $(window).resize(function(){
+        handleVideoAreaWidth();
+    });
 
     // tabWrap height 조절
     // function handleTabWrapHeight(){

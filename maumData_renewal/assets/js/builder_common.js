@@ -11,7 +11,7 @@ $(document).ready(function(){
         $(popId).prepend('<div class="lyr_bg"></div>');
         
         // close 
-        $('.btn_lyr_close, .lyr_bg').on('click',function(){
+        $('.btn_lyr_close, .btn_confirm').on('click',function(){
             $(popId).css('display', 'none'); 
             $('.lyr_bg').remove(); 
         });	

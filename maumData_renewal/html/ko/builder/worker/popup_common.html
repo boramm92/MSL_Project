@@ -32,6 +32,11 @@
 <script type="text/javascript" src="../../../../assets/js/jquery-migrate-3.3.1.min.js"></script>
 <script type="text/javascript" src="../../../../assets/js/builder_common.js"></script>
 
+<style>
+    .work_space {padding:50px;}
+    .btn_lyr_open {margin:0 10px; padding:10px; border-radius:4px; background:#2a354a; color:#adafc1; font-weight:500;}
+</style>
+
 <title>Layer popup || Builder</title>
 </head>
 <body>
@@ -114,7 +119,9 @@
             <div class="content">
                 <!-- .work_space -->
                 <div class="work_space">
-                    
+                    <button type="button" class="btn_lyr_open" data-lyr-name="alert_inspect">알림 (검수중)</button>
+                    <button type="button" class="btn_lyr_open" data-lyr-name="alert_click_complete">알림 (가공완료)</button>
+                    <button type="button" class="btn_lyr_open" data-lyr-name="alert_reject">알림 (작업 반려, 수정)</button>
                 </div>
                 <!-- //.work_space -->
             </div>
@@ -212,6 +219,58 @@
     </div>
 </div>
 <!-- //전체삭제 -->
+
+<!-- 알림 (검수중) -->
+<div id="alert_inspect" class="lyrWrap">
+    <div class="lyrCont">
+        <div class="lyr_top">
+            <p class="tit">알림</p>
+            <button type="button" class="btn_lyr_close"><span class="hide">닫기버튼</span></button>
+        </div>
+        <div class="lyr_mid">
+            <p class="alert_txt">해당 작업은 <span class="ft_point_blue">‘검수 중’</span> 입니다.</p>
+        </div>
+        <div class="lyr_btm">
+            <button tyle="button" class="btn_primary btn_confirm">확인</button>
+        </div>
+    </div>
+</div>
+<!-- //알림 (검수중) -->
+
+<!-- 알림 (가공완료) -->
+<div id="alert_click_complete" class="lyrWrap">
+    <div class="lyrCont">
+        <div class="lyr_top">
+            <p class="tit">알림</p>
+            <button type="button" class="btn_lyr_close"><span class="hide">닫기버튼</span></button>
+        </div>
+        <div class="lyr_mid">
+            <p class="alert_txt">가공 완료처리 되지 않았습니다.<br> <span class="ft_point_blue">‘가공완료’</span> 버튼을 눌러주세요.</p>
+        </div>
+        <div class="lyr_btm">
+            <button tyle="button" class="btn_primary btn_confirm">확인</button>
+        </div>
+    </div>
+</div>
+<!-- //알림 (검수중) -->
+
+<!-- 알림 (작업 반려, 수정) -->
+<div id="alert_reject" class="lyrWrap">
+    <div class="lyrCont">
+        <div class="lyr_top">
+            <p class="tit">알림</p>
+            <button type="button" class="btn_lyr_close"><span class="hide">닫기버튼</span></button>
+        </div>
+        <div class="lyr_mid">
+            <p class="alert_txt">작업이 반려되었습니다.<br> 검수자의 요청에 따라 수정해주세요.</p>
+        </div>
+        <div class="lyr_btm">
+            <button tyle="button" class="btn_primary btn_confirm">확인</button>
+        </div>
+    </div>
+</div>
+<!-- //알림 (작업 반려, 수정) -->
+
 
 <!-- Local Script -->
 <script type="text/javascript">
