@@ -20,6 +20,7 @@ $(document).ready(function(){
     function togglePlay() {
         var method = video.paused ? 'play' : 'pause'; // 비디오 재생 상태에 따른 메소드 호출
         video[method]();
+        
         $(this).toggleClass('pause');
 
         if($(this).is('.pause')){

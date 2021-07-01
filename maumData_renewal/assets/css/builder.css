@@ -10,7 +10,7 @@
 /* -------------------- layout -------------------- */
 body {overflow:hidden;}
 #wrap {overflow:hidden; width:100%; min-width:1280px; height:100%; min-height:760px; background:#000;}
-#header {position:relative; top:0; left:0; width:100%; min-width:1280px; height:72px; border-bottom:1px solid #1d2026; box-sizing:border-box; background:#151b27;}
+#header {position:relative; top:0; left:0; width:100%; min-width:1280px; height:72px; border-bottom:1px solid #1d2026; box-sizing:border-box; background:#151b27; z-index:5000;}
 #container {display:table; position:relative; width:100%; height:calc(100% - 72px); box-sizing:border-box;}
 #container .toolMenuBar {display:table-cell; width:52px; height:100%; background:#151b27; vertical-align:top;}
 #container #contents {display:table-cell; position:relative; width:calc(100% - 52px); vertical-align:top;}
@@ -292,7 +292,7 @@ input[type="radio"]:checked + label:before {border:3px solid #1f242e; background
 .edit_video .aside .tabWrap .tab_cont > ul {min-height:246px;}
 .edit_video .aside .tabWrap .tab_cont > ul li .tagBox {height:82px;}
 .edit_video .aside .tabWrap .tab_cont > ul li .tagBox .ipt_txt {height:42px; padding:0 12px;}
-/* .edit_video .aside .tabWrap .tab_cont > ul {max-height:246px;} */
+.edit_video .aside .tabWrap .tab_cont > ul.short {max-height:246px;}
 
 .edit_video .aside .script {height:calc(100% - 496px);}
 .edit_video .aside .script .tit {flex:none; position:relative; height:50px; padding:0 16px; box-sizing:border-box; background:#2a354a url('../images/builder/ico_caret_down_g.svg') top 50% right 16px no-repeat; color:#adafc1; font-size:13px; letter-spacing:-0.13px; line-height:48px; cursor:pointer;}
@@ -302,11 +302,12 @@ input[type="radio"]:checked + label:before {border:3px solid #1f242e; background
 .edit_video .aside .script .script_box .srch_box .ipt_txt {width:auto; height:100%; margin-right:auto; border:none;}
 .edit_video .aside .script .script_box .srch_box .srch_txt_index {margin:0 8px; color:#aaaeb2; font-size:14px;}
 .edit_video .aside .script .script_box .srch_box .btnBox {display:flex; padding:0 0 0 8px; border-left:1px solid #3b3d45;}
-.edit_video .aside .script .script_box .srch_box .btnBox button {width:24px; height:24px;}
-.edit_video .aside .script .script_box .srch_box .btnBox button.btn_txt_prev {background:url('../images/builder/ico_arw_up.svg') 50% 50% no-repeat;}
-.edit_video .aside .script .script_box .srch_box .btnBox button.btn_txt_next {margin:0 8px; background:url('../images/builder/ico_arw_down.svg') 50% 50% no-repeat;}
-.edit_video .aside .script .script_box .srch_box .btnBox button.btn_srch {background:url('../images/builder/ico_srch.svg') 50% 50% no-repeat;}
-.edit_video .aside .script .script_box .scrt_txt {overflow:auto; height:calc(100% - 62px); padding:16px; border:1px solid #3b3d45; border-radius:4px; box-sizing:border-box; background:#232831; color:#adafc1; font-size:16px; letter-spacing:-0.16px; line-height:24px; word-break:keep-all;}
+.edit_video .aside .script .script_box .srch_box .btnBox a.btn_txt_prev {width:24px; height:24px; background:url('../images/builder/ico_arw_up.svg') 50% 50% no-repeat;}
+.edit_video .aside .script .script_box .srch_box .btnBox a.btn_txt_next {width:24px; height:24px; margin:0 8px; background:url('../images/builder/ico_arw_down.svg') 50% 50% no-repeat;}
+.edit_video .aside .script .script_box .srch_box .btnBox button.btn_srch {width:24px; height:24px; background:url('../images/builder/ico_srch.svg') 50% 50% no-repeat;}
+.edit_video .aside .script .script_box .scrt_txt {overflow:auto; position:relative; height:calc(100% - 62px); padding:16px; border:1px solid #3b3d45; border-radius:4px; box-sizing:border-box; background:#232831; color:#adafc1; font-size:16px; letter-spacing:-0.16px; line-height:24px; word-wrap:break-word; white-space:pre-line;}
+.edit_video .aside .script .script_box .scrt_txt .findElement {background:#616f8a; color:#000;}
+.edit_video .aside .script .script_box .scrt_txt .findElement.selected {background:#ffb624;}
 
 
 /* inspactor - image */
