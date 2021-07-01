@@ -38,37 +38,36 @@ $(document).ready(function(){
         handleVideoAreaWidth();
     });
 
-    // tabWrap height 조절
-    // function handleTabWrapHeight(){
-    //     var asideHeight = $('.aside').outerHeight();
-    //     var heightSum = 0;
+    // script height 조절
+    function handleScriptHeight(){
+        var heightSum = 0;
 
-    //     $('.aside > div').not('.script').each(function(){
-    //         heightSum = heightSum + $(this).outerHeight();            
-    //     });       
-    //     $('.aside .script').css({height: asideHeight - heightSum});
-    // } 
-    // handleTabWrapHeight();  
+        $('.aside > div').not('.script').each(function(){
+            heightSum = heightSum + $(this).outerHeight(); 
+        });       
+        $('.aside .script').css({height: 'calc(100% - ' + heightSum + 'px)'});
+    } 
+    handleScriptHeight();  
 
-    // // tabWrap height 조절 - resize 시
-    // $(window).resize(function(){
-    //     handleTabWrapHeight();
-    // });
+    // script height 조절 - resize 시
+    $(window).resize(function(){
+        handleScriptHeight();
+    });
 
     // comments 클릭 시 박스 슬라이드 & height 조절
     $('.comments .tit').on('click', function(){
         var commentsHeight = $('.aside .comments').outerHeight(), 
             commentBoxHeight = $('.aside .comments .cmt_box').outerHeight(), 
             tapContHeight = $('.aside .tabWrap .tab_cont > ul').outerHeight(),
-            scriptBoxHeight = $('.aside .script .script_box').outerHeight();   
+            scriptHeight = $('.aside .script').outerHeight();   
             
-        if($('.script_box').css('display') == 'block'){
+        if($('.aside .script .script_box').css('display') == 'block'){
             if(commentsHeight < 55){  
                 $('.comments .cmt_box').slideDown(200);
-                $('.aside .script .script_box').animate({height: scriptBoxHeight - commentBoxHeight}, 200);
+                $('.aside .script').animate({height: scriptHeight - commentBoxHeight}, 200);
             }else{    
                 $('.comments .cmt_box').slideUp(200);  
-                $('.aside .script .script_box').animate({height: scriptBoxHeight + commentBoxHeight}, 200);         
+                $('.aside .script').animate({height: scriptHeight + commentBoxHeight}, 200);         
             }
         }else{
             if(commentsHeight < 55){   
@@ -79,30 +78,6 @@ $(document).ready(function(){
                 $('.aside .tabWrap .tab_cont > ul').animate({height: tapContHeight + commentBoxHeight}, 200);         
             }
         } 
-        
-        // $('.script .tit').on('click', function(){
-        //     // var asideHeight = $('.aside').outerHeight(),
-        //     //     currentFileHeight = $('.aside .currentFile').outerHeight(),
-        //     //     guideFileHeight = $('.aside .guideFile').outerHeight(), 
-        //     //     commentsHeight = $('.aside .comments').outerHeight(), 
-        //     //     commentBoxHeight = $('.aside .comments .cmt_box').outerHeight(),
-        //     //     tapContHeight = $('.aside .tabWrap .tab_cont > ul').outerHeight(),   
-        //     //     scriptHeight = $('.aside .script').outerHeight(),
-        //     //     scriptBoxHeight = $('.aside .script .script_box').outerHeight(),         
-        //     //     deleteBoxHeight = $('.aside .deleteBox').outerHeight();                  
-    
-        //     if(scriptHeight < 55){
-        //         var height = currentFileHeight + guideFileHeight + commentsHeight + tapContHeight + deleteBoxHeight + 50;
-    
-        //         $('.aside .script .script_box').slideDown(200);
-        //         // $('.aside .script').animate({height: asideHeight - height}, 200);    
-        //         $('.aside .tabWrap .tab_cont > ul').animate({height: tapContHeight - scriptBoxHeight}, 200);                                  
-        //     }else{
-        //         // $('.aside .script').css('height', 'auto');
-        //         $('.aside .script .script_box').slideUp(200);  
-        //         $('.aside .tabWrap .tab_cont > ul').animate({height: tapContHeight + scriptBoxHeight}, 200);         
-        //     }
-        // });
     });
 
     // script 클릭 시 박스 슬라이드 & height 조절
@@ -112,25 +87,28 @@ $(document).ready(function(){
             guideFileHeight = $('.aside .guideFile').outerHeight(), 
             commentsHeight = $('.aside .comments').outerHeight(), 
             commentBoxHeight = $('.aside .comments .cmt_box').outerHeight(),
+            tapWrapHeight = $('.aside .tabWrap').outerHeight(),
             tapContHeight = $('.aside .tabWrap .tab_cont > ul').outerHeight(),   
             scriptHeight = $('.aside .script').outerHeight(),
             scriptBoxHeight = $('.aside .script .script_box').outerHeight(),         
             deleteBoxHeight = $('.aside .deleteBox').outerHeight();                  
 
-        if(scriptHeight < 55){
-            var height = currentFileHeight + guideFileHeight + commentsHeight + tapContHeight + deleteBoxHeight;
-
-            handleTabWrapHeight();
+        if($('.aside .script .script_box').css('display') == 'none'){
             $('.aside .script .script_box').slideDown(200);
-            $('.aside .tabWrap .tab_cont > ul').animate({height: tapContHeight - scriptBoxHeight}, 200);                                  
+            $('.aside .tabWrap .tab_cont > ul').addClass('short');
+            $('.aside .tabWrap .tab_cont > ul').css('height', 'auto');
+            
+            var height = currentFileHeight + guideFileHeight + commentsHeight + tapWrapHeight + deleteBoxHeight;
+            $('.aside .script').css('height', 'calc(100% - ' + height + 'px)'); 
         }else{
-            $('.aside .script').css('height', 'auto');
-            $('.aside .script .script_box').slideUp(200);  
-            $('.aside .tabWrap .tab_cont > ul').animate({height: tapContHeight + scriptBoxHeight}, 200);         
+            $('.aside .script').css('height', 'auto'); 
+            $('.aside .script .script_box').slideUp(200); 
+            $('.aside .tabWrap .tab_cont > ul').removeClass('short'); 
+            $('.aside .tabWrap .tab_cont > ul').animate({height: tapContHeight + scriptBoxHeight}, 200);            
         }
     });
 
-    // script 검색 기능 - keydown trigger    
+    // script 검색 기능 - keyboard trigger    
     $('.script_box .srch_box .ipt_txt').keydown(function(key){
         if(key.keyCode == 13){
             $('.script_box .srch_box .btn_srch').trigger('click');
