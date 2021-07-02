@@ -40,12 +40,20 @@ $(document).ready(function(){
 
     // script height 조절
     function handleScriptHeight(){
+        var asideHeight = $('.aside').outerHeight();
         var heightSum = 0;
 
-        $('.aside > div').not('.script').each(function(){
-            heightSum = heightSum + $(this).outerHeight(); 
-        });       
-        $('.aside .script').css({height: 'calc(100% - ' + heightSum + 'px)'});
+        if($('.aside .script .script_box').css('display') == 'block'){
+            $('.aside > div').not('.script').each(function(){
+                heightSum = heightSum + $(this).outerHeight(); 
+            });       
+            $('.aside .script').css({height: asideHeight - heightSum});
+        }else{
+            $('.aside > div').not('.tabWrap').each(function(){
+                heightSum = heightSum + $(this).outerHeight(); 
+            });       
+            $('.aside .tabWrap .tab_cont > ul').css({height: asideHeight - heightSum - 50});
+        }       
     } 
     handleScriptHeight();  
 
@@ -94,17 +102,18 @@ $(document).ready(function(){
             deleteBoxHeight = $('.aside .deleteBox').outerHeight();                  
 
         if($('.aside .script .script_box').css('display') == 'none'){
+
             $('.aside .script .script_box').slideDown(200);
-            $('.aside .tabWrap .tab_cont > ul').addClass('short');
-            $('.aside .tabWrap .tab_cont > ul').css('height', 'auto');
+            // $('.aside .tabWrap .tab_cont > ul').addClass('short');
+            $('.aside .tabWrap .tab_cont > ul').animate({height: 246}, 200);
+            $('.aside .script').animate({height: tapContHeight - 196}, 200);    
             
-            var height = currentFileHeight + guideFileHeight + commentsHeight + tapWrapHeight + deleteBoxHeight;
-            $('.aside .script').css('height', 'calc(100% - ' + height + 'px)'); 
         }else{
-            $('.aside .script').css('height', 'auto'); 
-            $('.aside .script .script_box').slideUp(200); 
-            $('.aside .tabWrap .tab_cont > ul').removeClass('short'); 
-            $('.aside .tabWrap .tab_cont > ul').animate({height: tapContHeight + scriptBoxHeight}, 200);            
+
+            $('.aside .script .script_box').slideUp(200);
+            $('.aside .tabWrap .tab_cont > ul').removeClass('short');
+            $('.aside .script').css('height', 'auto');
+            $('.aside .tabWrap .tab_cont > ul').animate({height: tapContHeight + scriptBoxHeight}, 200);       
         }
     });
 
