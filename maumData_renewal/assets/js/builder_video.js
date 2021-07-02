@@ -90,30 +90,20 @@ $(document).ready(function(){
 
     // script 클릭 시 박스 슬라이드 & height 조절
     $('.script .tit').on('click', function(){
-        var asideHeight = $('.aside').outerHeight(),
-            currentFileHeight = $('.aside .currentFile').outerHeight(),
-            guideFileHeight = $('.aside .guideFile').outerHeight(), 
-            commentsHeight = $('.aside .comments').outerHeight(), 
-            commentBoxHeight = $('.aside .comments .cmt_box').outerHeight(),
-            tapWrapHeight = $('.aside .tabWrap').outerHeight(),
-            tapContHeight = $('.aside .tabWrap .tab_cont > ul').outerHeight(),   
-            scriptHeight = $('.aside .script').outerHeight(),
-            scriptBoxHeight = $('.aside .script .script_box').outerHeight(),         
-            deleteBoxHeight = $('.aside .deleteBox').outerHeight();                  
+        var tapContHeight = $('.aside .tabWrap .tab_cont > ul').outerHeight(),   
+            scriptBoxHeight = $('.aside .script .script_box').outerHeight();                         
 
         if($('.aside .script .script_box').css('display') == 'none'){
-
             $('.aside .script .script_box').slideDown(200);
-            // $('.aside .tabWrap .tab_cont > ul').addClass('short');
             $('.aside .tabWrap .tab_cont > ul').animate({height: 246}, 200);
-            $('.aside .script').animate({height: tapContHeight - 196}, 200);    
-            
+            $('.aside .script').animate({height: tapContHeight - 196}, 200);               
         }else{
-
             $('.aside .script .script_box').slideUp(200);
             $('.aside .tabWrap .tab_cont > ul').removeClass('short');
             $('.aside .script').css('height', 'auto');
-            $('.aside .tabWrap .tab_cont > ul').animate({height: tapContHeight + scriptBoxHeight}, 200);       
+            $('.aside .tabWrap .tab_cont > ul').animate({height: tapContHeight + scriptBoxHeight}, 200);  
+            
+            console.log(tapContHeight, scriptBoxHeight, tapContHeight + scriptBoxHeight)
         }
     });
 
@@ -231,6 +221,8 @@ $(document).ready(function(){
                 &sol;\
                 <span class="total">0</span>\
             ');
+
+            console.log('검색어 없음')
         }
     });
 });
