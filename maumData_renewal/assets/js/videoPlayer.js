@@ -118,7 +118,11 @@ $(document).ready(function(){
         var currentPos = video.currentTime;
         var maxduration = video.duration;
         var perc = 100 * video.currentTime / video.duration;
+
         playerSliderBar.css('width', perc + '%');
+        if(perc == 100){
+            playBtn.removeClass('pause');
+        }
     });
 
     // 비디오 바 드래그 시
