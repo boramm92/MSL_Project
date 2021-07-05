@@ -102,8 +102,6 @@ $(document).ready(function(){
             $('.aside .tabWrap .tab_cont > ul').removeClass('short');
             $('.aside .script').css('height', 'auto');
             $('.aside .tabWrap .tab_cont > ul').animate({height: tapContHeight + scriptBoxHeight}, 200);  
-            
-            console.log(tapContHeight, scriptBoxHeight, tapContHeight + scriptBoxHeight)
         }
     });
 
