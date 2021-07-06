@@ -241,5 +241,13 @@ $(document).ready(function(){
             ');
         }
     });
+
+    // script 복사 시 태그 제외 순수 텍스트만 복사하기
+    window.addEventListener('paste', function(e) {
+        e.preventDefault();
+        var pastedData = event.clipboardData ||  window.clipboardData;
+        var textData = pastedData.getData('text/plain');
+        window.document.execCommand('insertHTML', false, textData);
+    });
 });
 
