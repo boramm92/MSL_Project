@@ -121,7 +121,7 @@ $(document).ready(function(){
         var findTxtField = $('.script_box .srch_box .ipt_txt').val();
 
         // 검색어 갯수, 검색어 활성화 reset 
-        $('.srch_txt_index span').remove();
+        $('.srch_txt_paging .index, .srch_txt_paging .btnBox').remove();
 
         $('.scrt_txt').find('span.findElement').queue(function() {
             $(this).removeClass('findElement');
@@ -150,10 +150,20 @@ $(document).ready(function(){
                 page_prev_num = 1,
                 page_next_num = 2;
 
-            $('.srch_txt_index').html('\
-                <span class="current">'+ page_prev_num + '</span>\
-                &sol;\
-                <span class="total">'+ findElementAllNum + '</span>\
+            $('.srch_txt_paging').append('\
+                <div class="index">\
+                    <span class="current">'+ page_prev_num + '</span>\
+                    &sol;\
+                    <span class="total">'+ findElementAllNum + '</span>\
+                </div>\
+                <div class="btnBox">\
+                    <a href="#findElement' + page_prev_num + '" class="btn_move_txt btn_txt_prev" title="이전">\
+                        <span class="hide">이전</span>\
+                    </a>\
+                    <a href="#findElement' + page_next_num + '" class="btn_move_txt btn_txt_next" title="다음">\
+                        <span class="hide">다음</span>\
+                    </a>\
+                </div>\
             ');
 
             // 첫번째 검색어에 스크롤 이동
@@ -172,7 +182,7 @@ $(document).ready(function(){
                     page_prev_num++;
                     page_next_num++;
 
-                    $('.srch_txt_index .current').text(page_prev_num);
+                    $('.srch_txt_paging .current').text(page_prev_num);
                     $('.script_box .btn_txt_prev').attr('href', '#findElement' + page_prev_num + '');
                     $('.script_box .btn_txt_next').attr('href', '#findElement' + page_next_num + '');
 
@@ -197,7 +207,7 @@ $(document).ready(function(){
                     page_prev_num--;
                     page_next_num--;
 
-                    $('.srch_txt_index .current').text(page_prev_num);
+                    $('.srch_txt_paging .current').text(page_prev_num);
                     $('.script_box .btn_txt_prev').attr('href', '#findElement' + page_prev_num + '');
                     $('.script_box .btn_txt_next').attr('href', '#findElement' + page_next_num + '');
 
@@ -214,13 +224,21 @@ $(document).ready(function(){
                 }
             });
         }else{
-            $('.srch_txt_index').html('\
-                <span class="current">0</span>\
-                &sol;\
-                <span class="total">0</span>\
+            $('.srch_txt_paging').append('\
+                <div class="index">\
+                    <span class="current">0</span>\
+                    &sol;\
+                    <span class="total">0</span>\
+                </div>\
+                <div class="btnBox">\
+                    <a href="#none" class="btn_move_txt btn_txt_prev" title="이전">\
+                        <span class="hide">이전</span>\
+                    </a>\
+                    <a href="#none"  class="btn_move_txt btn_txt_next" title="다음">\
+                        <span class="hide">다음</span>\
+                    </a>\
+                </div>\
             ');
-
-            console.log('검색어 없음')
         }
     });
 });
