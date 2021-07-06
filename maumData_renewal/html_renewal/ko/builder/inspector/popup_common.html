@@ -25,12 +25,12 @@
 
 <!---------------------- General Resources ---------------------->
 <!-- General CSS -->
-<link rel="stylesheet" type="text/css" href="../../../../assets/css/builder.css">
+<link rel="stylesheet" type="text/css" href="../../../../assets_renewal/css/builder.css">
 
 <!-- General Script -->
-<script type="text/javascript" src="../../../../assets/js/jquery-3.5.1.min.js"></script>
-<script type="text/javascript" src="../../../../assets/js/jquery-migrate-3.3.1.min.js"></script>
-<script type="text/javascript" src="../../../../assets/js/builder_common.js"></script>
+<script type="text/javascript" src="../../../../assets_renewal/js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="../../../../assets_renewal/js/jquery-migrate-3.3.1.min.js"></script>
+<script type="text/javascript" src="../../../../assets_renewal/js/builder_common.js"></script>
 
 <style>
     .work_space {padding:50px;}
@@ -119,9 +119,7 @@
             <div class="content">
                 <!-- .work_space -->
                 <div class="work_space">
-                    <button type="button" class="btn_lyr_open" data-lyr-name="alert_inspect">알림 (검수중)</button>
-                    <button type="button" class="btn_lyr_open" data-lyr-name="alert_click_complete">알림 (가공완료)</button>
-                    <button type="button" class="btn_lyr_open" data-lyr-name="alert_reject">알림 (작업 반려, 수정)</button>
+                    <button type="button" class="btn_lyr_open" data-lyr-name="alert_unableWork">알림 (작업 불가 파일)</button>
                 </div>
                 <!-- //.work_space -->
             </div>
@@ -177,100 +175,23 @@
 <!-- //#wrap -->
 
 <!---------------------- layer popup ---------------------->
-<!-- 토스트 -->
-<div id="temporarySave" class="lyrToast">
-    <p class="msg">임시저장 되었습니다.</p>
-    <button type="button" class="btn_toast_close"><span class="hide">닫기버튼</span></button>
-</div>
-
-<!-- 작업불가 -->
-<div id="unableWork" class="lyrWrap">
+<!-- 알림 (작업 불가 파일) -->
+<div id="alert_unableWork" class="lyrWrap">
     <div class="lyrCont">
         <div class="lyr_top">
             <p class="tit">작업불가 지정</p>
             <button type="button" class="btn_lyr_close"><span class="hide">닫기버튼</span></button>
         </div>
         <div class="lyr_mid">
-            <p class="alert_txt">사유를 입력하고 <span class="ft_point_blue">‘작업불가’</span> 버튼을 누르면<br> 작업 불가 항목으로 지정됩니다.</p>
-            <input type="text" class="ipt_txt" placeholder="작업 불가 사유를 입력해주세요.">
-        </div>
-        <div class="lyr_btm">
-            <button tyle="button" class="btn_primary btn_lyr_close">취소</button>
-            <button tyle="button" class="btn_primary btn_unable_work">작업불가</button>
-        </div>
-    </div>
-</div>
-<!-- //작업불가 -->
-
-<!-- 전체삭제 -->
-<div id="deleteAll" class="lyrWrap">
-    <div class="lyrCont">
-        <div class="lyr_top">
-            <p class="tit">전체삭제</p>
-            <button type="button" class="btn_lyr_close"><span class="hide">닫기버튼</span></button>
-        </div>
-        <div class="lyr_mid">
-            <p class="alert_txt">모든 객체가 삭제됩니다.<br> <span class="ft_point_blue">‘전체삭제’</span> 하시겠습니까?</p>
-        </div>
-        <div class="lyr_btm">
-            <button tyle="button" class="btn_primary btn_lyr_close">취소</button>
-            <button tyle="button" class="btn_primary btn_confirm">확인</button>
-        </div>
-    </div>
-</div>
-<!-- //전체삭제 -->
-
-<!-- 알림 (검수중) -->
-<div id="alert_inspect" class="lyrWrap">
-    <div class="lyrCont">
-        <div class="lyr_top">
-            <p class="tit">알림</p>
-            <button type="button" class="btn_lyr_close"><span class="hide">닫기버튼</span></button>
-        </div>
-        <div class="lyr_mid">
-            <p class="alert_txt">해당 작업은 <span class="ft_point_blue">‘검수 중’</span> 입니다.</p>
+            <p class="alert_txt"><span class="ft_point_blue">‘작업불가 지정’</span>된 파일입니다.<br> 사유를 확인하고 승인, 또는 반려하세요.</p>
+            <input type="text" class="ipt_txt" disabled>
         </div>
         <div class="lyr_btm">
             <button tyle="button" class="btn_primary btn_confirm">확인</button>
         </div>
     </div>
 </div>
-<!-- //알림 (검수중) -->
-
-<!-- 알림 (가공완료) -->
-<div id="alert_click_complete" class="lyrWrap">
-    <div class="lyrCont">
-        <div class="lyr_top">
-            <p class="tit">알림</p>
-            <button type="button" class="btn_lyr_close"><span class="hide">닫기버튼</span></button>
-        </div>
-        <div class="lyr_mid">
-            <p class="alert_txt">가공 완료처리 되지 않았습니다.<br> <span class="ft_point_blue">‘가공완료’</span> 버튼을 눌러주세요.</p>
-        </div>
-        <div class="lyr_btm">
-            <button tyle="button" class="btn_primary btn_confirm">확인</button>
-        </div>
-    </div>
-</div>
-<!-- //알림 (검수중) -->
-
-<!-- 알림 (작업 반려, 수정) -->
-<div id="alert_reject" class="lyrWrap">
-    <div class="lyrCont">
-        <div class="lyr_top">
-            <p class="tit">알림</p>
-            <button type="button" class="btn_lyr_close"><span class="hide">닫기버튼</span></button>
-        </div>
-        <div class="lyr_mid">
-            <p class="alert_txt">작업이 반려되었습니다.<br> 검수자의 요청에 따라 수정해주세요.</p>
-        </div>
-        <div class="lyr_btm">
-            <button tyle="button" class="btn_primary btn_confirm">확인</button>
-        </div>
-    </div>
-</div>
-<!-- //알림 (작업 반려, 수정) -->
-
+<!-- //알림 (작업 불가 파일) -->
 
 <!-- Local Script -->
 <script type="text/javascript">
