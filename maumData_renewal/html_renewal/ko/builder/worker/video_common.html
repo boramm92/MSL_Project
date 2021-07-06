@@ -316,7 +316,12 @@
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-
+        window.addEventListener('paste', function(e) {
+            e.preventDefault();
+            var pastedData = event.clipboardData ||  window.clipboardData;
+            var textData = pastedData.getData('text/plain');
+            window.document.execCommand('insertHTML', false, textData);
+        });
     });
 });
 </script>
