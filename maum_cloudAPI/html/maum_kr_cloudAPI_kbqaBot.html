@@ -9,24 +9,24 @@
 <meta property="og:title"            content="maum.ai" />
 <meta property="og:type"             content="website" /><!-- 웹 페이지 타입 -->
 <meta property="og:url"              content="https://maum.ai" />
-<meta property="og:image"            content="kr/images/maum.ai_web.png" />
+<meta property="og:image"            content="../aiaas/kr/images/maum.ai_web.png" />
 <meta property="og:description"      content="웹인공지능이 필요할땐 마음AI" />
 <!-- icon_favicon -->
-<link rel="apple-touch-icon-precomposed" href="kr/images/ico_maumAI_60x60.png">
-<link rel="shortcut icon" type="image/x-icon" href="kr/images/ico_maumAI_60x60.ico">
+<link rel="apple-touch-icon-precomposed" href="../aiaas/kr/images/ico_maumAI_60x60.png">
+<link rel="shortcut icon" type="image/x-icon" href="../aiaas/kr/images/ico_maumAI_60x60.ico">
 
 <!-- -------------------- General Resources -------------------- -->
 <!-- General CSS -->
-<link rel="stylesheet" type="text/css" href="common/css/reset.css">
-<link rel="stylesheet" type="text/css" href="common/css/font.css">
-<link rel="stylesheet" type="text/css" href="common/css/all.css">
-<link rel="stylesheet" type="text/css" href="common/css/pop_common.css">
-<link rel="stylesheet" type="text/css" href="kr/css/common.css">
+<link rel="stylesheet" type="text/css" href="../aiaas/common/css/reset.css">
+<link rel="stylesheet" type="text/css" href="../aiaas/common/css/font.css">
+<link rel="stylesheet" type="text/css" href="../aiaas/common/css/all.css">
+<link rel="stylesheet" type="text/css" href="../aiaas/common/css/pop_common.css">
+<link rel="stylesheet" type="text/css" href="../aiaas/kr/css/common.css">
 
 <!-- General Script -->
-<script type="text/javascript" src="common/js/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="common/js/common.js"></script>
-<script type="text/javascript" src="common/js/jsrender.min.js"></script>
+<script type="text/javascript" src="../aiaas/common/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="../aiaas/common/js/common.js"></script>
+<script type="text/javascript" src="../aiaas/common/js/jsrender.min.js"></script>
 
 <title>maum.ai platform</title>
 </head>
@@ -76,7 +76,7 @@
 						<!-- .chat_mid -->
 						<div class="chat_mid">
 							<div class="bot_infoBox">
-								<div class="thumb"><img src="kr/images/img_chatbot_wiki.png" alt="chatbot"></div>
+								<div class="thumb"><img src="../aiaas/kr/images/img_chatbot_wiki.png" alt="chatbot"></div>
 								<div class="txt">
                                     지식을 모두 섭렵한 챗봇 계의 석학, 위키봇 입니다.<br>
                                     제 상식을 한번 테스트해 보시겠어요?
@@ -129,8 +129,135 @@
 							<div class="title">
 								KBQA (Knowledge Base Question Answering)
 							</div>
-							<p class="sub_txt">마인즈랩의 KBQA는 다양한 분야의 지식 소통이 가능한 인공지능 소프트웨어입니다.</p>
+							<p class="sub_txt">위키피디아의 인포박스를 KBQA 엔진을 이용하여 검색하여 답변해줍니다.</p>
 
+							<span class="sub_title">준비사항</span>
+							<p class="sub_txt">- Input: 텍스트(질문)</p>
+							<p class="sub_txt">- 아래 Model 중 택 1</p>
+							<ul>
+								<li>위키/백과 (default)</li>
+							</ul>
+
+							<span class="sub_title">실행 가이드</span>
+							<p class="sub_txt">① Request</p>
+							<ul>
+								<li>Method : POST</li>
+								<li>URL : https://api.maum.ai/kbqa/answer Request</li>
+							</ul>
+
+							<p class="sub_txt">② Request 파라미터 설명 </p>
+							<table>
+								<tbody>
+									<tr>
+										<th>키</th>
+										<th>설명</th>
+										<th>type</th>
+									</tr>
+									<tr>
+										<td>apiId</td>
+										<td>사용자의 고유 ID. 마인즈랩 담당자에게 이메일로 발급요청</td>
+										<td>string</td>
+									</tr>
+									<tr>
+										<td>apiKey</td>
+										<td>사용자의 고유 key. 마인즈랩 담당자에게 이메일로 발급요청</td>
+										<td>string</td>
+									</tr>
+									<tr>
+										<td>lang</td>
+										<td>language (eng | kor) 현재는 kor만 지원</td>
+										<td>string</td>
+									</tr>
+									<tr>
+										<td>question</td>
+										<td>질문</td>
+										<td>string</td>
+									</tr>
+								</tbody>
+							</table>
+
+							<p class="sub_txt">③ Request 예제</p>
+							<div class="code_box">
+<pre>curl -X POST \
+https://api.maum.ai/api/irqa/ \
+-H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
+-F ID=(*ID 요청 필요) \
+-F key=(*key 요청 필요) \
+-F lang=kor \
+-F question=사자왕의 출생지는? \  
+</pre>
+                   			</div>
+
+							<p class="sub_txt">④ Response 파라미터 설명</p>
+							<span class="table_tit">Response</span>
+							<table>
+								<tbody>
+									<tr>
+										<th>키</th>
+										<th>설명</th>
+										<th>type</th>
+									</tr>
+									<tr>
+										<td>message</td>
+										<td>API 동작여부</td>
+										<td>string</td>
+									</tr>
+									<tr>
+										<td>payload</td>
+										<td>결과값</td>
+										<td>string</td>
+									</tr>
+								</tbody>
+							</table>
+
+							<span class="table_tit">message: API 동작여부</span>
+							<table>
+								<tbody>
+									<tr>
+										<th>키</th>
+										<th>설명</th>
+										<th>type</th>
+									</tr>
+									<tr>
+										<td>message</td>
+										<td>요청 처리 상태를 설명하는 문자열  (Success/ Fail)</td>
+										<td>string</td>
+									</tr>
+									<tr>
+										<td>status</td>
+										<td>요청 처리 상태에 대한 status code (0: Success)</td>
+										<td>long</td>
+									</tr>
+								</tbody>
+							</table>
+
+							<span class="table_tit">payload: 결과</span>
+							<table>
+								<tbody>
+									<tr>
+										<th>키</th>
+										<th>설명</th>
+										<th>type</th>
+									</tr>
+									<tr>
+										<td>payload</td>
+										<td>결과값</td>
+										<td>string</td>
+									</tr>
+								</tbody>
+							</table>
+
+							<p class="sub_txt">⑤ Response 예제</p>
+							<div class="code_box">
+<pre>{
+    "message": {
+        "message": "Success",
+        "status": 0
+    },
+    "payload": "영국 옥스퍼드"
+}
+</pre>
+                    		</div>
 						</div>
 					</div>
 					<!--//.guide_box-->
@@ -174,6 +301,24 @@
 
 <!-- Local Script -->
 <script type="text/javascript">
+	//API 탭
+	function openTap(evt, menu) {
+        var i, demobox, tablinks;
+        demobox = document.getElementsByClassName("demobox");
+        for (i = 0; i < demobox.length; i++) {
+            demobox[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace("active", "");
+        }
+        document.getElementById(menu).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("default").click();
+
     //	챗봇 탭 메뉴
 	function openCity(evt, cityName) {
 		var i, tabcontent, tablinks;
@@ -213,23 +358,7 @@
 	// Get the element with id="defaultOpen" and click on it
 	document.getElementById("defaultOpen").click();
 
-    //API 탭
-    function openTap(evt, menu) {
-        var i, demobox, tablinks;
-        demobox = document.getElementsByClassName("demobox");
-        for (i = 0; i < demobox.length; i++) {
-            demobox[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace("active", "");
-        }
-        document.getElementById(menu).style.display = "block";
-        evt.currentTarget.className += " active";
-    }
-
-    // Get the element with id="defaultOpen" and click on it
-    document.getElementById("default").click();
+    
 
 
 // jQuery.event.add(window,"load",function(){

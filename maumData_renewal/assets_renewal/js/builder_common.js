@@ -83,12 +83,11 @@ $(document).ready(function(){
         asideTabCont.eq(index).css('display','block');
 
         // 탭 이동 시 태그 리스트의 활성화 리스트로 스크롤 이동 - 21.07.09 NBR 추가
-        var tapcontHeight = asideTabCont.outerHeight();
+        var activeListHeight = asideTabCont.eq(index).find('li.active').outerHeight();
         var activeListPosition = asideTabCont.eq(index).find('li.active').position();
 
         if(asideTabCont.eq(index).find('li').hasClass('active')){
-            asideTabCont.eq(index).animate({scrollTop: activeListPosition.top + asideTabCont.eq(index).scrollTop()}, 200);
-            console.log(asideTabCont.eq(index).scrollTop())
+            asideTabCont.eq(index).animate({scrollTop: activeListPosition.top + activeListHeight + asideTabCont.eq(index).scrollTop() - 82}, 200);
         }
     });
 
@@ -101,20 +100,18 @@ $(document).ready(function(){
         
         var thisParentList = $(this).parent('li');
 
-        if(thisParentList.is('.active')){
-            thisParentList.removeClass('active');
+        $(this).parents('ul').find('li').removeClass('active');
+        thisParentList.addClass('active');
 
-            if(thisParentList.find('.reject_txt').length){
-                thisParentList.find('.reject_txt').slideToggle(200);
-            }
-        }else{
-            $(this).parents('ul').find('li').removeClass('active');
-            thisParentList.addClass('active');
-
-            if(thisParentList.find('.reject_txt').length){
-                thisParentList.find('.reject_txt').slideToggle(200);
-            }
+        // 개별 반려 사유 영역 sliding toggle
+        if(!$.isEmptyObject(thisParentList.find('.reject_txt'))){
+            thisParentList.find('.reject_txt').slideToggle(200);
         }
+
+        var activeListHeight = $(this).parents('li.active').outerHeight();
+        var activeListPosition = $(this).parents('li.active').position();
+
+        $(this).parents('ul').animate({scrollTop: activeListPosition.top - activeListHeight + $(this).parents('ul').scrollTop()}, 200);
     });
 
     // 태그 리스트의 선택박스 클릭 시 활성화
