@@ -99,8 +99,7 @@ $(document).ready(function(){
             $('.aside .script').animate({height: tapContHeight - 196}, 200);               
         }else{
             $('.aside .script .script_box').slideUp(200);
-            $('.aside .tabWrap .tab_cont > ul').removeClass('short');
-            $('.aside .script').css('height', 'auto');
+            $('.aside .script').css('height', 'auto')
             $('.aside .tabWrap .tab_cont > ul').animate({height: tapContHeight + scriptBoxHeight}, 200);  
         }
     });

@@ -49,7 +49,7 @@ $(document).ready(function(){
     });
 
     // tool menu 활성화
-    var toolMenuBtn = $('.menu_list li button');
+    var toolMenuBtn = $('.menu_list li button.toggle');
     var classBox = $('.menu_list li .classBox');
 
     toolMenuBtn.on('click', function(){
@@ -81,12 +81,21 @@ $(document).ready(function(){
         $(this).addClass('active');
         asideTabCont.css('display','none');
         asideTabCont.eq(index).css('display','block');
+
+        // 탭 이동 시 태그 리스트의 활성화 리스트로 스크롤 이동 - 21.07.09 NBR 추가
+        var tapcontHeight = asideTabCont.outerHeight();
+        var activeListPosition = asideTabCont.eq(index).find('li.active').position();
+
+        if(asideTabCont.eq(index).find('li').hasClass('active')){
+            asideTabCont.eq(index).animate({scrollTop: activeListPosition.top + asideTabCont.eq(index).scrollTop()}, 200);
+            console.log(asideTabCont.eq(index).scrollTop())
+        }
     });
 
     // 태그 리스트 반려건만 클론하여 목록 만들기
     $('.tag_list li.reject').clone().appendTo('.reject_list'); 
 
-    // 태그 리스트의 전체영역을 클릭 시 활성화
+    // 태그 리스트의 전체영역을 클릭 시 활성화 - 21.07.09 NBR 수정
     $('.tabWrap .tab_cont > ul li .tagBox').on('click', function(e){
         e.stopPropagation();
         
@@ -99,7 +108,7 @@ $(document).ready(function(){
                 thisParentList.find('.reject_txt').slideToggle(200);
             }
         }else{
-            $('.tabWrap .tab_cont > ul li').removeClass('active');
+            $(this).parents('ul').find('li').removeClass('active');
             thisParentList.addClass('active');
 
             if(thisParentList.find('.reject_txt').length){

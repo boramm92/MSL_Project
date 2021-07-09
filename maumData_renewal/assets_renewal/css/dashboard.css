@@ -1,0 +1,34 @@
+@charset "UTF-8";
+/* MINDsLab. NBR. 20210707 */
+
+/* 공통 CSS */
+@import url("reset.css"); 
+@import url("font.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css");
+
+
+/* -------------------- layout -------------------- */
+
+
+
+/* -------------------- common -------------------- */
+/* scroll bar */
+::-webkit-scrollbar {width:6px; height:6px; border-radius:3px;}  /* 스크롤바의 width */
+::-webkit-scrollbar-track {background:transparent;}  /* 스크롤바의 전체 배경색 */
+::-webkit-scrollbar-thumb {border-radius:3px; background:#aeb0b3;}  /* 스크롤바 색 */
+::-webkit-scrollbar-button {display:none;}  /* 위 아래 버튼 (버튼 없애기를 함) */
+
+/* float */
+.fl {float:left;}
+.fr {float:right;}
+
+/* hide */
+.hide {display:inline-block; overflow:hidden; text-indent:-9999px; line-height:0; white-space:nowrap;}
+
+/* switch button */
+.switchBox input[type="checkbox"] {width:0; height:0;}
+.switchBox input[type="checkbox"] + label {position:relative; padding:0 60px 0 0; cursor:pointer;}
+.switchBox input[type="checkbox"] + label:before {content:''; display:inline-block; position:absolute; top:0; right:0; width:50px; height:20px; border-radius:10px; background:#ddd; transition:all 0.2s ease-out;}
+.switchBox input[type="checkbox"] + label:after {content:''; display:inline-block; position:absolute; top:0; right:30px; width:20px; height:20px; border-radius:50%; box-shadow:0px 3px 3px 0px rgb(169 176 187 / 20%); background:#fff; transition:all 0.2s ease-out;}
+.switchBox input[type="checkbox"]:checked + label:before {background:blue;}
+.switchBox input[type="checkbox"]:checked + label:after {right:-1px;}
