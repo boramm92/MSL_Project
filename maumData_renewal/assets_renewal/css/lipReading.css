@@ -8,7 +8,60 @@
 
 
 /* -------------------- layout -------------------- */
-
+body {overflow:hidden;}
+#wrap {overflow:hidden; width:100%; height:100%; background:#445ea9;}
+#wrap.tutorial {content:''; display:block; position:fixed; top:0; left:0; background:rgba(0, 0, 0, 0.7);}
+.contents {position:relative; width:100%; height:100%; padding:16px 0 0; box-sizing:border-box;}
 
 
 /* -------------------- common -------------------- */
+/* float */
+.fl {float:left;}
+.fr {float:right;}
+
+/* hidden */
+.hide {display:block; overflow:hidden; text-indent:-9999px; line-height:0; white-space:nowrap;}
+
+/* font point */
+.ft_point_pink {color:#fdcbca;}
+.ft_point_blue {color:#81ced4;}
+.ft_point_yellow {color:#f7e195;}
+
+
+/* -------------------- contents -------------------- */
+/* cont_top */
+.cont_top {padding:0 25px;}
+.cont_top .learning_progress .point_text {margin:0 0 20px; color:#d0ddff; font-size:12px; letter-spacing:-0.38px; line-height:1;}
+.cont_top .learning_progress .progressBar {clear:both; position:relative; width:100%; height:6px; border-radius:3px; background:#eeeeee;}
+.cont_top .learning_progress .progressBar .current {position:absolute; top:0; left:0; width:60%; height:100%; border-radius:3px; background:#f7a4a2;}
+.cont_top .learning_progress .progressBar .current:before {content:''; display:block; position:absolute; top:-4px; right:-7px; width:10px; height:10px; border:2px solid #fff; border-radius:50%; background:#f7827f;}
+.cont_top .learning_progress .progressBar .current .learningNum {display:block; position:absolute; top:-20px; right:-18px; height:14px; padding:0 11px; border-radius:8px; background:#cf6a67; color:#fff; font-size:12px; font-weight:800; letter-spacing:-0.38px; line-height:14px;}
+.cont_top .learning_progress .progressBar .current .learningNum:before {content:''; display:block; position:absolute; bottom:-4px; left:50%; border-top:4px solid #cf6a67; border-right:2px solid transparent; border-left:2px solid transparent; transform:translate(-50%, 0);}
+
+/* cont_mid */
+.cont_mid {width:100%; height:calc(50% + 60px); box-sizing:border-box;}
+.cont_mid .stageGroup {display:table; width:100%; height:100%;}
+.cont_mid .stageGroup > div {display:none; width:100%; padding:0 25px 118px; box-sizing:border-box; vertical-align:middle;}
+.cont_mid .stageGroup > div.active {display:table-cell;}
+.cont_mid .stageGroup .topBox {width:100%; height:54px; text-align:right;}
+.cont_mid .stageGroup .topBox .letter_badge {display:inline-block; width:50px; height:50px; margin:2px 0; border-radius:50%; background:#fdcbca; text-align:center; line-height:50px; letter-spacing:-0.88px;}
+.cont_mid .stageGroup .topBox .letter_badge span {color:#445ea9; font-size:28px;}
+.cont_mid .stageGroup .btmBox {display:flex; align-items:center; width:100%; height:105px; margin:10px 0 0; text-align:center;}
+.cont_mid .stageGroup .btmBox .sgst_txt {width:100%; color:#fff; font-family:'Roboto', sans-serif; font-size:30px; font-weight:500; letter-spacing:-1.1px; line-height:35px;}
+.cont_mid .stageGroup .btmBox .sgst_txt span {margin:0 -1px; font-family: 'Roboto', sans-serif; font-size:30px; font-weight:500; letter-spacing:-1.1px; line-height:35px;}
+.cont_mid .stageGroup .stage01 {text-align:right;}
+.cont_mid .stageGroup .stage01 .topBox {background:url('../images/builder/lipReading/img_lipReading01.svg') 0 50% no-repeat;}
+.cont_mid .stageGroup .stage04 {height:100%; background:url('../images/builder/lipReading/img_lipReading02.svg') right -32px bottom 5px no-repeat; background-size:auto 87%;}
+
+/* cont_btm */
+.cont_btm {display:flex; flex-direction:column; justify-content:flex-end; position:absolute; bottom:0; left:0; width:100%; height:50%; padding:10px 0 0; box-sizing:border-box;}
+.cont_btm .guide_msg {position:absolute; top:-14px; left:0; width:100%; color:#d0ddff; font-size:14px; font-weight:500; letter-spacing:-0.44px; line-height:1; text-align:center;}
+.cont_btm .controlArea {display:flex; flex-direction:column; justify-content:flex-end; width:100%; height:calc(100% - 45px); border-radius:30px 30px 0 0; background:#fdcbca;}
+.cont_btm .controlArea .btnGroup {position:relative;}
+.cont_btm .controlArea .btnGroup > div {display:none; position:absolute; bottom:5px; left:50%; transform:translate(-50%, 0);}
+.cont_btm .controlArea .btnGroup > div.active {display:block;}
+.cont_btm .controlArea .btnGroup .btnBox {text-align:center;}
+.cont_btm .controlArea .btnGroup .btnBox button {display:none; width:90px; height:90px; border-radius:50%;}
+.cont_btm .controlArea .btnGroup .btnBox button.on {display:inline-block;}
+.cont_btm .controlArea .btnGroup .btnBox button.btn_record_start {background:#f7827f url('../images/builder/lipReading/ico_record.svg') 50% 50% no-repeat;}
+.cont_btm .controlArea .cameraBox {width:100%; height:calc(100% - 50px); background:#000;}
