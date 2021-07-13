@@ -38,93 +38,106 @@
 <div id="wrap">
     <!-- .contents -->
     <div class="contents">
-        <div class="cont_top">
-            <div class="learning_progress">
-                <p class="fl point_text">학습 진도</p>
-                <p class="fr point_text">총 <span>65</span> 개</p>
-    
-                <div class="progressBar">
-                    <div class="current">
-                        <span class="learningNum">35</span>
+        <div class="introWrap">
+            <p>카메라 중앙에 입술을 두고 말해 보세요.<br> 입모양과 음성을 분석해서 발음 결과를 알려드릴게요!</p>
+            <button type="button" class="btn_start">시작하기</button>
+        </div>
+
+        <div class="contWrap">
+            <div class="cont_top">
+                <div class="learning_progress">
+                    <p class="fl point_text">학습 진도</p>
+                    <p class="fr point_text">총 <span>65</span> 개</p>
+        
+                    <div class="progressBar">
+                        <div class="current">
+                            <span class="learningNum">35</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="cont_mid">
-            <div class="stageGroup">
-                <div class="stage01 active">
-                    <div class="topBox">
-                        <div class="letter_badge">
-                            <span>TH</span>
+    
+            <div class="cont_mid">
+                <div class="stageGroup">
+                    <div class="stage01 stage02 stage03 active">
+                        <div class="topBox">
+                            <div class="letter_badge">
+                                <span>TH</span>
+                            </div>
+                        </div>
+                        <div class="btmBox">
+                            <p class="sgst_txt">Hey, Do you want to go have <span class="ft_point_pink">lunch</span> at that Japanese place?</p>
                         </div>
                     </div>
-                    <div class="btmBox">
-                        <p class="sgst_txt">go have <span class="ft_point_pink">lunch</span></p>
-                    </div>
-                </div>
-                <div class="stage02">
-                    <div class="topBox">
-                        <div class="letter_badge">
-                            <span>TH</span>
+                    <div class="stage04">
+                        <div class="topBox">
+                            <div class="letter_badge">
+                                <span>TH</span>
+                            </div>
+                        </div>
+                        <div class="btmBox">
+                            <p class="eval_txt"><span class="ft_point_blue">R 발음</span>이 어려우시군요.<br> 괜찮아요! 다시 해볼까요?</p>
                         </div>
                     </div>
-                    <div class="btmBox">
-                        <p class="sgst_txt">go have <span class="ft_point_pink">lunch</span></p>
-                    </div>
-                </div>
-                <div class="stage03">
-                    <div class="topBox">
-                        <div class="letter_badge">
-                            <span>TH</span>
+                    <div class="stage05">
+                        <div class="topBox"></div>
+                        <div class="btmBox">
+                            <p class="eval_txt"><span class="ft_point_yellow">발음 평가</span> 결과는 어땠나요?</p>
                         </div>
-                    </div>
-                    <div class="btmBox">
-                        <p class="sgst_txt">go have <span class="ft_point_pink">lunch</span></p>
-                    </div>
-                </div>
-                <div class="stage04">
-                    <div class="topBox">
-                        <div class="letter_badge">
-                            <span>TH</span>
-                        </div>
-                    </div>
-                    <div class="btmBox">
-                        <p class="sgst_txt">Hey, Do you want to go have <span class="ft_point_pink">lunch</span> at that Japanese place?</p>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="cont_btm">
-            <p class="guide_msg">녹음 버튼을 누르고 문장을 읽어 보세요.</p>
-
-            <div class="controlArea">
-                <div class="btnGroup">
-                    <div class="btnBox active">
-                        <button type="button" class="btn_record_start on" title="녹음">
-                            <span class="hide">녹음</span>
-                        </button>
-                        <button type="button" class="btn_record_stop" title="녹음 정지">
-                            <span class="hide">녹음 정지</span>
-                        </button>
-                    </div>
     
-                    <div class="loading">
+            <div class="cont_btm">
+                <div class="guide_msg">
+                    <p class="stage01 active">녹음 버튼을 누르고 문장을 읽어 보세요.</p>
+                    <p class="stage02">발음이 끝나면 한번 더 눌러주세요.</p>
+                    <p class="stage03">발음 평가 중입니다.</p>
+                </div>
     
-                    </div>
-    
-                    <div class="btnBox">
-                        <button type="button" class="btn_reStart">다시 도전!</button>
-                    </div>
-    
-                    <div class="btnBox">
-                        <button type="button" class="btn_next">다음 문장</button>
-                    </div>
-                </div>  
+                <div class="controlArea stage01">
+                    <div class="btnGroup">
+                        <div class="btnBox stage01 active">
+                            <button type="button" class="btn_record_on" title="녹음">
+                                <span class="hide">녹음</span>
+                            </button>
+                        </div>
 
-                <div class="cameraBox">
-
+                        <div class="btnBox stage02">
+                            <button type="button" class="btn_record_off" title="녹음 정지">
+                                <span class="hide">녹음 정지</span>
+                            </button>
+                        </div>
+        
+                        <div class="loadingBox stage03">
+                            <div class="spinner_ring">
+                                <div class="spinner_inner">
+                                    <div></div>
+                                    <div></div>
+                                    <div>
+                                        <div></div>
+                                    </div>
+                                    <div>
+                                        <div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="btnBox stage04">
+                            <button type="button" class="btn_retry"><em class="fas fa-redo-alt"></em> 다시 도전!</button>
+                            <button type="button" class="btn_next"><em class="fas fa-arrow-right"></em> 다음 문장</button>
+                        </div>
+        
+                        <div class="btnBox stage05">
+                            <button type="button" class="btn_eval_good"><img src="../../../../assets_renewal/images/builder/lipReading/img_eval_good.svg" alt="Good">Good</button>
+                            <button type="button" class="btn_eval_bad"><img src="../../../../assets_renewal/images/builder/lipReading/img_eval_bad.svg" alt="Bad">Bad</button>
+                        </div>
+                    </div>  
+    
+                    <div class="cameraBox">
+                        <!-- [D] 카메라 영역 -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -138,7 +151,54 @@
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-        
+        // 튜토리얼 UI 생성
+        $('#wrap').addClass('tutorial');
+        $('#wrap').prepend('\
+            <div class="tutorial_bg">\
+                <button type="button" class="btn_ttra_close">\
+                    <span class="hide">닫기</span>\
+                </button>\
+            </div>\
+        ');
+
+        // 튜토리얼 UI 끄기
+        $('.btn_ttra_close').on('click', function(){
+            $('#wrap').removeClass('tutorial');
+            $('.tutorial_bg').remove();
+            $('.introWrap').css('display', 'block');
+        });
+
+        // 시작하기 
+        $('.btn_start').on('click', function(){
+            $('.introWrap').css('display', 'none');
+        });
+
+        // 립리딩 녹화 flow 
+        $('.btn_record_on').on('click', function(){
+            $('.stage01').removeClass('active');
+            $('.stage02').addClass('active');
+        });
+        $('.btn_record_off').on('click', function(){
+            $('.stage02').removeClass('active');
+            $('.stage03').addClass('active');
+
+            setTimeout(function(){
+                $('.stage03').removeClass('active');
+                $('.stage04').addClass('active');
+            }, 1000);
+        });
+        $('.btn_retry').on('click', function(){
+            $('.stage04').removeClass('active');
+            $('.stage01').addClass('active');
+        });
+        $('.btn_next').on('click', function(){
+            $('.stage04').removeClass('active');
+            $('.stage05').addClass('active');
+        });
+        $('.stage05 button').on('click', function(){
+            $('.stage05').removeClass('active');
+            $('.stage01').addClass('active');
+        });
     });
 });
 </script>
