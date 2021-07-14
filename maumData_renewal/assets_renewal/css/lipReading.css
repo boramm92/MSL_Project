@@ -30,18 +30,18 @@ body {overflow:hidden;}
 /* -------------------- contents -------------------- */
 /* tutorial */
 #wrap.tutorial .tutorial_bg {position:fixed; top:0; right:0; bottom:0; left:0; width:100%; min-width:320px; height:100%; background:rgba(0, 0, 0, 0.7); z-index:100;}
-#wrap.tutorial .tutorial_bg:before {content:''; display:block; position:absolute; top:0; left:0; width:100%; height:100%; background:url('../images/builder/lipReading/img_tutorial.png') 50% 18% no-repeat; background-size:100% auto;}
+#wrap.tutorial .tutorial_bg:before {content:''; display:block; position:absolute; top:0; left:0; width:100%; height:100%; background:url('../images/builder/lipReading/img_tutorial.png') 50% 18% no-repeat; background-size:auto 143px;}
+#wrap.tutorial.ver2 .tutorial_bg:before {content:''; display:block; position:absolute; top:0; left:0; width:100%; height:100%; background:url('../images/builder/lipReading/img_tutorial.png') 50% 18% no-repeat; background-size:100% auto;}
 #wrap.tutorial .tutorial_bg .btn_ttra_close {position:absolute; top:7px; right:13px; width:40px; height:40px;}
 #wrap.tutorial .tutorial_bg .btn_ttra_close:before {content:''; display:block; position:absolute; top:50%; left:50%; width:2px; height:20px; border-radius:1px; background:#fff; transform:translate(-50%, -50%) rotate(45deg);}
 #wrap.tutorial .tutorial_bg .btn_ttra_close:after {content:''; display:block; position:absolute; top:50%; left:50%; width:2px; height:20px; border-radius:1px; background:#fff; transform:translate(-50%, -50%) rotate(-45deg);}
 #wrap.tutorial .cont_top .learning_progress .progressBar .current .learningNum {z-index:200;}
 #wrap.tutorial .cont_top .learning_progress .progressBar .current .learningNum:after {content:'학습 완료 개수'; display:flex; align-items:flex-end; position:absolute; top:0; left:50%; width:100px; height:65px; background:url('../images/builder/lipReading/img_dashed_arw01.svg') top 7px right 18px no-repeat; color:#fff; font-size:17px; font-weight:500; letter-spacing:-0.53px; line-height:20px; white-space:nowrap; transform:translate(-50%, 0);}
-/* #wrap.tutorial .cont_mid .stageGroup .topBox .letter_badge {position:relative; z-index:200;} */
 #wrap.tutorial .cont_btm .controlArea .btnGroup .btnBox button {pointer-events:none;}
 #wrap.tutorial .cont_btm .controlArea .btnGroup .btnBox.stage01 button {z-index:200;}
 #wrap.tutorial .cont_btm .controlArea .btnGroup .btnBox.stage01 button:before {content:'녹음 버튼'; display:flex; position:absolute; top:-35px; left:-7px; width:65px; height:67px; padding:0 0 0 20px; background:url('../images/builder/lipReading/img_dashed_arw04.svg') bottom 0 left 0 no-repeat; color:#fff; font-size:17px; font-weight:500; letter-spacing:-0.53px; line-height:20px; white-space:nowrap;}
-#wrap.tutorial .cont_btm .controlArea .cameraBox {position:relative; z-index:200; background:#fdcbca url('../images/builder/lipReading/img_lip_guide.png') 50% 50% no-repeat; background-size:cover;}
-#wrap.tutorial .cont_btm .controlArea .cameraBox:before {content:'카메라 중앙에 입술을 두고 말해 보세요.'; display:block; position:absolute; top:-80px; right:14px; width:95px; height:134px; background:url('../images/builder/lipReading/img_dashed_arw05.svg') bottom 0 left 50% no-repeat; color:#fff; font-size:17px; font-weight:500; letter-spacing:-0.53px; line-height:20px; text-align:center; word-break:keep-all;}
+#wrap.tutorial .cont_btm .controlArea .cameraBox {z-index:200; background:#fdcbca url('../images/builder/lipReading/img_lip_guide.png') 50% 50% no-repeat; background-size:cover;}
+#wrap.tutorial .cont_btm .controlArea .cameraBox:before {content:'카메라 중앙에 입술을 두고 말해 보세요.'; display:block; position:absolute; top:-83px; right:14px; width:95px; height:138px; background:url('../images/builder/lipReading/img_dashed_arw05.svg') bottom 0 left 50% no-repeat; color:#fff; font-size:17px; font-weight:500; letter-spacing:-0.53px; line-height:22px; text-align:center; word-break:keep-all;}
 
 /* introWrap */
 .introWrap {display:none; position:fixed; top:0; right:0; bottom:0; left:0; width:100%; min-width:320px; height:100%; background:rgba(0, 0, 0, 0.7); z-index:100;}
@@ -84,15 +84,17 @@ body {overflow:hidden;}
 .cont_btm .guide_msg {position:absolute; top:-14px; left:0; width:100%; color:#d0ddff; font-size:14px; font-weight:500; letter-spacing:-0.44px; line-height:1; text-align:center;}
 .cont_btm .guide_msg p {display:none;}
 .cont_btm .guide_msg p.active {display:block;}
-.cont_btm .controlArea {display:flex; flex-direction:column; justify-content:flex-end; width:100%; height:calc(100% - 45px); border-radius:30px 30px 0 0;}
-.cont_btm .controlArea.stage01 {background:#fdcbca;}
-.cont_btm .controlArea.stage02 {background:#fdcbca;}
-.cont_btm .controlArea.stage03 {background:#81ced4;}
-.cont_btm .controlArea.stage04 {background:#f7e195;}
-.cont_btm .controlArea .btnGroup {position:relative;}
-.cont_btm .controlArea .btnGroup > div {display:none; position:absolute; bottom:5px; left:0; width:100%; text-align:center;}
+.cont_btm .controlArea {position:relative; width:100%; height:calc(100% - 45px); border-radius:30px 30px 0 0;}
+.cont_btm .controlArea > div {position:absolute; width:100%; bottom:0; left:0;}
+.cont_btm .controlArea .btnGroup {height:100%;}
+.cont_btm .controlArea .btnGroup > div {display:none; position:absolute; bottom:0; left:0; width:100%; height:100%; border-radius:30px 30px 0 0; text-align:center;}
 .cont_btm .controlArea .btnGroup > div.active {display:block;}
-.cont_btm .controlArea .btnGroup .btnBox button {position:relative; width:90px; height:90px; margin:0 4px; border-radius:50%; box-sizing:border-box; color:#fff; font-size:16px; font-weight:500; letter-spacing:-0.5px; line-height:1;}
+.cont_btm .controlArea .btnGroup > div.stage01 {background:#fdcbca;}
+.cont_btm .controlArea .btnGroup > div.stage02 {background:#fdcbca;}
+.cont_btm .controlArea .btnGroup > div.stage03 {background:#81ced4;}
+.cont_btm .controlArea .btnGroup > div.stage04 {background:#81ced4;}
+.cont_btm .controlArea .btnGroup > div.stage05 {background:#f7e195;}
+.cont_btm .controlArea .btnGroup .btnBox button {position:relative; top:-45px; width:90px; height:90px; margin:0 4px; border-radius:50%; box-sizing:border-box; color:#fff; font-size:16px; font-weight:500; letter-spacing:-0.5px; line-height:1;}
 .cont_btm .controlArea .btnGroup .btnBox button em {display:block; margin:0 0 10px; font-size:25px;}
 .cont_btm .controlArea .btnGroup .btnBox button.btn_record_on {background:#f7827f url('../images/builder/lipReading/ico_record_on.svg') 50% 50% no-repeat;}
 .cont_btm .controlArea .btnGroup .btnBox button.btn_record_off {background:#f7827f url('../images/builder/lipReading/ico_record_off.svg') 50% 50% no-repeat;}
@@ -102,7 +104,7 @@ body {overflow:hidden;}
 .cont_btm .controlArea .btnGroup .btnBox.stage05 button img {display:block; position:absolute; bottom:45px; left:50%; transform:translate(-50%, 0);}
 .cont_btm .controlArea .btnGroup .btnBox button.btn_eval_good {background:#fcc566; color:#2a3756;}
 .cont_btm .controlArea .btnGroup .btnBox button.btn_eval_bad {background:#2a3756; color:#f7e195;}
-.cont_btm .controlArea .cameraBox {width:100%; height:calc(100% - 50px); background:#000;}
+.cont_btm .controlArea .cameraBox {height:calc(100% - 50px); background:#000;}
 
 /* loading UI */
 @keyframes loading_spinner {
@@ -124,7 +126,7 @@ body {overflow:hidden;}
 .loadingBox .spinner_ring .spinner_inner > div:nth-child(4) div:before,
 .loadingBox .spinner_ring .spinner_inner > div:nth-child(4) div:after {content:''; display:block; position:absolute; top:-8px; left:15px; width:8px; height:8px; border-radius:50%; box-shadow:0 46px 0 0 #ffffff; background:#fff;}
 .loadingBox .spinner_ring .spinner_inner > div:nth-child(4) div:after {top:15px; left:-8px; box-shadow:46px 0 0 0 #fff;}
-.loadingBox .spinner_ring {display:inline-block; overflow:hidden; width:90px; height:90px; border-radius:50%; background:#2fbac4;}
+.loadingBox .spinner_ring {display:inline-block; overflow:hidden; position:relative; top:-45px; width:90px; height:90px; border-radius:50%; background:#2fbac4;}
 .loadingBox .spinner_ring .spinner_inner {position:relative; width:100%; height:100%; transform:translateZ(0) scale(0.7); backface-visibility:hidden;}
 .loadingBox .spinner_ring .spinner_inner div {box-sizing:content-box;}
 
