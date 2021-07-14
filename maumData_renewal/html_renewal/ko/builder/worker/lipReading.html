@@ -161,13 +161,13 @@
         document.documentElement.addEventListener('touchend', function(e){
             var now = (new Date()).getTime();
 
-            if (now - lastTouchEnd <= 300) {
+            if(now - lastTouchEnd <= 300){
                 e.preventDefault(); 
             } lastTouchEnd = now; 
         }, false);
 
-        jQuery.event.add(window, "load", function () {
-            $(document).ready(function () {
+        jQuery.event.add(window, "load", function(){ 
+            $(document).ready(function(){
                 // 튜토리얼 UI 생성
                 $('#wrap').addClass('tutorial');
                 $('#wrap').prepend('\
@@ -179,43 +179,51 @@
                 ');
 
                 // 튜토리얼 UI 끄기
-                $('.btn_ttra_close').on('click', function () {
-                    $('#wrap').removeClass('tutorial');
+                $('.btn_ttra_close').on('click', function(){
+                    $('#wrap').removeClass('tutorial').addClass('intro');
                     $('.tutorial_bg').remove();
                     $('.introWrap').css('display', 'block');
                 });
 
                 // 시작하기 
-                $('.btn_start').on('click', function () {
+                $('.btn_start').on('click', function(){
+                    $('#wrap').removeClass('intro')
                     $('.introWrap').css('display', 'none');
                 });
 
                 // 립리딩 녹화 flow 
-                // $('.btn_record_on').on('click', function () {
-                //     $('.stage01').removeClass('active');
-                //     $('.stage02').addClass('active');
-                // });
-                // $('.btn_record_off').on('click', function () {
-                //     $('.stage02').removeClass('active');
-                //     $('.stage03').addClass('active');
+                $('.btn_record_on').on('click', function(){
+                    $('.stage01').removeClass('active');
+                    $('.stage02').addClass('active');
+                });
+                $('.btn_record_off').on('click', function(){
+                    $('.stage02').removeClass('active');
+                    $('.stage03').addClass('active');
 
-                //     setTimeout(function () {
-                //         $('.stage03').removeClass('active');
-                //         $('.stage04').addClass('active');
-                //     }, 1000);
-                // });
-                // $('.btn_retry').on('click', function () {
-                //     $('.stage04').removeClass('active');
-                //     $('.stage01').addClass('active');
-                // });
-                // $('.btn_next').on('click', function () {
-                //     $('.stage04').removeClass('active');
-                //     $('.stage05').addClass('active');
-                // });
-                // $('.stage05 button').on('click', function () {
-                //     $('.stage05').removeClass('active');
-                //     $('.stage01').addClass('active');
-                // });
+                    setTimeout(function(){
+                        $('.stage03').removeClass('active');
+                        $('.stage04').addClass('active');
+                    }, 1000);
+                });
+                $('.btn_retry').on('click', function(){
+                    $('.stage04').removeClass('active');
+                    $('.stage01').addClass('active');
+                });
+                $('.btn_next').on('click', function(){
+                    $('.stage04').removeClass('active');
+                    $('.stage05').addClass('active');
+                });
+                $('.stage05 button').on('click', function(){
+                    $('.stage05').removeClass('active');
+                    $('.stage01').addClass('active');
+                });
+
+                // 학습 완료 개수 툴팁 위치 조정 
+                // [D] 다음 문장으로 넘어갈 때 아래 script 함께 실행해 주세요.
+                var learningNumWidth = $('.learningNum').outerWidth();
+                learningNumWidth = learningNumWidth / 2;
+
+                $('.learningNum').css('right', -learningNumWidth);
             });
         });
     </script>
