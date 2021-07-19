@@ -63,6 +63,27 @@ input[type="radio"] + label:before {content:''; display:inline-block; width:12px
 input[type="radio"]:checked + label:before {border:3px solid #1f242e; background:#4175ff;}
 
 
+/* -------------------- loading -------------------- */
+@keyframes rotate_line {
+    0% {transform:rotate(0deg);}
+    100% {transform:rotate(360deg);}
+}
+
+@keyframes text_opacity {
+    0% {opacity:0;}
+    20% {opacity:0;}
+    50% {opacity:1;}
+    100% {opacity:0;}
+}
+
+#pageLoading {position:fixed; top:0; right:0; bottom:0; left:0; background:rgba(0, 0, 0, 0.82); z-index:10000;}
+#pageLoading .loading_container,
+#pageLoading .line {position:relative; width:180px; height:180px; border-radius:100%; box-sizing:border-box; transition:all 0.5s ease-in-out;}
+#pageLoading .loading_container {top:50%; margin:0 auto; transform:translate(0, -50%);}
+#pageLoading .line {border:3px solid transparent; border-color:transparent #fff transparent #fff; transform-origin:50% 50%; animation:rotate_line 1.5s linear 0s infinite normal;}
+#pageLoading .text {position:absolute; top:0; width:180px; margin:80px 0 0; color:#fff; font-size:20px; font-weight:500; text-align:center; opacity:0; animation:text_opacity 2s linear 0s infinite normal;}
+
+
 /* -------------------- layer popup -------------------- */
 /* common */
 .lyrWrap {display:none; position:fixed; top:0; right:0; bottom:0; left:0; width:100%; height:100%; z-index:9999;}
@@ -214,8 +235,8 @@ input[type="radio"]:checked + label:before {border:3px solid #1f242e; background
 #scriptPop .script_box .scrt_txt .findElement.selected {background:#a83349;}
 
 .edit_video .work_space .videoArea {height:90%; padding:144px 75px 0; box-sizing:border-box;}
-.edit_video .work_space .videoArea .videoBox {display:flex; align-items:center; height:calc(100% - 80px); background:#1d1e21;}
-.edit_video .work_space .videoArea .videoBox video {display:block; max-width:100%; max-height:100%;}
+.edit_video .work_space .videoArea .videoBox {display:flex; justify-content:center; align-items:center; height:calc(100% - 80px); background:#1d1e21;}
+.edit_video .work_space .videoArea .videoBox video {display:block; max-width:100%; height:100%;}
 .edit_video .work_space .videoArea .controlBox {width:100%; height:80px; padding:20px 34px 0; box-sizing:border-box; background:#141519;} 
 .edit_video .work_space .videoArea .controlBox .player .player_bar {position:relative; width:100%; height:3px; background:#3e3e3e; cursor:pointer;}
 .edit_video .work_space .videoArea .controlBox .player .player_bar .buffer_bar {position:absolute; top:0; left:0; width:0; height:100%; background:#878889;}

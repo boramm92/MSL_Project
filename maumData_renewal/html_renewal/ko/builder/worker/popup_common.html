@@ -40,6 +40,15 @@
 <title>Layer popup || Builder</title>
 </head>
 <body>
+<!-- #pageLoading -->
+<div id="pageLoading">
+    <div class="loading_container">
+        <div class="line"></div>
+        <div class="text">LOADING</div>
+    </div>
+</div>
+<!-- //#pageLoading -->
+
 <!-- #wrap -->
 <div id="wrap">
     <!-- #header -->
@@ -276,7 +285,9 @@
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-
+        $('#pageLoading').delay(2000).queue(function(){
+            $(this).remove();
+        });
     });
 });
 </script>
