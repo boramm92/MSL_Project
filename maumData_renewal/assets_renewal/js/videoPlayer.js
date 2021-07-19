@@ -181,18 +181,27 @@ $(document).ready(function(){
     // 속도설정 버튼 클릭 시
     speedBtn.on('click', function(){
         $('.speedSet').toggleClass('on');
-
         $('.speed_list li').on('click', function(){
             $('.speed_list li').removeClass('active');
             $(this).addClass('active');
+            /* 20210716 Added by KJY : 영상 재생 속도 조절 */
+            video.playbackRate = !isNaN($(this).data("rate")) ? $(this).data("rate") : video.playbackRate;
         });
     });
 
     // 반복재생 버튼 클릭 시
     repeatBtn.on('click', function(){
         $(this).toggleClass('on');
-    }); 
+        /* 20210716 Added by KJY 자동 반복 토글 */
+        $(this).is('.on') ? video.setAttribute('loop', '') : video.removeAttribute('loop');
+    });
+
+    /* 20210716 Added by KJY */
+    // 뒤로감기, 건너뛰기 버튼 클릭 시
+    rewindBtn.on('click', function() {
+        video.currentTime -= 1;
+    });
+    fastFowardBtn.on('click', function() {
+        video.currentTime += 1;
+    });
 });
-
-  
-
