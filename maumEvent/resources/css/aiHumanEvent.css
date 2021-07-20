@@ -73,6 +73,9 @@
 }
 
 /* -------------------- common -------------------- */
+/* hide */
+.hide {display:block; overflow:hidden; text-indent:-9999px; line-height:0; white-space:nowrap;}
+
 /* checkBox */
 .checkBox{display:inline-block; position:relative; min-height:20px; font-size:24px;}
 .checkBox input[type="checkbox"]{position:absolute; overflow:hidden; width:1px; height:1px; padding:0; margin:-1px; clip:rect(0,0,0,0); border:0;}
@@ -146,8 +149,17 @@
 /* 이벤트 페이지 본문 */
 #wrap.event .stn:not(.intro) {display:none;}
 
+/* topBanner - 21.07.20 NBR 추가 */
+.topBanner {position:fixed; top:0; left:0; width:100%; height:48px; background:#6f6655; z-index:50;}
+.topBanner .contBox {display:flex; justify-content:space-between; align-items:center; height:100%; line-height:42px;}
+.topBanner .contBox > img:nth-child(2) {margin:0 auto 0 6px;}
+.topBanner .contBox > img:nth-child(3) {height:100%;}
+.topBanner .contBox .btn_link {display:inline-block; width:150px; height:100%; margin:0 auto 0 24px;}
+.topBanner .contBox .btn_link img {height:100%;}
+.topBanner .contBox .btn_close {width:87px; height:100%; background:url('../images/aiHuman/img_banner_close.svg') 50% 50% no-repeat;}
+
 /* intro */
-#wrap.event .intro {height:100%; background: red url('../images/aiHuman/bg_stn_intro_pc.png') 50% 50% no-repeat; background-size:cover;}
+#wrap.event .intro {height:100%; background:url('../images/aiHuman/bg_stn_intro_pc.png') 50% 50% no-repeat; background-size:cover;}
 #wrap.event .intro .contBox {position:relative; height:100%; background:url('../images/aiHuman/img_intro_aiHuman.png') 50% -50px no-repeat; background-size:auto 95%;}
 #wrap.event .intro .svc_tit {position:absolute; top:25%; left:50%; width:100%; color:#fff; font-size:5.67rem; font-weight:700; letter-spacing:47.78px; text-shadow:0px 10px 7px rgba(12, 0, 66, 0.8); transform:translate(-50%, 0);}
 #wrap.event .intro .svc_tit p {font-size:36.5px; letter-spacing:10.95px; line-height:1;}
@@ -238,6 +250,16 @@
     #wrap.event {min-height:auto;}
     #wrap.event .stn {min-width:320px;}
     #wrap.event .contBox {width:100%;}
+
+    /* topBanner - 21.07.20 NBR 추가 */
+    .topBanner {height:auto;}
+    .topBanner .contBox {display:block; position:relative; padding:15% 0 0;}
+    .topBanner .contBox > img {display:none; position:absolute;}
+    .topBanner .contBox > img:nth-child(4) {display:block; bottom:0; left:8%; height:85%; max-height:85px;}
+    .topBanner .contBox .btn_link {position:absolute; top:0; right:3%; width:auto; margin:0;}
+    .topBanner .contBox .btn_link img.mobile {height:100%;}
+    .topBanner .contBox .btn_close {position:absolute; right:3%; bottom:-48px; height:48px;}
+    /* //topBanner - 21.07.20 NBR 추가 */
 
     #wrap.event .intro {height:100%; background: red url('../images/aiHuman/bg_stn_intro_mobile.png') 50% 50% no-repeat; background-size:cover;}
     #wrap.event .intro .contBox {position:relative; height:100%; background:url('../images/aiHuman/img_intro_aiHuman.png') 70% -50px no-repeat; background-size:80% auto;}
