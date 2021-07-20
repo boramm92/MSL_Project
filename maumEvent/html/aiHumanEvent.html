@@ -50,20 +50,24 @@
     <!-- #container -->
     <div id="container">
         <!-- [D] 21.07.20 NBR 추가 -->
-        <div class="topBanner">
+        <div class="topBanner">                  
             <div class="contBox">
                 <img src="../resources/images/aiHuman/logo_kb.svg" alt="kb logo">
                 <img src="../resources/images/aiHuman/img_bannerText_sub.svg" alt="리스 프로모션">
                 <img class="pc" src="../resources/images/aiHuman/img_bannerText_main.png" alt="세상에 없었던 나의 분신 만들기">
                 <img class="mobile"  src="../resources/images/aiHuman/img_bannerText_m.png" alt="KB 국민은행 리스 프로모션 세상에 없었던 나의 분신 만들기">
-                <a href="https://card.kbcard.com/CXPRIFICD0002.cms?mainCC=b&prtrCd=000000000008916&cgryCd=109&prodtCd=MND01AI001AI001000001" target="_blank" class="btn_link">
+                                
+                <div class="btnBox">
+                    
                     <img class="pc" src="../resources/images/aiHuman/img_banner_shortcut.svg" alt="바로가기">
                     <img class="mobile"  src="../resources/images/aiHuman/img_banner_shortcut_m.svg" alt="바로가기">
-                </a>
+                    <a href="https://card.kbcard.com/CXPRIFICD0002.cms?mainCC=b&prtrCd=000000000008916&cgryCd=109&prodtCd=MND01AI001AI001000001" target="_blank" class="btn_link"></a> 
+                </div>
+                
                 <button type="button" class="btn_close">
                     <span class="hide">그만보기</span>
                 </button>
-            </div>
+            </div>                       
         </div>
         <!-- //[D] 21.07.20 NBR 추가 -->
 
@@ -327,7 +331,8 @@ jQuery.event.add(window,"load",function(){
 
         // [D] 21.07.20 NBR 추가
         // 배너 그만보기 
-        $('.topBanner .btn_close').on('click', function(){
+        $('.topBanner .btn_close').on('click', function(e){
+            e.stopPropagation();
             $('.topBanner').remove();
         });
     });       
