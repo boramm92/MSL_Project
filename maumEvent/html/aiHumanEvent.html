@@ -57,11 +57,12 @@
                 <img class="pc" src="../resources/images/aiHuman/img_bannerText_main.png" alt="세상에 없었던 나의 분신 만들기">
                 <img class="mobile"  src="../resources/images/aiHuman/img_bannerText_m.png" alt="KB 국민은행 리스 프로모션 세상에 없었던 나의 분신 만들기">
                                 
-                <div class="btnBox">
-                    
+                <div class="btnBox">                    
                     <img class="pc" src="../resources/images/aiHuman/img_banner_shortcut.svg" alt="바로가기">
                     <img class="mobile"  src="../resources/images/aiHuman/img_banner_shortcut_m.svg" alt="바로가기">
-                    <a href="https://card.kbcard.com/CXPRIFICD0002.cms?mainCC=b&prtrCd=000000000008916&cgryCd=109&prodtCd=MND01AI001AI001000001" target="_blank" class="btn_link"></a> 
+                    <a href="https://card.kbcard.com/CXPRIFICD0002.cms?mainCC=b&prtrCd=000000000008916&cgryCd=109&prodtCd=MND01AI001AI001000001" target="_blank" class="btn_link">
+                        <span class="hide">바로가기 링크영역</span>
+                    </a> 
                 </div>
                 
                 <button type="button" class="btn_close">
@@ -91,7 +92,6 @@
         </div>
 
         <div class="stn contents">
-            <!-- [D] 21.06.22 수정 -->
             <div class="imgBox">
                 <img class="pc" src="../resources/images/aiHuman/img_contents_pc.png" alt="이벤트 상세 배너">
                 <img class="mobile instructor on" src="../resources/images/aiHuman/img_contents_mobile02.png" alt="이벤트 상세 배너">
@@ -117,7 +117,6 @@
                     </ul>
                 </div>
             </div> 
-            <!-- //[D] 21.06.22 수정 -->
         </div> 
 
         <div class="stn contact"> 
@@ -234,7 +233,6 @@ jQuery.event.add(window,"load",function(){
             }); 
             
             // 활성화 썸네일에 따라 영상링크 변경
-            // [D] 21.06.22 수정
             var activeThumbnail = $('.thumbnail.active').index();
             var videoIframe = $('#lyr_video_player .lyr_ct iframe');
 
@@ -246,8 +244,7 @@ jQuery.event.add(window,"load",function(){
                 videoIframe.attr('src', 'https://www.youtube.com/embed/piVI3yxdWno?rel=0&autoplay=1');
             }else{
                 videoIframe.attr('src', '');
-            }       
-            // [D] 21.06.22 수정    
+            }          
         });
         
         //Layer popup close 
@@ -330,8 +327,8 @@ jQuery.event.add(window,"load",function(){
             $(this).val($(this).val().replace(/[^0-9]/g,''));
         });
 
-        // [D] 21.07.20 NBR 추가
-        // 배너 그만보기 
+        // 배너 그만보기
+        // [D] 21.07.20 추가 
         $('.topBanner .btn_close').on('click', function(e){
             e.stopPropagation();
             $('.topBanner').remove();
