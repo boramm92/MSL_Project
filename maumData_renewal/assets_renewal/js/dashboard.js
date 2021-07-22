@@ -88,4 +88,29 @@ $(document).ready(function(){
             $('.allChk').prop('checked', false);
         }       
     });
+
+
+    // input - 금액 입력 시 천단위 콤마 넣기
+    var priceInput = $('.ipt_txt.price');
+
+    priceInput.on('keyup', function(e){
+        var selection = window.getSelection().toString();
+
+        if(selection !== ''){
+            return;
+        }
+        if($.inArray(e.keyCode, [38,40,37,39]) !== -1){
+            return;
+        }
+        
+        var $this = $(this);
+        var priceInput = $this.val();
+        var priceInput = priceInput.replace(/[\D\s\._\-]+/g, '');
+    
+        priceInput = priceInput ? parseInt(priceInput, 10) : 0;
+    
+        $this.val(function(){
+            return(priceInput === 0) ? '' : priceInput.toLocaleString('en-US');
+        });    
+    } );
 });

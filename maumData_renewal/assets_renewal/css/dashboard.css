@@ -34,6 +34,14 @@
 /* ellip */
 .ellip {overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
 
+/* textarea */
+.textarea {width:100%; padding:12px; border:1px solid #d9dde6; border-radius:4px; box-sizing:border-box; background:#f8f8f8; }
+.textarea::placeholder {color:#707177; font-size:13px; letter-spacing:-0.13px;}
+
+/* ipt_txt */
+.ipt_txt {min-width:100px; height:32px; padding:0 12px; border:1px solid #d9dde6; border-radius:4px; box-sizing:border-box; background:#fff;}
+.ipt_txt::placeholder {color:#707177; font-size:13px; letter-spacing:-0.13px;}
+
 /* srchBox */
 .srchBox {display:inline-block; position:relative;}
 .srchBox input[type="text"] {min-width:100px; height:32px; padding:0 36px 0 12px; border:1px solid #d9dde6; border-radius:4px; box-sizing:border-box; background:#fff;}
@@ -45,11 +53,19 @@
 
 /* button */
 .btn_primary_rect {display:inline-block; height:42px; border-radius:4px; background:#b2b2b2; color:#fff; font-size:14px; letter-spacing:-0.14px; line-height:42px; transition:all 0.3s ease-out;}
+.btn_primary_rect.blue {background-color:#1054b2 !important;}
 .btn_primary_rect.on {background:#1054b2; pointer-events:inherit;}
 .btn_list_remove {width:80px;}
 
 .btn_shortcut {padding:0 22px 0 0; background:url('../images/dashboard/ico_shortcut_g.svg') top 50% right 0 no-repeat; color:#26282b; font-size:13px; letter-spacing:-0.13px; vertical-align:middle; transition:all 0.3s ease-out;}
 .btn_shortcut:hover {background:url('../images/dashboard/ico_shortcut_b.svg') top 50% right 0 no-repeat; color:#1d5ca7; text-decoration:underline;}
+
+/* radioBox */
+.radioBox {display:inline-block;}
+.radioBox input[type="radio"] {overflow:hidden; position:absolute; width:1px; height:1px; margin:1px; padding:0; border:none;}
+.radioBox input[type="radio"] + label {position:relative; padding:0 0 0 30px; color:#26282b; font-size:13px; letter-spacing:-0.13px; vertical-align:middle; cursor:pointer;}
+.radioBox input[type="radio"] + label:before {content:''; display:inline-block; position:absolute; top:0; left:0; width:18px; height:18px; border:1px solid #d9dde6; border-radius:50%; box-sizing:border-box; background:#fff; transition:all 0.2s ease-out;}
+.radioBox input[type="radio"]:checked + label:after {content:''; display:inline-block; position:absolute; top:4px; left:4px; width:10px; height:10px; border-radius:50%; background:#1054b2; transition:all 0.2s ease-out;}
 
 /* chkBoxOnly */
 .chkBoxOnly {display:inline-block; position:relative;}
@@ -60,11 +76,14 @@
 /* switch button */
 .switchBox {display:inline-block;}
 .switchBox input[type="checkbox"] {overflow:hidden; position:absolute; width:1px; height:1px; margin:1px; padding:0; border:none;}
-.switchBox input[type="checkbox"] + label {position:relative; padding:0 52px 0 0; color:#707177; font-size:13px; letter-spacing:-0.13px;  vertical-align:middle; cursor:pointer;}
+.switchBox input[type="checkbox"] + label {position:relative; padding:0 52px 0 0; color:#707177; font-size:13px; letter-spacing:-0.13px; vertical-align:middle; cursor:pointer;}
 .switchBox input[type="checkbox"] + label:before {content:''; display:inline-block; position:absolute; top:0; right:0; width:40px; height:18px; border-radius:9px; background:#c3cbd7; transition:all 0.2s ease-out;}
 .switchBox input[type="checkbox"] + label:after {content:''; display:inline-block; position:absolute; top:2px; right:24px; width:14px; height:14px; border-radius:50%; background:#f0f0f0; transition:all 0.2s ease-out;}
 .switchBox input[type="checkbox"]:checked + label:before {background:#1054b2;}
 .switchBox input[type="checkbox"]:checked + label:after {right:2px; background:#fff;}
+
+/* font point */
+.ft_point_red {color:#ba2b2b;}
 
 
 /* -------------------- snb -------------------- */
@@ -104,7 +123,32 @@
 .titArea {margin:0 0 30px;}
 .titArea h3 {float:left; margin:0 30px 0 0; color:#26282b; font-size:22px; font-weight:500; letter-spacing:-0.22px;}
 .titArea .btnBox {float:left; margin:-10px 0 0;}
-.titArea .btnBox .btn_rgst_wkspc {padding:0 34px 0 14px; background:#1054b2 url('../images/dashboard/ico_add.svg') top 50% right 14px no-repeat;}
+.titArea .btnBox .btn_rgst_wkspc {padding:0 34px 0 14px; background:url('../images/dashboard/ico_add.svg') top 50% right 14px no-repeat;}
+
+/* contArea */
+.titArea + .contArea {padding:30px 30px 58px; border:1px solid #d9dde6; border-radius:4px; box-sizing:border-box; background:#fff;}
+.titArea + .contArea .contBox + .contBox {margin:20px 0 0;}
+.titArea + .contArea .contBox .disabled {opacity:0.5; pointer-events:none;}
+.titArea + .contArea .contBox dl dt {color:#26282b; font-size:14px; font-weight:500; letter-spacing:-0.14px;}
+.titArea + .contArea .contBox dl dd {margin:12px 0 0;}
+.titArea + .contArea .contBox dl dd .radioBox {display:block;}
+.titArea + .contArea .contBox dl dd .radioBox + .radioBox {margin:10px 0 0;}
+
+.titArea + .contArea .define_group {display:table;}
+.titArea + .contArea .define_group dl {display:table-cell;}
+.titArea + .contArea .define_group dl + dl {padding:0 0 0 20px;}
+
+.titArea + .contArea .contBox .detail_set {margin:10px 0 0 30px; padding:12px; border-radius:7px; box-sizing:border-box; background:#eaebed;}
+.titArea + .contArea .contBox .detail_set dl dt {font-size:13px; letter-spacing:-0.13px;}
+.titArea + .contArea .contBox .detail_set dl dd .select,
+.titArea + .contArea .contBox .detail_set dl dd .ipt_txt {width:236px;}
+.titArea + .contArea .contBox .guide_msg {margin:10px 0 0; color:#26282b; font-size:13px; letter-spacing:-0.13px; text-indent:30px;}
+
+.titArea + .contArea .btnBox {margin:40px 0 0; text-align:center;}
+.titArea + .contArea .btnBox button {width:100px; margin:0 13px;}
+
+.titArea + .contArea.workspace_register .contBox dl dd .textarea {width:1060px; height:182px;}
+.titArea + .contArea.workspace_register .contBox:nth-child(1) dl dd .ipt_txt {width:250px;}
 
 /* tblBox */
 .tblBox table {width:100%;}
