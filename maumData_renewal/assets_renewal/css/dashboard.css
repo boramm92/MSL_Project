@@ -8,10 +8,10 @@
 
 
 /* -------------------- layout -------------------- */
-#wrap {width:100%; min-width:1280px; height:100%;}
-#container {width:100%; height:100%; background:#eeeff1;}
-#snb {overflow:hidden; position:fixed; top:0; left:0; width:80px; height:100%; background:#fff; transition:all 0.1s ease-out; z-index:5000;}
-#contents {width:calc(100% - 80px); height:100%; margin:0 0 0 80px; padding:70px 40px 0; box-sizing:border-box;}
+#wrap {width:100%; min-width:1280px; height:100%; min-height:768px;}
+#container {display:table; width:100%; height:100%; background:#eeeff1;}
+#snb {overflow:hidden; position:fixed; top:0; left:0; width:80px; height:100%; min-height:768px; background:#fff; transition:all 0.1s ease-out; z-index:5000;}
+#contents {display:table-cell; width:calc(100% - 80px); height:100%; margin:0 0 0 80px; padding:70px 40px 0 120px; box-sizing:border-box; vertical-align:top;}
 
 
 /* -------------------- common -------------------- */
@@ -31,6 +31,9 @@
 /* hide */
 .hide {display:inline-block; overflow:hidden; position:absolute; text-indent:-9999px; line-height:0; white-space:nowrap;}
 
+/* ellip */
+.ellip {overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+
 /* srchBox */
 .srchBox {display:inline-block; position:relative;}
 .srchBox input[type="text"] {min-width:100px; height:32px; padding:0 36px 0 12px; border:1px solid #d9dde6; border-radius:4px; box-sizing:border-box; background:#fff;}
@@ -41,11 +44,12 @@
 .select {min-width:100px; height:32px; padding:0 40px 0 12px; border:1px solid #d9dde6; border-radius:4px; box-sizing:border-box; background:#fff url('../images/dashboard/ico_caret_down.svg') top 50% right 4px no-repeat; color:#707177; font-size:13px; letter-spacing:-0.13px;}
 
 /* button */
-button:disabled {pointer-events:none;}
 .btn_primary_rect {display:inline-block; height:42px; border-radius:4px; background:#b2b2b2; color:#fff; font-size:14px; letter-spacing:-0.14px; line-height:42px; transition:all 0.3s ease-out;}
 .btn_primary_rect.on {background:#1054b2; pointer-events:inherit;}
-.btn_list_remove {width:80px; pointer-events:none;}
-/* .btn_list_remove.on {pointer-events:inherit;} */
+.btn_list_remove {width:80px;}
+
+.btn_shortcut {padding:0 22px 0 0; background:url('../images/dashboard/ico_shortcut_g.svg') top 50% right 0 no-repeat; color:#26282b; font-size:13px; letter-spacing:-0.13px; vertical-align:middle; transition:all 0.3s ease-out;}
+.btn_shortcut:hover {background:url('../images/dashboard/ico_shortcut_b.svg') top 50% right 0 no-repeat; color:#1d5ca7; text-decoration:underline;}
 
 /* chkBoxOnly */
 .chkBoxOnly {display:inline-block; position:relative;}
@@ -54,7 +58,7 @@ button:disabled {pointer-events:none;}
 .chkBoxOnly input[type="checkbox"]:checked:before {border:1px solid #1054b2; background:#fff url('../images/dashboard/ico_chk_b.svg') 50% 50% no-repeat;} 
 
 /* switch button */
-.switchBox {display:inline-block; vertical-align:middle;}
+.switchBox {display:inline-block;}
 .switchBox input[type="checkbox"] {overflow:hidden; position:absolute; width:1px; height:1px; margin:1px; padding:0; border:none;}
 .switchBox input[type="checkbox"] + label {position:relative; padding:0 52px 0 0; color:#707177; font-size:13px; letter-spacing:-0.13px;  vertical-align:middle; cursor:pointer;}
 .switchBox input[type="checkbox"] + label:before {content:''; display:inline-block; position:absolute; top:0; right:0; width:40px; height:18px; border-radius:9px; background:#c3cbd7; transition:all 0.2s ease-out;}
@@ -151,8 +155,8 @@ button:disabled {pointer-events:none;}
 .tbl_tap_wrap .tapCont {width:100%; border:1px solid #d9dde6; border-radius:0 4px 4px 4px; background:#fff;}
 .tbl_tap_wrap .tapCont .filterArea {width:100%; padding:13px 30px; box-sizing:border-box;}
 .tbl_tap_wrap .tapCont .filterArea .select {width:140px;}
-.tbl_tap_wrap .tapCont .filterArea .select + .select,
-.tbl_tap_wrap .tapCont .filterArea .select + .switchBox {margin:0 0 0 16px;}
+.tbl_tap_wrap .tapCont .filterArea .select + .select {margin:0 0 0 16px;}
+.tbl_tap_wrap .tapCont .filterArea .select + .switchBox {margin:0 0 0 16px; vertical-align:middle;}
 .tbl_tap_wrap .tapCont .filterArea .srchBox {float:right;}
 .tbl_tap_wrap .tapCont .filterArea .srchBox input[type="text"] {width:270px;} 
 .tbl_tap_wrap .tapCont .tblBox tbody tr:last-child td:first-child {border-bottom-left-radius:4px;}
@@ -163,17 +167,35 @@ button:disabled {pointer-events:none;}
 .asideWrap {display:none; position:fixed; top:0; right:0; bottom:0; left:0; z-index:6000;}
 .asideWrap.open {display:block;}
 .asideWrap .aside_bg {width:100%; height:100%; background:rgba(0, 0, 0, 0.56);}
-.asideWrap .aside {position:absolute; top:0; right:0; width:572px; height:100%; padding:30px; box-sizing:border-box; background:#fff;}
+.asideWrap .aside {overflow-y:auto; position:absolute; top:0; right:0; width:572px; height:100%; padding:30px; box-sizing:border-box; background:#fff;}
 .asideWrap .aside .btn_aside_close {float:right; width:24px; height:24px; margin:0 0 30px; background:url('../images/dashboard/ico_aside_close.svg') 50% 50% no-repeat;}
 .asideWrap .aside .contArea {clear:both;}
 .asideWrap .aside .contArea .contBox {width:100%; padding:20px; border:1px solid #d9dde6; border-radius:4px; box-sizing:border-box; background:#fff;}
 .asideWrap .aside .contArea .contBox + .contBox {margin:20px 0 0;}
 .asideWrap .aside .contArea .contBox .tit {padding:0 0 10px; border-bottom:1px solid #e4e4e4;}
 .asideWrap .aside .contArea .contBox .tit h4 {display:inline-block; color:#26282b; font-size:22px; font-weight:500; letter-spacing:-0.22px; line-height:22px;}
-.asideWrap .aside .contArea .contBox .tit h4 + .switchBox {float:right;}
-.asideWrap .aside .contArea .contBox .tit h4 + .switchBox input[type="checkbox"] + label {padding:0 48px 0 0;}
-.asideWrap .aside .contArea .contBox .cont {margin:16px 0 0;}
-.asideWrap .aside .contArea .contBox .cont dl {color:#26282b; font-size:13px; letter-spacing:-0.13px; line-height:26px;}
-.asideWrap .aside .contArea .contBox .cont dl > * {display:inline-block;}
-.asideWrap .aside .contArea .contBox .cont dl dt {font-weight:500;}
-.asideWrap .aside .contArea .contBox .cont dl dd {margin:0 0 0 4px;}
+.asideWrap .aside .contArea .contBox .tit .fr .switchBox {margin:0 0 0 6px;}
+.asideWrap .aside .contArea .contBox .tit .fr .switchBox input[type="checkbox"] + label {padding:0 48px 0 0;}
+.asideWrap .aside .contArea .contBox .cont {overflow:hidden; margin:16px 0 0;}
+.asideWrap .aside .contArea .contBox .cont dl.define {color:#26282b; font-size:13px; letter-spacing:-0.13px; line-height:26px;}
+.asideWrap .aside .contArea .contBox .cont dl.define > * {display:inline-block;}
+.asideWrap .aside .contArea .contBox .cont dl.define dt {font-weight:500;}
+.asideWrap .aside .contArea .contBox .cont dl.define dd {margin:0 0 0 4px;}
+.asideWrap .aside .contArea .contBox .cont .lineBox {overflow:hidden; width:100%; border:1px solid #d9dde6; border-radius:4px; box-sizing:border-box; background:#fff;}
+.asideWrap .aside .btnBox {margin:40px 0 0; text-align:center;}
+.asideWrap .aside .btnBox .btn_aside_modify {width:100px; background:#1054b2;}
+
+#workspace .aside .contArea .contBox:nth-child(1) .tit h4 {overflow:hidden; width:calc(100% - 80px); white-space:nowrap; text-overflow:ellipsis;}
+#workspace .aside .contArea .contBox:nth-child(2) .cont .fl {display:table; position:relative; width:224px; height:184px;}
+#workspace .aside .contArea .contBox:nth-child(2) .cont .fl .state {position:absolute; top:0; right:0; width:80px; height:30px; border-radius:20px 0 0 20px; background:#1d5ca7; text-align:center; line-height:30px;}
+#workspace .aside .contArea .contBox:nth-child(2) .cont .fl dl {display:table-cell; color:#26282b; text-align:center; vertical-align:middle;}
+#workspace .aside .contArea .contBox:nth-child(2) .cont .fl dl dt {font-size:13px; font-weight:700; letter-spacing:-0.13px;}
+#workspace .aside .contArea .contBox:nth-child(2) .cont .fl dl dd {margin:14px 0 0; font-size:58px; font-weight:500; letter-spacing:-0.58px;}
+#workspace .aside .contArea .contBox:nth-child(2) .cont .fl .state span {display:none; color:#fff; font-size:11px; font-weight:500; letter-spacing:-0.11px;}
+#workspace .aside .contArea .contBox:nth-child(2) .cont .fl .state span.on {display:block;}
+#workspace .aside .contArea .contBox:nth-child(2) .cont .fr {width:228px;}
+#workspace .aside .contArea .contBox:nth-child(2) .cont .fr .lineBox {display:table; height:81px;}
+#workspace .aside .contArea .contBox:nth-child(2) .cont .fr .lineBox + .lineBox {margin:22px 0 0;}
+#workspace .aside .contArea .contBox:nth-child(2) .cont .fr .lineBox dt {display:table-cell; width:89px; background:#2d344b; color:#fff; font-size:13px; font-weight:700; letter-spacing:-0.13px; text-align:center; vertical-align:middle;}
+#workspace .aside .contArea .contBox:nth-child(2) .cont .fr .lineBox dd {display:table-cell; width:calc(100% - 89px); color:#26282b; font-size:30px; font-weight:500; letter-spacing:-0.3px; text-align:center; vertical-align:middle;}
+#workspace .aside .contArea .contBox:nth-child(3) .cont .work_guide {overflow-y:auto; height:175px; color:#26282b; font-size:13px; font-weight:500; letter-spacing:-0.13px; line-height:22px; word-break:keep-all; white-space:pre-line;}
