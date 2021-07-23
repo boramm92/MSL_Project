@@ -214,60 +214,76 @@
     <div class="contents">
         <!--content-->
         <div class="content">
-            <h1>프로필</h1>
+            <h1>maum.ai 회원탈퇴</h1>
             <!-- .mypageBox -->
-            <div class="mypageBox">
+            <div class="mypageBox mbs_wtdrl">
                 <div class="contentarea">
-                    <div class="basic_tit">
-                        <!-- <img src="resources/images/img_profile.png" alt="profile img"> -->
-                        <form id="form" runat="server">
-                            <div class="imginput">
-                                <img id="image_section" src="/aiaas/kr/images/img_profile.png" alt="your image" />
-                                <!-- <label for="imgInput" class="file_label">사진 수정</label>
-                                    <input type="file" id="imgInput" class="upload-hidden" > -->
-                            </div>
-                            <!-- <label for="imgInput" class="file_label">파일선택</label>
-                                <input type="file" id="imgInput" class="upload-hidden" > -->
-                        </form>
-                        <!-- <input type="text" placeholder="Mindslab" class="username"> -->
-                    </div>
-                    <div class="basic_info">
-                        <form id="memberForm" name="memberForm" method="post">
-                            <input type="hidden" id="userEmail" name="email" value="boramm@mindslab.ai" />
-                            <input type="hidden" id="category2" name="category2" value="kr" />
-                            <input type="hidden" name="_csrf" value="0a453973-a0f0-4f55-9eec-c2021662f969" />
-                            <h5>기본 정보</h5>
-                            <ul>
+                    <p class="guide_msg">회원 탈퇴를 신청하기 전에 안내 사항을 꼭 확인해 주세요.</p>
+
+                    <dl class="contBox">
+                        <dt>서비스 탈퇴 안내사항</dt>
+                        <dd>
+                            <ul class="info_list">
+                                <li>탈퇴한 아이디는 재사용 및 복구가 불가능합니다.</li>
+                                <li>계정을 삭제하시면 회원님의 활동 기록, API ID, API Key 정보가 삭제되어 복구할 수 없으니 신중하게 결정해 주세요.</li>
+                                <li>회원 탈퇴 시 고객님의 정보는 관련법령에 따라 보관 의무가 있는 경우를 제외하고는 즉시 삭제됩니다.</li>
+                                <li>월 정기결제 유료 서비스 이용 기간 중에 탈퇴하는 경우, 해당 월 정기 결제 서비스는 해지되어 API 사용을 포함한 서비스를 이용할 수 없게 되며 서비스 속성상 환불이 일체 이루어지지 않습니다.</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    
+                    <dl class="contBox">
+                        <dt>무엇이 불편하셨나요? <span>(회원을 탈퇴하시는 이유를 말씀해 주세요.) (선택)</span></dt>
+                        <dd>
+                            <ul class="slt_list">
+                                <!-- [D] input[type="checkbox"]의 id와 label의 for값을 동일하게 줘야함 -->
                                 <li>
-                                    <span>이메일</span>
-                                    <em>boramm@mindslab.ai</em>
+                                    <input type="checkbox" id="chk01" class="chk" name="wtdrl_reason">
+                                    <label for="chk01">이용에 불편하고 장애가 많아서</label>
                                 </li>
                                 <li>
-                                    <span>이름</span>
-                                    <input type="text" id="name" name="name"  value="" maxlength="20" placeholder="이름" class="username">
+                                    <input type="checkbox" id="chk02" class="chk" name="wtdrl_reason">
+                                    <label for="chk02">금액이 비싸서</label>
                                 </li>
                                 <li>
-                                    <span>연락처</span>
-                                    <input type="tel" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" id="phone" name="phone" value="" class="userTel">
+                                    <input type="checkbox" id="chk03" class="chk" name="wtdrl_reason">
+                                    <label for="chk03">삭제하고 싶은 내용이 있어서</label>
                                 </li>
                                 <li>
-                                    <span>회사/소속</span>
-                                    <input type="text" id="company" name="company" value="" maxlength="40">
+                                    <input type="checkbox" id="chk04" class="chk" name="wtdrl_reason">
+                                    <label for="chk04">사용빈도가 낮아서</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="chk05" class="chk" name="wtdrl_reason">
+                                    <label for="chk05">
+                                        <div class="iptBox">
+                                            <textarea class="txt" placeholder="직접 입력"></textarea>
+                                            <div class="txtCount">(<span>0</span>/50)</div>
+                                        </div>
+                                    </label>
                                 </li>
                             </ul>
+                        </dd>
+                    </dl>
 
-                            <div class="chkBox">
-                                <input type="checkbox" id="marketingAgree" name="marketingAgree">
-                                <label for="marketingAgree">마음 AI 최신 정보 및 이벤트 알림 메일을 수신합니다.</label>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="btn">
-                        <a onclick="setUpdate();" class="btn_profile_save">저장</a>
+                    <dl class="contBox">
+                        <dt>비밀번호 입력 <span>(필수)</span></dt>
+                        <dd>
+                            <input type="password" class="txt" placeholder="현재 비밀번호를 입력해 주세요.">
+                        </dd>
+                    </dl>
+
+                    <div class="chkBox">
+                        <input type="checkbox" id="mbs_wtdrl_agree">
+                        <label for="mbs_wtdrl_agree">안내사항을 모두 확인하였으며, 이에 동의합니다.</label>
                     </div>
                 </div>
+
+                <div class="btn">
+                    <button type="button" class="btn_cancel">취소</button>
+                    <button type="button" class="btn_mbs_wtdrl">회원탈퇴</button>
+                </div>
             </div>
-            <p class="wtdrl_msg">maum.ai 서비스를 더 이상 이용하지 않는다면, <a href="회원탈퇴 페이지 연결해주세요" class="btn_wtdrl">maum.ai 회원탈퇴 하기 <em class="fas fa-angle-double-right"></em></a></p>
         </div>
         <!--content-->
     </div>
@@ -279,7 +295,29 @@
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function (){
+        // 탈퇴 사유 체크박스 하나만 선택되도록 제한
+        $('input[type="checkbox"][name="wtdrl_reason"]').click(function(){ 
+            if($(this).prop('checked')){
+                $('input[type="checkbox"][name="wtdrl_reason"]').prop('checked',false);
+                $(this).prop('checked',true);
+            }
+        });
 
+        // [D] 직접 입력 시 라디오 체크 trigger
+		$('.txt').on('focus', function(){
+			$('.slt_list li:last-child .chk').trigger('click');
+		});
+
+        // 예문 선택 중 직접 입력 글자수 제한
+        $('.txt').keyup(function(e){
+			var content = $(this).val();
+        	$('.txtCount span').html(content.length);
+
+            if(content.length > 50){
+                $(this).val(content.substring(0, 50));
+                $('.txtCount span').html(50);
+            }
+        });
     });
 });
 </script>
