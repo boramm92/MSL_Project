@@ -99,6 +99,7 @@
                     </div>
 
                     <div class="contBox">
+                        <!-- [D] 수정 불가 항목에 addClass('disabled')하면 비활성화 처리됨 -->
                         <dl class="disabled">
                             <dt>워크스페이스 게시 여부</dt>
                             <dd>
@@ -157,7 +158,7 @@
                             </dd>
                         </dl>
 
-                        <div class="define_group detail_set">
+                        <div class="define_group detail_set disabled">
                             <dl>
                                 <dt>지급 방식</dt>
                                 <dd>
@@ -216,7 +217,14 @@
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-
+        // 용역계약서 선택 시 세부 항목 활성화
+        $('input[type="radio"][name="contract_type"]').on('click', function(){
+            if($(this).is('#contract_type02')){
+                $(this).parents('.contBox').find('.detail_set').removeClass('disabled');
+            }else{
+                $(this).parents('.contBox').find('.detail_set').addClass('disabled');
+            }
+        });
     });
 });
 </script>
