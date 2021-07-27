@@ -56,7 +56,7 @@
             <div class="account"><span>H&M(=헤네스앤모리츠)슈퍼</span></div>
             <ul class="nav">
                 <li class="active"><a href="workspace_main.html">워크스페이스 관리</a></li>
-                <li><a href="#none">프로젝트 관리</a></li>
+                <li><a href="project_main.html">프로젝트 관리</a></li>
                 <li><a href="#none">작업현황 통계</a></li>
                 <li><a href="#none">작업자 관리</a></li>
                 <li><a href="#none">문의 관리</a></li>
@@ -69,12 +69,14 @@
         <!-- #contents -->
         <div id="contents">
             <!-- .content -->
-            <div class="content">
+            <div class="content workspace_register">
                 <div class="titArea clearfix">
-                    <h3>워크스페이스 등록</h3>
+                    <!-- [D] 작성 상태에 따라 addClass('on')하면 보여짐 -->
+                    <h3 class="on">워크스페이스 등록</h3>
+                    <h3>워크스페이스 수정</h3>
                 </div>
 
-                <div class="contArea workspace_register">
+                <div class="contArea">
                     <div class="contBox define_group">
                         <dl>
                             <dt>워크스페이스 명</dt>
@@ -90,7 +92,7 @@
                         </dl>
                         <dl>
                             <dt>작업 기간</dt>
-                            <dd>
+                            <dd class="dateRange">
                                 <input type="text" class="ipt_txt fromDate" placeholder="시작일">
                                 -
                                 <input type="text" class="ipt_txt toDate" placeholder="종료일">
@@ -180,7 +182,7 @@
                             </dl>
                             <dl>
                                 <dt>계약 기간</dt>
-                                <dd>
+                                <dd class="dateRange">
                                     <input type="text" class="ipt_txt fromDate" placeholder="계약 시작">
                                     -
                                     <input type="text" class="ipt_txt toDate" placeholder="계약 종료">
@@ -213,10 +215,48 @@
 <!-- //#wrap -->
 
 <!---------------------- Local Resources ---------------------->
+<!-- Local CSS -->
+<link rel="stylesheet" type="text/css" href="../../../../assets_renewal/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../../../../assets_renewal/css/bootstrap-datetimepicker.css">
+
+<!-- Local Script Library -->
+<script type="text/javascript" src="../../../../assets_renewal/js/bootstrap-datetimepicker.js"></script>
+
 <!-- Local Script -->
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
+        // datepicker
+        $('.dateRange').each(function(){
+            var thisFromDate = $(this).find('.fromDate'),
+                thisToDate = $(this).find('.toDate');
+
+            thisFromDate.datetimepicker({
+                format: 'yyyy-mm-dd', 
+                minView: 'month',
+                pickTime : false, 
+                autoclose: 1,
+            }).on('changeDate', function(selected){
+                var startDate = new Date(selected.date.valueOf());
+                thisToDate.datetimepicker('setStartDate', startDate);
+            }).on('clearDate', function(selected){
+                thisToDate.datetimepicker('setStartDate', null);
+            });
+
+            thisToDate.datetimepicker({
+                format: 'yyyy-mm-dd', 
+                minView: 'month',
+                pickTime : false, 
+                autoclose: 1,
+            }).on('changeDate', function(selected){
+                var endDate = new Date(selected.date.valueOf());
+                thisFromDate.datetimepicker('setEndDate', endDate);
+            }).on('clearDate', function(selected){
+                thisFromDate.datetimepicker('setEndDate', null);
+            });
+        });
+
+
         // 용역계약서 선택 시 세부 항목 활성화
         $('input[type="radio"][name="contract_type"]').on('click', function(){
             if($(this).is('#contract_type02')){
