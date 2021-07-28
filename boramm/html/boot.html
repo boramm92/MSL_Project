@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no">
+
+<!---------------------- General Resources ---------------------->
+<!-- General CSS -->
+<link rel="stylesheet" type="text/css" href="">
+
+<!-- General Script -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<title>Document</title>
+</head>
+<body>
+    <form class="container my-5">
+        <div class="form-group">
+            <p>상품선택</p>
+            <select class="form-control" id="option1">
+                <option>바지</option>
+                <option>셔츠</option>
+            </select>
+
+            <p>사이즈 선택</p>
+            <select class="form-control" id="option2">
+                <option>28</option>
+                <option>30</option>
+                <option>32</option>
+            </select>
+
+            <p>이름찾기</p>
+            <input type="text" class="srch_name">
+        </div>
+    </form>
+
+<!-- Local Script -->
+<script type="text/javascript">
+    $('#option1').on('change', function(){
+        $('#option2').empty();
+
+        if($('#option1').val() == '셔츠'){
+            var size = [85, 90, 95, 100, 105, 110, 115];
+
+            // for(var i = 0; i < size.length; i++){
+            //     var temp = `<option>${size[i]}</option>`;
+            //     $('#option2').append(temp);
+            // }                
+            
+            size.forEach(function(i){
+                // var temp = `<option>${i}</option>`;
+                // $('#option2').append(temp);
+
+                tempDraw(i);
+            });
+        }else{
+            var size = [28, 29, 30, 31, 32, 33, 34];
+
+            // for(var i = 0; i < size.length; i++){
+            //     var temp = `<option>${size[i]}</option>`;
+            //     $('#option2').append(temp);
+            // }
+
+            size.forEach(function(i){
+                // var temp = `<option>${i}</option>`;
+                // $('#option2').append(temp);
+
+                tempDraw(i);
+            });
+        }
+    });
+
+    function tempDraw(i){
+        var temp = `<option>${i}</option>`;
+        $('#option2').append(temp);
+    }
+
+
+    // function searchName(srchname){
+    //     var name = ['흥민', '영희', '철수', '재석']; 
+
+    //     for(var i = 0; i < name.length; i++){
+    //         if(srchname == name[i]){
+    //             console.log('있어요');
+    //             return;
+    //         }else{
+    //             console.log('없어요');
+    //             return;
+    //         }
+    //     }
+    // }
+    // searchName('영희');
+
+    for (var z = 2; z < 10; z++) {
+        for (var i = 1; i < 10; i++) {
+            console.log(z * i)
+        }
+    }
+
+
+    
+</script>
+</body>
+</html>
