@@ -25,9 +25,6 @@
 .fl {float:left;}
 .fr {float:right;}
 
-/* clearfix */
-.clearfix:after {content:''; display:block; clear:both;}
-
 /* hide */
 .hide {display:inline-block; overflow:hidden; position:absolute; text-indent:-9999px; line-height:0; white-space:nowrap;}
 
@@ -49,7 +46,7 @@
 .srchBox .btn_srch {position:absolute; top:0; right:4px; width:32px; height:32px; background:url('../images/dashboard/ico_srch.svg') 50% 50% no-repeat;}
 
 /* select */
-.select {min-width:100px; height:32px; padding:0 40px 0 12px; border:1px solid #d9dde6; border-radius:4px; box-sizing:border-box; background:#fff url('../images/dashboard/ico_caret_down.svg') top 50% right 4px no-repeat; color:#707177; font-size:13px; letter-spacing:-0.13px;}
+.select {overflow:hidden; min-width:100px; height:32px; padding:0 30px 0 12px; border:1px solid #d9dde6; border-radius:4px; box-sizing:border-box; background:#fff url('../images/dashboard/ico_caret_down.svg') top 50% right 4px no-repeat; color:#707177; font-size:13px; letter-spacing:-0.13px; white-space:nowrap; text-overflow:ellipsis;}
 
 /* button */
 .btn_primary_rect {display:inline-block; height:42px; border-radius:4px; background:#aaadb1; color:#fff; font-size:14px; letter-spacing:-0.14px; line-height:42px; transition:all 0.3s ease-out;}
@@ -69,7 +66,7 @@
 
 /* chkBoxOnly */
 .chkBoxOnly {display:inline-block; position:relative;}
-.chkBoxOnly input[type="checkbox"] {overflow:hidden; width:1px; height:1px; margin:1px; padding:0; border:none;}
+.chkBoxOnly input[type="checkbox"] {overflow:hidden; margin:-1px; padding:0; border:none;}
 .chkBoxOnly input[type="checkbox"]:before {content:''; display:block; position:absolute; top:50%; left:50%; width:20px; height:20px; border:1px solid #d9dde6; border-radius:4px; box-sizing:border-box; background:#fff; transform:translate(-50%, -50%); transition:border 0.2s ease-out; cursor:pointer;}
 .chkBoxOnly input[type="checkbox"]:checked:before {border:1px solid #1054b2; background:#fff url('../images/dashboard/ico_chk_b.svg') 50% 50% no-repeat;} 
 
@@ -81,6 +78,12 @@
 .switchBox input[type="checkbox"] + label:after {content:''; display:inline-block; position:absolute; top:2px; right:24px; width:14px; height:14px; border-radius:50%; background:#f0f0f0; transition:all 0.2s ease-out;}
 .switchBox input[type="checkbox"]:checked + label:before {background:#1054b2;}
 .switchBox input[type="checkbox"]:checked + label:after {right:2px; background:#fff;}
+
+/* list style */
+ul.decimal + ul.disc,
+ul.disc + ul.decimal {margin:10px 0 0;}
+ul.decimal li {list-style:decimal; list-style-position:inside;}
+ul.disc li {list-style:disc; list-style-position:inside;}
 
 /* datepicker */
 input[type="text"].fromDate,
@@ -124,10 +127,12 @@ input[type="text"].toDate {position:relative; background:#fff url('../images/das
 
 /* -------------------- content -------------------- */
 /* titArea */
-.titArea {margin:0 0 30px;}
-.titArea h3 {float:left; margin:0 30px 0 0; color:#26282b; font-size:22px; font-weight:500; letter-spacing:-0.22px;}
-.titArea .btnBox {float:left; margin:-10px 0 0;}
-.titArea .btnBox .btn_rgst {padding:0 34px 0 14px; background:url('../images/dashboard/ico_add.svg') top 50% right 14px no-repeat;}
+.titArea {margin:0 0 20px;}
+.titArea:after {content:''; display:block; clear:both;}
+.titArea h3 {float:left; margin:0 30px 0 0; color:#26282b; font-size:22px; font-weight:500; letter-spacing:-0.22px; line-height:42px;}
+.titArea .btnBox .btn_rgst {padding:0 40px 0 20px; background:url('../images/dashboard/ico_add.svg') top 50% right 14px no-repeat;}
+.titArea .btnBox .btn_bin {float:right; padding:0 34px 0 14px; background:#b2b2b2 url('../images/dashboard/ico_bin.svg') top 50% right 14px no-repeat;}
+.titArea .btn_bin:hover {background-color:#1054b2;}
 
 /* contArea */
 .titArea + .contArea {padding:30px 30px 58px; border:1px solid #d9dde6; border-radius:4px; box-sizing:border-box; background:#fff;}
@@ -150,15 +155,36 @@ input[type="text"].toDate {position:relative; background:#fff url('../images/das
 .titArea + .contArea .contBox .guide_msg {margin:10px 0 0; color:#26282b; font-size:13px; letter-spacing:-0.13px; text-indent:30px;}
 
 .titArea + .contArea .btnBox {margin:40px 0 0; text-align:center;}
-.titArea + .contArea .btnBox button {width:100px; margin:0 13px;}
+.titArea + .contArea .btnBox .btn_primary_rect {width:100px; margin:0 13px;}
 
-.workspace_register .titArea h3 {display:none;}
-.workspace_register .titArea h3.on {display:block;}
-.workspace_register .titArea + .contArea .contBox dl dd .radioBox input[type="radio"] + label span {display:inline-block; margin:0 18px 0 0;}
-.workspace_register .titArea + .contArea .contBox dl dd .radioBox input[name="workspace_auth"] + label span {width:52px;}
-.workspace_register .titArea + .contArea .contBox dl dd .radioBox input[name="contract_type"] + label span {width:102px;}
-.workspace_register .titArea + .contArea .contBox dl dd .textarea {width:1060px; height:182px;}
-.workspace_register .titArea + .contArea .contBox:nth-child(1) dl dd .ipt_txt {width:250px;}
+.workspace_regist .titArea h3 {display:none;}
+.workspace_regist .titArea h3.on {display:block;}
+.workspace_regist .titArea + .contArea .contBox dl dd .radioBox input[type="radio"] + label span {display:inline-block; margin:0 18px 0 0;}
+.workspace_regist .titArea + .contArea .contBox dl dd .radioBox input[name="workspace_auth"] + label span {width:52px;}
+.workspace_regist .titArea + .contArea .contBox dl dd .radioBox input[name="contract_type"] + label span {width:102px;}
+.workspace_regist .titArea + .contArea .contBox dl dd .textarea {width:1060px; height:182px;}
+.workspace_regist .titArea + .contArea .contBox:nth-child(1) dl dd .ipt_txt {width:250px;}
+
+.project_regist .titArea + .contArea .contBox dl dd .select,
+.project_regist .titArea + .contArea .contBox dl dd .ipt_txt {width:480px}
+.project_regist .titArea + .contArea .contBox .tapBtn {display:flex; flex-direction:column; align-items:center; float:left; width:218px; margin:0 30px 0 0;}
+.project_regist .titArea + .contArea .contBox .tapBtn li {width:100%; height:74px; border:1px solid #d9dde6; border-radius:4px; box-sizing:border-box; background:#fff; color:#26282b; font-size:14px; font-weight:500; letter-spacing:-0.14px; line-height:72px; text-align:center; transition:all 0.3s ease-out; cursor:pointer;}
+.project_regist .titArea + .contArea .contBox .tapBtn li + li {margin:30px 0 0;}
+.project_regist .titArea + .contArea .contBox .tapBtn li.actvie {background:#1054b2; color:#fff;}
+.project_regist .titArea + .contArea .contBox .tapCont {overflow:auto; width:732px; height:386px; padding:20px 30px; border:1px solid #d9dde6; border-radius:4px; box-sizing:border-box; background:#fff;}
+
+/* step_wrap */
+.step_wrap {margin:0 0 38px;}
+.step_wrap .step_list {display:table; width:980px;}
+.step_wrap .step_list li {display:table-cell; position:relative; width:130px; padding:46px 0 0; color:#91969d; font-size:14px; font-weight:500; letter-spacing:-0.14px; text-align:center;}
+.step_wrap .step_list li + li {margin:0 0 0 150px;}
+.step_wrap .step_list li:before {content:''; display:block; position:absolute; top:0; left:50%; width:34px; height:34px; border-radius:50%; box-sizing:border-box; background:#e8eaed; transform:translate(-50%, 0); z-index:10;}
+.step_wrap .step_list li:after {content:''; display:block; position:absolute; top:16px; right:calc(50% + 17px); width:230px; height:2px; background:#e8eaed;}
+.step_wrap .step_list li:first-child:after {content:none;}
+
+.step_wrap .step_list li.active {color:#1054b2;}
+.step_wrap .step_list li.active:before {border:6px solid #1054b2; box-shadow:0 3px 6px 0 rgba(20, 21, 38, 0.17); background:#fff;}
+.step_wrap .step_list li.active + li.active:after {background:#1054b2;}
 
 /* tblBox */
 .tblBox table {width:100%;}
@@ -166,7 +192,7 @@ input[type="text"].toDate {position:relative; background:#fff url('../images/das
 .tblBox table tbody tr td {position:relative; height:60px; padding:0 15px; box-sizing:border-box; background:#fff; color:#26282b; font-size:13px; letter-spacing:-0.13px; text-align:left; line-height:19px; transition:background-color 0.3s ease-out;}
 .tblBox table tbody tr:hover td {background:#f0f4ff;}
 .tblBox table tbody tr td:first-child:before {content:''; transition:all 0.3s ease-out;}
-.tblBox table tbody tr:hover td:first-child:before {content:''; display:block; position:absolute; top:0; left:0; width:4px; height:100%; background:#1054b2;}
+.tblBox table tbody tr:hover td:first-child:before {content:''; display:block; position:absolute; top:0; left:0; width:4px; height:60px; background:#1054b2;}
 .tblBox table tbody tr:not(:last-child) td {border-bottom:1px solid #d9dde6;}
 .tblBox table tbody tr.selected td {background:#f0f4ff;}
 .tblBox table tbody tr.selected td:first-child:before {content:''; display:block; position:absolute; top:0; left:0; width:4px; height:100%; background:#1054b2;}
@@ -177,9 +203,10 @@ input[type="text"].toDate {position:relative; background:#fff url('../images/das
 .tblBox.icld_chk table tbody tr td:first-child {text-align:center;}
 
 /* pagingArea */
-.pagingArea {margin:48px 0 0; text-align:center;}
-.pagingArea .paging {display:inline-block;}
-.pagingArea .paging a {display:inline-block; width:26px; height:26px; color:#757c88; font-size:13px; line-height:26px; vertical-align:top;}
+.pagingArea {position:relative; margin:48px 0 0;}
+.pagingArea:after {content:''; display:block; clear:both;}
+.pagingArea .paging {position:absolute; top:0; left:50%; transform:translate(-50%, 0);}
+.pagingArea .paging a {display:inline-block; width:26px; height:26px; color:#757c88; font-size:13px; line-height:26px; text-align:center; vertical-align:top;}
 .pagingArea .paging a.current {color:#1054b2; font-weight:700; pointer-events:none;}
 .pagingArea .paging .btn_paging {border:1px solid #d9dde6; border-radius:4px; box-sizing:border-box;}
 .pagingArea .paging .btn_paging.first {background:#fff url('../images/dashboard/ico_paging_first.svg') 50% 50% no-repeat;}
@@ -218,6 +245,11 @@ input[type="text"].toDate {position:relative; background:#fff url('../images/das
 .tbl_tap_wrap .tapCont .tblBox tbody tr:last-child td:first-child {border-bottom-left-radius:4px;}
 .tbl_tap_wrap .tapCont .tblBox tbody tr:last-child td:last-child {border-bottom-right-radius:4px;}
 
+/* progress_wrap */
+.progress_wrap .txt {margin:0 0 6px; color:#26282b; font-size:13px; letter-spacing:-0.13px; line-height:19px;}
+.progress_wrap .progress_bar {position:relative; width:100%; height:16px; border-radius:8px; background:#dee1e6;}
+.progress_wrap .progress_bar .current {position:absolute; top:0; left:0; width:30%; height:100%; border-radius:8px; background:#1054b2;}
+
 
 /* -------------------- aside -------------------- */
 .asideWrap {display:none; position:fixed; top:0; right:0; bottom:0; left:0; z-index:6000;}
@@ -228,17 +260,18 @@ input[type="text"].toDate {position:relative; background:#fff url('../images/das
 .asideWrap .aside .contArea {clear:both;}
 .asideWrap .aside .contArea .contBox {width:100%; padding:20px; border:1px solid #d9dde6; border-radius:4px; box-sizing:border-box; background:#fff;}
 .asideWrap .aside .contArea .contBox + .contBox {margin:20px 0 0;}
-.asideWrap .aside .contArea .contBox .tit {padding:0 0 10px; border-bottom:1px solid #e4e4e4;}
+.asideWrap .aside .contArea .contBox .tit {margin:0 0 16px; padding:0 0 10px; border-bottom:1px solid #e4e4e4;}
 .asideWrap .aside .contArea .contBox .tit h4 {display:inline-block; color:#26282b; font-size:22px; font-weight:500; letter-spacing:-0.22px; line-height:22px;}
 .asideWrap .aside .contArea .contBox .tit .fr .switchBox {margin:0 0 0 6px;}
 .asideWrap .aside .contArea .contBox .tit .fr .switchBox input[type="checkbox"] + label {padding:0 48px 0 0;}
-.asideWrap .aside .contArea .contBox .cont {overflow:hidden; margin:16px 0 0;}
+.asideWrap .aside .contArea .contBox .cont {overflow:hidden;}
 .asideWrap .aside .contArea .contBox .cont dl.define {color:#26282b; font-size:13px; letter-spacing:-0.13px; line-height:26px;}
 .asideWrap .aside .contArea .contBox .cont dl.define > * {display:inline-block;}
 .asideWrap .aside .contArea .contBox .cont dl.define dt {font-weight:500;}
 .asideWrap .aside .contArea .contBox .cont dl.define dd {margin:0 0 0 4px;}
 .asideWrap .aside .contArea .contBox .cont .lineBox {overflow:hidden; width:100%; border:1px solid #d9dde6; border-radius:4px; box-sizing:border-box; background:#fff;}
 .asideWrap .aside .btnBox {margin:40px 0 0; text-align:center;}
+.asideWrap .aside .btnBox .btn_primary_rect {margin:0 13px;}
 .asideWrap .aside .btnBox .btn_aside_modify {width:100px; background:#1054b2;}
 
 #workspace .aside .contArea .contBox:nth-child(1) .tit h4 {overflow:hidden; width:calc(100% - 80px); white-space:nowrap; text-overflow:ellipsis;}
@@ -256,3 +289,13 @@ input[type="text"].toDate {position:relative; background:#fff url('../images/das
 #workspace .aside .contArea .contBox:nth-child(2) .cont .fr .lineBox dd {display:table-cell; width:calc(100% - 89px); color:#26282b; font-size:30px; font-weight:500; letter-spacing:-0.3px; text-align:center; vertical-align:middle;}
 #workspace .aside .contArea .contBox:nth-child(2) .cont .fr .lineBox dd span {display:inline-block; overflow:hidden; max-width:85px; white-space:nowrap; text-overflow:ellipsis; vertical-align:bottom;}
 #workspace .aside .contArea .contBox:nth-child(3) .cont .work_guide {overflow-y:auto; height:175px; color:#26282b; font-size:13px; font-weight:500; letter-spacing:-0.13px; line-height:22px; word-break:keep-all; white-space:pre-line;}
+
+#project .aside .contArea .contBox:nth-child(1) .tit h4 {overflow:hidden; width:calc(100% - 120px); white-space:nowrap; text-overflow:ellipsis;}
+#project .aside .contArea .contBox:nth-child(2) .cont .lineBox {width:273px; height:288px;}
+#project .aside .contArea .contBox:nth-child(2) .cont .lineBox dl {height:100%;}
+#project .aside .contArea .contBox:nth-child(2) .cont .lineBox dl dt {padding:10px 12px 6px; border-bottom:1px solid #e4e4e4; box-sizing:border-box; color:#26282b; font-size:16px; font-weight:500; letter-spacing:-0.16px; line-height:23px;}
+#project .aside .contArea .contBox:nth-child(2) .cont .lineBox dl dt .fr {font-size:13px; font-weight:500; letter-spacing:-0.13px;}
+#project .aside .contArea .contBox:nth-child(2) .cont .lineBox dl dt .fr span {font-weight:400;}
+#project .aside .contArea .contBox:nth-child(2) .cont .lineBox dl dd {overflow:auto; height:calc(100% - 40px); padding:12px; box-sizing:border-box; color:#26282b; font-size:13px; letter-spacing:-0.13px; line-height:22px;}
+#project .aside .contArea .contBox:nth-child(3) .cont .progress_wrap + .progress_wrap {margin:12px 0 0;}
+#project .aside .btnBox button {width:100px;}

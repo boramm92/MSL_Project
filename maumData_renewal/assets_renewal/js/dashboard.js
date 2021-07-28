@@ -43,7 +43,7 @@ $(document).ready(function(){
         $(asideId).prepend('<div class="aside_bg"></div>');
         
         // close 
-        $('.btn_aside_close').on('click',function(){
+        $('.aside_bg, .btn_aside_close').on('click',function(){
             $('body').css('overflow', '');
             $(asideId).css('display', 'none'); 
             $('.aside_bg').remove(); 
