@@ -218,10 +218,10 @@
         <!-- .svc_sta -->
         <div class="svc_sta" style="display: none;">
             <!-- svc_visual -->
-            <div class="svc_visual">
+            <!-- <div class="svc_visual">
                 <h3>Edge AI Platform</h3>
                 <p class="bg_img"><img src="../aiaas/kr/images/img_visual01.png" alt="Edge AI 이미지"></p>
-            </div>
+            </div> -->
             <!-- //svc_visual -->
             <!-- .lnb -->
             <div class="lnb">
@@ -251,22 +251,6 @@
 			<img class="visual_bg" src="../aiaas/kr/images/landing/bg_visual.png" alt="백그라운드 이미지">
 			<div id="swiper-visual" class="swiper-container">
 				<div class="swiper-wrapper">
-					<div class="swiper-slide content kiosk">
-						<div class="visual_tit">
-							<span>AI Human</span>
-							<span>X</span>
-							<span>키오스크</span>
-						</div>
-						<div class="visual_desc">
-							<span>세상에 없던</span>
-							<span>AI Human KIOSK의 등장</span>
-						</div>
-						<img src="../aiaas/kr/images/landing/img_visual_kiosk.png" alt="ai human kiosk">
-						<div class="btnBox">
-							<a href="키오스크 이벤트 페이지 연결해주세요." target="_blank" title="새창으로 열기" class="btn_main">AI Human 키오스크 <em class="fas fa-chevron-right"></em></a>
-						</div>
-					</div>
-
 					<div class="swiper-slide content aiHuman">
 						<div class="visual_tit">
 							<span>인공지능 기술의 진화</span>
@@ -283,6 +267,22 @@
 							<a href="https://store.maum.ai" target="_blank" title="새창으로 열기" class="btn_sub">스토어<br>바로가기</a>
 						</div>
 					</div>
+
+					<div class="swiper-slide content kiosk">
+						<div class="visual_tit">
+							<span>AI Human</span>
+							<span>X</span>
+							<span>키오스크</span>
+						</div>
+						<div class="visual_desc">
+							<span>세상에 없던</span>
+							<span>AI Human KIOSK의 등장</span>
+						</div>
+						<img src="../aiaas/kr/images/landing/img_visual_kiosk.png" alt="ai human kiosk">
+						<div class="btnBox">
+							<a href="키오스크 이벤트 페이지 연결해주세요." target="_blank" title="새창으로 열기" class="btn_main">AI Human 키오스크 <em class="fas fa-chevron-right"></em></a>
+						</div>
+					</div>					
 				</div>
 				<div class="swiper-pagination"></div>
 			</div>
@@ -413,9 +413,14 @@
 <!-- AMR 메인페이지에 적용되는 script -->
 <script type="text/javascript">
 	// [D] 21.07.30 NBR 추가 
+	setTimeout(function() {
+		$('#swiper-visual .swiper-slide.aiHuman').addClass('current');
+	}, 100);
+
+	// visual swiper
 	var swiperVisual = new Swiper('#swiper-visual', {
 		slidesPerGroup : 1,            
-		loop: true,
+		simulateTouch: false,
 		observer: true,
 		observeParents: true,
 		pagination: {
@@ -425,8 +430,60 @@
 		autoplay: {
 			delay: 6000,
 			disableOnInteraction: false,
+		},
+		on: {
+			slideChange: function(){
+				$('#swiper-visual .swiper-slide').removeClass('current');
+				$('#swiper-visual .swiper-slide').eq(this.realIndex).addClass('current');
+			}
 		}
 	});
+
+	// visual swiper
+	var swiperVisual = new Swiper('.visual-swiper', {
+		pagination: {
+			el: '.visual-swiper-controls .swiper-pagination',
+			type: 'fraction',
+		},
+		simulateTouch: false,
+		navigation: {
+			nextEl: '.visual-swiper-controls .swiper-button-next',
+			prevEl: '.visual-swiper-controls .swiper-button-prev',
+		},
+		effect: 'fade',
+		autoplay: {
+			disableOnInteraction: false,
+			delay: 9800,
+		},
+		on: {
+			init: function() {
+				$('.visual-swiper').addClass('current');
+			},
+			slideChangeTransitionStart: function() {
+				$('.visual-swiper').find('.loader').removeClass('is-play');
+			},
+			slideChangeTransitionEnd: function() {
+				var activeIdx = swiperVisual.activeIndex;
+				var loaderTiming = swiperVisual.autoplay.delay;
+				$('.visual-swiper .swiper-slide').eq(activeIdx).addClass('current').siblings().removeClass('current');
+				$('.visual-swiper').find('.loader').addClass('is-play');
+				var mainVideo = $(".video-box video")
+				if($(".visual .slide02").hasClass("current")){
+					mainVideo.get(0).currentTime = 0;
+				}
+				else{
+					mainVideo.trigger("stop");
+				}
+			}
+		}
+	});
+
+
+
+
+
+
+
 
 	// AMR swiper
 	var swiperProductList = ['AVA', '마음회의록', 'FAST AI']; //AMR 모바일에서 보여질 projects 영역 메뉴 (pc는 html 내 .product_list 에서 수정)
