@@ -412,7 +412,7 @@
 <!-- AMR //공통으로 적용되는 script -->
 <!-- AMR 메인페이지에 적용되는 script -->
 <script type="text/javascript">
-	// [D] 21.07.30 NBR 추가 
+	// [D] visual swiper - 21.07.30 NBR 추가 
 	setTimeout(function() {
 		$('#swiper-visual .swiper-slide.aiHuman').addClass('current');
 	}, 100);
@@ -420,7 +420,6 @@
 	// visual swiper
 	var swiperVisual = new Swiper('#swiper-visual', {
 		slidesPerGroup : 1,            
-		simulateTouch: false,
 		observer: true,
 		observeParents: true,
 		pagination: {
@@ -438,52 +437,6 @@
 			}
 		}
 	});
-
-	// visual swiper
-	var swiperVisual = new Swiper('.visual-swiper', {
-		pagination: {
-			el: '.visual-swiper-controls .swiper-pagination',
-			type: 'fraction',
-		},
-		simulateTouch: false,
-		navigation: {
-			nextEl: '.visual-swiper-controls .swiper-button-next',
-			prevEl: '.visual-swiper-controls .swiper-button-prev',
-		},
-		effect: 'fade',
-		autoplay: {
-			disableOnInteraction: false,
-			delay: 9800,
-		},
-		on: {
-			init: function() {
-				$('.visual-swiper').addClass('current');
-			},
-			slideChangeTransitionStart: function() {
-				$('.visual-swiper').find('.loader').removeClass('is-play');
-			},
-			slideChangeTransitionEnd: function() {
-				var activeIdx = swiperVisual.activeIndex;
-				var loaderTiming = swiperVisual.autoplay.delay;
-				$('.visual-swiper .swiper-slide').eq(activeIdx).addClass('current').siblings().removeClass('current');
-				$('.visual-swiper').find('.loader').addClass('is-play');
-				var mainVideo = $(".video-box video")
-				if($(".visual .slide02").hasClass("current")){
-					mainVideo.get(0).currentTime = 0;
-				}
-				else{
-					mainVideo.trigger("stop");
-				}
-			}
-		}
-	});
-
-
-
-
-
-
-
 
 	// AMR swiper
 	var swiperProductList = ['AVA', '마음회의록', 'FAST AI']; //AMR 모바일에서 보여질 projects 영역 메뉴 (pc는 html 내 .product_list 에서 수정)
