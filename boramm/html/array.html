@@ -41,6 +41,12 @@
         </div>
     </div>
 
+    <div class="container my-4">
+        <button id="sortPrice" class="btn btn-danger">가격순정렬</button>
+        <button id="sortChar" class="btn btn-danger">가나다정렬</button>
+        <button id="filterPrice" class="btn btn-danger">6만원이하</button>
+    </div>
+    
 <script>
     var products = [
         { id : 0, price : 70000, title : 'Blossom Dress' },
@@ -48,8 +54,89 @@
         { id : 2, price : 60000, title : 'Black Monastery' }
     ]
 
+    // 순서 정렬 기능
+    // var array = [7, 3, 5, 2, 40];
+
+    // sort 기능
+    // array.sort(function(a, b){
+    //     return b - a;
+    // });
+
+    // filter 기능
+    // var newArray = array.filter(function(a){
+    //     return a < 4;
+    // });
+
+    // map 기능
+    // var newArray = array.map(function(a){
+    //     return a * 2;
+    // });
+
+    $('#sortPrice').on('click', function(){
+        // 오름차순으로 정렬
+        products.sort(function(a, b){
+            return a.price - b.price;
+        });
+
+        // 데이터 바인딩
+        $('.tit').eq(0).html(products[0].title);
+        $('.price').eq(0).html(products[0].price);
+
+        $('.tit').eq(1).html(products[1].title);
+        $('.price').eq(1).html(products[1].price);
+
+        $('.tit').eq(2).html(products[2].title);
+        $('.price').eq(2).html(products[2].price);
+    });
+
+    $('#sortChar').on('click', function(){
+        // 가나다순으로 정렬
+        products.sort(function(a, b){
+            return a.title < b.title ? - 1 : a.title < b.title ? 1 : 0;
+        });
+
+        // 데이터 바인딩
+        $('.tit').eq(0).html(products[0].title);
+        $('.price').eq(0).html(products[0].price);
+
+        $('.tit').eq(1).html(products[1].title);
+        $('.price').eq(1).html(products[1].price);
+
+        $('.tit').eq(2).html(products[2].title);
+        $('.price').eq(2).html(products[2].price);
+    });
+
+    $('#filterPrice').on('click', function(){
+        // 60000원 이하 필터링
+        var newProducts = products.filter(function(a){
+            return a.price <= 60000;
+        });
+
+        $('.card-group').empty();    
+
+        newProducts.forEach(function(i){
+            var temp = `<div class="card">\
+                            <img src="https://via.placeholder.com/600">\
+                            <div class="card-body">\
+                                <h5 class="tit">${i.title}</h5>\
+                                <p>가격 : <span class="price">${i.price}</span></p>\
+                                <button class="btn btn-danger">주문하기</button>\
+                            </div>\
+                        </div>`;
+
+            $('.card-group').append(temp); 
+        });
+    });
+
+    // 데이터 바인딩
     $('.tit').eq(0).html(products[0].title);
     $('.price').eq(0).html(products[0].price);
+
+    $('.tit').eq(1).html(products[1].title);
+    $('.price').eq(1).html(products[1].price);
+
+    $('.tit').eq(2).html(products[2].title);
+    $('.price').eq(2).html(products[2].price);
 </script>
 </body>
 </html>
