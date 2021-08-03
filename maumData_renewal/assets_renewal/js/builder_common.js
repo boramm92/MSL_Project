@@ -108,6 +108,9 @@ $(document).ready(function(){
 
         $(this).parents('ul').find('li').removeClass('active');
         thisParentList.addClass('active');
+        // 21.08.03 NBR 추가
+        $('.tabWrap .tab_cont > ul li .tagBox button').removeClass('active');
+        $(this).find('button:first-of-type').addClass('active');
 
         // 개별 반려 사유 영역 sliding toggle
         if(!$.isEmptyObject(thisParentList.find('.reject_txt'))){
