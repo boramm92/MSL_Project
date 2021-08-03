@@ -297,21 +297,55 @@
 				<h1 class="api_tit vision_lst">Face-to-Face Avatar</h1>
 
 				<!-- .demobox -->
-				<div class="demobox dropEg">
+				<div class="demobox dropEg vis_avatar">
 					<p><span>Face-to-Face Avatar</span></p>
 					<span class="sub">사진 속 인물이 영상 속 얼굴의 움직임에 따라 움직이는 엔진 입니다.<br> 특정 인물의 얼굴로 재미있는 영상을 제작할 수 있습니다.</span>
 					
 					<div class="demoCont process">
 						<h4>프로세스</h4>
 						<div class="processBox">
-							<div class="step1">
+							<div class="stepBox step1">
 								<p class="tit">Step 1 <span>(입력)</span></p>
+
+								<div class="cont">
+									<p class="fileType">영상 파일</p>
+									<div class="videoBox">
+										<video controls="" width="272" height="153" poster="../aiaas/common/images/img_aiavatar_thumb.png">
+											<source src="../aiaas/common/video/avatar_sample_.mp4" type="video/mp4">
+											IE 8 이하는 비디오가 나오지 않습니다. IE 버전을 업데이트 하시길 바랍니다.
+										</video>
+									</div>
+
+									<em class="fas fa-plus"></em>
+
+									<p class="fileType">이미지 파일</p>
+									<div class="imgBox">
+										<img src="../aiaas/common/images/img_avatar1.png" alt="sample image">
+									</div>
+								</div>									
 							</div>
-							<div class="step2">
+
+							<div class="stepBox step2">
 								<p class="tit">Step 2 <span>(작동)</span></p>
+								
+								<div class="cont">
+									<img class="egIcon" src="../aiaas/kr/images/menu/ico_vis_avatar.svg" alt="Face-to-Face Avatar">
+									<p class="egName">Face - to Face Avatar</p>
+								</div>
 							</div>
-							<div class="step3">
+
+							<div class="stepBox step3">
 								<p class="tit">Step 3 <span>(완성)</span></p>
+
+								<div class="cont">
+									<p class="fileType">결과 영상</p>
+									<div class="videoBox">
+										<video controls="" width="272" height="153">
+											<source src="../aiaas/common/video/avatar_result_sample.mp4" type="video/mp4">
+											IE 8 이하는 비디오가 나오지 않습니다. IE 버전을 업데이트 하시길 바랍니다.
+										</video>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -320,14 +354,17 @@
 						<h4>기술의 특장점</h4>
 						<ul class="comm_lst">
 							<li>
+								<img src="../aiaas/kr/images/img_vis_avatar_strength01.svg" alt="strength image">
 								<p class="tit">정확한 얼굴 인식</p>
 								<p class="desc">사진 속 얼굴 인식에<br> 특화된 엔진을 제공합니다.</p>
 							</li>
 							<li>
+								<img src="../aiaas/kr/images/img_vis_avatar_strength02.svg" alt="strength image">
 								<p class="tit">디테일한 움직임</p>
 								<p class="desc">입 모양뿐만 아니라<br> 표정, 움직임까지 따라 할 수 있습니다.</p>
 							</li>
 							<li>
+								<img src="../aiaas/kr/images/img_vis_avatar_strength03.svg" alt="strength image">
 								<p class="tit">쉽고 간단한 엔진</p>
 								<p class="desc">이미지 한 장만으로<br> 재미있는 영상을 만들 수 있습니다.</p>
 							</li>
@@ -338,12 +375,15 @@
 						<h4>활용 사례</h4>
 						<ul class="comm_lst">
 							<li>
+								<img src="../aiaas/kr/images/img_vis_avatar_useCase01.png" alt="use case image">
 								<p class="tit">뉴스 제작</p>
 							</li>
 							<li>
+								<img src="../aiaas/kr/images/img_vis_avatar_useCase02.png" alt="use case image">
 								<p class="tit">VR,게임 캐릭터 제작</p>
 							</li>
 							<li>
+								<img src="../aiaas/kr/images/img_vis_avatar_useCase03.png" alt="use case image">
 								<p class="tit">영상 콘텐츠 제작</p>
 							</li>
 						</ul>
@@ -364,112 +404,7 @@
 
 <!-- Local Script -->
 <script type="text/javascript">
-    // API 탭 - [D] 기존 작성된 script
-    function openTap(evt, menu) {
-        var i, demobox, tablinks;
-        demobox = document.getElementsByClassName("demobox");
-        for (i = 0; i < demobox.length; i++) {
-            demobox[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace("active", "");
-        }
-        document.getElementById(menu).style.display = "block";
-        evt.currentTarget.className += " active";
-    }
 
-    document.getElementById("defaultOpen").click();
-
-jQuery.event.add(window,"load",function(){
-    $(document).ready(function (){
-		// 파일 업로드 기능 - [D] 기존 작성된 script
-		document.querySelector("#demoFile").addEventListener('change', function (ev) {
-			document.querySelector(".demolabel").innerHTML = ev.target.files[0].name;
-			var element = document.getElementById( 'uploadFile' );
-			element.classList.remove( 'btn' );
-			element.classList.add( 'btn_change' );
-			$('.fl_box').css("opacity", "0.5");
-		});
-
-		$('em.close').on('click', function () {
-			$(this).parent().removeClass("btn_change");
-			$(this).parent().addClass("btn");
-			$(this).parent().children('.demolabel').text('이미지 업로드');
-			$('.fl_box').css('opacity', '1');
-			//파일명 변경
-			document.querySelector("#demoFile").addEventListener('change', function (ev) {
-				document.querySelector(".demolabel").innerHTML = ev.target.files[0].name;
-				var element = document.getElementById( 'uploadFile' );
-				element.classList.remove( 'btn' );
-				element.classList.add( 'btn_change' );
-			});
-		});
-
-		// [D] 결과화면의 애니메이션 효과 & style 조절 slide bar
-		var settings = {
-			fill: '#2c3f51',
-			background: '#cfd5eb'
-		}
-
-		const sliders01 = document.querySelector('.effect_control .range_slider');
-		const sliders02 = document.querySelector('.style_control .range_slider');
-
-
-		sliders01.querySelector('input').addEventListener('input', (event) => {
-			applyFill01(event.target);
-		});
-		applyFill01(sliders01.querySelector('input'));
-
-		function applyFill01(sliders01) {
-			const percentage = 100*(sliders01.value-sliders01.min)/(sliders01.max-sliders01.min);
-			const bg = `linear-gradient(90deg, ${settings.fill} ${percentage}%, ${settings.background} ${percentage+0.1}%)`;
-			sliders01.style.background = bg;
-		}
-
-		sliders02.querySelector('input').addEventListener('input', (event) => {
-			applyFill02(event.target);
-		});
-		applyFill02(sliders02.querySelector('input'));
-
-		function applyFill02(sliders02) {
-			const percentage = 100*(sliders02.value-sliders02.min)/(sliders02.max-sliders02.min);
-			const bg = `linear-gradient(90deg, rgba(247, 119, 138) ${percentage}%, ${settings.background} ${percentage+0.1}%)`;
-			sliders02.style.background = bg;
-		}
-
-		// [D] 결과화면의 style 선택 영역의 button과 select 선택 시 효과
-		var styleSelect = $('.btn_list li button, .slt_list li .select');
-
-		styleSelect.on('click', function(){
-			styleSelect.removeClass('active');
-			$(this).addClass('active');
-		});
-
-		// [D] 단계별 화면 확인을 위한 임시 script로 추가하지 않으셔도 됩니다.
-		$('.btn_apply').on('click', function(){
-			$('.avr_1').hide();
-			$('.avr_2').show();
-		});
-		$('.btn_back1').on('click', function(){
-			$('.avr_2').hide();
-			$('.avr_3').show();
-		});
-		$('.btn_back2').on('click', function(){
-			$('.avr_3').hide();
-			$('.avr_1').show();
-		});
-		// [D] input file에 따라 다른 결과화면을 보여주기 위한 script로 추가하지 않으셔도 됩니다. html의 주석 참고
-		$('.effect_control label').on('click', function(){
-			$('.effect_control').removeClass('on');
-			$('.btn_creat_newImg').addClass('on');
-		});
-		$('.btn_creat_newImg').on('click', function(){
-			$(this).removeClass('on');
-			$('.effect_control').addClass('on');
-		});
-    });
-});
 </script>
 </body>
 </html>

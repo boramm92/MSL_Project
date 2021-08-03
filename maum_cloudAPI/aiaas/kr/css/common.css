@@ -592,16 +592,35 @@ html,body {-ms-overflow-style: none;}
   100% {transform:scale(2) translate(0px, 5px); opacity:0; background:rgba(39, 193, 193, 0.0);}
 }
 
-/* only demo page */
+/* only demo page - 21.08.03 NBR 추가 */
 .content .demobox.dropEg > p {line-height:25px;}
 .content .demobox.dropEg span.sub {margin:13px 0 0; padding:0 0 16px; border-bottom:1px dotted #cfd5eb; line-height:22px;}
-.dropEg .processBox {width:822px; margin:20px auto 0;}
-.dropEg .demoCont {padding:40px 0; border-bottom:1px dotted #cfd5eb;}
+.dropEg .processBox {display:table; width:822px; margin:44px auto 0; border:1px solid #cfd5eb; box-sizing:border-box;}
+.dropEg .processBox .stepBox {display:table-cell; table-layout:fixed; position:relative; padding:20px; box-sizing:border-box; vertical-align:middle;}
+.dropEg .processBox .stepBox:not(.step2) {width:312px; background:#f3f5fb;}
+.dropEg .processBox .step2 {border-right:1px solid #cfd5eb; border-left:1px solid #cfd5eb; box-sizing:border-box;}
+.dropEg .processBox .step2 .egIcon {height:88px;}
+.dropEg .processBox .step2 .egName {margin:9px 0 0; color:#2c3f51; font-size:15px; font-weight:500; letter-spacing:-0.4px;}
+.dropEg .processBox .stepBox > .tit {position:absolute; top:-24px; left:0; width:100%; color:#2c3f51; font-size:15px; font-weight:700; letter-spacing:-0.2px;}
+.dropEg .processBox .stepBox > .tit span {color:#2c3f51; font-weight:400;}
+.dropEg .processBox .stepBox .cont .fileType {margin:0 0 10px; color:#002b49; font-size:14px; letter-spacing:-0.2px;}
+.dropEg .processBox .stepBox .cont .videoBox,
+.dropEg .processBox .stepBox .cont .imgBox {display:inline-block; width:272px; height:153px; border:1px solid #cfd5eb; box-sizing:border-box; background:#000;}
+.dropEg .processBox .stepBox .cont .videoBox video,
+.dropEg .processBox .stepBox .cont .imgBox img {width:100%; height:100%; object-fit:contain;}
+.dropEg .processBox .stepBox .cont .fa-plus {display:block; margin:20px 0; color:#002b49; font-size:25px; letter-spacing:-0.36px;}
+.dropEg .demoCont {padding:40px 0 30px; border-bottom:1px dotted #cfd5eb;}
+.dropEg .demoCont:last-child {border-bottom:none;}
 .dropEg .demoCont h4 {color:#2c3f51; font-size:20px; font-weight:500; letter-spacing:-0.27px;}
 .dropEg .demoCont .comm_lst {display:table; table-layout:fixed; width:822px; margin:30px auto 0;}
 .dropEg .demoCont .comm_lst li {display:table-cell;}
 .dropEg .demoCont .comm_lst li .tit {color:#2c3f51; font-size:15px; font-weight:700; letter-spacing:-0.2px;}
-.dropEg .demoCont .comm_lst li .desc {margin:10px 0 0; color:#2c3f51; font-size:15px; letter-spacing:-0.2px;} 
+.dropEg .demoCont .comm_lst li .desc {margin:10px 0 0; color:#2c3f51; font-size:15px; letter-spacing:-0.2px;}
+.dropEg .demoCont.strength .comm_lst li .tit {margin:35px 0 0;} 
+.dropEg .demoCont.useCase .comm_lst li img {width:96px;}
+.dropEg .demoCont.useCase .comm_lst li .tit {margin:20px 0 0;} 
+/* //only demo page - 21.08.03 NBR 추가 */
+
 
 /* demo (recording) */
 .demo_recording {display:none; clear:both; overflow:hidden; height:100%; padding:0;}
