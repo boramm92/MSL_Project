@@ -65,21 +65,20 @@
                         </div>    
                     </div>
                 </div>
-            </div>
-            
+            </div>           
             <div class="bgBox"></div>                    
         </div>
 
         <div class="stn main">
             <div class="contWrap">
                 <div class="contBox">
-                    <div class="txtArea fl">
+                    <div class="txtArea">
                         <img src="../resources/images/kiosk/img_theAgeOfAiKiosk.svg" alt="THE AGE OF AI KIOSK">
                         <p>사람처럼 대화하고<br> 사람처럼 응대합니다.</p>
-                    </div>
-                    <div class="imgArea fr">
+                    </div>  
+                    <div class="imgArea">
                         <img src="../resources/images/kiosk/img_stn_main.png" alt="kiosk image">
-                    </div>
+                    </div>                  
                 </div>
             </div>
         </div>
@@ -89,17 +88,7 @@
                 <p class="tit">AI Human 키오스크의 <strong>혁신</strong></p>
 
                 <div class="contBox">                   
-                    <div class="imgArea fl">
-                        <img class="pc" src="../resources/images/kiosk/img_stn_innovation.png" alt="kiosk image">
-                        <img class="mobile" src="../resources/images/kiosk/img_stn_innovation_m.png" alt="kiosk image">
-                    </div>
-                    <div class="txtArea">
-                        <ul>
-                            <li>Face & Voice 혁신 <small>실제 사람의 모습과 같은 외관 실현</small></li>
-                            <li>Dialogue 혁신 <small>사람처럼 대화할 수 있는 Dialogue 실현</small></li>
-                            <li>차별화된 가격 혁신 <small>기술력의 혁신을 통한 합리적인 가격실현</small></li>
-                        </ul>
-                    </div>
+                    
                 </div>
             </div>
         </div> 
@@ -113,6 +102,9 @@
                         <div class="contBox">
                             <div class="imgBox">
                                 <img src="../resources/images/kiosk/img_useCase_bank.png" alt="bank kiosk image">
+                                <button type="button" class="btn_video_play">
+                                    <span class="hide">재생</span>
+                                </button>
                             </div>
                             <dl class="txtBox">
                                 <dt>금융기관</dt>
@@ -160,14 +152,30 @@
                         </div>
                     </div>
                 </div>
+                
+                <div class="swiper_control">
+                    <div class="contBox">
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                        <div class="pagination">
+                            <div class="swiper-pagination"></div>
+                            <button type="button" class="btn_pause">
+                                <span class="hide">일시정지</span>
+                            </button>
+                        </div>
+                    </div>                   
+                </div>
             </div>
         </div>               
 
         <div class="stn contact">
             <div class="contWrap">
-                <p class="tit">AI 키오스크 제작 문의</p>
-
                 <div class="contBox"> 
+                    <div class="txtArea">
+                        <p class="tit">AI 키오스크 제작 문의</p>
+                        <p class="desc">기본형 상품 외에도 고객님의 필요와 용도에 맞는<br> 맞춤형 AI 키오스크도 제작이 가능합니다.</p>
+                    </div>
+
                     <div class="contactform">
                         <dl>
                             <dt>이름<span>(필수)</span></dt>
@@ -328,9 +336,11 @@ jQuery.event.add(window,"load",function(){
          // swiper
         new Swiper('.use_cases', {
             effect: 'fade',
+            fadeEffect: { 
+                crossFade: false 
+            },
             slidesPerGroup : 1,            
             initialSlide: 0,
-            loop: true,
             observer: true,
             observeParents: true,
             pagination: {
