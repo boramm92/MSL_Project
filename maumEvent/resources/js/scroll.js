@@ -1,6 +1,7 @@
 $(document).ready(function(){
     var allTxtItem = document.querySelectorAll('.txt_item');
     var allImgItem = document.querySelectorAll('.img_item');
+    var currentTxtItem = allTxtItem[0];
     var currentImgItem = allImgItem[0];
 
     for(var i = 0; i < allTxtItem.length; i++){
@@ -9,10 +10,12 @@ $(document).ready(function(){
     }
 
     function activate(){
+        currentTxtItem.classList.add('visible');
         currentImgItem.classList.add('visible');
     }
 
     function inactivate(){
+        currentTxtItem.classList.remove('visible');
         currentImgItem.classList.remove('visible');
     }
 
@@ -26,6 +29,7 @@ $(document).ready(function(){
 
             if(boundingRect.top > window.innerHeight * 0.2 && boundingRect.top < window.innerHeight * 0.8){
                 inactivate();
+                currentTxtItem = allTxtItem[txtItem.dataset.index];
                 currentImgItem = allImgItem[txtItem.dataset.index];
                 activate();
             }
