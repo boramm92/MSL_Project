@@ -253,17 +253,13 @@
                     </div>
                 </div>
                 
-                <div class="swiper_control">
-                    <div class="contBox">
-                        <div class="swiper-button-prev"></div>
-                        <div class="swiper-button-next"></div>
-                        <div class="pagination">
-                            <div class="swiper-pagination"></div>
-                            <button type="button" class="btn_pause">
-                                <span class="hide">일시정지</span>
-                            </button>
-                        </div>
-                    </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+                <div class="pagination">
+                    <div class="swiper-pagination"></div>
+                    <button type="button" class="btn_pause">
+                        <span class="hide">일시정지</span>
+                    </button>
                 </div>
             </div>
         </div>               
@@ -409,6 +405,7 @@ jQuery.event.add(window,"load",function(){
             fadeEffect: { 
                 crossFade: false 
             },
+            speed: 1000,
             slidesPerGroup : 1,            
             initialSlide: 0,
             observer: true,
@@ -421,24 +418,9 @@ jQuery.event.add(window,"load",function(){
                 prevEl: '.swiper-button-prev',
                 nextEl: '.swiper-button-next',
             },
-            // autoplay: {
-            //     delay: 3000,
-            //     disableOnInteraction: false,
-            // },
-            on: {
-                slideChange: function(){
-                    console.log(this.realIndex);
-                    $('.useCase_swiper').attr('class','useCase_swiper');
-                    if(this.realIndex == 0){
-                        $('.useCase_swiper').addClass('bank');
-                    }else if(this.realIndex == 1){
-                        $('.useCase_swiper').addClass('exhibition');
-                    }else if(this.realIndex == 2){
-                        $('.useCase_swiper').addClass('hotel');
-                    }else if(this.realIndex == 3){
-                        $('.useCase_swiper').addClass('shoppingmall');
-                    }
-                }
+            autoplay: {
+                delay: 6000,
+                disableOnInteraction: false,
             }
         });     
 
