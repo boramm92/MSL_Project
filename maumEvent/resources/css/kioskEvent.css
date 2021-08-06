@@ -190,11 +190,12 @@ html, body {font-size:24px; line-height:1.4; letter-spacing:-0.4px;}
 #wrap.event .innovation {overflow:visible; margin-top:-370px; background:#f5f6fa; transform:skewY(-16deg);}
 #wrap.event .innovation .contWrap {position:relative; padding:370px 0; transform:skewY(16deg);}
 #wrap.event .innovation .tit {position:absolute; text-align:center;}
+#wrap.event .innovation .tit.pc {margin:60px 0 0; text-align:left;}
 #wrap.event .innovation .scroll_container {position:relative;}
 #wrap.event .innovation .scroll_container .scroll_area {overflow-x:hidden; position:sticky; top:0; height:100vh; z-index:50;}
 #wrap.event .innovation .scroll_container .scroll_area .scroll_item {position:absolute; top:0; left:0; width:100%; height:100%; background:#f5f6fa; transition:opacity 0.5s ease-out; opacity:0;}
-#wrap.event .innovation .scroll_container .scroll_area .scroll_item .cont {display:flex; justify-content:space-between; align-items:flex-start;}
-#wrap.event .innovation .scroll_container .scroll_area .scroll_item .txtBox {transform:translateY(50px); transition:transform 0.5s ease-out;}
+#wrap.event .innovation .scroll_container .scroll_area .scroll_item .cont {display:flex; flex-direction:column; justify-content:flex-start; align-items:flex-start;}
+#wrap.event .innovation .scroll_container .scroll_area .scroll_item .txtBox {margin:222px 0 0; transform:translateY(50px); transition:transform 0.5s ease-out;}
 #wrap.event .innovation .scroll_container .scroll_area .scroll_item .txtBox dl {display:table;}
 #wrap.event .innovation .scroll_container .scroll_area .scroll_item .txtBox dl + dl {margin:40px 0 0;}
 #wrap.event .innovation .scroll_container .scroll_area .scroll_item .txtBox dl dt {display:table-cell; width:370px; color:#3d3e57; font-size:1rem; letter-spacing:-1.1px; line-height:1.92;}
@@ -208,18 +209,28 @@ html, body {font-size:24px; line-height:1.4; letter-spacing:-0.4px;}
 #wrap.event .innovation .scroll_container .scroll_area .scroll_item:nth-child(-n+2) .cont .imgBox {height:69.5vh;}
 #wrap.event .innovation .scroll_container .scroll_area .scroll_item:nth-child(n+3):nth-child(-n+5) .cont .imgBox {height:83.4vh;}    
 #wrap.event .innovation .scroll_container .scroll_area .scroll_item:nth-child(1) .cont .imgBox {width:39.1vw;}
-#wrap.event .innovation .scroll_container .scroll_area .scroll_item:nth-child(1) .cont .imgBox img {display:block; position:absolute; top:0; left:0;}
+#wrap.event .innovation .scroll_container .scroll_area .scroll_item:nth-child(1) .cont .imgBox img {display:block; position:absolute; top:0; right:0;}
 
 #wrap.event .innovation .scroll_container .scroll_index {position:relative;}
 #wrap.event .innovation .scroll_container .scroll_index .index_item {padding-bottom:80vh; opacity:0;}
 
-.loader {display:flex; align-items:center; position:absolute; top:197px; height:150px;} 
-.loader .stroke {display:block; position:relative; width:8px; height:100%; margin:0 4px; border-radius:4px; background:#000; animation:animate 1.2s linear infinite;} 
+ /* IE10+ */
+ @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    #wrap.event .innovation .scroll_container {height:500vh;}
+    #wrap.event .innovation .scroll_container .scroll_area {overflow:visible; position:relative;}
+    #wrap.event .innovation .scroll_container .scroll_area .scroll_item.fixed {position:fixed; top:0;}
+    #wrap.event .innovation .scroll_container .scroll_area .scroll_item.static {position:static;}
+    
+}
 
-@keyframes animate { 
+.loader {display:flex; align-items:center; position:absolute; top:197px; right:0; height:150px;} 
+.loader .stroke {display:block; position:relative; width:8px; height:100%; margin:0 4px; border-radius:4px; background:#000; animation:wave_animate 1.2s linear infinite;} 
+
+@keyframes wave_animate { 
     50% {height:20%;} 
     100% {height:100%;} 
 }
+
 .stroke:nth-child(1) {background:#ecbfe3; animation-delay:4s 0.25s;} 
 .stroke:nth-child(2) {background:#e6c2e5; animation-delay:0.8s;} 
 .stroke:nth-child(3) {background:#e0c4e6; animation-delay:1s;} 
@@ -274,26 +285,21 @@ html, body {font-size:24px; line-height:1.4; letter-spacing:-0.4px;}
 
 
 .scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox {display:flex; flex-direction:column; justify-content:flex-end; position:absolute; top:0; left:0; width:100%; height:100%; padding:0 0 100px; box-sizing:border-box;}
-.scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble {position:relative; margin:40px 0 0; transform:translateY(20px); transition:all 0.3s ease-out; opacity:0;}
+.scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble {position:relative; margin:40px 0 0; transform:translateY(20px); transition:all 0.5s ease-out; opacity:0;}
 .scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble:nth-child(1) {text-align:right;}
 .scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble:nth-child(2) {text-align:left;}
 .scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble:nth-child(3) {text-align:right;}
-.scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble p {display:inline-block; padding:12px 20px; border-radius:3px; background:#ddecff; color:#0d66cc; font-size:1rem;}
+.scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble p {display:inline-block; padding:12px 20px; border-radius:3px; background:#ddecff; color:#0d66cc; font-size:1rem; text-align:left;}
 .scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble:nth-child(2) p {background:#fff; color:#3d3e57;}
 .scroll_area .scroll_item:nth-child(2).visible .cont .imgBox .speechBox .speech_bubble {animation-name:speechAnimation; animation-iteration-count:1; animation-fill-mode:forwards;}
-.scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble:nth-child(1) {animation-duration:6s; animation-delay:0s;}
-.scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble:nth-child(2) {animation-duration:5.5s; animation-delay:0.5s;}
-.scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble:nth-child(3) {animation-duration:5s; animation-delay:1s;}
+.scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble:nth-child(1) {animation-duration:6s; animation-delay:0.5s;}
+.scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble:nth-child(2) {animation-duration:5.5s; animation-delay:1s;}
+.scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble:nth-child(3) {animation-duration:5s; animation-delay:1.5s;}
 
 @keyframes speechAnimation {
     0% {opacity:0;}
     5% {opacity:1; transform:translateY(0);}
     100% {opacity:1; transform:translateY(0);}
-}
-
- /* IE10+ */
- @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-    #wrap.event .innovation .scroll_container .scroll_area {position:fixed;}
 }
 
 /* use_cases */
@@ -385,10 +391,42 @@ html, body {font-size:24px; line-height:1.4; letter-spacing:-0.4px;}
 
     #wrap.event .innovation {min-height:538px; margin:-23% 0 0; padding:30% 0 0; background:#fff; transform:skewY(-16deg);}
     #wrap.event .innovation .contWrap {position:static; padding:0;}
-    #wrap.event .innovation .tit {position:static; transform:none;}
-    #wrap.event .innovation .scroll_container .scroll_area {position:relative;}
+    #wrap.event .innovation .tit {position:static; margin:0 0 16px; transform:none;}
+    #wrap.event .innovation .scroll_container .scroll_area {overflow:visible; position:relative; height:auto;}
+    #wrap.event .innovation .scroll_container .scroll_area .scroll_item {position:relative; padding:24px 0; opacity:1;}
+    #wrap.event .innovation .scroll_container .scroll_area .scroll_item:nth-child(odd) {background:#fff;}
+    #wrap.event .innovation .scroll_container .scroll_area .scroll_item:nth-child(even) {background:#f5f6fa;}
+    #wrap.event .innovation .scroll_container .scroll_area .scroll_item:nth-child(5) {padding:24px 0 20%;}
+    #wrap.event .innovation .scroll_container .scroll_area .scroll_item .cont .imgBox {display:block; position:relative; right:0; margin:0 auto;}
+    #wrap.event .innovation .scroll_container .scroll_area .scroll_item .cont .imgBox img {position:relative !important; width:100%; height:auto;}
+    #wrap.event .innovation .scroll_container .scroll_area .scroll_item:nth-child(-n+2) .cont .imgBox {width:62.8vw; height:auto;}
+    #wrap.event .innovation .scroll_container .scroll_area .scroll_item:nth-child(n+3):nth-child(-n+5) .cont .imgBox {width:39.5vw; height:auto;}
+    #wrap.event .innovation .scroll_container .scroll_area .scroll_item .txtBox {margin:0; transform:none;}
+    #wrap.event .innovation .scroll_container .scroll_area .scroll_item .txtBox dl {display:block; margin:17px 0 0;}
+    #wrap.event .innovation .scroll_container .scroll_area .scroll_item .txtBox dl + dl {margin:17px 0 0;}
+    #wrap.event .innovation .scroll_container .scroll_area .scroll_item .txtBox dl dt {display:block; width:100%; font-size:1.14rem; line-height:1.62;}
+    #wrap.event .innovation .scroll_container .scroll_area .scroll_item .txtBox dl dt strong {font-size:1.3rem;}
+    #wrap.event .innovation .scroll_container .scroll_area .scroll_item .txtBox dl dd {display:block; margin:4px 0 0; font-size:1rem; word-break:keep-all;}
+    #wrap.event .innovation .scroll_container .scroll_area .scroll_item .txtBox dl dd br {display:none;}
+    #wrap.event .innovation .scroll_container .scroll_index {display:none;}
 
-    #wrap.event .use_cases {min-height:637px; margin-top:-94px; background:#fff; transform:skewY(-16deg);}
+    .scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox {padding:0;}
+    .scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble {position:relative; margin:40px 0 0; transform:translateY(20px); transition:all 0.5s ease-out; opacity:0;}
+    .scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox.active .speech_bubble {animation-name:speechAnimation; animation-iteration-count:1;}
+    .scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble:nth-child(1) {animation-duration:6s; animation-delay:0.5s;}
+    .scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble:nth-child(2) {animation-duration:5.5s; animation-delay:1s;}
+    .scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble:nth-child(3) {animation-duration:5s; animation-delay:1.5s;}
+
+    @keyframes speechAnimation {
+        0% {opacity:0;}
+        5% {opacity:1; transform:translateY(0);}
+        100% {opacity:1; transform:translateY(0);}
+    }
+
+    .loader {top:50px; right:auto; left:50%; height:10.3vw; transform:translate(-50%, 0);}
+    .loader .stroke {width:4px; margin:0 2px;}
+
+    #wrap.event .use_cases {min-height:637px; background:#fff; transform:skewY(-16deg);}
     #wrap.event .use_cases .tit {top:70px;}
     #wrap.event .use_cases .swiperBox .swiperCont {margin-top:-18%; padding:18% 0;}
     #wrap.event .use_cases .swiperBox .swiperCont .cont .tit {top:125px; left:0; width:100%; box-sizing:border-box; text-align:left; transform:none;}
