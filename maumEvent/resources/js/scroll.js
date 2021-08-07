@@ -34,7 +34,7 @@ $(document).ready(function(){
             stickyItem = allIndexItem[i];
             boundingRect = stickyItem.getBoundingClientRect();
 
-            if(boundingRect.top > window.innerHeight * 0.4 && boundingRect.top < window.innerHeight * 0.6){
+            if(boundingRect.top > window.innerHeight * 0.2 && boundingRect.top < window.innerHeight * 0.8){
                 inactivate();
                 static();
                 currentStickyItem = allStickyItem[stickyItem.dataset.index];

@@ -456,21 +456,15 @@ jQuery.event.add(window,"load",function(){
 
         // intro에서 이벤트 페이지 이동
         $('.btnBox .btn_go_event').on('click', function(){
-            $('html').animate({scrollTop: 0,}, 500);
             $('.intro').hide();
-            $('.stn:not(.intro)').fadeIn(300); 
-            if( $(window).width() <= 768 ){
-                $('.btn_go_contact').fadeIn();
-            }else {
-                $('.btn_go_contact').fadeIn();
-            }
+            $('.stn:not(.intro)').show(); 
         });  
         
         // swiper
         new Swiper('.use_cases', {
             effect: 'fade',
             fadeEffect: { 
-                crossFade: false 
+                crossFade: true 
             },
             speed: 1000,
             slidesPerGroup : 1,            
@@ -490,29 +484,6 @@ jQuery.event.add(window,"load",function(){
                 disableOnInteraction: false,
             }
         });     
-
-        // 문의 영역으로 이동
-        $('.btn_go_contact').on('click', function(){       
-            var contactOffset = $('.contact').offset();                                 
-            $('html').animate({scrollTop : contactOffset.top}, 300);
-        });
-
-        // 문의 영역 이동 시 버튼 제거
-        $(window).scroll(function(){
-            var contactOffset = $('.contact').offset(); 
-            var contactOffsetTop = contactOffset.top;
-            var scrollTop = $('html').scrollTop() + $('.contact').height();
-
-            if( $(window).width() > 768 && scrollTop >= contactOffsetTop ){
-                $('.btn_go_contact').fadeOut();
-            }else if( $(window).width() > 768 && scrollTop < contactOffsetTop ){
-                $('.btn_go_contact').fadeIn();
-            }else if( $(window).width() <= 768 && scrollTop >= contactOffsetTop ){
-                $('.btn_go_contact').fadeOut();
-            }else if( $(window).width() <= 768 && scrollTop < contactOffsetTop ){
-                $('.btn_go_contact').fadeIn();
-            }
-        });
         
         // 문의하기 연락처 숫자입력 제한
         $('#userTel').on('keyup', function() {
