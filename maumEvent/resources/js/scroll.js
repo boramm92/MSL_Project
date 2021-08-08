@@ -46,21 +46,21 @@ $(document).ready(function(){
     activate();
 
 
-    // function animationSpeech() {
-    //     $('.speechBox').removeClass('active');
-    //     setTimeout(function(){
-    //         $('.speechBox').addClass('active');
-    //     }, 100);
-    // }
+    function animationSpeech() {
+        $('.speechBox').removeClass('active');
+        setTimeout(function(){
+            $('.speechBox').addClass('active');
+        }, 100);
+    }
 
-    // if($(window).outerWidth() <= 768){
-    //     setInterval(animationSpeech, 6100);
-    // }
+    if($(window).outerWidth() <= 768){
+        setInterval(animationSpeech, 6100);
+    }
 
-    // $(window).resize(function(){
-    //     if($(window).outerWidth() <= 768){
-    //         setInterval(animationSpeech, 6100);
-    //     }
-    // });
+    $(window).resize(function(){
+        if($(window).outerWidth() <= 768){
+            setInterval(animationSpeech, 6100);
+        }
+    });
 });
 

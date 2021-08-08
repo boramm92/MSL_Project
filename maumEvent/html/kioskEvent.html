@@ -166,7 +166,7 @@
                                 <p class="tit pc">AI Human 키오스크의 <strong>혁신 10</strong></p> 
                                 <div class="imgBox">
                                     <img src="../resources/images/kiosk/img_innovation02.png" alt="innovation image">
-                                    <div class="speechBox active">
+                                    <div class="speechBox">
                                         <div class="speech_bubble">
                                             <p>안녕하세요,<br> 무엇을 도와드릴까요?</p>
                                         </div>
@@ -324,8 +324,11 @@
                 <div class="swiper-button-next"></div>
                 <div class="pagination">
                     <div class="swiper-pagination"></div>
-                    <button type="button" class="btn_pause">
+                    <button type="button" class="btn_pause on">
                         <span class="hide">일시정지</span>
+                    </button>
+                    <button type="button" class="btn_play">
+                        <span class="hide">재생</span>
                     </button>
                 </div>
             </div>
@@ -377,11 +380,19 @@
     </div>
     <!-- //#contents -->
     
-    <!-- 신청 바로가기 버튼 -->
-    <!-- <button type="button" class="btn_go_contact">
-        <span>무료체험<br> 신청하기</span>
-    </button> -->
-    <!-- //신청하기 버튼 -->
+    <!-- 국민카드 올리스 배너 -->
+    <div class="float_banner">
+        <a href="#none" target="_blank" title="새창으로 열기" class="banner_wrap">
+            <div class="imgArea">
+                <img src="../resources/images/kiosk/img_banner_kiosk.png" alt="kiosk image">
+            </div>
+            <div class="txtArea">
+                <p>AI 키오스크를 더욱 부담없이 만나세요.</p>
+                <img src="../resources/images/kiosk/img_banner_text.png" alt="KB 국민카드 올리스">
+            </div>
+        </a>
+    </div>
+    <!-- //국민카드 올리스 배너 -->
 </div>
 <!-- //#wrap -->
 
@@ -458,10 +469,11 @@ jQuery.event.add(window,"load",function(){
         $('.btnBox .btn_go_event').on('click', function(){
             $('.intro').hide();
             $('.stn:not(.intro)').show(); 
+            $('.float_banner').show();
         });  
         
         // swiper
-        new Swiper('.use_cases', {
+        var mySwiper = new Swiper('.use_cases', {
             effect: 'fade',
             fadeEffect: { 
                 crossFade: true 
@@ -483,7 +495,19 @@ jQuery.event.add(window,"load",function(){
                 delay: 6000,
                 disableOnInteraction: false,
             }
-        });     
+        });  
+        
+        // swiper - 재생, 일시정지
+        $('.btn_pause').on('click', function(){
+            mySwiper.autoplay.stop();
+            $('.btn_pause').removeClass('on');
+            $('.btn_play').addClass('on');
+        });
+        $('.btn_play').on('click', function(){
+            mySwiper.autoplay.start();
+            $('.btn_play').removeClass('on');
+            $('.btn_pause').addClass('on');
+        });
         
         // 문의하기 연락처 숫자입력 제한
         $('#userTel').on('keyup', function() {
