@@ -36,14 +36,19 @@ $(document).ready(function(){
 
             if(boundingRect.top > window.innerHeight * 0.1 && boundingRect.top < window.innerHeight * 0.9){
                 inactivate();
-                static();
                 currentStickyItem = allStickyItem[stickyItem.dataset.index];
-                activate();
-                fixed();           
-            }
+                activate();        
 
-            if(currentStickyItem.dataset.index == 4 && boundingRect.top < window.innerHeight * 0.1){
-                static();
+                console.log(currentStickyItem)
+
+                if(currentStickyItem.dataset.index == 0){
+                    static();
+                }else if(currentStickyItem.dataset.index == 4){
+                    static();
+                }else {
+                    fixed();
+                    
+                }
             }
         }
     });
