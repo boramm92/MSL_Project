@@ -36,23 +36,27 @@ $(document).ready(function(){
 
             if(boundingRect.top > window.innerHeight * 0.1 && boundingRect.top < window.innerHeight * 0.9){
                 inactivate();
+                // static();
                 currentStickyItem = allStickyItem[stickyItem.dataset.index];
                 activate();        
-
-                console.log(currentStickyItem)
-
-                if(currentStickyItem.dataset.index == 0){
-                    static();
-                }else if(currentStickyItem.dataset.index == 4){
-                    static();
-                }else {
-                    fixed();
-                    
-                }
+                // fixed();
             }
+
+            console.log(currentStickyItem)
+
+            // if(currentStickyItem.dataset.index == 0 && boundingRect.top > window.innerHeight * 0.5){
+            //     $('.scroll_area').addClass('fixed');
+            // }
+            // else if(currentStickyItem.dataset.index == 4 && boundingRect.top > window.innerHeight * 0.9){
+            //     $('.scroll_area').removeClass('fixed');
+            // }
         }
     });
     activate();
+
+    // if(document.currentScript === undefined){
+    //     // IE 에서만 돌아갈 내용
+    // }
 
 
     function animationSpeech() {
