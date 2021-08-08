@@ -34,12 +34,16 @@ $(document).ready(function(){
             stickyItem = allIndexItem[i];
             boundingRect = stickyItem.getBoundingClientRect();
 
-            if(boundingRect.top > window.innerHeight * 0.2 && boundingRect.top < window.innerHeight * 0.8){
+            if(boundingRect.top > window.innerHeight * 0.1 && boundingRect.top < window.innerHeight * 0.9){
                 inactivate();
                 static();
                 currentStickyItem = allStickyItem[stickyItem.dataset.index];
                 activate();
-                fixed();
+                fixed();           
+            }
+
+            if(currentStickyItem.dataset.index == 4 && boundingRect.top < window.innerHeight * 0.1){
+                static();
             }
         }
     });
