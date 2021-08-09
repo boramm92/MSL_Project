@@ -498,9 +498,12 @@ jQuery.event.add(window,"load",function(){
             fadeEffect: { 
                 crossFade: true 
             },
+            touchEventTarget: 'wrapper',
+            loop: true,
+            loopedSlides: 4,
             speed: 1000,
             slidesPerGroup : 1,            
-            initialSlide: 0,
+            // initialSlide: 0,
             observer: true,
             observeParents: true,
             pagination: {
@@ -513,9 +516,13 @@ jQuery.event.add(window,"load",function(){
             },
             autoplay: {
                 delay: 6000,
+                loopPreventsSlide: false,
                 disableOnInteraction: false,
             }
-        });  
+        });
+        
+        mySwiper.loopDestroy();
+        mySwiper.loopCreate();
         
         // swiper - 재생, 일시정지
         $('.btn_pause').on('click', function(){
