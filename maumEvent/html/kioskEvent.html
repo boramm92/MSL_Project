@@ -96,26 +96,6 @@
                                 <p class="tit pc">AI Human 키오스크의 <strong>혁신 10</strong></p> 
                                 <div class="imgBox">
                                     <div class="loader">
-                                        <!-- <span class="stroke"></span>
-                                        <span class="stroke"></span>
-                                        <span class="stroke"></span>
-                                        <span class="stroke"></span>
-                                        <span class="stroke"></span>
-                                        <span class="stroke"></span>
-                                        <span class="stroke"></span>                                    
-                                        <span class="stroke"></span>
-                                        <span class="stroke"></span>
-                                        <span class="stroke"></span>
-                                        <span class="stroke"></span>
-                                        <span class="stroke"></span>
-                                        <span class="stroke"></span>
-                                        <span class="stroke"></span>
-                                        <span class="stroke"></span>
-                                        <span class="stroke"></span>
-                                        <span class="stroke"></span>                                    
-                                        <span class="stroke"></span> -->
-                                        <!-- <span class="stroke"></span>
-                                        <span class="stroke"></span> -->
                                         <span class="stroke"></span>
                                         <span class="stroke"></span>
                                         <span class="stroke"></span>
@@ -412,7 +392,7 @@
     
     <!-- 국민카드 올리스 배너 -->
     <div class="float_banner">
-        <a href="#none" target="_blank" title="새창으로 열기" class="banner_wrap">
+        <a href="https://card.kbcard.com/CXPRIFICD0002.cms?mainCC=b&prtrCd=000000000008916&cgryCd=109&prodtCd=MND01AI001AI001000001" target="_blank" title="새창으로 열기" class="banner_wrap">
             <div class="imgArea">
                 <img src="../resources/images/kiosk/img_banner_kiosk.png" alt="kiosk image">
             </div>
@@ -451,7 +431,7 @@ jQuery.event.add(window,"load",function(){
             <div id="lyr_video_player" class="lyrPlayBox">\
                 <div class="lyr_ct">\
                     <video controls autoplay>\
-                        <source src="../resources/videos/kbs_success_case.mp4" type="video/mp4">\
+                        <source src="../resources/videos/bank_kiosk.mp4" type="video/mp4">\
                     </video>\
                 </div>\
                 <button type="button" class="btn_lyr_close">\
@@ -466,7 +446,7 @@ jQuery.event.add(window,"load",function(){
             });   
         });
 
-        //Layer popup open 
+        // Layer popup open 
         $('.btn_lyr_open').on('click',function(){	
             var winHeight = $(window).height()*0.7,
                 hrefId = $(this).attr('href');
@@ -483,7 +463,7 @@ jQuery.event.add(window,"load",function(){
             });	
         });	
         
-        //Layer popup close 
+        // Layer popup close 
         var assentClicked = false;
         $('#assent').on('click',function(){	
             if( !assentClicked ){
@@ -501,6 +481,16 @@ jQuery.event.add(window,"load",function(){
             $('.stn:not(.intro)').show(); 
             $('.float_banner').show();
         });  
+
+        // innovation - 말풍선 애니메이션
+        setInterval(speechAnimation, 6100);
+        function speechAnimation(){
+            $('.speechBox').removeClass('active');
+            setTimeout(function(){
+                $('.speechBox').addClass('active');
+            }, 100);
+        }
+        speechAnimation();
         
         // swiper
         var mySwiper = new Swiper('.use_cases', {

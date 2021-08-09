@@ -107,7 +107,7 @@ html, body {font-size:24px; line-height:1.4; letter-spacing:-0.4px;}
 .lyrBox {display:none; overflow:hidden; position:absolute; top:50%; left:50%; width:500px; margin:0; border-radius:7px; background:#eff1f7; box-shadow:0 0 15px rgba(11,42,74,0.3); transform:translate(-50%,-50%); -webkit-animation:lyr_show 0.3s 0s ease-out; animation:lyr_show 0.3s 0s ease-out;}
 .lyrWrap .lyrBox {display:block;}
 
-.lyr_bg_dim {position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:999;}
+.lyr_bg_dim {position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999;}
 .lyrPlayBox {display:none; position:fixed; top:50%; left:50%; width:1000px; min-height:150px; border-radius:3px; box-shadow:0 1px 4px 0 rgba(44, 63, 81, 0.1); transform:translate(-50%, -50%); z-index:9999;}
 #lyr_video_player {display:block;}
 #lyr_video_player .lyr_ct {width:1000px;}
@@ -225,7 +225,7 @@ html, body {font-size:24px; line-height:1.4; letter-spacing:-0.4px;}
  /* IE10+ */
  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
     /* #wrap.event .innovation .scroll_container {height:600vh;} */
-    #wrap.event .innovation .scroll_container .scroll_area.fixed {overflow:visible; position:fixed; transition:position 0.3s ease-out;}
+    /* #wrap.event .innovation .scroll_container .scroll_area {overflow:visible; position:fixed; transition:position 0.3s ease-out;} */
     /* #wrap.event .innovation .scroll_container .scroll_area {overflow:visible; height:auto;}
     #wrap.event .innovation .scroll_container .scroll_area .scroll_item {position:static; height:100vh; opacity:1;} */
     /* #wrap.event .innovation .scroll_container .scroll_area .scroll_item.fixed {position:fixed; top:0;}
@@ -292,14 +292,14 @@ html, body {font-size:24px; line-height:1.4; letter-spacing:-0.4px;}
 .stroke:nth-child(49) {background:#bcd4e0; animation-delay:0.5s;} 
 .stroke:nth-child(50) {background:#bbcfdd; animation-delay:0.2s;} 
 
-.scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox {display:flex; flex-direction:column; justify-content:flex-end; position:absolute; top:0; left:0; width:100%; height:100%; padding:0 0 100px; box-sizing:border-box;}
-.scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble {position:relative; margin:40px 0 0; transform:translateY(20px); transition:all 0.5s ease-out; opacity:0;}
+.scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox {display:flex; flex-direction:column; justify-content:flex-end; position:absolute; bottom:20px; left:0; width:100%; height:100%; padding:0 0 100px; box-sizing:border-box;}
+.scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble {position:relative; margin:0 0 40px; transform:translateY(20px); transition:all 0.5s ease-out; opacity:0;}
 .scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble:nth-child(1) {text-align:right;}
 .scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble:nth-child(2) {text-align:left;}
 .scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble:nth-child(3) {text-align:right;}
-.scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble p {display:inline-block; padding:12px 20px; border-radius:3px; background:#ddecff; color:#0d66cc; font-size:1rem; text-align:left;}
+.scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble p {display:inline-block; padding:12px 20px; border-radius:3px; background:#ddecff; color:#0d66cc; font-size:0.75rem; text-align:left;}
 .scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble:nth-child(2) p {background:#fff; color:#3d3e57;}
-.scroll_area .scroll_item:nth-child(2).visible .cont .imgBox .speechBox .speech_bubble {animation-name:speechAnimation; animation-iteration-count:1; animation-fill-mode:forwards;}
+.scroll_area .scroll_item:nth-child(2).visible .cont .imgBox .speechBox.active .speech_bubble {animation-name:speechAnimation; animation-iteration-count:infinite; animation-fill-mode:forwards;}
 .scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble:nth-child(1) {animation-duration:6s; animation-delay:0.5s;}
 .scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble:nth-child(2) {animation-duration:5.5s; animation-delay:1s;}
 .scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble:nth-child(3) {animation-duration:5s; animation-delay:1.5s;}
@@ -341,6 +341,11 @@ html, body {font-size:24px; line-height:1.4; letter-spacing:-0.4px;}
 .pagination .swiper-pagination-bullet {width:62px; height:4px; border-radius:0; background:#fff; opacity:0.4;}
 .pagination .swiper-pagination-bullet + .swiper-pagination-bullet {margin:0 0 0 4px;}
 .pagination .swiper-pagination-bullet-active {opacity:1;}
+
+ /* IE10+ */
+ @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    #wrap.event .use_cases .cont .txtBox {background:rgba(153, 153, 153, 0.92);}
+}
 
 
 /* contact */
@@ -400,7 +405,7 @@ html, body {font-size:24px; line-height:1.4; letter-spacing:-0.4px;}
     #wrap.event .intro .cont .txtArea img:nth-child(2) {width:81%; max-width:400px; height:80px; height:auto;}
     #wrap.event .intro .cont .svc_start {right:20px; bottom:0; left:auto; width:128px; height:100%;}
     #wrap.event .intro .cont .svc_start .msg_start {position:relative; top:58%; margin:0; color:#fff; font-size:1rem;}
-    #wrap.event .intro .cont .svc_start .btnBox {display:flex; flex-direction:column; position:absolute; bottom:40px;}
+    #wrap.event .intro .cont .svc_start .btnBox {display:flex; flex-direction:column; position:absolute; bottom:40px; z-index:50;}
     #wrap.event .intro .cont .svc_start .btnBox a {display:block; width:128px; height:44px; margin:8px 0 0 !important; padding:0 !important; line-height:44px;}
     #wrap.event .intro .cont .svc_start .btnBox a:nth-child(1) {order:1;}
     #wrap.event .intro .cont .imgBox {height:58.2%;}
@@ -436,22 +441,13 @@ html, body {font-size:24px; line-height:1.4; letter-spacing:-0.4px;}
     #wrap.event .innovation .scroll_container .scroll_area .scroll_item .txtBox dl dd br {display:none;}
     #wrap.event .innovation .scroll_container .scroll_index {display:none;}
 
-    .scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox {padding:0;}
-    .scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble {position:relative; margin:0 0 15px; transform:translateY(20px); transition:all 0.5s ease-out; opacity:0;}
-    .scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble p {padding:10px;}
-    .scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox.active .speech_bubble {animation-name:speechAnimation; animation-iteration-count:1;}
-    .scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble:nth-child(1) {animation-duration:6s; animation-delay:0.5s;}
-    .scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble:nth-child(2) {animation-duration:5.5s; animation-delay:1s;}
-    .scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble:nth-child(3) {animation-duration:5s; animation-delay:1.5s;}
-
-    @keyframes speechAnimation {
-        0% {opacity:0;}
-        5% {opacity:1; transform:translateY(0);}
-        100% {opacity:1; transform:translateY(0);}
-    }
-
     .loader {top:50px; right:auto; left:50%; height:10.3vw; transform:translate(-50%, 0);}
     .loader .stroke {width:4px; margin:0 2px;}
+
+    .scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox {bottom:0; padding:0;}
+    .scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble {margin:0 0 20px;}
+    .scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox.active .speech_bubble {animation-name:speechAnimation; animation-iteration-count:infinite; animation-fill-mode:forwards;}
+    .scroll_area .scroll_item:nth-child(2) .cont .imgBox .speechBox .speech_bubble p {padding:8px;}
 
     #wrap.event .use_cases {height:728px; background:#fff; transform:skewY(-16deg);}
     #wrap.event .use_cases .tit {top:110px;}

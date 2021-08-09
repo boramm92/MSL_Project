@@ -16,16 +16,6 @@ $(document).ready(function(){
         currentStickyItem.classList.remove('visible');        
     }
 
-    function fixed(){
-        currentStickyItem.classList.remove('static');
-        currentStickyItem.classList.add('fixed');
-    }
-
-    function static(){
-        currentStickyItem.classList.remove('fixed');
-        currentStickyItem.classList.add('static');
-    }
-
     window.addEventListener('scroll', function(){
         var stickyItem;
         var boundingRect;
@@ -36,17 +26,15 @@ $(document).ready(function(){
 
             if(boundingRect.top > window.innerHeight * 0.1 && boundingRect.top < window.innerHeight * 0.9){
                 inactivate();
-                // static();
                 currentStickyItem = allStickyItem[stickyItem.dataset.index];
                 activate();        
-                // fixed();
             }
 
             console.log(currentStickyItem)
 
-            // if(currentStickyItem.dataset.index == 0 && boundingRect.top > window.innerHeight * 0.5){
-            //     $('.scroll_area').addClass('fixed');
-            // }
+            if(currentStickyItem.dataset.index == 0 && boundingRect.top > window.innerHeight * 0.5){
+                $('.scroll_area').addClass('fixed');
+            }
             // else if(currentStickyItem.dataset.index == 4 && boundingRect.top > window.innerHeight * 0.9){
             //     $('.scroll_area').removeClass('fixed');
             // }
@@ -57,23 +45,6 @@ $(document).ready(function(){
     // if(document.currentScript === undefined){
     //     // IE 에서만 돌아갈 내용
     // }
+});        
 
-
-    function animationSpeech() {
-        $('.speechBox').removeClass('active');
-        setTimeout(function(){
-            $('.speechBox').addClass('active');
-        }, 100);
-    }
-
-    if($(window).outerWidth() <= 768){
-        setInterval(animationSpeech, 6100);
-    }
-
-    $(window).resize(function(){
-        if($(window).outerWidth() <= 768){
-            setInterval(animationSpeech, 6100);
-        }
-    });
-});
 
