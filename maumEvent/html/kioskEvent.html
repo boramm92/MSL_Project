@@ -527,6 +527,20 @@ jQuery.event.add(window,"load",function(){
             $('.btn_play').removeClass('on');
             $('.btn_pause').addClass('on');
         });
+
+        // 국민카드 올리스 배너 - 기기에 따른 url 변경
+        function bannerUrlSet(){
+            if($(window).outerWidth() <= 768){
+                $('.float_banner .banner_wrap').attr('href', 'https://m.kbcard.com/CXHIAFLCD0025.cms?prtrCd=000000000008916&cgryCd=109');
+            }else{
+                $('.float_banner .banner_wrap').attr('href', 'https://card.kbcard.com/CXPRIFICD0002.cms?mainCC=b&prtrCd=000000000008916&cgryCd=109&prodtCd=MND01AI001AI001000001');
+            }
+        }
+        bannerUrlSet();
+
+        $(window).resize(function(){
+            bannerUrlSet();
+        });
         
         // 문의하기 연락처 숫자입력 제한
         $('#userTel').on('keyup', function() {
