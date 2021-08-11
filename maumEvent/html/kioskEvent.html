@@ -152,7 +152,7 @@
                                 <p class="tit pc">AI Human 키오스크의 <strong>혁신 10</strong></p> 
                                 <div class="imgBox">
                                     <img src="../resources/images/kiosk/img_innovation02.png" alt="innovation image">
-                                    <div class="speechBox">
+                                    <div class="speechBox active">
                                         <div class="speech_bubble">
                                             <p>안녕하세요,<br> 무엇을 도와드릴까요?</p>
                                         </div>
@@ -484,14 +484,15 @@ jQuery.event.add(window,"load",function(){
         });  
 
         // innovation - 말풍선 애니메이션
-        setTimeout(speechAnimation, 1000);
-        setInterval(speechAnimation, 7100);
         function speechAnimation(){
-            $('.speechBox').removeClass('active');
-            setTimeout(function(){
-                $('.speechBox').addClass('active');
-            }, 100);
-        }   
+            if($(window).outerWidth() <= 768){
+                $('.speechBox').removeClass('active');
+                setTimeout(function(){
+                    $('.speechBox').addClass('active');
+                }, 100);
+            }
+        } 
+        setInterval(speechAnimation, 7100);       
         
         // swiper
         var mySwiper = new Swiper('.swiper-container', {
@@ -540,6 +541,7 @@ jQuery.event.add(window,"load",function(){
 
         $(window).resize(function(){
             bannerUrlSet();
+            speechAnimation();
         });
         
         // 문의하기 연락처 숫자입력 제한
