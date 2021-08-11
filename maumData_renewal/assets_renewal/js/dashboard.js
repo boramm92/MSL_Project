@@ -1,8 +1,17 @@
 /* MINDsLab. NBR. 20210716 */
 $(document).ready(function(){
     // snb 열기 / 닫기
-    $('#snb').on('click', function(){
+    $('#snb').on('click', function(e){
+        e.stopPropagation();
         $(this).toggleClass('open');
+    });
+    
+    // snb 외 영역 클릭 시에도 닫기
+    $('html').on('click', function(e){
+        e.stopPropagation();
+        if(!$(e.target).is('#snb')){
+            $('#snb').removeClass('open');
+        }
     });
 
     
