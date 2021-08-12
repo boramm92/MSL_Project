@@ -142,6 +142,16 @@ $(document).ready(function(){
         }
     });
 
+    // 태그 리스트의 선택박스 옵션에 따른 컬러변경 - 21.08.12 NBR 추가
+    // [D] 에러 태그인 경우 임시저장 시점에 addClass, removeClass('error') 해주세요.
+    $('.tabWrap .tab_cont > ul li .select').on('input', function(){
+        if($(this).find('option:selected').data('slt') == 'unselected'){
+            $(this).addClass('unselected');
+        }else{
+            $(this).removeClass('unselected');
+        }
+    });
+
     // 태그 리스트의 툴 메뉴 버튼 클릭 시 활성화
     $('.tabWrap .tab_cont > ul li .tagBox button').on('click', function(e){
         e.stopPropagation();
