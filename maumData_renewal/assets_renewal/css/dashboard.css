@@ -100,6 +100,31 @@ input[type="text"].toDate {position:relative; background:#fff url('../images/das
 .ft_point_red {color:#ba2b2b;}
 
 
+/* -------------------- layer popup -------------------- */
+/* common */
+.lyrWrap {display:none; position:fixed; top:0; right:0; bottom:0; left:0; width:100%; height:100%; z-index:9999;}
+.lyr_bg {position:absolute; top:0; right:0; bottom:0; left:0; width:100%; height:100%; background:rgba(0, 0, 0, 0.65);}
+.lyrCont {overflow:hidden; position:absolute; top:50%; left:50%; min-width:340px; border-radius:10px; background:#fff; transform:translate(-50%, -50%);}
+.lyrCont .lyr_top {position:relative; padding:11px; background:#3340a8;}
+.lyrCont .lyr_top .tit {color:#fff; font-size:16px; font-weight:500; line-height:24px; text-align:center;}
+.lyrCont .lyr_top .btn_lyr_close {position:absolute; top:6px; right:6px; width:20px; height:20px; background:url('../images/builder/ico_close.svg') 50% 50% no-repeat;}
+.lyrCont .lyr_top .btn_lyr_close span {display:block; overflow:hidden; text-indent:-9999px; white-space:nowrap;}
+.lyrCont .lyr_mid {padding:30px;}
+.lyrCont .lyr_mid .alert_txt {color:#26282b; font-size:13px; letter-spacing:-0.13px; line-height:20px; text-align:center;}
+.lyrCont .lyr_btm {padding:0 30px 20px; text-align:center;}
+.lyrCont .lyr_btm button.btn_primary {width:138px; height:40px; margin:0 7px; border:1px solid #3340a8; border-radius:4px; box-sizing:border-box; background:#fff; color:#3340a8; font-size:13px; font-weight:500; transition:all 0.3s ease-out;}
+.lyrCont .lyr_btm button.btn_primary:hover {background:#3340a8; color:#fff;}
+.lyrCont .lyr_btm button.btn_confirm {width:138px;}
+.lyrCont .lyr_btm button.btn_lyr_close {width:96px; border:none; background:#dddee0; color:#565e6a; font-weight:400;}
+.lyrCont .lyr_btm button.btn_lyr_close:hover {background:#dddee0; color:#565e6a;}
+
+.lyrToast {position:absolute; top:90px; right:-500px; padding:9px 10px 9px 20px; border-radius:4px; background:#3340a8; white-space:nowrap; transition:right 1s ease-out; z-index:1000;}
+.lyrToast .msg {display:inline-block; margin:0 4px 0 0; color:#fff; font-size:16px; font-weight:500; letter-spacing:-0.16px; line-height:20px; vertical-align:top;}
+.lyrToast .btn_toast_close {float:right; width:20px; height:20px; margin:0 0 0 20px; background:url('../images/builder/ico_close.svg') 50% 50% no-repeat;}
+.lyrToast .btn_toast_close span {display:block; overflow:hidden; text-indent:-9999px; white-space:nowrap;}
+.lyrToast.on {right:16px;}
+
+
 /* -------------------- snb -------------------- */
 #snb .topBox {height:80px;}
 #snb .topBox .logo {display:none; width:100%; height:100%;}
@@ -140,7 +165,6 @@ input[type="text"].toDate {position:relative; background:#fff url('../images/das
 .titArea:after {content:''; display:block; clear:both;}
 .titArea h3 {float:left; margin:0 30px 0 0; color:#26282b; font-size:22px; font-weight:500; letter-spacing:-0.22px; line-height:42px;}
 .titArea .btnBox .btn_rgst {padding:0 40px 0 20px; background:url('../images/dashboard/ico_add.svg') top 50% right 14px no-repeat;}
-.titArea .btnBox .btn_bin {float:right; padding:0 34px 0 14px; background:#b2b2b2 url('../images/dashboard/ico_bin.svg') top 50% right 14px no-repeat;}
 .titArea .btn_bin:hover {background-color:#1054b2;}
 
 /* contArea */
@@ -160,10 +184,15 @@ input[type="text"].toDate {position:relative; background:#fff url('../images/das
 .titArea + .contArea .contBox .detail_set dl dt {font-size:13px; letter-spacing:-0.13px;}
 .titArea + .contArea .contBox .detail_set dl dd .select,
 .titArea + .contArea .contBox .detail_set dl dd .ipt_txt {width:236px;}
-.titArea + .contArea .contBox .guide_msg {margin:10px 0 0; color:#26282b; font-size:13px; letter-spacing:-0.13px; text-indent:30px;}
+.titArea + .contArea .guide_msg {margin:20px 0 0; font-size:12px; font-weight:500; letter-spacing:-0.12px; line-height:18px;}
 
 .titArea + .contArea .btnBox {margin:40px 0 0; text-align:center;}
 .titArea + .contArea .btnBox .btn_primary_rect {width:100px; margin:0 13px;}
+
+.multiBox .tit {margin:0 0 12px;}
+.multiBox .tit h5 {color:#26282b; font-size:14px; font-weight:500; letter-spacing:-0.14px; line-height:16px;}
+.multiBox .sub_tit {margin:0 0 12px;}
+.multiBox .sub_tit h5 {color:#26282b; font-size:13px; font-weight:500; letter-spacing:-0.13px;}
 
 /* contArea - 워크스페이스 등록 */
 .workspace_regist .titArea h3 {display:none;}
@@ -173,6 +202,7 @@ input[type="text"].toDate {position:relative; background:#fff url('../images/das
 .workspace_regist .contArea .contBox dl dd .radioBox input[name="contract_type"] + label span {width:102px;}
 .workspace_regist .contArea .contBox dl dd .textarea {width:1060px; height:182px;}
 .workspace_regist .contArea .contBox:nth-child(1) dl dd .ipt_txt {width:250px;}
+.workspace_regist .contArea .contBox .guide_msg {margin:10px 0 0; color:#26282b; font-size:13px; font-weight:400; letter-spacing:-0.13px; text-indent:30px;}
 
 /* contArea - 프로젝트 등록 */
 .project_regist .contArea .contBox dl dd .select,
@@ -182,17 +212,69 @@ input[type="text"].toDate {position:relative; background:#fff url('../images/das
 .project_regist .contArea .contBox .tapBtn li + li {margin:30px 0 0;}
 .project_regist .contArea .contBox .tapBtn li.active {background:#1054b2; color:#fff;}
 .project_regist .contArea .contBox .tapCont {overflow:auto; width:732px; height:386px; padding:20px 30px; border:1px solid #d9dde6; border-radius:4px; box-sizing:border-box; background:#fff;}
-.project_regist .contArea .contBox .tapCont .help_msg:hover {background:url('../images/dashboard/ico_info_b.svg') 50% 50% no-repeat;}
-.project_regist .contArea .contBox .tapCont .help_msg .viewBox {top:50%; left:calc(100% + 20px); background:#e2e3e5; transform:translate(0, -50%);}
 .project_regist .contArea .contBox .tapCont dl dd ul li {line-height:18px;}
 .project_regist .contArea .contBox .tapCont dl dd ul li .radioBox + .chkBox {display:none; padding:0 0 0 30px;}
 .project_regist .contArea .contBox .tapCont dl dd ul li .radioBox + .chkBox.on {display:block;}
 .project_regist .contArea .contBox .tapCont dl dd ul li .chkBox input[type="checkbox"] + label {display:block; margin:10px 0 0; padding:0 0 0 24px; font-size:12px; letter-spacing:-0.12px;}
-.project_regist .contArea .contBox .tapCont dl dd ul li .chkBox input[type="checkbox"] + label:before {top:2px; width:14px; height:14px; }
+.project_regist .contArea .contBox .tapCont dl dd ul li .chkBox input[type="checkbox"] + label:before {top:2px; width:14px; height:14px;}
+.project_regist .contArea .contBox .help_msg:hover {background:url('../images/dashboard/ico_info_b.svg') 50% 50% no-repeat;}
+.project_regist .contArea .contBox .tapCont .help_msg .viewBox {top:50%; left:calc(100% + 20px); background:#e2e3e5; transform:translate(0, -50%);}
 .project_regist .contArea .contBox.edit_type_slt .tapCont dl + dl {margin:20px 0 0;}
 .project_regist .contArea .contBox.edit_type_slt .tapCont dl dt {margin:0 0 12px;}
 .project_regist .contArea .contBox.edit_type_slt .tapCont dl dd ul li + li {margin:10px 0 0;}
+
 .project_regist.step01 .contArea .contBox.define_group:nth-child(3) dl dd .ipt_txt:nth-child(2) {margin:0 0 0 16px;}
+
+.project_regist.step03 .contArea .contBox .data_upload_wrap {position:relative; width:1050px;}
+.project_regist.step03 .contArea .contBox .data_upload_wrap:before {content:'(업로드)'; display:block; position:absolute; top:50%; left:50%; width:34px; height:41px; background:url('../images/dashboard/ico_arw_g.svg') 50% 0 no-repeat; color:#6c6d6f; font-size:10px; font-weight:500; letter-spacing:-0.1px; line-height:65px; white-space:nowrap; transform:translate(-50%, -50%);}
+.project_regist.step03 .contArea .contBox .data_upload_wrap:after {content:''; display:block; clear:both;}
+.project_regist.step03 .contArea .contBox .tbl_file_list {overflow:hidden; width:500px; border:1px solid #d9dde6; border-radius:4px; box-sizing:border-box;}
+.project_regist.step03 .contArea .contBox .tbl_file_list table {width:100%;}
+.project_regist.step03 .contArea .contBox .tbl_file_list table .chkBoxOnly {display:block;}
+.project_regist.step03 .contArea .contBox .tbl_file_list table .chkBoxOnly input[type="checkbox"]:before {width:16px; height:16px;}
+.project_regist.step03 .contArea .contBox .tbl_file_list .tbl_hd {height:40px;}
+.project_regist.step03 .contArea .contBox .tbl_file_list .tbl_hd th {height:40px; padding:0 12px; background:#b8c7d9; color:#26282b; font-size:13px; font-weight:500; letter-spacing:-0.13px;}
+.project_regist.step03 .contArea .contBox .tbl_file_list .tbl_hd th:nth-child(2) {border-right:1px solid #d9dde6; border-left:1px solid #d9dde6; text-align:left;}
+.project_regist.step03 .contArea .contBox .tbl_file_list .tbl_bd {overflow:auto; height:460px;}
+.project_regist.step03 .contArea .contBox .tbl_file_list .tbl_bd td {height:32px; padding:0 12px; color:#26282b; font-size:12px; font-weight:500; letter-spacing:-0.12px;}
+.project_regist.step03 .contArea .contBox .tbl_file_list .volume_info {height:36px; padding:0 20px; border-top:1px solid #d9dde6; box-sizing:border-box; background:#f2f1f1; text-align:right;}
+.project_regist.step03 .contArea .contBox .tbl_file_list .volume_info .volume_status {display:inline-block;}
+.project_regist.step03 .contArea .contBox .tbl_file_list .volume_info .volume_status li {display:inline-block; color:#707177; font-size:13px; letter-spacing:-0.13px;}
+.project_regist.step03 .contArea .contBox .tbl_file_list .volume_info .volume_status li span {color:#ba2b2b;}
+.project_regist.step03 .contArea .contBox .tbl_file_list .btnBox {height:60px; margin:0; border-top:1px solid #d9dde6; box-sizing:border-box; background:#b8c7d9;}
+.project_regist.step03 .contArea .guide_msg {margin:12px 0 0; color:#ba2b2b; font-size:13px; font-weight:500; letter-spacing:-0.13px;}
+
+.project_regist.step04 .contArea .contBox .help_msg .viewBox {top:-10px; left:calc(100% + 12px); width:314px;}
+.project_regist.step04 .contArea .contBox > dl > dd {display:table; table-layout:fixed; width:980px; padding:20px 10px; border:1px solid #d9dde6; border-radius:4px; box-sizing:border-box;}
+.project_regist.step04 .contArea .contBox .guide_msg {color:#707177;}
+.project_regist.step04 .contArea .contBox dl dd .multiBox {display:table-cell; padding:0 10px;}
+.project_regist.step04 .contArea .contBox dl dd .multiBox .textarea {width:100%; height:216px; padding:12px; box-sizing:border-box;}
+.project_regist.step04 .contArea .contBox dl dd .fileBox {margin:0 10px;}
+.project_regist.step04 .contArea .contBox dl dd .fileBox .iptBox {display:inline-block; position:relative; width:calc(100% - 165px);}
+.project_regist.step04 .contArea .contBox dl dd .fileBox .iptBox .file_delete {display:none; position:absolute; top:11px; right:12px; width:20px; height:20px; background:url('../images/dashboard/ico_aside_close.svg') 50% 50% no-repeat; background-size:20px;}
+.project_regist.step04 .contArea .contBox dl dd .fileBox .iptBox .file_delete .tooltip {display:none; position:absolute; top:-56px; right:0; width:76px; height:32px; border:1px solid #d9dde6; border-radius:4px; box-sizing:border-box; background:#fff; color:#1054b2; font-size:14px; letter-spacing:-0.14px; line-height:30px; text-align:center;}
+.project_regist.step04 .contArea .contBox dl dd .fileBox .iptBox.dlt_psb:hover .file_delete {display:block;}
+.project_regist.step04 .contArea .contBox dl dd .fileBox .iptBox .file_delete:hover .tooltip {display:block;}
+.project_regist.step04 .contArea .contBox dl dd .fileBox .iptBox .file_delete:hover + .ipt_txt {border:1px solid #1054b2; color:#1054b2; text-decoration:underline;}
+.project_regist.step04 .contArea .contBox dl dd .fileBox .iptBox .ipt_txt {width:100%; height:42px; background:#f8f8f8; transition:all 0.3s ease-out;}
+.project_regist.step04 .contArea .contBox dl dd .fileBox .iptBox .ipt_txt:hover {border:1px solid #1054b2; color:#1054b2; text-decoration:underline;}
+.project_regist.step04 .contArea .contBox dl dd .fileBox #guideUpload {overflow:hidden; position:absolute; width:1px; height:1px; margin:1px; padding:0; border:none;}
+.project_regist.step04 .contArea .contBox dl dd .fileBox #guideUpload + label {display:inline-block; height:42px; margin:0 0 0 16px; padding:0 25px; border-radius:4px; background:#1054b2; color:#fff; font-size:14px; letter-spacing:-0.14px; line-height:42px; cursor:pointer;}
+
+.project_regist.check .contArea .contBox {display:table; table-layout:fixed; width:1030px;}
+.project_regist.check .contArea .contBox .multiBox {display:table-cell; width:500px;}
+.project_regist.check .contArea .contBox .multiBox:nth-child(2) {padding:0 0 0 20px;}
+.project_regist.check .contArea .contBox .multiBox:nth-child(2) .tit:nth-child(3) {margin:30px 0 12px;}
+.project_regist.check .contArea .contBox .multiBox:nth-child(2) .cont {height:180px;}
+.project_regist.check .contArea .contBox .multiBox .cont {overflow:auto; height:418px; padding:20px; border:1px solid #d9dde6; border-radius:4px; box-sizing:border-box;}
+.project_regist.check .contArea .contBox .multiBox .cont .define {line-height:16px;}
+.project_regist.check .contArea .contBox .multiBox .cont .define + .define {margin:12px 0 0;}
+.project_regist.check .contArea .contBox .multiBox .cont .define > * {display:inline-block; vertical-align:top;}
+.project_regist.check .contArea .contBox .multiBox .cont .define dd {margin:0; color:#26282b; font-size:13px; letter-spacing:-0.13px;}
+.project_regist.check .contArea .contBox .multiBox .cont .define dd .edit_type {margin:0 0 6px; font-weight:500;}
+.project_regist.check .contArea .contBox .multiBox .cont ul li {color:#26282b; font-size:12px; font-weight:500; letter-spacing:-0.12px;}
+.project_regist.check .contArea .contBox .multiBox .cont ul li + li {margin:12px 0 0;}
+.project_regist.check .contArea .guide_msg {color:#ba2b2b;}
 
 /* step_wrap */
 .step_wrap {margin:0 0 40px;}
@@ -205,7 +287,8 @@ input[type="text"].toDate {position:relative; background:#fff url('../images/das
 
 .step_wrap .step_list li.active {color:#1054b2;}
 .step_wrap .step_list li.active:before {border:6px solid #1054b2; box-shadow:0 3px 6px 0 rgba(20, 21, 38, 0.17); background:#fff;}
-.step_wrap .step_list li.active + li.active:after {background:#1054b2;}
+.step_wrap .step_list li.active.done:before {background:#1054b2 url('../images/dashboard/ico_chk_w.svg') 50% 50% no-repeat;}
+.step_wrap .step_list li.active:after {background:#1054b2;}
 
 /* tblBox */
 .tblBox table {width:100%;}
