@@ -12,65 +12,37 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
     <style>
-        /* .card-background {height:3000px; margin-top:800px; margin-bottom:1600px;} */
-        .card-background {height:3000px; padding:200px 0;}
-        .card-box img {display:block; max-width:80%; margin:auto;}
-        /* .card-box {position:sticky; top:400px; margin-top:200px;} */
-        .cardBox {position:relative; width:100%; height:100vh; transition:all 0.3s ease-out;}
-        /* .card-box {position:relative; top:0; left:50%; transform:translate(-50%, 0);} */
-        .card-box {width:100%; height:600px;}
-        .card-box.sticky {position:absolute; top:50%; left:0; margin:0 !important; transform:translate(0, -50%);}
-        .card-box + .card-box {margin-top:200px;}
-        .otherBox {height:500px; background:grey;}
+        .card-background {height:3000px; margin-top:800px; margin-bottom:1600px;}
+        .card-box {position:sticky; top:400px; margin-top:200px;}
+        .card-box img {display:block; max-width:80%; margin:auto;}       
     </style>
 
     <title>Document</title>
 </head>
 <body>
-    <div class="otherBox"></div>
     <div class="card-background">
-        <div class="cardBox">
-            <div class="card-box">
-                <img src="https://online.codingapple.com/wp-content/uploads/2019/10/card1.png">
-            </div>
-            <div class="card-box">
-                <img src="https://online.codingapple.com/wp-content/uploads/2019/10/card2.png">
-            </div>
-            <div class="card-box">
-                <img src="https://online.codingapple.com/wp-content/uploads/2019/10/card3.png">
-            </div>
+        <div class="card-box">
+            <img src="https://online.codingapple.com/wp-content/uploads/2019/10/card1.png">
+        </div>
+        <div class="card-box">
+            <img src="https://online.codingapple.com/wp-content/uploads/2019/10/card2.png">
+        </div>
+        <div class="card-box">
+            <img src="https://online.codingapple.com/wp-content/uploads/2019/10/card3.png">
         </div>
     </div>
-    <div class="otherBox"></div>
 
     <script>
-        // $(window).scroll(function(){
-        //     var scrollHeight = $('.card-background').scrollTop();
-        //     console.log(scrollHeight);
+        $(window).scroll(function(){
+            var scrollHeight = $(window).scrollTop();
+            console.log(scrollHeight)
 
-        //     // 650~1150까지 스크롤바를 내리면, 첫째카드의 opacity 1~0으로 서서히 변경
-        //     var opacity = (-1/500) * scrollHeight + 115/50;
-        //     $('.card-box').eq(0).css('opacity', opacity);
+            // 650~1150까지 스크롤바를 내리면, 첫째카드의 opacity 1~0으로 서서히 변경
+            var opacity = (-1/500) * scrollHeight + 115/50;
+            $('.card-box').eq(0).css('opacity', opacity);
 
-        //     // 650~1150까지 스크롤바를 내리면, 첫째카드의 opacity 1~0으로 서서히 변경
-        //     var opacity = (-1/500) * scrollHeight + 115/50;
-        //     $('.card-box').eq(0).css('opacity', opacity);
-        // });
-
-
-        var offset = $('.card-background').offset();
-
-        window.addEventListener('scroll', function() {
-            console.log(window.pageYOffset, offset.top)
-
-            if (window.pageYOffset > offset.top) {
-                $('.cardBox').css({'position': 'fixed', 'top': 0});
-                $('.card-box ').addClass('sticky');
-            }
-            if (window.pageYOffset < offset.top || window.pageYOffset > 2500){
-                $('.cardBox').css({'position': ''});
-                $('.card-box ').removeClass('sticky');
-            }
+            var scale = (-1/5000) * scrollHeight + 565/500;
+            $('.card-box').eq(0).css('transform', `scale(${scale})`);
         });
     </script>
 </body>
