@@ -87,7 +87,7 @@
 
                     <div class="contBox">
                         <div class="data_upload_wrap">
-                            <div class="tbl_file_list fl">
+                            <div class="tbl_file_list icld_chk fl">
                                 <div class="tbl_hd">
                                     <table summary="대기 파일 목록, 파일 크기로 구성">
                                         <caption class="hide">대기 파일 목록</caption>
@@ -114,16 +114,18 @@
                                             <col width="40px"><col><col>
                                         </colgroup>
                                         <tbody>
-                                            <!-- <tr>
+                                            <tr>
                                                 <td class="empty" scope="row" colspan="3">
                                                     <input id="file-upload" type="file" name="fileUpload" />
                                                     <label for="file-upload" id="file-drag">
-                                                        <span>이곳을 더블클릭 또는 파일을 드래그 하세요.</span>
+                                                        이곳을 더블클릭 또는 파일을 드래그 하세요.<br>
+                                                        <img src="../../../../assets_renewal/images/dashboard/ico_fileUpload.svg" alt="upload image"><br>
+                                                        또는<br>
                                                         <button type="button" id="file-upload-btn">컴퓨터에서 파일선택</button>
                                                     </label>
                                                 </td>
-                                            </tr> -->
-                                            <tr>
+                                            </tr>
+                                            <!-- <tr>
                                                 <td scope="row">
                                                     <div class="chkBoxOnly">
                                                         <input type="checkbox" class="eachChk">
@@ -149,7 +151,7 @@
                                                 </td>
                                                 <td>0113_394_낮_낮상_쓰러짐_공원_여1_편집.mp4</td>
                                                 <td>20MB</td>
-                                            </tr>
+                                            </tr> -->
                                         </tbody>
                                     </table>
                                 </div>
@@ -168,7 +170,7 @@
                                 </div>
                             </div>
     
-                            <div class="tbl_file_list fr">
+                            <div class="tbl_file_list icld_chk fr">
                                 <div class="tbl_hd">
                                     <table summary="업로드 완료 파일 목록, 파일 크기로 구성">
                                         <caption class="hide">업로드 완료 파일 목록</caption>
@@ -227,16 +229,15 @@
                                 </div>
     
                                 <div class="volume_info">
+                                    <div class="limit"><span>200MB</span> 제한</div>
                                     <ul class="volume_status">
-                                        <li>업로드 대기 <span>6</span>건, </li>
+                                        <li>업로드 완료 <span>6</span>건, </li>
                                         <li><span>118MB</span> 추가됨</li>
                                     </ul>
                                 </div>
     
                                 <div class="btnBox">
                                     <button type="button" class="btn_file_delete">삭제</button>
-                                    <button type="button" class="btn_file_add">파일 추가</button>
-                                    <button type="button" class="btn_file_upload">업로드</button>
                                 </div>
                             </div>
                         </div>
@@ -263,7 +264,15 @@
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
+        $('.eachChk').on('click', function(){
+            var thisChecked = $(this).prop('checked'); 
         
+            if(thisChecked){
+                $(this).parents('tr').addClass('checked');
+            }else{
+                $(this).parents('tr').removeClass('checked');
+            }
+        });
     });
 });
 </script>

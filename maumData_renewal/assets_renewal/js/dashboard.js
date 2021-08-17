@@ -81,13 +81,14 @@ $(document).ready(function(){
 
     // table checkbox 개별 / 전체 선택
     $('.allChk').on('click', function(){
-        var allCheck = $('.allChk').prop('checked'); 
+        var thisTableBox = $(this).parents('.icld_chk'),
+            allCheck = $(this).prop('checked'); 
         
         if(allCheck){
-            $('.eachChk').prop('checked', true); 
+            thisTableBox.find('.eachChk').prop('checked', true); 
             $('.btn_list_remove').addClass('on').prop('disabled', false);
         }else{
-            $('.eachChk').prop('checked', false); 
+            thisTableBox.find('.eachChk').prop('checked', false); 
             $('.btn_list_remove').removeClass('on').prop('disabled', true); 
         }
     });
@@ -96,10 +97,12 @@ $(document).ready(function(){
     $('.eachChk').on('click', function(e){
         e.stopPropagation();
 
-        var eachCheck = $(this).prop('checked'); 
+        var thisTableBox = $(this).parents('.icld_chk'),
+            eachCheck = $(this).prop('checked'); 
+            
         // 자식 체크 전체 체크시, 부모 체크박스 체크 됨
-        var checkBoxLength = $('.eachChk').length,
-            checkedLength = $('.eachChk:checked').length;
+        var checkBoxLength = thisTableBox.find('.eachChk').length,
+            checkedLength = thisTableBox.find('.eachChk:checked').length;
         
         // 선택한 체크박스 값이 true 이거나 체크박스 1개 이상 체크시 버튼 활성화시키기
         if(eachCheck == true || checkedLength > 0){
@@ -110,9 +113,9 @@ $(document).ready(function(){
                
         // 체크박스가 모두 선택되었을 때 상위 체크박스 선택되도록 설정
         if(checkBoxLength == checkedLength){
-            $('.allChk').prop('checked', true); 
+            thisTableBox.find('.allChk').prop('checked', true); 
         }else{
-            $('.allChk').prop('checked', false);
+            thisTableBox.find('.allChk').prop('checked', false);
         }       
     });
 
