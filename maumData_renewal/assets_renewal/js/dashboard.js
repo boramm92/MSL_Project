@@ -61,8 +61,10 @@ $(document).ready(function(){
         var tableName = $(this).parents('table').data('tbl-name'),
             asideId = '#' + tableName;
 
-        $('.tblBox table tbody tr').removeClass('selected');
-        $(this).addClass('selected');
+        if($(this).parents('table').is('[data-tbl-name]')){
+            $('.tblBox table tbody tr').removeClass('selected');
+            $(this).addClass('selected');
+        }
 
         // open
         $('body').css('overflow', 'hidden');
@@ -86,10 +88,10 @@ $(document).ready(function(){
         
         if(allCheck){
             thisTableBox.find('.eachChk').prop('checked', true); 
-            $('.btn_list_remove').addClass('on').prop('disabled', false);
+            $('.btn_list_remove, .btn_list_restore').addClass('on').prop('disabled', false);
         }else{
             thisTableBox.find('.eachChk').prop('checked', false); 
-            $('.btn_list_remove').removeClass('on').prop('disabled', true); 
+            $('.btn_list_remove, .btn_list_restore').removeClass('on').prop('disabled', true); 
         }
     });
     
@@ -106,9 +108,9 @@ $(document).ready(function(){
         
         // 선택한 체크박스 값이 true 이거나 체크박스 1개 이상 체크시 버튼 활성화시키기
         if(eachCheck == true || checkedLength > 0){
-            $('.btn_list_remove').addClass('on').prop('disabled', false);
+            $('.btn_list_remove, .btn_list_restore').addClass('on').prop('disabled', false);
         }else{
-            $('.btn_list_remove').removeClass('on').prop('disabled', true); 
+            $('.btn_list_remove, .btn_list_restore').removeClass('on').prop('disabled', true); 
         }
                
         // 체크박스가 모두 선택되었을 때 상위 체크박스 선택되도록 설정

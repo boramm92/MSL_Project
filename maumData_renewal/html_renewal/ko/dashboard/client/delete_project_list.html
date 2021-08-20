@@ -32,7 +32,7 @@
 <script type="text/javascript" src="../../../../assets_renewal/js/jquery-migrate-3.3.1.min.js"></script>
 <script type="text/javascript" src="../../../../assets_renewal/js/dashboard.js"></script>
 
-<title>프로젝트 관리(Client) - Main || Dashboard</title>
+<title>삭제 목록 관리(Client) || Dashboard</title>
 </head>
 <body>
 <!-- #wrap -->
@@ -56,12 +56,12 @@
             <div class="account"><span>H&M(=헤네스앤모리츠)슈퍼</span></div>
             <ul class="nav">
                 <li><a href="workspace_main.html">워크스페이스 관리</a></li>
-                <li class="active"><a href="project_main.html">프로젝트 관리</a></li>
+                <li><a href="project_main.html">프로젝트 관리</a></li>
                 <li><a href="#none">작업현황 통계</a></li>
                 <li><a href="#none">작업자 관리</a></li>
                 <li><a href="#none">문의 관리</a></li>
                 <li><a href="#none">계약서 관리</a></li>
-                <li><a href="delete_project_list.html">삭제 목록 관리</a></li>
+                <li class="active"><a href="delete_project_list.html">삭제 목록 관리</a></li>
                 <li><a href="#none">로그아웃</a></li>
             </ul>
         </div>
@@ -72,20 +72,12 @@
             <!-- .content -->
             <div class="content">
                 <div class="titArea">
-                    <h3>프로젝트 관리</h3>
-
-                    <div class="btnBox">
-                        <a href="project_regist_step01.html" class="btn_primary_rect blue btn_rgst">프로젝트 등록</a>
-                    </div>
+                    <h3>삭제 목록 관리</h3>
                 </div>
 
                 <div class="tbl_tap_wrap">
                     <ul class="tapBtn">
-                        <li class="active">전체 프로젝트 <span class="caseNum">99999</span></li>
-                        <li>가공완료 프로젝트 <span class="caseNum">20</span></li>
-                        <li>진행중인 프로젝트 <span class="caseNum">20</span></li>
-                        <li>가공대기 프로젝트 <span class="caseNum">20</span></li>
-                        <li>중단 프로젝트 <span class="caseNum">20</span></li>
+                        <li class="active">삭제 프로젝트 <span class="caseNum">99999</span></li>
                     </ul>
 
                     <div class="tapCont">
@@ -109,12 +101,6 @@
                                 <option value="">유형3</option>
                             </select>
 
-                            <div class="switchBox">
-                                <!-- [D] input[type="checkbox"]의 id와 label의 for값을 동일하게 줘야함 -->
-                                <input type="checkbox" id="expireWorkspace">
-                                <label for="expireWorkspace">기간만료 워크스페이스 보기</label>
-                            </div>
-
                             <div class="srchBox">
                                 <input type="text" placeholder="검색어를 입력해주세요.">
                                 <button type="button" class="btn_srch" title="검색">
@@ -124,7 +110,7 @@
                         </div>
 
                         <div class="tblBox icld_chk">
-                            <table data-tbl-name="project" summary="프로젝트 명, 워크스페이스 명, 데이터 유형, 가공 유형, 프로젝트 상태, 시작일, 종료일로 구성">
+                            <table summary="프로젝트 명, 워크스페이스 명, 데이터 유형, 가공 유형, 프로젝트 상태, 시작일, 종료일로 구성">
                                 <caption class="hide">프로젝트 목록</caption>
                                 <colgroup>
                                     <col width="80px"><col width="20%"><col width="20%"><col><col>
@@ -230,7 +216,7 @@
 
                 <div class="pagingArea">
 					<div class="btnBox fl">
-						<button type="button" class="btn_primary_rect btn_list_remove" disabled>삭제</button>
+						<button type="button" class="btn_primary_rect btn_list_restore" disabled>복원</button>
 					</div>
 
 					<div class="paging">
@@ -255,139 +241,6 @@
 				</div>
             </div>
             <!-- //.content -->
-
-            <!-- .asideWrap -->
-            <div id="project" class="asideWrap">
-                <div class="aside">
-                    <button type="button" class="btn_aside_close">
-                        <span class="hide">닫기</span>
-                    </button>
-
-                    <div class="contArea">
-                        <div class="contBox">
-                            <div class="tit">
-                                <h4>보행 방해물 영역지정 작업_B그룹123456789001</h4>
-
-                                <div class="fr">
-                                    <a href="#none" class="btn_shortcut">가공화면 보기</a>
-                                </div>
-                            </div>
-
-                            <div class="cont">
-                                <dl class="define">
-                                    <dt>워크스페이스 명:</dt>
-                                    <dd>A그룹</dd>
-                                </dl>
-                                <dl class="define">
-                                    <dt>담당자:</dt>
-                                    <dd>이현구</dd>
-                                </dl>
-                                <dl class="define">
-                                    <dt>건당 지급 포인트:</dt>
-                                    <dd>(가공: <span>200</span>원 &vert; 검수: <span>150</span>원)</dd>
-                                </dl>
-                                <dl class="define">
-                                    <dt>시작 일자:</dt>
-                                    <dd>2021. 03. 01</dd>
-                                </dl>
-                                <dl class="define">
-                                    <dt>종료 일자:</dt>
-                                    <dd>2021. 09. 01</dd>
-                                </dl>
-                                <dl class="define">
-                                    <dt>프로젝트 상태:</dt>
-                                    <dd>진행중</dd>
-                                </dl>
-                            </div>
-                        </div>
-                        <div class="contBox">
-                            <div class="cont">
-                                <div class="lineBox fl">
-                                    <dl>
-                                        <dt>태그 목록 <div class="fr">총 <span>30</span>개</div></dt>
-                                        <dd>
-                                            <ul class="decimal">
-                                                <li>자동차</li>
-                                                <li>건물</li>
-                                                <li>오토바이</li>
-                                                <li>자전거</li>
-                                                <li>리어카</li>
-                                                <li>자동차</li>
-                                                <li>건물</li>
-                                                <li>오토바이</li>
-                                                <li>자동차</li>
-                                                <li>건물</li>
-                                                <li>오토바이</li>
-                                                <li>자전거</li>
-                                                <li>리어카</li>
-                                                <li>자동차</li>
-                                                <li>건물</li>
-                                                <li>오토바이</li>
-                                            </ul>
-                                        </dd>
-                                    </dl>
-                                </div>
-                                <div class="lineBox fr">
-                                    <dl>
-                                        <dt>퀵가이드</dt>
-                                        <dd>
-                                            <ul class="decimal">
-                                                <li>실외/실내 및 장소선택</li>
-                                                <li>방해물 유형 선택</li>
-                                                <li>더블 클릭하여 영역박스 생성</li>
-                                                <li>방해물 크기에 맞게 영역지정</li>
-                                            </ul>
-                                            <ul class="disc">
-                                                <li>한 이미지에 방해물의 최대 개수는 4개</li>
-                                                <li>작업 중간중간 임시저장 버튼을 눌러 작업한 내용을 저장.</li>
-                                            </ul>
-                                        </dd>
-                                    </dl>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="contBox">
-                            <div class="tit">
-                                <h4>프로젝트 진행률</h4>
-
-                                <div class="fr">
-                                    <a href="#none" class="btn_shortcut">데이터 추출 바로가기</a>
-                                </div>
-                            </div>
-
-                            <div class="cont">
-                                <div class="progress_wrap">
-                                    <div class="txt">가공 진행률 <div class="fr"><span>1,000</span> &sol; <span>9,999</span></div></div>
-                                    <div class="progress_bar">
-                                        <!-- [D] .current의 width값으로 진행바 조절 -->
-                                        <div class="current"></div>
-                                    </div>
-                                </div>
-                                <div class="progress_wrap">
-                                    <div class="txt">검수 진행률 <div class="fr"><span>1,000</span> &sol; <span>9,999</span></div></div>
-                                    <div class="progress_bar">
-                                        <!-- [D] .current의 width값으로 진행바 조절 -->
-                                        <div class="current"></div>
-                                    </div>
-                                </div>
-                                <div class="progress_wrap">
-                                    <div class="txt">가공완료 데이터 비율 <div class="fr"><span>1,000</span> &sol; <span>9,999</span></div></div>
-                                    <div class="progress_bar">
-                                        <!-- [D] .current의 width값으로 진행바 조절 -->
-                                        <div class="current"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="btnBox">
-                        <button class="btn_primary_rect">작업중단</button>
-                        <a href="#none" class="btn_primary_rect btn_aside_modify">수정하기</a>
-                    </div>
-                </div>
-            </div>
-            <!-- //.asideWrap -->
         </div> 
         <!-- //#contents -->
     </div>

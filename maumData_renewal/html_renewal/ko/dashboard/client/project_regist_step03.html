@@ -32,7 +32,7 @@
 <script type="text/javascript" src="../../../../assets_renewal/js/jquery-migrate-3.3.1.min.js"></script>
 <script type="text/javascript" src="../../../../assets_renewal/js/dashboard.js"></script>
 
-<title>Project(Client) - Regist step03 || Dashboard</title>
+<title>프로젝트 등록(Client) - step03 || Dashboard</title>
 </head>
 <body>
 <!-- #wrap -->
@@ -61,6 +61,7 @@
                 <li><a href="#none">작업자 관리</a></li>
                 <li><a href="#none">문의 관리</a></li>
                 <li><a href="#none">계약서 관리</a></li>
+                <li><a href="delete_project_list.html">삭제 목록 관리</a></li>
                 <li><a href="#none">로그아웃</a></li>
             </ul>
         </div>
@@ -92,7 +93,7 @@
                                     <table summary="대기 파일 목록, 파일 크기로 구성">
                                         <caption class="hide">대기 파일 목록</caption>
                                         <colgroup>
-                                            <col width="40px"><col><col>
+                                            <col width="40px"><col><col width="100px">
                                         </colgroup>
                                         <thead>
                                             <tr>
@@ -109,63 +110,49 @@
                                 </div>
     
                                 <div class="tbl_bd">
-                                    <table>
-                                        <colgroup>
-                                            <col width="40px"><col><col>
-                                        </colgroup>
-                                        <tbody>
-                                            <tr>
-                                                <td class="empty" scope="row" colspan="3">
-                                                    <input id="file-upload" type="file" name="fileUpload" />
-                                                    <label for="file-upload" id="file-drag">
-                                                        이곳을 더블클릭 또는 파일을 드래그 하세요.<br>
-                                                        <img src="../../../../assets_renewal/images/dashboard/ico_fileUpload.svg" alt="upload image"><br>
-                                                        또는<br>
-                                                        <button type="button" id="file-upload-btn">컴퓨터에서 파일선택</button>
-                                                    </label>
-                                                </td>
-                                            </tr>
-                                            <!-- <tr>
-                                                <td scope="row">
-                                                    <div class="chkBoxOnly">
-                                                        <input type="checkbox" class="eachChk">
-                                                    </div>
-                                                </td>
-                                                <td>업로드_자동차 세그멘테이션.jpg</td>
-                                                <td>20MB</td>
-                                            </tr>
-                                            <tr>
-                                                <td scope="row">
-                                                    <div class="chkBoxOnly">
-                                                        <input type="checkbox" class="eachChk">
-                                                    </div>
-                                                </td>
-                                                <td>PID0001025.jpg</td>
-                                                <td>20MB</td>
-                                            </tr>
-                                            <tr>
-                                                <td scope="row">
-                                                    <div class="chkBoxOnly">
-                                                        <input type="checkbox" class="eachChk">
-                                                    </div>
-                                                </td>
-                                                <td>0113_394_낮_낮상_쓰러짐_공원_여1_편집.mp4</td>
-                                                <td>20MB</td>
-                                            </tr> -->
-                                        </tbody>
-                                    </table>
+                                    <form id="file-upload-form" action="">
+                                        <!-- [D] 파일 선택 시 .upload_form_box에 removeClass('active')해주면 초기 UI 사라짐 -->
+                                        <!-- [D] 위 내용과 반대로 모든 파일을 삭제 할 경우 addClass('active')해주면 초기 UI 나타남 -->
+                                        <div class="upload_form_box active">                                           
+                                            <input id="file-upload" type="file" name="fileUpload" multiple>
+                                            <label for="file-upload" id="file-drag">
+                                                이곳을 <span class="ft_point_blue">더블클릭</span> 또는 <span class="ft_point_blue">파일을 드래그</span> 하세요.<br>
+                                                <img src="../../../../assets_renewal/images/dashboard/ico_fileUpload.svg" alt="upload image">
+                                                <span class="ft_point_grey">또는</span><br>
+                                                <span class="btn_file_add">컴퓨터에서 파일선택</span>
+                                            </label>
+                                            <progress id="file-progress" value="0">
+                                                <span>0</span>
+                                            </progress>                                           
+                                        </div>
+
+                                        <output for="file-upload">
+                                            <table>
+                                                <colgroup>
+                                                    <col width="40px"><col><col width="100px">
+                                                </colgroup>
+                                                <!-- [D] 선택 된 파일명이 추가되는 곳 -->
+                                                <tbody id="messages">
+                                                    
+                                                </tbody>
+                                            </table>
+                                        </output>
+                                    </form>
                                 </div>
     
                                 <div class="volume_info">
                                     <ul class="volume_status">
-                                        <li>업로드 대기 <span>6</span>건, </li>
-                                        <li><span>118MB</span> 추가됨</li>
+                                        <li>업로드 대기 <span class="fileNum">0</span>건, </li>
+                                        <li><span><span class="fileVolume">0</span>MB</span> 추가됨</li>
                                     </ul>
                                 </div>
     
                                 <div class="btnBox">
                                     <button type="button" class="btn_file_delete">삭제</button>
-                                    <button type="button" class="btn_file_add">파일 추가</button>
+                                    <input type="file" id="fileAdd" multiple>
+                                    <label for="fileAdd">
+                                        <span id="btn_file_add">파일 추가</span>
+                                    </label>
                                     <button type="button" class="btn_file_upload">업로드</button>
                                 </div>
                             </div>
@@ -175,7 +162,7 @@
                                     <table summary="업로드 완료 파일 목록, 파일 크기로 구성">
                                         <caption class="hide">업로드 완료 파일 목록</caption>
                                         <colgroup>
-                                            <col width="40px"><col><col>
+                                            <col width="40px"><col><col width="100px">
                                         </colgroup>
                                         <thead>
                                             <tr>
@@ -184,7 +171,7 @@
                                                         <input type="checkbox" class="allChk">
                                                     </div>
                                                 </th>
-                                                <th scope="col">대기 파일 목록</th>
+                                                <th scope="col">업로드 완료 파일 목록</th>
                                                 <th scope="col">전송 상태</th>
                                             </tr>
                                         </thead>
@@ -194,7 +181,7 @@
                                 <div class="tbl_bd">
                                     <table>
                                         <colgroup>
-                                            <col width="40px"><col><col>
+                                            <col width="40px"><col><col width="100px">
                                         </colgroup>
                                         <tbody>
                                             <tr>
@@ -231,8 +218,8 @@
                                 <div class="volume_info">
                                     <div class="limit"><span>200MB</span> 제한</div>
                                     <ul class="volume_status">
-                                        <li>업로드 완료 <span>6</span>건, </li>
-                                        <li><span>118MB</span> 추가됨</li>
+                                        <li>업로드 완료 <span>0</span>건, </li>
+                                        <li><span>0MB</span> 추가됨</li>
                                     </ul>
                                 </div>
     
@@ -260,19 +247,14 @@
 <!-- //#wrap -->
 
 <!---------------------- Local Resources ---------------------->
+<!-- Local Script Library -->
+<script type="text/javascript" src="../../../../assets_renewal/js/file-drag-upload.js"></script>
+
 <!-- Local Script -->
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-        $('.eachChk').on('click', function(){
-            var thisChecked = $(this).prop('checked'); 
         
-            if(thisChecked){
-                $(this).parents('tr').addClass('checked');
-            }else{
-                $(this).parents('tr').removeClass('checked');
-            }
-        });
     });
 });
 </script>

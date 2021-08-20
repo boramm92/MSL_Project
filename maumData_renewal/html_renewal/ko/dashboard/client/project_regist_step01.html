@@ -32,7 +32,7 @@
 <script type="text/javascript" src="../../../../assets_renewal/js/jquery-migrate-3.3.1.min.js"></script>
 <script type="text/javascript" src="../../../../assets_renewal/js/dashboard.js"></script>
 
-<title>Project(Client) - Regist step01 || Dashboard</title>
+<title>프로젝트 관리(Client) - step01 || Dashboard</title>
 </head>
 <body>
 <!-- #wrap -->
@@ -61,6 +61,7 @@
                 <li><a href="#none">작업자 관리</a></li>
                 <li><a href="#none">문의 관리</a></li>
                 <li><a href="#none">계약서 관리</a></li>
+                <li><a href="delete_project_list.html">삭제 목록 관리</a></li>
                 <li><a href="#none">로그아웃</a></li>
             </ul>
         </div>
@@ -99,7 +100,8 @@
                         <dl>
                             <dt>프로젝트 명</dt>
                             <dd>
-                                <input type="text" class="ipt_txt" placeholder="프로젝트 명을 입력하세요.">
+                                <input type="text" class="ipt_txt ipt_project" placeholder="프로젝트 명을 입력하세요.">
+                                <div class="txtCount"><span>0</span>/30</div>
                             </dd>
                         </dl>
                     </div>
@@ -196,12 +198,23 @@
                                             <div class="help_msg">
                                                 <div class="viewBox">
                                                     <div class="imgBox">
-                                                        <img src="../../../../assets_renewal/images/dashboard/img_imageEdit_sample.png" alt="image edit sample">
+                                                        <img src="../../../../assets_renewal/images/dashboard/img_frameEdit_sample.png" alt="image edit sample">
                                                     </div>
 
                                                     <dl class="txtBox">
-                                                        <dt>단일 이미지 파일가공</dt>
-                                                        <dd>각 이미지 파일별로 작업이 생성됩니다.</dd>
+                                                        <dt>이미지 파일 셋 가공</dt>
+                                                        <dd>여러 이미지 파일을 이미지 셋으로 묶어 여러 이미지를 동시에 작업할 수 있습니다.</dd>
+
+                                                        <dt>데이터 업로드 순서</dt>
+                                                        <dd>
+                                                            <ol>
+                                                                <li>1. 데이터 업로드 전 이미지 셋으로 만들 파일들을 압축합니다.</li>
+                                                                <li>2. STEP 3 데이터 업로드 단계에서 압축 폴더를 업로드 합니다.</li>
+                                                            </ol>
+                                                        </dd>
+
+                                                        <dt>*주의사항</dt>
+                                                        <dd>.zip, .zzip 형식으로 압축하세요.</dd>
                                                     </dl>
                                                 </div>
                                             </div>
@@ -276,6 +289,17 @@
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
+        // 프로젝트 명 30자 입력 제한
+        $('.ipt_project').keyup(function(e){
+			var content = $(this).val();
+        	$('.txtCount span').html(content.length);
+
+            if(content.length > 30){
+                $(this).val(content.substring(0, 30));
+                $('.txtCount span').html(30);
+            }
+        });
+
         // 데이터 유형 버튼 클릭 시 활성화 
         $('.edit_type_slt .tapBtn li').on('click', function(){
             $('.edit_type_slt .tapBtn li').removeClass('active');
@@ -299,6 +323,28 @@ jQuery.event.add(window,"load",function(){
             }else{
                 thisList.find('.chkBox').removeClass('on');
             }
+        });
+
+        // 파일 업로드 가이드 위치 설정
+        function helpMsgOffset(){
+            $('.edit_type_slt .help_msg').each(function(){
+                var thisScrollTop = $(window).scrollTop(),
+                    thisOffsetX = $(this).offset().left + 38,
+                    thisOffsetY = $(this).offset().top - thisScrollTop - 213,
+                    thisViewBox = $(this).find('.viewBox');
+
+                thisViewBox.css({
+                    position: 'fixed',
+                    top: thisOffsetY,
+                    left: thisOffsetX,
+                    background: '#e2e3e5'
+                });
+            });
+        }
+        helpMsgOffset();
+
+        $(window).scroll(function(){
+            helpMsgOffset();
         });
     });
 });
