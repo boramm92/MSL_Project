@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <button id="button">버튼이에요</button>
+
+    <script>
+        // document.getElementById('button').addEventListener('click', function(e){
+        //     // console.log(this, e.currentTarget)
+
+        //     var arry = [1,2,3];
+        //     arry.forEach(function(a){
+        //         console.log(this)
+        //     });
+        // });
+
+        // var 오브젝트 = {
+        //     이름들 : ['김', '이', '박'],
+        //     함수 : function(){
+        //         오브젝트.이름들.forEach(() => {
+        //             console.log(this);
+        //         });
+        //     }
+        // }
+        // 오브젝트.함수();
+
+
+
+        // var 함수 = (a, b) => {a + 10};
+        // 함수(5);
+
+        // [1,2,3,4].forEach(a => console.log(a));
+
+
+
+        // document.getElementById('button').addEventListener('click', (e) => {
+        //     console.log(this)
+        // });
+
+        // var 오브젝트 = {
+        //     함수 : () => {
+        //         return this
+        //     }
+        // }
+
+        // 오브젝트.함수();
+
+        // -----------------------------------------------
+
+
+        // 1번 문제
+        var 사람 = {
+            name: '손흥민',
+            sayHi: function(){
+                console.log('안녕 나는 ' + this.name)
+            }
+        }
+        사람.sayHi();
+
+
+        // 2번 문제
+        var 자료 = {
+            data: [1,2,3,4,5]
+            
+        }
+
+        자료.전부더하기 = function(){
+            var 합 = 0;
+            this.data.forEach(function(a){
+                합 = 합 + a;
+            });
+            console.log(합)
+        }
+
+        자료.전부더하기();
+
+
+        // 3번 문제
+        document.getElementById('button').addEventListener('click', function(e){
+            this.innerHTML;
+            setTimeout(() => {
+                console.log(this.innerHTML);
+            }, 1000);
+        });
+
+    </script>
+</body>
+</html>
