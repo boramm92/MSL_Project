@@ -426,6 +426,7 @@
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
         // 동영상 레이어 팝업
+        // [D] 21.08.24 - 수정, 해당영역 script 덮어쓰기 해주세요.
         $('.btn_video_play').on('click', function(){
             $('body').css('overflow', 'hidden');
 
@@ -433,9 +434,7 @@ jQuery.event.add(window,"load",function(){
             '<div class="lyr_bg_dim"></div>\
             <div id="lyr_video_player" class="lyrPlayBox">\
                 <div class="lyr_ct">\
-                    <video controls autoplay>\
-                        <source src="../resources/videos/bank_kiosk.mp4" type="video/mp4">\
-                    </video>\
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/haJPR1ty37A?rel=0&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>\
                 </div>\
                 <button type="button" class="btn_lyr_close">\
                     <em class="fas fa-times" title="닫기버튼"></em>\
@@ -448,6 +447,7 @@ jQuery.event.add(window,"load",function(){
                 $('#lyr_video_player').remove();
             });   
         });
+        // //[D] 21.08.24 - 수정, 해당영역 script 덮어쓰기 해주세요.
 
         // Layer popup open 
         $('.btn_lyr_open').on('click',function(){	
