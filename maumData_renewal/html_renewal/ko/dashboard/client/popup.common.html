@@ -32,7 +32,11 @@
 <script type="text/javascript" src="../../../../assets_renewal/js/jquery-migrate-3.3.1.min.js"></script>
 <script type="text/javascript" src="../../../../assets_renewal/js/dashboard.js"></script>
 
-<title>프로젝트 관리(Client) - step02 || Dashboard</title>
+<style>
+    .btn_lyr_open {margin:0 10px; padding:10px; border-radius:4px; background:#2a354a; color:#fff; font-weight:500;}
+</style>
+
+<title>워크스페이스 관리(Client) - Main || Dashboard</title>
 </head>
 <body>
 <!-- #wrap -->
@@ -47,16 +51,16 @@
                         <img src="../../../../assets_renewal/images/logo_maumData_m.svg" alt="maum DATA logo">
                     </a>
                 </h1>
-                <button type="button" class="btn_ham" title="전체메뉴">
+                <button type="button" class="btn_ham">
                     <span>전체 메뉴</span>
                 </button>
             </div>
             <div class="account"><span>H&M(=헤네스앤모리츠)슈퍼</span></div>
             <ul class="nav">
-                <li>
+                <li class="active">
                     <a href="workspace_main.html"><span>워크스페이스 관리</span></a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="project_main.html"><span>프로젝트 관리</span></a>
                 </li>
                 <li>
@@ -84,27 +88,14 @@
         <!-- #contents -->
         <div id="contents">
             <!-- .content -->
-            <div class="content project_regist step02">
+            <div class="content">
                 <div class="titArea">
-                    <h3>프로젝트 등록</h3>
+                    <h3>공통 팝업 모음</h3>
                 </div>
 
-                <div class="contArea">
-                    <div class="step_wrap">
-                        <!-- [D] .step_list li에 addClass('active')하면 활성화됨 -->
-                        <ul class="step_list">
-                            <li class="active done">Step1. 프로젝트 정보</li>
-                            <li class="active">Step2. 태그 설정</li>
-                            <li>Step3. 데이터 업로드</li>
-                            <li>Step4. 가이드 설정</li>
-                        </ul>
-                    </div>
-
-                    <div class="btnBox">
-                        <a href="project_regist_step01.html" class="btn_primary_rect prev">이전</a>
-                        <a href="project_regist_step03.html" class="btn_primary_rect blue">다음</a>
-                    </div>
-                </div>
+                <button type="button" class="btn_lyr_open" data-lyr-name="confirm">확인</button>
+                <button type="button" class="btn_lyr_open" data-lyr-name="cancelConfirm">취소, 확인</button>
+                <button type="button" class="btn_lyr_open" data-lyr-name="icldInput">취소, 확인, input[type="text"]</button>
             </div>
             <!-- //.content -->
         </div> 
@@ -113,6 +104,60 @@
     <!-- //#container -->
 </div>
 <!-- //#wrap -->
+
+<!-- 확인 -->
+<div id="confirm" class="lyrWrap">
+    <div class="lyrCont">
+        <div class="lyr_top">
+            <p class="tit">삭제</p>
+            <button type="button" class="btn_lyr_close"><span class="hide">닫기버튼</span></button>
+        </div>
+        <div class="lyr_mid">
+            <p class="alert_txt">업로드된 파일을 삭제하시겠습니까?</p>
+        </div>
+        <div class="lyr_btm">
+            <button tyle="button" class="btn_primary btn_confirm">확인</button>
+        </div>
+    </div>
+</div>
+<!-- //확인 -->
+
+<!-- 취소, 확인 -->
+<div id="cancelConfirm" class="lyrWrap">
+    <div class="lyrCont">
+        <div class="lyr_top">
+            <p class="tit">삭제</p>
+            <button type="button" class="btn_lyr_close"><span class="hide">닫기버튼</span></button>
+        </div>
+        <div class="lyr_mid">
+            <p class="alert_txt">업로드된 파일을 삭제하시겠습니까?</p>
+        </div>
+        <div class="lyr_btm">
+            <button tyle="button" class="btn_primary btn_lyr_close">취소</button>
+            <button tyle="button" class="btn_primary btn_confirm">확인</button>
+        </div>
+    </div>
+</div>
+<!-- //취소, 확인 -->
+
+<!-- 취소, 확인, input[type="text"] -->
+<div id="icldInput" class="lyrWrap">
+    <div class="lyrCont">
+        <div class="lyr_top">
+            <p class="tit">태그 그룹 목록 만들기</p>
+            <button type="button" class="btn_lyr_close"><span class="hide">닫기버튼</span></button>
+        </div>
+        <div class="lyr_mid">
+            <p class="alert_txt"> <span class="ft_point_blue">‘그룹 목록 명’</span> 을 입력하여 새로운 태그를<br> 만들 수 있습니다.</p>
+            <input type="text" class="ipt_txt" placeholder="그룹 목록 명을 입력하세요.">
+        </div>
+        <div class="lyr_btm">
+            <button tyle="button" class="btn_primary btn_lyr_close">취소</button>
+            <button tyle="button" class="btn_primary btn_confirm">확인</button>
+        </div>
+    </div>
+</div>
+<!-- //취소, 확인, input[type="text"] -->
 
 <!---------------------- Local Resources ---------------------->
 <!-- Local Script -->

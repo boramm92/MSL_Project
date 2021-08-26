@@ -19,15 +19,16 @@ $(document).ready(function(){
 
     
     // snb 열기 / 닫기
-    $('#snb').on('click', function(e){
+    $('.btn_ham').on('click', function(e){
         e.stopPropagation();
-        $(this).toggleClass('open');
+        $('#snb').addClass('open');
     });
     
     // snb 외 영역 클릭 시에도 닫기
     $('html').on('click', function(e){
         e.stopPropagation();
-        if(!$(e.target).is('#snb')){
+        if($(e.target).is('#snb')){
+            console.log('test')
             $('#snb').removeClass('open');
         }
     });
@@ -57,7 +58,7 @@ $(document).ready(function(){
 
 
     // table 목록 선택 / 미리보기 aside 열기 / 닫기
-    $('.tblBox table tbody tr').on('click', function(){
+    $('.tblBox.type01 table tbody tr').on('click', function(){
         var tableName = $(this).parents('table').data('tbl-name'),
             asideId = '#' + tableName;
 
@@ -144,5 +145,14 @@ $(document).ready(function(){
         $this.val(function(){
             return(priceInput === 0) ? '' : priceInput.toLocaleString('en-US');
         });    
-    } );
+    });
+
+
+    // contenteditable div에 텍스트 붙여넣기 시 태그 제외한 순수 텍스트만 넣기
+    window.addEventListener('paste', function(e) {
+        e.preventDefault();
+        var pastedData = event.clipboardData ||  window.clipboardData;
+        var textData = pastedData.getData('text/plain');
+        window.document.execCommand('insertHTML', false, textData);
+    });
 });

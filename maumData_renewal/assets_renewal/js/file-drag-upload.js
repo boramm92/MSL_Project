@@ -33,7 +33,7 @@
 	// 파일 선택 시
 	function fileSelectHandler(e) {
 		var fileUploadBox = document.querySelector('.upload_form_box'),
-			fileAddButton = document.getElementById('btn_file_add');
+			fileAddButton = document.querySelectorAll('.btn_file_add')[1];
 		fileUploadBox.classList.remove('active');
 		fileAddButton.style.display = 'inline-block';
 
@@ -105,8 +105,6 @@
 				fileVolumeText = $(this).text();
 			fileVolumeText = parseFloat(fileVolumeText);
 			fileVolume = fileVolume + fileVolumeText;
-
-			console.log(fileVolume)
 		});
 		
 		// fileVolume = fileVolume.replace('MB', '');

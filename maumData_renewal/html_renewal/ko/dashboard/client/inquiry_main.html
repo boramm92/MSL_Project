@@ -32,7 +32,7 @@
 <script type="text/javascript" src="../../../../assets_renewal/js/jquery-migrate-3.3.1.min.js"></script>
 <script type="text/javascript" src="../../../../assets_renewal/js/dashboard.js"></script>
 
-<title>삭제 목록 관리(Client) || Dashboard</title>
+<title>문의 관리(Client) - Main || Dashboard</title>
 </head>
 <body>
 <!-- #wrap -->
@@ -65,13 +65,13 @@
                 <li>
                     <a href="#none"><span>작업자 관리</span></a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="inquiry_main.html"><span>문의 관리</span></a>
                 </li>
                 <li>
                     <a href="#none"><span>계약서 관리</span></a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="delete_project_list.html"><span>삭제 목록 관리</span></a>
                 </li>
                 <li>
@@ -86,12 +86,15 @@
             <!-- .content -->
             <div class="content">
                 <div class="titArea">
-                    <h3>삭제 목록 관리</h3>
+                    <h3>문의 관리</h3>
                 </div>
 
                 <div class="tbl_tap_wrap">
                     <ul class="tapBtn">
-                        <li class="active">삭제 프로젝트 <span class="caseNum">99999</span></li>
+                        <li class="active">전체 <span class="caseNum">99999</span></li>
+                        <li>답변 대기 <span class="caseNum">20</span></li>
+                        <li>진행 중 <span class="caseNum">20</span></li>
+                        <li>답변 완료 <span class="caseNum">20</span></li>
                     </ul>
 
                     <div class="tapCont">
@@ -102,17 +105,17 @@
                                 <option value="">B 그룹</option>
                             </select>
                             <select class="select">
-                                <option value="">데이터 유형</option>
-                                <option value="">이미지 Image</option>
-                                <option value="">텍스트 Text</option>
-                                <option value="">오디오 Audio</option>
-                                <option value="">비디오 Video</option>
+                                <option value="">프로젝트 선택</option>
+                                <option value="">프로젝트 AA</option>
+                                <option value="">프로젝트 BB</option>
                             </select>
                             <select class="select">
-                                <option value="">가공 유형</option>
-                                <option value="">유형1</option>
-                                <option value="">유형2</option>
-                                <option value="">유형3</option>
+                                <option value="">질문 유형 선택</option>
+                                <option value="">로그인, 회원 가입</option>
+                                <option value="">가공 관련 문의</option>
+                                <option value="">검수 관련 문의</option>
+                                <option value="">포인트 관련 문의</option>
+                                <option value="">기타</option>
                             </select>
 
                             <div class="srchBox">
@@ -123,104 +126,80 @@
                             </div>
                         </div>
 
-                        <div class="tblBox type01 icld_chk">
-                            <table summary="프로젝트 명, 워크스페이스 명, 데이터 유형, 가공 유형, 프로젝트 상태, 시작일, 종료일로 구성">
-                                <caption class="hide">프로젝트 목록</caption>
+                        <div class="tblBox type01">
+                            <table summary="워크스페이스 명, 프로젝트 명, 문의 내용, 질문 유형, 작성자 ID, 작성일, 답변, 답변상태로 구성">
+                                <caption class="hide">문의 목록</caption>
                                 <colgroup>
-                                    <col width="80px"><col width="20%"><col width="20%"><col><col>
-                                    <col><col><col>
+                                    <col><col><col><col width="11%">
+                                    <col><col width="9%"><col width="6%"><col width="9%">
                                 </colgroup>
 
                                 <thead>
                                     <tr>
-                                        <th scope="col">
-                                            <div class="chkBoxOnly">
-                                                <input type="checkbox" class="allChk">
-                                            </div>
-                                        </th>
-                                        <th scope="col">프로젝트 명</th>
                                         <th scope="col">워크스페이스 명</th>
-                                        <th scope="col">데이터 유형</th>
-                                        <th scope="col">가공 유형</th>
-                                        <th scope="col">프로젝트 상태</th>
-                                        <th scope="col">시작일</th>
-                                        <th scope="col">종료일</th>
+                                        <th scope="col">프로젝트 명</th>
+                                        <th scope="col">문의 내용</th>
+                                        <th scope="col">질문 유형</th>
+                                        <th scope="col">작성자 ID</th>
+                                        <th scope="col">작성일</th>
+                                        <th scope="col">답변</th>
+                                        <th scope="col">답변 상태</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
                                     <tr>
-                                        <td class="empty" scope="row" colspan="8">등록된 프로젝트가 없습니다.</td>
+                                        <td class="empty" scope="row" colspan="8">등록된 문의가 없습니다.</td>
                                     </tr>
                                     <tr>
-                                        <td scope="row">
-                                            <div class="chkBoxOnly">
-                                                <input type="checkbox" class="eachChk">
-                                            </div>
-                                        </td>
                                         <td>영역지정ABCDEFFGHIJFGTTTRREEERRT그룹</td>
-                                        <td>A 그룹</td>
-                                        <td>Image</td>
-                                        <td>Bounding Box</td>
-                                        <td>가공 완료</td>
-                                        <td>2021-07-01</td>
+                                        <td>영역지정ABCDEFFGHIJ가나다라마</td>
+                                        <td>보행자 키가 너무 커서 건물처럼 보입니다.</td>
+                                        <td>로그인, 회원가입</td>
+                                        <td>12345678@mindslab.ai</td>
                                         <td>2021-07-30</td>
+                                        <td>0</td>
+                                        <td>답변 대기</td>
                                     </tr>
                                     <tr>
-                                        <td scope="row">
-                                            <div class="chkBoxOnly">
-                                                <input type="checkbox" class="eachChk">
-                                            </div>
-                                        </td>
                                         <td>영역지정ABCDEFFGHIJFGTTTRREEERRT그룹</td>
-                                        <td>A 그룹</td>
-                                        <td>Image</td>
-                                        <td>Bounding Box</td>
+                                        <td>영역지정ABCDEFFGHIJ가나다라마</td>
+                                        <td>보행자 키가 너무 커서 건물처럼 보입니다.</td>
+                                        <td>가공 관련 문의</td>
+                                        <td>12345678@mindslab.ai</td>
+                                        <td>2021-07-30</td>
+                                        <td>50</td>
                                         <td>진행 중</td>
-                                        <td>2021-07-01</td>
-                                        <td>2021-07-30</td>
                                     </tr>
                                     <tr>
-                                        <td scope="row">
-                                            <div class="chkBoxOnly">
-                                                <input type="checkbox" class="eachChk">
-                                            </div>
-                                        </td>
                                         <td>영역지정ABCDEFFGHIJFGTTTRREEERRT그룹</td>
-                                        <td>A 그룹</td>
-                                        <td>Image</td>
-                                        <td>Bounding Box</td>
-                                        <td>일시 중지</td>
-                                        <td>2021-07-01</td>
+                                        <td>영역지정ABCDEFFGHIJ가나다라마</td>
+                                        <td>보행자 키가 너무 커서 건물처럼 보입니다.</td>
+                                        <td>검수 관련 문의</td>
+                                        <td>12345678@mindslab.ai</td>
                                         <td>2021-07-30</td>
+                                        <td>100</td>
+                                        <td>답변 완료</td>
                                     </tr>
                                     <tr>
-                                        <td scope="row">
-                                            <div class="chkBoxOnly">
-                                                <input type="checkbox" class="eachChk">
-                                            </div>
-                                        </td>
                                         <td>영역지정ABCDEFFGHIJFGTTTRREEERRT그룹</td>
-                                        <td>A 그룹</td>
-                                        <td>Image</td>
-                                        <td>Bounding Box</td>
-                                        <td>대기</td>
-                                        <td>2021-07-01</td>
+                                        <td>영역지정ABCDEFFGHIJ가나다라마</td>
+                                        <td>보행자 키가 너무 커서 건물처럼 보입니다.</td>
+                                        <td>포인트 관련 문의</td>
+                                        <td>12345678@mindslab.ai</td>
                                         <td>2021-07-30</td>
+                                        <td>100</td>
+                                        <td>답변 완료</td>
                                     </tr>
                                     <tr>
-                                        <td scope="row">
-                                            <div class="chkBoxOnly">
-                                                <input type="checkbox" class="eachChk">
-                                            </div>
-                                        </td>
                                         <td>영역지정ABCDEFFGHIJFGTTTRREEERRT그룹</td>
-                                        <td>A 그룹</td>
-                                        <td>Image</td>
-                                        <td>Bounding Box</td>
-                                        <td>기간 만료</td>
-                                        <td>2021-07-01</td>
+                                        <td>영역지정ABCDEFFGHIJ가나다라마</td>
+                                        <td>보행자 키가 너무 커서 건물처럼 보입니다.</td>
+                                        <td>기타</td>
+                                        <td>12345678@mindslab.ai</td>
                                         <td>2021-07-30</td>
+                                        <td>100</td>
+                                        <td>답변 완료</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -229,10 +208,6 @@
                 </div>
 
                 <div class="pagingArea">
-					<div class="btnBox fl">
-						<button type="button" class="btn_primary_rect blue btn_list_restore" disabled>복원</button>
-					</div>
-
 					<div class="paging">
 						<a href="#none" class="btn_paging first">
                             <span class="hide">처음 페이지</span>
@@ -267,7 +242,10 @@
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-        
+        // 단순 화면 전환을 위한 script (실제 개발 시에는 무시해주세요.)
+        $('.tblBox tr').on('click', function(){
+            location.href = 'inquiry_answer.html';
+        });
     });
 });
 </script>
