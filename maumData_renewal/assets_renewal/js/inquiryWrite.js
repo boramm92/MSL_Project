@@ -51,10 +51,9 @@ $(document).ready(function(){
 
 	// '답변 등록' 버튼 클릭 시 댓글 목록 추가
 	$('.btn_rgst_answer').on('click', function(){
+		var today = getFormatDate(today);
 		var commentVal = $('.inquiry_detail.edit_mode .textarea').text();
 		var fileBoxImg = $('.inquiry_detail.edit_mode .fileArea .fileBox img');
-		var today = getFormatDate(today);
-
 
 		for(var i = 0; i < fileBoxImg.length; i++){
 			var fileBoxImgSrc = fileBoxImg[i];
