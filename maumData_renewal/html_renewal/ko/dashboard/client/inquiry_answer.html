@@ -135,7 +135,7 @@
                                                 <img src="../../../../assets_renewal/images/dashboard/img_attach_sample02.png" alt="attach file">
                                             </div>
                                         </div>
-                                        <p class="txt">장소설정으로 인해 반려되는 작업들이 종종 있는데요, 이럴경우 처음부터 재작업을 해야하는 힘든 과정이 생깁니다.</p>
+                                        <div class="textarea" contenteditable="false">장소설정으로 인해 반려되는 작업들이 종종 있는데요, 이럴경우 처음부터 재작업을 해야하는 힘든 과정이 생깁니다.</div>
                                     </div>
                                 </td>
                             </tr>
@@ -163,11 +163,15 @@
                                 <tr>
                                     <th scope="row">댓글 쓰기</th>
                                     <td>
-                                        <div class="textarea writeBox" contenteditable="true" placeholder="댓글을 입력해주세요."></div>
+                                        <div class="inquiry_detail edit_mode">
+                                            <div class="textarea default" contenteditable="true" placeholder="댓글을 입력해주세요."></div>
+                                            <div class="fileArea"></div>                                           
+                                        </div>
+
                                         <div class="btnBox">
-                                            <input type="file" id="attachImage" multiple>
+                                            <input type="file" id="attachImage" accept=".jpg, .jpeg, .png" multiple>
                                             <label for="attachImage">
-                                                <span class="btn_file_add">이미지/파일 업로드</span>
+                                                <span class="btn_file_add">이미지 업로드</span>
                                             </label>
 
                                             <button type="button" class="btn_primary_rect blue btn_rgst_answer">답변 등록</button>
@@ -199,40 +203,14 @@
 <!-- //#wrap -->
 
 <!---------------------- Local Resources ---------------------->
+<!-- Local Script Library -->
+<script type="text/javascript" src="../../../../assets_renewal/js/inquiryWrite.js"></script>
+
 <!-- Local Script -->
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-        // '답변 등록' 버튼 클릭 시 댓글 목록 추가
-        $('.btn_rgst_answer').on('click', function(){
-            var commentVal = $('.writeBox').text();
-            commentVal = commentVal.replaceAll('<div>', '<br>');
-            var today = getFormatDate(today);
-
-            function getFormatDate(){
-                now = new Date();
-                year = '' + now.getFullYear();
-                month = '' + (now.getMonth() + 1); if(month.length == 1) {month = '0' + month;}
-                day = '' + now.getDate(); if(day.length == 1) {day = '0' + day;}
-                hour = '' + now.getHours(); if(hour.length == 1) {hour = '0' + hour;}
-                minute = '' + now.getMinutes(); if(minute.length == 1) {minute = '0' + minute;}
-                return year + '.' + month + '.' + day + ' ' + hour + ':' + minute;
-            }
-
-            // [D] .writer 내 텍스트는 권한에 따라 넣어주세요.
-            var commentListTemp = `
-                <li>
-                    <div class="writer">관리자 <span class="label">관리자</span></div>  
-                    <div class="inquiry_detail">
-                        <p class="txt">${commentVal}</p>
-                    </div>
-                    <div class="date">${today}</div>
-                </li>
-            `;
-
-            $('.writeBox').empty();
-            $('.comment_list').append(commentListTemp);
-        });
+        
     });
 });
 </script>
