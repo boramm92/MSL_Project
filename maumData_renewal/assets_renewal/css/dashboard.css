@@ -126,11 +126,11 @@ input[type="text"].toDate {position:relative; background:#fff url('../images/das
 .lyrCont .lyr_top .tit {color:#fff; font-size:16px; font-weight:500; line-height:24px; text-align:center;}
 .lyrCont .lyr_top .btn_lyr_close {position:absolute; top:6px; right:6px; width:20px; height:20px; background:url('../images/builder/ico_close.svg') 50% 50% no-repeat;}
 .lyrCont .lyr_top .btn_lyr_close span {display:block; overflow:hidden; text-indent:-9999px; white-space:nowrap;}
-.lyrCont .lyr_mid {padding:30px;}
+.lyrCont .lyr_mid {position:relative; padding:30px;}
 .lyrCont .lyr_mid .alert_txt {color:#26282b; font-size:13px; letter-spacing:-0.13px; line-height:20px; text-align:center;}
 .lyrCont .lyr_btm {padding:0 30px 20px; text-align:center;}
 .lyrCont .lyr_btm button.btn_primary {width:138px; height:40px; margin:0 7px; border:1px solid #1054b2; border-radius:4px; box-sizing:border-box; background:#fff; color:#1054b2; font-size:13px; font-weight:500; transition:all 0.3s ease-out;}
-.lyrCont .lyr_btm button.btn_primary:hover {background:#1054b2; color:#fff;}
+.lyrCont .lyr_btm button.btn_primary:hover {background-color:#1054b2; color:#fff;}
 .lyrCont .lyr_btm button.btn_confirm {width:138px;}
 .lyrCont .lyr_btm button.btn_lyr_close {width:96px; border:none; background:#898e95; color:#fff; font-weight:400;}
 .lyrCont .lyr_btm button.btn_lyr_close:hover {background:#898e95;}
@@ -141,10 +141,26 @@ input[type="text"].toDate {position:relative; background:#fff url('../images/das
 .lyrToast .btn_toast_close span {display:block; overflow:hidden; text-indent:-9999px; white-space:nowrap;}
 .lyrToast.on {right:16px;}
 
-/* 작업불가 */
+/* 입력폼 포함 */
 #icldInput .lyrCont .lyr_mid .alert_txt {margin:0 0 20px;}
 #icldInput .lyrCont .lyr_mid .ipt_txt {width:100%; height:36px; padding:0 11px; border:1px solid #abaeb9; background:#edeff4; color:#26282b; font-size:12px; letter-spacing:-0.12px;}
 #icldInput .lyrCont .lyr_mid .ipt_txt::placeholder {color:#7f848b; font-size:12px;}
+
+/* 첨부파일 상세 보기 */
+#attachFileDetail .lyrCont {width:880px; height:652px; border-radius:4px;}
+#attachFileDetail .lyrCont .lyr_top {padding:20px 40px 10px; border-bottom:1px solid #d9dde6; background:none;}
+#attachFileDetail .lyrCont .lyr_top .tit {overflow:hidden; width:400px; color:#26282b; font-size:14px; letter-spacing:-0.14px; text-align:left; line-height:20px; text-overflow:ellipsis; white-space:nowrap;}
+#attachFileDetail .lyrCont .lyr_top .btn_lyr_close {top:18px; right:40px; width:24px; height:24px; background:url('../images/dashboard/ico_aside_close.svg') 50% 50% no-repeat;}
+#attachFileDetail .lyrCont .lyr_mid {padding:20px 40px;}
+#attachFileDetail .lyrCont .lyr_mid .view_list {width:100%; height:500px;}
+#attachFileDetail .lyrCont .lyr_mid .view_list li {display:flex; justify-content:center; align-items:center; width:100%; height:100%; border:1px solid #d9dde6; border-radius:4px; box-sizing:border-box;}
+#attachFileDetail .lyrCont .lyr_mid .view_list li img {max-width:100%; max-height:100%; object-fit:contain;}
+#attachFileDetail .lyrCont .lyr_mid .btn_slide_move {position:absolute; top:50%; width:24px; height:24px; transform:translate(0, -50%);}
+#attachFileDetail .lyrCont .lyr_mid .btn_slide_move.swiper-button-disabled {opacity:0.4; cursor:default;}
+#attachFileDetail .lyrCont .lyr_mid .btn_slide_move.btn_slide_prev {left:8px; background:url('../images/dashboard/ico_circle_prev_g.svg') 50% 50% no-repeat;}
+#attachFileDetail .lyrCont .lyr_mid .btn_slide_move.btn_slide_next {right:8px; background:url('../images/dashboard/ico_circle_next_g.svg') 50% 50% no-repeat;}
+#attachFileDetail .lyrCont .lyr_btm .btn_file_download {width:100px; padding:0 0 0 36px; background-image:url('../images/dashboard/ico_download_b.svg'); background-position:14px 50%; background-repeat:no-repeat; text-align:left;}
+#attachFileDetail .lyrCont .lyr_btm .btn_file_download:hover {background-image:url('../images/dashboard/ico_download_w.svg');}
 
 
 /* -------------------- snb -------------------- */
@@ -335,7 +351,7 @@ input[type="text"].toDate {position:relative; background:#fff url('../images/das
 .inquiry_detail .fileArea {display:flex; flex-wrap:wrap;}
 .inquiry_detail .fileArea .fileBox {position:relative; width:100px; height:100px; margin:0 20px 20px 0; border:1px solid #d9dde6; border-radius:4px; box-sizing:border-box; cursor:pointer;}
 .inquiry_detail .fileArea .fileBox img {width:100%; height:100%; border-radius:4px; object-fit:cover;}
-.inquiry_detail .textarea {padding:0; border:none; background:none; color:#26282b; font-size:14px; letter-spacing:-0.14px;}
+.inquiry_detail .textarea {padding:0; border:none; background:none; color:#26282b; font-size:14px; letter-spacing:-0.14px; line-height:20px;}
 .inquiry_detail .textarea:empty:before {content:attr(placeholder); display:block; color:#707177; font-size:14px; letter-spacing:-0.14px; cursor:text;}
 
 .inquiry_detail.edit_mode {min-height:140px; padding:12px; border:1px solid #d9dde6; border-radius:4px; box-sizing:border-box; background:#fff;}
@@ -346,14 +362,15 @@ input[type="text"].toDate {position:relative; background:#fff url('../images/das
 /* comment_list */
 .comment_list {margin:0 0 30px; border-top:2px solid #2f4e93; background:#fff;}
 .comment_list:empty {margin:0; border:none;}
-.comment_list li {padding:30px;}
+.comment_list li {position:relative; padding:30px;}
 .comment_list li + li {border-top:1px solid #d9dde6;}
 .comment_list li .writer {color:#26282b; font-size:14px; font-weight:500; letter-spacing:-0.14px; line-height:20px;}
 .comment_list li .writer .label {display:inline-block; margin:0 0 0 8px; padding:0 6px; border:1px solid #1054b2; border-radius:4px; background:#fff; color:#1054b2; font-weight:400; line-height:18px;}
-.comment_list li .inquiry_detail {margin:10px 0 0;}
-.comment_list li .inquiry_detail .fileArea .fileBox {width:80px; height:80px;}
+.comment_list li .inquiry_detail {margin:10px 0;}
+.comment_list li .inquiry_detail .fileArea .fileBox {width:80px; height:80px; margin:0 10px 10px 0;}
 .comment_list li .inquiry_detail .textarea {min-height:auto; padding:0; border:none; background:none;}
 .comment_list li .date {color:#a3a3a3; font-size:14px; letter-spacing:-0.14px;}
+.comment_list li .btn_comment_delete {position:absolute; top:28px; right:30px; padding:0 22px 0 0; background:url('../images/dashboard/ico_close_b.svg') 100% 50% no-repeat; color:#1054b2; font-size:14px; font-weight:500; letter-spacing:-0.14px; line-height:19px;}
 
 /* comment_nav */
 .comment_nav {margin:30px 0 0; border:1px solid #d9dde6; border-radius:4px; background:#fff;}

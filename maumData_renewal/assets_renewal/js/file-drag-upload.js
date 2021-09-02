@@ -94,23 +94,6 @@
 		// 파일 업로드 후 파일 추가 시 기존의 선택 파일들 모두 reset
 		$('.tbl_file_list.fl').find('tr').removeClass('checked');
 		$('.tbl_file_list.fl').find('.allChk, .eachChk').prop('checked', false);
-
-		// 대기 파일 목록의 대기 건, 총 용량 계산
-		var fileNum = $('#messages').find('tr').length,
-			fileVolumeTd = $('#messages').find('td:last-child');
-
-		$('.fileNum').text(fileNum);
-		fileVolumeTd.each(function(){
-			var fileVolume = 0,
-				fileVolumeText = $(this).text();
-			fileVolumeText = parseFloat(fileVolumeText);
-			fileVolume = fileVolume + fileVolumeText;
-		});
-		
-		// fileVolume = fileVolume.replace('MB', '');
-		// fileVolume = parseInt(fileVolume);
-
-		// console.log(fileVolume.length)
 	}
 
 	// 파일 목록 생성
