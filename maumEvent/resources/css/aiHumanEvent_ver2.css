@@ -113,8 +113,8 @@
 #wrap.event .service .svc_list li {box-sizing:border-box; height:530px;}
 #wrap.event .service .svc_list li + li {border-top:1px solid #d8d8dd;}
 #wrap.event .service .svc_list li .contBox {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
-#wrap.event .service .svc_list li .contBox .img {width:674px; margin-top:auto;}
-#wrap.event .service .svc_list li .contBox .img img {width:100%;}
+#wrap.event .service .svc_list li .contBox .img {position:relative; width:674px; margin-top:auto; padding-bottom:36.8%;}
+#wrap.event .service .svc_list li .contBox .img img {position:absolute; bottom:0; left:0; width:100%;}
 #wrap.event .service .svc_list li .contBox .desc {}
 #wrap.event .service .svc_list li .contBox .desc dt .sub_tit {color:#283d7b; letter-spacing:-0.72px; line-height:1.08;}
 #wrap.event .service .svc_list li .contBox .desc dt .main_tit {color:#5678db; font-size:40px; letter-spacing:-2px; line-height:1.4;}
@@ -181,10 +181,11 @@
 
     .checkBox input[type="checkbox"] + label {padding-left:20px; font-size:14px;}
     .checkBox input[type="checkbox"] + label:before {width:16px; height:16px;}
+    .checkBox input[type="checkbox"]:checked + label:before {line-height:16px;}
 
     #wrap.event .stn {min-width:320px;}
     #wrap.event .contBox {width:100%; box-sizing:border-box;}
-    #wrap.event .contBox .stn_tit {font-size:20px;}
+    #wrap.event .contBox .stn_tit {font-size:22px;}
 
     #wrap.event .visual {height:592px;}
     #wrap.event .visual .contBox .svc_txt {position:static; text-align:center; transform:none;}
@@ -195,28 +196,26 @@
     #wrap.event .visual .contBox .svc_txt .descBox .main_desc {font-size:16px; letter-spacing:-0.21px; line-height:1.38;}
     #wrap.event .visual .contBox .svc_txt .descBox .sub_desc {margin:10px 0; font-size:14px; letter-spacing:-0.19px; word-break:keep-all;}
     #wrap.event .visual .contBox .svc_txt .descBox .btn_go_contact {height:40px; padding:0 40px; font-size:14px; letter-spacing:-0.19px;}
-    #wrap.event .visual .videoBox video {top:0; left:calc(50% - 252px); height:100%; transform:translate(-50%, 0);}
+    #wrap.event .visual .videoBox video {top:0; left:calc(50% - 248px); height:100%; transform:translate(-50%, 0);}
 
     #wrap.event .service .svc_list li {height:auto;}
-    #wrap.event .service .svc_list li .contBox {display:block;}
     #wrap.event .service .svc_list li .contBox .img {width:100%;}
-    #wrap.event .service .svc_list li .contBox .desc dt .main_tit {font-size:20px; letter-spacing:-0.6px; line-height:1.5;}
+    #wrap.event .service .svc_list li .contBox .desc dt .main_tit {font-size:24px; letter-spacing:-0.6px; line-height:1.5;}
     #wrap.event .service .svc_list li .contBox .desc dt .sub_tit {font-size:16px; letter-spacing:-0.48px; line-height:1.63;}
     #wrap.event .service .svc_list li .contBox .desc dd {width:100%; margin:2px 0 0; font-size:14px; letter-spacing:-0.28px; line-height:1.43;}
     #wrap.event .service .svc_list li .contBox .img {margin:16px 0 0;}
-    #wrap.event .service .svc_list li:nth-child(2) .contBox .desc,
-    #wrap.event .service .svc_list li:not(:nth-child(2)) .contBox .desc {padding:24px 0 0;}
+    #wrap.event .service .svc_list li:not(:nth-child(2)) .contBox .desc {padding-left:24px;}
+    #wrap.event .service .svc_list li:nth-child(2) .contBox .desc {padding:0 24px;}
+    
 
     #wrap.event .use_case {padding:24px 0;}
     #wrap.event .use_case .contBox .ai_human_list {justify-content:center; margin:16px 0 0;}
-    #wrap.event .use_case .contBox .ai_human_list li {width:100%;}
-    #wrap.event .use_case .contBox .ai_human_list li + li {margin:24px 0 0;}   
-    #wrap.event .use_case .contBox .ai_human_list li:nth-child(3n+2) {margin:24px 0 0;}
-    #wrap.event .use_case .contBox .ai_human_list li:nth-child(n+4) {margin-top:24px;}
-    /* #wrap.event .use_case .contBox .ai_human_list li .img {width:204px; margin:0 auto;} */
-    #wrap.event .use_case .contBox .ai_human_list li .img {position:relative; padding-bottom:45.4%;}
-    #wrap.event .use_case .contBox .ai_human_list li .img img {position:absolute; top:0; left:50%; width:auto; height:100%; transform:translate(-50%, 0);}
-    #wrap.event .use_case .contBox .ai_human_list li .desc dt {margin:8px 0 2px; font-size:18px; letter-spacing:-0.47px; line-height:1.5;}
+    #wrap.event .use_case .contBox .ai_human_list li {width:calc(50% - 48px); margin:0 24px;}
+    #wrap.event .use_case .contBox .ai_human_list li:nth-child(3n+2) {margin:0 24px;}
+    #wrap.event .use_case .contBox .ai_human_list li:nth-child(n+4) {margin:0 24px;}
+    #wrap.event .use_case .contBox .ai_human_list li:nth-child(n+3) {margin:24px 24px 0;}
+    #wrap.event .use_case .contBox .ai_human_list li:last-child {margin-right:auto;}
+    #wrap.event .use_case .contBox .ai_human_list li .desc dt {margin:8px 0 2px; font-size:20px; letter-spacing:-0.47px; line-height:1.5;}
     #wrap.event .use_case .contBox .ai_human_list li .desc dd {font-size:14px; letter-spacing:-0.28px; line-height:1.43;}
 
     #wrap.event .interview {padding:24px 0;}
@@ -245,5 +244,16 @@
 }
 
 @media screen and (max-width:480px){
-    
+    #wrap.event .service .svc_list li .contBox {display:block;}
+    #wrap.event .service .svc_list li .contBox .img {padding:0;}
+    #wrap.event .service .svc_list li .contBox .img img {position:static;}
+    #wrap.event .service .svc_list li:nth-child(2) .contBox .desc,
+    #wrap.event .service .svc_list li:not(:nth-child(2)) .contBox .desc {padding:24px 0 0;}
+
+    #wrap.event .use_case .contBox .ai_human_list li {width:100%;}
+    #wrap.event .use_case .contBox .ai_human_list li + li {margin:24px 0 0;}   
+    #wrap.event .use_case .contBox .ai_human_list li:nth-child(3n+2) {margin:24px 0 0;}
+    #wrap.event .use_case .contBox .ai_human_list li:nth-child(n+4) {margin-top:24px;}
+
+    #wrap.event .contact .contBox .contact_info img {width:16px; vertical-align:bottom;}
 }
