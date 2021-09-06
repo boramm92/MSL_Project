@@ -177,6 +177,7 @@ $(document).ready(function(){
     });
 
     // contextmenu
+    // [D] contextmenu가 등장하는 영역을 임의로 .work_space에 한정하였지만 필요 영역으로 수정하시면 됩니다.
     $('.work_space').contextmenu(function(e){
         e.preventDefault();
 
