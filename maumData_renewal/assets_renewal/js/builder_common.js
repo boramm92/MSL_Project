@@ -166,7 +166,40 @@ $(document).ready(function(){
         if($(this).is('.btn_add_comment')){
             thisParentList.find('.editCommentBox').slideToggle(200);
         }
-    });  
+    }); 
+    
+    // 파일명 텍스트 복사하기
+    $('.btn_clipboard').on('click', function(){  
+        var clipText = $(this).siblings('.fileName').text();    
+        $('#clipTarget').val(clipText);
+        $('#clipTarget').select();
+        document.execCommand('Copy');
+    });
+
+    // contextmenu
+    $('.work_space').contextmenu(function(e){
+        e.preventDefault();
+
+        var workSpaceWidth = $('.work_space').outerWidth();
+        var contextMenuWidth = $('#contextMenu').outerWidth();
+
+        if(e.pageX < workSpaceWidth - contextMenuWidth){
+            $('#contextMenu').css({
+                display: 'block',
+                left: e.pageX,
+                top: e.pageY
+            });
+        }else{
+            $('#contextMenu').css({
+                display: 'block',
+                left: e.pageX - contextMenuWidth,
+                top: e.pageY
+            });
+        }
+    });
+    $('.work_space').on('click', function(){
+        $('#contextMenu').hide();
+    });
 
     // -------------------- 검수자 화면 -------------------- //
     // 태그 리스트 세부 코멘트 리스트 내 버튼 클릭 시 
