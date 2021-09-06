@@ -176,7 +176,7 @@ $(document).ready(function(){
         document.execCommand('Copy');
     });
 
-    // contextmenu
+    // contextmenu 열기
     // [D] contextmenu가 등장하는 영역을 임의로 .work_space에 한정하였지만 필요 영역으로 수정하시면 됩니다.
     $('.work_space').contextmenu(function(e){
         e.preventDefault();
@@ -198,8 +198,12 @@ $(document).ready(function(){
             });
         }
     });
-    $('.work_space').on('click', function(){
-        $('#contextMenu').hide();
+
+    // .work_space가 아닌 영역을 클릭 할 시 contextmenu 끄기
+    $('html').on('click', function(e){
+        if(!$(e.target).is('.work_space')){
+            $('#contextMenu').hide();
+        }
     });
 
     // -------------------- 검수자 화면 -------------------- //
