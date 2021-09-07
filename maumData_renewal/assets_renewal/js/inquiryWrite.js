@@ -110,6 +110,9 @@ $(document).ready(function(){
 			$('.inquiry_detail.edit_mode .textarea').empty();
 			$('.inquiry_detail.edit_mode .fileArea').empty();
 			$('.inquiry_detail.edit_mode .textarea').addClass('default');
+
+			var commentListNum = $('.comment_list li').length;
+			$('.commentNum').html(commentListNum);
 		}else{
 			// [D] 입력한 댓글이 없을때 임시로 넣은 alert입니다.
 			alert('댓글을 입력해 주세요.');
