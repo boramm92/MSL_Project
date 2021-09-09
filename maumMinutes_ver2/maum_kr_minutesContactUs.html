@@ -83,29 +83,52 @@
                 </div>
                 <div class="contBox">
                     <div class="contBox_mag">궁금한 내용을 문의 주시면 자세히 안내해 드리겠습니다.</div>
-                    <div class="contactform">
-                        <dl>
-                            <dt>회사명<span>(필수)</span></dt>
-                            <dd><input type="text" class="ipt_txt"></dd>
-                        </dl>
-                        <dl>
-                            <dt>이름<span>(필수)</span></dt>
-                            <dd><input type="text" class="ipt_txt"></dd>
-                        </dl>
-                        <dl>
-                            <dt>이메일주소<span>(필수)</span></dt>
-                            <dd><input type="text" class="ipt_txt"></dd>
-                        </dl>
-                        <dl>
-                            <dt>휴대폰 번호<span>(필수)</span></dt>
-                            <dd><input type="text" class="ipt_txt"></dd>
-                        </dl>
-                        <dl>
-                            <dt>내용<span>(필수)</span></dt>
-                            <dd><textarea class="textArea" rows="10"></textarea></dd>
-                        </dl>
-                        <button type="button">문의하기</button>
-                    </div>
+
+                    <!-- [D] 21.09.08 .contactForm 영역 기존에 <div>태그에서 <form>태그로 변경됨 -->
+                    <!-- [D] 21.09.08 <fieldset>, <legend>태그 추가됨 -->
+                    <form class="contactform">
+                        <fieldset> 
+                            <legend class="hide">문의하기</legend>
+                            <dl>
+                                <dt>이름<span>(필수)</span></dt>
+                                <dd><input type="text" id="userName" class="ipt_txt" autocomplete="off"></dd>
+                            </dl>
+                            <dl>
+                                <dt>회사명<span>(필수)</span></dt>
+                                <dd><input type="text" id="userCompany" class="ipt_txt" autocomplete="off"></dd>
+                            </dl>
+                            <dl>
+                                <dt>전화 번호<span>(필수)</span></dt>
+                                <dd><input type="text" id="userNumber" class="ipt_txt" autocomplete="off"></dd>
+                            </dl>
+                            <dl>
+                                <dt>이메일 주소<span>(필수)</span></dt>
+                                <dd><input type="text" id="userMail" class="ipt_txt" autocomplete="off"></dd>
+                            </dl>
+                            <dl>
+                                <dt>문의 내용<span>(필수)</span></dt>
+                                <dd><textarea id="userTxt" class="textArea" rows="10" autocomplete="off"></textarea></dd>
+                            </dl>
+                            <dl>
+                                <dt>개인정보 수집동의</dt>
+                                <dd>
+                                    <div class="assentBox">
+                                        수집하는 개인정보 항목: 이름, 회사명, 이메일 주소, 전화 번호
+                                        <br>
+                                        작성해주시는 <strong>개인 정보는 문의 접수 및 고객 불만 해결을 위해 1년간 보관</strong>됩니다.<br>
+                                        본 동의를 거부할 수 있으나, 미동의 시 문의 접수가 불가능합니다.<br>
+                                        <div class="checkBox">
+                                            <input type="checkbox" name="assent" id="assent">
+                                            <label for="assent">동의합니다.</label>
+                                        </div>
+                                    </div>
+                                </dd>
+                            </dl>
+    
+                            <!-- [D] 21.09.08 '문의하기' 버튼 type이 button에서 submit으로 변경됨 -->
+                            <button type="submit" id="inquireBtn" onclick="inquire()" disabled="">문의하기</button>
+                        </fieldset>
+                    </form>
                 </div>
             </div>
         </div>

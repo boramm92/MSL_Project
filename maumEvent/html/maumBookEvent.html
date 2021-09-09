@@ -351,56 +351,72 @@
             <div class="contBox">
                 <p class="sub_tit">이미 많은 기업들이 마음 AI를 통해<br>인공지능 도입에 성공했습니다.</p>    
                 <strong class="main_tit">상담 문의를 남겨주시면<br>마음 AI북을 무료로 드립니다.</strong>
-                <div class="contactform">
-                    <dl>
-                        <dt>수령 방법<span>(필수)</span></dt>
-                        <dd>
-                            <div class="radioBox">
-                                <input type="radio" name="contact_type" id="eBook" checked>
-                                <label for="eBook">E-book</label>
-                            </div>
-                            <div class="radioBox">
-                                <input type="radio" name="contact_type" id="maumBook">
-                                <label for="maumBook">우편물 발송</label>
-                            </div>
-                        </dd>
-                    </dl>
-                    <dl>
-                        <dt>이름<span>(필수)</span></dt>
-                        <dd><input type="text" id="userName" class="ipt_txt" autocomplete="off" placeholder="이름을 입력해 주세요."></dd>
-                    </dl>
-                    <dl>
-                        <dt>연락처<span>(필수)</span></dt>
-                        <dd><input type="tel" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" id="userTel" class="ipt_tel" placeholder="'‐'없이 연락처를 입력해 주세요."></dd>
-                    </dl> 
-                    <dl>
-                        <dt>문의내용<em>(선택)</em></dt>
-                        <dd>
-                            <textarea placeholder="문의하실 내용을 입력해 주세요."></textarea>
-                        </dd>
-                    </dl>                  
-                    <dl>
-                        <dt>개인정보 수집동의</dt>
-                        <dd>
-                            <div class="assentBox">
-                                <div class="checkBox">
-                                    <input type="checkbox" name="assent" id="assent">
-                                    <label for="assent">동의합니다.</label>
+
+                <!-- [D] 21.09.08 .contactForm 영역 기존에 <div>태그에서 <form>태그로 변경됨 -->
+                <!-- [D] 21.09.08 <fieldset>, <legend>태그 추가됨 -->
+                <form class="contactform">
+                    <fieldset>
+                        <legend class="hide">문의하기</legend>
+
+                        <dl>
+                            <dt>수령 방법<span>(필수)</span></dt>
+                            <dd>
+                                <div class="radioBox">
+                                    <input type="radio" name="contact_type" id="eBook" checked>
+                                    <label for="eBook">E-book</label>
                                 </div>
-                                <p>수집하는 개인정보 항목: 이름, 연락처
-                                    <br>
-                                    작성해주시는 <strong>개인 정보는 문의 접수 및 고객 불만 해결을 위해 1년간 보관</strong>됩니다.<br>
-                                    본 동의를 거부할 수 있으나, 미동의 시 문의 접수가 불가능합니다.
-                                    <br>
-                                    <br>
-                                    <span class="ft_point01">전문 상담사가 영업일 기준 3일 이내 개별적으로 연락드립니다.</span>
-                                </p>                              
-                            </div>
-                        </dd>
-                    </dl>
-                    <!-- [D] 문의하기 버튼 클릭 시 성공적으로 문의접수 된 경우 alert 등장 (문의가 완료되었습니다. 버튼:확인 -> 확인버튼 클릭 시에는 maum.ai 홈페이지로 이동) -->
-                    <button type="button" id="inquireBtn" disabled="true">문의하기</button>
-                </div>
+                                <div class="radioBox">
+                                    <input type="radio" name="contact_type" id="maumBook">
+                                    <label for="maumBook">우편물 발송</label>
+                                </div>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>이름<span>(필수)</span></dt>
+                            <dd><input type="text" id="userName" class="ipt_txt" autocomplete="off" placeholder="이름을 입력해 주세요."></dd>
+                        </dl>
+                        <dl>
+                            <dt>연락처<span>(필수)</span></dt>
+                            <dd><input type="tel" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" id="userTel" class="ipt_tel" placeholder="'‐'없이 연락처를 입력해 주세요."></dd>
+                        </dl> 
+                        <!-- [D] 21.09.08 이메일 입력 폼 추가 -->
+                        <dl>
+                            <dt>이메일<span>(필수)</span></dt>
+                            <dd><input type="text" id="userEmail" class="ipt_txt" autocomplete="off" placeholder="이메일을 입력해 주세요."></dd>
+                        </dl>
+                        <!-- //[D] 21.09.08 이메일 입력 폼 추가 -->
+                        <dl>
+                            <dt>문의내용<em>(선택)</em></dt>
+                            <dd>
+                                <textarea placeholder="문의하실 내용을 입력해 주세요."></textarea>
+                            </dd>
+                        </dl>                  
+                        <dl>
+                            <dt>개인정보 수집동의</dt>
+                            <dd>
+                                <div class="assentBox">
+                                    <div class="checkBox">
+                                        <input type="checkbox" name="assent" id="assent">
+                                        <label for="assent">동의합니다.</label>
+                                    </div>
+                                    <p>수집하는 개인정보 항목: 이름, 연락처
+                                        <br>
+                                        작성해주시는 <strong>개인 정보는 문의 접수 및 고객 불만 해결을 위해 1년간 보관</strong>됩니다.<br>
+                                        본 동의를 거부할 수 있으나, 미동의 시 문의 접수가 불가능합니다.
+                                        <br>
+                                        <br>
+                                        <span class="ft_point01">전문 상담사가 영업일 기준 3일 이내 개별적으로 연락드립니다.</span>
+                                    </p>                              
+                                </div>
+                            </dd>
+                        </dl>
+    
+                        <!-- [D] 문의하기 버튼 클릭 시 성공적으로 문의접수 된 경우 alert 등장 (문의가 완료되었습니다. 버튼:확인 -> 확인버튼 클릭 시에는 maum.ai 홈페이지로 이동) -->
+                        <!-- [D] 21.09.08 '문의하기' 버튼 type이 button에서 submit으로 변경됨 -->
+                        <button type="submit" id="inquireBtn" disabled="true">문의하기</button>
+                    </fieldset>                    
+                </form>
+
                 <p class="slogan">마음AI는 언제나 당신의 마음까지 생각합니다.</p>
                 <img src="../resources/images/logo_maumAi.svg" alt="maum AI logo">
             </div>
@@ -525,23 +541,7 @@ jQuery.event.add(window,"load",function(){
                     autoHeight : true,
                 },
             },
-        });
-
-        // stn - success_cases 탭메뉴
-        // var successCasesNav = $('.success_cases .tab_nav > li');
-        // var successCasesCont = $('.success_cases .scs_lst > li');
-
-        // successCasesCont.hide();
-		// successCasesCont.eq(0).show();
-
-        // successCasesNav.on('click',function(){
-        //     var target = $(this);
-        //     var index = target.index();
-        //     successCasesNav.removeClass('active');
-        //     target.addClass('active');
-        //     successCasesCont.css('display','none');
-		// 	successCasesCont.eq(index).css('display','block');
-        // });       
+        });      
 
         // 문의 영역으로 이동
         $('.btn_go_contact').on('click', function(){       
@@ -571,23 +571,28 @@ jQuery.event.add(window,"load",function(){
             $(this).val($(this).val().replace(/[^0-9]/g,''));
         });
 
+        // [D] 21.09.08 해당 script 영역 전체 덮어쓰기 해주세요.
         // 문의하기 필수 내용 입력, 동의체크 시 버튼 컬러 활성화       
-        $('.ipt_txt').on('input', checkInput);
-        $('.ipt_tel').on('input', checkInput);
+        $('#userName').on('input', checkInput);
+        $('#userTel').on('input', checkInput);
+        $('#userEmail').on('input', checkInput);
         $('#assent').on('click', checkInput);
 
         function checkInput() {
-            var userName = $('.ipt_txt').val();  
-            var userTel = $('.ipt_tel').val(); 
-            var assentCheck = $('#assent')
+            var userName = $('#userName').val();  
+            var userTel = $('#userTel').val(); 
+            var userEmail = $('#userEmail').val();
+            var regEmail = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+            var assentCheck = $('#assent');
             var inquireButton = $('#inquireBtn');
 
-            if (userName == '' || userTel == '' || assentCheck.is(':checked') == false) {
+            if (userName == '' || userTel == '' || !regEmail.test(userEmail) || assentCheck.is(':checked') == false) {
                 inquireButton.prop('disabled', true);
             } else {
                 inquireButton.prop('disabled', false);
             }
         }
+        // //[D] 21.09.08 해당 script 영역 전체 덮어쓰기 해주세요.
     });       
 });
 </script>

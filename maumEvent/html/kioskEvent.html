@@ -12,8 +12,8 @@
 <meta http-equiv="Cache-Control" content="no-cache">
 <!-- Open Graph Tag -->
 <meta property="og:title"         content="AI Human KIOSK">
-<meta property="og:type"          content="website"> <!-- 웹 페이지 타입 -->
-<meta property="og:url"           content="">
+<meta property="og:type"          content="website">    <!-- 웹 페이지 타입 -->
+<meta property="og:url"           content="https://maum.ai/event/kiosk">   <!-- [D] 웹 페이지 링크 넣어주세요. -->
 <meta property="og:image"         content="../resources/images/kiosk/">
 <meta property="og:description"   content="AI HUMAN과 키오스크가 만나 세상에 없던 AI HUMAN KIOSK가 만들어졌습니다.">
 
@@ -311,9 +311,7 @@
                                 </div>
                                 <dl class="txtBox">
                                     <dt>호텔 <span>AI Receptionist</span></dt>
-                                    <!-- [D] 21.08.20 - 바로 하단 <dd>태그 한줄 전체를 덮어쓰기 해주세요. -->
                                     <dd>호텔, 리조트, 골프장 등<br> 프론트데스크 운영에 AI 호텔리어를 도입하여<br> 24시간 효율적인 고객 응대를 실현합니다.</dd>
-                                    <!-- //[D] 21.08.20 - 바로 하단 <dd>태그 한줄 전체를 덮어쓰기 해주세요. -->
                                 </dl>
                             </div>
                         </div>
@@ -355,38 +353,52 @@
                         <p class="desc">기본형 상품 외에도 고객님의 필요와 용도에 맞는<br> 맞춤형 AI 키오스크도 제작이 가능합니다.</p>
                     </div>
 
-                    <div class="contactform">
-                        <dl>
-                            <dt>이름<span>(필수)</span></dt>
-                            <dd><input type="text" id="userName" class="ipt_txt" autocomplete="off" placeholder="이름을 입력해 주세요."></dd>
-                        </dl>
-                        <dl>
-                            <dt>연락처<span>(필수)</span></dt>
-                            <dd><input type="tel" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" id="userTel" class="ipt_tel" placeholder="'‐'없이 연락처를 입력해 주세요."></dd>
-                        </dl> 
-                        <dl>
-                            <dt>키오스크가 필요한 업종</dt>
-                            <dd><input type="text" id="business" class="ipt_txt" autocomplete="off" placeholder="예) 은행, 회사, 식당 등"></dd>
-                        </dl>                  
-                        <dl>
-                            <dt>개인정보 수집동의</dt>
-                            <dd>
-                                <div class="assentBox">
-                                    <div class="checkBox">
-                                        <input type="checkbox" name="assent" id="assent">
-                                        <label for="assent">동의합니다.</label>
+                    <!-- [D] 21.09.08 .contactForm 영역 기존에 <div>태그에서 <form>태그로 변경됨 -->
+                    <!-- [D] 21.09.08 <fieldset>, <legend>태그 추가됨 -->
+                    <form class="contactform">
+                        <fieldset>
+                            <legend class="hide">문의하기</legend>
+
+                            <dl>
+                                <dt>이름<span>(필수)</span></dt>
+                                <dd><input type="text" id="userName" class="ipt_txt" autocomplete="off" placeholder="이름을 입력해 주세요."></dd>
+                            </dl>
+                            <dl>
+                                <dt>연락처<span>(필수)</span></dt>
+                                <dd><input type="tel" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" id="userTel" class="ipt_tel" placeholder="'‐'없이 연락처를 입력해 주세요."></dd>
+                            </dl>
+                            <!-- [D] 21.09.08 이메일 입력 폼 추가 -->
+                            <dl>
+                                <dt>이메일<span>(필수)</span></dt>
+                                <dd><input type="text" id="userEmail" class="ipt_txt" autocomplete="off" placeholder="이메일을 입력해 주세요."></dd>
+                            </dl>
+                            <!-- //[D] 21.09.08 이메일 입력 폼 추가 -->
+                            <dl>
+                                <dt>키오스크가 필요한 업종</dt>
+                                <dd><input type="text" id="business" class="ipt_txt" autocomplete="off" placeholder="예) 은행, 회사, 식당 등"></dd>
+                            </dl>                  
+                            <dl>
+                                <dt>개인정보 수집동의</dt>
+                                <dd>
+                                    <div class="assentBox">
+                                        <div class="checkBox">
+                                            <input type="checkbox" name="assent" id="assent">
+                                            <label for="assent">동의합니다.</label>
+                                        </div>
+                                        <p>수집하는 개인정보 항목: 이름, 연락처
+                                            <br>
+                                            작성해주시는 <strong>개인 정보는 문의 접수 및 고객 불만 해결을 위해 1년간 보관</strong>됩니다.<br>
+                                            본 동의를 거부할 수 있으나, 미동의 시 문의 접수가 불가능합니다.
+                                        </p>                              
                                     </div>
-                                    <p>수집하는 개인정보 항목: 이름, 연락처
-                                        <br>
-                                        작성해주시는 <strong>개인 정보는 문의 접수 및 고객 불만 해결을 위해 1년간 보관</strong>됩니다.<br>
-                                        본 동의를 거부할 수 있으나, 미동의 시 문의 접수가 불가능합니다.
-                                    </p>                              
-                                </div>
-                            </dd>
-                        </dl>
-                        <!-- [D] 문의하기 버튼 클릭 시 성공적으로 문의접수 된 경우 alert 등장 (문의가 완료되었습니다. 버튼:확인 -> 확인버튼 클릭 시에는 maum.ai 홈페이지로 이동) -->
-                        <button type="button" id="inquireBtn" disabled="true">문의하기</button>
-                    </div>
+                                </dd>
+                            </dl>
+                            
+                            <!-- [D] 문의하기 버튼 클릭 시 성공적으로 문의접수 된 경우 alert 등장 (문의가 완료되었습니다. 버튼:확인 -> 확인버튼 클릭 시에는 maum.ai 홈페이지로 이동) -->
+                            <!-- [D] 21.09.08 '문의하기' 버튼 type이 button에서 submit으로 변경됨 -->
+                            <button type="submit" id="inquireBtn" disabled="true">문의하기</button>
+                        </fieldset>
+                    </form>
                 </div>
             </div>
         </div>
@@ -426,7 +438,6 @@
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
         // 동영상 레이어 팝업
-        // [D] 21.08.24 - 수정, 해당영역 script 덮어쓰기 해주세요.
         $('.btn_video_play').on('click', function(){
             $('body').css('overflow', 'hidden');
 
@@ -447,7 +458,6 @@ jQuery.event.add(window,"load",function(){
                 $('#lyr_video_player').remove();
             });   
         });
-        // //[D] 21.08.24 - 수정, 해당영역 script 덮어쓰기 해주세요.
 
         // Layer popup open 
         $('.btn_lyr_open').on('click',function(){	
@@ -531,22 +541,7 @@ jQuery.event.add(window,"load",function(){
             $('.btn_pause').addClass('on');
         });
 
-        // 국민카드 올리스 배너 - 기기에 따른 url 변경
-        // [D] 21.08.20 - 해당 script 제거 (주석처리 해두었지만 제거해주셔도 됩니다.)
-        // function bannerUrlSet(){
-        //     if($(window).outerWidth() <= 768){
-        //         $('.float_banner .banner_wrap').attr('href', 'https://m.kbcard.com/CXHIAFLCD0025.cms?prtrCd=000000000008916&cgryCd=109');
-        //     }else{
-        //         $('.float_banner .banner_wrap').attr('href', 'https://card.kbcard.com/CXPRIFICD0002.cms?mainCC=b&prtrCd=000000000008916&cgryCd=109&prodtCd=MND01AI001AI001000001');
-        //     }
-        // }
-        // bannerUrlSet();
-        // //[D] 21.08.20 - 해당 script 제거 (주석처리 해두었지만 제거해주셔도 됩니다.)
-
         $(window).resize(function(){
-            // [D] 21.08.20 - 해당 script 제거 (주석처리 해두었지만 제거해주셔도 됩니다.)
-            // bannerUrlSet();
-            // //[D] 21.08.20 - 해당 script 제거 (주석처리 해두었지만 제거해주셔도 됩니다.)
             speechAnimation();
         });
         
@@ -555,23 +550,28 @@ jQuery.event.add(window,"load",function(){
             $(this).val($(this).val().replace(/[^0-9]/g,''));
         });
 
+        // [D] 21.09.08 해당 script 영역 전체 덮어쓰기 해주세요.
         // 문의하기 필수 내용 입력, 동의체크 시 버튼 컬러 활성화       
-        $('.ipt_txt').on('input', checkInput);
-        $('.ipt_tel').on('input', checkInput);
+        $('#userName').on('input', checkInput);
+        $('#userTel').on('input', checkInput);
+        $('#userEmail').on('input', checkInput);
         $('#assent').on('click', checkInput);
 
         function checkInput() {
-            var userName = $('.ipt_txt').val();  
-            var userTel = $('.ipt_tel').val(); 
-            var assentCheck = $('#assent')
+            var userName = $('#userName').val();  
+            var userTel = $('#userTel').val(); 
+            var userEmail = $('#userEmail').val();
+            var regEmail = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+            var assentCheck = $('#assent');
             var inquireButton = $('#inquireBtn');
 
-            if (userName == '' || userTel == '' || assentCheck.is(':checked') == false) {
+            if (userName == '' || userTel == '' || !regEmail.test(userEmail) || assentCheck.is(':checked') == false) {
                 inquireButton.prop('disabled', true);
             } else {
                 inquireButton.prop('disabled', false);
             }
         }
+        // //[D] 21.09.08 해당 script 영역 전체 덮어쓰기 해주세요.
     });       
 });
 </script>
