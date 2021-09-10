@@ -129,9 +129,11 @@
                                     <div class="inquiry_detail">
                                         <div class="fileArea">
                                             <div class="fileBox btn_lyr_open" data-lyr-name="attachFileDetail">
+                                                <!-- [D] 첨부되는 이미지의 alt값에 파일명을 넣어주세요. -->
                                                 <img src="../../../../assets_renewal/images/dashboard/img_attach_sample01.png" alt="img_attach_sample01.png">
                                             </div>
                                             <div class="fileBox btn_lyr_open" data-lyr-name="attachFileDetail">
+                                                <!-- [D] 첨부되는 이미지의 alt값에 파일명을 넣어주세요. -->
                                                 <img src="../../../../assets_renewal/images/dashboard/img_attach_sample02.png" alt="img_attach_sample02.png">
                                             </div>
                                         </div>
@@ -146,11 +148,28 @@
                 <div class="commentArea">
                     <div class="tit">
                         <!-- [D] 댓글이 없는 경우 숫자표기 안함 -->
-                        <h5>댓글 <span class="commentNum"></span></h5>
+                        <h5>댓글 <span class="commentNum">3</span></h5>
                     </div>
 
                     <!-- [D] 댓글 추가 시 템플릿은 하단 script에서 확인 가능합니다. -->
-                    <ul class="comment_list"></ul>
+                    <ul class="comment_list">
+                        <li>
+                            <!-- [D] 작성자에 따라 .writer에 기재, .label은 관리자에게만 추가됩니다. -->
+                            <div class="writer">관리자 <span class="label">관리자</span></div>  
+                            <div class="inquiry_detail">
+                                <!-- [D] 파일 첨부 예시 마크업 -->
+                                <div class="fileArea">
+                                    <div class="fileBox btn_lyr_open" data-lyr-name="attachFileDetail">
+                                        <!-- [D] 첨부되는 이미지의 alt값에 파일명을 넣어주세요. -->
+                                        <img src="../../../../assets_renewal/images/dashboard/img_attach_sample01.png" alt="img_attach_sample01">
+                                    </div>
+                                </div>  
+                                <div class="textarea" contenteditable="false">이것은 댓글 나는 댓글 대대대대댓글</div>
+                            </div>
+                            <div class="date">2021.09.10 14:39</div>
+                            <button type="button" class="btn_comment_delete">삭제</button>
+                        </li>
+                    </ul>
 
                     <div class="tblBox type02">
                         <table summary="댓글 쓰기로 구성">
@@ -164,8 +183,17 @@
                                     <th scope="row">댓글 쓰기</th>
                                     <td>
                                         <div class="inquiry_detail edit_mode">
+                                            <!-- [D] 파일 첨부 시 아래 .textarea에 removeClass('default')해줘야함, 첨부 파일이 없거나 첨부 후 삭제한 경우는 addClass('default') 해주세요. -->
                                             <div class="textarea default" contenteditable="true" placeholder="댓글을 입력해주세요."></div>
-                                            <div class="fileArea"></div>                                           
+                                            <!-- [D] 파일 첨부 시 추가되는 .fileBox 마크업 예시는 주석처리 부분입니다. -->
+                                            <div class="fileArea">
+                                                <!-- <div class="fileBox btn_lyr_open" data-lyr-name="attachFileDetail">
+                                                    <button type="button" class="btn_delete_file">
+                                                        <span class="hide">파일 삭제</span>
+                                                    </button>
+                                                    <img src="../../../../assets_renewal/images/dashboard/img_attach_sample01.png" alt="img_attach_sample01">
+                                                </div>  -->
+                                            </div>                                           
                                         </div>
 
                                         <div class="btnBox">
@@ -263,26 +291,6 @@ jQuery.event.add(window,"load",function(){
                 }
             }
 		});
-
-        // 이미지 미리 보기 클릭 시 상세 이미지 넣어주기
-        $('.fileBox').on('click', function(){
-            var fileBoxImg = $(this).parents('.fileArea').find('.fileBox img');   
-            var fileBoxImgIndex = $(this).index();
-            var thisFileBoxImg = $(this).find('img');
-            var thisFileBoxImgSrc = thisFileBoxImg.attr('src');
-            thisFileBoxImgSrc = thisFileBoxImgSrc.replace(/^.*\//, '');
-
-            $('#attachFileDetail .lyr_top .tit').html(thisFileBoxImgSrc);
-            $('#attachFileDetail .view_list').empty();
-            swiper.slideTo(fileBoxImgIndex);
-
-            [].forEach.call(fileBoxImg, function(i){   
-                var fileBoxImgSrc = i.src;
-                var thisFileName = i.alt;
-                var temp = `<li class="swiper-slide"><img src="${fileBoxImgSrc}" alt="${thisFileName}"></li>`;
-                $('#attachFileDetail .view_list').append(temp);
-            });
-        });
     });
 });
 </script>

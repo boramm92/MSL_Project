@@ -26,6 +26,26 @@ $(document).ready(function(){
 		}
 	});
 
+	// 이미지 미리 보기 클릭 시 상세 이미지 넣어주기
+	$('.fileBox').on('click', function(){
+		var fileBoxImg = $(this).parents('.fileArea').find('.fileBox img');   
+		var fileBoxImgIndex = $(this).index();
+		var thisFileBoxImg = $(this).find('img');
+		var thisFileBoxImgSrc = thisFileBoxImg.attr('src');
+		thisFileBoxImgSrc = thisFileBoxImgSrc.replace(/^.*\//, '');
+
+		$('#attachFileDetail .lyr_top .tit').html(thisFileBoxImgSrc);
+		$('#attachFileDetail .view_list').empty();
+		swiper.slideTo(fileBoxImgIndex);
+
+		[].forEach.call(fileBoxImg, function(i){   
+			var fileBoxImgSrc = i.src;
+			var thisFileName = i.alt;
+			var temp = `<li class="swiper-slide"><img src="${fileBoxImgSrc}" alt="${thisFileName}"></li>`;
+			$('#attachFileDetail .view_list').append(temp);
+		});
+	});
+
 	// 시간 생성 함수
 	function getFormatDate(){
 		now = new Date();
@@ -90,33 +110,28 @@ $(document).ready(function(){
 		fileBox.addClass('btn_lyr_open').attr('data-lyr-name', 'attachFileDetail');
 
 
-		if(!commentVal == ''){
-			// [D] .writer 내 텍스트는 권한에 따라 넣어주세요. (관리자인 경우에만 .label 태그 추가 필요)
-			// [D] .writer 가 관리자가 아닌경우는 button.btn_comment_delete 안들어감
-			var commentListTemp = `
-				<li>
-					<div class="writer">관리자 <span class="label">관리자</span></div>  
-					<div class="inquiry_detail">
-						<div class="fileArea"></div>  
-						<div class="textarea" contenteditable="false">${commentVal}</div>
-					</div>
-					<div class="date">${today}</div>
-					<button type="button" class="btn_comment_delete">삭제</button>
-				</li>
-			`;
-			
-			$('.comment_list').append(commentListTemp);
-			fileBox.clone().appendTo('.comment_list li:last-child .inquiry_detail .fileArea');
-			$('.inquiry_detail.edit_mode .textarea').empty();
-			$('.inquiry_detail.edit_mode .fileArea').empty();
-			$('.inquiry_detail.edit_mode .textarea').addClass('default');
+		// [D] .writer 내 텍스트는 권한에 따라 넣어주세요. (관리자인 경우에만 .label 태그 추가 필요)
+		// [D] .writer 가 관리자가 아닌경우는 button.btn_comment_delete 안들어감
+		var commentListTemp = `
+			<li>
+				<div class="writer">관리자 <span class="label">관리자</span></div>  
+				<div class="inquiry_detail">
+					<div class="fileArea"></div>  
+					<div class="textarea" contenteditable="false">${commentVal}</div>
+				</div>
+				<div class="date">${today}</div>
+				<button type="button" class="btn_comment_delete">삭제</button>
+			</li>
+		`;
+		
+		$('.comment_list').append(commentListTemp);
+		fileBox.clone().appendTo('.comment_list li:last-child .inquiry_detail .fileArea');
+		$('.inquiry_detail.edit_mode .textarea').empty();
+		$('.inquiry_detail.edit_mode .fileArea').empty();
+		$('.inquiry_detail.edit_mode .textarea').addClass('default');
 
-			var commentListNum = $('.comment_list li').length;
-			$('.commentNum').html(commentListNum);
-		}else{
-			// [D] 입력한 댓글이 없을때 임시로 넣은 alert입니다.
-			alert('댓글을 입력해 주세요.');
-		}
+		var commentListNum = $('.comment_list li').length;
+		$('.commentNum').html(commentListNum);
 
 
 		// 공통 layer popup 
