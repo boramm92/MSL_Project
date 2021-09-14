@@ -186,18 +186,54 @@
 
 
 
-    function 글자세기(글자){
-        var 결과 = {};
-        [...글자].forEach(function(a){
-            if(결과[a] > 0){
-                결과[a]++
-            }else{
-                결과[a] = 1
-            }
-        });
-        console.log(결과)
+    // function 글자세기(글자){
+    //     var 결과 = {};
+
+    //    [...글자].forEach(function(a){
+    //         if(결과[a] > 0){
+    //             결과[a] = 결과[a] + 1;
+    //         }else{
+    //             결과[a] = 1;
+    //         }
+    //    });
+
+    //    console.log(결과);
+    // }
+    // 글자세기('aacbbb');
+
+
+
+    // var 학생1 = {name : 'Kim', age : 15};
+    
+    // function 기계(){
+    //     this.name = 'Kim';
+    //     this.age = 15;
+    // }
+
+    // var 학생1 = new 기계();
+
+
+    // var product1 = {name : 'shirts', price : 50000};
+    // var product2 = {name : 'pants', price : 60000};
+
+    function Products(prdtName, prdtPrice){
+        this.name = prdtName;
+        this.price = prdtPrice;
+        this.부가세 = function(){
+            console.log(this.price * 0.1);
+        }
+
+        // 오브젝트 생성 기계(constructor)와 this(instance) 기억
     }
-    글자세기('aacbbb');
+
+    var product1 = new Products('shirts', 50000);
+    var product2 = new Products('pants', 60000);
+
+    console.log(Products.prototype)
+
+    product1.부가세();
+    product2.부가세();
+
 
     </script>
 </body>
