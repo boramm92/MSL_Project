@@ -262,11 +262,11 @@
 					<div class="figureBox">
 						<dl class="item dual">
 							<dt>음성봇 성공 콜수</dt>
-							<dd><p class="figure">연간 <strong class="point_color">768,000</strong>콜</p></dd>
+							<dd><p class="figure">연간 <strong class="point_color aiccFigure1">768,000</strong>콜</p></dd>
 						</dl>
 						<dl class="item dual">
 							<dt>은행 챗봇 거래 처리수</dt>
-							<dd><p class="figure">연간 <strong class="point_color">3,600,000</strong>건</p></dd>
+							<dd><p class="figure">연간 <strong class="point_color aiccFigure2">3,600,000</strong>건</p></dd>
 						</dl>
 						<dl class="item">
 							<dt>고객의소리(VOC) 분석 콜수</dt>
@@ -283,7 +283,7 @@
 						</dl>
 						<dl class="item">
 							<dt>마케팅 콜 검사(TMQA) 계약수</dt>
-							<dd><p class="figure">연간 <strong class="point_color">2,300,000</strong>건</p></dd>
+							<dd><p class="figure">연간 <strong class="point_color aiccFigure3">2,300,000</strong>건</p></dd>
 						</dl>
 					</div>				
 				</div>
@@ -530,9 +530,34 @@
 </script>
 <!-- AMR //공통으로 적용되는 script -->
 
-
+<!-- NBR 메인에만 적용되는 script -->
 <script type="text/javascript">
-	
+	$(window).on('scroll',function() {
+		var scrollLocate = $(window).scrollTop();
+		if(scrollLocate > 300){
+			var aiccFigure1 = 768000;
+
+			$({val: 0}).animate(
+				{val: aiccFigure1},
+				{duration: 1500, step: function(){
+					var num = numberWithCommas(Math.floor(this.val));
+					$('.aiccFigure1').text(num);
+				},
+				complete: function(){
+					var num = numberWithCommas(Math.floor(this.val));
+					$('.aiccFigure1').text(num);
+				}
+				}
+			);
+
+			function numberWithCommas(x) {
+				return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+			}
+
+			$(window).off('scroll');
+		}		
+	});
 </script>
+<!-- NBR //메인에만 적용되는 script -->
 </body>
 </html>
