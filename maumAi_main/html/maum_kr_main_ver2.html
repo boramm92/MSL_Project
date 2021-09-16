@@ -634,34 +634,17 @@
 				aiccFigure2 = 3600000,
 				aiccFigure5 = 2300000;
 
-			// $({val: figure, figure, figure}).animate(
-			// 	{val: aiccFigure1, aiccFigure2, aiccFigure5},
-			// 	{duration: 1500, step: function(){
-			// 		console.log(this.val)
-			// 		[this.val].forEach(function(i){
-			// 			var figure = numberWithCommas(Math.floor(i));
-			// 			console.log(figure);
-			// 			$('.aicc .figure').text(figure);
-			// 		});
-
-			// 		// var figure1 = numberWithCommas(Math.floor(this.val[0]));
-			// 		// var figure2 = numberWithCommas(Math.floor(this.val[1]));
-			// 		// var figure2 = numberWithCommas(Math.floor(this.val[1]));
-			// 		// $('.aicc_fgr01').text(figure1);
-			// 		// $('.aicc_fgr02').text(figure2);
-			// 	},
-			// 	complete: function(){
-			// 		console.log(this.val)
-			// 		// [this.val].forEach(function(i){
-			// 		// 	var figure = numberWithCommas(Math.floor(i));
-			// 		// 	console.log(figure);
-			// 		// 	$('.aicc .figure').text(figure);
-			// 		// });
-
-			// 		// var num = numberWithCommas(Math.floor(this.val));
-			// 		// $('.aicc_fgr01').text(num);
-			// 	}
-			// });
+				$({val: 0}).animate(
+				{val: aiccFigure1},
+				{duration: 1500, step: function(){
+					var num = numberWithCommas(Math.floor(this.val));
+					$('.aicc_fgr01').text(num);
+				},
+				complete: function(){
+					var num = numberWithCommas(Math.floor(this.val));
+					$('.aicc_fgr01').text(num);
+				}
+			});
 
 			$({val: 0}).animate(
 				{val: aiccFigure2},
@@ -674,7 +657,7 @@
 					$('.aicc_fgr02').text(num);
 				}
 			});
-			odoo.default({el: '.aicc_fgr03', from: '1억', to: '1억', animationDelay: 0, duration: 1000});
+			// odoo.default({el: '.aicc_fgr03', from: '1억', to: '1억', animationDelay: 0, duration: 1000});
 
 			$({val: 0}).animate(
 				{val: aiccFigure5},
@@ -687,181 +670,181 @@
 					$('.aicc_fgr05').text(num);
 				}
 			});
-			odoo.default({el: '.aicc_fgr04', from: '1천만', to: '1천만', animationDelay: 0, duration: 1000});
+			// odoo.default({el: '.aicc_fgr04', from: '1천만', to: '1천만', animationDelay: 0, duration: 1000});
 
 			aiccVisible = true;
 		}
 
 		// smart X 영역
-		// if(checkVisible($('.stn.smartX')) && !smartxVisible){
-		// 	console.log('smart X');
-		// 	var smartxFigure5 = 2000;
+		if(checkVisible($('.stn.smartX')) && !smartxVisible){
+			console.log('smart X');
+			var smartxFigure5 = 2000;
 
-		// 	$({val: 0}).animate(
-		// 		{val: smartxFigure5},
-		// 		{duration: 1500, step: function(){
-		// 			var num = numberWithCommas(Math.floor(this.val));
-		// 			$('.smartX_fgr05').text(num);
-		// 		},
-		// 		complete: function(){
-		// 			var num = numberWithCommas(Math.floor(this.val));
-		// 			$('.smartX_fgr05').text(num);
-		// 		}
-		// 	});			
+			$({val: 0}).animate(
+				{val: smartxFigure5},
+				{duration: 1500, step: function(){
+					var num = numberWithCommas(Math.floor(this.val));
+					$('.smartX_fgr05').text(num);
+				},
+				complete: function(){
+					var num = numberWithCommas(Math.floor(this.val));
+					$('.smartX_fgr05').text(num);
+				}
+			});			
 			
-		// 	smartxVisible = true;
-		// }
+			smartxVisible = true;
+		}
 		
 		// maum minutes 영역
-		// if(checkVisible($('.stn.minutes')) && !minutesVisible){
-		// 	console.log('maum minutes');
-		// 	var minutesFigure1 = 400000,
-		// 		minutesFigure2 = 276000,
-		// 		minutesFigure3 = 29000;
+		if(checkVisible($('.stn.minutes')) && !minutesVisible){
+			console.log('maum minutes');
+			var minutesFigure1 = 400000,
+				minutesFigure2 = 276000,
+				minutesFigure3 = 29000;
 
-		// 	$({val: 0}).animate(
-		// 		{val: minutesFigure1},
-		// 		{duration: 1500, step: function(){
-		// 			var num = numberWithCommas(Math.floor(this.val));
-		// 			$('.minutes_fgr01').text(num);
-		// 		},
-		// 		complete: function(){
-		// 			var num = numberWithCommas(Math.floor(this.val));
-		// 			$('.minutes_fgr01').text(num);
-		// 		}
-		// 	});	
+			$({val: 0}).animate(
+				{val: minutesFigure1},
+				{duration: 1500, step: function(){
+					var num = numberWithCommas(Math.floor(this.val));
+					$('.minutes_fgr01').text(num);
+				},
+				complete: function(){
+					var num = numberWithCommas(Math.floor(this.val));
+					$('.minutes_fgr01').text(num);
+				}
+			});	
 			
-		// 	$({val: 0}).animate(
-		// 		{val: minutesFigure2},
-		// 		{duration: 1500, step: function(){
-		// 			var num = numberWithCommas(Math.floor(this.val));
-		// 			$('.minutes_fgr02').text(num);
-		// 		},
-		// 		complete: function(){
-		// 			var num = numberWithCommas(Math.floor(this.val));
-		// 			$('.minutes_fgr02').text(num);
-		// 		}
-		// 	});
+			$({val: 0}).animate(
+				{val: minutesFigure2},
+				{duration: 1500, step: function(){
+					var num = numberWithCommas(Math.floor(this.val));
+					$('.minutes_fgr02').text(num);
+				},
+				complete: function(){
+					var num = numberWithCommas(Math.floor(this.val));
+					$('.minutes_fgr02').text(num);
+				}
+			});
 
-		// 	$({val: 0}).animate(
-		// 		{val: minutesFigure3},
-		// 		{duration: 1500, step: function(){
-		// 			var num = numberWithCommas(Math.floor(this.val));
-		// 			$('.minutes_fgr03').text(num);
-		// 		},
-		// 		complete: function(){
-		// 			var num = numberWithCommas(Math.floor(this.val));
-		// 			$('.minutes_fgr03').text(num);
-		// 		}
-		// 	});
+			$({val: 0}).animate(
+				{val: minutesFigure3},
+				{duration: 1500, step: function(){
+					var num = numberWithCommas(Math.floor(this.val));
+					$('.minutes_fgr03').text(num);
+				},
+				complete: function(){
+					var num = numberWithCommas(Math.floor(this.val));
+					$('.minutes_fgr03').text(num);
+				}
+			});
 			
-		// 	minutesVisible = true;
-		// }
+			minutesVisible = true;
+		}
 
 		// cloud API 영역
-		// if(checkVisible($('.stn.cloudApi')) && !cloudApiVisible){
-		// 	console.log('cloud API');
-		// 	var cloudApiFigure1 = 10000,
-		// 		cloudApiFigure3 = 4500000,
-		// 		cloudApiFigure4 = 3600000,
-		// 		cloudApiFigure5 = 1000;
+		if(checkVisible($('.stn.cloudApi')) && !cloudApiVisible){
+			console.log('cloud API');
+			var cloudApiFigure1 = 10000,
+				cloudApiFigure3 = 4500000,
+				cloudApiFigure4 = 3600000,
+				cloudApiFigure5 = 1000;
 
-		// 	$({val: 0}).animate(
-		// 		{val: cloudApiFigure1},
-		// 		{duration: 1500, step: function(){
-		// 			var num = numberWithCommas(Math.floor(this.val));
-		// 			$('.cloudApi_fgr01').text(num);
-		// 		},
-		// 		complete: function(){
-		// 			var num = numberWithCommas(Math.floor(this.val));
-		// 			$('.cloudApi_fgr01').text(num);
-		// 		}
-		// 	});		
+			$({val: 0}).animate(
+				{val: cloudApiFigure1},
+				{duration: 1500, step: function(){
+					var num = numberWithCommas(Math.floor(this.val));
+					$('.cloudApi_fgr01').text(num);
+				},
+				complete: function(){
+					var num = numberWithCommas(Math.floor(this.val));
+					$('.cloudApi_fgr01').text(num);
+				}
+			});		
 			
-		// 	$({val: 0}).animate(
-		// 		{val: cloudApiFigure3},
-		// 		{duration: 1500, step: function(){
-		// 			var num = numberWithCommas(Math.floor(this.val));
-		// 			$('.cloudApi_fgr03').text(num);
-		// 		},
-		// 		complete: function(){
-		// 			var num = numberWithCommas(Math.floor(this.val));
-		// 			$('.cloudApi_fgr03').text(num);
-		// 		}
-		// 	});	
+			$({val: 0}).animate(
+				{val: cloudApiFigure3},
+				{duration: 1500, step: function(){
+					var num = numberWithCommas(Math.floor(this.val));
+					$('.cloudApi_fgr03').text(num);
+				},
+				complete: function(){
+					var num = numberWithCommas(Math.floor(this.val));
+					$('.cloudApi_fgr03').text(num);
+				}
+			});	
 
-		// 	$({val: 0}).animate(
-		// 		{val: cloudApiFigure4},
-		// 		{duration: 1500, step: function(){
-		// 			var num = numberWithCommas(Math.floor(this.val));
-		// 			$('.cloudApi_fgr04').text(num);
-		// 		},
-		// 		complete: function(){
-		// 			var num = numberWithCommas(Math.floor(this.val));
-		// 			$('.cloudApi_fgr04').text(num);
-		// 		}
-		// 	});	
+			$({val: 0}).animate(
+				{val: cloudApiFigure4},
+				{duration: 1500, step: function(){
+					var num = numberWithCommas(Math.floor(this.val));
+					$('.cloudApi_fgr04').text(num);
+				},
+				complete: function(){
+					var num = numberWithCommas(Math.floor(this.val));
+					$('.cloudApi_fgr04').text(num);
+				}
+			});	
 
-		// 	$({val: 0}).animate(
-		// 		{val: cloudApiFigure5},
-		// 		{duration: 1500, step: function(){
-		// 			var num = numberWithCommas(Math.floor(this.val));
-		// 			$('.cloudApi_fgr05').text(num);
-		// 		},
-		// 		complete: function(){
-		// 			var num = numberWithCommas(Math.floor(this.val));
-		// 			$('.cloudApi_fgr05').text(num);
-		// 		}
-		// 	});	
+			$({val: 0}).animate(
+				{val: cloudApiFigure5},
+				{duration: 1500, step: function(){
+					var num = numberWithCommas(Math.floor(this.val));
+					$('.cloudApi_fgr05').text(num);
+				},
+				complete: function(){
+					var num = numberWithCommas(Math.floor(this.val));
+					$('.cloudApi_fgr05').text(num);
+				}
+			});	
 			
-		// 	cloudApiVisible = true;
-		// }
+			cloudApiVisible = true;
+		}
 
 		// maum DATA 영역
-		// if(checkVisible($('.stn.maumData')) && !maumDataVisible){
-		// 	console.log('maum DATA');
-		// 	var maumDataFigure1 = 4700000,
-		// 		maumDataFigure2 = 1787,
-		// 		maumDataFigure3 = 1356;
+		if(checkVisible($('.stn.maumData')) && !maumDataVisible){
+			console.log('maum DATA');
+			var maumDataFigure1 = 4700000,
+				maumDataFigure2 = 1787,
+				maumDataFigure3 = 1356;
 
-		// 	$({val: 0}).animate(
-		// 		{val: maumDataFigure1},
-		// 		{duration: 1500, step: function(){
-		// 			var num = numberWithCommas(Math.floor(this.val));
-		// 			$('.maumData_fgr01').text(num);
-		// 		},
-		// 		complete: function(){
-		// 			var num = numberWithCommas(Math.floor(this.val));
-		// 			$('.maumData_fgr01').text(num);
-		// 		}
-		// 	});	
+			$({val: 0}).animate(
+				{val: maumDataFigure1},
+				{duration: 1500, step: function(){
+					var num = numberWithCommas(Math.floor(this.val));
+					$('.maumData_fgr01').text(num);
+				},
+				complete: function(){
+					var num = numberWithCommas(Math.floor(this.val));
+					$('.maumData_fgr01').text(num);
+				}
+			});	
 			
-		// 	$({val: 0}).animate(
-		// 		{val: maumDataFigure2},
-		// 		{duration: 1500, step: function(){
-		// 			var num = numberWithCommas(Math.floor(this.val));
-		// 			$('.maumData_fgr02').text(num);
-		// 		},
-		// 		complete: function(){
-		// 			var num = numberWithCommas(Math.floor(this.val));
-		// 			$('.maumData_fgr02').text(num);
-		// 		}
-		// 	});
+			$({val: 0}).animate(
+				{val: maumDataFigure2},
+				{duration: 1500, step: function(){
+					var num = numberWithCommas(Math.floor(this.val));
+					$('.maumData_fgr02').text(num);
+				},
+				complete: function(){
+					var num = numberWithCommas(Math.floor(this.val));
+					$('.maumData_fgr02').text(num);
+				}
+			});
 
-		// 	$({val: 0}).animate(
-		// 		{val: maumDataFigure3},
-		// 		{duration: 1500, step: function(){
-		// 			var num = numberWithCommas(Math.floor(this.val));
-		// 			$('.maumData_fgr03').text(num);
-		// 		},
-		// 		complete: function(){
-		// 			var num = numberWithCommas(Math.floor(this.val));
-		// 			$('.maumData_fgr03').text(num);
-		// 		}
-		// 	});
+			$({val: 0}).animate(
+				{val: maumDataFigure3},
+				{duration: 1500, step: function(){
+					var num = numberWithCommas(Math.floor(this.val));
+					$('.maumData_fgr03').text(num);
+				},
+				complete: function(){
+					var num = numberWithCommas(Math.floor(this.val));
+					$('.maumData_fgr03').text(num);
+				}
+			});
 			
-		// 	maumDataVisible = true;
-		// }
+			maumDataVisible = true;
+		}
 	});
 	
 	function checkVisible(elm, eval) {
