@@ -282,13 +282,13 @@
 								<div>
 									<img src="../aiaas/kr/images/landing/img_kor.svg" alt="Korean flag">
 									<span>연간</span>
-									<strong class="figure">1억</strong>
+									<strong class="figure aicc_fgr03">1억</strong>
 									<span>콜</span>
 								</div>
 								<div>
 									<img src="../aiaas/kr/images/landing/img_eng.svg" alt="American flag">
 									<span>연간</span>
-									<strong class="figure">1천만</strong>
+									<strong class="figure aicc_fgr04">1천만</strong>
 									<span>콜</span>
 								</div>
 							</dd>
@@ -570,6 +570,10 @@
 </div>
 <!-- //#wrap -->
 
+<!---------------------- Local Resources ---------------------->
+<!-- Local Script Library -->
+<script type="text/javascript" src="https://cdn.rawgit.com/coderitual/odoo/feature/codevember16/lib/odoo.js"></script>
+
 <!-- AMR 공통으로 적용되는 script -->
 <script type="text/javascript">
 	// fixed된 header에 가로스크롤을 적용하기 위한 코드
@@ -630,58 +634,60 @@
 				aiccFigure2 = 3600000,
 				aiccFigure5 = 2300000;
 
-			$({val: figure, figure, figure}).animate(
-				{val: aiccFigure1, aiccFigure2, aiccFigure5},
-				{duration: 1500, step: function(){
-					console.log(this.val)
-					[this.val].forEach(function(i){
-						var figure = numberWithCommas(Math.floor(i));
-						console.log(figure);
-						$('.aicc .figure').text(figure);
-					});
+			// $({val: figure, figure, figure}).animate(
+			// 	{val: aiccFigure1, aiccFigure2, aiccFigure5},
+			// 	{duration: 1500, step: function(){
+			// 		console.log(this.val)
+			// 		[this.val].forEach(function(i){
+			// 			var figure = numberWithCommas(Math.floor(i));
+			// 			console.log(figure);
+			// 			$('.aicc .figure').text(figure);
+			// 		});
 
-					// var figure1 = numberWithCommas(Math.floor(this.val[0]));
-					// var figure2 = numberWithCommas(Math.floor(this.val[1]));
-					// var figure2 = numberWithCommas(Math.floor(this.val[1]));
-					// $('.aicc_fgr01').text(figure1);
-					// $('.aicc_fgr02').text(figure2);
+			// 		// var figure1 = numberWithCommas(Math.floor(this.val[0]));
+			// 		// var figure2 = numberWithCommas(Math.floor(this.val[1]));
+			// 		// var figure2 = numberWithCommas(Math.floor(this.val[1]));
+			// 		// $('.aicc_fgr01').text(figure1);
+			// 		// $('.aicc_fgr02').text(figure2);
+			// 	},
+			// 	complete: function(){
+			// 		console.log(this.val)
+			// 		// [this.val].forEach(function(i){
+			// 		// 	var figure = numberWithCommas(Math.floor(i));
+			// 		// 	console.log(figure);
+			// 		// 	$('.aicc .figure').text(figure);
+			// 		// });
+
+			// 		// var num = numberWithCommas(Math.floor(this.val));
+			// 		// $('.aicc_fgr01').text(num);
+			// 	}
+			// });
+
+			$({val: 0}).animate(
+				{val: aiccFigure2},
+				{duration: 1500, step: function(){
+					var num = numberWithCommas(Math.floor(this.val));
+					$('.aicc_fgr02').text(num);
 				},
 				complete: function(){
-					console.log(this.val)
-					// [this.val].forEach(function(i){
-					// 	var figure = numberWithCommas(Math.floor(i));
-					// 	console.log(figure);
-					// 	$('.aicc .figure').text(figure);
-					// });
-
-					// var num = numberWithCommas(Math.floor(this.val));
-					// $('.aicc_fgr01').text(num);
+					var num = numberWithCommas(Math.floor(this.val));
+					$('.aicc_fgr02').text(num);
 				}
 			});
+			odoo.default({el: '.aicc_fgr03', from: '1억', to: '1억', animationDelay: 0, duration: 1000});
 
-			// $({val: 0}).animate(
-			// 	{val: aiccFigure2},
-			// 	{duration: 1500, step: function(){
-			// 		var num = numberWithCommas(Math.floor(this.val));
-			// 		$('.aicc_fgr02').text(num);
-			// 	},
-			// 	complete: function(){
-			// 		var num = numberWithCommas(Math.floor(this.val));
-			// 		$('.aicc_fgr02').text(num);
-			// 	}
-			// });
-
-			// $({val: 0}).animate(
-			// 	{val: aiccFigure5},
-			// 	{duration: 1500, step: function(){
-			// 		var num = numberWithCommas(Math.floor(this.val));
-			// 		$('.aicc_fgr05').text(num);
-			// 	},
-			// 	complete: function(){
-			// 		var num = numberWithCommas(Math.floor(this.val));
-			// 		$('.aicc_fgr05').text(num);
-			// 	}
-			// });
+			$({val: 0}).animate(
+				{val: aiccFigure5},
+				{duration: 1500, step: function(){
+					var num = numberWithCommas(Math.floor(this.val));
+					$('.aicc_fgr05').text(num);
+				},
+				complete: function(){
+					var num = numberWithCommas(Math.floor(this.val));
+					$('.aicc_fgr05').text(num);
+				}
+			});
+			odoo.default({el: '.aicc_fgr04', from: '1천만', to: '1천만', animationDelay: 0, duration: 1000});
 
 			aiccVisible = true;
 		}
