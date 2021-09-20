@@ -277,7 +277,7 @@
 							</dd>
 						</dl>
 						<dl class="item">
-							<dt>고객의소리(VOC) 분석 콜수</dt>
+							<dt>고객의 소리(VOC) 분석 콜수</dt>
 							<dd>
 								<div>
 									<img src="../aiaas/kr/images/landing/img_kor.svg" alt="Korean flag">
@@ -327,7 +327,7 @@
 							<dt>Smart Factory</dt>
 							<dd>
 								<span>센서</span> 
-								<strong class="figure">수천개</strong> 
+								<strong class="figure smartX_fgr01">수천개</strong> 
 								<span>데이터 기반으로<br> 예측 및 최적화</span>
 								<img src="../aiaas/kr/images/landing/img_smartX_fgr01.svg" alt="Smart Factory">
 							</dd>
@@ -336,7 +336,7 @@
 							<dt>Smart City</dt>
 							<dd>
 								<span>하루</span>
-								<strong class="figure">백만대</strong>
+								<strong class="figure smartX_fgr02">백만대</strong>
 								<span>서울시<br> 차량 번호판 인식 처리</span>
 								<img src="../aiaas/kr/images/landing/img_smartX_fgr02.svg" alt="Smart City">
 							</dd>
@@ -345,7 +345,7 @@
 							<dt>Smart 영상분석</dt>
 							<dd>
 								<span>하루</span>
-								<strong class="figure">2만여개</strong>
+								<strong class="figure smartX_fgr03">2만여개</strong>
 								<span>광고 분석<br class="mobile"> 서비스 제공</span>
 								<img src="../aiaas/kr/images/landing/img_smartX_fgr03.svg" alt="Smart 영상분석">
 							</dd>
@@ -354,7 +354,7 @@
 							<dt>Edge AI 이상행동</dt>
 							<dd>
 								<span>하루</span>
-								<strong class="figure smartX_fgr05">2,000</strong>
+								<strong class="figure smartX_fgr04">2,000</strong>
 								<span>건 이상징후 탐지<br> 실신/침입/배회 이상행동 판독</span>
 								<img src="../aiaas/kr/images/landing/img_smartX_fgr04.svg" alt="Edge AI 이상행동">
 							</dd>
@@ -439,7 +439,7 @@
 							<dd>
 								<span>EJN, 아키핀, 투스라이프, 알에프탭, KBS</span>
 								<span>연간</span>
-								<strong class="figure">수십만</strong>
+								<strong class="figure cloudApi_fgr02">수십만</strong>
 								<span>건</span>
 							</dd>
 						</dl>
@@ -572,7 +572,7 @@
 
 <!---------------------- Local Resources ---------------------->
 <!-- Local Script Library -->
-<script type="text/javascript" src="https://cdn.rawgit.com/coderitual/odoo/feature/codevember16/lib/odoo.js"></script>
+<script type="text/javascript" src="../aiaas/kr/js/text_animation.js"></script>
 
 <!-- AMR 공통으로 적용되는 script -->
 <script type="text/javascript">
@@ -611,255 +611,5 @@
 	});
 </script>
 <!-- AMR //공통으로 적용되는 script -->
-
-<!-- NBR 메인에만 적용되는 script -->
-<script type="text/javascript">
-	var aiccVisible = false,
-		smartxVisible = false,
-		minutesVisible = false,
-		cloudApiVisible = false,
-		maumDataVisible = false;
-	
-	$(window).scroll(function(){
-		// 수치에 구분자(,) 추가
-		function numberWithCommas(x) {
-			return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-		}
-
-		// AICC 영역
-		if(checkVisible($('.stn.aicc')) && !aiccVisible){		
-			console.log('AICC');
-			var figure = 0;
-			var aiccFigure1 = 768000,
-				aiccFigure2 = 3600000,
-				aiccFigure5 = 2300000;
-
-				$({val: 0}).animate(
-				{val: aiccFigure1},
-				{duration: 1500, step: function(){
-					var num = numberWithCommas(Math.floor(this.val));
-					$('.aicc_fgr01').text(num);
-				},
-				complete: function(){
-					var num = numberWithCommas(Math.floor(this.val));
-					$('.aicc_fgr01').text(num);
-				}
-			});
-
-			$({val: 0}).animate(
-				{val: aiccFigure2},
-				{duration: 1500, step: function(){
-					var num = numberWithCommas(Math.floor(this.val));
-					$('.aicc_fgr02').text(num);
-				},
-				complete: function(){
-					var num = numberWithCommas(Math.floor(this.val));
-					$('.aicc_fgr02').text(num);
-				}
-			});
-			// odoo.default({el: '.aicc_fgr03', from: '1억', to: '1억', animationDelay: 0, duration: 1000});
-
-			$({val: 0}).animate(
-				{val: aiccFigure5},
-				{duration: 1500, step: function(){
-					var num = numberWithCommas(Math.floor(this.val));
-					$('.aicc_fgr05').text(num);
-				},
-				complete: function(){
-					var num = numberWithCommas(Math.floor(this.val));
-					$('.aicc_fgr05').text(num);
-				}
-			});
-			// odoo.default({el: '.aicc_fgr04', from: '1천만', to: '1천만', animationDelay: 0, duration: 1000});
-
-			aiccVisible = true;
-		}
-
-		// smart X 영역
-		if(checkVisible($('.stn.smartX')) && !smartxVisible){
-			console.log('smart X');
-			var smartxFigure5 = 2000;
-
-			$({val: 0}).animate(
-				{val: smartxFigure5},
-				{duration: 1500, step: function(){
-					var num = numberWithCommas(Math.floor(this.val));
-					$('.smartX_fgr05').text(num);
-				},
-				complete: function(){
-					var num = numberWithCommas(Math.floor(this.val));
-					$('.smartX_fgr05').text(num);
-				}
-			});			
-			
-			smartxVisible = true;
-		}
-		
-		// maum minutes 영역
-		if(checkVisible($('.stn.minutes')) && !minutesVisible){
-			console.log('maum minutes');
-			var minutesFigure1 = 400000,
-				minutesFigure2 = 276000,
-				minutesFigure3 = 29000;
-
-			$({val: 0}).animate(
-				{val: minutesFigure1},
-				{duration: 1500, step: function(){
-					var num = numberWithCommas(Math.floor(this.val));
-					$('.minutes_fgr01').text(num);
-				},
-				complete: function(){
-					var num = numberWithCommas(Math.floor(this.val));
-					$('.minutes_fgr01').text(num);
-				}
-			});	
-			
-			$({val: 0}).animate(
-				{val: minutesFigure2},
-				{duration: 1500, step: function(){
-					var num = numberWithCommas(Math.floor(this.val));
-					$('.minutes_fgr02').text(num);
-				},
-				complete: function(){
-					var num = numberWithCommas(Math.floor(this.val));
-					$('.minutes_fgr02').text(num);
-				}
-			});
-
-			$({val: 0}).animate(
-				{val: minutesFigure3},
-				{duration: 1500, step: function(){
-					var num = numberWithCommas(Math.floor(this.val));
-					$('.minutes_fgr03').text(num);
-				},
-				complete: function(){
-					var num = numberWithCommas(Math.floor(this.val));
-					$('.minutes_fgr03').text(num);
-				}
-			});
-			
-			minutesVisible = true;
-		}
-
-		// cloud API 영역
-		if(checkVisible($('.stn.cloudApi')) && !cloudApiVisible){
-			console.log('cloud API');
-			var cloudApiFigure1 = 10000,
-				cloudApiFigure3 = 4500000,
-				cloudApiFigure4 = 3600000,
-				cloudApiFigure5 = 1000;
-
-			$({val: 0}).animate(
-				{val: cloudApiFigure1},
-				{duration: 1500, step: function(){
-					var num = numberWithCommas(Math.floor(this.val));
-					$('.cloudApi_fgr01').text(num);
-				},
-				complete: function(){
-					var num = numberWithCommas(Math.floor(this.val));
-					$('.cloudApi_fgr01').text(num);
-				}
-			});		
-			
-			$({val: 0}).animate(
-				{val: cloudApiFigure3},
-				{duration: 1500, step: function(){
-					var num = numberWithCommas(Math.floor(this.val));
-					$('.cloudApi_fgr03').text(num);
-				},
-				complete: function(){
-					var num = numberWithCommas(Math.floor(this.val));
-					$('.cloudApi_fgr03').text(num);
-				}
-			});	
-
-			$({val: 0}).animate(
-				{val: cloudApiFigure4},
-				{duration: 1500, step: function(){
-					var num = numberWithCommas(Math.floor(this.val));
-					$('.cloudApi_fgr04').text(num);
-				},
-				complete: function(){
-					var num = numberWithCommas(Math.floor(this.val));
-					$('.cloudApi_fgr04').text(num);
-				}
-			});	
-
-			$({val: 0}).animate(
-				{val: cloudApiFigure5},
-				{duration: 1500, step: function(){
-					var num = numberWithCommas(Math.floor(this.val));
-					$('.cloudApi_fgr05').text(num);
-				},
-				complete: function(){
-					var num = numberWithCommas(Math.floor(this.val));
-					$('.cloudApi_fgr05').text(num);
-				}
-			});	
-			
-			cloudApiVisible = true;
-		}
-
-		// maum DATA 영역
-		if(checkVisible($('.stn.maumData')) && !maumDataVisible){
-			console.log('maum DATA');
-			var maumDataFigure1 = 4700000,
-				maumDataFigure2 = 1787,
-				maumDataFigure3 = 1356;
-
-			$({val: 0}).animate(
-				{val: maumDataFigure1},
-				{duration: 1500, step: function(){
-					var num = numberWithCommas(Math.floor(this.val));
-					$('.maumData_fgr01').text(num);
-				},
-				complete: function(){
-					var num = numberWithCommas(Math.floor(this.val));
-					$('.maumData_fgr01').text(num);
-				}
-			});	
-			
-			$({val: 0}).animate(
-				{val: maumDataFigure2},
-				{duration: 1500, step: function(){
-					var num = numberWithCommas(Math.floor(this.val));
-					$('.maumData_fgr02').text(num);
-				},
-				complete: function(){
-					var num = numberWithCommas(Math.floor(this.val));
-					$('.maumData_fgr02').text(num);
-				}
-			});
-
-			$({val: 0}).animate(
-				{val: maumDataFigure3},
-				{duration: 1500, step: function(){
-					var num = numberWithCommas(Math.floor(this.val));
-					$('.maumData_fgr03').text(num);
-				},
-				complete: function(){
-					var num = numberWithCommas(Math.floor(this.val));
-					$('.maumData_fgr03').text(num);
-				}
-			});
-			
-			maumDataVisible = true;
-		}
-	});
-	
-	function checkVisible(elm, eval) {
-		eval = eval || 'object visible';
-		var viewportHeight = $(window).height(),  // Viewport Height
-			scrolltop = $(window).scrollTop(),	  // Scroll Top
-			y = $(elm).offset().top,
-			elementHeight = $(elm).height();   
-
-		// console.log(viewportHeight, scrolltop, y, elementHeight);
-		
-		if(eval == 'object visible') return ((y < (viewportHeight + scrolltop)) && (y > (scrolltop - elementHeight)));
-		if(eval == 'above') return ((y < (viewportHeight + scrolltop)));
-	}
-</script>
-<!-- NBR //메인에만 적용되는 script -->
 </body>
 </html>
