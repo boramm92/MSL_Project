@@ -37,30 +37,22 @@ function sectionFigureAni(){
         
         this.targetFigure.innerHTML = this.count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
-        if((typeKor.test(this.targetText)) && (typeNum.test(this.targetText))){
-            console.log('이것은 한글'); 
-            
+        if((typeKor.test(this.targetText)) && (typeNum.test(this.targetText))){           
             if(this.count < this.target_count){
                 this.timer = setTimeout(function(){self.counter();}, 40);
             }else{
                 clearTimeout(this.timer);
                 this.targetFigure.innerHTML =  this.targetText;
-                console.log(this.targetText)
             }           
-        }else if((typeKor.test(this.targetText))){
-            console.log('이것은 한글'); 
-            
+        }else if((typeKor.test(this.targetText))){            
             if(this.count < this.target_count){
                 this.timer = setTimeout(function(){self.counter();}, 40);
             }else{
                 clearTimeout(this.timer);
                 this.targetFigure.innerHTML =  this.targetText;
-                console.log(this.targetText)
             }   
         }
         else if((typeNum.test(this.targetNum))){
-            console.log('이것은 숫자');
-
             if(this.count < this.target_count){
                 this.timer = setTimeout(function(){self.counter();}, 20);
             }else{
@@ -141,77 +133,78 @@ function sectionFigureAni(){
 	}
 
     // AICC 영역
-    if(checkVisible($('.stn.aicc')) && !aiccVisible){
-        $('.stn').removeClass('on');
-        
+    if(checkVisible($('.stn.aicc')) && !aiccVisible){     
         setTimeout(function(){
             $('.stn.aicc').addClass('on');
-            new numberCounter('.aicc_fgr01', 768000);
-            new numberCounter('.aicc_fgr02', 3600000);
-            new numberCounter('.aicc_fgr03', 1000, '1억');
-            new numberCounter('.aicc_fgr04', 1000, '1천만');
-            new numberCounter('.aicc_fgr05', 2300000);
-        });
-
-        new numberCounter('.aicc_fgr01', 768000);
-        new numberCounter('.aicc_fgr02', 3600000);
-        new numberCounter('.aicc_fgr03', 1000, '1억');
-        new numberCounter('.aicc_fgr04', 1000, '1천만');
-        // $('.aicc_fgr03').shuffleLetters('1억');
-        // $('.aicc_fgr04').shuffleLetters('1천만');
-        new numberCounter('.aicc_fgr05', 2300000);
-        
-        aiccVisible = true;
+            new numberCounter('.aicc.on .aicc_fgr01', 768000);
+            new numberCounter('.aicc.on .aicc_fgr02', 3600000);
+            new numberCounter('.aicc.on .aicc_fgr03', 1000, '1억');
+            new numberCounter('.aicc.on .aicc_fgr04', 1000, '1천만');
+            new numberCounter('.aicc.on .aicc_fgr05', 2300000);
+            aiccVisible = true;
+        });        
+    }else if(!checkVisible2($('.stn.aicc'))){
+        $('.stn.aicc').removeClass('on');
+        aiccVisible = false;
     }
 
     // smart X 영역
     if(checkVisible($('.stn.smartX')) && !smartxVisible){
-        // $('.smartX_fgr01').shuffleLetters('수천개');
-        // $('.smartX_fgr02').shuffleLetters('백만대');
-        // $('.smartX_fgr03').shuffleLetters('2만여개');
-
-        $('.stn').removeClass('on');
-
         setTimeout(function(){
             $('.stn.smartX').addClass('on');
             new numberCounter('.smartX.on .smartX_fgr01', 3000, '수천개');		
             new numberCounter('.smartX.on .smartX_fgr02', 1800, '백만대');		
             new numberCounter('.smartX.on .smartX_fgr03', 2000, '2만여개');		
             new numberCounter('.smartX.on .smartX_fgr04', 2000);
-        });
-        		
-        
-        smartxVisible = true;
+            smartxVisible = true;
+        });        
+    }else if(!checkVisible2($('.stn.smartX'))){
+        $('.stn.smartX').removeClass('on');
+        smartxVisible = false;
     }
     
     // maum minutes 영역
     if(checkVisible($('.stn.minutes')) && !minutesVisible){
-        new numberCounter('.minutes_fgr01', 400000);
-        new numberCounter('.minutes_fgr02', 276000);
-        new numberCounter('.minutes_fgr03', 29000);
-        
-        minutesVisible = true;
+        setTimeout(function(){
+            $('.stn.minutes').addClass('on');
+            new numberCounter('.minutes.on .minutes_fgr01', 400000);
+            new numberCounter('.minutes.on .minutes_fgr02', 276000);
+            new numberCounter('.minutes.on .minutes_fgr03', 29000);
+            minutesVisible = true;
+        });       
+    }else if(!checkVisible2($('.stn.minutes'))){
+        $('.stn.minutes').removeClass('on');
+        minutesVisible = false;
     }
 
     // cloud API 영역
     if(checkVisible($('.stn.cloudApi')) && !cloudApiVisible){
-        new numberCounter('.cloudApi_fgr01', 10000);
-        new numberCounter('.cloudApi_fgr02', 100000, '수십만');
-        // $('.cloudApi_fgr02').shuffleLetters('수십만');
-        new numberCounter('.cloudApi_fgr03', 4500000);
-        new numberCounter('.cloudApi_fgr04', 3600000);
-        new numberCounter('.cloudApi_fgr05', 1000);
-        
-        cloudApiVisible = true;
+        setTimeout(function(){
+            $('.stn.cloudApi').addClass('on');
+            new numberCounter('.cloudApi.on .cloudApi_fgr01', 10000);
+            new numberCounter('.cloudApi.on .cloudApi_fgr02', 100000, '수십만');
+            new numberCounter('.cloudApi.on .cloudApi_fgr03', 4500000);
+            new numberCounter('.cloudApi.on .cloudApi_fgr04', 3600000);
+            new numberCounter('.cloudApi.on .cloudApi_fgr05', 1000);
+            cloudApiVisible = true;
+        });        
+    }else if(!checkVisible2($('.stn.cloudApi'))){
+        $('.stn.cloudApi').removeClass('on');
+        cloudApiVisible = false;
     }
 
     // maum DATA 영역
     if(checkVisible($('.stn.maumData')) && !maumDataVisible){
-        new numberCounter('.maumData_fgr01', 4700000);
-        new numberCounter('.maumData_fgr02', 1787);
-        new numberCounter('.maumData_fgr03', 1356);
-        
-        maumDataVisible = true;
+        setTimeout(function(){
+            $('.stn.maumData').addClass('on');
+            new numberCounter('.maumData.on .maumData_fgr01', 4700000);
+            new numberCounter('.maumData.on .maumData_fgr02', 1787);
+            new numberCounter('.maumData.on .maumData_fgr03', 1356);
+            maumDataVisible = true;
+        });       
+    }else if(!checkVisible2($('.stn.maumData'))){
+        $('.stn.maumData').removeClass('on');
+        maumDataVisible = false;
     }
 }
 sectionFigureAni();
@@ -226,4 +219,15 @@ function checkVisible(elm, eval) {
     
     if(eval == 'object visible') return ((y < (viewportHalfHeight + scrolltop)) && (y > (scrolltop - elementHalfHeight)));
     if(eval == 'above') return ((y < (viewportHalfHeight + scrolltop)));
+}
+
+function checkVisible2(elm, eval) {
+    eval = eval || 'object visible';
+    var viewportHeight = $(window).height(),
+        scrolltop = $(window).scrollTop(),
+        elementHeight = $(elm).outerHeight(),
+        y = $(elm).offset().top;
+    
+    if(eval == 'object visible') return ((y < (viewportHeight + scrolltop)) && (y > (scrolltop - elementHeight)));
+    if(eval == 'above') return ((y < (viewportHeight + scrolltop)));
 }
