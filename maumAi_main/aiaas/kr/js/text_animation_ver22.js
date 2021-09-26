@@ -289,7 +289,7 @@ function hasScrolled(){
     // cloud API 영역
     if($('.stn.cloudApi').hasClass('active')){
         new numberCounter('.cloudApi_fgr01', 10000);
-        new numberCounter('.cloudApi_fgr02', 100000, '수십만');
+        new numberCounter('.cloudApi_fgr02', 10000, '수십만');
         new numberCounter('.cloudApi_fgr03', 4500000);
         new numberCounter('.cloudApi_fgr04', 3600000);
         new numberCounter('.cloudApi_fgr05', 1000);
