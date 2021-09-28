@@ -242,6 +242,21 @@ $(document).ready(function(){
             $('#lyr_video_player').remove();
         });
     });
+
+    //header ajax 
+    $('body').each(function(){
+        //header load  
+       $.ajax({
+           url: '../inc/header.html',
+           type: 'GET',
+           dataType: 'html',
+           async: false,				
+           success:function(data){					
+               $('#header').html(data);
+           }
+       });	
+   }); 
+   
 });
 
 $(window).on({
