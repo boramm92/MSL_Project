@@ -84,6 +84,8 @@
 .checkBox input[type="checkbox"] + label:before{content:''; position:absolute; top:3px; left:0; width:20px; height:20px; border-radius:4px; box-sizing:border-box; background:#fff; text-align:center; line-height:32px; transition:background-color 0.2s ease-out;}
 .checkBox input[type="checkbox"]:checked + label:before{content:'\f00c'; font-family:'Font Awesome 5 Free'; color:#fff; font-size:12px; font-weight:900; line-height:20px; background:#5678db;}
 
+/* button */
+.btn_primary {display:inline-block; padding:0 60px; border-radius:4px; background:#5678db; color:#fff; font-size:20px; font-weight:500; letter-spacing:-0.27px; line-height:60px;}
 
 /* -------------------- event -------------------- */
 .pc {display:block;}
@@ -105,24 +107,47 @@
 #wrap.event .visual .contBox .svc_txt .descBox .main_desc {color:#e4eef7; font-size:28px; font-weight:500; letter-spacing:-0.37px; line-height:1;}
 #wrap.event .visual .contBox .svc_txt .descBox .sub_desc {margin:14px 0 36px; color:#e4eef7; font-size:20px; font-weight:300; letter-spacing:-0.27px;}
 #wrap.event .visual .contBox .svc_txt .descBox .btn_go_contact {height:60px; padding:0 60px; border-radius:4px; background:#5678db; color:#fff; font-size:20px; font-weight:500; letter-spacing:-0.27px;}
+#wrap.event .visual .contBox .svc_txt .descBox .btn_primary {margin:0 0 0 8px; background:#fff; color:#5678db;}
 #wrap.event .visual .videoBox {overflow:hidden; position:absolute; top:0; left:0; width:100%; height:100%;}
 #wrap.event .visual .videoBox video {display:block; position:absolute; top:50%; left:50%; width:100%; transform:translate(-50%, -50%);}
 
-/* service */
+/* video - 21.09.29 NBR 추가 */
+#wrap.event .video {padding:70px 0; text-align:center;}
+#wrap.event .video .contBox .stn_tit {line-height:40px;}
+#wrap.event .video .contBox .stn_tit strong {display:inline-block;}
+#wrap.event .video .contBox .desc {margin:20px 0 16px; color:#4f5167; font-size:20px; letter-spacing:-0.67px; line-height:30px; word-break:keep-all;}
+#wrap.event .video .contBox .videoBox {height:400px; margin:0 auto 20px;}
+#wrap.event .video .contBox .videoBox video {height:100%;}
+
+/* banner - 21.09.29 NBR 추가 */
+#wrap.event .banner {background:#f6f8ff;}
+#wrap.event .banner > div {overflow:hidden; padding:60px 0; text-align:center;}
+#wrap.event .banner > div .contBox {position:relative;}
+#wrap.event .banner > div .contBox .tit {width:590px; margin:0 auto; padding-left:80px; color:#283d7b; font-size:40px; letter-spacing:-2px; text-align:left;}
+#wrap.event .banner > div .contBox .svc_logo {display:block; position:absolute; top:50%; left:20px; transform:translateY(-50%);} 
+#wrap.event .banner > div .contBox .desc {display:inline-block; width:590px; margin:10px 0 0 80px; color:#4f5167; font-size:20px; letter-spacing:-0.67px; line-height:30px; text-align:left;}
+#wrap.event .banner > div .contBox .btnBox {position:absolute; top:50%; right:20px; transform:translateY(-50%);}
+#wrap.event .banner > div .contBox .btnBox .btn_primary {display:block;}
+#wrap.event .banner > div .contBox .btnBox .btn_primary:nth-child(2) {margin:10px 0 0; background:#283d7b;}
+#wrap.event .banner .mStore {border-bottom:1px solid #bcc6eb;}
+#wrap.event .banner .mStore .contBox .svc_logo {height:90px;}
+#wrap.event .banner .ava .contBox .svc_logo {left:58px; height:85px;}
+
+/* service - 21.09.29 NBR 수정 */
 #wrap.event .service {background:#fff;}
 #wrap.event .service .svc_list li {box-sizing:border-box; height:530px;}
 #wrap.event .service .svc_list li + li {border-top:1px solid #d8d8dd;}
 #wrap.event .service .svc_list li .contBox {display:flex; flex-direction:row; justify-content:space-between; align-items:center;}
 #wrap.event .service .svc_list li .contBox .img {position:relative; width:674px; margin-top:auto; padding-bottom:31.7%;}
 #wrap.event .service .svc_list li .contBox .img img {position:absolute; bottom:0; left:0; width:100%;}
-#wrap.event .service .svc_list li .contBox .desc {}
 #wrap.event .service .svc_list li .contBox .desc dt .sub_tit {color:#283d7b; letter-spacing:-0.72px; line-height:1.08;}
 #wrap.event .service .svc_list li .contBox .desc dt .main_tit {color:#5678db; font-size:40px; letter-spacing:-2px; line-height:1.4;}
 #wrap.event .service .svc_list li .contBox .desc dd {width:444px; margin-top:8px; color:#4f5167; font-size:20px; letter-spacing:-0.6px; line-height:1.5; word-break:keep-all;}
+#wrap.event .service .svc_list li .contBox .desc dd .btn_primary {margin:20px 0 0;}
 #wrap.event .service .svc_list li:not(:nth-child(2)) .contBox .desc {order:1; padding-left:80px;}
 #wrap.event .service .svc_list li:nth-child(2) .contBox .desc {padding-left:96px;}
 
-/* use_case */
+/* use_case - 21.09.29 NBR 수정 */
 #wrap.event .use_case {padding:70px 0; background:#f6f8ff;}
 #wrap.event .use_case .contBox .ai_human_list {display:flex; flex-wrap:wrap; margin:40px 0 0;}
 #wrap.event .use_case .contBox .ai_human_list li {flex:none; width:336px;}
@@ -130,9 +155,17 @@
 #wrap.event .use_case .contBox .ai_human_list li:nth-child(n+4) {margin-top:52px;}
 #wrap.event .use_case .contBox .ai_human_list li .img {width:100%;}
 #wrap.event .use_case .contBox .ai_human_list li .img img {width:100%;}
-#wrap.event .use_case .contBox .ai_human_list li .desc dt {margin:14px 0 8px; color:#5678db; font-size:30px; letter-spacing:-1.2px; line-height:1.07;}
+#wrap.event .use_case .contBox .ai_human_list li .desc dt {margin:14px 0 8px; color:#5678db; font-size:30px; letter-spacing:-1.2px; line-height:44px;}
 #wrap.event .use_case .contBox .ai_human_list li .desc dt strong {color:#283d7b;}
-#wrap.event .use_case .contBox .ai_human_list li .desc dd {color:#4f5167; font-size:18px; letter-spacing:-0.47px; line-height:1.5; word-break:keep-all;}
+#wrap.event .use_case .contBox .ai_human_list li .desc dd {height:108px; color:#4f5167; font-size:18px; letter-spacing:-0.47px; line-height:1.5; word-break:keep-all;}
+#wrap.event .use_case .contBox .ai_human_list li .btn_primary {margin:10px 0 0;}
+
+/* device - 21.09.29 NBR 추가  */
+#wrap.event .device {padding:70px 0; text-align:center;}
+#wrap.event .device .contBox .stn_tit strong {display:inline-block;} 
+#wrap.event .device .contBox .device_img {display:inline-block; height:500px; margin:10px 0;}
+#wrap.event .device .contBox .device_list li {display:inline-block; position:relative; padding:0 15px; color:#2b3147; font-size:16px; font-weight:500; letter-spacing:-0.53px;}
+#wrap.event .device .contBox .device_list li + li:before {content:''; display:block; position:absolute; top:2px; left:-1px; width:1px; height:19px; border-left:1px dotted #888da6;}
 
 /* interview */
 #wrap.event .interview {padding:70px 0; background:#DBE5FE;}
@@ -183,26 +216,49 @@
     .checkBox input[type="checkbox"] + label:before {width:16px; height:16px;}
     .checkBox input[type="checkbox"]:checked + label:before {line-height:16px;}
 
+    .btn_primary {padding:0 40px; font-size:14px; letter-spacing:-0.19px; line-height:40px;}
+
     #wrap.event .stn {min-width:320px;}
     #wrap.event .contBox {width:100%; box-sizing:border-box;}
     #wrap.event .contBox .stn_tit {font-size:22px;}
 
+    /* visual */
     #wrap.event .visual {height:592px;}
     #wrap.event .visual .contBox .svc_txt {position:static; text-align:center; transform:none;}
     #wrap.event .visual .contBox .svc_txt .titBox {margin:24px 0 0;}
     #wrap.event .visual .contBox .svc_txt .titBox .main_tit {font-size:37.5px; letter-spacing:12px;}
     #wrap.event .visual .contBox .svc_txt .titBox .sub_tit {margin:7px 0 0; font-size:10px; letter-spacing:4px;}
-    #wrap.event .visual .contBox .svc_txt .descBox {position:absolute; bottom:0; left:0; width:100%; padding:20px 24px 40px; box-sizing:border-box; background:rgba(23, 26, 34, 0.3); text-align:left;}
-    #wrap.event .visual .contBox .svc_txt .descBox .main_desc {font-size:16px; letter-spacing:-0.21px; line-height:1.38;}
-    #wrap.event .visual .contBox .svc_txt .descBox .sub_desc {margin:10px 0 20px; font-size:14px; letter-spacing:-0.19px; word-break:keep-all;}
+    #wrap.event .visual .contBox .svc_txt .descBox {position:absolute; bottom:0; left:0; width:100%; padding:20px 24px 40px; box-sizing:border-box; background:rgba(23, 26, 34, 0.3); text-align:center;}
+    #wrap.event .visual .contBox .svc_txt .descBox .main_desc {font-size:16px; letter-spacing:-0.21px; line-height:1.38; text-align:left;}
+    #wrap.event .visual .contBox .svc_txt .descBox .sub_desc {margin:10px 0 20px; font-size:14px; letter-spacing:-0.19px; text-align:left; word-break:keep-all;}
     #wrap.event .visual .contBox .svc_txt .descBox .btn_go_contact {height:40px; padding:0 40px; font-size:14px; letter-spacing:-0.19px;}
     #wrap.event .visual .videoBox video {top:0; left:calc(50% - 248px); height:100%; transform:translate(-50%, 0);}
+    
+    /* video - 21.09.29 NBR 추가 */
+    #wrap.event .video {padding:24px 0;}
+    #wrap.event .video .contBox .stn_tit {line-height:30px;}
+    #wrap.event .video .contBox .stn_tit:nth-child(1) strong {display:block;}
+    #wrap.event .video .contBox .desc {margin:10px 0; font-size:14px; letter-spacing:-0.47px; line-height:20px;}
+    #wrap.event .video .contBox .videoBox {width:100%; height:auto;}
+    #wrap.event .video .contBox .videoBox video {width:100%; height:auto;}
 
+    /* banner - 21.09.29 NBR 추가 */
+    #wrap.event .banner > div {padding:30px 0;}
+    #wrap.event .banner > div .contBox {text-align:center;}
+    #wrap.event .banner > div .contBox .tit {width:100%; margin:0; padding:0; font-size:24px; letter-spacing:-1.2px; text-align:center;}
+    #wrap.event .banner > div .contBox .svc_logo {display:inline-block; position:static; margin:10px 0 17px; transform:none;}
+    #wrap.event .banner > div .contBox .btnBox {position:static; margin:20px 0 0; transform:none;}
+    #wrap.event .banner > div .contBox .btnBox .btn_primary {display:inline-block; margin:0 6px;}
+    #wrap.event .banner > div .contBox .desc {width:100%; margin:0; font-size:14px; letter-spacing:-0.6px; line-height:20px;}
+    #wrap.event .banner .mStore .contBox .svc_logo {height:60px;}
+
+    /* service - 21.09.29 NBR 수정 */
     #wrap.event .service .svc_list li {height:auto;}
     #wrap.event .service .svc_list li .contBox .img {width:100%;}
     #wrap.event .service .svc_list li .contBox .desc dt .main_tit {font-size:24px; letter-spacing:-0.6px; line-height:1.5;}
     #wrap.event .service .svc_list li .contBox .desc dt .sub_tit {font-size:16px; letter-spacing:-0.48px; line-height:1.63;}
     #wrap.event .service .svc_list li .contBox .desc dd {width:100%; margin:2px 0 0; font-size:14px; letter-spacing:-0.28px; line-height:1.43;}
+    #wrap.event .service .svc_list li .contBox .desc dd .btn_primary {display:block; width:132px; box-sizing:border-box;}
     #wrap.event .service .svc_list li .contBox .img {margin:16px 0 0;}
     #wrap.event .service .svc_list li .contBox .img img {width:auto; height:100%;}
     #wrap.event .service .svc_list li:not(:first-child) .contBox .img img {top:50%; bottom:auto; transform:translate(0, -50%);}
@@ -210,7 +266,7 @@
     #wrap.event .service .svc_list li:nth-child(1) .contBox .desc {padding-left:4px;}
     #wrap.event .service .svc_list li:nth-child(2) .contBox .desc {padding:0 24px;}
     
-
+    /* use_case - 21.09.29 NBR 수정 */
     #wrap.event .use_case {padding:24px 0;}
     #wrap.event .use_case .contBox .ai_human_list {justify-content:center; margin:16px 0 0;}
     #wrap.event .use_case .contBox .ai_human_list li {width:calc(50% - 48px); margin:0 24px;}
@@ -221,6 +277,7 @@
     #wrap.event .use_case .contBox .ai_human_list li .desc dt {margin:8px 0 2px; font-size:20px; letter-spacing:-0.47px; line-height:1.5;}
     #wrap.event .use_case .contBox .ai_human_list li .desc dd {font-size:14px; letter-spacing:-0.28px; line-height:1.43;}
 
+    /* interview */
     #wrap.event .interview {padding:24px 0;}
     #wrap.event .interview .contBox .stn_tit {margin:0 0 12px;}
     #wrap.event .interview .contBox .itv_list li {flex-direction:column;}
@@ -232,6 +289,11 @@
     #wrap.event .interview .contBox .itv_list li .txt dd {font-size:14px; letter-spacing:-0.28px; line-height:1.43;}
     .swiper-button-next, .swiper-button-prev {top:45px; width:40px; height:40px; background-size:auto 13px; transform:none;}
 
+    /* device */
+    #wrap.event .device {padding:30px 0;}
+    #wrap.event .device .contBox .device_img {width:100%; height:auto;}
+
+    /* contact */
     #wrap.event .contact {padding:24px 0;}
     #wrap.event .contact .contBox {width:100%;}
     #wrap.event .contact .contBox .stn_desc {font-size:14px;}
@@ -260,6 +322,7 @@
     #wrap.event .use_case .contBox .ai_human_list li + li {margin:24px 0 0;}   
     #wrap.event .use_case .contBox .ai_human_list li:nth-child(3n+2) {margin:24px 0 0;}
     #wrap.event .use_case .contBox .ai_human_list li:nth-child(n+4) {margin-top:24px;}
+    #wrap.event .use_case .contBox .ai_human_list li .desc dd {height:auto;}
 
     #wrap.event .contact .contBox .contact_info a {margin:0 3px;}
 }
