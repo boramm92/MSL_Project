@@ -95,8 +95,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="contBox">
                 <p class="stn_tit"><strong>신한은행 X 마인즈랩</strong> 인공인간 탄생</p>
                 <p class="desc">어렵고 복잡한 은행 업무를 도와주는 AI 뱅커가 탄생하였습니다.<br> AI Human이 어떻게 도와주는지 확인해 볼까요?</p>
-                <div class="videoBox">
-                    <video src="../resources/videos/shinhan_aiHuman.mp4"></video>
+                <div class="video_thumb_box">
+                    <img src="../resources/images/aiHuman_ver2/img_thumb_shinhan.png" alt="Shinhan X AI HUMAN video thumbnail">
+                    <button type="button" class="btn_video_play" title="재생">
+                        <span class="hide">재생</span>
+                    </button>
                 </div>
                 <p class="stn_tit"><strong>AI HUMAN</strong> 이란?</p>
                 <p class="desc">AI Human은 디지털 세계에서 영상, 음성, 텍스트 등으로<br> 사람과 상호작용하며 소통하는 AI Human 서비스입니다.</p>
@@ -111,7 +114,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="contBox">
                     <p class="tit">인공인간 <strong>제작 & 구매 서비스</strong></p>
                     <img class="svc_logo" src="../resources/images/aiHuman_ver2/logo_mStore.png" alt="M STORE logo">
-                    <p class="desc">목소리와 얼굴로 인공인간을 만들고 싶을 땐,<br class="mobile"> 인공인간 제작 & 구매 서비스<br> 다양한 직업별 인공인간을 선택하여 제작해 보세요.</p>
+                    <p class="desc"><span>목소리와 얼굴로 인공인간을 만들고 싶을 땐,</span> <span>인공인간 제작 & 구매 서비스</span><br> 다양한 직업별 인공인간을 선택하여 제작해 보세요.</p>
                     <div class="btnBox">
                         <a class="btn_primary" href="https://store.maum.ai/collections/ai-human-%EC%82%AC%EC%9A%A9" target="_blank" title="새창으로 열기">구매하기</a>
                         <a class="btn_primary" href="https://store.maum.ai/collections/ai-human-%EC%A0%9C%EC%9E%91" target="_blank" title="새창으로 열기">제작하기</a>
@@ -122,7 +125,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="contBox">
                     <p class="tit">인공지능 <strong>성우 서비스</strong></p>
                     <img class="svc_logo" src="../resources/images/aiHuman_ver2/logo_ava.svg" alt="AVA logo">
-                    <p class="desc">목소리로 개성 있는 음성 콘텐츠를 만들고 싶을 땐,<br class="mobile"> 인공지능 성우 서비스<br> 다양한 목소리로 재미있는 콘텐츠를 제작해 보세요.</p>
+                    <p class="desc"><span>목소리로 개성 있는 음성 콘텐츠를 만들고 싶을 땐,</span> <span>인공지능 성우 서비스</span><br> 다양한 목소리로 재미있는 콘텐츠를 제작해 보세요.</p>
                     <div class="btnBox">
                         <a class="btn_primary" href="https://ava.maum.ai/login" target="_blank" title="새창으로 열기">바로가기</a>
                     </div>
@@ -309,6 +312,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <li>키오스크</li>
                     <li>데스크탑</li>
                     <li>노트북</li>
+                    <br class="mobile">
                     <li>태블릿</li>
                     <li>스마트폰</li>
                 </ul>
@@ -393,6 +397,49 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
+        // [D] 21.09.29 NBR 추가
+        // 동영상 레이어 팝업
+        $('.btn_video_play').on('click', function(){
+            $('body').css('overflow', 'hidden');
+
+            $('body').append(
+            '<div class="lyr_bg_dim"></div>\
+            <div id="lyr_video_player" class="lyrPlayBox">\
+                <div class="lyr_ct">\
+                    <video controls autoplay>\
+                        <source src="../resources/videos/shinhan_aiHuman.mp4" type="video/mp4">\
+                    </video>\
+                </div>\
+                <button type="button" class="btn_lyr_close">\
+                    <em class="fas fa-times" title="닫기버튼"></em>\
+                </button>\
+            </div>');      
+
+            $('.btn_lyr_close, .lyr_bg_dim').on('click', function(){
+                $('body').css('overflow', '');
+                $('.lyr_bg_dim').remove();
+                $('#lyr_video_player').remove();
+            });   
+        });
+
+        //Layer popup open 
+        $('.btn_lyr_open').on('click',function(){	
+            var winHeight = $(window).height()*0.7,
+                hrefId = $(this).attr('href');
+
+            $('body').css('overflow','hidden'); 
+            $('body').find(hrefId).wrap('<div class="lyrWrap"></div>');
+            $('body').find(hrefId).before('<div class="lyr_bg"></div>');
+
+            //Layer popup close 
+            $('.btn_lyr_close, .lyr_bg').on('click',function(){
+                $('body').css('overflow','');  
+                $('body').find(hrefId).unwrap();
+                $('.lyr_bg').remove(); 
+            });	
+        });	
+        // //[D] 21.09.29 NBR 추가
+
         // swiper
         new Swiper('.itv_wrap', {
             slidesPerGroup : 1,

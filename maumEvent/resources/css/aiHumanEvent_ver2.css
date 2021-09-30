@@ -6,6 +6,12 @@
 @import url('font.css');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css');
 
+/* scrollbar */
+::-webkit-scrollbar {width: 6px; height: 6px; border-radius: 3px;}  /* 스크롤바의 width */
+::-webkit-scrollbar-track {background: transparent;}  /* 스크롤바의 전체 배경색 */
+::-webkit-scrollbar-thumb {border-radius: 3px; background: rgba(25, 42, 57, 0.3);}  /* 스크롤바 색 */
+::-webkit-scrollbar-button {display: none;}  /* 위 아래 버튼 (버튼 없애기를 함) */
+
 /* page loading */
 #pageldg {display:block; position:fixed; top:0px; left:0px; width:100%; height:100%; text-align:center; background-color:#fff; z-index:99999999; opacity:1.0;}
 #pageldg:before {content:''; position:absolute; top:50%; left:50%; margin:0 0 0 -30px; border-radius:100%; background:radial-gradient(#e9edf3, #fff); opacity:0; width:60px; height:60px; -webkit-animation:pageldg_wave 1.7s 2.5s linear infinite; animation:pageldg_wave 1.7s 2.5s linear infinite; z-index:444;}
@@ -87,6 +93,56 @@
 /* button */
 .btn_primary {display:inline-block; padding:0 60px; border-radius:4px; background:#5678db; color:#fff; font-size:20px; font-weight:500; letter-spacing:-0.27px; line-height:60px;}
 
+/* -------------------- Layer Popup -------------------- */
+.lyrWrap {display:block; position:fixed; top:0; left:0; width:100%; height:100%; z-index:8000;}
+.lyrWrap .lyr_bg {position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85);}
+.lyrWrap .lyr_bg2 {position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85);}
+.lyrWrap .lyr_bg.ie9 {position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(255,255,255,1.0);}
+.lyrBox {display:none; overflow:hidden; position:absolute; top:50%; left:50%; width:500px; margin:0; border-radius:7px; background:#eff1f7; box-shadow:0 0 15px rgba(11,42,74,0.3); transform:translate(-50%,-50%); -webkit-animation:lyr_show 0.3s 0s ease-out; animation:lyr_show 0.3s 0s ease-out;}
+.lyrWrap .lyrBox {display:block;}
+
+.lyr_bg_dim {position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:999;}
+.lyrPlayBox {display:none; position:fixed; top:50%; left:50%; width:1000px; min-height:150px; border-radius:3px; box-shadow:0 1px 4px 0 rgba(44, 63, 81, 0.1); transform:translate(-50%, -50%); z-index:9999;}
+#lyr_video_player {display:block;}
+#lyr_video_player .lyr_ct {width:1000px;}
+#lyr_video_player .lyr_ct video {width:100%;}
+#lyr_video_player .btn_lyr_close {display:inline-block; position:absolute; top:-40px; right:-10px; width:40px; height:40px;}
+#lyr_video_player .btn_lyr_close em {color:#fff; font-size:30px;}
+
+/* keyframes */
+@-webkit-keyframes lyr_show {
+    0% {top:45%; opacity:0;}
+    100% {top:50%; opacity:1;}
+}
+@keyframes lyr_show {
+    0% {top:45%; opacity:0;}
+    100% {top:50%; opacity:1;}
+}
+.lyrBox .lyr_top {clear:both; overflow:hidden; position:relative; padding:10px 15px; background:#fff;}
+.lyrBox .lyr_top h3 { display:block; padding:7px 5px; color:#394058; font-size:2em; font-weight:500; text-align:center;}
+.lyrBox .lyr_top .btn_lyr_close { float:right; position:absolute; top:20px; right:20px; overflow:hidden; width:30px; height:30px; margin:3px 0 0 0; text-indent:-99px; border:none; background:none; transition:all 0.3s ease-out; opacity:0.7; cursor:pointer;}
+.lyrBox .lyr_top .btn_lyr_close:hover, .lyrBox .lyr_top .btn_lyr_close:focus {opacity:1.0; transition:all 0.3s ease-out;}
+.lyrBox .lyr_top .btn_lyr_close:before {content:''; position:absolute; top:50%; left:0%; width:100%; height:1px; background:#5f6680; border-radius:3px; transform:rotate(45deg);}
+.lyrBox .lyr_top .btn_lyr_close:after {content:''; position:absolute; top:50%; left:0%; width:100%; height:1px; border-radius:3px; background:#5f6680; transform:rotate(-45deg);}
+
+.lyrWrap .lyrBox .lyr_mid {display:block; overflow:auto; max-height:500px; padding:30px 20px 20px 20px;}
+
+.lyrWrap .lyrBox .lyr_btm {display:block; padding:15px; text-align:center; border-top:1px solid #e4e6ef; background:#fff;}
+.lyrWrap .lyrBox .lyr_btm .btnBox.sz_small button {height:32px; color:#fff; font-size:13px; border:none; background:#3599ff;}
+.lyrWrap .lyrBox .lyr_btm .btnBox.sz_small button:disabled {cursor:default; opacity:0.4; border:1px solid #586c80; background:#586c80;}
+.lyrWrap .lyrBox .lyr_btm .btnBox.sz_small button:first-child {background:#718292;}
+
+.lyr_hide {-webkit-animation-duration:0.5s; animation-duration:0.5s; -webkit-animation-fill-mode:both; animation-fill-mode:both; -webkit-animation-name:lyr_hide; animation-name:lyr_hide;}
+/* keyframes */
+@-webkit-keyframes lyr_hide {
+    0% {opacity:1;}
+    100% {opacity:0;}
+}
+@keyframes lyr_hide {
+    0% {opacity:1;}
+    100% {opacity:0;}
+}
+
 /* -------------------- event -------------------- */
 .pc {display:block;}
 .mobile {display:none;}
@@ -116,8 +172,10 @@
 #wrap.event .video .contBox .stn_tit {line-height:40px;}
 #wrap.event .video .contBox .stn_tit strong {display:inline-block;}
 #wrap.event .video .contBox .desc {margin:20px 0 16px; color:#4f5167; font-size:20px; letter-spacing:-0.67px; line-height:30px; word-break:keep-all;}
-#wrap.event .video .contBox .videoBox {height:400px; margin:0 auto 20px;}
-#wrap.event .video .contBox .videoBox video {height:100%;}
+#wrap.event .video .contBox .desc:last-child {margin:20px 0 0;}
+#wrap.event .video .contBox .video_thumb_box {position:relative; width:800px; margin:0 auto 20px;}
+#wrap.event .video .contBox .video_thumb_box img {display:block; width:100%;}
+#wrap.event .video .contBox .video_thumb_box .btn_video_play {position:absolute; top:50%; left:50%; width:80px; height:80px; background:url('../images/aiHuman_ver2/img_play_line.svg') 50% 50% no-repeat; transform:translate(-50%, -50%);}
 
 /* banner - 21.09.29 NBR 추가 */
 #wrap.event .banner {background:#f6f8ff;}
@@ -126,12 +184,13 @@
 #wrap.event .banner > div .contBox .tit {width:590px; margin:0 auto; padding-left:80px; color:#283d7b; font-size:40px; letter-spacing:-2px; text-align:left;}
 #wrap.event .banner > div .contBox .svc_logo {display:block; position:absolute; top:50%; left:20px; transform:translateY(-50%);} 
 #wrap.event .banner > div .contBox .desc {display:inline-block; width:590px; margin:10px 0 0 80px; color:#4f5167; font-size:20px; letter-spacing:-0.67px; line-height:30px; text-align:left;}
+#wrap.event .banner > div .contBox .desc span {display:inline-block;}
 #wrap.event .banner > div .contBox .btnBox {position:absolute; top:50%; right:20px; transform:translateY(-50%);}
 #wrap.event .banner > div .contBox .btnBox .btn_primary {display:block;}
 #wrap.event .banner > div .contBox .btnBox .btn_primary:nth-child(2) {margin:10px 0 0; background:#283d7b;}
 #wrap.event .banner .mStore {border-bottom:1px solid #bcc6eb;}
-#wrap.event .banner .mStore .contBox .svc_logo {height:90px;}
-#wrap.event .banner .ava .contBox .svc_logo {left:58px; height:85px;}
+#wrap.event .banner .mStore .contBox .svc_logo {width:290px;}
+#wrap.event .banner .ava .contBox .svc_logo {left:58px; width:216px;}
 
 /* service - 21.09.29 NBR 수정 */
 #wrap.event .service {background:#fff;}
@@ -165,7 +224,7 @@
 #wrap.event .device .contBox .stn_tit strong {display:inline-block;} 
 #wrap.event .device .contBox .device_img {display:inline-block; height:500px; margin:10px 0;}
 #wrap.event .device .contBox .device_list li {display:inline-block; position:relative; padding:0 15px; color:#2b3147; font-size:16px; font-weight:500; letter-spacing:-0.53px;}
-#wrap.event .device .contBox .device_list li + li:before {content:''; display:block; position:absolute; top:2px; left:-1px; width:1px; height:19px; border-left:1px dotted #888da6;}
+#wrap.event .device .contBox .device_list li ~ li:before {content:''; display:block; position:absolute; top:2px; left:-1px; width:1px; height:19px; border-left:1px dotted #888da6;}
 
 /* interview */
 #wrap.event .interview {padding:70px 0; background:#DBE5FE;}
@@ -218,6 +277,9 @@
 
     .btn_primary {padding:0 40px; font-size:14px; letter-spacing:-0.19px; line-height:40px;}
 
+    #lyr_video_player.lyrPlayBox {width:calc(100% - 40px);}
+    #lyr_video_player .lyr_ct {width:100%;}
+
     #wrap.event .stn {min-width:320px;}
     #wrap.event .contBox {width:100%; box-sizing:border-box;}
     #wrap.event .contBox .stn_tit {font-size:22px;}
@@ -238,22 +300,24 @@
     #wrap.event .video {padding:24px 0;}
     #wrap.event .video .contBox .stn_tit {line-height:30px;}
     #wrap.event .video .contBox .stn_tit:nth-child(1) strong {display:block;}
-    #wrap.event .video .contBox .desc {margin:10px 0; font-size:14px; letter-spacing:-0.47px; line-height:20px;}
-    #wrap.event .video .contBox .videoBox {width:100%; height:auto;}
-    #wrap.event .video .contBox .videoBox video {width:100%; height:auto;}
+    #wrap.event .video .contBox .desc {margin:10px 0 !important; font-size:14px; letter-spacing:-0.47px; line-height:20px;}
+    #wrap.event .video .contBox .video_thumb_box {width:100%;}
+    #wrap.event .video .contBox .video_thumb_box .btn_video_play {width:60px; height:60px; background-size:40px;}
 
     /* banner - 21.09.29 NBR 추가 */
     #wrap.event .banner > div {padding:30px 0;}
     #wrap.event .banner > div .contBox {text-align:center;}
     #wrap.event .banner > div .contBox .tit {width:100%; margin:0; padding:0; font-size:24px; letter-spacing:-1.2px; text-align:center;}
-    #wrap.event .banner > div .contBox .svc_logo {display:inline-block; position:static; margin:10px 0 17px; transform:none;}
+    #wrap.event .banner > div .contBox .svc_logo {position:static; margin:10px auto 17px; transform:none;}
     #wrap.event .banner > div .contBox .btnBox {position:static; margin:20px 0 0; transform:none;}
-    #wrap.event .banner > div .contBox .btnBox .btn_primary {display:inline-block; margin:0 6px;}
-    #wrap.event .banner > div .contBox .desc {width:100%; margin:0; font-size:14px; letter-spacing:-0.6px; line-height:20px;}
-    #wrap.event .banner .mStore .contBox .svc_logo {height:60px;}
+    #wrap.event .banner > div .contBox .btnBox .btn_primary {display:inline-block; margin:0 6px !important;}
+    #wrap.event .banner > div .contBox .desc {width:auto; margin:0; font-size:14px; letter-spacing:-0.6px; line-height:20px;}
+    #wrap.event .banner .mStore .contBox .svc_logo {width:194px;}
+    #wrap.event .banner .ava .contBox .svc_logo {width:150px;}
 
     /* service - 21.09.29 NBR 수정 */
     #wrap.event .service .svc_list li {height:auto;}
+    #wrap.event .service .svc_list li .contBox {padding:30px 20px;}
     #wrap.event .service .svc_list li .contBox .img {width:100%;}
     #wrap.event .service .svc_list li .contBox .desc dt .main_tit {font-size:24px; letter-spacing:-0.6px; line-height:1.5;}
     #wrap.event .service .svc_list li .contBox .desc dt .sub_tit {font-size:16px; letter-spacing:-0.48px; line-height:1.63;}
@@ -269,13 +333,15 @@
     /* use_case - 21.09.29 NBR 수정 */
     #wrap.event .use_case {padding:24px 0;}
     #wrap.event .use_case .contBox .ai_human_list {justify-content:center; margin:16px 0 0;}
-    #wrap.event .use_case .contBox .ai_human_list li {width:calc(50% - 48px); margin:0 24px;}
+    #wrap.event .use_case .contBox .ai_human_list li {position:relative; width:calc(50% - 48px); margin:0 24px; padding:0 0 60px; text-align:center;}
     #wrap.event .use_case .contBox .ai_human_list li:nth-child(3n+2) {margin:0 24px;}
     #wrap.event .use_case .contBox .ai_human_list li:nth-child(n+4) {margin:0 24px;}
     #wrap.event .use_case .contBox .ai_human_list li:nth-child(n+3) {margin:24px 24px 0;}
     #wrap.event .use_case .contBox .ai_human_list li:last-child {margin-right:auto;}
+    #wrap.event .use_case .contBox .ai_human_list li .desc {text-align:left;}
     #wrap.event .use_case .contBox .ai_human_list li .desc dt {margin:8px 0 2px; font-size:20px; letter-spacing:-0.47px; line-height:1.5;}
-    #wrap.event .use_case .contBox .ai_human_list li .desc dd {font-size:14px; letter-spacing:-0.28px; line-height:1.43;}
+    #wrap.event .use_case .contBox .ai_human_list li .desc dd {height:auto; font-size:14px; letter-spacing:-0.28px; line-height:1.43;}
+    #wrap.event .use_case .contBox .ai_human_list li .btn_primary {position:absolute; bottom:0; left:50%; white-space:nowrap; transform:translateX(-50%);}
 
     /* interview */
     #wrap.event .interview {padding:24px 0;}
@@ -289,9 +355,10 @@
     #wrap.event .interview .contBox .itv_list li .txt dd {font-size:14px; letter-spacing:-0.28px; line-height:1.43;}
     .swiper-button-next, .swiper-button-prev {top:45px; width:40px; height:40px; background-size:auto 13px; transform:none;}
 
-    /* device */
+    /* device - 21.09.29 NBR 추가 */
     #wrap.event .device {padding:30px 0;}
     #wrap.event .device .contBox .device_img {width:100%; height:auto;}
+    #wrap.event .device .contBox .device_list br.mobile + li:before {content:none;}
 
     /* contact */
     #wrap.event .contact {padding:24px 0;}
@@ -311,18 +378,26 @@
 }
 
 @media screen and (max-width:480px){
-    #wrap.event .service .svc_list li .contBox {display:block;}
-    #wrap.event .service .svc_list li .contBox .img {padding:0;}
+    /* video - 21.09.29 NBR 추가 */
+    #wrap.event .video .contBox .desc:last-child br {display:none;}
+
+    /* service - 21.09.29 NBR 수정 */
+    #wrap.event .service .svc_list li .contBox {display:block; position:relative;}
+    #wrap.event .service .svc_list li .contBox .img {margin:10px 0 60px; padding:0;}
     #wrap.event .service .svc_list li .contBox .img img {position:static; width:100%; height:auto;}
+    #wrap.event .service .svc_list li:not(:first-child) .contBox .img {margin:10px 0 40px;}
     #wrap.event .service .svc_list li:not(:first-child) .contBox .img img {transform:none;}
     #wrap.event .service .svc_list li:nth-child(2) .contBox .desc,
     #wrap.event .service .svc_list li:not(:nth-child(2)) .contBox .desc {padding:24px 0 0;}
+    #wrap.event .service .svc_list li .contBox .desc dd .btn_primary {position:absolute; bottom:30px; left:50%; transform:translateX(-50%);}
 
-    #wrap.event .use_case .contBox .ai_human_list li {width:100%;}
+    /* use_case - 21.09.29 NBR 수정 */
+    #wrap.event .use_case .contBox .ai_human_list li {width:100%; margin:0 !important; padding:30px 24px;}
+    #wrap.event .use_case .contBox .ai_human_list li + li {border-top:1px solid #d8d8dd;}
     #wrap.event .use_case .contBox .ai_human_list li + li {margin:24px 0 0;}   
-    #wrap.event .use_case .contBox .ai_human_list li:nth-child(3n+2) {margin:24px 0 0;}
-    #wrap.event .use_case .contBox .ai_human_list li:nth-child(n+4) {margin-top:24px;}
     #wrap.event .use_case .contBox .ai_human_list li .desc dd {height:auto;}
+    #wrap.event .use_case .contBox .ai_human_list li .btn_primary {position:static; margin:20px 0 0; transform:none;}
 
+    /* contact */
     #wrap.event .contact .contBox .contact_info a {margin:0 3px;}
 }
