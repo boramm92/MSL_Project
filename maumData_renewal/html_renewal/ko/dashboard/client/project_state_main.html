@@ -313,7 +313,7 @@
 
                             <div class="cont">
                                 <div class="chartBox">
-                                    <canvas id="projectStateChart"></canvas>
+                                    <canvas id="myChart"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -363,86 +363,89 @@
 
 <!-- Local Script -->
 <script type="text/javascript">
-jQuery.event.add(window,"load",function(){
-    $(document).ready(function(){
-        // Chart draw를 위한 랜덤함수, 개발 시에는 실제 데이터 적용 필요
-        var randomScalingFactor = function(){
-            return Math.round(Math.random() * 100);
-        };
+// jQuery.event.add(window,"load",function(){
+//     $(document).ready(function(){
+//         // Chart draw를 위한 랜덤함수, 개발 시에는 실제 데이터 적용 필요
+//         var randomScalingFactor = function(){
+//             return Math.round(Math.random() * 100);
+//         };
 
-        //  BAR Chart
-        var projectStateChartOpt = {
-            tooltips: {
-                enabled: false
-            },
-            elements: {
-                bar: {
-                    tickWidth: 2,
-                }
-            },
-            hover :{
-                enabled: false
-            },
-            scales: {
-                xAxes: [{
-                    scaleLabel:{
-                        display: false
-                    },
-                    gridLines: {
-                        display: false
-                    }, 
-                    stacked: true
-                }],
-                yAxes: [{
-                    gridLines: {
-                        display: false,
-                        zeroLineWidth: 0
-                    },
-                    stacked: true
-                }]
-            },
-            legend: {
-                display: false
-            }
-        };
+//         //  BAR Chart
+//         var projectStateChartOpt = {
+//             tooltips: {
+//                 enabled: false
+//             },
+//             hover :{
+//                 enabled: false
+//             },
+//             scales: {
+//                 xAxes: [{
+//                     scaleLabel:{
+//                         display: false
+//                     },
+//                     gridLines: {
+//                         display: false
+//                     }, 
+//                     stacked: true
+//                 }],
+//                 yAxes: [{
+//                     barPercentage: 0.1,
+//                     scaleLabel:{
+//                         display: false
+//                     },
+//                     gridLines: {
+//                         display: false,
+//                         zeroLineWidth: 0
+//                     },
+//                     stacked: true
+//                 }]
+//             },
+//             legend: {
+//                 display: false
+//             }
+//         };
 
-        var ctx = document.getElementById('projectStateChart');
-        var myChart = new Chart(ctx, {
-            type: 'horizontalBar',
-            data: {
-                labels: false,                
-                datasets: [{
-                    labels: '가공 대기',  
-                    data: [randomScalingFactor()],
-                    backgroundColor: 'rgb(181, 218, 242)',
-                    hoverBackgroundColor: 'rgb(181, 218, 242)'
-                },{
-                    labels: '작업 중',  
-                    data: [randomScalingFactor()],
-                    backgroundColor: 'rgb(43, 111, 173)',
-                    hoverBackgroundColor: 'rgb(43, 111, 173)'
-                },{
-                    labels: '가공 완료', 
-                    data: [randomScalingFactor()],
-                    backgroundColor: 'rgb(139, 157, 203)',
-                    hoverBackgroundColor: 'rgb(139, 157, 203)'
-                },{
-                    labels: '작업 불가', 
-                    data: [randomScalingFactor()],
-                    backgroundColor: 'rgb(202, 212, 224)',
-                    hoverBackgroundColor: 'rgb(202, 212, 224)'
-                }]
-            },
-            options: projectStateChartOpt,
-        });
+//         var ctx = document.getElementById('projectStateChart');
+//         var myChart = new Chart(ctx, {
+//             type: 'horizontalBar',
+//             data: {
+//                 labels: false,                
+//                 datasets: [{
+//                     labels: '가공 대기',  
+//                     data: [randomScalingFactor()],
+//                     backgroundColor: 'rgb(181, 218, 242)',
+//                     hoverBackgroundColor: 'rgb(181, 218, 242)'
+//                 },{
+//                     labels: '작업 중',  
+//                     data: [randomScalingFactor()],
+//                     backgroundColor: 'rgb(43, 111, 173)',
+//                     hoverBackgroundColor: 'rgb(43, 111, 173)'
+//                 },{
+//                     labels: '가공 완료', 
+//                     data: [randomScalingFactor()],
+//                     backgroundColor: 'rgb(139, 157, 203)',
+//                     hoverBackgroundColor: 'rgb(139, 157, 203)'
+//                 },{
+//                     labels: '작업 불가', 
+//                     data: [randomScalingFactor()],
+//                     backgroundColor: 'rgb(202, 212, 224)',
+//                     hoverBackgroundColor: 'rgb(202, 212, 224)'
+//                 }]
+//             },
+//             responsive: false,
+//             options: projectStateChartOpt,
+//         });        
+//     });
+// });
+</script>
 
-
-        
-    });
-});
-
-// Doughnut Chart
-var dataStateChartOpt = {
+<script type="text/javascript">
+    var randomScalingFactor = function(){
+        return Math.round(Math.random() * 100);
+    };
+    
+    // Doughnut Chart
+    var config = {
             type: 'doughnut',
             data: {
                 datasets: [{
@@ -508,8 +511,8 @@ var dataStateChartOpt = {
         };
 
         window.onload = function() {
-            var ctx = document.getElementById('dataStateChart').getContext('2d');
-            window.myDoughnut = new Chart(ctx, dataStateChartOpt);
+            var ctx = document.getElementById('myChart').getContext('2d');
+            window.myDoughnut = new Chart(ctx, config);
         };
 </script>
 </body>

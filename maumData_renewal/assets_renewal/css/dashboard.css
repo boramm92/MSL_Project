@@ -249,11 +249,10 @@ input[type="text"].toDate {position:relative; background:#fff url('../images/das
 
 /* step_wrap */
 .step_wrap {margin:0 0 40px;}
-.step_wrap .step_list {display:table; table-layout:fixed; width:1060px;}
-.step_wrap .step_list li {display:table-cell; position:relative; padding:46px 0 0; color:#91969d; font-size:14px; font-weight:500; letter-spacing:-0.14px; text-align:center;}
-.step_wrap .step_list li + li {margin:0 0 0 150px;}
+.step_wrap .step_list {width:1060px;}
+.step_wrap .step_list li {display:inline-block; position:relative; width:258px; padding:46px 0 0; color:#91969d; font-size:14px; font-weight:500; letter-spacing:-0.14px; text-align:center;}
 .step_wrap .step_list li:before {content:''; display:block; position:absolute; top:0; left:50%; width:34px; height:34px; border-radius:50%; box-sizing:border-box; background:#e8eaed; transform:translate(-50%, 0); z-index:10;}
-.step_wrap .step_list li:after {content:''; display:block; position:absolute; top:16px; right:calc(50% + 17px); width:234px; height:2px; background:#e8eaed;}
+.step_wrap .step_list li:after {content:''; display:block; position:absolute; top:16px; right:calc(50% + 17px); width:236px; height:2px; background:#e8eaed;}
 .step_wrap .step_list li:first-child:after {content:none;}
 
 .step_wrap .step_list li.active {color:#1054b2;}
@@ -381,6 +380,40 @@ input[type="text"].toDate {position:relative; background:#fff url('../images/das
 .comment_nav li a {margin:0 0 0 12px;}
 .comment_nav li a:hover {text-decoration:underline;}
 
+/* data_upload_wrap */
+.data_upload_wrap {position:relative; width:1060px;}
+.data_upload_wrap:before {content:'(업로드)'; display:block; position:absolute; top:50%; left:50%; width:34px; height:41px; background:url('../images/dashboard/ico_arw_g.svg') 50% 0 no-repeat; color:#6c6d6f; font-size:10px; font-weight:500; letter-spacing:-0.1px; line-height:65px; white-space:nowrap; transform:translate(-50%, -50%);}
+.data_upload_wrap:after {content:''; display:block; clear:both;}
+.tbl_file_list {overflow:hidden; width:500px; border:1px solid #d9dde6; border-radius:4px;}
+.tbl_file_list table {width:100%; table-layout:fixed;}
+.tbl_file_list table .chkBoxOnly {display:block;}
+.tbl_file_list table .chkBoxOnly input[type="checkbox"]:before {width:16px; height:16px;}
+.tbl_file_list .tbl_hd {height:40px;}
+.tbl_file_list .tbl_hd th {height:40px; padding:0 12px; background:#b8c7d9; color:#26282b; font-size:13px; font-weight:500; letter-spacing:-0.13px;}
+.tbl_file_list .tbl_hd th:nth-child(2) {border-right:1px solid #d9dde6; border-left:1px solid #d9dde6; text-align:left;}
+.tbl_file_list .tbl_bd {overflow:auto; height:460px;}
+.tbl_file_list .tbl_bd td {height:32px; padding:0 12px; box-sizing:border-box; color:#26282b; font-size:12px; font-weight:500; letter-spacing:-0.12px; transition:background-color 0.3s ease-out;}
+.tbl_file_list .tbl_bd td:nth-child(2) {overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+.tbl_file_list .tbl_bd td:nth-child(3) {text-align:center;}
+.tbl_file_list .tbl_bd tr.checked td {background:#f0f4ff;}
+.tbl_file_list .tbl_bd tr.error td {color:#ba2b2b;}
+.tbl_file_list .tbl_bd tr.error .guage .bar {background:#ba2b2b;}
+.tbl_file_list .tbl_bd td span {vertical-align:middle;}
+.tbl_file_list .tbl_bd #file-drag {display:block; padding:151px 0; color:#26282b; font-size:13px; letter-spacing:-0.13px; text-align:center;}
+.tbl_file_list .tbl_bd #file-drag img {display:block; margin:20px auto 10px;}
+.tbl_file_list .tbl_bd #file-drag .btn_file_add {height:32px; margin:20px 0 0; background:#1054b2; color:#fff; font-size:13px; letter-spacing:-0.13px; line-height:32px;}
+.tbl_file_list .volume_info {display:flex; justify-content:flex-end; align-items:center; height:36px; padding:0 20px; border-top:1px solid #d9dde6; box-sizing:border-box; background:#f2f1f1;}
+.tbl_file_list .volume_info .limit {margin-right:auto; color:#707177; font-size:13px; letter-spacing:-0.13px;}
+.tbl_file_list .volume_info .limit span {color:#ba2b2b;}
+.tbl_file_list .volume_info .volume_status {display:flex;}
+.tbl_file_list .volume_info .volume_status li {margin-left:4px; color:#707177; font-size:13px; letter-spacing:-0.13px;}
+.tbl_file_list .volume_info .volume_status li span {color:#ba2b2b;}
+.tbl_file_list .btnBox {display:flex; justify-content:space-between; align-items:center; height:60px; margin:0 !important; padding:0 20px; border-top:1px solid #d9dde6; box-sizing:border-box; background:#b8c7d9;}
+.tbl_file_list .btnBox button {width:100px; height:32px; border-radius:4px; background:#fff; color:#343739; font-size:13px; letter-spacing:-0.13px;}
+.tbl_file_list .btnBox #fileAdd + label {margin:0 auto 0 20px;}
+.tbl_file_list .btnBox #fileAdd + label .btn_file_add {display:none; width:100px; height:32px; background:#fff; color:#343739; font-size:13px; letter-spacing:-0.13px; line-height:32px;}
+.tbl_file_list .btnBox .btn_file_upload {background:#1054b2; color:#fff;}
+
 /* -------------------- page -------------------- */
 /* 워크스페이스 등록 */
 .workspace_regist .titArea h3 {display:none;}
@@ -391,8 +424,11 @@ input[type="text"].toDate {position:relative; background:#fff url('../images/das
 .workspace_regist .contArea .contBox dl dd .textarea {width:1060px; height:182px;}
 .workspace_regist .contArea .contBox:nth-child(1) dl dd .ipt_txt {width:250px;}
 .workspace_regist .contArea .contBox dl dd .dash {display:inline-block; width:9px; color:#707177; font-size:18px; text-align:center;}
-.workspace_regist .contArea .contBox .guide_msg {margin:10px 0 0; color:#26282b; font-size:13px; font-weight:400; letter-spacing:-0.13px; text-indent:30px;}
-.workspace_regist .contArea .contBox .guide_msg .ft_point_red {text-decoration:underline;}
+.workspace_regist .data_upload_wrap + .guide_msg {margin:12px 0 0; color:#ba2b2b; font-size:13px; font-weight:500; letter-spacing:-0.13px;}
+
+/* 워크스페이스 등록 (step1) */
+.workspace_regist.step01 .contArea .contBox .guide_msg {margin:10px 0 0; color:#26282b; font-size:13px; font-weight:400; letter-spacing:-0.13px; text-indent:30px;}
+.workspace_regist.step01 .contArea .contBox .guide_msg .ft_point_red {text-decoration:underline;}
 
 /* 프로젝트 등록 */
 .project_regist .contArea .contBox dl dd .select,
@@ -422,41 +458,6 @@ input[type="text"].toDate {position:relative; background:#fff url('../images/das
 .project_regist.step01 .contArea .contBox.edit_type_slt .help_msg .viewBox {padding:16px;}
 .project_regist.step01 .contArea .contBox.edit_type_slt .help_msg .viewBox dl dt {margin:10px 0 0; font-weight:700; line-height:22px;}
 .project_regist.step01 .contArea .contBox.edit_type_slt .help_msg .viewBox dl dd {margin:0; line-height:22px;}
-
-/* 프로젝트 등록 (step3) */
-.project_regist.step03 .contArea .contBox .data_upload_wrap {position:relative; width:1060px;}
-.project_regist.step03 .contArea .contBox .data_upload_wrap:before {content:'(업로드)'; display:block; position:absolute; top:50%; left:50%; width:34px; height:41px; background:url('../images/dashboard/ico_arw_g.svg') 50% 0 no-repeat; color:#6c6d6f; font-size:10px; font-weight:500; letter-spacing:-0.1px; line-height:65px; white-space:nowrap; transform:translate(-50%, -50%);}
-.project_regist.step03 .contArea .contBox .data_upload_wrap:after {content:''; display:block; clear:both;}
-.project_regist.step03 .contArea .contBox .tbl_file_list {overflow:hidden; width:500px; border:1px solid #d9dde6; border-radius:4px;}
-.project_regist.step03 .contArea .contBox .tbl_file_list table {width:100%; table-layout:fixed;}
-.project_regist.step03 .contArea .contBox .tbl_file_list table .chkBoxOnly {display:block;}
-.project_regist.step03 .contArea .contBox .tbl_file_list table .chkBoxOnly input[type="checkbox"]:before {width:16px; height:16px;}
-.project_regist.step03 .contArea .contBox .tbl_file_list .tbl_hd {height:40px;}
-.project_regist.step03 .contArea .contBox .tbl_file_list .tbl_hd th {height:40px; padding:0 12px; background:#b8c7d9; color:#26282b; font-size:13px; font-weight:500; letter-spacing:-0.13px;}
-.project_regist.step03 .contArea .contBox .tbl_file_list .tbl_hd th:nth-child(2) {border-right:1px solid #d9dde6; border-left:1px solid #d9dde6; text-align:left;}
-.project_regist.step03 .contArea .contBox .tbl_file_list .tbl_bd {overflow:auto; height:460px;}
-.project_regist.step03 .contArea .contBox .tbl_file_list .tbl_bd td {height:32px; padding:0 12px; box-sizing:border-box; color:#26282b; font-size:12px; font-weight:500; letter-spacing:-0.12px; transition:background-color 0.3s ease-out;}
-.project_regist.step03 .contArea .contBox .tbl_file_list .tbl_bd td:nth-child(2) {overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
-.project_regist.step03 .contArea .contBox .tbl_file_list .tbl_bd td:nth-child(3) {text-align:center;}
-.project_regist.step03 .contArea .contBox .tbl_file_list .tbl_bd tr.checked td {background:#f0f4ff;}
-.project_regist.step03 .contArea .contBox .tbl_file_list .tbl_bd tr.error td {color:#ba2b2b;}
-.project_regist.step03 .contArea .contBox .tbl_file_list .tbl_bd tr.error .guage .bar {background:#ba2b2b;}
-.project_regist.step03 .contArea .contBox .tbl_file_list .tbl_bd td span {vertical-align:middle;}
-.project_regist.step03 .contArea .contBox .tbl_file_list .tbl_bd #file-drag {display:block; padding:151px 0; color:#26282b; font-size:13px; letter-spacing:-0.13px; text-align:center;}
-.project_regist.step03 .contArea .contBox .tbl_file_list .tbl_bd #file-drag img {display:block; margin:20px auto 10px;}
-.project_regist.step03 .contArea .contBox .tbl_file_list .tbl_bd #file-drag .btn_file_add {height:32px; margin:20px 0 0; background:#1054b2; color:#fff; font-size:13px; letter-spacing:-0.13px; line-height:32px;}
-.project_regist.step03 .contArea .contBox .tbl_file_list .volume_info {display:flex; justify-content:flex-end; align-items:center; height:36px; padding:0 20px; border-top:1px solid #d9dde6; box-sizing:border-box; background:#f2f1f1;}
-.project_regist.step03 .contArea .contBox .tbl_file_list .volume_info .limit {margin-right:auto; color:#707177; font-size:13px; letter-spacing:-0.13px;}
-.project_regist.step03 .contArea .contBox .tbl_file_list .volume_info .limit span {color:#ba2b2b;}
-.project_regist.step03 .contArea .contBox .tbl_file_list .volume_info .volume_status {display:flex;}
-.project_regist.step03 .contArea .contBox .tbl_file_list .volume_info .volume_status li {margin-left:4px; color:#707177; font-size:13px; letter-spacing:-0.13px;}
-.project_regist.step03 .contArea .contBox .tbl_file_list .volume_info .volume_status li span {color:#ba2b2b;}
-.project_regist.step03 .contArea .contBox .tbl_file_list .btnBox {display:flex; justify-content:space-between; align-items:center; height:60px; margin:0; padding:0 20px; border-top:1px solid #d9dde6; box-sizing:border-box; background:#b8c7d9;}
-.project_regist.step03 .contArea .contBox .tbl_file_list .btnBox button {width:100px; height:32px; border-radius:4px; background:#fff; color:#343739; font-size:13px; letter-spacing:-0.13px;}
-.project_regist.step03 .contArea .contBox .tbl_file_list .btnBox #fileAdd + label {margin:0 auto 0 20px;}
-.project_regist.step03 .contArea .contBox .tbl_file_list .btnBox #fileAdd + label .btn_file_add {display:none; width:100px; height:32px; background:#fff; color:#343739; font-size:13px; letter-spacing:-0.13px; line-height:32px;}
-.project_regist.step03 .contArea .contBox .tbl_file_list .btnBox .btn_file_upload {background:#1054b2; color:#fff;}
-.project_regist.step03 .contArea .guide_msg {margin:12px 0 0; color:#ba2b2b; font-size:13px; font-weight:500; letter-spacing:-0.13px;}
 
 /* 프로젝트 등록 (step4) */
 .project_regist.step04 .contArea .contBox .help_msg .viewBox {top:-10px; left:calc(100% + 12px); width:314px;}
@@ -554,5 +555,6 @@ input[type="text"].toDate {position:relative; background:#fff url('../images/das
 #project .aside .btnBox button.active {display:inline-block;}
 #project .aside .btnBox .btn_prjt_start {display:none; background:#eb356d;}
 
+/* #projectState .aside .contArea .contBox:nth-child(2) .chartBox {height:100px;} */
 #projectState .aside .contArea .contBox:nth-child(4) .tit {margin:0; padding:0; border:none;}
 #projectState .aside .contArea .contBox:nth-child(4) .tit .fr {line-height:20px;}

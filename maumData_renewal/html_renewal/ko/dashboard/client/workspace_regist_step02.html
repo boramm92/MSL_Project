@@ -32,7 +32,7 @@
 <script type="text/javascript" src="../../../../assets_renewal/js/jquery-migrate-3.3.1.min.js"></script>
 <script type="text/javascript" src="../../../../assets_renewal/js/dashboard.js"></script>
 
-<title>프로젝트 등록(Client) - step03 || Dashboard</title>
+<title>워크스페이스 관리(Client) - 등록/수정 step02 || Dashboard</title>
 </head>
 <body>
 <!-- #wrap -->
@@ -53,10 +53,10 @@
             </div>
             <div class="account"><span>H&M(=헤네스앤모리츠)슈퍼</span></div>
             <ul class="nav">
-                <li>
+                <li class="active">
                     <a href="workspace_main.html"><span>워크스페이스 관리</span></a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="project_main.html"><span>프로젝트 관리</span></a>
                 </li>
                 <li>
@@ -84,31 +84,31 @@
         <!-- #contents -->
         <div id="contents">
             <!-- .content -->
-            <div class="content project_regist step03">
+            <div class="content workspace_regist step02">
                 <div class="titArea">
-                    <h3>프로젝트 등록</h3>
+                    <!-- [D] 작성 상태에 따라 addClass('on')하면 보여짐 -->
+                    <h3 class="on">워크스페이스 등록</h3>
+                    <h3>워크스페이스 수정</h3>
                 </div>
 
                 <div class="contArea">
                     <div class="step_wrap">
                         <!-- [D] .step_list li 중 현재 단계라면 addClass('active'), 완료되어 지나간 단계라면 addClass('done') 해주세요. -->
                         <ul class="step_list">
-                            <li class="active done">Step1. 프로젝트 정보</li>
-                            <li class="active done">Step2. 태그 설정</li>
-                            <li class="active">Step3. 데이터 업로드</li>
-                            <li>Step4. 가이드 설정</li>
+                            <li class="active done">Step1. 워크스페이스 정보</li>
+                            <li class="active">Step2. 일반 태그 등록</li>
+                            <li>Step3. 메타데이터 태그 등록</li>
                         </ul>
                     </div>
 
-                    <!-- [D] 수정 불가 항목에 addClass('disabled')하면 비활성화 처리됨 -->
-                    <div class="contBox disabled">
+                    <div class="contBox">
                         <div class="data_upload_wrap">
                             <div class="tbl_file_list icld_chk fl">
                                 <div class="tbl_hd">
-                                    <table summary="대기 파일 목록, 파일 크기로 구성">
-                                        <caption class="hide">대기 파일 목록</caption>
+                                    <table summary="일반 태그 목록으로 구성">
+                                        <caption class="hide">일반 태그 목록</caption>
                                         <colgroup>
-                                            <col width="40px"><col><col width="138px">
+                                            <col width="40px"><col>
                                         </colgroup>
                                         <thead>
                                             <tr>
@@ -117,8 +117,7 @@
                                                         <input type="checkbox" class="allChk">
                                                     </div>
                                                 </th>
-                                                <th scope="col">대기 파일 목록</th>
-                                                <th scope="col">파일 크기</th>
+                                                <th scope="col">일반 태그 목록</th>
                                             </tr>
                                         </thead>
                                     </table>
@@ -270,12 +269,11 @@
                     </div>
 
                     <div class="btnBox">
-                        <a href="project_regist_step02.html" class="btn_primary_rect prev">이전</a>
-                        <a href="project_regist_step04.html" class="btn_primary_rect blue">다음</a>
+                        <a href="workspace_regist_step01.html" class="btn_primary_rect">이전</a>
+                        <a href="workspace_regist_step03.html" class="btn_primary_rect blue">다음</a>
                     </div>
                 </div>
             </div>
-            <!-- //.content -->
         </div> 
         <!-- //#contents -->
     </div>
@@ -284,9 +282,6 @@
 <!-- //#wrap -->
 
 <!---------------------- Local Resources ---------------------->
-<!-- Local Script Library -->
-<script type="text/javascript" src="../../../../assets_renewal/js/file-drag-upload.js"></script>
-
 <!-- Local Script -->
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
