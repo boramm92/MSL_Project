@@ -327,7 +327,7 @@
                                             <input type="radio" id="sample1" name="option" value="1" checked="">
                                             <label for="sample1" class="female">
                                                 <div class="img_area">
-                                                    <img src="../aiaas/common/images/img_styleComment_sample.png" alt="sample image">
+                                                    <img src="../aiaas/common/images/img_styleComment_sample.jpg" alt="sample image">
                                                 </div>
                                             </label>
                                         </div>
@@ -377,7 +377,7 @@
                                 <p><em class="far fa-image"></em>입력 파일</p>
                                 <div class="sample_box">
                                     <div class="imgBox">
-                                        <img id="input_img" src="../aiaas/common/images/img_styleComment_sample.png" alt="원본 이미지">
+                                        <img id="input_img" src="../aiaas/common/images/img_styleComment_sample.jpg" alt="원본 이미지">
                                     </div>
                                 </div>
                             </div>
@@ -430,68 +430,9 @@
                             <span class="sub_title">준비사항</span>
                             <p class="sub_txt">- Input: 이미지 파일</p>
                             <ul>
-                                <li>확장자 : .jpg</li>
+                                <li>확장자 : .jpg, .bmp</li>
                                 <li>용량 : 3MB 이하 </li>
-                                <li>이미지 사이즈 : 200x200px 이상</li>
-                                <li>얼굴 정면이 인식되어야 인식이 가능합니다.</li>
-                                <li>이미지 해상도가 높을수록 인식의 정확도가 높습니다.</li>
                             </ul>
-                            <span class="sub_title">실행 가이드</span>
-                            <p class="sub_txt">① Request </p>
-                            <ul>
-                                <li>Method : POST</li>
-                                <li>URL : https://api.maum.ai/feat/getHairInfo</li>
-                            </ul>
-                            <p class="sub_txt">② Request 파라미터 설명 </p>
-                            <table>
-                                <tr>
-                                    <th>키</th>
-                                    <th>설명</th>
-                                    <th>type</th>
-                                </tr>
-                                <tr>
-                                    <td>apiId </td>
-                                    <td>사용자의 고유 ID. 마인즈랩 담당자에게 이메일로 발급요청 </td>
-                                    <td>string</td>
-                                </tr>
-                                <tr>
-                                    <td>apiKey </td>
-                                    <td>사용자의 고유 key. 마인즈랩 담당자에게 이메일로 발급요청 </td>
-                                    <td>string</td>
-                                </tr>
-                                <tr>
-                                    <td>scene_img</td>
-                                    <td>type : file(.jpg) 이미지 파일</td>
-                                    <td>string</td>
-                                </tr>
-                            </table>
-                            <p class="sub_txt">③ Request 예제 </p>
-                            <div class="code_box">
-                                <pre>
-curl --location --request POST
-'https://api.maum.ai/feat/getHairInfo' \
---header 'Content-Type: multipart/form-data' \
---form 'apiId= 발급받은 API ID' \
---form 'apiKey= 발급받은 API KEY' \
---form 'scene_img= 헤어를 인식할 이미지 파일'
-</pre>
-                            </div>
-
-                            <p class="sub_txt">④ Response 예제 </p>
-
-                            <div class="code_box">
-                                <pre>
-{
-"message": {
-"message": "Success",
-"status": 0
-},
-"payload": {
-"result_img": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAIBAQEBAQIBAQECAg...",
-"hairInfo": "Black Hair"
-}
-</pre>
-                            </div>
                         </div>
                     </div>
                 </div>
