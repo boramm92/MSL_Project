@@ -122,80 +122,28 @@
                                         </thead>
                                     </table>
                                 </div>
+                                
+                                <div class="iptBox">
+                                    <input type="text" class="ipt_txt" placeholder="등록할 태그명을 입력후 태그추가 버튼을 눌러주세요.">
+                                    <button type="button" class="btn_add_tag">태그추가</button>
+                                </div> 
     
                                 <div class="tbl_bd">
-                                    <form id="file-upload-form" action="">
-                                        <!-- [D] 파일 선택 시 .upload_form_box에 removeClass('active')해주면 초기 UI 사라짐 -->
-                                        <!-- [D] 위 내용과 반대로 모든 파일을 삭제 할 경우 addClass('active')해주면 초기 UI 나타남 -->
-                                        <div class="upload_form_box active">                                           
-                                            <input id="file-upload" type="file" name="fileUpload" multiple>
-                                            <label for="file-upload" id="file-drag">
-                                                이곳을 <span class="ft_point_blue">클릭</span> 또는 <span class="ft_point_blue">파일을 드래그</span> 하세요.<br>
-                                                <img src="../../../../assets_renewal/images/dashboard/ico_fileUpload.svg" alt="upload image">
-                                                <span class="ft_point_grey">또는</span><br>
-                                                <span class="btn_file_add">컴퓨터에서 파일선택</span>
-                                            </label>
-                                            <progress id="file-progress" value="0">
-                                                <span>0</span>
-                                            </progress>                                           
-                                        </div>
+                                    <!-- [D] 파일 선택 시 .upload_form_box에 removeClass('active')해주면 초기 UI 사라짐 -->
+                                    <!-- [D] 위 내용과 반대로 모든 파일을 삭제 할 경우 addClass('active')해주면 초기 UI 나타남 -->
+                                    <div class="upload_form_box">                                           
+                                        <input id="file-upload" type="file" name="fileUpload" multiple>
+                                        <label for="file-upload" id="file-drag">
+                                            <span class="ft_point_blue">태깅할 객체명</span> 을 입력하여 추가하세요.<br>
+                                            <img src="../../../../assets_renewal/images/dashboard/ico_fileUpload.svg" alt="upload image">
+                                            <span class="ft_point_grey">또는</span><br>
+                                            <span class="btn_file_add">컴퓨터에서 엑셀 불러오기</span>
+                                        </label>                                      
+                                    </div>
 
-                                        <output for="file-upload">
-                                            <table>
-                                                <colgroup>
-                                                    <col width="40px"><col><col width="138px">
-                                                </colgroup>
-                                                <!-- [D] 선택 된 파일명이 추가되는 곳 -->
-                                                <tbody id="messages">
-                                                    
-                                                </tbody>
-                                            </table>
-                                        </output>
-                                    </form>
-                                </div>
-    
-                                <div class="volume_info">
-                                    <ul class="volume_status">
-                                        <li>업로드 대기 <span class="fileNum">0</span>건, </li>
-                                        <li><span><span class="fileVolume">0</span>MB</span> 추가됨</li>
-                                    </ul>
-                                </div>
-    
-                                <div class="btnBox">
-                                    <button type="button" class="btn_file_delete">삭제</button>
-                                    <input type="file" id="fileAdd" multiple>
-                                    <label for="fileAdd">
-                                        <span class="btn_file_add">파일 추가</span>
-                                    </label>
-                                    <button type="button" class="btn_file_upload">업로드</button>
-                                </div>
-                            </div>
-    
-                            <div class="tbl_file_list icld_chk fr">
-                                <div class="tbl_hd">
-                                    <table summary="업로드 완료 파일 목록, 전송 상태로 구성">
-                                        <caption class="hide">업로드 완료 파일 목록</caption>
-                                        <colgroup>
-                                            <col width="40px"><col><col width="138px">
-                                        </colgroup>
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">
-                                                    <div class="chkBoxOnly">
-                                                        <input type="checkbox" class="allChk">
-                                                    </div>
-                                                </th>
-                                                <th scope="col">업로드 완료 파일 목록</th>
-                                                <th scope="col">전송 상태</th>
-                                            </tr>
-                                        </thead>
-                                    </table>
-                                </div>
-    
-                                <div class="tbl_bd">
                                     <table>
                                         <colgroup>
-                                            <col width="40px"><col><col width="138px">
+                                            <col width="40px"><col><col width="44px">
                                         </colgroup>
                                         <tbody>
                                             <tr>
@@ -204,13 +152,17 @@
                                                         <input type="checkbox" class="eachChk">
                                                     </div>
                                                 </td>
-                                                <td>업로드_자동차 세그멘테이션.jpg</td>
                                                 <td>
-                                                    <span>20MB</span>
-                                                    <div class="guage">
-                                                        <!-- [D] .guage .bar의 width로 전송 상태 바 조절 가능 -->
-                                                        <div class="bar" style="width:100%"></div>
-                                                        <div class="per">100%</div>
+                                                    <div class="ipt_txt contenteditable" contenteditable="false">자동차</div>
+                                                </td>
+                                                <td>
+                                                    <div class="btnBox">
+                                                        <button type="button" class="btn_tag modify active">
+                                                            <span class="hide">수정하기</span>
+                                                        </button>
+                                                        <button type="button" class="btn_tag complete">
+                                                            <span class="hide">수정완료</span>
+                                                        </button>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -220,30 +172,257 @@
                                                         <input type="checkbox" class="eachChk">
                                                     </div>
                                                 </td>
-                                                <td>PID0001025.jpg</td>
                                                 <td>
-                                                    <span>20MB</span>
-                                                    <div class="guage">
-                                                        <!-- [D] .guage .bar의 width로 전송 상태 바 조절 가능 -->
-                                                        <div class="bar" style="width:65%"></div>
-                                                        <div class="per">65%</div>
+                                                    <div class="ipt_txt contenteditable" contenteditable="false">자동차</div>
+                                                </td>
+                                                <td>
+                                                    <div class="btnBox">
+                                                        <button type="button" class="btn_tag modify active">
+                                                            <span class="hide">수정하기</span>
+                                                        </button>
+                                                        <button type="button" class="btn_tag complete">
+                                                            <span class="hide">수정완료</span>
+                                                        </button>
                                                     </div>
                                                 </td>
                                             </tr>
-                                            <!-- [D] error 건의 tr에 addClass('error')하면 색상 변경됨 -->
-                                            <tr class="error">
+                                            <tr>
                                                 <td scope="row">
                                                     <div class="chkBoxOnly">
                                                         <input type="checkbox" class="eachChk">
                                                     </div>
                                                 </td>
-                                                <td>0113_394_낮_낮상_쓰러짐_공원_여1_편집.mp4</td>
                                                 <td>
-                                                    <span>20MB</span>
-                                                    <div class="guage">
-                                                        <!-- [D] .guage .bar의 width로 전송 상태 바 조절 가능 -->
-                                                        <div class="bar" style="width:80%;"></div>
-                                                        <div class="per">Error</div>
+                                                    <div class="ipt_txt contenteditable" contenteditable="false">자동차</div>
+                                                </td>
+                                                <td>
+                                                    <div class="btnBox">
+                                                        <button type="button" class="btn_tag modify active">
+                                                            <span class="hide">수정하기</span>
+                                                        </button>
+                                                        <button type="button" class="btn_tag complete">
+                                                            <span class="hide">수정완료</span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">
+                                                    <div class="chkBoxOnly">
+                                                        <input type="checkbox" class="eachChk">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ipt_txt contenteditable" contenteditable="false">자동차</div>
+                                                </td>
+                                                <td>
+                                                    <div class="btnBox">
+                                                        <button type="button" class="btn_tag modify active">
+                                                            <span class="hide">수정하기</span>
+                                                        </button>
+                                                        <button type="button" class="btn_tag complete">
+                                                            <span class="hide">수정완료</span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">
+                                                    <div class="chkBoxOnly">
+                                                        <input type="checkbox" class="eachChk">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ipt_txt contenteditable" contenteditable="false">자동차</div>
+                                                </td>
+                                                <td>
+                                                    <div class="btnBox">
+                                                        <button type="button" class="btn_tag modify active">
+                                                            <span class="hide">수정하기</span>
+                                                        </button>
+                                                        <button type="button" class="btn_tag complete">
+                                                            <span class="hide">수정완료</span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">
+                                                    <div class="chkBoxOnly">
+                                                        <input type="checkbox" class="eachChk">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ipt_txt contenteditable" contenteditable="false">자동차</div>
+                                                </td>
+                                                <td>
+                                                    <div class="btnBox">
+                                                        <button type="button" class="btn_tag modify active">
+                                                            <span class="hide">수정하기</span>
+                                                        </button>
+                                                        <button type="button" class="btn_tag complete">
+                                                            <span class="hide">수정완료</span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">
+                                                    <div class="chkBoxOnly">
+                                                        <input type="checkbox" class="eachChk">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ipt_txt contenteditable" contenteditable="false">자동차</div>
+                                                </td>
+                                                <td>
+                                                    <div class="btnBox">
+                                                        <button type="button" class="btn_tag modify active">
+                                                            <span class="hide">수정하기</span>
+                                                        </button>
+                                                        <button type="button" class="btn_tag complete">
+                                                            <span class="hide">수정완료</span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">
+                                                    <div class="chkBoxOnly">
+                                                        <input type="checkbox" class="eachChk">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ipt_txt contenteditable" contenteditable="false">자동차</div>
+                                                </td>
+                                                <td>
+                                                    <div class="btnBox">
+                                                        <button type="button" class="btn_tag modify active">
+                                                            <span class="hide">수정하기</span>
+                                                        </button>
+                                                        <button type="button" class="btn_tag complete">
+                                                            <span class="hide">수정완료</span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">
+                                                    <div class="chkBoxOnly">
+                                                        <input type="checkbox" class="eachChk">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ipt_txt contenteditable" contenteditable="false">자동차</div>
+                                                </td>
+                                                <td>
+                                                    <div class="btnBox">
+                                                        <button type="button" class="btn_tag modify active">
+                                                            <span class="hide">수정하기</span>
+                                                        </button>
+                                                        <button type="button" class="btn_tag complete">
+                                                            <span class="hide">수정완료</span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">
+                                                    <div class="chkBoxOnly">
+                                                        <input type="checkbox" class="eachChk">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ipt_txt contenteditable" contenteditable="false">자동차</div>
+                                                </td>
+                                                <td>
+                                                    <div class="btnBox">
+                                                        <button type="button" class="btn_tag modify active">
+                                                            <span class="hide">수정하기</span>
+                                                        </button>
+                                                        <button type="button" class="btn_tag complete">
+                                                            <span class="hide">수정완료</span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">
+                                                    <div class="chkBoxOnly">
+                                                        <input type="checkbox" class="eachChk">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ipt_txt contenteditable" contenteditable="false">자동차</div>
+                                                </td>
+                                                <td>
+                                                    <div class="btnBox">
+                                                        <button type="button" class="btn_tag modify active">
+                                                            <span class="hide">수정하기</span>
+                                                        </button>
+                                                        <button type="button" class="btn_tag complete">
+                                                            <span class="hide">수정완료</span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">
+                                                    <div class="chkBoxOnly">
+                                                        <input type="checkbox" class="eachChk">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ipt_txt contenteditable" contenteditable="false">자동차</div>
+                                                </td>
+                                                <td>
+                                                    <div class="btnBox">
+                                                        <button type="button" class="btn_tag modify active">
+                                                            <span class="hide">수정하기</span>
+                                                        </button>
+                                                        <button type="button" class="btn_tag complete">
+                                                            <span class="hide">수정완료</span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">
+                                                    <div class="chkBoxOnly">
+                                                        <input type="checkbox" class="eachChk">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ipt_txt contenteditable" contenteditable="false">자동차</div>
+                                                </td>
+                                                <td>
+                                                    <div class="btnBox">
+                                                        <button type="button" class="btn_tag modify active">
+                                                            <span class="hide">수정하기</span>
+                                                        </button>
+                                                        <button type="button" class="btn_tag complete">
+                                                            <span class="hide">수정완료</span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td scope="row">
+                                                    <div class="chkBoxOnly">
+                                                        <input type="checkbox" class="eachChk">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="ipt_txt contenteditable" contenteditable="false">자동차</div>
+                                                </td>
+                                                <td>
+                                                    <div class="btnBox">
+                                                        <button type="button" class="btn_tag modify active">
+                                                            <span class="hide">수정하기</span>
+                                                        </button>
+                                                        <button type="button" class="btn_tag complete">
+                                                            <span class="hide">수정완료</span>
+                                                        </button>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -252,10 +431,143 @@
                                 </div>
     
                                 <div class="volume_info">
-                                    <div class="limit"><span>200MB</span> 제한</div>
                                     <ul class="volume_status">
-                                        <li>업로드 완료 <span>0</span>건, </li>
-                                        <li><span>0MB</span> 추가됨</li>
+                                        <li>전체 <span class="fileNum">0</span>건, </li>
+                                        <li>선택 <span class="fileNum">0</span>건</li>
+                                    </ul>
+                                </div>
+    
+                                <div class="btnBox">
+                                    <button type="button" class="btn_file_delete">삭제</button>
+                                    <input type="file" id="fileAdd" multiple>
+                                    <label for="fileAdd">
+                                        <span class="btn_file_add">엑셀 추가</span>
+                                    </label>
+                                    <button type="button" class="btn_file_upload">그룹 만들기</button>
+                                </div>
+
+                                <button type="button" class="btn_exel_download">엑셀양식 다운로드</button>
+                            </div>
+    
+                            <div class="tbl_file_list icld_chk fr">
+                                <div class="tbl_hd">
+                                    <table summary="태그 그룹으로 구성">
+                                        <caption class="hide">태그 그룹 목록</caption>
+                                        <colgroup>
+                                            <col width="40px"><col>
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">
+                                                    <div class="chkBoxOnly">
+                                                        <input type="checkbox" class="allChk">
+                                                    </div>
+                                                </th>
+                                                <th scope="col">태그 그룹</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+    
+                                <div class="tbl_bd">
+                                    <ul class="tag_list">
+                                        <li>
+                                            <div class="tr">
+                                                <div class="cell">
+                                                    <div class="chkBoxOnly">
+                                                        <input type="checkbox" class="eachChk">
+                                                    </div>
+                                                </div>
+                                                <div class="cell">
+                                                    <div class="ipt_txt contenteditable" contenteditable="false">실외 태깅_차량_탈것</div>
+                                                </div>
+                                                <div class="cell">
+                                                    <div class="btnBox">
+                                                        <button type="button" class="btn_tag modify active" title="수정하기">
+                                                            <span class="hide">수정하기</span>
+                                                        </button>
+                                                        <button type="button" class="btn_tag complete" title="수정완료">
+                                                            <span class="hide">수정완료</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="btnBox">
+                                                        <button type="button" class="btn_tag open active" title="태그 그룹 열기">
+                                                            <span class="hide">태그 그룹 열기</span>
+                                                        </button>
+                                                        <button type="button" class="btn_tag close" title="태그 그룹 접기">
+                                                            <span class="hide">태그 그룹 접기</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                    
+                                            <ul class="tag_group_list">
+                                                <li>나무</li>
+                                                <li>신호등</li>
+                                                <li>고라니</li>
+                                                <li>나무</li>
+                                                <li>신호등</li>
+                                                <li>고라니</li>
+                                                <li>나무</li>
+                                                <li>신호등</li>
+                                                <li>고라니</li>
+                                                <li>나무</li>
+                                                <li>신호등</li>
+                                                <li>고라니</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <div class="tr">
+                                                <div class="cell">
+                                                    <div class="chkBoxOnly">
+                                                        <input type="checkbox" class="eachChk">
+                                                    </div>
+                                                </div>
+                                                <div class="cell">
+                                                    <div class="ipt_txt contenteditable" contenteditable="false">실외 태깅_차량_탈것</div>
+                                                </div>
+                                                <div class="cell">
+                                                    <div class="btnBox">
+                                                        <button type="button" class="btn_tag modify active" title="수정하기">
+                                                            <span class="hide">수정하기</span>
+                                                        </button>
+                                                        <button type="button" class="btn_tag complete" title="수정완료">
+                                                            <span class="hide">수정완료</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="btnBox">
+                                                        <button type="button" class="btn_tag open active" title="태그 그룹 열기">
+                                                            <span class="hide">태그 그룹 열기</span>
+                                                        </button>
+                                                        <button type="button" class="btn_tag close" title="태그 그룹 접기">
+                                                            <span class="hide">태그 그룹 접기</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <ul class="tag_group_list">
+                                                <li>나무</li>
+                                                <li>신호등</li>
+                                                <li>고라니</li>
+                                                <li>나무</li>
+                                                <li>신호등</li>
+                                                <li>고라니</li>
+                                                <li>나무</li>
+                                                <li>신호등</li>
+                                                <li>고라니</li>
+                                                <li>나무</li>
+                                                <li>신호등</li>
+                                                <li>고라니</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+    
+                                <div class="volume_info">
+                                    <ul class="volume_status">
+                                        <li>전체 <span>0</span>건, </li>
+                                        <li>선택 <span>0</span>건</li>
                                     </ul>
                                 </div>
     
@@ -265,7 +577,7 @@
                             </div>
                         </div>
                         
-                        <p class="guide_msg">[업로드] 버튼을 클릭 시 업로드 완료 파일 목록으로 저장됩니다.</p>
+                        <p class="guide_msg">[그룹 만들기] 버튼을 클릭시 태그 그룹 목록으로 그룹화됩니다.</p>
                     </div>
 
                     <div class="btnBox">
@@ -286,7 +598,54 @@
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
+        // 일반 태그 목록 테이블 내 태그 수정, 등록 버튼
+        $('.btn_tag').on('click', function(){
+            var thisBtnBox = $(this).parent('.btnBox'),
+                thisparentRow = $(this).parents('tr'),
+                thisparentLi = $(this).parents('.tr');
+                
+            $(this).removeClass('active');
+            if($(this).hasClass('modify')){
+                thisBtnBox.find('.btn_tag.complete').addClass('active');
+                thisparentRow.addClass('checked');
+                thisparentLi.addClass('checked');
+                thisparentRow.find('.ipt_txt.contenteditable').attr('contenteditable', 'true');
+                thisparentLi.find('.ipt_txt.contenteditable').attr('contenteditable', 'true');
+            }else if($(this).hasClass('complete')){
+                thisBtnBox.find('.btn_tag.modify').addClass('active');
+                thisparentRow.removeClass('checked');
+                thisparentLi.removeClass('checked');
+                thisparentRow.find('.ipt_txt.contenteditable').attr('contenteditable', 'false');
+                thisparentLi.find('.ipt_txt.contenteditable').attr('contenteditable', 'false');
+            }else if($(this).hasClass('open')){
+                thisBtnBox.find('.btn_tag.close').addClass('active');
+                thisparentLi.addClass('checked');
+            }else if($(this).hasClass('close')){
+               thisBtnBox.find('.btn_tag.open').addClass('active');
+               thisparentLi.removeClass('checked');
+            }
+        });
+
+        // 테이블 체크박스 체크 시 해당 row 활성화 효과
+        $('input[type="checkbox"]').on('click', function(){
+            if($(this).is('.eachChk')){
+                var thisChecked = $(this).prop('checked'); 
         
+                if(thisChecked){
+                    $(this).parents('tr').addClass('checked');
+                }else{
+                    $(this).parents('tr').removeClass('checked');
+                }
+            }else if($(this).is('.allChk')){
+                var thisChecked = $(this).prop('checked'); 
+        
+                if(thisChecked){
+                    $(this).parents('.icld_chk').find('.tbl_bd tr').addClass('checked');
+                }else{
+                    $(this).parents('.icld_chk').find('.tbl_bd tr').removeClass('checked');
+                }
+            }
+        });
     });
 });
 </script>

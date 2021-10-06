@@ -32,7 +32,7 @@
 <script type="text/javascript" src="../../../../assets_renewal/js/jquery-migrate-3.3.1.min.js"></script>
 <script type="text/javascript" src="../../../../assets_renewal/js/dashboard.js"></script>
 
-<title>워크스페이스 관리(Client) - 등록/수정 step03 || Dashboard</title>
+<title>워크스페이스 관리(Client) - 등록/수정 step02 || Dashboard</title>
 </head>
 <body>
 <!-- #wrap -->
@@ -84,23 +84,12 @@
         <!-- #contents -->
         <div id="contents">
             <!-- .content -->
-            <div class="content workspace_regist step03">
+            <div class="content">
                 <div class="titArea">
-                    <!-- [D] 작성 상태에 따라 addClass('on')하면 보여짐 -->
-                    <h3 class="on">워크스페이스 등록</h3>
-                    <h3>워크스페이스 수정</h3>
+                    <h3>작업자 지정</h3>
                 </div>
 
                 <div class="contArea">
-                    <div class="step_wrap">
-                        <!-- [D] .step_list li 중 현재 단계라면 addClass('active'), 완료되어 지나간 단계라면 addClass('done') 해주세요. -->
-                        <ul class="step_list">
-                            <li class="active done">Step1. 워크스페이스 정보</li>
-                            <li class="active done">Step2. 일반 태그 등록</li>
-                            <li class="active">Step3. 메타데이터 태그 등록</li>
-                        </ul>
-                    </div>
-
                     <div class="contBox">
                         <div class="data_upload_wrap">
                             <div class="tbl_file_list icld_chk fl">
@@ -445,8 +434,6 @@
                                     </label>
                                     <button type="button" class="btn_file_upload">그룹 만들기</button>
                                 </div>
-
-                                <button type="button" class="btn_exel_download">엑셀양식 다운로드</button>
                             </div>
     
                             <div class="tbl_file_list icld_chk fr">
@@ -519,11 +506,11 @@
                             </div>
                         </div>
                         
-                        <p class="guide_msg">[그룹 만들기] 버튼을 클릭시 태그 그룹 목록으로 그룹화됩니다.</p>
+                        <p class="guide_msg">[작업자 지정] 버튼을 클릭 시 작업자 등록 목록으로 업로드됩니다.</p>
                     </div>
 
                     <div class="btnBox">
-                        <a href="workspace_regist_step02.html" class="btn_primary_rect">이전</a>
+                        <a href="workspace_main.html" class="btn_primary_rect">이전</a>
                         <a href="workspace_main.html" class="btn_primary_rect blue">저장</a>
                     </div>
                 </div>
@@ -536,54 +523,52 @@
 <!-- //#wrap -->
 
 <!---------------------- Local Resources ---------------------->
-<!-- Local CSS -->
-<link rel="stylesheet" type="text/css" href="../../../../assets_renewal/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../../../../assets_renewal/css/bootstrap-datetimepicker.css">
-
-<!-- Local Script Library -->
-<script type="text/javascript" src="../../../../assets_renewal/js/bootstrap-datetimepicker.js"></script>
-
 <!-- Local Script -->
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-        // datepicker
-        $('.dateRange').each(function(){
-            var thisFromDate = $(this).find('.fromDate'),
-                thisToDate = $(this).find('.toDate');
-
-            thisFromDate.datetimepicker({
-                format: 'yyyy-mm-dd', 
-                minView: 'month',
-                pickTime : false, 
-                autoclose: 1,
-            }).on('changeDate', function(selected){
-                var startDate = new Date(selected.date.valueOf());
-                thisToDate.datetimepicker('setStartDate', startDate);
-            }).on('clearDate', function(selected){
-                thisToDate.datetimepicker('setStartDate', null);
-            });
-
-            thisToDate.datetimepicker({
-                format: 'yyyy-mm-dd', 
-                minView: 'month',
-                pickTime : false, 
-                autoclose: 1,
-            }).on('changeDate', function(selected){
-                var endDate = new Date(selected.date.valueOf());
-                thisFromDate.datetimepicker('setEndDate', endDate);
-            }).on('clearDate', function(selected){
-                thisFromDate.datetimepicker('setEndDate', null);
-            });
+        // 일반 태그 목록 테이블 내 태그 수정, 등록 버튼
+        $('.btn_tag').on('click', function(){
+            var thisBtnBox = $(this).parent('.btnBox'),
+                thisparentRow = $(this).parents('tr'),
+                thisContentIpt = thisparentRow.find('.ipt_txt.contenteditable');
+                
+            $(this).removeClass('active');
+            if($(this).hasClass('modify')){
+                thisBtnBox.find('.btn_tag.complete').addClass('active');
+                thisparentRow.addClass('checked');
+                thisContentIpt.attr('contenteditable', 'true');
+            }else if($(this).hasClass('complete')){
+                thisBtnBox.find('.btn_tag.modify').addClass('active');
+                thisparentRow.removeClass('checked');
+                thisContentIpt.attr('contenteditable', 'false');
+            }else if($(this).hasClass('open')){
+                thisBtnBox.find('.btn_tag.close').addClass('active');
+                thisparentRow.addClass('checked');
+            }else if($(this).hasClass('close')){
+               thisBtnBox.find('.btn_tag.open').addClass('active');
+                thisparentRow.removeClass('checked');
+            }
         });
 
-
-        // 용역계약서 선택 시 세부 항목 활성화
-        $('input[type="radio"][name="contract_type"]').on('click', function(){
-            if($(this).is('#contract_type02')){
-                $(this).parents('.contBox').find('.detail_set').removeClass('disabled');
-            }else{
-                $(this).parents('.contBox').find('.detail_set').addClass('disabled');
+        // 테이블 체크박스 체크 시 해당 row 활성화 효과
+        $('input[type="checkbox"]').on('click', function(){
+            if($(this).is('.eachChk')){
+                var thisChecked = $(this).prop('checked'); 
+        
+                if(thisChecked){
+                    $(this).parents('tr').addClass('checked');
+                }else{
+                    $(this).parents('tr').removeClass('checked');
+                }
+            }else if($(this).is('.allChk')){
+                var thisChecked = $(this).prop('checked'); 
+        
+                if(thisChecked){
+                    $(this).parents('.icld_chk').find('.tbl_bd tr').addClass('checked');
+                }else{
+                    $(this).parents('.icld_chk').find('.tbl_bd tr').removeClass('checked');
+                }
             }
         });
     });

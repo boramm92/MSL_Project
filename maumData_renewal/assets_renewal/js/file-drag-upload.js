@@ -49,14 +49,24 @@
 			uploadFile(f);
 		}
 
-		// 파일 목록 체크 시 해당 row 활성화 효과
-        $('.eachChk').on('click', function(){
-            var thisChecked = $(this).prop('checked'); 
+		// 테이블 체크박스 체크 시 해당 row 활성화 효과
+        $('input[type="checkbox"]').on('click', function(){
+            if($(this).is('.eachChk')){
+                var thisChecked = $(this).prop('checked'); 
         
-            if(thisChecked){
-                $(this).parents('tr').addClass('checked');
-            }else{
-                $(this).parents('tr').removeClass('checked');
+                if(thisChecked){
+                    $(this).parents('tr').addClass('checked');
+                }else{
+                    $(this).parents('tr').removeClass('checked');
+                }
+            }else if($(this).is('.allChk')){
+                var thisChecked = $(this).prop('checked'); 
+        
+                if(thisChecked){
+                    $(this).parents('.icld_chk').find('.tbl_bd tr').addClass('checked');
+                }else{
+                    $(this).parents('.icld_chk').find('.tbl_bd tr').removeClass('checked');
+                }
             }
         });
 
