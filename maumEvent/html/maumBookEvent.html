@@ -19,12 +19,14 @@
 
 <!---------------------- General Resources ---------------------->
 <!-- General CSS -->
-<link rel="stylesheet" type="text/css" href="../resources/css/swiper.min.css">
+<!-- [D] 21.10.07 - swiper css 파일 버전 4.5.1로 변경해주세요. -->
+<link rel="stylesheet" type="text/css" href="../resources/css/swiper-4.5.1.min.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/maumBookEvent.css">
 <!-- General Script -->
 <script type="text/javascript" src="../resources/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="../resources/js/jquery-migrate-3.3.1.min.js"></script>
-<script type="text/javascript" src="../resources/js/swiper.min.js"></script>
+<!-- [D] 21.10.07 - swiper js 파일 4.5.1로 변경해주세요. -->
+<script type="text/javascript" src="../resources/js/swiper-4.5.1.min.js"></script>
 
 <title>Event || Maum Book</title>
 </head>
@@ -658,9 +660,11 @@ jQuery.event.add(window,"load",function(){
         });  
         
         // swiper
+        // [D] 21.10.07 - swiper 옵션 수정 필요합니다. 해당 영역 통으로 덮어쓰기 해주세요.
         new Swiper('.scs_cases_box', {
             slidesPerGroup : 1,
             slidesPerView: 1,
+            autoHeight : true,
             loop: true,
             observer: true,
             observeParents: true,
@@ -678,11 +682,11 @@ jQuery.event.add(window,"load",function(){
             },
             breakpoints: {
                 320: {
-                    spaceBetween: 20,
-                    autoHeight : true,
-                },
-            },
-        });      
+                    spaceBetween: 20,                   
+                }
+            }
+        }); 
+        // //[D] 21.10.07 - swiper 옵션 수정 필요합니다. 해당 영역 통으로 덮어쓰기 해주세요.     
 
         // 문의 영역으로 이동
         $('.btn_go_contact').on('click', function(){       
