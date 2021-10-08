@@ -502,18 +502,30 @@
                                             </div>
                     
                                             <ul class="tag_group_list">
-                                                <li>나무</li>
-                                                <li>신호등</li>
-                                                <li>고라니</li>
-                                                <li>나무</li>
-                                                <li>신호등</li>
-                                                <li>고라니</li>
-                                                <li>나무</li>
-                                                <li>신호등</li>
-                                                <li>고라니</li>
-                                                <li>나무</li>
-                                                <li>신호등</li>
-                                                <li>고라니</li>
+                                                <li>
+                                                    <span>나무</span>
+                                                    <div class="switchBox">
+                                                        <!-- [D] input[type="checkbox"]의 id와 label의 for값을 동일하게 줘야함 -->
+                                                        <input type="checkbox" id="tag01">
+                                                        <label for="tag01" title="태그 노출 여부"></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <span>신호등</span>
+                                                    <div class="switchBox">
+                                                        <!-- [D] input[type="checkbox"]의 id와 label의 for값을 동일하게 줘야함 -->
+                                                        <input type="checkbox" id="tag02">
+                                                        <label for="tag02" title="태그 노출 여부"></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <span>고라니</span>
+                                                    <div class="switchBox">
+                                                        <!-- [D] input[type="checkbox"]의 id와 label의 for값을 동일하게 줘야함 -->
+                                                        <input type="checkbox" id="tag03">
+                                                        <label for="tag03" title="태그 노출 여부"></label>
+                                                    </div>
+                                                </li>
                                             </ul>
                                         </li>
                                         <li>
@@ -547,18 +559,30 @@
                                             </div>
 
                                             <ul class="tag_group_list">
-                                                <li>나무</li>
-                                                <li>신호등</li>
-                                                <li>고라니</li>
-                                                <li>나무</li>
-                                                <li>신호등</li>
-                                                <li>고라니</li>
-                                                <li>나무</li>
-                                                <li>신호등</li>
-                                                <li>고라니</li>
-                                                <li>나무</li>
-                                                <li>신호등</li>
-                                                <li>고라니</li>
+                                                <li>
+                                                    <span>나무</span>
+                                                    <div class="switchBox">
+                                                        <!-- [D] input[type="checkbox"]의 id와 label의 for값을 동일하게 줘야함 -->
+                                                        <input type="checkbox" id="tag04">
+                                                        <label for="tag04" title="태그 노출 여부"></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <span>신호등</span>
+                                                    <div class="switchBox">
+                                                        <!-- [D] input[type="checkbox"]의 id와 label의 for값을 동일하게 줘야함 -->
+                                                        <input type="checkbox" id="tag05">
+                                                        <label for="tag05" title="태그 노출 여부"></label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <span>고라니</span>
+                                                    <div class="switchBox">
+                                                        <!-- [D] input[type="checkbox"]의 id와 label의 for값을 동일하게 줘야함 -->
+                                                        <input type="checkbox" id="tag06">
+                                                        <label for="tag06" title="태그 노출 여부"></label>
+                                                    </div>
+                                                </li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -607,22 +631,45 @@ jQuery.event.add(window,"load",function(){
             $(this).removeClass('active');
             if($(this).hasClass('modify')){
                 thisBtnBox.find('.btn_tag.complete').addClass('active');
-                thisparentRow.addClass('checked');
-                thisparentLi.addClass('checked');
                 thisparentRow.find('.ipt_txt.contenteditable').attr('contenteditable', 'true');
                 thisparentLi.find('.ipt_txt.contenteditable').attr('contenteditable', 'true');
+                thisparentRow.addClass('checked');
+                thisparentLi.addClass('checked');
             }else if($(this).hasClass('complete')){
                 thisBtnBox.find('.btn_tag.modify').addClass('active');
-                thisparentRow.removeClass('checked');
-                thisparentLi.removeClass('checked');
                 thisparentRow.find('.ipt_txt.contenteditable').attr('contenteditable', 'false');
                 thisparentLi.find('.ipt_txt.contenteditable').attr('contenteditable', 'false');
+                if(!thisparentRow.is('checked')){
+                    thisparentRow.removeClass('checked');
+                    thisparentLi.removeClass('checked');
+                }
+                if(!thisparentLi.is('checked')){
+                    thisparentRow.removeClass('checked');
+                    thisparentLi.removeClass('checked');
+                }
             }else if($(this).hasClass('open')){
                 thisBtnBox.find('.btn_tag.close').addClass('active');
-                thisparentLi.addClass('checked');
+                thisparentLi.siblings('.tag_group_list').slideDown(200);
+                if(!thisparentRow.is('checked')){
+                    thisparentRow.addClass('checked');
+                    thisparentLi.addClass('checked');
+                }
+                if(!thisparentLi.is('checked')){
+                    thisparentRow.addClass('checked');
+                    thisparentLi.addClass('checked');
+                }
             }else if($(this).hasClass('close')){
-               thisBtnBox.find('.btn_tag.open').addClass('active');
-               thisparentLi.removeClass('checked');
+                thisBtnBox.find('.btn_tag.open').addClass('active');
+                thisparentLi.siblings('.tag_group_list').slideUp(200);
+                // 체크가 아닐때
+                if(!thisparentRow.is('checked')){
+                    thisparentRow.removeClass('checked');
+                    thisparentLi.removeClass('checked');
+                }
+                if(!thisparentLi.is('checked')){
+                    thisparentRow.removeClass('checked');
+                    thisparentLi.removeClass('checked');
+                }
             }
         });
 
@@ -633,16 +680,20 @@ jQuery.event.add(window,"load",function(){
         
                 if(thisChecked){
                     $(this).parents('tr').addClass('checked');
+                    $(this).parents('.tr').addClass('checked');
                 }else{
                     $(this).parents('tr').removeClass('checked');
+                    $(this).parents('.tr').removeClass('checked');
                 }
             }else if($(this).is('.allChk')){
                 var thisChecked = $(this).prop('checked'); 
         
                 if(thisChecked){
                     $(this).parents('.icld_chk').find('.tbl_bd tr').addClass('checked');
+                    $(this).parents('.icld_chk').find('.tbl_bd .tr').addClass('checked');
                 }else{
                     $(this).parents('.icld_chk').find('.tbl_bd tr').removeClass('checked');
+                    $(this).parents('.icld_chk').find('.tbl_bd .tr').removeClass('checked');
                 }
             }
         });
