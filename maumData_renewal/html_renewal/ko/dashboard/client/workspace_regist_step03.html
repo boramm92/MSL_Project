@@ -125,104 +125,20 @@
                                 
                                 <div class="iptBox">
                                     <input type="text" class="ipt_txt" placeholder="등록할 태그명을 입력후 태그추가 버튼을 눌러주세요.">
-                                    <button type="button" class="btn_add_tag">태그추가</button>
+                                    <button type="button" class="btn_enter">태그추가</button>
                                 </div> 
     
                                 <div class="tbl_bd">
-                                    <ul class="meta_tag_list">
-                                        <li>
-                                            <div class="row">
-                                                <div class="cell">
-                                                    <div class="chkBoxOnly">
-                                                        <input type="checkbox" class="eachChk">
-                                                    </div>
-                                                </div>
-                                                <div class="cell">
-                                                    <div class="ipt_txt contenteditable" contenteditable="false">실외 태깅_차량_탈것</div>
-                                                </div>
-                                                <div class="cell">
-                                                    <div class="btnBox">
-                                                        <button type="button" class="btn_tag modify active" title="수정하기">
-                                                            <span class="hide">수정하기</span>
-                                                        </button>
-                                                        <button type="button" class="btn_tag complete" title="수정완료">
-                                                            <span class="hide">수정완료</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="btnBox">
-                                                        <button type="button" class="btn_tag open active" title="태그 그룹 열기">
-                                                            <span class="hide">태그 그룹 열기</span>
-                                                        </button>
-                                                        <button type="button" class="btn_tag close" title="태그 그룹 접기">
-                                                            <span class="hide">태그 그룹 접기</span>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                    <!-- [D] data-section으로 카테고리 분류 / '-'를 넣으면 depth 구분됨(아래 예시 참고) -->
+                                    <!-- <select id="treeSelector1" multiple="multiple">
+                                        <option value="1" data-section="전체선택-Upsell 1센터-1팀">홍길동</option>
+                                        <option value="2" data-section="전체선택-Upsell 1센터-1팀">김미영</option>
+                                    </select> -->
 
-                                            <ul class="meta_detail_list">
-                                                <li>
-                                                    <div class="row">
-                                                        <div class="cell">
-                                                            <div class="chkBoxOnly">
-                                                                <input type="checkbox" class="eachChk">
-                                                            </div>
-                                                        </div>
-                                                        <div class="cell">
-                                                            <div class="ipt_txt contenteditable" contenteditable="false">실외 태깅_차량_탈것</div>
-                                                        </div>
-                                                        <div class="cell">
-                                                            <div class="btnBox">
-                                                                <button type="button" class="btn_tag modify active" title="수정하기">
-                                                                    <span class="hide">수정하기</span>
-                                                                </button>
-                                                                <button type="button" class="btn_tag complete" title="수정완료">
-                                                                    <span class="hide">수정완료</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="btnBox">
-                                                                <button type="button" class="btn_tag open active" title="태그 그룹 열기">
-                                                                    <span class="hide">태그 그룹 열기</span>
-                                                                </button>
-                                                                <button type="button" class="btn_tag close" title="태그 그룹 접기">
-                                                                    <span class="hide">태그 그룹 접기</span>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="row">
-                                                        <div class="cell">
-                                                            <div class="chkBoxOnly">
-                                                                <input type="checkbox" class="eachChk">
-                                                            </div>
-                                                        </div>
-                                                        <div class="cell">
-                                                            <div class="ipt_txt contenteditable" contenteditable="false">실외 태깅_차량_탈것</div>
-                                                        </div>
-                                                        <div class="cell">
-                                                            <div class="btnBox">
-                                                                <button type="button" class="btn_tag modify active" title="수정하기">
-                                                                    <span class="hide">수정하기</span>
-                                                                </button>
-                                                                <button type="button" class="btn_tag complete" title="수정완료">
-                                                                    <span class="hide">수정완료</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="btnBox">
-                                                                <button type="button" class="btn_tag open active" title="태그 그룹 열기">
-                                                                    <span class="hide">태그 그룹 열기</span>
-                                                                </button>
-                                                                <button type="button" class="btn_tag close" title="태그 그룹 접기">
-                                                                    <span class="hide">태그 그룹 접기</span>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </li>
+                                    
+                                    <ul id="metaDataTag">
+                                        <li value="1" data-section="날씨">사람</li>
+                                        <li value="1" data-section="날씨">신호등</li>
                                     </ul>
                                 </div>
     
@@ -264,7 +180,11 @@
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-        
+        // tree multiselect
+        $('#metaDataTag').treeMultiselect({
+            startCollapsed: 'false',
+            sectionDelimiter: '-',
+        });
     });
 });
 </script>
