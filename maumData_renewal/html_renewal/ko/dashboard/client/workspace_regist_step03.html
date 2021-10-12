@@ -117,7 +117,7 @@
                                                         <input type="checkbox" class="allChk">
                                                     </div>
                                                 </th>
-                                                <th scope="col">일반 태그 목록</th>
+                                                <th scope="col">메타데이터 태그 등록</th>
                                             </tr>
                                         </thead>
                                     </table>
@@ -129,16 +129,196 @@
                                 </div> 
     
                                 <div class="tbl_bd">
-                                    <!-- [D] data-section으로 카테고리 분류 / '-'를 넣으면 depth 구분됨(아래 예시 참고) -->
-                                    <!-- <select id="treeSelector1" multiple="multiple">
-                                        <option value="1" data-section="전체선택-Upsell 1센터-1팀">홍길동</option>
-                                        <option value="2" data-section="전체선택-Upsell 1센터-1팀">김미영</option>
-                                    </select> -->
-
-                                    
-                                    <ul id="metaDataTag">
-                                        <li value="1" data-section="날씨">사람</li>
-                                        <li value="1" data-section="날씨">신호등</li>
+                                    <ul class="tree meta_tag_list">
+                                        <li class="tree_group">
+                                            <div class="tree_item">
+                                                <div class="cell">
+                                                    <div class="chkBoxOnly">
+                                                        <input type="checkbox" class="eachChk">
+                                                    </div>
+                                                </div>
+                                                <div class="cell">
+                                                    <div class="ipt_txt contenteditable" contenteditable="false">날씨</div>
+                                                </div>
+                                                <div class="cell">
+                                                    <div class="btnBox">
+                                                        <button type="button" class="btn_tag modify active" title="수정하기">
+                                                            <span class="hide">수정하기</span>
+                                                        </button>
+                                                        <button type="button" class="btn_tag complete" title="수정완료">
+                                                            <span class="hide">수정완료</span>
+                                                        </button>
+                                                    </div>
+                                                    <button type="button" class="btn_tag add" title="하위 목록 추가">
+                                                        <span class="hide">하위 목록 추가</span>
+                                                    </button>
+                                                    <div class="switchBox">
+                                                        <!-- [D] input[type="checkbox"]의 id와 label의 for값을 동일하게 줘야함 -->
+                                                        <input type="checkbox" id="tag01">
+                                                        <label for="tag01" title="태그 노출 여부"></label>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                            <ul class="tree_depth">
+                                                <li class="tree_item">
+                                                    <div class="cell">
+                                                        <div class="chkBoxOnly">
+                                                            <input type="checkbox" class="eachChk">
+                                                        </div>
+                                                    </div>
+                                                    <div class="cell">
+                                                        <div class="ipt_txt contenteditable" contenteditable="false">사람</div>
+                                                    </div>
+                                                    <div class="cell">
+                                                        <div class="btnBox">
+                                                            <button type="button" class="btn_tag modify active" title="수정하기">
+                                                                <span class="hide">수정하기</span>
+                                                            </button>
+                                                            <button type="button" class="btn_tag complete" title="수정완료">
+                                                                <span class="hide">수정완료</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="switchBox">
+                                                            <!-- [D] input[type="checkbox"]의 id와 label의 for값을 동일하게 줘야함 -->
+                                                            <input type="checkbox" id="tag02">
+                                                            <label for="tag02" title="태그 노출 여부"></label>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="tree_item">
+                                                    <div class="cell">
+                                                        <div class="chkBoxOnly">
+                                                            <input type="checkbox" class="eachChk">
+                                                        </div>
+                                                    </div>
+                                                    <div class="cell">
+                                                        <div class="ipt_txt contenteditable" contenteditable="false">사람</div>
+                                                    </div>
+                                                    <div class="cell">
+                                                        <div class="btnBox">
+                                                            <button type="button" class="btn_tag modify active" title="수정하기">
+                                                                <span class="hide">수정하기</span>
+                                                            </button>
+                                                            <button type="button" class="btn_tag complete" title="수정완료">
+                                                                <span class="hide">수정완료</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="switchBox">
+                                                            <!-- [D] input[type="checkbox"]의 id와 label의 for값을 동일하게 줘야함 -->
+                                                            <input type="checkbox" id="tag03">
+                                                            <label for="tag03" title="태그 노출 여부"></label>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>                                          
+                                        </li>
+                                        <li class="tree_group">
+                                            <div class="tree_item">
+                                                <div class="cell">
+                                                    <div class="chkBoxOnly">
+                                                        <input type="checkbox" class="eachChk">
+                                                    </div>
+                                                </div>
+                                                <div class="cell">
+                                                    <div class="ipt_txt contenteditable" contenteditable="false">날씨</div>
+                                                </div>
+                                                <div class="cell">
+                                                    <div class="btnBox">
+                                                        <button type="button" class="btn_tag modify active" title="수정하기">
+                                                            <span class="hide">수정하기</span>
+                                                        </button>
+                                                        <button type="button" class="btn_tag complete" title="수정완료">
+                                                            <span class="hide">수정완료</span>
+                                                        </button>
+                                                    </div>
+                                                    <button type="button" class="btn_tag add" title="하위 목록 추가">
+                                                        <span class="hide">하위 목록 추가</span>
+                                                    </button>
+                                                    <div class="switchBox">
+                                                        <!-- [D] input[type="checkbox"]의 id와 label의 for값을 동일하게 줘야함 -->
+                                                        <input type="checkbox" id="tag04">
+                                                        <label for="tag04" title="태그 노출 여부"></label>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                            <ul class="tree_depth">
+                                                <li class="tree_item">
+                                                    <div class="cell">
+                                                        <div class="chkBoxOnly">
+                                                            <input type="checkbox" class="eachChk">
+                                                        </div>
+                                                    </div>
+                                                    <div class="cell">
+                                                        <div class="ipt_txt contenteditable" contenteditable="false">사람</div>
+                                                    </div>
+                                                    <div class="cell">
+                                                        <div class="btnBox">
+                                                            <button type="button" class="btn_tag modify active" title="수정하기">
+                                                                <span class="hide">수정하기</span>
+                                                            </button>
+                                                            <button type="button" class="btn_tag complete" title="수정완료">
+                                                                <span class="hide">수정완료</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="switchBox">
+                                                            <!-- [D] input[type="checkbox"]의 id와 label의 for값을 동일하게 줘야함 -->
+                                                            <input type="checkbox" id="tag05">
+                                                            <label for="tag05" title="태그 노출 여부"></label>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="tree_item">
+                                                    <div class="cell">
+                                                        <div class="chkBoxOnly">
+                                                            <input type="checkbox" class="eachChk">
+                                                        </div>
+                                                    </div>
+                                                    <div class="cell">
+                                                        <div class="ipt_txt contenteditable" contenteditable="false">사람</div>
+                                                    </div>
+                                                    <div class="cell">
+                                                        <div class="btnBox">
+                                                            <button type="button" class="btn_tag modify active" title="수정하기">
+                                                                <span class="hide">수정하기</span>
+                                                            </button>
+                                                            <button type="button" class="btn_tag complete" title="수정완료">
+                                                                <span class="hide">수정완료</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="switchBox">
+                                                            <!-- [D] input[type="checkbox"]의 id와 label의 for값을 동일하게 줘야함 -->
+                                                            <input type="checkbox" id="tag06">
+                                                            <label for="tag06" title="태그 노출 여부"></label>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="tree_item">
+                                                    <div class="cell">
+                                                        <div class="chkBoxOnly">
+                                                            <input type="checkbox" class="eachChk">
+                                                        </div>
+                                                    </div>
+                                                    <div class="cell">
+                                                        <div class="ipt_txt contenteditable" contenteditable="false">사람</div>
+                                                    </div>
+                                                    <div class="cell">
+                                                        <div class="btnBox">
+                                                            <button type="button" class="btn_tag modify active" title="수정하기">
+                                                                <span class="hide">수정하기</span>
+                                                            </button>
+                                                            <button type="button" class="btn_tag complete" title="수정완료">
+                                                                <span class="hide">수정완료</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="switchBox">
+                                                            <!-- [D] input[type="checkbox"]의 id와 label의 for값을 동일하게 줘야함 -->
+                                                            <input type="checkbox" id="tag07">
+                                                            <label for="tag07" title="태그 노출 여부"></label>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>                                          
+                                        </li>
                                     </ul>
                                 </div>
     
@@ -152,6 +332,8 @@
                                 <div class="btnBox">
                                     <button type="button" class="btn_file_delete">삭제</button>
                                 </div>
+
+                                <button type="button" class="btn_exel_download">엑셀양식 다운로드</button>
                             </div>
                         </div>
                     </div>
@@ -170,20 +352,16 @@
 <!-- //#wrap -->
 
 <!---------------------- Local Resources ---------------------->
-<!-- Local CSS -->
-<link rel="stylesheet" type="text/css" href="../../../../assets_renewal/css/jquery.tree-multiselect.min.css">
-
-<!-- Local Script Library -->
-<script type="text/javascript" src="../../../../assets_renewal/js/jquery.tree-multiselect.js"></script>
-
 <!-- Local Script -->
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-        // tree multiselect
-        $('#metaDataTag').treeMultiselect({
-            startCollapsed: 'false',
-            sectionDelimiter: '-',
+        $('.tree_group input[type=checkbox]').on('change', function(e){
+            e.stopPropagation();
+            $(this).siblings('ul').find('input[type=checkbox]').prop('checked', this.checked);
+            $(this).parentsUntil('.meta_tag_list').children('input[type=checkbox]').prop('checked', this.checked);  
+            
+            console.log($(this).parentsUntil('.meta_tag_list').children('input[type=checkbox]'))
         });
     });
 });
