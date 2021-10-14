@@ -69,13 +69,13 @@ $(document).ready(function(){
 
         // open
         $('body').css('overflow', 'hidden');
-        $(asideId).css('display', 'block');
+        $(asideId).addClass('open');
         $(asideId).prepend('<div class="aside_bg"></div>');
         
         // close 
         $('.aside_bg, .btn_aside_close').on('click',function(){
             $('body').css('overflow', '');
-            $(asideId).css('display', 'none'); 
+            $(asideId).removeClass('open');
             $('.aside_bg').remove(); 
             $('.tblBox table tbody tr').removeClass('selected');
         });

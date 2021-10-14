@@ -365,87 +365,11 @@
 <script type="text/javascript">
 // jQuery.event.add(window,"load",function(){
 //     $(document).ready(function(){
-//         // Chart draw를 위한 랜덤함수, 개발 시에는 실제 데이터 적용 필요
-//         var randomScalingFactor = function(){
-//             return Math.round(Math.random() * 100);
-//         };
+        var randomScalingFactor = function() {
+            return Math.round(Math.random() * 100);
+        };
 
-//         //  BAR Chart
-//         var projectStateChartOpt = {
-//             tooltips: {
-//                 enabled: false
-//             },
-//             hover :{
-//                 enabled: false
-//             },
-//             scales: {
-//                 xAxes: [{
-//                     scaleLabel:{
-//                         display: false
-//                     },
-//                     gridLines: {
-//                         display: false
-//                     }, 
-//                     stacked: true
-//                 }],
-//                 yAxes: [{
-//                     barPercentage: 0.1,
-//                     scaleLabel:{
-//                         display: false
-//                     },
-//                     gridLines: {
-//                         display: false,
-//                         zeroLineWidth: 0
-//                     },
-//                     stacked: true
-//                 }]
-//             },
-//             legend: {
-//                 display: false
-//             }
-//         };
-
-//         var ctx = document.getElementById('projectStateChart');
-//         var myChart = new Chart(ctx, {
-//             type: 'horizontalBar',
-//             data: {
-//                 labels: false,                
-//                 datasets: [{
-//                     labels: '가공 대기',  
-//                     data: [randomScalingFactor()],
-//                     backgroundColor: 'rgb(181, 218, 242)',
-//                     hoverBackgroundColor: 'rgb(181, 218, 242)'
-//                 },{
-//                     labels: '작업 중',  
-//                     data: [randomScalingFactor()],
-//                     backgroundColor: 'rgb(43, 111, 173)',
-//                     hoverBackgroundColor: 'rgb(43, 111, 173)'
-//                 },{
-//                     labels: '가공 완료', 
-//                     data: [randomScalingFactor()],
-//                     backgroundColor: 'rgb(139, 157, 203)',
-//                     hoverBackgroundColor: 'rgb(139, 157, 203)'
-//                 },{
-//                     labels: '작업 불가', 
-//                     data: [randomScalingFactor()],
-//                     backgroundColor: 'rgb(202, 212, 224)',
-//                     hoverBackgroundColor: 'rgb(202, 212, 224)'
-//                 }]
-//             },
-//             responsive: false,
-//             options: projectStateChartOpt,
-//         });        
-//     });
-// });
-</script>
-
-<script type="text/javascript">
-    var randomScalingFactor = function(){
-        return Math.round(Math.random() * 100);
-    };
-    
-    // Doughnut Chart
-    var config = {
+        var config = {
             type: 'doughnut',
             data: {
                 datasets: [{
@@ -469,14 +393,14 @@
                     label: 'Dataset 1'
                 }],
                 labels: [
-                    '가공 대기',
-                    '검수 중',
-                    '가공 중',
-                    '작업 불가요청',
-                    '가공 완료',
-                    '작업 불가'
+                    '음성',
+                    '시각',
+                    '언어',
+                    '대화',
+                    '영어교육',
+                    '남은 사용량'
                 ],
-                fontColor: '#26282b',
+                fontColor: '#f7778a',
             },
             options: {
                 responsive: true,
@@ -488,6 +412,7 @@
                         fontSize: 13,
                         fontStyle: 500,
                         boxWidth: 15,
+                        // boxHeight: 15,
                         cornerRadius: 3,
                     },
                     position: 'bottom',
@@ -514,6 +439,8 @@
             var ctx = document.getElementById('myChart').getContext('2d');
             window.myDoughnut = new Chart(ctx, config);
         };
+//     });
+// });
 </script>
 </body>
 </html>
