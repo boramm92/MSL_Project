@@ -622,7 +622,7 @@
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-        // 일반 태그 목록 테이블 내 태그 수정, 등록 버튼
+        // 태그 목록 테이블 내 태그 수정, 등록 버튼
         $('.btn_tag').on('click', function(){
             var thisBtnBox = $(this).parent('.btnBox'),
                 thisparentRow = $(this).parents('tr'),
@@ -633,68 +633,26 @@ jQuery.event.add(window,"load",function(){
                 thisBtnBox.find('.btn_tag.complete').addClass('active');
                 thisparentRow.find('.ipt_txt.contenteditable').attr('contenteditable', 'true');
                 thisparentLi.find('.ipt_txt.contenteditable').attr('contenteditable', 'true');
-                thisparentRow.addClass('checked');
-                thisparentLi.addClass('checked');
+                thisparentRow.addClass('selected');
+                thisparentLi.addClass('selected');
             }else if($(this).hasClass('complete')){
                 thisBtnBox.find('.btn_tag.modify').addClass('active');
                 thisparentRow.find('.ipt_txt.contenteditable').attr('contenteditable', 'false');
                 thisparentLi.find('.ipt_txt.contenteditable').attr('contenteditable', 'false');
-                if(!thisparentRow.is('checked')){
-                    thisparentRow.removeClass('checked');
-                    thisparentLi.removeClass('checked');
+                if(!thisparentRow.is('selected')){
+                    thisparentRow.removeClass('selected');
+                    thisparentLi.removeClass('selected');
                 }
-                if(!thisparentLi.is('checked')){
-                    thisparentRow.removeClass('checked');
-                    thisparentLi.removeClass('checked');
+                if(!thisparentLi.is('selected')){
+                    thisparentRow.removeClass('selected');
+                    thisparentLi.removeClass('selected');
                 }
             }else if($(this).hasClass('open')){
                 thisBtnBox.find('.btn_tag.close').addClass('active');
                 thisparentLi.siblings('.tag_group_list').slideDown(200);
-                if(!thisparentRow.is('checked')){
-                    thisparentRow.addClass('checked');
-                    thisparentLi.addClass('checked');
-                }
-                if(!thisparentLi.is('checked')){
-                    thisparentRow.addClass('checked');
-                    thisparentLi.addClass('checked');
-                }
             }else if($(this).hasClass('close')){
                 thisBtnBox.find('.btn_tag.open').addClass('active');
                 thisparentLi.siblings('.tag_group_list').slideUp(200);
-                // 체크가 아닐때
-                if(!thisparentRow.is('checked')){
-                    thisparentRow.removeClass('checked');
-                    thisparentLi.removeClass('checked');
-                }
-                if(!thisparentLi.is('checked')){
-                    thisparentRow.removeClass('checked');
-                    thisparentLi.removeClass('checked');
-                }
-            }
-        });
-
-        // 테이블 체크박스 체크 시 해당 row 활성화 효과
-        $('input[type="checkbox"]').on('click', function(){
-            if($(this).is('.eachChk')){
-                var thisChecked = $(this).prop('checked'); 
-        
-                if(thisChecked){
-                    $(this).parents('tr').addClass('checked');
-                    $(this).parents('.tr').addClass('checked');
-                }else{
-                    $(this).parents('tr').removeClass('checked');
-                    $(this).parents('.tr').removeClass('checked');
-                }
-            }else if($(this).is('.allChk')){
-                var thisChecked = $(this).prop('checked'); 
-        
-                if(thisChecked){
-                    $(this).parents('.icld_chk').find('.tbl_bd tr').addClass('checked');
-                    $(this).parents('.icld_chk').find('.tbl_bd .tr').addClass('checked');
-                }else{
-                    $(this).parents('.icld_chk').find('.tbl_bd tr').removeClass('checked');
-                    $(this).parents('.icld_chk').find('.tbl_bd .tr').removeClass('checked');
-                }
             }
         });
     });

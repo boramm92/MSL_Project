@@ -100,6 +100,95 @@
                         </ul>
                     </div>
 
+                    <div class="contBox">
+                        <dl>
+                            <dt>일반 태그 목록 선택</dt>
+                            <dd>
+                                <ul>
+                                    <li>
+                                        <div class="tag_tit">
+                                            <div class="radioBox">
+                                                <!-- [D] input[type="radio"]의 id와 label의 for값을 동일하게 줘야함 -->
+                                                <input type="radio" name="data_type01" id="radio1" checked="">
+                                                <label for="radio1">실외 태깅_차량_탈것</label>
+                                            </div>
+                                            <div class="btnBox">
+                                                <button type="button" class="btn_tag open active" title="태그 그룹 열기">
+                                                    <span class="hide">태그 그룹 열기</span>
+                                                </button>
+                                                <button type="button" class="btn_tag close" title="태그 그룹 접기">
+                                                    <span class="hide">태그 그룹 접기</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <ul class="tag_list">
+                                            <li>나무</li>
+                                            <li>신호등</li>
+                                            <li>고라니</li>
+                                            <li>왜가리</li>
+                                            <li>멧돼지</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <div class="tag_tit">
+                                            <div class="radioBox">
+                                                <!-- [D] input[type="radio"]의 id와 label의 for값을 동일하게 줘야함 -->
+                                                <input type="radio" name="data_type01" id="radio2" checked="">
+                                                <label for="radio2">객체 태깅</label>
+                                            </div>
+                                            <div class="btnBox">
+                                                <button type="button" class="btn_tag open active" title="태그 그룹 열기">
+                                                    <span class="hide">태그 그룹 열기</span>
+                                                </button>
+                                                <button type="button" class="btn_tag close" title="태그 그룹 접기">
+                                                    <span class="hide">태그 그룹 접기</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <ul class="tag_list">
+                                            <li>나무</li>
+                                            <li>신호등</li>
+                                            <li>고라니</li>
+                                            <li>왜가리</li>
+                                            <li>멧돼지</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>메타데이터 태그 선택 <span>*중복선택 가능</span></dt>
+                            <dd>
+                                <ul>
+                                    <li>
+                                        <div class="tag_tit">
+                                            <div class="chkBox">
+                                                <!-- [D] input[type="checkbox"]의 id와 label의 for값을 동일하게 줘야함 -->
+                                                <input type="checkbox" id="chk01">
+                                                <label for="chk01">날씨</label>
+                                            </div>
+                                            <div class="btnBox">
+                                                <button type="button" class="btn_tag open active" title="태그 그룹 열기">
+                                                    <span class="hide">태그 그룹 열기</span>
+                                                </button>
+                                                <button type="button" class="btn_tag close" title="태그 그룹 접기">
+                                                    <span class="hide">태그 그룹 접기</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <ul class="tag_list">
+                                            <li>맑음</li>
+                                            <li>흐림</li>
+                                            <li>비</li>
+                                            <li>눈</li>
+                                            <li>태풍</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </div>
+
                     <div class="btnBox">
                         <a href="project_regist_step01.html" class="btn_primary_rect prev">이전</a>
                         <a href="project_regist_step03.html" class="btn_primary_rect blue">다음</a>
@@ -119,7 +208,20 @@
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-        
+        // 태그 목록 테이블 내 태그 수정, 등록 버튼
+        $('.btn_tag').on('click', function(){
+            var thisBtnBox = $(this).parent('.btnBox'),
+                thisparentLi = $(this).parents('.tag_tit');
+                
+            $(this).removeClass('active');
+            if($(this).hasClass('open')){
+                thisBtnBox.find('.btn_tag.close').addClass('active');
+                thisparentLi.siblings('.tag_list').slideDown(200);
+            }else if($(this).hasClass('close')){
+                thisBtnBox.find('.btn_tag.open').addClass('active');
+                thisparentLi.siblings('.tag_list').slideUp(200);
+            }
+        });
     });
 });
 </script>
