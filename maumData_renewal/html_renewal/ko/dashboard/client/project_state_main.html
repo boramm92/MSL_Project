@@ -313,7 +313,28 @@
 
                             <div class="cont">
                                 <div class="chartBox">
-                                    <canvas id="myChart"></canvas>
+                                    <canvas id="projectStateChart"></canvas>
+                                </div>
+                                <div class="legendBox">
+                                    <dl>
+                                        <dt class="hide">작업 현황</dt>
+                                        <dd>
+                                            <ul>
+                                                <li>
+                                                    <p class="legend">가공 대기</p>
+                                                </li>
+                                                <li>
+                                                    <p class="legend">작업 중</p>
+                                                </li>
+                                                <li>
+                                                    <p class="legend">가공 완료</p>
+                                                </li>
+                                                <li>
+                                                    <p class="legend">작업 불가</p>
+                                                </li>
+                                            </ul>
+                                        </dd>
+                                    </dl>
                                 </div>
                             </div>
                         </div>
@@ -323,10 +344,51 @@
                             </div>
 
                             <div class="cont">
-                                <div class="chartBox">
+                                <div class="chartBox fl">
                                     <canvas id="dataStateChart"></canvas>
+                                    <p class="total_per"><span>89%</span> 완료</p>
+                                    <p class="total_case">총: <span>93,099</span>건</p>
                                 </div>
-                                
+                                <div class="legendBox fr">
+                                    <dl class="progress">
+                                        <dt>진행 현황</dt>
+                                        <dd>
+                                            <ul>
+                                                <li>
+                                                    <p class="legend">가공 대기</p>
+                                                    <p><span class="per">99</span>% / <span class="case">1,230</span>건</p>
+                                                </li>
+                                                <li>
+                                                    <p class="legend">검수 중</p>
+                                                    <p><span class="per">80</span>% / <span class="case">2,456</span>건</p>
+                                                </li>
+                                                <li>
+                                                    <p class="legend">가공 중</p>
+                                                    <p><span class="per">76</span>% / <span class="case">90</span>건</p>
+                                                </li>
+                                                <li>
+                                                    <p class="legend">작업 불가요청</p>
+                                                    <p><span class="per">90</span>% / <span class="case">409</span>건</p>
+                                                </li>
+                                            </ul>
+                                        </dd>
+                                    </dl>
+                                    <dl class="complete">
+                                        <dt>완료</dt>
+                                        <dd>
+                                            <ul>
+                                                <li>
+                                                    <p class="legend">가공 완료</p>
+                                                    <p><span class="per">30</span>% / <span class="case">1,230</span>건</p>
+                                                </li>
+                                                <li>
+                                                    <p class="legend">작업 불가</p>
+                                                    <p><span class="per">80</span>% / <span class="case">2,456</span>건</p>
+                                                </li>
+                                            </ul>
+                                        </dd>
+                                    </dl>
+                                </div>
                             </div>
                         </div>
                         <div class="contBox">
@@ -363,84 +425,141 @@
 
 <!-- Local Script -->
 <script type="text/javascript">
-// jQuery.event.add(window,"load",function(){
-//     $(document).ready(function(){
-        var randomScalingFactor = function() {
-            return Math.round(Math.random() * 100);
-        };
+// [D] 표시할 데이터를 임의로 만들어주는 랜덤함수로 개발 시에는 실제 데이터를 넣어주시면 됩니다. 
+var randomScalingFactor = function() {
+    return Math.round(Math.random() * 100);
+};
 
-        var config = {
-            type: 'doughnut',
-            data: {
-                datasets: [{
-                    data: [
-                        randomScalingFactor(),
-                        randomScalingFactor(),
-                        randomScalingFactor(),
-                        randomScalingFactor(),
-                        randomScalingFactor(),
-                        randomScalingFactor(),
-                    ],
-                    borderWidth: 0,
-                    backgroundColor: [
-                        window.chartColors.red,
-                        window.chartColors.green,
-                        window.chartColors.purple,
-                        window.chartColors.blue,
-                        window.chartColors.orange,
-                        window.chartColors.grey,
-                    ],
-                    label: 'Dataset 1'
-                }],
-                labels: [
-                    '음성',
-                    '시각',
-                    '언어',
-                    '대화',
-                    '영어교육',
-                    '남은 사용량'
-                ],
-                fontColor: '#f7778a',
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                legend: {
-                    labels: {
-                        padding: 18,
-                        fontColor: '#002b49',
-                        fontSize: 13,
-                        fontStyle: 500,
-                        boxWidth: 15,
-                        // boxHeight: 15,
-                        cornerRadius: 3,
-                    },
-                    position: 'bottom',
-                },
-                cutoutPercentage: 65,
-                animation: {
-                    animateScale: true,
-                    animateRotate: true
-                },
-                tooltips: {
-                    backgroundColor: '#ffffff',
-                    cornerRadius: 3,
-                    borderWidth: 1,
-                    borderColor: '#cfd5eb',
-                    caretSize: 0,
-                    titleFontColor: '#cfd5eb',
-                    bodyFontColor: '#002b49',
-                    bodyFontSize: 14,
+// 프로젝트 작업 현황 차트        
+var config = {
+    type: 'horizontalBar',
+    data: {
+        // labels: '프로젝트 작업 현황',
+        datasets: [{
+            label: '가공 대기',
+            data: [randomScalingFactor()],
+            backgroundColor: '#b5daf2'
+        },{
+            label: '작업 중',
+            data: [randomScalingFactor()],
+            backgroundColor: '#2b6fad'
+        },{
+            label: '가공 완료',
+            data: [randomScalingFactor()],
+            backgroundColor: '#8b9dcb'
+        },{
+            label: '작업 불가',
+            data: [randomScalingFactor()],
+            backgroundColor: '#cad4e0'
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+            display: false,
+        },
+        tooltips: {
+            display: false,
+            position: 'average',
+            xAlign: 'right',
+            yAlign: 'top',
+            enabled: true,
+            mode: 'single',
+            callbacks: {
+                label: function(tooltipItems, data) {
+                    return data.datasets[tooltipItems.datasetIndex].label + ': ' + tooltipItems.xLabel + ' %';
                 }
             }
-        };
+        },
+        hover: {
+            mode: null
+        },
+        scales: {
+            xAxes: [{
+                display: false,
+                ticks: {
+                    min: 0,
+                    max: 100,
+                    callback: function(value){return value + '%'}
+                },
+				scaleLabel: {
+					display: false
+				},
+				gridLines: {
+                    display: false
+				}, 
+				stacked: true
+			}],
+            yAxes: [{
+                display: false,
+                barPercentage: 0.3,
+                scaleLabel: {
+					display: false
+				},
+				gridLines: {
+					display: false
+				},
+				stacked: true
+			}]
+        }
+    }
+}; 
 
-        window.onload = function() {
-            var ctx = document.getElementById('myChart').getContext('2d');
-            window.myDoughnut = new Chart(ctx, config);
-        };
-//     });
-// });
+var ctxProjectState = document.getElementById('projectStateChart').getContext('2d');    
+window.myBar = new Chart(ctxProjectState, config);
+
+
+
+// 데이터 상태 현황 차트
+var config = {
+    type: 'doughnut',
+    data: {
+        labels: [
+            '가공 대기', 
+            '검수 중', 
+            '가공 중', 
+            '작업 불가요청', 
+            '가공 완료',
+            '작업 불가'
+        ],
+        // datasets 적용 순서는 상단 labels 순서 참고
+        datasets: [{
+            data: [
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor()
+            ],          
+            backgroundColor: [
+                '#b5daf2',
+                '#191e80',
+                '#2b6fad',
+                '#162e55',
+                '#8b9dcb',
+                '#cad4e0'
+            ]
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+        	display: false
+        },
+        tooltips: {
+            enabled: true
+        },
+        hover: {
+            mode: null
+        }
+    }
+};
+
+var ctxDataState = document.getElementById('dataStateChart').getContext('2d');
+window.myDoughnut = new Chart(ctxDataState, config);
 </script>
 </body>
 </html>
