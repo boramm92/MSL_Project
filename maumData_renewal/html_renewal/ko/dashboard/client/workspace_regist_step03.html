@@ -134,7 +134,7 @@
                                             <div class="tree_item">
                                                 <div class="cell">
                                                     <div class="chkBoxOnly">
-                                                        <input type="checkbox" class="eachChk">
+                                                        <input type="checkbox" class="tree_all">
                                                     </div>
                                                 </div>
                                                 <div class="cell">
@@ -163,7 +163,7 @@
                                                 <li class="tree_item">
                                                     <div class="cell">
                                                         <div class="chkBoxOnly">
-                                                            <input type="checkbox" class="eachChk">
+                                                            <input type="checkbox" class="tree_each">
                                                         </div>
                                                     </div>
                                                     <div class="cell">
@@ -188,7 +188,7 @@
                                                 <li class="tree_item">
                                                     <div class="cell">
                                                         <div class="chkBoxOnly">
-                                                            <input type="checkbox" class="eachChk">
+                                                            <input type="checkbox" class="tree_each">
                                                         </div>
                                                     </div>
                                                     <div class="cell">
@@ -216,7 +216,7 @@
                                             <div class="tree_item">
                                                 <div class="cell">
                                                     <div class="chkBoxOnly">
-                                                        <input type="checkbox" class="eachChk">
+                                                        <input type="checkbox" class="tree_all">
                                                     </div>
                                                 </div>
                                                 <div class="cell">
@@ -245,7 +245,7 @@
                                                 <li class="tree_item">
                                                     <div class="cell">
                                                         <div class="chkBoxOnly">
-                                                            <input type="checkbox" class="eachChk">
+                                                            <input type="checkbox" class="tree_each">
                                                         </div>
                                                     </div>
                                                     <div class="cell">
@@ -270,7 +270,7 @@
                                                 <li class="tree_item">
                                                     <div class="cell">
                                                         <div class="chkBoxOnly">
-                                                            <input type="checkbox" class="eachChk">
+                                                            <input type="checkbox" class="tree_each">
                                                         </div>
                                                     </div>
                                                     <div class="cell">
@@ -295,7 +295,7 @@
                                                 <li class="tree_item">
                                                     <div class="cell">
                                                         <div class="chkBoxOnly">
-                                                            <input type="checkbox" class="eachChk">
+                                                            <input type="checkbox" class="tree_each">
                                                         </div>
                                                     </div>
                                                     <div class="cell">
@@ -320,7 +320,7 @@
                                                 <li class="tree_item">
                                                     <div class="cell">
                                                         <div class="chkBoxOnly">
-                                                            <input type="checkbox" class="eachChk">
+                                                            <input type="checkbox" class="tree_each">
                                                         </div>
                                                     </div>
                                                     <div class="cell">
@@ -345,7 +345,7 @@
                                                 <li class="tree_item">
                                                     <div class="cell">
                                                         <div class="chkBoxOnly">
-                                                            <input type="checkbox" class="eachChk">
+                                                            <input type="checkbox" class="tree_each">
                                                         </div>
                                                     </div>
                                                     <div class="cell">
@@ -370,7 +370,7 @@
                                                 <li class="tree_item">
                                                     <div class="cell">
                                                         <div class="chkBoxOnly">
-                                                            <input type="checkbox" class="eachChk">
+                                                            <input type="checkbox" class="tree_each">
                                                         </div>
                                                     </div>
                                                     <div class="cell">
@@ -395,7 +395,7 @@
                                                 <li class="tree_item">
                                                     <div class="cell">
                                                         <div class="chkBoxOnly">
-                                                            <input type="checkbox" class="eachChk">
+                                                            <input type="checkbox" class="tree_each">
                                                         </div>
                                                     </div>
                                                     <div class="cell">
@@ -420,7 +420,7 @@
                                                 <li class="tree_item">
                                                     <div class="cell">
                                                         <div class="chkBoxOnly">
-                                                            <input type="checkbox" class="eachChk">
+                                                            <input type="checkbox" class="tree_each">
                                                         </div>
                                                     </div>
                                                     <div class="cell">
@@ -500,29 +500,35 @@ jQuery.event.add(window,"load",function(){
             }
         });
 
-
-        // $('.tree_item .eachChk').on('change', function(e){
-        //     e.stopPropagation();
-        //     $(this).parents('.tree_item').siblings('ul').find('.eachChk').prop('checked', this.checked);
-        //     // $(this).parentsUntil('.tree_group').children('.eachChk').prop('checked', this.checked);  
-        // });
-        // $('.tree_depth .eachChk').on('change', function(e){
-        //     e.stopPropagation();
-        //     $(this).parents('.tree_item').find('.eachChk')
-
-        //     console.log($(this).parents('.tree_item').length)
-        // });
-
-
-
-        $('.meta_tag_list .eachChk').on('click', function(){
-            var treeDepth = $(this).parents('.tree_depth');
-
-            if(treeDepth.length == 0){
-                $(this).parents('.tree_item').siblings('ul').find('.eachChk').prop('checked', this.checked);
+        // 메타 데이터 태그 트리 목록 체크 박스 
+        $('.tree_item .tree_all').on('click', function(){
+            var thisTableBox = $(this).parents('.tree_group'),
+                allCheck = $(this).prop('checked'); 
+            
+            if(allCheck){
+                thisTableBox.find('.tree_depth .tree_each').prop('checked', true); 
             }else{
-                
+                thisTableBox.find('.tree_depth .tree_each').prop('checked', false); 
             }
+        });
+
+        $('.tree_item .tree_each').on('click', function(e){
+            e.stopPropagation();
+
+            var thisTableBox = $(this).parents('.tree_group'),
+                eachCheck = $(this).prop('checked'); 
+                
+            // 자식 체크 전체 체크시, 부모 체크박스 체크 됨
+            var checkBoxLength = thisTableBox.find('.tree_depth .tree_each').length,
+                checkedLength = thisTableBox.find('.tree_depth .tree_each:checked').length;
+        
+                
+            // 체크박스가 모두 선택되었을 때 상위 체크박스 선택되도록 설정
+            if(checkBoxLength == checkedLength){
+                thisTableBox.find('.tree_all').prop('checked', true); 
+            }else{
+                thisTableBox.find('.tree_all').prop('checked', false);
+            }       
         });
     });
 });
