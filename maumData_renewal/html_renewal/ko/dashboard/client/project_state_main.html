@@ -322,15 +322,19 @@
                                             <ul>
                                                 <li>
                                                     <p class="legend">가공 대기</p>
+                                                    <p class="case"><span>1,000</span>건</p>
                                                 </li>
                                                 <li>
                                                     <p class="legend">작업 중</p>
+                                                    <p class="case"><span>2,000</span>건</p>
                                                 </li>
                                                 <li>
                                                     <p class="legend">가공 완료</p>
+                                                    <p class="case"><span>2,000</span>건</p>
                                                 </li>
                                                 <li>
                                                     <p class="legend">작업 불가</p>
+                                                    <p class="case"><span>50</span>건</p>
                                                 </li>
                                             </ul>
                                         </dd>
@@ -434,22 +438,21 @@ var randomScalingFactor = function() {
 var config = {
     type: 'horizontalBar',
     data: {
-        // labels: '프로젝트 작업 현황',
         datasets: [{
             label: '가공 대기',
-            data: [randomScalingFactor()],
+            data: [10],
             backgroundColor: '#b5daf2'
         },{
             label: '작업 중',
-            data: [randomScalingFactor()],
+            data: [25],
             backgroundColor: '#2b6fad'
         },{
             label: '가공 완료',
-            data: [randomScalingFactor()],
+            data: [25],
             backgroundColor: '#8b9dcb'
         },{
             label: '작업 불가',
-            data: [randomScalingFactor()],
+            data: [40],
             backgroundColor: '#cad4e0'
         }]
     },
@@ -460,21 +463,12 @@ var config = {
             display: false,
         },
         tooltips: {
-            display: false,
-            position: 'average',
-            xAlign: 'right',
-            yAlign: 'top',
-            enabled: true,
-            mode: 'single',
-            callbacks: {
-                label: function(tooltipItems, data) {
-                    return data.datasets[tooltipItems.datasetIndex].label + ': ' + tooltipItems.xLabel + ' %';
-                }
-            }
+            enabled: false
         },
         hover: {
             mode: null
         },
+        // borderRadius: 5,
         scales: {
             xAxes: [{
                 display: false,
@@ -493,7 +487,7 @@ var config = {
 			}],
             yAxes: [{
                 display: false,
-                barPercentage: 0.3,
+                barPercentage: 1,
                 scaleLabel: {
 					display: false
 				},
@@ -550,7 +544,7 @@ var config = {
         	display: false
         },
         tooltips: {
-            enabled: true
+            enabled: false
         },
         hover: {
             mode: null
