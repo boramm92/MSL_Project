@@ -592,24 +592,28 @@ html,body {-ms-overflow-style: none;}
   100% {transform:scale(2) translate(0px, 5px); opacity:0; background:rgba(39, 193, 193, 0.0);}
 }
 
-/* only demo page - 21.08.03 NBR 추가 */
+/* eg demo(service) page - 21.08.03 NBR 추가 */
+.content .demobox.dropEg {padding:40px 23px 20px;}
 .content .demobox.dropEg > p {line-height:25px;}
 .content .demobox.dropEg span.sub {margin:13px 0 0; padding:0 0 16px; border-bottom:1px dotted #cfd5eb; line-height:22px;}
 .dropEg .processBox {display:table; width:822px; margin:44px auto 0; border:1px solid #cfd5eb; box-sizing:border-box;}
 .dropEg .processBox .stepBox {display:table-cell; table-layout:fixed; position:relative; padding:20px; box-sizing:border-box; vertical-align:middle;}
-.dropEg .processBox .stepBox:not(.step2) {width:312px; background:#f3f5fb;}
-.dropEg .processBox .step2 {border-right:1px solid #cfd5eb; border-left:1px solid #cfd5eb; box-sizing:border-box;}
-.dropEg .processBox .step2 .egIcon {height:88px;}
-.dropEg .processBox .step2 .egName {margin:9px 0 0; color:#2c3f51; font-size:15px; font-weight:500; letter-spacing:-0.4px;}
+.dropEg .processBox .stepBox:not(.step2) {width:312px; background:#f3f5fb; vertical-align:top;}
+.dropEg .processBox .stepBox.step2 {border-right:1px solid #cfd5eb; border-left:1px solid #cfd5eb; box-sizing:border-box;}
+.dropEg .processBox .stepBox.step2 .egName {margin:9px 0 0; color:#2c3f51; font-size:15px; font-weight:500; letter-spacing:-0.4px;}
 .dropEg .processBox .stepBox > .tit {position:absolute; top:-24px; left:0; width:100%; color:#2c3f51; font-size:15px; font-weight:700; letter-spacing:-0.2px;}
 .dropEg .processBox .stepBox > .tit span {color:#2c3f51; font-weight:400;}
-.dropEg .processBox .stepBox .cont .fileType {margin:0 0 10px; color:#002b49; font-size:14px; letter-spacing:-0.2px;}
+.dropEg .processBox .stepBox .cont .fileType {margin:0 0 10px; color:#2c3f51; font-size:14px; letter-spacing:-0.2px;}
+.dropEg .processBox .stepBox .fileDesc {margin:10px 0; color:#2c3f51; font-size:14px; letter-spacing:-0.2px;}
 .dropEg .processBox .stepBox .cont .videoBox,
-.dropEg .processBox .stepBox .cont .imgBox {display:inline-block; width:272px; height:153px; border:1px solid #cfd5eb; box-sizing:border-box; background:#000;}
+.dropEg .processBox .stepBox .cont .imgBox {display:inline-block; position:relative; width:272px; height:153px; border:1px solid #cfd5eb; box-sizing:border-box; background:#000;}
 .dropEg .processBox .stepBox .cont .videoBox video,
-.dropEg .processBox .stepBox .cont .imgBox img {width:100%; height:100%; object-fit:contain;}
+.dropEg .processBox .stepBox .cont .imgBox img {width:100%; height:100%; object-fit:cover;}
 .dropEg .processBox .stepBox .cont .fa-plus {display:block; margin:20px 0; color:#002b49; font-size:25px; letter-spacing:-0.36px;}
-.dropEg .demoCont {padding:40px 0 30px; border-bottom:1px dotted #cfd5eb;}
+.dropEg .processBox .stepBox .cont .imgBox .fa-angle-double-right {position:absolute; top:50%; color:#002b49; font-size:24px; transform:translateY(-50%);}
+.dropEg .processBox .stepBox.step1 .cont .imgBox .fa-angle-double-right {right:-48px;}
+.dropEg .processBox .stepBox.step3 .cont .imgBox .fa-angle-double-right {left:-48px;}
+.dropEg .demoCont {padding:40px 0; border-bottom:1px dotted #cfd5eb;}
 .dropEg .demoCont:last-child {border-bottom:none;}
 .dropEg .demoCont h4 {color:#2c3f51; font-size:20px; font-weight:500; letter-spacing:-0.27px;}
 .dropEg .demoCont .comm_lst {display:table; table-layout:fixed; width:822px; margin:30px auto 0;}
@@ -619,8 +623,50 @@ html,body {-ms-overflow-style: none;}
 .dropEg .demoCont.strength .comm_lst li .tit {margin:35px 0 0;} 
 .dropEg .demoCont.useCase .comm_lst li img {width:96px;}
 .dropEg .demoCont.useCase .comm_lst li .tit {margin:20px 0 0;} 
-/* //only demo page - 21.08.03 NBR 추가 */
 
+.content .bot_lst + .demobox > p span {color:#2dace5;}
+/* //eg demo(service) page - 21.08.03 NBR 추가 */
+
+/* eg demo(service) page - vis_avatar */
+.dropEg.vis_avatar .processBox .stepBox .cont .videoBox video,
+.dropEg.vis_avatar .processBox .stepBox .cont .imgBox img {object-fit:contain;}
+.dropEg.vis_avatar .processBox .stepBox.step2 .egIcon {height:88px;}
+.dropEg.vis_avatar .processBox .stepBox.step3 {vertical-align:middle;}
+
+/* eg demo(service) page - vis_text_removal 21.10.19 NBR 추가 */
+.dropEg.vis_text_removal .demoCont .comm_lst li {vertical-align:bottom;}
+.dropEg.vis_text_removal .demoCont.strength .comm_lst li:not(:first-child) img {padding:0 0 5px;}
+.dropEg.vis_text_removal .demoCont.useCase .comm_lst {display:flex; justify-content:space-between; width:388px;}
+.dropEg.vis_text_removal .processBox .stepBox .cont .imgBox {width:240px; height:180px;}
+.dropEg.vis_text_removal .processBox .stepBox .cont .imgBox + .imgBox {margin:28px 0 0;}
+.dropEg.vis_text_removal .processBox .stepBox.step2 .egIcon {height:71px;}
+
+/* eg demo(service) page - vis_positioning */
+.dropEg.vis_positioning .demoCont.strength .comm_lst {display:flex; justify-content:space-between;}
+.dropEg.vis_positioning .demoCont.strength .comm_lst li {padding:0 35px;}
+.dropEg.vis_positioning .processBox .stepBox {vertical-align:top;}
+.dropEg.vis_positioning .processBox .stepBox .cont .imgBox {width:240px;}
+.dropEg.vis_positioning .processBox .stepBox.step2 {padding:90px 20px 20px;}
+.dropEg.vis_positioning .processBox .stepBox.step2 .egIcon {height:69px;}
+.dropEg.vis_positioning .processBox .stepBox.step3 {padding:0;}
+.dropEg.vis_positioning .processBox .stepBox.step3 .cont:nth-child(2) .imgBox .fa-angle-double-right {top:64px; left:-23px; transform:none;}
+.dropEg.vis_positioning .processBox .stepBox.step3 .cont:nth-child(n+2):nth-child(-n+3) {display:inline-block; padding:20px 0 0;}
+.dropEg.vis_positioning .processBox .stepBox.step3 .cont:nth-child(n+2):nth-child(-n+3) .imgBox {width:144px; height:108px;}
+.dropEg.vis_positioning .processBox .stepBox.step3 .cont:nth-child(5) {margin:32px 0 0; padding:20px 0; border-top:1px solid #cfd5eb; background:#e7eaf2;}
+
+/* eg demo(service) page - vis_holistic3D */
+.dropEg.vis_holistic3D .processBox .stepBox.step1 .cont .imgBox .fa-angle-double-right {right:-32px;}
+.dropEg.vis_holistic3D .processBox .stepBox.step1 .cont .source_info {margin:10px 0 0; color:#2c3f51; font-size:12px; letter-spacing:-0.17px; line-height:12px;}
+.dropEg.vis_holistic3D .processBox .stepBox.step2 .egIcon {height:70px;}
+.dropEg.vis_holistic3D .processBox .stepBox.step3 .cont .imgBox .fa-angle-double-right {left:-32px;}
+
+/* eg demo(service) page - bot_kbqa */
+.dropEg.bot_kbqa .demoCont .comm_lst li {vertical-align:bottom;}
+.dropEg.bot_kbqa .demoCont .chatbot_box .chat_mid {height:305px;}
+.dropEg.bot_kbqa .demoCont .chatbot_box .chat_mid .talkLst {display:block; min-height:auto;}
+.dropEg.bot_kbqa .demoCont .chatbot_box .chat_btm .textArea:disabled {background:#fff;}
+.dropEg.bot_kbqa .demoCont .chatbot_box .chat_btm .btn_chat:hover {background:#2dace5 url('../images/ico_send.png') 50% 50% no-repeat; cursor:default;}
+.dropEg.bot_kbqa .demoCont .chatbot_box .remark {font-size:14px;}
 
 /* demo (recording) */
 .demo_recording {display:none; clear:both; overflow:hidden; height:100%; padding:0;}
