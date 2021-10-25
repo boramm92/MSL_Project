@@ -32,7 +32,7 @@
 <script type="text/javascript" src="../../../../assets_renewal/js/jquery-migrate-3.3.1.min.js"></script>
 <script type="text/javascript" src="../../../../assets_renewal/js/builder_common.js"></script>
 
-<title>Voice Worker || Builder</title>
+<title>Audio Worker || Builder</title>
 </head>
 <body>
 <!-- #wrap -->
@@ -134,7 +134,7 @@
         <!-- //#toolMenuBar -->
 
         <!-- #contents -->
-        <div id="contents" class="edit_video">
+        <div id="contents" class="edit_audio">
             <!-- .content -->
             <div class="content">
                 <!-- .work_space -->
@@ -237,7 +237,102 @@
                         </button>
                     </div>
                     <div class="tab_cont">
-                        <ul class="tag_list"></ul>
+                        <ul class="tag_list">
+                            <li class="reject">
+                                <div class="tagBox">
+                                    <div class="speech_sentence">
+                                        <span class="tagPoint"></span>
+                                        <span class="tagNum">1.</span>
+                                        <div class="ipt_txt contenteditable" contenteditable="true" placeholder="발화문장을 입력해주세요."></div>
+                                    </div>
+
+                                    <div class="time_stamp">
+                                        <button type="button" class="btn_stamp_play" title="재생">
+                                            <span class="hide">재생</span>
+                                        </button>
+                                        <div class="time_info start">
+                                            Start: <span>0:04.53</span>
+                                        </div>
+                                        <div class="time_info end">
+                                            End: <span>9:99.99</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="reject_txt">
+                                    <pre>1. 자동차 태그를 좀 더 자동차에 맞게 줄여주세요.
+                                        1. 자동차 태그를 좀 더 자동차에 맞게 줄여주세요.
+                                        1. 자동차 태그를 좀 더 자동차에 맞게 줄여주세요.
+                                    </pre>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tagBox">
+                                    <div class="speech_sentence">
+                                        <span class="tagPoint"></span>
+                                        <span class="tagNum">2.</span>
+                                        <div class="ipt_txt contenteditable" contenteditable="true" placeholder="발화문장을 입력해주세요."></div>
+                                    </div>
+
+                                    <div class="time_stamp">
+                                        <button type="button" class="btn_stamp_play" title="재생">
+                                            <span class="hide">재생</span>
+                                        </button>
+                                        <div class="time_info start">
+                                            Start: <span>0:04.53</span>
+                                        </div>
+                                        <div class="time_info end">
+                                            End: <span>9:99.99</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tagBox">
+                                    <div class="time_stamp">
+                                        <span class="tagPoint"></span>
+                                        <span class="tagNum">3.</span>
+                                        <button type="button" class="btn_stamp_play" title="재생">
+                                            <span class="hide">재생</span>
+                                        </button>
+                                        <div class="time_info start">
+                                            Start: <span>0:04.53</span>
+                                        </div>
+                                        <div class="time_info end">
+                                            End: <span>9:99.99</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tagBox">
+                                    <div class="speech_sentence">
+                                        <span class="tagPoint"></span>
+                                        <span class="tagNum">4.</span>
+                                        <div class="ipt_txt contenteditable" contenteditable="true" placeholder="발화문장을 입력해주세요."></div>
+                                    </div>
+                                    <div class="time_stamp">
+                                        <select class="select">
+                                            <option value="">ID</option>
+                                            <option value="">남성남성</option>
+                                            <option value="">여성</option>
+                                        </select>
+
+                                        <!-- [D] 타임 스탬프 구간 타임과 재생 버튼 필요 없는 경우 해당 마크업 제거하시면 됩니다. -->
+                                        <button type="button" class="btn_stamp_play" title="재생">
+                                            <span class="hide">재생</span>
+                                        </button>
+                                        <div class="time_info start">
+                                            Start: <span>0:04.53</span>
+                                        </div>
+                                        <div class="time_info end">
+                                            End: <span>9:99.99</span>
+                                        </div>
+                                        <!-- //[D] 타임 스탬프 구간 타임과 재생 버튼 필요 없는 경우 해당 마크업 제거하시면 됩니다. -->
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                         <!-- [D] .tag_list에서 반려목록(li.reject)만 clone해서 그려옴 -->
                         <ul class="reject_list"></ul>
                     </div>
@@ -325,6 +420,16 @@ jQuery.event.add(window,"load",function(){
         $('.btn_window_open').on('click', function(e){
             e.stopPropagation();
             windowPop = window.open('video_script_only.html', 'Script', 'width=' + windowPopWidth + ', height=' + windowPopHeight + ', top=' + windowPopY + ', left=' + windowPopX);
+        });
+
+        // 타임 스탬프 태그 재생 버튼
+        $('.btn_stamp_play').on('click', function(e){
+            e.stopPropagation();
+            if($(this).is('.pause')){
+                $(this).removeClass('pause');
+            }else{
+                $(this).addClass('pause');
+            }            
         });
     });
 });

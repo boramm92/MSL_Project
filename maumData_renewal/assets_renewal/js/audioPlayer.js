@@ -14,17 +14,14 @@ $(document).ready(function(){
         repeatBtn = $('.btn_repeat');
 
     // 재생, 일시정지 
-    function togglePlay() {
-        // var method = audio.paused ? 'play' : 'pause'; // 비디오 재생 상태에 따른 메소드 호출
-        // audio[method]();
-        
+    function togglePlay() {        
         $(this).toggleClass('pause');
 
         if($(this).is('.pause')){
-            // audio.pause();
+            audio.play();
             $(this).find('.tooltip').text('일시 정지');
         }else{
-            audio.play();
+            audio.pause();
             $(this).find('.tooltip').text('재생');
         }
     }
