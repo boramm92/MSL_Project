@@ -21,7 +21,6 @@
 <link rel="stylesheet" type="text/css" href="../aiaas/kr/css/maum_common.css">
 <link rel="stylesheet" type="text/css" href="../aiaas/kr/css/login_renew.css">
 <link rel="stylesheet" type="text/css" href="../aiaas/kr/css/pop_common.css">
-<link rel="stylesheet" type="text/css" href="../aiaas/kr/css/cloudApi_service_main.css">
 
 <!-- General Script -->
 <script type="text/javascript" src="../aiaas/kr/js/jquery-3.5.1.min.js"></script>
@@ -625,6 +624,7 @@
 <!---------------------- Local Resources ---------------------->
 <!-- Local CSS -->
 <link rel="stylesheet" href="../aiaas/kr/css/swiper-4.5.1.min.css"/>
+<link rel="stylesheet" type="text/css" href="../aiaas/kr/css/cloudApi_service_main.css">
 
 <!-- Local Script Library -->
 <script type="text/javascript" src="../aiaas/kr/js/swiper-4.5.1.min.js"></script>
@@ -632,43 +632,64 @@
 <!-- AMR 공통으로 적용되는 script -->
 <script type="text/javascript">
 	// swiper
-	var windowWidth = $(window).width();
-	if(windowWidth <= 768){
-		function initSwiper(){
-			var swiperSuccess = new Swiper('.success_list_wrap', {
-				slidesPerGroup : 8,
-				slidesPerView: 2,
-				spaceBetween: 40,
-				observer: true,
-				observeParents: true,			
-				pagination: {
-					el: '.swiper-pagination',
-					clickable: true,
-				},
-			});
+	var swiperSuccess = new Swiper('.success_list_wrap', {	
+		// observer: true,
+        // observeParents: true,
+		slidesPerGroup: 1,
+		slidesPerView: 4,
+		slidesPerColumn: 5,
+		slidesPerColumnFill: 'row',	
+		spaceBetween: 20,	
+		allowSlideNext: false,
+		allowSlidePrev: false,	    
+		pagination: {
+			el: '.swiper-pagination',
+			clickable : true
+		},   
+        breakpoints: {
+            768: {
+				// observer: true,
+				// observeParents: true,
+				slidesPerView: 1,
+				slidesPerColumn: 2,
+				slidesPerColumnFill: 'row',
+				spaceBetween: 20,
+				allowSlideNext: true,
+				allowSlidePrev: true,
+			}
+        }
+    });
 
-			var swiperEngines = new Swiper('.engines_list_wrap', {
-				slidesPerGroup : 4,
-				slidesPerView: 2,
-				observer: true,
-				observeParents: true,			
-				pagination: {
-					el: '.swiper-pagination',
-					clickable: true,
-				},
-			});
-		}
-	}else if(windowWidth > 768){
-		// swiper 호출 안함
-	}
+	var swiperEngines = new Swiper('.engines_list_wrap', {
+		// observer: true,
+        // observeParents: true,
+		slidesPerGroup: 1,
+		slidesPerView: 4,
+		slidesPerColumn: 2,
+		slidesPerColumnFill: 'row',
+		allowSlideNext: false,
+		allowSlidePrev: false,   
+		pagination: {
+			el: '.swiper-pagination',
+			clickable : true
+		},    
+        breakpoints: {
+            768: {
+				// observer: true,
+        		// observeParents: true,
+				slidesPerView: 1,
+				slidesPerColumn: 2,
+				slidesPerColumnFill: 'row',
+				allowSlideNext: true,
+				allowSlidePrev: true,
+			}
+        }
+    });
 
-	$(window).on('resize', function(){
-		windowWidth = $(window).width();
-		if(windowWidth <= 768){
-			initSwiper();
-			console.log('test')
-		}
-	});
+	// $(window).resize(function(){
+    //     swiperSuccess.update();
+	// 	swiperEngines.update();
+    // });
 
 	// fixed된 header에 가로스크롤을 적용하기 위한 코드
 	$(window).scroll(function () {
