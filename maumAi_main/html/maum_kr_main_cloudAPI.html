@@ -633,13 +633,12 @@
 <script type="text/javascript">
 	// swiper
 	var swiperSuccess = new Swiper('.success_list_wrap', {	
-		// observer: true,
-        // observeParents: true,
+		initialSlide: 0,
 		slidesPerGroup: 1,
 		slidesPerView: 4,
-		slidesPerColumn: 5,
+		slidesPerColumn: 4,
 		slidesPerColumnFill: 'row',	
-		spaceBetween: 20,	
+		// spaceBetween: 0,	
 		allowSlideNext: false,
 		allowSlidePrev: false,	    
 		pagination: {
@@ -648,12 +647,9 @@
 		},   
         breakpoints: {
             768: {
-				// observer: true,
-				// observeParents: true,
 				slidesPerView: 1,
 				slidesPerColumn: 2,
-				slidesPerColumnFill: 'row',
-				spaceBetween: 20,
+				// spaceBetween: 0,	
 				allowSlideNext: true,
 				allowSlidePrev: true,
 			}
@@ -661,8 +657,6 @@
     });
 
 	var swiperEngines = new Swiper('.engines_list_wrap', {
-		// observer: true,
-        // observeParents: true,
 		slidesPerGroup: 1,
 		slidesPerView: 4,
 		slidesPerColumn: 2,
@@ -675,21 +669,17 @@
 		},    
         breakpoints: {
             768: {
-				// observer: true,
-        		// observeParents: true,
 				slidesPerView: 1,
-				slidesPerColumn: 2,
-				slidesPerColumnFill: 'row',
 				allowSlideNext: true,
 				allowSlidePrev: true,
 			}
         }
     });
 
-	// $(window).resize(function(){
-    //     swiperSuccess.update();
-	// 	swiperEngines.update();
-    // });
+	$(window).resize(function(){
+        swiperSuccess.update();
+		swiperEngines.update();
+    });
 
 	// fixed된 header에 가로스크롤을 적용하기 위한 코드
 	$(window).scroll(function () {
