@@ -60,7 +60,7 @@
 #header.hover {height:140px; border-bottom:none;}
 #header.hover:before {content:''; display:block; position:absolute; top:79px; left:0; width:100%; height:1px; border-bottom:1px solid #e5e5e5;}
 
-#header .bg_dim {position:fixed; top:0; right:0; bottom:0; left:0; width:100%; height:100%; background:rgba(0, 0, 0, 0.82);}
+#header .bg_dim {position:fixed; top:0; right:0; bottom:0; left:0; width:100%; height:100%; background:rgba(0, 0, 0, 0.82); z-index:10;}
 #header .cont .btn_ham {position:absolute; top:8px; right:8px; width:40px; height:40px; z-index:20;}
 #header .cont .btn_ham span {display:block; position:static; width:20px; height:2px; margin:4px auto 0; background:#222222;}
 #header .cont .btn_ham span:nth-child(1) {margin:0 auto;}
@@ -80,6 +80,10 @@
 .comm_txt .svc {display:block; margin:0 0 14px; color:#151313; font-size:18px; font-weight:500; letter-spacing:-0.18px; line-height:1;}
 .comm_txt .tit {color:#151313; font-size:30px; font-weight:700; letter-spacing:-0.3px; line-height:1;}
 .comm_txt .desc {margin:20px 0 70px; color:#151313; font-size:16px; letter-spacing:-0.16px; line-height:24px;}
+.comm_txt.white .svc,
+.comm_txt.white .tit,
+.comm_txt.white .desc,
+.comm_txt.white .btn_primary {color:#fff; border-color:#fff; background:url('../images/arw_right_w.svg') top 50% right 34px no-repeat;}
 
 .stn.active .comm_txt {transform:translateY(0); opacity:1;}
 
@@ -127,7 +131,7 @@
     /* -------------------- header -------------------- */
     #header {height:56px;}
     #header h1 {width:64px;}
-    #header .sta {flex-direction:column; justify-content:flex-start; position:fixed; top:0; right:-100px; width:0; height:100%; background:#fff; transition:width 0.1s ease-out;}
+    #header .sta {flex-direction:column; justify-content:flex-start; position:fixed; top:0; right:-100px; width:0; height:100%; background:#fff; transition:width 0.1s ease-out; z-index:20;}
     #header .sta.active {right:0; width:280px;}
     #header .sta .nav {height:auto;}
     #header .sta .gnb {order:1;}
@@ -142,4 +146,27 @@
     #header .sta .util .nav li a.btn_login {padding:0 0 0 37px; background-position:37px 50%;}
     #header .sta .etc {order:3; justify-content:center; height:auto; margin:30px 0 0; text-align:center;}
     #header .sta .etc .serial_regist {margin:0;}
+
+
+    /* -------------------- content -------------------- */
+    /* stn - app */
+    .main .stn.app {padding:40px 0;}
+    .main .stn.app .tit {margin:0 0 20px; font-size:20px; line-height:29px;}
+    .main .stn.app .btnBox .btn_primary {display:block; width:158px; height:36px; margin:0 auto; line-height:34px;}
+    .main .stn.app .btnBox .btn_primary img {height:20px;}
+    .main .stn.app .btnBox .btn_primary + .btn_primary {margin:16px auto 0;}
+
+
+    /* -------------------- footer -------------------- */
+    #footer .terms_privacy ul {text-align:center;}
+    #footer .terms_privacy ul li a {font-size:13px;}
+    #footer .info {padding:20px 0 26px;}
+    #footer .info .cont span {font-size:12px; letter-spacing:-0.12px; line-height:16px; vertical-align:top;}
+    #footer .info .cont address {font-size:12px; letter-spacing:-0.12px; line-height:20px;}
+    #footer .info .cont .info_list {margin:0 0 24px;}
+    #footer .info .cont .info_list li {font-size:12px; letter-spacing:-0.12px; line-height:20px; vertical-align:top;}
+    #footer .info .cont .copyright {font-size:10px; letter-spacing:-0.1px; line-height:12px; text-align:center;}
+    #footer .info .cont .sns {top:0; right:20px; bottom:auto;}
+    #footer .info .cont .sns span {font-size:12px; letter-spacing:-0.12px; line-height:18px; vertical-align:top;}
+    #footer .info .cont .sns img {width:18px;}
 }
