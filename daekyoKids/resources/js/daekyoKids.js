@@ -1,79 +1,76 @@
 /* MINDsLab. UX/UI Team. NBR. 20211104 */
 
 $(document).ready(function(){
+    // visual stn swiper
+    var visualSwiper = new Swiper('.visual.swiper-container', {
+        slidesPerGroup: 1,
+        slidesPerView: 1,
+        loop: true, 
+        observer: true,
+		observeParents: true,
+        touchRatio: 0,
+		pagination: {
+			el: '.swiper-pagination',
+            type: 'fraction',
+            formatFractionCurrent: function(number){
+                return '0' + number;
+            },
+            formatFractionTotal: function(number){
+                return '0' + number;
+            }
+		},
+        navigation: {
+            prevEl: '.swiper-button-prev',
+            nextEl: '.swiper-button-next'
+        },
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false
+        },
+        breakpoints: {
+			768: {
+				touchRatio: 1
+			}
+		}
+	});
+
     // fixed header scroll
     $(window).scroll(function(){
 		$('#header').css('left', 0 - $(this).scrollLeft());
 	});
 
-    // sub nav
+    // pc / mobile sub nav
+    function handlePcSubnav(){
+        console.log('pc');
+
+        
+    }
+
+    function handleMobileSubnav(){
+        console.log('mobile');
+
+        
+    }
+
     var windowWidth = $(window).width();
 
-    function pcChkFunc(){
-        console.log('pc')
-
-        $('.gnb .nav > li > a').on('mouseenter', function(){
-            var subNav = $(this).parent('li').find('.sub');
-    
-            if(subNav.length == 1){
-                $('#header').addClass('hover');
-                setTimeout(function(){
-                    subNav.addClass('open');
-                }, 100);
-            }else{
-                $('#header').removeClass('hover');
-                $('.sub').removeClass('open');
-            }
-        });
-
-        $('#header').on('mouseleave', function(){
-            $('#header').removeClass('hover');
-            $('.sub').removeClass('open');
-        })
+    if(windowWidth <= 768){
+        handleMobileSubnav();
+    }else{
+        handlePcSubnav();
     }
-
-    function mobileChkFunc(){
-        console.log('mobile')
-    }
-
-    if(windowWidth > 768){
-        pcChkFunc();
-    }else if(windowWidth <= 768){
-        mobileChkFunc();
-    }
-
-    // $('.gnb .nav > li > a').on('mouseenter', function(){
-    //     var subNav = $(this).parent('li').find('.sub');
-
-    //     if(windowWidth > 768 && subNav.length == 1){
-    //         $('#header').addClass('hover');
-    //         setTimeout(function(){
-    //             subNav.addClass('open');
-    //         }, 100);
-    //     }else{
-    //         $('#header').removeClass('hover');
-    //         $('.sub').removeClass('open');
-    //     }
-    // });
-    // $('.gnb .nav > li > a').on('click', function(){
-
-    // });
-    // $('#header').on('mouseleave', function(){
-    //     $('#header').removeClass('hover');
-    //     $('.sub').removeClass('open');
-    // });
-
-
 
     $(window).resize(function(){
-        if(windowWidth > 768){
-            pcChkFunc();
-        }else if(windowWidth <= 768){
-            mobileChkFunc();
+        var windowWidth = $(window).width();
+
+        if(windowWidth <= 768){
+            handleMobileSubnav();
+        }else{
+            handlePcSubnav();
         }
     });
 
-    // header 모바일 메뉴 햄버거 버튼
+    // header mobile ham button
     var hamBtn = $('.btn_ham'),
         sta = $('.sta'),
         clicked = false;
