@@ -37,11 +37,12 @@ $(document).ready(function(){
 
     // page top 이동 버튼 노출
     function topBtnShow(){
-        var scrollLocate = $(window).scrollTop();
-		if(scrollLocate > 80){
+        var windowWidth = $(window).width(),
+            scrollLocate = $(window).scrollTop();
+		if(windowWidth > 768 && scrollLocate > 80){
 			$('#btn_top').fadeIn(200);
 		}
-		if(scrollLocate < 80){
+		if(windowWidth > 768 && scrollLocate < 80){
 			$('#btn_top').fadeOut(200);
 		}
     }
