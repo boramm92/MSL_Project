@@ -51,16 +51,16 @@
                 <div class="sta">
                     <div class="gnb">
                         <ul class="nav">
-                            <li><a href="#none">브랜드 소개</a></li>
-                            <li><a href="#none">APP 소개</a></li>
+                            <li><a href="brand.html">브랜드 소개</a></li>
+                            <li><a href="app.html">APP 소개</a></li>
                             <li>
                                 <a href="#none">제품 소개</a>
                                 <ul class="sub">
-                                    <li><a href="#none">스팀박스 소개</a></li>
-                                    <li><a href="#none">영어홈박스 소개</a></li>
+                                    <li><a href="product.html">스팀박스 소개</a></li>
+                                    <li><a href="product.html">영어홈박스 소개</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#none">이벤트</a></li>
+                            <li><a href="eventList.html">이벤트</a></li>
                             <li><a href="https://brand.naver.com/daekyo/category/17caa8ed476945b5ad1e208d4447d1a3?cp=1">스토어</a></li>
                         </ul>
                     </div>
@@ -206,5 +206,97 @@
         <!-- //#footer -->
     </div>
     <!-- //#wrap -->
+
+    <!-- -------------------- Local Script -------------------- --> 
+    <script type="text/javascript">   
+        $(window).load(function(){ 
+            // visual 영역 swiper
+            var visualSwiper = new Swiper('.visual.swiper-container', {
+                slidesPerGroup: 1,
+                slidesPerView: 1,
+                loop: true, 
+                observer: true,
+                observeParents: true,
+                touchRatio: 0,
+                pagination: {
+                    el: '.swiper-pagination',
+                    type: 'fraction',
+                    formatFractionCurrent: function(number){
+                        return '0' + number;
+                    },
+                    formatFractionTotal: function(number){
+                        return '0' + number;
+                    }
+                },
+                navigation: {
+                    prevEl: '.swiper-button-prev',
+                    nextEl: '.swiper-button-next'
+                },
+                autoplay: {
+                    delay: 4000,
+                    disableOnInteraction: false
+                },
+                breakpoints: {
+                    768: {
+                        touchRatio: 1
+                    }
+                }
+            });
+
+            // 각 영역 텍스트 등장 애니메이션
+            var daekyoKidsVisible = false,
+                sangsangAppVisible = false,
+                steamBoxVisible = false,
+                engHomeBoxVisible = false;
+
+            // 스크롤 시 이벤트
+            $(window).scroll(function(){
+                sectionTextAni();
+            });
+
+            function sectionTextAni(){
+                // 대교 상상 Kids 영역
+                if(checkVisible($('.stn:nth-child(2)')) && !daekyoKidsVisible){
+                    $('.stn').removeClass('on');   
+                    $('.stn:nth-child(2)').addClass('on');         
+                    aiccVisible = true;
+                }
+
+                // 상상키즈 APP 영역
+                if(checkVisible($('.stn:nth-child(3)')) && !sangsangAppVisible){
+                    $('.stn').removeClass('on');     
+                    $('.stn:nth-child(3)').addClass('on');         
+                    smartxVisible = true;
+                }
+                
+                // 스팀박스 영역
+                if(checkVisible($('.stn:nth-child(4)')) && !steamBoxVisible){ 
+                    $('.stn').removeClass('on');  
+                    $('.stn:nth-child(4)').addClass('on');               
+                    minutesVisible = true;
+                }
+
+                // 영어홈박스 영역
+                if(checkVisible($('.stn:nth-child(5)')) && !engHomeBoxVisible){     
+                    $('.stn').removeClass('on'); 
+                    $('.stn:nth-child(5)').addClass('on');             
+                    cloudApiVisible = true;
+                }
+            }
+            sectionTextAni();
+
+            // 스크롤 영역 감지
+            function checkVisible(elm, eval) {
+                eval = eval || 'object visible';
+                var viewportHalfHeight = $(window).height() / 2,
+                    scrolltop = $(window).scrollTop(),
+                    elementHalfHeight = $(elm).outerHeight() / 2,
+                    y = $(elm).offset().top;
+                
+                if(eval == 'object visible') return ((y < (viewportHalfHeight + scrolltop)) && (y > (scrolltop - elementHalfHeight)));
+                if(eval == 'above') return ((y < (viewportHalfHeight + scrolltop)));
+            }
+        }); 
+    </script> 
 </body>
 </html>
