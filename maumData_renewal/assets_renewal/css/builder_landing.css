@@ -1,0 +1,162 @@
+@charset "UTF-8";
+/* MINDsLab. NBR. 20211026 */
+
+/* 공통 CSS */
+@import url("reset.css"); 
+@import url("font.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css");
+
+
+/* -------------------- layout -------------------- */
+#wrap {width:100%; min-width:1280px;}
+#wrap.account {height:100%;}
+
+
+/* -------------------- common -------------------- */
+/* scroll bar */
+::-webkit-scrollbar {width: 6px; height: 6px; border-radius: 3px;}  /* 스크롤바의 width */
+::-webkit-scrollbar-track {background: transparent;}  /* 스크롤바의 전체 배경색 */
+::-webkit-scrollbar-thumb {border-radius: 3px; background: rgb(174, 176, 179);}  /* 스크롤바 색 */
+::-webkit-scrollbar-button {display: none;}  /* 위 아래 버튼 (버튼 없애기를 함) */
+
+/* float */
+.fl {float:left;}
+.fr {float:right;}
+
+/* hide */
+.hide {display:inline-block; overflow:hidden; text-indent:-9999px; line-height:0; white-space:nowrap;}
+
+/* button - loginArea */
+.account .btn_primary {display:inline-block; width:184px; height:56px; border:1px solid #fff; border-radius:28px; box-sizing:border-box; background:#fff; color:#757575; font-size:14px; font-weight:500; letter-spacing:-0.14px; line-height:54px; text-align:center; transition:background-color 0.3s ease-out;}
+.account .btn_primary.line {background:none; color:#fff;}
+.account .btn_primary.line:hover {background:#fff; color:#26282b;}
+.account .btn_google_login {padding-left:18px; background:#fff url('../images/ico_google_c.svg') 40px 50% no-repeat;}
+
+/* chkBox */
+.chkBox {display:inline-block;}
+.chkBox input[type="checkbox"] {overflow:hidden; position:absolute; width:1px; height:1px; margin:1px; padding:0; border:none;}
+.chkBox input[type="checkbox"] + label {position:relative; padding:0 0 0 30px; color:#fff; font-size:14px; letter-spacing:-0.14px; vertical-align:middle; transition:all 0.2s ease-out; cursor:pointer;}
+.chkBox input[type="checkbox"] + label:before {content:''; display:inline-block; position:absolute; top:0; left:0; width:20px; height:20px; border-radius:4px; box-sizing:border-box; background:#fff;}
+.chkBox input[type="checkbox"]:checked + label:before {background:#fff url('../images/dashboard/ico_chk_b.svg') 50% 50% no-repeat; background-size:14px;}
+
+
+/* -------------------- layer popup -------------------- */
+/* common */
+.lyrWrap {display:none; position:fixed; top:0; right:0; bottom:0; left:0; width:100%; height:100%; z-index:9999;}
+.lyr_bg {position:absolute; top:0; right:0; bottom:0; left:0; width:100%; height:100%; background:rgba(0, 0, 0, 0.65);}
+.lyrCont {overflow:hidden; position:absolute; top:50%; left:50%; min-width:340px; border-radius:10px; background:#fff; transform:translate(-50%, -50%);}
+.lyrCont .lyr_top {position:relative; padding:11px; box-sizing:border-box; background:#3340a8;}
+.lyrCont .lyr_top .tit {color:#fff; font-size:16px; font-weight:500; line-height:24px; text-align:center;}
+.lyrCont .lyr_top .btn_lyr_close {position:absolute; top:6px; right:6px; width:20px; height:20px; background:url('../images/builder/ico_close_w.svg') 50% 50% no-repeat;}
+.lyrCont .lyr_top .btn_lyr_close span {display:block; overflow:hidden; text-indent:-9999px; white-space:nowrap;}
+.lyrCont .lyr_mid {padding:20px 30px; box-sizing:border-box;}
+.lyrCont .lyr_mid .alert_txt {color:#26282b; font-size:13px; letter-spacing:-0.13px; line-height:20px; text-align:center;}
+.lyrCont .lyr_btm {padding:0 30px 20px; text-align:center;}
+.lyrCont .lyr_btm button.btn_primary {width:138px; height:40px; margin:0 7px; border:1px solid #3340a8; border-radius:4px; box-sizing:border-box; background:#fff; color:#3340a8; font-size:13px; font-weight:500; transition:all 0.3s ease-out;}
+.lyrCont .lyr_btm button.btn_primary:hover {background:#3340a8; color:#fff;}
+.lyrCont .lyr_btm button.btn_confirm {width:100px;}
+.lyrCont .lyr_btm button.btn_lyr_close {width:96px; border:none; background:#dddee0; color:#565e6a; font-weight:400;}
+.lyrCont .lyr_btm button.btn_lyr_close:hover {background:#dddee0; color:#565e6a;}
+
+.terms_privacy .lyrCont {top:0; width:1200px; height:100%; border-radius:0; transform:translate(-50%, 0);}
+.terms_privacy .lyrCont .lyr_top {height:80px; padding:0 86px; background:#f2f2f2;}
+.terms_privacy .lyrCont .tit {color:#26282b; font-size:24px; font-weight:700; line-height:78px; text-align:left;}
+.terms_privacy .lyrCont .lyr_top .btn_lyr_close {top:0; right:0; width:80px; height:80px; background-color:#1054b2;}
+.terms_privacy .lyrCont .lyr_mid {overflow:auto; height:calc(100% - 80px); padding:70px 100px 100px; text-align:center;}
+.terms_privacy .lyrCont .lyr_mid .tit {line-height:36px; text-align:center;}
+.terms_privacy .lyrCont .lyr_mid .terms_privacy_cont {margin:70px 0 100px; text-align:left;}
+.terms_privacy .lyrCont .lyr_mid .terms_privacy_cont dl + dl {margin:40px 0 0;}
+.terms_privacy .lyrCont .lyr_mid .terms_privacy_cont dl dt {color:#26282b; font-size:20px; font-weight:500; letter-spacing:-0.2px; line-height:34px;}
+.terms_privacy .lyrCont .lyr_mid .terms_privacy_cont dl dd {color:#26282b; font-size:16px; letter-spacing:-0.16px; line-height:34px; word-break:keep-all;}
+.terms_privacy .lyrCont .lyr_mid .btn_lyr_close {height:42px; padding:0 70px; border:1px solid #d9dde6; border-radius:21px; background:#fff; color:#26282b; font-size:16px; transition:all 0.3s ease-out;}
+.terms_privacy .lyrCont .lyr_mid .btn_lyr_close:hover {background:#1054b2; color:#fff;}
+
+
+/* -------------------- content -------------------- */
+/* common */
+.step_group {display:flex; justify-content:space-between;}
+.step_group li {position:relative; width:98px; color:#fff; font-size:14px; letter-spacing:-0.14px; text-align:center;}
+.step_group li:before {content:''; display:block; position:relative; width:20px; height:20px; margin:0 auto 14px; border:6px solid #d2d2d3; border-radius:50%; background:#eceded; z-index:10;}
+.step_group li:after {content:''; display:block; position:absolute; top:16px; left:50%; width:180px; height:1px; border-top:1px solid #d2d2d3;}
+.step_group li:last-child:after {content:none;}
+.step_group li.active:before {background:#24276e;}
+
+.userForm {margin:50px 0;}
+.userForm dl {display:table;}
+.userForm dl + dl {margin:24px 0 0;}
+.userForm dl dt {display:table-cell; width:120px; color:#fff; font-size:18px; letter-spacing:-0.18px; text-align:left;}
+.userForm dl dd input[type="text"],
+.userForm dl dd input[type="password"] {width:236px; height:38px; padding:0 11px; border:1px solid #d9dde6; border-radius:4px; box-sizing:border-box; background:#d9dde6;}
+.userForm dl dd button {height:38px; padding:0 23px; margin:0 0 0 18px; border-radius:4px; background:#fff; color:#26282b; font-size:14px; letter-spacing:-0.14px;}
+.userForm dl dd .select {width:236px; height:38px; padding:0 11px; border:1px solid #d9dde6; border-radius:4px; box-sizing:border-box; background:#d9dde6 url('../images/builder/landing/arw_btm_g.svg') top 50% right 11px no-repeat;}
+
+/* login */
+.loginArea {position:relative; width:100%; height:100%;}
+.loginArea .loginWrap {position:absolute; top:calc(50% - 12px); left:118px; transform:translateY(-50%); z-index:20;}
+.loginArea .loginWrap .service_tit {position:relative; z-index:10;}
+.loginArea .loginWrap .service_tit h2 {margin:22px 0 32px; color:#fff; font-size:90px; font-weight:700; letter-spacing:-0.9px; line-height:78px;}
+.loginArea .loginWrap .service_tit p {color:#fff; font-size:28px; letter-spacing:-0.28px; line-height:30px;}
+.loginArea .loginWrap .loginBox {position:relative; width:462px; margin:165px 0 0; text-align:center; z-index:10;}
+.loginArea .loginWrap .loginBox input {width:220px; height:36px; padding:0 7px; border-bottom:2px solid #fff; box-sizing:border-box; background:none; color:#fff; font-size:20px; font-weight:500; letter-spacing:-0.2px;}
+.loginArea .loginWrap .loginBox input#userPw {margin:0 0 0 4px;}
+.loginArea .loginWrap .loginBox input::placeholder {color:#a7a7a7; font-size:20px; font-weight:500; letter-spacing:-0.2px; line-height:36px;}
+.loginArea .loginWrap .loginBox .circle_wrap {position:absolute; top:-160px; right:-210px; width:170px; height:170px;}
+.loginArea .loginWrap .loginBox .circle_wrap .circle {display:inline-block; overflow:hidden; position:absolute; top:50%; left:50%; width:100%; height:100%; transform:translate(-50%, -50%);}
+.loginArea .loginWrap .loginBox .circle_wrap svg {position:absolute; top:0; left:0; width:100%; height:100%;}
+.loginArea .loginWrap .loginBox .circle_wrap svg textPath {fill:#fff; font-size:45px; letter-spacing:3px; word-spacing:15px;}
+.loginArea .loginWrap .loginBox .circle_wrap .btn_login {display:inline-block; position:absolute; top:50%; left:50%; width:82px; height:82px; border-radius:50%; background:rgba(255, 255, 255, 0.23); color:#fff; font-size:20px; font-weight:500; letter-spacing:-0.2px; transform:translate(-50%, -50%);}
+.loginArea .loginWrap .loginBox .btnBox {margin:40px 0;}
+.loginArea .loginWrap .loginBox .btnBox a + a {margin:0 0 0 52px}
+.loginArea .loginWrap .loginBox .svcBox {padding:40px 0 0; border-top:1px solid rgba(93, 93, 93, 0.58);}
+.loginArea .loginWrap .loginBox .svcBox a {display:inline-block; position:relative; padding:0 16px; color:#a7a7a7; font-size:15px; font-weight:500; letter-spacing:-0.15px; line-height:22px; transition:color 0.3s ease-out;}
+.loginArea .loginWrap .loginBox .svcBox a + a:before {content:''; display:block; position:absolute; top:1px; left:-1px; width:1px; height:20px; border-left:1px solid #707070;}
+.loginArea .loginWrap .loginBox .svcBox a:hover {color:#fff; font-weight:500;}
+.loginArea .videoWrap {position:fixed; top:0; right:0; bottom:0; left:0; width:100%; height:100%;}
+.loginArea .videoWrap:before {content:''; display:block; position:absolute; top:0; right:0; bottom:0; left:0; width:100%; height:100%; background:linear-gradient(to left, rgba(255, 255, 255, 0) 0%, rgba(114, 111, 112, 0.64) 50%, rgba(74, 71, 72, 0.82) 60%, rgba(44, 40, 41, 0.96) 68%, #000 99%); opacity:0.8; z-index:10;}
+.loginArea .videoWrap video {position:absolute; top:50%; left:50%; transform:translate(-50%, -50%);}
+
+/* join */
+.joinArea {position:relative; width:100%; height:100%; background:url('../images/builder/landing/bg_join_main.png') 50% 50% no-repeat; background-size:cover;}
+.joinArea:before {content:''; display:block; position:absolute; top:0; right:0; bottom:0; left:0; width:100%; height:100%; background:rgba(2, 4, 8, 0.82);}
+.joinArea .joinWrap {position:relative; top:50%; left:50%; width:1200px; height:680px; padding:60px 0; box-sizing:border-box; background:rgba(255, 255, 255, 0.1); transform:translate(-50%, -50%); z-index:10;}
+.joinArea .joinWrap .btn_back {display:block; position:absolute; top:32px; left:32px; padding:0 0 0 18px; background:url('../images/builder/landing/arw_left_w_s.svg') 0 50% no-repeat; color:#fff; font-size:14px; font-weight:300; letter-spacing:-0.14px;}
+.joinArea .joinWrap .btn_back:hover {font-weight:500; transition:all 0.3s ease-out;}
+.joinArea .joinWrap .joinBox {display:table; table-layout:fixed; width:100%; height:100%;}
+.joinArea .joinWrap .joinBox > div {display:table-cell; padding:0 60px; box-sizing:border-box; text-align:center;}
+.joinArea .joinWrap .joinBox h1 img {height:50px;}
+.joinArea .joinWrap .joinBox h2 {margin:20px 0 0; color:#fff; font-size:30px; font-weight:500; letter-spacing:-0.32px;}
+.joinArea .joinWrap .joinBox .logoBox {vertical-align:middle;}
+.joinArea .joinWrap .joinBox .logoBox p {margin:20px 0 0; color:#fff; font-size:24px; letter-spacing:-0.24px; line-height:22px;}
+.joinArea .joinWrap .joinBox .formBox {border-left:1px solid rgba(255, 255, 255, 0.42);}
+.joinArea .joinWrap .joinBox .formBox .stepBox {display:none; margin:62px 0 0;}
+.joinArea .joinWrap .joinBox .formBox .stepBox.active {display:block;}
+.joinArea .joinWrap .joinBox .formBox .stepBox .btn_primary {width:284px; height:48px; color:#26282b; font-size:16px; letter-spacing:-0.16px; line-height:46px;}
+
+.joinArea .joinWrap .joinBox .formBox .step01 {margin:106px 0 0;}
+.joinArea .joinWrap .joinBox .formBox .step01 .btnBox .btn_primary {width:320px; height:80px; border-radius:40px; font-size:18px; line-height:78px;}
+.joinArea .joinWrap .joinBox .formBox .step01 .btnBox .btn_primary + .btn_primary {margin:82px 0 0;}
+.joinArea .joinWrap .joinBox .formBox .step01 .btnBox .btn_google_login {background-position:74px 50%;}
+
+.joinArea .joinWrap .joinBox .formBox .step02 {margin:70px 0 0; text-align:left;}
+.joinArea .joinWrap .joinBox .formBox .step02 .terms_top {padding:0 0 72px; border-bottom:2px solid #fff;}
+.joinArea .joinWrap .joinBox .formBox .step02 .terms_top dt {color:#fff; font-size:14px; font-weight:500; letter-spacing:-0.14px; line-height:1;}
+.joinArea .joinWrap .joinBox .formBox .step02 .terms_top dd {overflow:hidden; margin:15px 0 0;}
+.joinArea .joinWrap .joinBox .formBox .step02 .terms_top dd .btn_text {display:inline-block; padding:0 10px 0 0; background:url('../images/builder/landing/arw_right_w_s.svg') 100% 55% no-repeat; color:#fff; font-size:14px; font-weight:300; letter-spacing:-0.14px; line-height:18px;}
+.joinArea .joinWrap .joinBox .formBox .step02 .terms_top dd .btn_text:hover {font-weight:500;}
+.joinArea .joinWrap .joinBox .formBox .step02 .terms_top dd + dt {margin:46px 0 0;}
+.joinArea .joinWrap .joinBox .formBox .step02 .terms_btm {clear:both; padding:30px 0 0;}
+.joinArea .joinWrap .joinBox .formBox .step02 .terms_btm .btn_next {display:inline-block; padding:0 24px; border-radius:16px; background:#fff; color:#26282b; font-size:16px; letter-spacing:-0.16px; line-height:32px; text-align:center; transition:padding 0.2s ease-out;}
+.joinArea .joinWrap .joinBox .formBox .step02 .terms_btm .btn_next:hover {padding:0 33px 0 20px; background:#fff url('../images/builder/landing/arw_right_bk_s.svg') top 55% right 17px no-repeat;}
+
+.joinArea .joinWrap .joinBox .formBox .step03 img {display:block; margin:50px auto 10px;}
+.joinArea .joinWrap .joinBox .formBox .step03 p {margin:0 0 62px; color:#fff; font-size:12px; letter-spacing:-0.12px; line-height:18px;}
+
+.joinArea .joinWrap .joinBox .formBox .step05 img {display:block; margin:50px auto 16px;}
+.joinArea .joinWrap .joinBox .formBox .step05 .tit {color:#fff; font-size:24px; letter-spacing:-0.24px; line-height:1;}
+.joinArea .joinWrap .joinBox .formBox .step05 .desc {margin:20px 0 62px; color:#fff; font-size:14px; letter-spacing:-0.14px; line-height:21px;}
+.joinArea .joinWrap .joinBox .formBox .step05 .btnBox a {width:150px; margin:0 28px;}
+.joinArea .joinWrap .joinBox .formBox .step05 .btnBox a:nth-child(1) {background:none; color:#fff;}
+
+
+
+ 
