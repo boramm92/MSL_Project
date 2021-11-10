@@ -5,12 +5,18 @@ $(document).ready(function(){
     function topBtnShow(){
         var windowWidth = $(window).width(),
             scrollLocate = $(window).scrollTop();
+
 		if(windowWidth > 768 && scrollLocate > 80){
 			$('#btn_top').fadeIn(200);
 		}
 		if(windowWidth > 768 && scrollLocate < 80){
 			$('#btn_top').fadeOut(200);
 		}
+        if(scrollLocate == $(document).height() - $(window).height()){
+            $('#btn_top').addClass('move');
+        }else{
+            $('#btn_top').removeClass('move');
+        }
     }
 
     // page top 이동 버튼 클릭 시
