@@ -16,6 +16,9 @@
 .btn_link {display:inline-block; width:244px; height:56px; border:1px solid #1054b2; border-radius:28px; box-shadow:0 5px 5px 0 rgba(106, 193, 255, 0.3); box-sizing:border-box; background:#1054b2; color:#fff; font-size:0.83rem; font-weight:700; letter-spacing:-0.2px; line-height:54px; text-align:center; transition:all 0.3s ease-out;}
 .btn_link:hover {box-shadow:none; background:transparent; color:#1054b2;}
 
+.ft_point_ylw {color:#fff183;}
+.ft_point_grn {color:#0cc7b9;}
+
 /* -------------------- landing -------------------- */
 /* header */
 #header.fixed {background:#0D0B15;}
@@ -52,13 +55,28 @@
 #header .contBox .btn_ham.active span:nth-child(3) {right:20px; margin:11px auto 0; transform:translateY(-10px) rotate(-45deg);}
 
 /* stn - visual */
-#container .visual {overflow:hidden; height:828px; padding:80px 0 88px; background-image:url('../images/landing/bg_stn_visual_w02.png'), linear-gradient(1deg, #0d0b15 77%, #0f152d 91%, #181b40 99%, #000000 106%); background-position:50% 50%; background-repeat:no-repeat; background-size:cover;}
+#container .stn.visual {overflow:hidden; height:750px; padding:80px 0 88px; background-image:url('../images/landing/bg_stn_visual_w03.png'), linear-gradient(1deg, #0d0b15 77%, #0f152d 91%, #181b40 99%, #000000 106%); background-position:50% 50%; background-repeat:no-repeat; background-size:cover;}
 #container .visual .contBox {position:relative; text-align:left;}
-#container .visual .contBox .txtArea {position:absolute; top:50%; left:0; text-align:left; transform:translate(0, -50%); z-index:10;}
-#container .visual .contBox .txtArea .visual_tit {margin:156px 0 0; color:#fff; font-family:'Nanum Barun Gothic', sans-serif; font-size:2.33rem; font-weight:700; letter-spacing:-1.4px; line-height:1.46;}
-#container .visual .contBox .txtArea .visual_desc {margin:34px 0 116px; color:#fff; font-size:1rem; letter-spacing:-0.24px; line-height:1.42;}
+#container .visual .contBox .txtArea {text-align:left; z-index:10;}
+#container .visual .contBox .txtArea .visual_tit {margin:140px 0 0; color:#fff; font-family:'Nanum Barun Gothic', sans-serif; font-size:2.33rem; font-weight:700; letter-spacing:-1.4px; line-height:1.46;}
+#container .visual .contBox .txtArea .visual_desc {margin:28px 0 66px; color:#fff; font-size:1rem; letter-spacing:-0.24px; line-height:1.42;}
 #container .visual .contBox .txtArea .btn_link {width:216px; box-shadow:none;}
 #container .visual .contBox .txtArea .btn_link:hover {border:1px solid #fff; color:#fff;}
+
+/* stn - service */
+#container .stn.service {height:100px; padding:0; background:#0e1441;}
+#container .stn.service .contBox {display:flex; width:1160px;}
+#container .stn.service .contBox .svc_into {flex:1; position:relative;}
+#container .stn.service .contBox .svc_into + .svc_into:before {content:''; display:block; position:absolute; top:15px; left:0; width:1px; height:70px; border-left:1px solid #4b5880;}
+#container .stn.service .contBox .svc_into.worker_login {background:url('../images/landing/ico_workerLogin.svg') top 50% right 92px no-repeat;}
+#container .stn.service .contBox .svc_into.faq {background:url('../images/landing/ico_faq.svg') top 50% right 20px no-repeat;}
+#container .stn.service .contBox .svc_into a {display:block; width:100%; height:100%; box-sizing:border-box; text-align:left;}
+#container .stn.service .contBox .svc_into a .tit {margin:0 0 8px; font-size:0.75rem; letter-spacing:-0.18px; line-height:20px;}
+#container .stn.service .contBox .svc_into a small {padding:0 11px 0 0; background:url('../images/landing/arw_right_w_s.svg') 100% 60% no-repeat; color:#fff; font-size:0.58rem; letter-spacing:-0.14px; line-height:14px;}
+#container .stn.service .contBox .svc_into.worker_login a {padding:24px 10px 0;}
+#container .stn.service .contBox .svc_into.worker_login a .tit {color:#fff183;}
+#container .stn.service .contBox .svc_into.faq a {padding:24px 80px 0;}
+#container .stn.service .contBox .svc_into.faq a .tit {color:#0cc7b9;}
 
 /* stn - use_case */
 #container .use_case .contBox .tabArea {position:relative; width:100%;}
@@ -212,7 +230,7 @@
     #container .contents .stn {padding:50px 0;}
     #container .contents .stn .contBox {width:100%; padding:0 12px; box-sizing:border-box;}
 
-    #container .contents .visual {height:auto; padding:56px 0 50px; background-image:url('../images/landing/bg_stn_visual_m02.png'), linear-gradient(to top, #0d0b15 79%, #0f152d 94%, #181b40 102%, #000000 110%); background-size:120% auto, cover; background-position:left 12px top 73px, 50% 50%;}
+    #container .contents .visual {height:auto; padding:56px 0 50px; background-image:url('../images/landing/bg_stn_visual_m03.png'), linear-gradient(to top, #0d0b15 79%, #0f152d 94%, #181b40 102%, #000000 110%); background-size:98% auto, cover; background-position:top 73px right 0, 50% 50%;}
     #container .contents .visual .contBox {padding:80% 0 0;}
     #container .visual .contBox .txtArea {position:static; text-align:center; transform:none;}
     #container .visual .contBox .txtArea .visual_tit {margin:22px 0 0; font-size:1.86rem; letter-spacing:-0.65px; line-height:1.23;}
@@ -220,6 +238,17 @@
     #container .visual .contBox .txtArea .visual_desc br:not(:nth-child(2)) {display:inline-block;}
     #container .visual .contBox .txtArea .btn_link {width:120px;}
     #container .visual .contBox .txtArea .btn_link:hover {border:1px solid #1054b2; background:#1054b2;}
+
+    #container .stn.service {height:144px; padding:0;}
+    #container .stn.service .contBox {padding:0;}
+    #container .stn.service .contBox .svc_into + .svc_into:before {top:37px;}
+    #container .stn.service .contBox .svc_into.worker_login {background-position:bottom 20px left 50%; background-size:auto 50px;}
+    #container .stn.service .contBox .svc_into.faq {background-position:bottom 20px left 50%; background-size:auto 46px;}
+    #container .stn.service .contBox .svc_into a {padding:20px 0 0 !important;}
+    #container .stn.service .contBox .svc_into a .tit span {display:block;}
+    #container .stn.service .contBox .svc_into a small {display:none;}
+    #container .stn.service .contBox .svc_into.worker_login a .tit,
+    #container .stn.service .contBox .svc_into.faq a .tit {color:#fff; font-size:1rem; text-align:center;}
 
     #container .contents .use_case .contBox {padding:0}
     #container .use_case .contBox .tabArea .tab_lst {display:flex; height:48px;}
