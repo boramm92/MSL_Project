@@ -61,39 +61,94 @@
 
 
         // 1번 문제
-        var 사람 = {
-            name: '손흥민',
-            sayHi: function(){
-                console.log('안녕 나는 ' + this.name)
+        // var 사람 = {
+        //     name: '손흥민',
+        //     sayHi: function(){
+        //         console.log('안녕 나는 ' + this.name)
+        //     }
+        // }
+        // 사람.sayHi();
+
+
+        // // 2번 문제
+        // var 자료 = {
+        //     data: [1,2,3,4,5]
+            
+        // } 
+
+        // 자료.전부더하기 = function(){
+        //     var 합 = 0;
+        //     this.data.forEach(function(a){
+        //         합 = 합 + a;
+        //     });
+        //     console.log(합)
+        // }
+
+        // 자료.전부더하기();
+
+
+        // // 3번 문제
+        // document.getElementById('button').addEventListener('click', function(e){
+        //     this.innerHTML;
+        //     setTimeout(() => {
+        //         console.log(this.innerHTML);
+        //     }, 1000);
+        // });
+
+
+        // var 변수 = '손흥민';
+        // var 문자 = `안녕하세요 ${변수}입니다.`;
+
+        // function 해체분석기(문자들, 변수들){
+        //     console.log(문자들, 변수들);
+        // }
+
+        // 해체분석기`안녕하세요 ${변수}입니다.`;
+
+
+        // var pants = 0;
+        // var socks = 100;
+
+        // // console.log(`바지 ${pants}, 양말 ${socks}`);
+
+        // function 해체분석기(item, num1, num2){
+        //     if(num1 == 0){
+        //         console.log('바지다팔렸어요' + item[1] + num2);
+        //     }else{
+        //         console.log(`바지${pants} 양말${socks}`);
+        //     }
+
+        //     // console.log(item[1] + num1 + item[0] + num2)
+        // }
+
+        // 해체분석기`바지${pants} 양말${socks}`;
+
+
+        // var arr = ['hello', 'world'];
+        // console.log(...arr)     // 그냥 배열을 감싸는 대괄호만 없애는 문법
+
+        // var 문자 = 'hello';
+        // console.log(...문자)    // 문자 자체도 해체 할 수 있다.
+
+        // var a = [1, 2, 3];
+        // var b = [4, 5];
+        // var c = [...a, ...b];
+        // console.log(c)
+
+
+        var person = {
+            인사 : function(){
+                console.log(this.name + '안녕')
             }
         }
-        사람.sayHi();
 
-
-        // 2번 문제
-        var 자료 = {
-            data: [1,2,3,4,5]
-            
+        var person2 = {
+            name : '손흥민'
         }
 
-        자료.전부더하기 = function(){
-            var 합 = 0;
-            this.data.forEach(function(a){
-                합 = 합 + a;
-            });
-            console.log(합)
-        }
-
-        자료.전부더하기();
-
-
-        // 3번 문제
-        document.getElementById('button').addEventListener('click', function(e){
-            this.innerHTML;
-            setTimeout(() => {
-                console.log(this.innerHTML);
-            }, 1000);
-        });
+        // person.인사();
+        person.인사.apply(person2, [1, 2]);
+        person.인사.call(person2, 1, 2);
 
     </script>
 </body>
