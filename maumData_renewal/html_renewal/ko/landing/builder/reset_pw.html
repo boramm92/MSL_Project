@@ -32,7 +32,7 @@
 <script type="text/javascript" src="../../../../assets_renewal/js/jquery-migrate-3.3.1.min.js"></script>
 <script type="text/javascript" src="../../../../assets_renewal/js/builder_landing.js"></script>
 
-<title>Join - step05 || Builder</title>
+<title>비밀번호 리셋 || Builder</title>
 </head>
 <body>
 <!-- #wrap -->
@@ -45,28 +45,28 @@
 
             <div class="joinBox">
                 <div class="logoBox">
-                    <h1><img src="../../../assets_renewal/images/logo_maumData_mw.svg" alt="maum DATA"></h1> 
-                    <p>Create New Account</p>
+                    <h1><img src="../../../../assets_renewal/images/logo_maumData_mw.svg" alt="maum DATA"></h1> 
+                    <p>Reset Password</p>
                 </div>
                 
-                <div class="formBox">
-                    <h2>회원가입</h2>
-                    <!-- [D] 해당 단계의 stepBox에 addClass('active') 해주면 보여짐 -->
-                    <div class="stepBox step05 active">
-                        <ul class="step_group">
-                            <li class="active">1. 본인인증</li>
-                            <li class="active">2. 회원정보 입력</li>
-                            <li class="active">3. 완료</li>
-                        </ul>
-                        
-                        <img src="../../../assets_renewal/images/builder/landing/ico_check_w.svg" alt="icon">
-                        <p class="tit">회원가입이 <strong>완료</strong> 되었습니다.</p>
-                        <p class="desc">회원가입을 환영합니다.<br> 실속있는 서비스경험을 제공하겠습니다.</p>
-                        
-                        <div class="btnBox">
-                            <a href="#none" class="btn_primary">메인으로 가기</a>
-                            <a href="#none" class="btn_primary">로그인</a>
-                        </div>
+                <div class="formBox account_set reset_pw">
+                    <h2>비밀번호 리셋하기</h2>
+
+                    <div class="userForm">
+                        <dl>
+                            <dt>변경 비밀번호</dt>
+                            <dd>
+                                <input type="password" class="ipt_txt">
+                                <small>영문,숫자, 특수문자를 조합하여 8-20자 이내로 입력해주세요.</small>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>비밀번호 확인</dt>
+                            <dd>
+                                <input type="password" class="ipt_txt">
+                            </dd>
+                        </dl>
+                        <a href="#none" class="btn_next btn_lyr_open fr" data-lyr-name="notice_account">변경하기</a>
                     </div>
                 </div>
             </div>
@@ -77,12 +77,29 @@
 </div>
 <!-- //#wrap -->
 
+<!-- 이미 등록된 아이디 안내 팝업 -->
+<div id="notice_account" class="lyrWrap">
+    <div class="lyrCont">
+        <div class="lyr_top">
+            <button type="button" class="btn_lyr_close"><span>닫기버튼</span></button>
+        </div>
+        <div class="lyr_mid">
+            <p class="tit">비밀번호 변경완료</p>
+            <p class="ntc_txt">비밀번호 변경이 정상적으로 완료되었습니다.<br> 로그인 페이지로 이동하시겠습니까?</p>
+        </div>
+        <div class="lyr_btm">
+            <button type="button" class="btn_primary btn_lyr_close">닫기</button>
+            <a href="login.html" class="btn_primary">로그인</a>
+        </div>
+    </div>
+</div>
+
 <!---------------------- Local Resources ---------------------->
 <!-- Local Script -->
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-
+        
     });
 });
 </script>
