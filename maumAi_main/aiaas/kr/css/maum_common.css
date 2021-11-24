@@ -337,7 +337,7 @@
 .maumUI #header h1 a {display:block;width:100%;height:100%;}
 
 /* header-maum_sta */
-.maumUI #header .maum_sta {display:block; height:70px;}
+.maumUI #header .maum_sta {display:block; height:70px; transition:background-color 0.3s ease-out;}
 
 /* header-maum_sta-gnb */
 .maumUI .maum_sta .maum_gnb {float:left; margin:0 0 0 50px;}
@@ -415,7 +415,8 @@
 .maumUI .maum_sta .btn_maum_ham.active span:nth-child(3) {transform:rotate(-45deg); transform-origin: 18% 50%;}
 
 /* header-scroll transform */
-.maumUI.transform #header .maum_sta {position:fixed; z-index:50; top:0; left:0; width:100%; min-width: 1280px; height: 60px; background-color:rgba(255,255,255,0.9); backdrop-filter:saturate(180%) blur(10px);}
+.maumUI.transform #header .maum_sta {position:fixed; z-index:50; top:0; left:0; width:100%; min-width: 1280px; height: 60px; border-bottom:1px solid #cfd5eb; background-color:rgba(255,255,255,0.9); backdrop-filter:saturate(180%) blur(10px); transition:background-color 0.3s ease-out;}
+.maumUI.transform .top_banner_area ~ #header .maum_sta {top:50px;}
 .maumUI.transform #header h1 {margin-top: 12px;}
 .maumUI.transform .maum_sta .maum_gnb .nav li a {line-height: 60px;}
 .maumUI.transform .maum_sta .maum_etc {margin-top: 13px;}
@@ -485,7 +486,8 @@
 }
 
 /* 헤더 style : .maumUI.visual_header */
-.maumUI.visual_header #header {position: absolute; top: 0; left: 0; margin-top: 10px; background-color: transparent;}
+.maumUI.visual_header #header {position: absolute; top: 0; left: 0; background-color: transparent;}
+.maumUI.visual_header .top_banner_area ~ #header {top:50px}
 .maumUI.visual_header #header h1 {top: 10px; background-image: url(../images/logo_maumAi_w.svg);}
 .maumUI.visual_header .maum_sta .btn_maum_ham span {background: #fff;}
 .maumUI.visual_header .maum_sta .maum_gnb .nav li a,
@@ -505,7 +507,7 @@
 }
 
 /* 리뉴얼 aside 버튼 박스 */
-#aside_btns {overflow: hidden; position: fixed; bottom: 20%; right: 0; border-radius: 10px 0 0 10px; background: rgba(51,59,96,0.9); z-index: 10;}
+#aside_btns {overflow: hidden; position: fixed; bottom: 20%; right: 0; border-radius: 10px 0 0 10px; background: rgba(51,59,96,0.9); z-index:999;}
 #aside_btns a {display: block; width: 60px; height: 55px; color: #fff; text-align: center; box-sizing: border-box;}
 #aside_btns a img {display: inline-block;}
 #aside_btns a + a {border-top: 1px solid #505981;}

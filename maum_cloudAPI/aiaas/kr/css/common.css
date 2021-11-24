@@ -592,24 +592,28 @@ html,body {-ms-overflow-style: none;}
   100% {transform:scale(2) translate(0px, 5px); opacity:0; background:rgba(39, 193, 193, 0.0);}
 }
 
-/* only demo page - 21.08.03 NBR 추가 */
+/* eg demo(service) page - 21.08.03 NBR 추가 */
+.content .demobox.dropEg {padding:40px 23px 20px;}
 .content .demobox.dropEg > p {line-height:25px;}
 .content .demobox.dropEg span.sub {margin:13px 0 0; padding:0 0 16px; border-bottom:1px dotted #cfd5eb; line-height:22px;}
 .dropEg .processBox {display:table; width:822px; margin:44px auto 0; border:1px solid #cfd5eb; box-sizing:border-box;}
 .dropEg .processBox .stepBox {display:table-cell; table-layout:fixed; position:relative; padding:20px; box-sizing:border-box; vertical-align:middle;}
-.dropEg .processBox .stepBox:not(.step2) {width:312px; background:#f3f5fb;}
-.dropEg .processBox .step2 {border-right:1px solid #cfd5eb; border-left:1px solid #cfd5eb; box-sizing:border-box;}
-.dropEg .processBox .step2 .egIcon {height:88px;}
-.dropEg .processBox .step2 .egName {margin:9px 0 0; color:#2c3f51; font-size:15px; font-weight:500; letter-spacing:-0.4px;}
+.dropEg .processBox .stepBox:not(.step2) {width:312px; background:#f3f5fb; vertical-align:top;}
+.dropEg .processBox .stepBox.step2 {border-right:1px solid #cfd5eb; border-left:1px solid #cfd5eb; box-sizing:border-box;}
+.dropEg .processBox .stepBox.step2 .egName {margin:9px 0 0; color:#2c3f51; font-size:15px; font-weight:500; letter-spacing:-0.4px;}
 .dropEg .processBox .stepBox > .tit {position:absolute; top:-24px; left:0; width:100%; color:#2c3f51; font-size:15px; font-weight:700; letter-spacing:-0.2px;}
 .dropEg .processBox .stepBox > .tit span {color:#2c3f51; font-weight:400;}
-.dropEg .processBox .stepBox .cont .fileType {margin:0 0 10px; color:#002b49; font-size:14px; letter-spacing:-0.2px;}
+.dropEg .processBox .stepBox .cont .fileType {margin:0 0 10px; color:#2c3f51; font-size:14px; letter-spacing:-0.2px;}
+.dropEg .processBox .stepBox .fileDesc {margin:10px 0; color:#2c3f51; font-size:14px; letter-spacing:-0.2px;}
 .dropEg .processBox .stepBox .cont .videoBox,
-.dropEg .processBox .stepBox .cont .imgBox {display:inline-block; width:272px; height:153px; border:1px solid #cfd5eb; box-sizing:border-box; background:#000;}
+.dropEg .processBox .stepBox .cont .imgBox {display:inline-block; position:relative; width:272px; height:153px; border:1px solid #cfd5eb; box-sizing:border-box; background:#000;}
 .dropEg .processBox .stepBox .cont .videoBox video,
-.dropEg .processBox .stepBox .cont .imgBox img {width:100%; height:100%; object-fit:contain;}
+.dropEg .processBox .stepBox .cont .imgBox img {width:100%; height:100%; object-fit:cover;}
 .dropEg .processBox .stepBox .cont .fa-plus {display:block; margin:20px 0; color:#002b49; font-size:25px; letter-spacing:-0.36px;}
-.dropEg .demoCont {padding:40px 0 30px; border-bottom:1px dotted #cfd5eb;}
+.dropEg .processBox .stepBox .cont .imgBox .fa-angle-double-right {position:absolute; top:50%; color:#002b49; font-size:24px; transform:translateY(-50%);}
+.dropEg .processBox .stepBox.step1 .cont .imgBox .fa-angle-double-right {right:-48px;}
+.dropEg .processBox .stepBox.step3 .cont .imgBox .fa-angle-double-right {left:-48px;}
+.dropEg .demoCont {padding:40px 0; border-bottom:1px dotted #cfd5eb;}
 .dropEg .demoCont:last-child {border-bottom:none;}
 .dropEg .demoCont h4 {color:#2c3f51; font-size:20px; font-weight:500; letter-spacing:-0.27px;}
 .dropEg .demoCont .comm_lst {display:table; table-layout:fixed; width:822px; margin:30px auto 0;}
@@ -619,8 +623,57 @@ html,body {-ms-overflow-style: none;}
 .dropEg .demoCont.strength .comm_lst li .tit {margin:35px 0 0;} 
 .dropEg .demoCont.useCase .comm_lst li img {width:96px;}
 .dropEg .demoCont.useCase .comm_lst li .tit {margin:20px 0 0;} 
-/* //only demo page - 21.08.03 NBR 추가 */
 
+.content .bot_lst + .demobox > p span {color:#2dace5;}
+/* //eg demo(service) page - 21.08.03 NBR 추가 */
+
+/* eg demo(service) page - vis_avatar */
+.dropEg.vis_avatar .processBox .stepBox .cont .videoBox video,
+.dropEg.vis_avatar .processBox .stepBox .cont .imgBox img {object-fit:contain;}
+.dropEg.vis_avatar .processBox .stepBox.step2 .egIcon {height:88px;}
+.dropEg.vis_avatar .processBox .stepBox.step3 {vertical-align:middle;}
+
+/* eg demo(service) page - vis_text_removal 21.10.19 NBR 추가 */
+.dropEg.vis_text_removal .demoCont .comm_lst li {vertical-align:bottom;}
+.dropEg.vis_text_removal .demoCont.strength .comm_lst li:not(:first-child) img {padding:0 0 5px;}
+.dropEg.vis_text_removal .demoCont.useCase .comm_lst {display:flex; justify-content:space-between; width:388px;}
+.dropEg.vis_text_removal .processBox .stepBox .cont .imgBox {width:240px; height:180px;}
+.dropEg.vis_text_removal .processBox .stepBox .cont .imgBox + .imgBox {margin:28px 0 0;}
+.dropEg.vis_text_removal .processBox .stepBox.step2 .egIcon {height:71px;}
+
+/* eg demo(service) page - vis_positioning */
+.dropEg.vis_positioning .demoCont.strength .comm_lst {display:flex; justify-content:space-between;}
+.dropEg.vis_positioning .demoCont.strength .comm_lst li {padding:0 35px;}
+.dropEg.vis_positioning .processBox .stepBox {vertical-align:top;}
+.dropEg.vis_positioning .processBox .stepBox .cont .imgBox {width:240px;}
+.dropEg.vis_positioning .processBox .stepBox.step2 {padding:90px 20px 20px;}
+.dropEg.vis_positioning .processBox .stepBox.step2 .egIcon {height:69px;}
+.dropEg.vis_positioning .processBox .stepBox.step3 {padding:0;}
+.dropEg.vis_positioning .processBox .stepBox.step3 .cont:nth-child(2) .imgBox .fa-angle-double-right {top:64px; left:-23px; transform:none;}
+.dropEg.vis_positioning .processBox .stepBox.step3 .cont:nth-child(n+2):nth-child(-n+3) {display:inline-block; padding:20px 0 0;}
+.dropEg.vis_positioning .processBox .stepBox.step3 .cont:nth-child(n+2):nth-child(-n+3) .imgBox {width:144px; height:108px;}
+.dropEg.vis_positioning .processBox .stepBox.step3 .cont:nth-child(5) {margin:32px 0 0; padding:20px 0; border-top:1px solid #cfd5eb; background:#e7eaf2;}
+
+/* eg demo(service) page - vis_holistic3D */
+.dropEg.vis_holistic3D .processBox .stepBox.step1 .cont .imgBox .fa-angle-double-right {right:-32px;}
+.dropEg.vis_holistic3D .processBox .stepBox.step1 .cont .source_info {margin:10px 0 0; color:#2c3f51; font-size:12px; letter-spacing:-0.17px; line-height:12px;}
+.dropEg.vis_holistic3D .processBox .stepBox.step1 .cont .source_info span {text-decoration:underline;}
+.dropEg.vis_holistic3D .processBox .stepBox.step2 .egIcon {height:70px;}
+.dropEg.vis_holistic3D .processBox .stepBox.step3 .cont .imgBox .fa-angle-double-right {left:-32px;}
+
+/* eg demo(service) page - bot_kbqa */
+.dropEg.bot_kbqa .demoCont .comm_lst li {vertical-align:bottom;}
+.dropEg.bot_kbqa .demoCont .chatbot_box {margin:0 auto;}
+.dropEg.bot_kbqa .demoCont .chatbot_box .chat_mid {height:340px; padding:30px 20px; box-sizing:border-box;}
+.dropEg.bot_kbqa .demoCont .chatbot_box .chat_mid .talkLst {display:block; min-height:auto;}
+.dropEg.bot_kbqa .demoCont .chatbot_box .chat_mid .talkLst li {padding:0;}
+.dropEg.bot_kbqa .demoCont .chatbot_box .chat_mid .talkLst li .cont .txt {box-shadow:none; box-sizing:border-box;}
+.dropEg.bot_kbqa .demoCont .chatbot_box .chat_mid .talkLst li.bot .cont .txt {margin:2px 5px 5px 10px; padding:8px 10px; border:1px solid #dbe2f2;}
+.dropEg.bot_kbqa .demoCont .chatbot_box .chat_mid .talkLst li.user .cont .txt {border:1px solid #697995;}
+.dropEg.bot_kbqa .demoCont .chatbot_box .chat_mid .talkLst li.user .cont .txt:after {content:none;}
+.dropEg.bot_kbqa .demoCont .chatbot_box .chat_btm .textArea:disabled {background:#fff;}
+.dropEg.bot_kbqa .demoCont .chatbot_box .chat_btm .btn_chat:hover {background:#2dace5 url('../images/ico_send.png') 50% 50% no-repeat; cursor:default;}
+.dropEg.bot_kbqa .demoCont .chatbot_box .remark {font-size:14px;}
 
 /* demo (recording) */
 .demo_recording {display:none; clear:both; overflow:hidden; height:100%; padding:0;}
@@ -1970,9 +2023,9 @@ html,body {-ms-overflow-style: none;}
 .tr_1 p {color:#7d7d7d;font-size:15px;font-weight: 400; margin: 0 0 10px 0;}
 .tr_1 p strong {color:#2c3f51; font-weight: 500;}
 .tr_1 p em {font-size:17px;color:#576068;}
-.sample_box {position: relative;width: 397px; height: 246px; border: solid 1px #cfd5eb; background-color: #f3f5fb;}
+.sample_box {position: relative;width: 397px; height: 246px; border: solid 1px #cfd5eb; box-sizing:border-box; background-color: #f3f5fb;}
 .sample_box:after {content: '또는'; position:absolute; font-size:14px; right:-34px;top:105px;color:#1f2e3b;font-weight:500;}
-.uplode_box {width:320px;height: 246px; border: solid 1px #cfd5eb; background-color: #f3f5fb;}
+.uplode_box {width:320px;height: 246px; border: solid 1px #cfd5eb; box-sizing:border-box; background-color: #f3f5fb;}
 .uplode_box .btn { color:#f7778a; font-size: 14px;margin:67px auto 45px; cursor: pointer; height: 40px;line-height: 40px;}
 .uplode_box .btn label {cursor: pointer;padding:10px 20px; border-radius: 5px;box-shadow: 1px 1px 2px 0 rgba(110, 110, 110, 0.5); border: solid 1px #f7778a; background-color: #ffffff;font-weight:500;}
 .uplode_box .btn .hidden {display: none;}
@@ -1981,7 +2034,7 @@ html,body {-ms-overflow-style: none;}
 .uplode_box .btn_change em.close, .uplode_box .btn_change em.close2  {color:#2c3f51;opacity:0.5;font-size:13px; position:absolute;top:-6px;right:8px;cursor: pointer;}
 .uplode_box .btn_change label {color:#7d7d7d;font-size:14px;}
 .uplode_box ul {margin: 0 20px;border-top: dotted 1px #cfd5eb; padding: 10px 15px; text-align: left;}
-.uplode_box ul li {color:#2c3f51;font-size:12px; letter-spacing: -0.17px;}
+.uplode_box ul li {color:#2c3f51;font-size:12px; letter-spacing: -0.17px; word-break:keep-all;}
 .bottom_box {padding:30px 0 0 0; clear: both;}
 .bottom_box .range_box {width: 100%; height: 107px; border: solid 1px #cfd5eb; background-color: #ffffff; }
 .range_box .range_num {width:235px; margin: 27px auto; height: 3px;}
@@ -2491,6 +2544,43 @@ html,body {-ms-overflow-style: none;}
 .clothSegmentation .avr_3 .result_file .result_box:nth-child(2) .cmt_list dt {display:inline-block; margin:0 0 5px; color:#002b49; font-size:14px; font-weight:500;}
 .clothSegmentation .avr_3 .result_file .result_box:nth-child(2) .cmt_list dd {display:inline-block; overflow:auto; width:100%; height:65px; padding:12px; border:1px solid #cfd5eb; box-sizing:border-box; background:#fff; color:#002b49; font-size:14px; word-break:keep-all;}
 /* //의상 속성 인식 - UX/UI Team. NBR. 20201119 추가 */
+
+/* ETRI air 신규엔진 2종(스타일 코멘트, 고령자 소지품 검출) - UX/UI Team. NBR. 20210923 추가 */
+.air_eg .avr_1 .sample_box {width:360px; height:320px;}
+.air_eg .avr_1 .sample_box:after {top:50%; right:-40px; margin-top:-9px;}
+.air_eg .avr_1 .sample_box .sample_1 {width:250px; margin:25px auto 0;}
+.air_eg .avr_1 .sample_box .radio input[type="radio"] + label {width:250px; height:250px; border:1px solid #cfd5eb; box-sizing:border-box; background:#000;}
+.air_eg .avr_1 .sample_box .radio input[type="radio"] + label:before {top:auto; bottom:-30px; left:50%; transform:translateX(-50%);}
+.air_eg .avr_1 .sample_box .radio input[type="radio"] + label:after {top:auto; bottom:-25px; left:50%; transform:translateX(-50%);}
+.air_eg .avr_1 .sample_box .radio input[type="radio"] + label .img_area {height:100%;}
+.air_eg .avr_1 .sample_box .radio input[type="radio"] + label .img_area img {height:100%; object-fit:contain;}
+.air_eg .avr_1 .uplode_box {width:350px; height:320px;}
+.air_eg .avr_1 .uplode_box .btn {margin:89px auto 73px;}
+
+.air_eg .avr_3 {padding:30px 30px 0;}
+.air_eg .avr_3 p {margin:0 0 8px;}
+.air_eg .avr_3 p.result_false {font-weight:400; text-align:left; word-break:keep-all;}
+.air_eg .avr_3 .origin_file {float:left; width:360px;}
+.air_eg .avr_3 .origin_file .sample_box {width:360px; height:320px; padding:25px 55px 45px; box-sizing:border-box;}
+.air_eg .avr_3 .origin_file .sample_box:after {content:none;}
+.air_eg .avr_3 .origin_file .imgBox {width:250px; height:250px; border:1px solid #cfd5eb; box-sizing:border-box; background:#000;}
+.air_eg .avr_3 .origin_file .imgBox img {width:100%; height:100%; object-fit:contain;}
+.air_eg .avr_3 .result_file {float:right; width:350px; border:none; background:none;}
+.air_eg .avr_3 .result_file .commentBox {width:350px; height:320px; padding:25px 50px 45px; border:1px solid #cfd5eb; box-sizing:border-box; background:#f3f5fb;}
+.air_eg .avr_3 .result_file .commentBox .textBox {overflow:auto; width:250px; height:250px; padding:10px 20px; border:1px solid #cfd5eb; box-sizing:border-box; background:#fff;}
+.air_eg .avr_3 .result_file .commentBox .textBox #resultTxt {color:#2c3f51; font-size:14px; font-weight:500; letter-spacing:-0.2px; line-height:20px; text-align:left;}
+
+.air_eg.airDetector .avr_1 .sample_box .sample_1 {width:300px;}
+.air_eg.airDetector .avr_1 .sample_box .radio input[type="radio"] + label {width:300px;}
+
+.air_eg.airDetector .avr_3 .sample_box {height:337px; padding:25px 30px 45px;}
+.air_eg.airDetector .avr_3 .imgBox {width:300px;}
+.air_eg.airDetector .avr_3 .result_file .sample_box {width:350px; padding:25px 25px 45px;}
+.air_eg.airDetector .avr_3 .result_file .sample_box .imgBox {width:300px; height:250px; border:1px solid #cfd5eb; box-sizing:border-box; background:#000;}
+.air_eg.airDetector .avr_3 .result_file .sample_box .imgBox img {width:100%; height:100%; object-fit:contain; background:none;}
+.air_eg.airDetector .avr_3 .result_file .sample_box .btn_resultImg_download {height:40px; margin:10px 0 0; padding:0 20px; border:1px solid #f7778a; border-radius:5px; box-shadow:1px 1px 2px 0 rgba(154, 154, 154, 0.5); box-sizing:border-box; background:#fff; color:#f7778a; font-size:14px; font-weight:500; letter-spacing:-0.22px;}
+/* //ETRI air 신규엔진 2종(스타일 코멘트, 고령자 소지품 검출) - UX/UI Team. NBR. 20210923 추가 */
+
 
 /* lip Sync Avatar - UX/UI Team. NBR. 20201126 추가 */
 .lipSyncAvatar video:focus {outline: none;}
@@ -3667,6 +3757,8 @@ ul.m_etcMenu li.lang.lang.active ul.lst {display:block;}
 .useCasesBox ul.lst_useCases li dl dd.api_itemBox ul li.ico_lipSyncAvt {background:url("../images/menu/ico_vis_lipSyncAvatar.svg") center top no-repeat; width:auto; background-size:32px;}
 .useCasesBox ul.lst_useCases li dl dd.api_itemBox ul li.ico_anmFc {background:url("../images/menu/ico_vis_animeFace.svg") center top no-repeat; width:auto; background-size:32px;}
 .useCasesBox ul.lst_useCases li dl dd.api_itemBox ul li.ico_hlst3D {background:url("../images/menu/ico_vis_hlst3D.svg") center top no-repeat; width:auto; background-size:40px;}
+.useCasesBox ul.lst_useCases li dl dd.api_itemBox ul li.ico_stlCmt {background:url("../images/menu/ico_vis_styleComment.svg") center top no-repeat; width:auto; background-size:40px;}
+.useCasesBox ul.lst_useCases li dl dd.api_itemBox ul li.ico_airDtct {background:url("../images/menu/ico_vis_airDetector.svg") center top no-repeat; width:auto; background-size:40px;}
 
 .useCasesBox ul.lst_useCases li dl dd.api_itemBox ul li.ico_bqa {background:url("../images/ico_api_bqa.png") center top no-repeat; background-size:90% auto;}
 .useCasesBox ul.lst_useCases li dl dd.api_itemBox ul li.ico_kbqa {background:url("../images/ico_api_kbqa.png") center top no-repeat; background-size:90% auto;}
@@ -3718,6 +3810,8 @@ ul.m_etcMenu li.lang.lang.active ul.lst {display:block;}
 .useCasesBox ul.lst_useCases li dl dd.api_itemBox ul li.ico_lipSyncAvt span {width:56px; background-color:#f7778a;}
 .useCasesBox ul.lst_useCases li dl dd.api_itemBox ul li.ico_anmFc span {width:85px; background-color:#f7778a;}
 .useCasesBox ul.lst_useCases li dl dd.api_itemBox ul li.ico_hlst3D span {background-color:#f7778a;}
+.useCasesBox ul.lst_useCases li dl dd.api_itemBox ul li.ico_stlCmt span {background-color:#f7778a;}
+.useCasesBox ul.lst_useCases li dl dd.api_itemBox ul li.ico_airDtct span {width:65px; background-color:#f7778a;}
 
 .useCasesBox ul.lst_useCases li dl dd.api_itemBox ul li.ico_bqa span {background-color:#2cace5;}
 .useCasesBox ul.lst_useCases li dl dd.api_itemBox ul li.ico_kbqa span {background-color:#2cace5;}

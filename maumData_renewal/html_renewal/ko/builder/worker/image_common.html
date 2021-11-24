@@ -35,6 +35,9 @@
 <title>Image Worker || Builder</title>
 </head>
 <body>
+<!-- clipboard input -->
+<input type="text" id="clipTarget">
+
 <!-- #wrap -->
 <div id="wrap">
     <!-- #header -->
@@ -395,7 +398,12 @@
 
             <!-- .aside -->
             <div class="aside on">
-                <div class="currentFile">파일명: <span>image_sample_001.jpg</span></div>
+                <div class="currentFile">
+                    파일명: <span class="fileName">image_sample_001.jpg</span>
+                    <button type="button" class="btn_clipboard btn_toast_open" title="복사하기" data-toast-name="clipboard">
+                        <span class="hide">복사하기</span>
+                    </button>
+                </div>
                 <div class="guideFile">
                     <span class="fileName">BoundingBox_작업가이드.pdf</span>
                     <button type="button" class="btn_guide_download" title="가이드 다운로드">
@@ -557,6 +565,21 @@
     <!-- //#container -->
 </div>
 <!-- //#wrap -->
+
+<!-- 토스트 -->
+<div id="clipboard" class="lyrToast">
+    <p class="msg">복사되었습니다.</p>
+    <button type="button" class="btn_toast_close"><span class="hide">닫기버튼</span></button>
+</div>
+<!-- //토스트 -->
+
+<!-- contextmenu -->
+<div id="contextMenu">
+    <ul class="menu_list">
+        <li class="draw_more">여기에 추가로 그리기</li>
+    </ul>
+</div>
+<!-- //contextmenu -->
 
 <!---------------------- Local Resources ---------------------->
 <!-- Local Script Library -->

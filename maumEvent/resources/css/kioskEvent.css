@@ -110,8 +110,9 @@ html, body {font-size:24px; line-height:1.4; letter-spacing:-0.4px;}
 .lyr_bg_dim {position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999;}
 .lyrPlayBox {display:none; position:fixed; top:50%; left:50%; width:1000px; min-height:150px; border-radius:3px; box-shadow:0 1px 4px 0 rgba(44, 63, 81, 0.1); transform:translate(-50%, -50%); z-index:9999;}
 #lyr_video_player {display:block;}
-#lyr_video_player .lyr_ct {width:1000px;}
+#lyr_video_player .lyr_ct {position:relative; width:1000px; padding-bottom:56.25%;}
 #lyr_video_player .lyr_ct video {width:100%;}
+#lyr_video_player .lyr_ct iframe {position:absolute; top:0; left:0; width:100%; height:100%;}
 #lyr_video_player .btn_lyr_close {display:inline-block; position:absolute; top:-40px; right:-10px; width:40px; height:40px;}
 #lyr_video_player .btn_lyr_close em {color:#fff; font-size:30px;}
 
@@ -187,7 +188,10 @@ html, body {font-size:24px; line-height:1.4; letter-spacing:-0.4px;}
 #wrap.event .main {height:956px; background:radial-gradient(ellipse at 35% 36%, #4f5070 20%, #3d3e57 40%, #2e2e42);}
 #wrap.event .main .cont {z-index:10;}
 #wrap.event .main .cont .txtArea {float:right; margin:120px 0 0;}
-#wrap.event .main .cont .txtArea p {margin:32px 0 0; color:#fff; font-size:0.8rem; letter-spacing:-0.7px; line-height:1.45;}
+/* [D] 21.10.12 NBR 수정 */
+#wrap.event .main .cont .txtArea p {margin:15px 0 0; color:#fff; font-size:0.8rem; letter-spacing:-0.7px; line-height:1.45;}
+#wrap.event .main .cont .txtArea .btn_link {display:inline-block; height:60px; margin:30px 0 0; padding:0 40px; border-radius:4px; background:#fff; color:#3d3e57; font-size:20px; font-weight:500; letter-spacing:-0.27px; line-height:60px;}
+/* //[D] 21.10.12 NBR 수정 */
 #wrap.event .main .cont .imgArea {float:left; width:72%; max-width:860px; margin:86px -16% 0 0;}
 #wrap.event .main .cont .imgArea img {width:100%;}
 
@@ -436,8 +440,9 @@ html, body {font-size:24px; line-height:1.4; letter-spacing:-0.4px;}
     .checkBox input[type="checkbox"] + label:before {width:20px; height:20px; line-height:20px;}
     .checkBox input[type="checkbox"]:checked + label:before {font-size:14px;}
 
-    #lyr_video_player.lyrPlayBox {width:calc(100% - 40px);}
+    #lyr_video_player.lyrPlayBox {width:100%;}
     #lyr_video_player .lyr_ct {width:100%;}
+    #lyr_video_player .btn_lyr_close {right:0;}
 
     #wrap.event .float_banner {right:0; bottom:0; width:100%; height:54px; border-radius:0;}
     #wrap.event .float_banner .banner_wrap {padding:8px 0; text-align:center;}
@@ -471,6 +476,9 @@ html, body {font-size:24px; line-height:1.4; letter-spacing:-0.4px;}
     #wrap.event .main .cont .txtArea {float:left; margin:40px 0 0;}
     #wrap.event .main .cont .txtArea img {width:72%;}
     #wrap.event .main .cont .txtArea p {margin:14px 0 0; font-size:1rem;}
+    /* [D] 21.10.12 NBR 추가 */
+    #wrap.event .main .cont .txtArea .btn_link {height:40px; margin:20px 0 0; padding:0 30px; border-radius:4px; background:#fff; color:#3d3e57; font-size:14px; font-weight:500; letter-spacing:-0.19px; line-height:40px;}
+    /* //[D] 21.10.12 NBR 추가 */
     #wrap.event .main .cont .imgArea {float:right; width:100%; margin:-5% -24% 0 0;}
 
     #wrap.event .innovation {min-height:538px; margin:-23% 0 0; padding:30% 0 0; background:#fff; transform:skewY(-16deg);}

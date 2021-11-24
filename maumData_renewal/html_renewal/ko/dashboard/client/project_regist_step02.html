@@ -32,7 +32,7 @@
 <script type="text/javascript" src="../../../../assets_renewal/js/jquery-migrate-3.3.1.min.js"></script>
 <script type="text/javascript" src="../../../../assets_renewal/js/dashboard.js"></script>
 
-<title>Project(Client) - Regist step02 || Dashboard</title>
+<title>프로젝트 관리(Client) - step02 || Dashboard</title>
 </head>
 <body>
 <!-- #wrap -->
@@ -48,20 +48,35 @@
                     </a>
                 </h1>
                 <button type="button" class="btn_ham" title="전체메뉴">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span>전체 메뉴</span>
                 </button>
             </div>
             <div class="account"><span>H&M(=헤네스앤모리츠)슈퍼</span></div>
             <ul class="nav">
-                <li><a href="workspace_main.html">워크스페이스 관리</a></li>
-                <li class="active"><a href="project_main.html">프로젝트 관리</a></li>
-                <li><a href="#none">작업현황 통계</a></li>
-                <li><a href="#none">작업자 관리</a></li>
-                <li><a href="#none">문의 관리</a></li>
-                <li><a href="#none">계약서 관리</a></li>
-                <li><a href="#none">로그아웃</a></li>
+                <li>
+                    <a href="workspace_main.html"><span>워크스페이스 관리</span></a>
+                </li>
+                <li class="active">
+                    <a href="project_main.html"><span>프로젝트 관리</span></a>
+                </li>
+                <li>
+                    <a href="project_state_main.html"><span>작업현황 통계</span></a>
+                </li>
+                <li>
+                    <a href="#none"><span>작업자 관리</span></a>
+                </li>
+                <li>
+                    <a href="inquiry_main.html"><span>문의 관리</span></a>
+                </li>
+                <li>
+                    <a href="#none"><span>계약서 관리</span></a>
+                </li>
+                <li>
+                    <a href="delete_project_list.html"><span>삭제 목록 관리</span></a>
+                </li>
+                <li>
+                    <a href="#none"><span>로그아웃</span></a>
+                </li>
             </ul>
         </div>
         <!-- //#snb -->
@@ -76,7 +91,7 @@
 
                 <div class="contArea">
                     <div class="step_wrap">
-                        <!-- [D] .step_list li에 addClass('active')하면 활성화됨 -->
+                        <!-- [D] .step_list li 중 현재 단계라면 addClass('active'), 완료되어 지나간 단계라면 addClass('done') 해주세요. -->
                         <ul class="step_list">
                             <li class="active done">Step1. 프로젝트 정보</li>
                             <li class="active">Step2. 태그 설정</li>
@@ -85,8 +100,105 @@
                         </ul>
                     </div>
 
+                    <div class="contBox">
+                        <dl>
+                            <dt>일반 태그 목록 선택</dt>
+                            <dd>
+                                <!-- [D] 21.11.23 데이터 없을 경우 표시할 문구로 div.tag_empty에 removeClass('on')하면 보여지지 않습니다.  -->
+                                <div class="tag_empty">
+                                    <p>등록된 태그 목록이 없습니다.</p>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div class="tag_tit">
+                                            <div class="radioBox">
+                                                <!-- [D] input[type="radio"]의 id와 label의 for값을 동일하게 줘야함 -->
+                                                <input type="radio" name="data_type01" id="radio1" checked="">
+                                                <label for="radio1">실외 태깅_차량_탈것</label>
+                                            </div>
+                                            <div class="btnBox">
+                                                <button type="button" class="btn_tag open active" title="태그 그룹 열기">
+                                                    <span class="hide">태그 그룹 열기</span>
+                                                </button>
+                                                <button type="button" class="btn_tag close" title="태그 그룹 접기">
+                                                    <span class="hide">태그 그룹 접기</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <ul class="tag_list">
+                                            <li>나무</li>
+                                            <li>신호등</li>
+                                            <li>고라니</li>
+                                            <li>왜가리</li>
+                                            <li>멧돼지</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <div class="tag_tit">
+                                            <div class="radioBox">
+                                                <!-- [D] input[type="radio"]의 id와 label의 for값을 동일하게 줘야함 -->
+                                                <input type="radio" name="data_type01" id="radio2" checked="">
+                                                <label for="radio2">객체 태깅</label>
+                                            </div>
+                                            <div class="btnBox">
+                                                <button type="button" class="btn_tag open active" title="태그 그룹 열기">
+                                                    <span class="hide">태그 그룹 열기</span>
+                                                </button>
+                                                <button type="button" class="btn_tag close" title="태그 그룹 접기">
+                                                    <span class="hide">태그 그룹 접기</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <ul class="tag_list">
+                                            <li>나무</li>
+                                            <li>신호등</li>
+                                            <li>고라니</li>
+                                            <li>왜가리</li>
+                                            <li>멧돼지</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>메타데이터 태그 선택 <span>*중복선택 가능</span></dt>
+                            <dd>
+                                <!-- [D] 21.11.23 데이터 없을 경우 표시할 문구로 div.tag_empty에 removeClass('on')하면 보여지지 않습니다.  -->
+                                <div class="tag_empty">
+                                    <p>등록된 메타데이터 태그가 없습니다.</p>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div class="tag_tit">
+                                            <div class="chkBox">
+                                                <!-- [D] input[type="checkbox"]의 id와 label의 for값을 동일하게 줘야함 -->
+                                                <input type="checkbox" id="chk01">
+                                                <label for="chk01">날씨</label>
+                                            </div>
+                                            <div class="btnBox">
+                                                <button type="button" class="btn_tag open active" title="태그 그룹 열기">
+                                                    <span class="hide">태그 그룹 열기</span>
+                                                </button>
+                                                <button type="button" class="btn_tag close" title="태그 그룹 접기">
+                                                    <span class="hide">태그 그룹 접기</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <ul class="tag_list">
+                                            <li>맑음</li>
+                                            <li>흐림</li>
+                                            <li>비</li>
+                                            <li>눈</li>
+                                            <li>태풍</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </div>
+
                     <div class="btnBox">
-                        <a href="project_regist_step01.html" class="btn_primary_rect">이전</a>
+                        <a href="project_regist_step01.html" class="btn_primary_rect prev">이전</a>
                         <a href="project_regist_step03.html" class="btn_primary_rect blue">다음</a>
                     </div>
                 </div>
@@ -104,7 +216,20 @@
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-        
+        // 태그 목록 테이블 내 태그 수정, 등록 버튼
+        $('.btn_tag').on('click', function(){
+            var thisBtnBox = $(this).parent('.btnBox'),
+                thisparentLi = $(this).parents('.tag_tit');
+                
+            $(this).removeClass('active');
+            if($(this).hasClass('open')){
+                thisBtnBox.find('.btn_tag.close').addClass('active');
+                thisparentLi.siblings('.tag_list').slideDown(200);
+            }else if($(this).hasClass('close')){
+                thisBtnBox.find('.btn_tag.open').addClass('active');
+                thisparentLi.siblings('.tag_list').slideUp(200);
+            }
+        });
     });
 });
 </script>

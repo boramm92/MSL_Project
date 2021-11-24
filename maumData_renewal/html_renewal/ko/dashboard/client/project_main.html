@@ -32,7 +32,7 @@
 <script type="text/javascript" src="../../../../assets_renewal/js/jquery-migrate-3.3.1.min.js"></script>
 <script type="text/javascript" src="../../../../assets_renewal/js/dashboard.js"></script>
 
-<title>Project(Client) - Main || Dashboard</title>
+<title>프로젝트 관리(Client) - Main || Dashboard</title>
 </head>
 <body>
 <!-- #wrap -->
@@ -48,20 +48,35 @@
                     </a>
                 </h1>
                 <button type="button" class="btn_ham" title="전체메뉴">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span>전체 메뉴</span>
                 </button>
             </div>
             <div class="account"><span>H&M(=헤네스앤모리츠)슈퍼</span></div>
             <ul class="nav">
-                <li><a href="workspace_main.html">워크스페이스 관리</a></li>
-                <li class="active"><a href="project_main.html">프로젝트 관리</a></li>
-                <li><a href="#none">작업현황 통계</a></li>
-                <li><a href="#none">작업자 관리</a></li>
-                <li><a href="#none">문의 관리</a></li>
-                <li><a href="#none">계약서 관리</a></li>
-                <li><a href="#none">로그아웃</a></li>
+                <li>
+                    <a href="workspace_main.html"><span>워크스페이스 관리</span></a>
+                </li>
+                <li class="active">
+                    <a href="project_main.html"><span>프로젝트 관리</span></a>
+                </li>
+                <li>
+                    <a href="project_state_main.html"><span>작업현황 통계</span></a>
+                </li>
+                <li>
+                    <a href="#none"><span>작업자 관리</span></a>
+                </li>
+                <li>
+                    <a href="inquiry_main.html"><span>문의 관리</span></a>
+                </li>
+                <li>
+                    <a href="#none"><span>계약서 관리</span></a>
+                </li>
+                <li>
+                    <a href="delete_project_list.html"><span>삭제 목록 관리</span></a>
+                </li>
+                <li>
+                    <a href="#none"><span>로그아웃</span></a>
+                </li>
             </ul>
         </div>
         <!-- //#snb -->
@@ -111,7 +126,7 @@
                             <div class="switchBox">
                                 <!-- [D] input[type="checkbox"]의 id와 label의 for값을 동일하게 줘야함 -->
                                 <input type="checkbox" id="expireWorkspace">
-                                <label for="expireWorkspace">기간만료 워크스페이스 보기</label>
+                                <label for="expireWorkspace">기간만료 프로젝트 숨김</label>
                             </div>
 
                             <div class="srchBox">
@@ -122,7 +137,7 @@
                             </div>
                         </div>
 
-                        <div class="tblBox icld_chk">
+                        <div class="tblBox type01 icld_chk">
                             <table data-tbl-name="project" summary="프로젝트 명, 워크스페이스 명, 데이터 유형, 가공 유형, 프로젝트 상태, 시작일, 종료일로 구성">
                                 <caption class="hide">프로젝트 목록</caption>
                                 <colgroup>
@@ -189,7 +204,7 @@
                                         <td>A 그룹</td>
                                         <td>Image</td>
                                         <td>Bounding Box</td>
-                                        <td>일시 중지</td>
+                                        <td>중단</td>
                                         <td>2021-07-01</td>
                                         <td>2021-07-30</td>
                                     </tr>
@@ -229,7 +244,7 @@
 
                 <div class="pagingArea">
 					<div class="btnBox fl">
-						<button type="button" class="btn_primary_rect btn_list_remove" disabled>삭제</button>
+						<button type="button" class="btn_primary_rect blue btn_list_remove" disabled>삭제</button>
 					</div>
 
 					<div class="paging">
@@ -381,7 +396,9 @@
                     </div>
 
                     <div class="btnBox">
-                        <button class="btn_primary_rect">작업중단</button>
+                        <!-- [D] '작업중단, 시작하기' 버튼에 addClass('active')하면 나타남 -->
+                        <button class="btn_primary_rect btn_prjt_stop active">작업중단</button>
+                        <button class="btn_primary_rect btn_prjt_start">시작하기</button>
                         <a href="#none" class="btn_primary_rect btn_aside_modify">수정하기</a>
                     </div>
                 </div>
@@ -399,7 +416,16 @@
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-        
+        // aside '작업중단, 시작하기' 버튼
+        $('#project .aside .btnBox button').on('click', function(){
+            $(this).removeClass('active');
+
+            if($(this).is('.btn_prjt_stop')){
+                $('.btn_prjt_start').addClass('active');
+            }else if($(this).is('.btn_prjt_start')){
+                $('.btn_prjt_stop').addClass('active');
+            }
+        });
     });
 });
 </script>

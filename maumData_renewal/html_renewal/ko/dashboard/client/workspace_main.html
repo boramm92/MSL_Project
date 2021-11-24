@@ -32,7 +32,7 @@
 <script type="text/javascript" src="../../../../assets_renewal/js/jquery-migrate-3.3.1.min.js"></script>
 <script type="text/javascript" src="../../../../assets_renewal/js/dashboard.js"></script>
 
-<title>Work Space(Client) - Main || Dashboard</title>
+<title>워크스페이스 관리(Client) - Main || Dashboard</title>
 </head>
 <body>
 <!-- #wrap -->
@@ -47,21 +47,36 @@
                         <img src="../../../../assets_renewal/images/logo_maumData_m.svg" alt="maum DATA logo">
                     </a>
                 </h1>
-                <button type="button" class="btn_ham" title="전체메뉴">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <button type="button" class="btn_ham">
+                    <span>전체 메뉴</span>
                 </button>
             </div>
             <div class="account"><span>H&M(=헤네스앤모리츠)슈퍼</span></div>
             <ul class="nav">
-                <li class="active"><a href="workspace_main.html">워크스페이스 관리</a></li>
-                <li><a href="project_main.html">프로젝트 관리</a></li>
-                <li><a href="#none">작업현황 통계</a></li>
-                <li><a href="#none">작업자 관리</a></li>
-                <li><a href="#none">문의 관리</a></li>
-                <li><a href="#none">계약서 관리</a></li>
-                <li><a href="#none">로그아웃</a></li>
+                <li class="active">
+                    <a href="workspace_main.html"><span>워크스페이스 관리</span></a>
+                </li>
+                <li>
+                    <a href="project_main.html"><span>프로젝트 관리</span></a>
+                </li>
+                <li>
+                    <a href="project_state_main.html"><span>작업현황 통계</span></a>
+                </li>
+                <li>
+                    <a href="#none"><span>작업자 관리</span></a>
+                </li>
+                <li>
+                    <a href="inquiry_main.html"><span>문의 관리</span></a>
+                </li>
+                <li>
+                    <a href="#none"><span>계약서 관리</span></a>
+                </li>
+                <li>
+                    <a href="delete_project_list.html"><span>삭제 목록 관리</span></a>
+                </li>
+                <li>
+                    <a href="#none"><span>로그아웃</span></a>
+                </li>
             </ul>
         </div>
         <!-- //#snb -->
@@ -74,7 +89,7 @@
                     <h3>워크스페이스 관리</h3>
 
                     <div class="btnBox">
-                        <a href="workspace_regist_modify.html" class="btn_primary_rect blue btn_rgst">워크스페이스 등록</a>
+                        <a href="workspace_regist_step01.html" class="btn_primary_rect blue btn_rgst">워크스페이스 등록</a>
                     </div>
                 </div>
 
@@ -102,7 +117,7 @@
                             <div class="switchBox">
                                 <!-- [D] input[type="checkbox"]의 id와 label의 for값을 동일하게 줘야함 -->
                                 <input type="checkbox" id="expireWorkspace">
-                                <label for="expireWorkspace">기간만료 워크스페이스 보기</label>
+                                <label for="expireWorkspace">기간만료 워크스페이스 숨김</label>
                             </div>
 
                             <div class="srchBox">
@@ -113,26 +128,21 @@
                             </div>
                         </div>
 
-                        <div class="tblBox icld_chk">
+                        <div class="tblBox type01">
                             <table data-tbl-name="workspace" summary="워크스페이스 명, 워크스페이스 상태, 접근 권한, 인력 모집 현황, 시작일, 종료일로 구성">
                                 <caption class="hide">워크스페이스 목록</caption>
                                 <colgroup>
-                                    <col width="80px"><col width="30%"><col><col><col>
+                                    <col width="30%"><col><col><col>
                                     <col><col>
                                 </colgroup>
 
                                 <thead>
                                     <tr>
-                                        <th scope="col">
-                                            <div class="chkBoxOnly">
-                                                <input type="checkbox" class="allChk">
-                                            </div>
-                                        </th>
                                         <th scope="col">워크스페이스 명</th>
                                         <th scope="col">워크스페이스 상태</th>
                                         <th scope="col">접근 권한 
                                             <div class="help_msg">
-                                                <div class="viewBox" style="top:-216px; left:0; width:298px; height:186px;">
+                                                <div class="viewBox">
                                                     <dl>
                                                         <dt>허용 필요</dt>
                                                         <dd>지원자를 받은 후, 지정된 워커들만 접근하는 비공개 워크스페이스입니다.</dd>
@@ -152,14 +162,9 @@
 
                                 <tbody>
                                     <tr>
-                                        <td class="empty" scope="row" colspan="7">등록된 워크스페이스가 없습니다.</td>
+                                        <td class="empty" scope="row" colspan="6">등록된 워크스페이스가 없습니다.</td>
                                     </tr>
                                     <tr>
-                                        <td scope="row">
-                                            <div class="chkBoxOnly">
-                                                <input type="checkbox" class="eachChk">
-                                            </div>
-                                        </td>
                                         <td>영역지정ABCDEFFGHIJFGTTTRREEERRT그룹</td>
                                         <td>기간 만료</td>
                                         <td>제한 없음</td>
@@ -168,11 +173,6 @@
                                         <td>2021-07-30</td>
                                     </tr>
                                     <tr>
-                                        <td scope="row">
-                                            <div class="chkBoxOnly">
-                                                <input type="checkbox" class="eachChk">
-                                            </div>
-                                        </td>
                                         <td>영역지정A그룹</td>
                                         <td>게시 중</td>
                                         <td>허용 필요</td>
@@ -181,11 +181,6 @@
                                         <td>2021-07-30</td>
                                     </tr>
                                     <tr>
-                                        <td scope="row">
-                                            <div class="chkBoxOnly">
-                                                <input type="checkbox" class="eachChk">
-                                            </div>
-                                        </td>
                                         <td>영역지정A그룹</td>
                                         <td>게시 중</td>
                                         <td>허용 필요</td>
@@ -200,10 +195,6 @@
                 </div>
 
                 <div class="pagingArea">
-					<div class="btnBox fl">
-						<button type="button" class="btn_primary_rect btn_list_remove" disabled>삭제</button>
-					</div>
-
 					<div class="paging">
 						<a href="#none" class="btn_paging first">
                             <span class="hide">처음 페이지</span>
@@ -276,7 +267,8 @@
                                 <h4>작업자 지정 현황</h4>
 
                                 <div class="fr">
-                                    <a href="#none" class="btn_shortcut">작업자 지정 바로가기</a>
+                                    <!-- [D] 지원자가 0명일 때 .btn_shortcut 버튼 노출 안함 -->
+                                    <a href="worker_set.html" class="btn_shortcut">작업자 지정 바로가기</a>
                                     <div class="switchBox">
                                         <!-- [D] input[type="checkbox"]의 id와 label의 for값을 동일하게 줘야함 -->
                                         <input type="checkbox" id="rcrt_cplt">
@@ -286,7 +278,7 @@
                             </div>
 
                             <div class="cont">
-                                <div class="lineBox fl">
+                                <div class="lineBox">
                                     <!-- [D] 모집 상태에 따라 .state span에 addClass('on') 해주면 상태값 보여짐 -->
                                     <div class="state">
                                         <span class="on">모집 중</span>
@@ -297,16 +289,34 @@
                                         <dd>100</dd>
                                     </dl>
                                 </div>
-                                <div class="fr">
-                                    <dl class="lineBox">
-                                        <dt>가공 작업자</dt>
-                                        <dd><span>700</span>명</dd>
-                                    </dl>
-                                    <dl class="lineBox">
-                                        <dt>검수 작업자</dt>
-                                        <dd><span>50</span>명</dd>
-                                    </dl>
-                                </div>
+                                <dl class="lineBox">
+                                    <dt>가공 작업자</dt>
+                                    <dd><span>700</span>명</dd>
+                                </dl>
+                                <dl class="lineBox">
+                                    <dt>검수 작업자</dt>
+                                    <dd><span>50</span>명</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="contBox">
+                            <div class="tit">
+                                <h4>태그 등록 현황</h4>
+                            </div>
+
+                            <div class="cont">
+                                <dl class="lineBox">
+                                    <dt>일반 태그</dt>
+                                    <dd><span>999</span>개</dd>
+                                </dl>
+                                <dl class="lineBox">
+                                    <dt>태그 그룹</dt>
+                                    <dd><span>999</span>개</dd>
+                                </dl>
+                                <dl class="lineBox">
+                                    <dt>메타데이터 태그</dt>
+                                    <dd><span>999</span>개</dd>
+                                </dl>
                             </div>
                         </div>
                         <div class="contBox">

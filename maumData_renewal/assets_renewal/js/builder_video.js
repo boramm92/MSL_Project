@@ -167,7 +167,7 @@ $(document).ready(function(){
 
             // 첫번째 검색어에 스크롤 이동
             $('.scrt_txt').animate({
-                scrollTop: $('#findElement1').offset().top - $('.scrt_txt').offset().top * 2 + $('.scrt_txt').scrollTop() + 650
+                scrollTop: $('#findElement1').offset().top - $('.scrt_txt').offset().top * 2 + $('.scrt_txt').scrollTop() + 650 + ($('.comments').outerHeight() - $('.comments .tit').outerHeight())
             }, 200);
 
             $('.findElement').removeClass('selected');

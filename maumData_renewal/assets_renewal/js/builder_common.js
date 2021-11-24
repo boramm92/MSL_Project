@@ -166,7 +166,45 @@ $(document).ready(function(){
         if($(this).is('.btn_add_comment')){
             thisParentList.find('.editCommentBox').slideToggle(200);
         }
-    });  
+    }); 
+    
+    // 파일명 텍스트 복사하기
+    $('.btn_clipboard').on('click', function(){  
+        var clipText = $(this).siblings('.fileName').text();    
+        $('#clipTarget').val(clipText);
+        $('#clipTarget').select();
+        document.execCommand('Copy');
+    });
+
+    // contextmenu 열기
+    // [D] contextmenu가 등장하는 영역을 임의로 .work_space에 한정하였지만 필요 영역으로 수정하시면 됩니다.
+    $('.work_space').contextmenu(function(e){
+        e.preventDefault();
+
+        var workSpaceWidth = $('.work_space').outerWidth();
+        var contextMenuWidth = $('#contextMenu').outerWidth();
+
+        if(e.pageX < workSpaceWidth - contextMenuWidth){
+            $('#contextMenu').css({
+                display: 'block',
+                left: e.pageX,
+                top: e.pageY
+            });
+        }else{
+            $('#contextMenu').css({
+                display: 'block',
+                left: e.pageX - contextMenuWidth,
+                top: e.pageY
+            });
+        }
+    });
+
+    // .work_space가 아닌 영역을 클릭 할 시 contextmenu 끄기
+    $('html').on('click', function(e){
+        if(!$(e.target).is('.work_space')){
+            $('#contextMenu').hide();
+        }
+    });
 
     // -------------------- 검수자 화면 -------------------- //
     // 태그 리스트 세부 코멘트 리스트 내 버튼 클릭 시 

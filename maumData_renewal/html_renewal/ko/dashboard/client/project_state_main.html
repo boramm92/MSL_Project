@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no">
+
+<!-- Cache reset -->
+<meta http-equiv="Expires" content="Mon, 06 Jan 2016 00:00:01 GMT">
+<meta http-equiv="Expires" content="-1">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+
+<!-- Open Graph Tag -->
+<meta property="og:title"         content="마음데이터 - AI 데이터 가공의 시작">
+<meta property="og:type"          content="website"> <!-- 웹 페이지 타입 -->
+<!-- <meta property="og:url"           content=""> -->
+<meta property="og:image"         content="">
+<meta property="og:description"   content="비즈니스 맞춤형 AI 데이터를 제공합니다.">
+
+<!-- icon_favicon -->
+<!-- <link rel="apple-touch-icon-precomposed" href="">
+<link rel="shortcut icon" type="image/x-icon" href=""> -->
+
+<!---------------------- General Resources ---------------------->
+<!-- General CSS -->
+<link rel="stylesheet" type="text/css" href="../../../../assets_renewal/css/dashboard.css">
+
+<!-- General Script -->
+<script type="text/javascript" src="../../../../assets_renewal/js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="../../../../assets_renewal/js/jquery-migrate-3.3.1.min.js"></script>
+<script type="text/javascript" src="../../../../assets_renewal/js/dashboard.js"></script>
+
+<title>작업현황 통계(Client) - Main || Dashboard</title>
+</head>
+<body>
+<!-- #wrap -->
+<div id="wrap">
+    <!-- #container -->
+    <div id="container">
+        <!-- #snb -->
+        <div id="snb">
+            <div class="topBox">
+                <h1 class="logo">
+                    <a href="workspace_main.html">
+                        <img src="../../../../assets_renewal/images/logo_maumData_m.svg" alt="maum DATA logo">
+                    </a>
+                </h1>
+                <button type="button" class="btn_ham" title="전체메뉴">
+                    <span>전체 메뉴</span>
+                </button>
+            </div>
+            <div class="account"><span>H&M(=헤네스앤모리츠)슈퍼</span></div>
+            <ul class="nav">
+                <li>
+                    <a href="workspace_main.html"><span>워크스페이스 관리</span></a>
+                </li>
+                <li>
+                    <a href="project_main.html"><span>프로젝트 관리</span></a>
+                </li>
+                <li class="active">
+                    <a href="project_state_main.html"><span>작업현황 통계</span></a>
+                </li>
+                <li>
+                    <a href="#none"><span>작업자 관리</span></a>
+                </li>
+                <li>
+                    <a href="inquiry_main.html"><span>문의 관리</span></a>
+                </li>
+                <li>
+                    <a href="#none"><span>계약서 관리</span></a>
+                </li>
+                <li>
+                    <a href="delete_project_list.html"><span>삭제 목록 관리</span></a>
+                </li>
+                <li>
+                    <a href="#none"><span>로그아웃</span></a>
+                </li>
+            </ul>
+        </div>
+        <!-- //#snb -->
+
+        <!-- #contents -->
+        <div id="contents">
+            <!-- .content -->
+            <div class="content project_state">
+                <div class="titArea">
+                    <h3>작업현황 통계</h3>
+                </div>
+
+                <div class="tbl_tap_wrap">
+                    <ul class="tapBtn">
+                        <li class="active">전체 프로젝트 <span class="caseNum">99999</span></li>
+                        <li>가공완료 프로젝트 <span class="caseNum">20</span></li>
+                        <li>진행중인 프로젝트 <span class="caseNum">20</span></li>
+                        <li>가공대기 프로젝트 <span class="caseNum">20</span></li>
+                        <li>중단 프로젝트 <span class="caseNum">20</span></li>
+                    </ul>
+
+                    <div class="tapCont">
+                        <div class="filterArea">
+                            <select class="select">
+                                <option value="">워크스페이스 명</option>
+                                <option value="">A 그룹</option>
+                                <option value="">B 그룹</option>
+                            </select>
+                            <select class="select">
+                                <option value="">데이터 유형</option>
+                                <option value="">이미지 Image</option>
+                                <option value="">텍스트 Text</option>
+                                <option value="">오디오 Audio</option>
+                                <option value="">비디오 Video</option>
+                            </select>
+                            <select class="select">
+                                <option value="">가공 유형</option>
+                                <option value="">유형1</option>
+                                <option value="">유형2</option>
+                                <option value="">유형3</option>
+                            </select>
+
+                            <div class="switchBox">
+                                <!-- [D] input[type="checkbox"]의 id와 label의 for값을 동일하게 줘야함 -->
+                                <input type="checkbox" id="expireWorkspace">
+                                <label for="expireWorkspace">기간만료 프로젝트 숨김</label>
+                            </div>
+
+                            <div class="srchBox">
+                                <input type="text" placeholder="검색어를 입력해주세요.">
+                                <button type="button" class="btn_srch" title="검색">
+                                    <span class="hide">검색</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="tblBox type01 icld_chk">
+                            <table data-tbl-name="projectState" summary="프로젝트 명, 워크스페이스 명, 데이터 유형, 가공 유형, 프로젝트 상태, 시작일, 종료일로 구성">
+                                <caption class="hide">프로젝트 목록</caption>
+                                <colgroup>
+                                    <col width="80px"><col width="20%"><col width="20%"><col><col>
+                                    <col><col><col>
+                                </colgroup>
+
+                                <thead>
+                                    <tr>
+                                        <th scope="col">
+                                            <div class="chkBoxOnly">
+                                                <input type="checkbox" class="allChk">
+                                            </div>
+                                        </th>
+                                        <th scope="col">프로젝트 명</th>
+                                        <th scope="col">워크스페이스 명</th>
+                                        <th scope="col">데이터 유형</th>
+                                        <th scope="col">가공 유형</th>
+                                        <th scope="col">프로젝트 상태</th>
+                                        <th scope="col">시작일</th>
+                                        <th scope="col">종료일</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <td class="empty" scope="row" colspan="8">등록된 프로젝트가 없습니다.</td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">
+                                            <div class="chkBoxOnly">
+                                                <input type="checkbox" class="eachChk">
+                                            </div>
+                                        </td>
+                                        <td>영역지정ABCDEFFGHIJFGTTTRREEERRT그룹</td>
+                                        <td>A 그룹</td>
+                                        <td>Image</td>
+                                        <td>Bounding Box</td>
+                                        <td>가공 완료</td>
+                                        <td>2021-07-01</td>
+                                        <td>2021-07-30</td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">
+                                            <div class="chkBoxOnly">
+                                                <input type="checkbox" class="eachChk">
+                                            </div>
+                                        </td>
+                                        <td>영역지정ABCDEFFGHIJFGTTTRREEERRT그룹</td>
+                                        <td>A 그룹</td>
+                                        <td>Image</td>
+                                        <td>Bounding Box</td>
+                                        <td>진행 중</td>
+                                        <td>2021-07-01</td>
+                                        <td>2021-07-30</td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">
+                                            <div class="chkBoxOnly">
+                                                <input type="checkbox" class="eachChk">
+                                            </div>
+                                        </td>
+                                        <td>영역지정ABCDEFFGHIJFGTTTRREEERRT그룹</td>
+                                        <td>A 그룹</td>
+                                        <td>Image</td>
+                                        <td>Bounding Box</td>
+                                        <td>중단</td>
+                                        <td>2021-07-01</td>
+                                        <td>2021-07-30</td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">
+                                            <div class="chkBoxOnly">
+                                                <input type="checkbox" class="eachChk">
+                                            </div>
+                                        </td>
+                                        <td>영역지정ABCDEFFGHIJFGTTTRREEERRT그룹</td>
+                                        <td>A 그룹</td>
+                                        <td>Image</td>
+                                        <td>Bounding Box</td>
+                                        <td>대기</td>
+                                        <td>2021-07-01</td>
+                                        <td>2021-07-30</td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">
+                                            <div class="chkBoxOnly">
+                                                <input type="checkbox" class="eachChk">
+                                            </div>
+                                        </td>
+                                        <td>영역지정ABCDEFFGHIJFGTTTRREEERRT그룹</td>
+                                        <td>A 그룹</td>
+                                        <td>Image</td>
+                                        <td>Bounding Box</td>
+                                        <td>기간 만료</td>
+                                        <td>2021-07-01</td>
+                                        <td>2021-07-30</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pagingArea">
+					<div class="btnBox fl">
+						<button type="button" class="btn_primary_rect blue btn_list_remove" disabled>삭제</button>
+					</div>
+
+					<div class="paging">
+						<a href="#none" class="btn_paging first">
+                            <span class="hide">처음 페이지</span>
+                        </a>
+						<a href="#none" class="btn_paging prev">
+                            <span class="hide">이전 페이지</span>
+                        </a>
+						<a href="#none" class="current">1</a>
+						<a href="#none">2</a>
+						<a href="#none">3</a>
+						<a href="#none">4</a>
+						<a href="#none">5</a>
+						<a href="#none" class="btn_paging next">
+                            <span class="hide">다음 페이지</span>
+                        </a>
+						<a href="#none" class="btn_paging last">
+                            <span class="hide">마지막 페이지</span>
+                        </a>
+					</div>
+				</div>
+            </div>
+            <!-- //.content -->
+
+            <!-- .asideWrap -->
+            <div id="projectState" class="asideWrap">
+                <div class="aside">
+                    <button type="button" class="btn_aside_close">
+                        <span class="hide">닫기</span>
+                    </button>
+
+                    <div class="contArea">
+                        <div class="contBox">
+                            <div class="tit">
+                                <h4>프로젝트 정보</h4>
+                            </div>
+
+                            <div class="cont">
+                                <dl class="define">
+                                    <dt>워크스페이스 명:</dt>
+                                    <dd>세그멘테이션_모음_건축물</dd>
+                                </dl>
+                                <dl class="define">
+                                    <dt>프로젝트 명:</dt>
+                                    <dd>자동차 세그멘테이션_123</dd>
+                                </dl>
+                                <dl class="define">
+                                    <dt>데이터 유형:</dt>
+                                    <dd>비디오 VIDEO</dd>
+                                </dl>
+                                <dl class="define">
+                                    <dt>가공 유형:</dt>
+                                    <dd>DLEOIPPOEJKLLLLL:DJKJKLKHJKLOIUUHJKHKJHJKHJKHJ</dd>
+                                </dl>
+                                <dl class="define">
+                                    <dt>시작 일자:</dt>
+                                    <dd>2021. 03. 01</dd>
+                                </dl>
+                                <dl class="define">
+                                    <dt>종료 일자:</dt>
+                                    <dd>2021. 09. 01</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="contBox">
+                            <div class="tit">
+                                <h4>프로젝트 작업 현황</h4>
+                            </div>
+
+                            <div class="cont">
+                                <div class="chartBox">
+                                    <canvas id="projectStateChart"></canvas>
+                                </div>
+                                <div class="legendBox">
+                                    <dl>
+                                        <dt class="hide">작업 현황</dt>
+                                        <dd>
+                                            <ul>
+                                                <li>
+                                                    <p class="legend">가공 대기</p>
+                                                    <p class="case"><span>1,000</span>건</p>
+                                                </li>
+                                                <li>
+                                                    <p class="legend">작업 중</p>
+                                                    <p class="case"><span>2,000</span>건</p>
+                                                </li>
+                                                <li>
+                                                    <p class="legend">가공 완료</p>
+                                                    <p class="case"><span>2,000</span>건</p>
+                                                </li>
+                                                <li>
+                                                    <p class="legend">작업 불가</p>
+                                                    <p class="case"><span>50</span>건</p>
+                                                </li>
+                                            </ul>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contBox">
+                            <div class="tit">
+                                <h4>데이터 상태 현황</h4>
+                            </div>
+
+                            <div class="cont">
+                                <div class="chartBox fl">
+                                    <canvas id="dataStateChart"></canvas>
+                                    <p class="total_per"><span>89%</span> 완료</p>
+                                    <p class="total_case">총: <span>93,099</span>건</p>
+                                </div>
+                                <div class="legendBox fr">
+                                    <dl class="progress">
+                                        <dt>진행 현황</dt>
+                                        <dd>
+                                            <ul>
+                                                <li>
+                                                    <p class="legend">가공 대기</p>
+                                                    <p><span class="per">99</span>% / <span class="case">1,230</span>건</p>
+                                                </li>
+                                                <li>
+                                                    <p class="legend">검수 중</p>
+                                                    <p><span class="per">80</span>% / <span class="case">2,456</span>건</p>
+                                                </li>
+                                                <li>
+                                                    <p class="legend">가공 중</p>
+                                                    <p><span class="per">76</span>% / <span class="case">90</span>건</p>
+                                                </li>
+                                                <li>
+                                                    <p class="legend">작업 불가요청</p>
+                                                    <p><span class="per">90</span>% / <span class="case">409</span>건</p>
+                                                </li>
+                                            </ul>
+                                        </dd>
+                                    </dl>
+                                    <dl class="complete">
+                                        <dt>완료</dt>
+                                        <dd>
+                                            <ul>
+                                                <li>
+                                                    <p class="legend">가공 완료</p>
+                                                    <p><span class="per">30</span>% / <span class="case">1,230</span>건</p>
+                                                </li>
+                                                <li>
+                                                    <p class="legend">작업 불가</p>
+                                                    <p><span class="per">80</span>% / <span class="case">2,456</span>건</p>
+                                                </li>
+                                            </ul>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contBox">
+                            <div class="tit">
+                                <h4>아이디 별 작업 현황</h4>
+
+                                <div class="fr">
+                                    <a href="#none" class="btn_shortcut">아이디 별 현황 더보기</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="btnBox">
+                        <a href="#none" class="btn_primary_rect btn_aside_modify">수정하기</a>
+                    </div>
+                </div>
+            </div>
+            <!-- //.asideWrap -->
+        </div> 
+        <!-- //#contents -->
+    </div>
+    <!-- //#container -->
+</div>
+<!-- //#wrap -->
+
+<!---------------------- Local Resources ---------------------->
+<!-- Local CSS -->
+<link rel="stylesheet" type="text/css" href="../../../../assets_renewal/css/Chart.min.css">
+
+<!-- Local Script Library -->
+<script type="text/javascript" src="../../../../assets_renewal/js/Chart.min.js"></script>
+
+<!-- Local Script -->
+<script type="text/javascript">
+// [D] 표시할 데이터를 임의로 만들어주는 랜덤함수로 개발 시에는 실제 데이터를 넣어주시면 됩니다. 
+var randomScalingFactor = function() {
+    return Math.round(Math.random() * 100);
+};
+
+// 프로젝트 작업 현황 차트        
+var config = {
+    type: 'horizontalBar',
+    data: {
+        datasets: [{
+            label: '가공 대기',
+            data: [10],
+            backgroundColor: '#b5daf2'
+        },{
+            label: '작업 중',
+            data: [25],
+            backgroundColor: '#2b6fad'
+        },{
+            label: '가공 완료',
+            data: [25],
+            backgroundColor: '#8b9dcb'
+        },{
+            label: '작업 불가',
+            data: [40],
+            backgroundColor: '#cad4e0'
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+            display: false,
+        },
+        tooltips: {
+            enabled: false
+        },
+        hover: {
+            mode: null
+        },
+        // borderRadius: 5,
+        scales: {
+            xAxes: [{
+                display: false,
+                ticks: {
+                    min: 0,
+                    max: 100,
+                    callback: function(value){return value + '%'}
+                },
+				scaleLabel: {
+					display: false
+				},
+				gridLines: {
+                    display: false
+				}, 
+				stacked: true
+			}],
+            yAxes: [{
+                display: false,
+                barPercentage: 1,
+                scaleLabel: {
+					display: false
+				},
+				gridLines: {
+					display: false
+				},
+				stacked: true
+			}]
+        }
+    }
+}; 
+
+var ctxProjectState = document.getElementById('projectStateChart').getContext('2d');    
+window.myBar = new Chart(ctxProjectState, config);
+
+
+
+// 데이터 상태 현황 차트
+var config = {
+    type: 'doughnut',
+    data: {
+        labels: [
+            '가공 대기', 
+            '검수 중', 
+            '가공 중', 
+            '작업 불가요청', 
+            '가공 완료',
+            '작업 불가'
+        ],
+        // datasets 적용 순서는 상단 labels 순서 참고
+        datasets: [{
+            data: [
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor()
+            ],          
+            backgroundColor: [
+                '#b5daf2',
+                '#191e80',
+                '#2b6fad',
+                '#162e55',
+                '#8b9dcb',
+                '#cad4e0'
+            ]
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+        	display: false
+        },
+        tooltips: {
+            enabled: false
+        },
+        hover: {
+            mode: null
+        }
+    }
+};
+
+var ctxDataState = document.getElementById('dataStateChart').getContext('2d');
+window.myDoughnut = new Chart(ctxDataState, config);
+</script>
+</body>
+</html>
