@@ -35,6 +35,7 @@
 /* button */
 .btn_primary {display:inline-block; height:38px; border:1px solid #151313; border-radius:19px; box-sizing:border-box; color:#151313; font-size:16px; letter-spacing:-0.16px; line-height:36px;}
 .btn_primary.btn_more {padding:0 56px 0 34px; background:url('../images/arw_right_bk.svg') top 50% right 34px no-repeat;}
+.btn_primary.btn_more:hover {border:1px solid #e83273; background:#e83273 url('../images/arw_right_w.svg') top 50% right 34px no-repeat; background-size:9px auto; color:#fff;}
 
 #btn_top {display:none; position:fixed; right:46px; bottom:46px; width:50px; height:50px; border-radius:50%; background:#292929 url('../images/ico_top.svg') 50% 50% no-repeat; transition:bottom 0.2s ease-out; z-index:50;}
 #btn_top.move {bottom:266px;}
@@ -108,7 +109,7 @@
 .comm_txt .svc {display:block; margin:0 0 16px; color:#151313; font-size:38px; font-weight:500; letter-spacing:-0.38px; line-height:36px; transform:translateY(100px); transition:all 0.4s ease-out; opacity:0;}
 .comm_txt .tit {color:#151313; font-size:54px; font-weight:700; letter-spacing:-0.54px; line-height:52px; transform:translateY(100px); transition:all 0.4s ease-out; opacity:0;}
 .comm_txt .desc {margin:20px 0 54px; color:#151313; font-size:18px; letter-spacing:-0.16px; line-height:27px; transform:translateY(100px); transition:all 0.4s ease-out; opacity:0;}
-.comm_txt .btn_primary {transform:translateY(100px); transition:all 0.4s ease-out; opacity:0;}
+.comm_txt .btn_primary {transform:translateY(100px); transition:background-color 0.4s ease-out; opacity:0;}
 .comm_txt.white .svc,
 .comm_txt.white .tit,
 .comm_txt.white .desc {color:#fff;}
@@ -174,6 +175,12 @@
 .stn.partner .cont .desc {margin:20px 0 26px; color:#151313; font-size:20px; letter-spacing:-0.2px; line-height:29px;}
 .stn.partner .cont strong {color:#151313; font-size:16px; letter-spacing:-0.16px; line-height:24px;}
 
+/* stn - background image */
+.main .stn.brand {background-image:url('../images/bg_sample01.png');}
+.main .stn.service {background-image:url('../images/bg_sample02.png');}
+.main .stn.steamBox {background-image:url('../images/bg_sample03.png');}
+.main .stn.homeBox {background-image:url('../images/bg_sample04.png');}
+
 
 /* -------------------- footer -------------------- */
 #footer .cont {padding:0;}
@@ -202,7 +209,7 @@
     #contents {padding:56px 0 0;}
     .cont {width:100%; padding:50px 20px; box-sizing:border-box;}
     .main .stn .cont {flex-direction:column; justify-content:flex-end; align-items:stretch; padding:0 20px;}
-    .main .stn:not(.visual) {height:600px;}
+    .main .stn:not(.visual) {height:450px;}
 
 
     /* -------------------- common -------------------- */
@@ -257,7 +264,7 @@
 
     /* -------------------- content -------------------- */
     /* comm_txt */
-    .comm_txt {margin:0 0 60px;}
+    .comm_txt {margin:0 0 80px;}
     .comm_txt .svc {margin:0 0 12px; font-size:15px; letter-spacing:-0.15px; line-height:18px;}
     .comm_txt .tit {font-size:20px; letter-spacing:-0.2px; line-height:20px;}
     .comm_txt .desc {margin:14px 0 20px; font-size:13px; letter-spacing:-0.13px; line-height:19px;}
@@ -298,23 +305,13 @@
     .event_bannerArea + .btn_primary:hover {border-color:inherit; background:none; color:inherit;}
 
     /* stn - visual */
+    .main .stn.visual .swiper-wrapper .swiper-slide {background-position:50% 20%;}
     .swiper-pagination-fraction {bottom:45px; width:90px; height:24px; margin-left:-45px; font-size:12px; letter-spacing:-0.12px; line-height:24px;}
     .swiper-pagination-fraction span {font-size:12px; letter-spacing:-0.12px; line-height:24px;}
     .swiper-button-next, .swiper-button-prev {display:none;}
 
-    /* stn - app */
-    .stn.app {padding:24px 0 28px;}
-    .stn.app .tit {margin:0 0 12px; font-size:18px; letter-spacing:-0.18px; line-height:20px;}
-    .stn.app .btnBox .btn_primary {display:block; width:160px; height:36px; margin:0 auto; font-size:12px; letter-spacing:-0.12px; line-height:34px;}
-    .stn.app .btnBox .btn_primary:hover {border:1px solid #b5b5b5; background:none; color:inherit;}
-    .stn.app .btnBox .btn_primary + .btn_primary {margin-top:14px;}
-
     /* stn - app(main) */
-    .main .stn.app {height:auto; padding:40px 0;}
-    .main .stn.app .tit {margin:0 0 20px; font-size:20px; line-height:29px;}
-    .main .stn.app .btnBox .btn_primary {width:158px; height:36px; margin:0 auto; line-height:34px;}
-    .main .stn.app .btnBox .btn_primary img {height:20px;}
-    .main .stn.app .btnBox .btn_primary + .btn_primary {margin-top:16px;}
+    .main .stn.app {height:auto !important; padding:40px 0;}
 
     /* stn - partner */
     .stn.partner .cont {padding:20px 20px 24px; background:none; text-align:center;}
@@ -325,8 +322,6 @@
 
     /* -------------------- footer -------------------- */
     #footer .cont {padding:0 20px;}
-    #footer .terms_privacy ul {text-align:center;}
-    #footer .terms_privacy ul li + li:before {height:14px;}
     #footer .terms_privacy ul li a {font-size:13px;}
     #footer .info {padding:20px 0 26px;}
     #footer .info .cont span {font-size:12px; letter-spacing:-0.12px; line-height:16px; vertical-align:top;}
@@ -334,8 +329,44 @@
     #footer .info .cont .info_list {margin:0 0 24px;}
     #footer .info .cont .info_list li {font-size:12px; letter-spacing:-0.12px; line-height:20px; vertical-align:top;}
     #footer .info .cont .info_list li + li:before {top:5px;}
-    #footer .info .cont .copyright {font-size:10px; letter-spacing:-0.1px; line-height:12px; text-align:center;}
+    #footer .info .cont .copyright {font-size:10px; letter-spacing:-0.1px; line-height:12px;}
     #footer .info .cont .sns {top:0; right:20px; bottom:auto;}
     #footer .info .cont .sns span {font-size:12px; letter-spacing:-0.12px; line-height:18px; vertical-align:top;}
     #footer .info .cont .sns img {width:18px;}
+}
+
+@media screen and (max-width:599px) {
+    /* -------------------- layout -------------------- */
+    .main .stn {background-position:50% 0;}
+    .main .stn:not(.visual) {height:calc(100vh - 56px);}
+
+
+    /* -------------------- content -------------------- */
+    /* comm_txt */
+    .comm_txt {margin:0 0 60px;}
+
+    /* stn - app */
+    .stn.app {padding:24px 0 28px;}
+    .stn.app .tit {margin:0 0 12px; font-size:18px; letter-spacing:-0.18px; line-height:20px;}
+    .stn.app .btnBox .btn_primary {display:block; width:160px; height:36px; margin:0 auto; font-size:12px; letter-spacing:-0.12px; line-height:34px;}
+    .stn.app .btnBox .btn_primary:hover {border:1px solid #b5b5b5; background:none; color:inherit;}
+    .stn.app .btnBox .btn_primary + .btn_primary {margin-top:14px;}
+
+    /* stn - app(main) */
+    .main .stn.app .tit {margin:0 0 20px; font-size:20px; line-height:29px;}
+    .main .stn.app .btnBox .btn_primary {width:158px; height:36px; margin:0 auto; line-height:34px;}
+    .main .stn.app .btnBox .btn_primary img {height:20px;}
+    .main .stn.app .btnBox .btn_primary + .btn_primary {margin-top:16px;}
+
+    /* stn - background image */
+    .main .stn.brand {background-image:url('../images/bg_sample01_m.png');}
+    .main .stn.service {background-image:url('../images/bg_sample02_m.png');}
+    .main .stn.steamBox {background-image:url('../images/bg_sample03_m.png');}
+    .main .stn.homeBox {background-image:url('../images/bg_sample04_m.png');}
+
+
+    /* -------------------- footer -------------------- */
+    #footer .terms_privacy ul {text-align:center;}
+    #footer .terms_privacy ul li + li:before {height:14px;}
+    #footer .info .cont .copyright {text-align:center;}
 }

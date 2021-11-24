@@ -6,10 +6,10 @@ $(document).ready(function(){
         var windowWidth = $(window).width(),
             scrollLocate = $(window).scrollTop();
 
-		if(windowWidth > 768 && scrollLocate > 80){
+		if(windowWidth > 599 && scrollLocate > 80){
 			$('#btn_top').fadeIn(200);
 		}
-		if(windowWidth > 768 && scrollLocate < 80){
+		if(windowWidth > 599 && scrollLocate < 80){
 			$('#btn_top').fadeOut(200);
 		}
         if(scrollLocate == $(document).height() - $(window).height()){
