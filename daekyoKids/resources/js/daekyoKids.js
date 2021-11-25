@@ -6,11 +6,11 @@ $(document).ready(function(){
         var windowWidth = $(window).width(),
             scrollLocate = $(window).scrollTop();
 
-		if(windowWidth > 599 && scrollLocate > 80){
-			$('#btn_top').fadeIn(200);
+		if(windowWidth >= 600 && scrollLocate > 80){
+			$('#btn_top').fadeIn();
 		}
-		if(windowWidth > 599 && scrollLocate < 80){
-			$('#btn_top').fadeOut(200);
+		if(windowWidth < 600 || scrollLocate < 80){
+			$('#btn_top').fadeOut();
 		}
         if(scrollLocate == $(document).height() - $(window).height()){
             $('#btn_top').addClass('move');
@@ -21,7 +21,7 @@ $(document).ready(function(){
 
     // page top 이동 버튼 클릭 시
     $('#btn_top').on('click', function(){
-        $('html').animate({scrollTop: 0,}, 400);
+        $('html').animate({scrollTop: 0,}, 200);
     });
 
 
