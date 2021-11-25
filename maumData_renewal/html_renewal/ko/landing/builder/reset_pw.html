@@ -56,15 +56,15 @@
                         <dl>
                             <dt>변경 비밀번호</dt>
                             <dd>
-                                <input type="password" class="ipt_txt">
+                                <input type="password" class="ipt_txt pswd_org">
                                 <small>영문,숫자, 특수문자를 조합하여 8-20자 이내로 입력해주세요.</small>
                             </dd>
                         </dl>
                         <dl>
                             <dt>비밀번호 확인</dt>
                             <dd>
-                                <!-- [D] 비밀번호 불일치 시 .ipt_txt에 addClass('error')해주면 에러표시 됨 -->
-                                <input type="password" class="ipt_txt error">
+                                <!-- [D] 비밀번호 일치 여부 확인 기능 하단 script 참고 -->
+                                <input type="password" class="ipt_txt pswd_chk">
                                 <p class="tooltip">*비밀번호가 일치하지 않습니다.</p>
                             </dd>
                         </dl>
@@ -101,7 +101,19 @@
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-        
+        // 비밀번호 일치 여부 확인
+        $('.pswd_chk').keyup(function(){
+            var originalPassword = $('.pswd_org').val(),
+                checkPassword =  $('.pswd_chk').val();
+
+            if(originalPassword != '' || checkPassword != ''){
+                if(originalPassword != checkPassword){
+                    $('.pswd_chk').addClass('error');
+                }else{
+                    $('.pswd_chk').removeClass('error');
+                }
+            }
+        });
     });
 });
 </script>
