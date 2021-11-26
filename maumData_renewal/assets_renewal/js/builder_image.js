@@ -1,5 +1,15 @@
 /* MINDsLab. NBR. 20210604 */
 $(document).ready(function(){
+    // image frame tag copy
+    // [D] 21.11.26 NBR 추가
+    $('.btn_tagCopy').on('click', function(){
+        if($(this).is('.active')){
+            $('.btn_paging.btn_next, .btn_scroll.btn_scroll_right').addClass('active');
+        }else{
+            $('.btn_paging.btn_next, .btn_scroll.btn_scroll_right').removeClass('active');
+        }
+    });
+
     // aside 영역 확장 버튼
     $('.aside .btn_expand').on('click', function(){
         $('.aside').toggleClass('on');
