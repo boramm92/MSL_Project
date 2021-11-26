@@ -49,17 +49,18 @@ $(document).ready(function(){
     });
 
     // tool menu 활성화
-    var toolMenuBtn = $('.menu_list li button.toggle');
+    var toolMenuToggleBtn = $('.menu_list li button.toggle');
+    var toolMenuSelectBtn = $('.menu_list li button.select');
     var classBox = $('.menu_list li .classBox');
 
-    toolMenuBtn.on('click', function(){
+    toolMenuToggleBtn.on('click', function(){
         var thisClassBox = $(this).next('.classBox');
 
         if($(this).hasClass('active')){
             $(this).removeClass('active open');
             thisClassBox.removeClass('active');
         }else{
-            toolMenuBtn.removeClass('active');
+            toolMenuToggleBtn.removeClass('active');
             classBox.removeClass('active');
             thisClassBox.addClass('active'); 
             if($(this).next('.classBox').length){
@@ -68,6 +69,10 @@ $(document).ready(function(){
                 $(this).addClass('active'); 
             }           
         }
+    });
+
+    toolMenuSelectBtn.on('click', function(){
+        $(this).toggleClass('active');
     });
 
     // aside tab

@@ -1,0 +1,42 @@
+// SASS 문법
+// 1. 변수에 데이터 저장 ($변수명 : 변수에 넣을 값)
+$MainColor:#ff0000;
+
+.red {
+    color:$MainColor;
+}
+
+// 2. 셀렉터 대신 쓰는 nesting
+div.container {
+    h4 {
+        color:blue; 
+    }
+    p {
+        color:green;
+    }
+}
+
+// 4. mixin / include
+@mixin 함수(){
+    max-width:500px;
+    width:100%;
+    margin:auto;
+    padding:20px;
+    border-radius:5px;
+    background:#eee;
+}
+
+// 3. extend 
+.my-alert {
+    @include 함수();
+}
+
+.my-alert2 {
+    @extend .my-alert;
+    background:#ffe591;
+}
+
+.my-alert p {
+    margin-bottom:0;
+}
+
