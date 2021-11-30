@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no">
+
+<!-- Cache reset -->
+<meta http-equiv="Expires" content="Mon, 06 Jan 2016 00:00:01 GMT">
+<meta http-equiv="Expires" content="-1">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+
+<!-- Open Graph Tag -->
+<meta property="og:title"         content="마음데이터 - AI 데이터 가공의 시작">
+<meta property="og:type"          content="website"> <!-- 웹 페이지 타입 -->
+<!-- <meta property="og:url"           content=""> -->
+<meta property="og:image"         content="">
+<meta property="og:description"   content="비즈니스 맞춤형 AI 데이터를 제공합니다.">
+
+<!-- icon_favicon -->
+<!-- <link rel="apple-touch-icon-precomposed" href="">
+<link rel="shortcut icon" type="image/x-icon" href=""> -->
+
+<!---------------------- General Resources ---------------------->
+<!-- General CSS -->
+<link rel="stylesheet" type="text/css" href="../../../../assets_renewal/css/builder.css">
+
+<!-- General Script -->
+<script type="text/javascript" src="../../../../assets_renewal/js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="../../../../assets_renewal/js/jquery-migrate-3.3.1.min.js"></script>
+<script type="text/javascript" src="../../../../assets_renewal/js/builder_common.js"></script>
+
+<title>Image Worker (데이터 검증) || Builder</title>
+</head>
+<body>
+<!-- clipboard input -->
+<input type="text" id="clipTarget">
+
+<!-- #wrap -->
+<div id="wrap">
+    <div class="data_verify_main">
+        <h1 class="tit">검증 프로젝트 선택</h1>
+        <p class="desc">검증할 프로젝트를 선택해 주세요.</p>
+        <div class="btnBox">
+            <div class="fl">
+                <button type="button">야생동물</button>
+                <small>야생동물 프로젝트</small>
+            </div>
+            <div class="fr">
+                <button type="button">과적차량</button>
+                <small>과적차량 프로젝트</small>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- //#wrap -->
+
+<!-- 토스트 -->
+<div id="clipboard" class="lyrToast">
+    <p class="msg">복사되었습니다.</p>
+    <button type="button" class="btn_toast_close"><span class="hide">닫기버튼</span></button>
+</div>
+<!-- //토스트 -->
+
+
+<!---------------------- Local Resources ---------------------->
+<!-- Local Script Library -->
+<script type="text/javascript" src="../../../../assets_renewal/js/builder_image.js"></script>
+
+<!-- Local Script -->
+<script type="text/javascript">
+jQuery.event.add(window,"load",function(){
+    $(document).ready(function(){
+        // 불러온 이미지 인덱스 처리
+        var loadImgLength = $('.load_img_list li').length,
+            currentImgIndex = $('.load_img_list li.active').index(),
+            currentNum =  $('.load_img_wrap .img_index .current'),
+            totalNum = $('.load_img_wrap .img_index .total');
+
+        currentNum.text(currentImgIndex + 1);
+        totalNum.text(loadImgLength);
+
+        // 불러온 이미지 목록 활성화 효과
+        $('.load_img_list li').on('click', function(){
+            $('.load_img_list li').removeClass('active');
+            $(this).addClass('active');
+
+            currentImgIndex = $(this).index();
+
+            currentNum.text(currentImgIndex + 1);
+        });
+    });
+});
+</script>
+</body>
+</html>

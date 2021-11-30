@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no">
+
+<!-- Cache reset -->
+<meta http-equiv="Expires" content="Mon, 06 Jan 2016 00:00:01 GMT">
+<meta http-equiv="Expires" content="-1">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+
+<!-- Open Graph Tag -->
+<meta property="og:title"         content="마음데이터 - AI 데이터 가공의 시작">
+<meta property="og:type"          content="website"> <!-- 웹 페이지 타입 -->
+<!-- <meta property="og:url"           content=""> -->
+<meta property="og:image"         content="">
+<meta property="og:description"   content="비즈니스 맞춤형 AI 데이터를 제공합니다.">
+
+<!-- icon_favicon -->
+<!-- <link rel="apple-touch-icon-precomposed" href="">
+<link rel="shortcut icon" type="image/x-icon" href=""> -->
+
+<!---------------------- General Resources ---------------------->
+<!-- General CSS -->
+<link rel="stylesheet" type="text/css" href="../../../../assets_renewal/css/builder.css">
+
+<!-- General Script -->
+<script type="text/javascript" src="../../../../assets_renewal/js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="../../../../assets_renewal/js/jquery-migrate-3.3.1.min.js"></script>
+<script type="text/javascript" src="../../../../assets_renewal/js/builder_common.js"></script>
+
+<title>Image Worker (데이터 검증) || Builder</title>
+</head>
+<body>
+<!-- clipboard input -->
+<input type="text" id="clipTarget">
+
+<!-- #wrap -->
+<div id="wrap">
+    <!-- #header -->
+    <div id="header">
+        <div class="sta">
+            <div class="btnBox">
+                <button type="button" class="btn_pjt_change">검증 프로젝트 변경</button>
+            </div>
+            <div class="titBox">
+                <span class="pjt_name">Annotation Sample Project</span>
+
+                <div class="guideViewer">
+                    <em class="fas fa-info-circle"><span class="hide">퀵가이드 보기</span></em>                        
+                    <div class="guideBox">
+                        <dl class="guideDetail">
+                            <dt>Quick 작업자 가이드</dt>
+                            <dd>
+                                <ul class="decimal">
+                                    <li>실외/실내 및 장소선택</li>
+                                    <li>방해물 유형 선택</li>
+                                    <li>더블 클릭하여 영역박스 생성</li>
+                                    <li>방해물 크기에 맞게 영역지정</li>
+                                </ul>
+                                <ul class="disc">
+                                    <li>한 이미지에 방해물의 최대 개수는 4개</li>
+                                    <li>작업 중간중간 임시저장 버튼을 눌러 작업한 내용을 저장.</li>
+                                </ul>
+                            </dd>
+                        </dl>       
+                    </div>
+                </div>
+            </div>
+            <div class="btnBox">
+                <button type="button" class="btn_prev_file">이전 파일</button>
+                <button type="button" class="btn_next_file">다음 파일</button>
+            </div>
+        </div>
+    </div>
+    <!-- //#header -->
+
+    <!-- #container -->
+    <div id="container">
+        <div class="load_img_wrap">
+            <div class="btnBox">
+                <div class="uploadBox">
+                    <input type="file" id="imgUpload">
+                    <label for="imgUpload">이미지 불러오기</label>
+                </div>
+                <!-- [D] disabled 추가 시 버튼 비활성화됨 -->
+                <button type="button" disabled>Json 파일 변경하기</button>
+            </div>
+            <ul class="load_img_list">
+                <li class="active">
+                    <span class="fileName">imge_sample_001</span>
+                    <span class="fileExt">.png</span>
+                </li>
+                <li>
+                    <span class="fileName">imge_sample_qwer_12opok_00</span>
+                    <span class="fileExt">.png</span>
+                </li>
+                <li>
+                    <span class="fileName">imge_sample_001imge_sample_001</span>
+                    <span class="fileExt">.png</span>
+                </li>
+                <li>
+                    <span class="fileName">imge_sample_001imge_sample_001</span>
+                    <span class="fileExt">.png</span>
+                </li>
+                <li>
+                    <span class="fileName">imge_sample_001</span>
+                    <span class="fileExt">.png</span>
+                </li>
+                <li>
+                    <span class="fileName">imge_sample_qwer_12opok_00</span>
+                    <span class="fileExt">.png</span>
+                </li>
+                <li>
+                    <span class="fileName">imge_sample_001imge_sample_001</span>
+                    <span class="fileExt">.png</span>
+                </li>
+                <li>
+                    <span class="fileName">imge_sample_001imge_sample_001</span>
+                    <span class="fileExt">.png</span>
+                </li>
+                <li>
+                    <span class="fileName">imge_sample_001</span>
+                    <span class="fileExt">.png</span>
+                </li>
+                <li>
+                    <span class="fileName">imge_sample_qwer_12opok_00</span>
+                    <span class="fileExt">.png</span>
+                </li>
+                <li>
+                    <span class="fileName">imge_sample_001imge_sample_001</span>
+                    <span class="fileExt">.png</span>
+                </li>
+                <li>
+                    <span class="fileName">imge_sample_001imge_sample_001</span>
+                    <span class="fileExt">.png</span>
+                </li>
+                <li>
+                    <span class="fileName">imge_sample_001</span>
+                    <span class="fileExt">.png</span>
+                </li>
+                <li>
+                    <span class="fileName">imge_sample_qwer_12opok_00</span>
+                    <span class="fileExt">.png</span>
+                </li>
+                <li>
+                    <span class="fileName">imge_sample_001imge_sample_001</span>
+                    <span class="fileExt">.png</span>
+                </li>
+                <li>
+                    <span class="fileName">imge_sample_001imge_sample_001</span>
+                    <span class="fileExt">.png</span>
+                </li>
+                <li>
+                    <span class="fileName">imge_sample_001</span>
+                    <span class="fileExt">.png</span>
+                </li>
+            </ul>
+            <!-- [D] 불러온 이미지 인덱스 처리 기능 하단 script 영역 참고 -->
+            <div class="img_index">
+                <span class="current">1</span> &sol; <span class="total">300</span>
+            </div>
+        </div>
+
+        <!-- .toolMenuBar -->
+        <div class="toolMenuBar">
+            <ul class="menu_list">
+                <li>
+                    <button type="button" class="button btn_zoomIn" title="Zoom in">
+                        <span class="hide">Zoom in</span>
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="button btn_zoomOut" title="Zoom out">
+                        <span class="hide">Zoom out</span>
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="button btn_reset" title="Reset">
+                        <span class="hide">Reset</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <!-- //#toolMenuBar -->
+
+        <!-- #contents -->
+        <div id="contents" class="data_verify">
+            <!-- .content -->
+            <div class="content">
+                <!-- .work_space -->
+                <div class="work_space">
+                    <!-- .imgArea -->
+                    <!-- [D] .imgArea에 작업이미지 들어가야함 -->
+                    <div class="imgArea"></div>
+                    <!-- //.imgArea -->
+                </div>
+                <!-- //.work_space --> 
+            </div>
+            <!-- //.content -->
+
+             <!-- .aside -->
+             <div class="aside on">
+                <div class="currentFile">
+                    파일명: <span class="fileName">image_sample_001.jpg</span>
+                    <button type="button" class="btn_clipboard" title="복사 하기">
+                        <span class="hide">복사 하기</span>
+                    </button>
+                </div>
+                <div class="metaData">
+                    <div class="tit">Meta Data</div>
+                    <div class="tblBox">
+                        <div class="tbl_meta_data">
+                            <table>
+                                <caption class="hide">Meta Data</caption>
+                                <colgroup>
+                                    <col width="50%"><col width="50%">
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">COLLECTION METHOD</th>
+                                        <td>null</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">DAY/NIGHT</th>
+                                        <td>주</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">ROADNUMBER</th>
+                                        <td>아트센터대로</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">LANE</th>
+                                        <td>다선</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">IDCODE</th>
+                                        <td>F06</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">DATE</th>
+                                        <td>2021.08.18</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">DATE</th>
+                                        <td>2021.08.18</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>      
+                </div>
+                <div class="tabWrap">
+                    <div class="tit">Annotation Data</div>     
+                    <div class="tab_btn">
+                        <button type="button" class="btn_tag active" title="태그 리스트">
+                            <span class="hide">태그 리스트</span>
+                        </button>
+                    </div>
+                    <div class="tab_cont">
+                        <ul class="tag_list">
+                            <li class="reject">
+                                <div class="tagBox">
+                                    <span class="tagPoint"></span>
+                                    <span class="tagNum">1.</span>
+                                    <select class="select">
+                                        <option value="">건물</option>
+                                        <option value="">건물</option>
+                                        <option value="">건물</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="reject_txt">
+                                    <pre>
+                                        1. 자동차 태그를 좀 더 자동차에 맞게 줄여주세요.
+                                        1. 자동차 태그를 좀 더 자동차에 맞게 줄여주세요.
+                                        1. 자동차 태그를 좀 더 자동차에 맞게 줄여주세요.
+                                    </pre>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tagBox">
+                                    <span class="tagPoint"></span>
+                                    <span class="tagNum">2.</span>
+                                    <select class="select">
+                                        <option value="">건물</option>
+                                        <option value="">건물</option>
+                                        <option value="">건물</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tagBox">
+                                    <span class="tagPoint"></span>
+                                    <span class="tagNum">3.</span>
+                                    <select class="select">
+                                        <option value="">건물</option>
+                                        <option value="">건물</option>
+                                        <option value="">건물</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tagBox">
+                                    <span class="tagPoint"></span>
+                                    <span class="tagNum">4.</span>
+                                    <select class="select">
+                                        <option value="">건물</option>
+                                        <option value="">건물</option>
+                                        <option value="">건물</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="reject">
+                                <div class="tagBox">
+                                    <span class="tagPoint"></span>
+                                    <span class="tagNum">5.</span>
+                                    <select class="select">
+                                        <option value="">건물</option>
+                                        <option value="">건물</option>
+                                        <option value="">건물</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="reject_txt">
+                                    <pre>
+                                        1. 자동차 태그를 좀 더 자동차에 맞게 줄여주세요.
+                                        1. 자동차 태그를 좀 더 자동차에 맞게 줄여주세요.
+                                        1. 자동차 태그를 좀 더 자동차에 맞게 줄여주세요.
+                                    </pre>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tagBox">
+                                    <span class="tagPoint"></span>
+                                    <span class="tagNum">6.</span>
+                                    <select class="select">
+                                        <option value="">건물</option>
+                                        <option value="">건물</option>
+                                        <option value="">건물</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tagBox">
+                                    <span class="tagPoint"></span>
+                                    <span class="tagNum">7.</span>
+                                    <select class="select">
+                                        <option value="">건물</option>
+                                        <option value="">건물</option>
+                                        <option value="">건물</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tagBox">
+                                    <span class="tagPoint"></span>
+                                    <span class="tagNum">8.</span>
+                                    <select class="select">
+                                        <option value="">건물</option>
+                                        <option value="">건물</option>
+                                        <option value="">건물</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="tagBox">
+                                    <span class="tagPoint"></span>
+                                    <span class="tagNum">9.</span>
+                                    <select class="select">
+                                        <option value="">건물</option>
+                                        <option value="">건물</option>
+                                        <option value="">건물</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="reject">
+                                <div class="tagBox">
+                                    <span class="tagPoint"></span>
+                                    <span class="tagNum">10.</span>
+                                    <select class="select">
+                                        <option value="">건물</option>
+                                        <option value="">건물</option>
+                                        <option value="">건물</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="reject_txt">
+                                    <pre>
+                                        1. 자동차 태그를 좀 더 자동차에 맞게 줄여주세요.
+                                        1. 자동차 태그를 좀 더 자동차에 맞게 줄여주세요.
+                                        1. 자동차 태그를 좀 더 자동차에 맞게 줄여주세요.
+                                    </pre>
+                                </div>
+                            </li>
+                            <li class="reject">
+                                <div class="tagBox">
+                                    <span class="tagPoint"></span>
+                                    <span class="tagNum">11.</span>
+                                    <select class="select">
+                                        <option value="">건물</option>
+                                        <option value="">건물</option>
+                                        <option value="">건물</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="reject_txt">
+                                    <pre>
+                                        1. 자동차 태그를 좀 더 자동차에 맞게 줄여주세요.
+                                        1. 자동차 태그를 좀 더 자동차에 맞게 줄여주세요.
+                                        1. 자동차 태그를 좀 더 자동차에 맞게 줄여주세요.
+                                    </pre>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <button type="button" class="btn_expand" title="접기/열기">
+                    <span class="hide">접기/열기</span>
+                </button>
+            </div>
+            <!-- //.aside -->
+        </div> 
+        <!-- //#contents -->
+    </div>
+    <!-- //#container -->
+</div>
+<!-- //#wrap -->
+
+<!-- 토스트 -->
+<div id="clipboard" class="lyrToast">
+    <p class="msg">복사되었습니다.</p>
+    <button type="button" class="btn_toast_close"><span class="hide">닫기버튼</span></button>
+</div>
+<!-- //토스트 -->
+
+
+<!---------------------- Local Resources ---------------------->
+<!-- Local Script Library -->
+<script type="text/javascript" src="../../../../assets_renewal/js/builder_image.js"></script>
+
+<!-- Local Script -->
+<script type="text/javascript">
+jQuery.event.add(window,"load",function(){
+    $(document).ready(function(){
+        // 불러온 이미지 인덱스 처리
+        var loadImgLength = $('.load_img_list li').length,
+            currentImgIndex = $('.load_img_list li.active').index(),
+            currentNum =  $('.load_img_wrap .img_index .current'),
+            totalNum = $('.load_img_wrap .img_index .total');
+
+        currentNum.text(currentImgIndex + 1);
+        totalNum.text(loadImgLength);
+
+        // 불러온 이미지 목록 활성화 효과
+        $('.load_img_list li').on('click', function(){
+            $('.load_img_list li').removeClass('active');
+            $(this).addClass('active');
+
+            currentImgIndex = $(this).index();
+
+            currentNum.text(currentImgIndex + 1);
+        });
+    });
+});
+</script>
+</body>
+</html>
