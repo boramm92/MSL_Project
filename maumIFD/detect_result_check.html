@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no">
+
+<!-- Cache reset -->
+<meta http-equiv="Expires" content="Mon, 06 Jan 2016 00:00:01 GMT">
+<meta http-equiv="Expires" content="-1">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+
+<!---------------------- General Resources ---------------------->
+<!-- General CSS -->
+<link rel="stylesheet" type="text/css" href="resources/css/maumIFD_common.css">
+
+<!-- General Script -->
+<script type="text/javascript" src="resources/js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="resources/js/jquery-migrate-3.3.1.min.js"></script>
+<script type="text/javascript" src="resources/js/maumIFD_common.js"></script>
+
+<title>탐지 및 제어(진위확인 결과 조회) || maum IFD</title>
+</head>
+<body>
+<!-- #wrap -->
+<div id="wrap">
+    <!-- #container -->
+    <div id="container">
+        <!-- #snb -->
+        <div id="snb">
+            <div class="topBox">
+                <h1 class="logo">maum IFD</h1>
+                <button type="button" class="btn_ham" title="전체 메뉴">
+                    <span class="hide">전체 메뉴</span>
+                    <em class="fas fa-bars"></em>
+                </button>
+            </div>
+            <ul class="nav">
+                <li>
+                    <h2><a href="#none" title="탐지 및 제어"><span>탐지 및 제어</span></a></h2>
+                    <ul class="sub">
+                        <li><a href="detect_result_check.html">진위확인 결과 조회</a></li>
+                        <li><a href="detect_verify_upload.html">진위확인 즉시 검증</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h2><a href="#none" title="모니터링"><span>모니터링</span></a></h2>
+                </li>
+                <li>
+                    <h2><a href="#none" title="통계"><span>통계</span></a></h2>
+                </li>
+                <li>
+                    <h2><a href="#none" title="Admin"><span>Admin</span></a></h2>
+                    <ul class="sub">
+                        <li>
+                            <a href="#none">조직 관리</a>
+                            <ul class="third">
+                                <li><a href="#none">부서 관리</a></li>
+                                <li><a href="#none">사용자 관리</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#none">메뉴 관리</a></li>
+                        <li><a href="#none">권한 관리</a></li>
+                        <li><a href="#none">진위확인 기능 설정</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- //#snb -->
+
+        <!-- #contents -->
+        <div id="contents">
+            <!-- .content -->
+            <div class="content">
+                <div class="etcArea">
+                    <div class="user_menu">
+                        <ul>
+                            <li class="on"><a href="#none">mindslab</a></li>
+                            <li><a href="#none">프로필</a></li>
+                        </ul>
+                    </div>
+                    <button type="button" class="btn_logout">Logout</button>
+                </div>
+
+                <div class="titArea">
+                    <h3>탐지 및 제어 <span>진위확인 결과 조회</span></h3>
+                </div>
+
+                <div class="filterArea">
+                    <dl>
+                        <dt>조회 기간</dt>
+                        <dd>
+                            <div class="iptBox date">
+                                <input type="text" class="ipt_txt fromDate">
+                            </div>                            
+                            <em class="tilde">~</em>
+                            <div class="iptBox date">
+                                <input type="text" class="ipt_txt toDate">
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>실행 조건</dt>
+                        <dd>
+                            <select class="select">
+                                <option value="">전체</option>
+                                <option value="">배치</option>
+                                <option value="">즉시</option>
+                            </select>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>결과 조건</dt>
+                        <dd>
+                            <select class="select">
+                                <option value="">전체</option>
+                                <option value="">진본</option>
+                                <option value="">위조</option>
+                            </select>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>정렬 조건</dt>
+                        <dd>
+                            <select class="select">
+                                <option value="">오름차순</option>
+                                <option value="">내림차순</option>
+                            </select>
+                        </dd>
+                    </dl>
+                    <button type="button" class="btn_primary line fr">전체 다운로드</button>
+                </div>
+
+                <div class="tblBox">
+                    <table summary="연번, 실행 일시, 구분, 확인 결과, 고객번호, 상세보기로 구성">
+                        <caption class="hide">진위확인 결과 조회</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">연번</th>
+                                <th scope="col">실행 일시</th>
+                                <th scope="col">구분</th>
+                                <th scope="col">확인 결과</th>
+                                <th scope="col">고객번호</th>
+                                <th scope="col">상세보기</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="empty" scope="row" colspan="6">데이터가 없습니다.</td>
+                            </tr>
+                            <tr>
+                                <td scope="row">1</td>
+                                <td>2020-12-12</td>
+                                <td>배치</td>
+                                <td>진본</td>
+                                <td>000-11111</td>
+                                <td><button type="button" class="btn_view_detail btn_lyr_open" data-lyr-name="detect_result_detail">상세보기</button></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">2</td>
+                                <td>2020-12-12</td>
+                                <td>배치</td>
+                                <!-- [D] 위조일 경우 해당 td에 addClass('fake')해주면 텍스트 컬러 변경됩니다. -->
+                                <td class="fake">위조</td>
+                                <td>000-11111</td>
+                                <td><button type="button" class="btn_view_detail btn_lyr_open" data-lyr-name="detect_result_detail">상세보기</button></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">3</td>
+                                <td>2020-12-12</td>
+                                <td>배치</td>
+                                <td>진본</td>
+                                <td>000-11111</td>
+                                <td><button type="button" class="btn_view_detail btn_lyr_open" data-lyr-name="detect_result_detail">상세보기</button></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">4</td>
+                                <td>2020-12-12</td>
+                                <td>배치</td>
+                                <td>진본</td>
+                                <td>000-11111</td>
+                                <td><button type="button" class="btn_view_detail btn_lyr_open" data-lyr-name="detect_result_detail">상세보기</button></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">5</td>
+                                <td>2020-12-12</td>
+                                <td>배치</td>
+                                <td>진본</td>
+                                <td>000-11111</td>
+                                <td><button type="button" class="btn_view_detail btn_lyr_open" data-lyr-name="detect_result_detail">상세보기</button></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">6</td>
+                                <td>2020-12-12</td>
+                                <td>배치</td>
+                                <td>진본</td>
+                                <td>000-11111</td>
+                                <td><button type="button" class="btn_view_detail btn_lyr_open" data-lyr-name="detect_result_detail">상세보기</button></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">7</td>
+                                <td>2020-12-12</td>
+                                <td>배치</td>
+                                <td>진본</td>
+                                <td>000-11111</td>
+                                <td><button type="button" class="btn_view_detail btn_lyr_open" data-lyr-name="detect_result_detail">상세보기</button></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">8</td>
+                                <td>2020-12-12</td>
+                                <td>배치</td>
+                                <td>진본</td>
+                                <td>000-11111</td>
+                                <td><button type="button" class="btn_view_detail btn_lyr_open" data-lyr-name="detect_result_detail">상세보기</button></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">9</td>
+                                <td>2020-12-12</td>
+                                <td>배치</td>
+                                <td>진본</td>
+                                <td>000-11111</td>
+                                <td><button type="button" class="btn_view_detail btn_lyr_open" data-lyr-name="detect_result_detail">상세보기</button></td>
+                            </tr>
+                            <tr>
+                                <td scope="row">10</td>
+                                <td>2020-12-12</td>
+                                <td>배치</td>
+                                <td>진본</td>
+                                <td>000-11111</td>
+                                <td><button type="button" class="btn_view_detail btn_lyr_open" data-lyr-name="detect_result_detail">상세보기</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pagingArea">
+					<div class="paging">
+						<a href="#none" class="btn_paging first">
+                            <span class="hide">처음 페이지</span>
+                            <em class="fas fa-angle-double-left"></em>
+                        </a>
+						<a href="#none" class="btn_paging prev">
+                            <span class="hide">이전 페이지</span>
+                            <em class="fas fa-angle-left"></em>
+                        </a>
+                        <!-- [D] 현재 페이지 인덱스에 addClass('current') 해주면 활성화됨 -->
+						<a href="#none" class="current">1</a>
+						<a href="#none">2</a>
+						<a href="#none">3</a>
+						<a href="#none">4</a>
+						<a href="#none">5</a>
+                        <a href="#none">6</a>
+						<a href="#none">7</a>
+						<a href="#none">8</a>
+						<a href="#none">9</a>
+                        <a href="#none">10</a>
+						<a href="#none" class="btn_paging next">
+                            <span class="hide">다음 페이지</span>
+                            <em class="fas fa-angle-right"></em>
+                        </a>
+						<a href="#none" class="btn_paging last">
+                            <span class="hide">마지막 페이지</span>
+                            <em class="fas fa-angle-double-right"></em>
+                        </a>
+					</div>
+				</div>
+            </div>
+            <!-- //.content -->
+        </div> 
+        <!-- //#contents -->
+    </div>
+    <!-- //#container -->
+</div>
+<!-- //#wrap -->
+
+<!---------------------- layer popup ---------------------->
+<!-- 상세보기 -->
+<div id="detect_result_detail" class="lyrWrap">
+    <div class="lyrCont">
+        <div class="lyr_top">
+            <p class="tit">진위확인 결과</p>
+            <button type="button" class="btn_lyr_close"><span class="hide">닫기버튼</span></button>
+        </div>
+        <div class="lyr_mid">
+            <div class="detect_img">
+                <!-- [D] 진위확인 결과에 따라 .stateBox p에 addClass('on')해주시면 됩니다. -->
+                <div class="stateBox">
+                    <p class="state fake on">위조</p>
+                    <p class="state real">진본</p>
+                </div>
+                <ul>
+                    <li class="input_img">
+                        <img src="resources/images/img_idCard_sample.png" alt="대상 이미지">
+                    </li>
+                    <li class="result_img">
+                        <img src="resources/images/img_idCard_detect_sample.png" alt="진위 확인 이미지">
+                    </li>
+                </ul>
+            </div>
+            <div class="result_detail">
+                <table summary="분류, paper로 구성">
+                    <caption class="hide">진위확인 상세결과</caption>
+                    <colgroup>
+                        <col width="134px"><col>
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th>분류</th>
+                            <th>Paper</th>
+                        </tr>
+                        <tr>
+                            <th>Real</th>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <th>Paper</th>
+                            <td>11</td>
+                        </tr>
+                        <tr>
+                            <th>Monitor</th>
+                            <td>1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <button type="button" class="btn_prev_result">
+                <span class="hide">이전 상세결과</span>
+            </button>
+            <button type="button" class="btn_next_result">
+                <span class="hide">다음 상세결과</span>
+            </button>
+        </div>
+    </div>
+</div>
+<!-- //상세보기 -->
+
+<!---------------------- Local Resources ---------------------->
+<!-- Local CSS -->
+<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="resources/css/bootstrap-datetimepicker.css">
+
+<!-- Local Script Library -->
+<script type="text/javascript" src="resources/js/bootstrap-datetimepicker.js"></script>
+
+<!-- Local Script -->
+<script type="text/javascript">
+jQuery.event.add(window,"load",function(){
+    $(document).ready(function(){
+        // datepicker
+        var thisFromDate = $(this).find('.fromDate'),
+            thisToDate = $(this).find('.toDate');
+
+        thisFromDate.datetimepicker({
+            format: 'yyyy-mm-dd', 
+            minView: 'month',
+            pickTime : false, 
+            autoclose: 1,
+        }).on('changeDate', function(selected){
+            var startDate = new Date(selected.date.valueOf());
+            thisToDate.datetimepicker('setStartDate', startDate);
+        }).on('clearDate', function(selected){
+            thisToDate.datetimepicker('setStartDate', null);
+        });
+
+        thisToDate.datetimepicker({
+            format: 'yyyy-mm-dd', 
+            minView: 'month',
+            pickTime : false, 
+            autoclose: 1,
+        }).on('changeDate', function(selected){
+            var endDate = new Date(selected.date.valueOf());
+            thisFromDate.datetimepicker('setEndDate', endDate);
+        }).on('clearDate', function(selected){
+            thisFromDate.datetimepicker('setEndDate', null);
+        });
+    });
+});
+</script>
+</body>
+</html>
