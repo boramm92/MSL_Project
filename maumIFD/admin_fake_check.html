@@ -21,7 +21,7 @@
 <script type="text/javascript" src="resources/js/jquery-migrate-3.3.1.min.js"></script>
 <script type="text/javascript" src="resources/js/maumIFD_common.js"></script>
 
-<title>탐지 및 제어(진위확인 즉시 검증) || maum IFD</title>
+<title>Admin (진위확인 기능 설정) || maum IFD</title>
 </head>
 <body>
 <!-- #wrap -->
@@ -38,11 +38,11 @@
                 <h1 class="logo"><a href="detect_verify_check.html">maum IFD</a></h1>
             </div>
             <ul class="nav">
-                <li class="active">
+                <li>
                     <h2><a href="#none" title="탐지 및 제어"><span>탐지 및 제어</span></a></h2>
                     <ul class="sub">
                         <li><a href="detect_result_check.html">진위확인 결과 조회</a></li>
-                        <li><a href="detect_verify_upload.html" class="active">진위확인 즉시 검증</a></li>
+                        <li><a href="detect_verify_upload.html">진위확인 즉시 검증</a></li>
                     </ul>
                 </li>
                 <li>
@@ -51,7 +51,7 @@
                 <li>
                     <h2><a href="statistic.html" title="통계"><span>통계</span></a></h2>
                 </li>
-                <li>
+                <li class="active">
                     <h2><a href="#none" title="Admin"><span>Admin</span></a></h2>
                     <ul class="sub">
                         <li>
@@ -63,7 +63,7 @@
                         </li>
                         <li><a href="admin_menu.html">메뉴 관리</a></li>
                         <li><a href="admin_auth.html">권한 관리</a></li>
-                        <li><a href="admin_fake_check.html">진위확인 기능 설정</a></li>
+                        <li><a href="admin_fake_check.html" class="active">진위확인 기능 설정</a></li>
                     </ul>
                 </li>
             </ul>
@@ -73,7 +73,7 @@
         <!-- #contents -->
         <div id="contents">
             <!-- .content -->
-            <div class="content">
+            <div class="content fake_chk">
                 <div class="etcArea">
                     <div class="user_menu">
                         <ul>
@@ -85,141 +85,73 @@
                 </div>
 
                 <div class="titArea">
-                    <h3>탐지 및 제어 <span>진위확인 즉시 검증 <em class="fas fa-angle-right"></em> 결과보기</span></h3>
+                    <h3>Admin <span>진위확인 기능 설정</span></h3>
                 </div>
 
-                <div class="tblBox">
-                    <table summary="연번, 실행 일시, 구분, 확인 결과, 고객번호, 상세보기로 구성">
-                        <caption class="hide">진위확인 결과 조회</caption>
+                <div class="tblBox admin">
+                    <table summary="탐지 Level 설정">
+                        <caption class="hide">탐지 Level 설정</caption>
+                        <colgroup>
+                            <col>
+                        </colgroup>
                         <thead>
                             <tr>
-                                <th scope="col">연번</th>
-                                <th scope="col">실행 일시</th>
-                                <th scope="col">구분</th>
-                                <th scope="col">확인 결과</th>
-                                <th scope="col">고객번호</th>
-                                <th scope="col">상세보기</th>
+                                <th>탐지 Level 설정</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="empty" scope="row" colspan="6">데이터가 없습니다.</td>
+                                <td scope="row">
+                                    <div class="radioBox">   
+                                        <!-- [D] input[type="radio"]의 id와 label의 for값이 동일해야 합니다. -->                   
+                                        <input type="radio" name="fake_chk_set" id="high" checked>
+                                        <label for="high">
+                                            <span class="status high">강</span>
+                                            <span class="desc">위조탐지 범위 넓음</span>
+                                        </label>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
-                                <td scope="row">1</td>
-                                <td>2020-12-12</td>
-                                <td>배치</td>
-                                <td>진본</td>
-                                <td>000-11111</td>
-                                <td><button type="button" class="btn_view_detail btn_lyr_open" data-lyr-name="detect_result_detail">상세보기</button></td>
+                                <td scope="row">
+                                    <div class="radioBox">   
+                                        <!-- [D] input[type="radio"]의 id와 label의 for값이 동일해야 합니다. -->                   
+                                        <input type="radio" name="fake_chk_set" id="middle">
+                                        <label for="middle">
+                                            <span class="status middle">중</span>
+                                            <span class="desc">위조탐지 범위 중간</span>
+                                        </label>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
-                                <td scope="row">2</td>
-                                <td>2020-12-12</td>
-                                <td>배치</td>
-                                <td><span class="ft_point_pink">위조</span></td>
-                                <td>000-11111</td>
-                                <td><button type="button" class="btn_view_detail btn_lyr_open" data-lyr-name="detect_result_detail">상세보기</button></td>
+                                <td scope="row">
+                                    <div class="radioBox">   
+                                        <!-- [D] input[type="radio"]의 id와 label의 for값이 동일해야 합니다. -->                   
+                                        <input type="radio" name="fake_chk_set" id="low">
+                                        <label for="low">
+                                            <span class="status low">약</span>
+                                            <span class="desc">위조탐지 범위 좁음</span>
+                                        </label>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
-                                <td scope="row">3</td>
-                                <td>2020-12-12</td>
-                                <td>배치</td>
-                                <td>진본</td>
-                                <td>000-11111</td>
-                                <td><button type="button" class="btn_view_detail btn_lyr_open" data-lyr-name="detect_result_detail">상세보기</button></td>
-                            </tr>
-                            <tr>
-                                <td scope="row">4</td>
-                                <td>2020-12-12</td>
-                                <td>배치</td>
-                                <td>진본</td>
-                                <td>000-11111</td>
-                                <td><button type="button" class="btn_view_detail btn_lyr_open" data-lyr-name="detect_result_detail">상세보기</button></td>
-                            </tr>
-                            <tr>
-                                <td scope="row">5</td>
-                                <td>2020-12-12</td>
-                                <td>배치</td>
-                                <td>진본</td>
-                                <td>000-11111</td>
-                                <td><button type="button" class="btn_view_detail btn_lyr_open" data-lyr-name="detect_result_detail">상세보기</button></td>
-                            </tr>
-                            <tr>
-                                <td scope="row">6</td>
-                                <td>2020-12-12</td>
-                                <td>배치</td>
-                                <td>진본</td>
-                                <td>000-11111</td>
-                                <td><button type="button" class="btn_view_detail btn_lyr_open" data-lyr-name="detect_result_detail">상세보기</button></td>
-                            </tr>
-                            <tr>
-                                <td scope="row">7</td>
-                                <td>2020-12-12</td>
-                                <td>배치</td>
-                                <td>진본</td>
-                                <td>000-11111</td>
-                                <td><button type="button" class="btn_view_detail btn_lyr_open" data-lyr-name="detect_result_detail">상세보기</button></td>
-                            </tr>
-                            <tr>
-                                <td scope="row">8</td>
-                                <td>2020-12-12</td>
-                                <td>배치</td>
-                                <td>진본</td>
-                                <td>000-11111</td>
-                                <td><button type="button" class="btn_view_detail btn_lyr_open" data-lyr-name="detect_result_detail">상세보기</button></td>
-                            </tr>
-                            <tr>
-                                <td scope="row">9</td>
-                                <td>2020-12-12</td>
-                                <td>배치</td>
-                                <td>진본</td>
-                                <td>000-11111</td>
-                                <td><button type="button" class="btn_view_detail btn_lyr_open" data-lyr-name="detect_result_detail">상세보기</button></td>
-                            </tr>
-                            <tr>
-                                <td scope="row">10</td>
-                                <td>2020-12-12</td>
-                                <td>배치</td>
-                                <td>진본</td>
-                                <td>000-11111</td>
-                                <td><button type="button" class="btn_view_detail btn_lyr_open" data-lyr-name="detect_result_detail">상세보기</button></td>
+                                <td scope="row">
+                                    <div class="radioBox">   
+                                        <!-- [D] input[type="radio"]의 id와 label의 for값이 동일해야 합니다. -->                   
+                                        <input type="radio" name="fake_chk_set" id="off">
+                                        <label for="off">
+                                            <span class="status off">끔</span>
+                                            <span class="desc">기능을 사용하지 않음</span>
+                                        </label>
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-
-                <div class="pagingArea">
-					<div class="paging">
-						<a href="#none" class="btn_paging first">
-                            <span class="hide">처음 페이지</span>
-                            <em class="fas fa-angle-double-left"></em>
-                        </a>
-						<a href="#none" class="btn_paging prev">
-                            <span class="hide">이전 페이지</span>
-                            <em class="fas fa-angle-left"></em>
-                        </a>
-                        <!-- [D] 현재 페이지 인덱스에 addClass('current') 해주면 활성화됨 -->
-						<a href="#none" class="current">1</a>
-						<a href="#none">2</a>
-						<a href="#none">3</a>
-						<a href="#none">4</a>
-						<a href="#none">5</a>
-                        <a href="#none">6</a>
-						<a href="#none">7</a>
-						<a href="#none">8</a>
-						<a href="#none">9</a>
-                        <a href="#none">10</a>
-						<a href="#none" class="btn_paging next">
-                            <span class="hide">다음 페이지</span>
-                            <em class="fas fa-angle-right"></em>
-                        </a>
-						<a href="#none" class="btn_paging last">
-                            <span class="hide">마지막 페이지</span>
-                            <em class="fas fa-angle-double-right"></em>
-                        </a>
-					</div>
-				</div>
+                <button type="button" class="btn_primary fr">설정 저장</button>
             </div>
             <!-- //.content -->
         </div> 

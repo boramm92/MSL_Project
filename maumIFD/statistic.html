@@ -21,7 +21,7 @@
 <script type="text/javascript" src="resources/js/jquery-migrate-3.3.1.min.js"></script>
 <script type="text/javascript" src="resources/js/maumIFD_common.js"></script>
 
-<title>탐지 및 제어(진위확인 즉시 검증) || maum IFD</title>
+<title>통계 || maum IFD</title>
 </head>
 <body>
 <!-- #wrap -->
@@ -38,17 +38,17 @@
                 <h1 class="logo"><a href="detect_verify_check.html">maum IFD</a></h1>
             </div>
             <ul class="nav">
-                <li class="active">
+                <li>
                     <h2><a href="#none" title="탐지 및 제어"><span>탐지 및 제어</span></a></h2>
                     <ul class="sub">
                         <li><a href="detect_result_check.html">진위확인 결과 조회</a></li>
-                        <li><a href="detect_verify_upload.html" class="active">진위확인 즉시 검증</a></li>
+                        <li><a href="detect_verify_upload.html">진위확인 즉시 검증</a></li>
                     </ul>
                 </li>
                 <li>
                     <h2><a href="monitoring.html" title="모니터링"><span>모니터링</span></a></h2>
                 </li>
-                <li>
+                <li class="active">
                     <h2><a href="statistic.html" title="통계"><span>통계</span></a></h2>
                 </li>
                 <li>
@@ -85,35 +85,11 @@
                 </div>
 
                 <div class="titArea">
-                    <h3>탐지 및 제어 <span>진위확인 즉시 검증</span></h3>
+                    <h3>통계</h3>
                 </div>
 
-                <div class="workArea">
-                    <div class="uploadBox">
-                        <form id="file-upload-form" action="">
-                            <!-- [D] 파일 선택 시 .upload_form_box에 removeClass('active')해주면 초기 UI 사라짐 -->
-                            <!-- [D] 위 내용과 반대로 모든 파일을 삭제 할 경우 addClass('active')해주면 초기 UI 나타남 -->
-                            <div class="upload_form_box active">                                           
-                                <input id="file-upload" type="file" name="fileUpload" multiple>
-                                <label for="file-upload" id="file-drag">
-                                    <img src="resources/images/ico_fileUpload.svg" alt="upload image">
-                                    <span class="btn_file_add">업로드</span><br>
-                                    ‘업로드’ 버튼을 클릭하여 파일을 선택하거나, Drag & Drop 하세요.
-                                </label>
-                                <progress id="file-progress" value="0">
-                                    <span>0</span>
-                                </progress>                                           
-                            </div>
-
-                            <output for="file-upload">
-                                <!-- [D] 선택 된 파일명이 추가되는 곳 -->
-                                <ul id="messages">
-                                </ul>
-                            </output>
-                        </form>
-                    </div>
-                    <a href="detect_verify.html" class="btn_chk_result">결과 보기</a>
-                </div>
+                <!-- [D] iframe영역은 .workArea 안에 넣어주시면 됩니다. -->
+                <div class="workArea"></div>
             </div>
             <!-- //.content -->
         </div> 
@@ -123,15 +99,11 @@
 </div>
 <!-- //#wrap -->
 
-<!---------------------- Local Resources ---------------------->
-<!-- Local Script Library -->
-<script type="text/javascript" src="resources/js/file-drag-upload.js"></script>
-
 <!-- Local Script -->
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-
+        
     });
 });
 </script>

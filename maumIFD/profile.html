@@ -21,7 +21,7 @@
 <script type="text/javascript" src="resources/js/jquery-migrate-3.3.1.min.js"></script>
 <script type="text/javascript" src="resources/js/maumIFD_common.js"></script>
 
-<title>탐지 및 제어(진위확인 즉시 검증) || maum IFD</title>
+<title>프로필 || maum IFD</title>
 </head>
 <body>
 <!-- #wrap -->
@@ -38,11 +38,11 @@
                 <h1 class="logo"><a href="detect_verify_check.html">maum IFD</a></h1>
             </div>
             <ul class="nav">
-                <li class="active">
+                <li>
                     <h2><a href="#none" title="탐지 및 제어"><span>탐지 및 제어</span></a></h2>
                     <ul class="sub">
                         <li><a href="detect_result_check.html">진위확인 결과 조회</a></li>
-                        <li><a href="detect_verify_upload.html" class="active">진위확인 즉시 검증</a></li>
+                        <li><a href="detect_verify_upload.html">진위확인 즉시 검증</a></li>
                     </ul>
                 </li>
                 <li>
@@ -73,7 +73,7 @@
         <!-- #contents -->
         <div id="contents">
             <!-- .content -->
-            <div class="content">
+            <div class="content profile">
                 <div class="etcArea">
                     <div class="user_menu">
                         <ul>
@@ -85,34 +85,39 @@
                 </div>
 
                 <div class="titArea">
-                    <h3>탐지 및 제어 <span>진위확인 즉시 검증</span></h3>
+                    <h3>프로필</h3>
                 </div>
 
-                <div class="workArea">
-                    <div class="uploadBox">
-                        <form id="file-upload-form" action="">
-                            <!-- [D] 파일 선택 시 .upload_form_box에 removeClass('active')해주면 초기 UI 사라짐 -->
-                            <!-- [D] 위 내용과 반대로 모든 파일을 삭제 할 경우 addClass('active')해주면 초기 UI 나타남 -->
-                            <div class="upload_form_box active">                                           
-                                <input id="file-upload" type="file" name="fileUpload" multiple>
-                                <label for="file-upload" id="file-drag">
-                                    <img src="resources/images/ico_fileUpload.svg" alt="upload image">
-                                    <span class="btn_file_add">업로드</span><br>
-                                    ‘업로드’ 버튼을 클릭하여 파일을 선택하거나, Drag & Drop 하세요.
-                                </label>
-                                <progress id="file-progress" value="0">
-                                    <span>0</span>
-                                </progress>                                           
-                            </div>
-
-                            <output for="file-upload">
-                                <!-- [D] 선택 된 파일명이 추가되는 곳 -->
-                                <ul id="messages">
-                                </ul>
-                            </output>
-                        </form>
-                    </div>
-                    <a href="detect_verify.html" class="btn_chk_result">결과 보기</a>
+                <div class="tblBox admin">
+                    <table summary="프로필 정보 상세">
+                        <caption class="hide">프로필 정보 상세</caption>
+                        <colgroup>
+                            <col width="180px"><col>
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th colspan="2">프로필 정보 상세</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>사용자 성명</th>
+                                <td>홍길동</td>
+                            </tr>
+                            <tr>
+                                <th>ID</th>
+                                <td>mindslab</td>
+                            </tr>
+                            <tr>
+                                <th>사용자 그룹</th>
+                                <td>관리자</td>
+                            </tr>
+                            <tr>
+                                <th>암호변경</th>
+                                <td><button type="button" class="btn_primary line btn_lyr_open" data-lyr-name="modify_pw">암호변경</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <!-- //.content -->
@@ -123,9 +128,35 @@
 </div>
 <!-- //#wrap -->
 
-<!---------------------- Local Resources ---------------------->
-<!-- Local Script Library -->
-<script type="text/javascript" src="resources/js/file-drag-upload.js"></script>
+<!---------------------- layer popup ---------------------->
+<!-- 암호 변경 -->
+<div id="modify_pw" class="lyrWrap">
+    <div class="lyrCont">
+        <div class="lyr_top">
+            <p class="tit">암호 변경</p>
+            <button type="button" class="btn_lyr_close"><span class="hide">닫기버튼</span></button>
+        </div>
+        <div class="lyr_mid">
+            <dl>
+                <dt>기존 암호</dt>
+                <dd><input type="password" class="ipt_txt"></dd>
+            </dl>
+            <dl>
+                <dt>새 암호</dt>
+                <dd><input type="password" class="ipt_txt"></dd>
+            </dl>
+            <dl>
+                <dt>새 암호 확인</dt>
+                <dd><input type="password" class="ipt_txt"></dd>
+            </dl>
+        </div>
+        <div class="lyr_btm">
+            <button type="button" class="btn_primary line btn_lyr_close">취소</button>
+            <button type="button" class="btn_primary">저장</button>
+        </div>
+    </div>
+</div>
+<!-- //암호 변경 -->
 
 <!-- Local Script -->
 <script type="text/javascript">
