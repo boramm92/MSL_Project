@@ -49,7 +49,7 @@
 .radioBox input[type="radio"] + label:before {content:''; display:inline-block; position:absolute; top:50%; left:0; width:14px; height:14px; border:1px solid #babbd4; border-radius:50%; box-sizing:border-box; background:#fff; transform:translate(0, -50%); transition:all 0.2s ease-out;}
 .radioBox input[type="radio"]:checked + label:before {border:1px solid #7a7cfb;}
 .radioBox input[type="radio"]:checked + label:after {content:''; display:inline-block; position:absolute; top:50%; left:4px; width:6px; height:6px; border-radius:50%; background:#7a7cfb; transform:translate(0, -50%); transition:all 0.2s ease-out;}
-.radioBox label:nth-child(4) {margin:0 0 0 30px;}
+.radioBox label:nth-child(n+4) {margin:0 0 0 30px;}
 
 /* input[type="text"] */
 .ipt_txt {width:144px; height:32px; padding:0 10px; border:1px solid #e0e0ed; border-radius:16px; box-sizing:border-box; background:#f1f3f9; color:#353a55; font-size:14px; letter-spacing:-0.19px;}
@@ -124,13 +124,35 @@ input[type="file"] + label .btn_file_add {display:inline-block; padding:0 12px; 
 #add_user .lyrCont .lyr_mid .tblBox table tbody tr td .select {width:70px; min-width:auto; font-size:12px;}
 
 #srch_dptmt .lyrCont {width:425px;}
-#srch_dptmt .lyrCont .lyr_mid {padding:0;}
+#srch_dptmt .lyrCont .lyr_mid {padding:10px;}
+#srch_dptmt .lyrCont .lyr_mid .srchArea {border:none; box-shadow:none; background:none;}
+#srch_dptmt .lyrCont .lyr_mid .srchArea .select {width:110px; min-width:auto; border-radius:4px; vertical-align:top;}
+#srch_dptmt .lyrCont .lyr_mid .srchArea .ipt_txt {width:216px; border-radius:4px; vertical-align:top;}
+#srch_dptmt .lyrCont .lyr_mid .srchArea .btn_primary {border-radius:4px;}
+#srch_dptmt .lyrCont .lyr_mid .tblBox {margin:20px 0 0;}
+#srch_dptmt .lyrCont .lyr_mid .pagingArea {margin:10px 0 0; padding:0 0 20px;}
+#srch_dptmt .lyrCont .lyr_mid .pagingArea .paging {white-space:nowrap;}
+#srch_dptmt .lyrCont .lyr_mid .pagingArea .paging .btn_paging.prev,
+#srch_dptmt .lyrCont .lyr_mid .pagingArea .paging .btn_paging.next {margin:0;}
 
 #modify_pw .lyrCont {width:425px;}
 #modify_pw .lyrCont .lyr_mid {padding:20px;}
 #modify_pw .lyrCont .lyr_mid dl dt {float:left; width:105px; color:#383d58; font-size:14px; letter-spacing:-0.19px; line-height:32px;}
 #modify_pw .lyrCont .lyr_mid dl dd .ipt_txt {width:calc(100% - 105px); border-radius:4px;}
 #modify_pw .lyrCont .lyr_mid dl + dl {margin:14px 0 0;}
+
+#auth_set .lyrCont {width:280px; min-width:auto;}
+#auth_set .lyrCont .lyr_mid {padding:10px 0;}
+#auth_set .lyrCont .lyr_mid .desc {color:rgba(53, 58, 85, 0.6); font-size:14px; letter-spacing:-0.19px; text-align:center;}
+#auth_set .lyrCont .lyr_mid .tree_view_wrap {overflow:auto; width:auto; height:380px; margin:7px 0 0; padding:0 30px; border:none; box-shadow:none;}
+
+#add_menu .lyrCont {width:633px;}
+
+#id_chk .lyrCont {width:425px;}
+#id_chk .lyrCont .lyr_mid .info {color:#5d6177; font-size:14px; letter-spacing:-0.19px; text-align:center;}
+
+#srch_address .lyrCont {width:425px;}
+#srch_address .lyrCont .lyr_mid {padding:20px 10px;}
 
 
 /* -------------------- loginWrap -------------------- */
@@ -264,6 +286,7 @@ input[type="file"] + label .btn_file_add {display:inline-block; padding:0 12px; 
 .filterArea dl + dl {margin:0 0 0 30px;}
 .filterArea dl dt {margin:0 0 3px; color:#353a55; font-size:12px; letter-spacing:-0.16px;}
 .filterArea dl dd .iptBox {display:inline-block; position:relative;}
+.filterArea dl dd .iptBox.date .ipt_txt {background:#fff;}
 .filterArea dl dd .iptBox.date:before {content:'\f073'; font-family:'Font Awesome 5 Free'; color:rgba(53, 58, 85, 0.6); font-size:14px; display:block; position:absolute; top:56%; right:16px; transform:translate(0, -50%);}
 .filterArea dl dd .tilde {margin:0 4px; color:#353a55; font-size:15px;}
 .filterArea .btn_primary {margin-left:auto;}
@@ -281,9 +304,38 @@ input[type="file"] + label .btn_file_add {display:inline-block; padding:0 12px; 
 .srchArea + .btnBox {margin:30px 0 10px;}
 
 /* tree_view_wrap */
-.tree_view_wrap {overflow:hidden; width:280px; border:1px solid #e0e0ed; border-radius:4px; box-shadow:1px 1px 6px 0 rgba(101, 101, 101, 0.1); box-sizing:border-box;}
-.tree_view_wrap .tit {height:40px; background:#5d6177; color:#fff; font-size:15px; font-weight:500; letter-spacing:-0.2px; line-height:40px; text-align:center;}
-.tree_view_wrap .tree_list_box {overflow:auto; min-height:280px; max-height:660px; background:#fff;}
+.list_box {overflow:hidden; width:280px; border:1px solid #e0e0ed; border-radius:4px; box-shadow:1px 1px 6px 0 rgba(101, 101, 101, 0.1); box-sizing:border-box; background:#fff;}
+.list_box .tit {height:40px; background:#5d6177; color:#fff; font-size:15px; font-weight:500; letter-spacing:-0.2px; line-height:40px; text-align:center;}
+.tree_view_wrap {min-height:280px; max-height:660px;}
+.tree_view_wrap.prtmt {width:auto; padding:20px; box-sizing:border-box;}
+.tree_view_wrap.menu {width:auto; min-height:360px; padding:20px 30px; box-sizing:border-box;}
+div.tree-multiselect>div {width:100% !important; padding:0 !important; border:none !important; box-shadow:none !important;}
+div.tree-multiselect .auxiliary .select-all-container,
+div.tree-multiselect>div.selected {display:none !important;}
+div.tree-multiselect {height:100%; border:none;}
+div.tree-multiselect div.title {position:relative; padding:0 0 0 25px; box-sizing:border-box; background:none; color:#353a55; font-size:14px; letter-spacing:-0.19px; line-height:25px;}
+div.tree-multiselect div.title:before {content:''; position:absolute; top:13px; left:19px; width:10px; height:1px; border-top:1px dotted #000;}
+div.tree-multiselect div.item {line-height:23px;}
+div.tree-multiselect div.title > span.collapse-section {position:absolute; top:5px; left:0;}
+div.tree-multiselect div.title > span.collapse-section:after {content:'\2212'; position:absolute; display:block; width:15px; height:15px; border:1px solid #868999; border-radius:2px; box-sizing:border-box; background:#fff; font-size:14px; font-weight:700; text-align:center; line-height:13px; cursor:pointer; z-index:10;}
+div.tree-multiselect div.section.collapsed > div.title span.collapse-section:after {content:'\002B'; position:absolute; display:block; width:15px; height:15px; border:1px solid #868999; border-radius:2px; box-sizing:border-box; background:#fff; font-size:14px; font-weight:700; text-align:center; line-height:13px; cursor:pointer;}
+div.tree-multiselect div.section > div.section,
+div.tree-multiselect div.section > div.item {position:relative; padding-left:23px;}
+div.tree-multiselect div.section > div.item {padding:0 0 0 28px;}
+div.tree-multiselect div.section > div.item:before {content:''; position:absolute; top:-11px; left:17px; width:12px; height:28px; border:1px dotted #000; border-top:none; border-right:none;}
+div.tree-multiselect div.section .section:last-child > div.section:last-child:before {content:none;}
+div.tree-multiselect span.section-name {float:left; position:relative; margin:0 5px 0 0; font-style:normal;}
+div.tree-multiselect span.section-name:after {content:'\2010'; display:inline-block; position:absolute; right:-5px;}
+div.tree-multiselect span.remove-selected {position:absolute; top:2px; right:0; width:20px; height:20px; margin:2px 0 0; padding:0; background:#7f8185; line-height:18px; text-align:center;}
+div.tree-multiselect>div.selected div.item,
+div.tree-multiselect>div.selected div.section {position:relative; margin:0px; padding:2px 30px 2px 5px; background:none;}
+div.tree-multiselect input[type=checkbox] {position:absolute; overflow:hidden; width:1px; height:1px; margin:-1px; padding:0; clip:rect(0,0,0,0); border:0;}
+div.tree-multiselect div.selections input[type="checkbox"] + label {display:inline-block; position:relative; padding:0 0 0 23px; color:#353a55; font-size:14px; letter-spacing:-0.19px; cursor:pointer;}
+div.tree-multiselect div.selections input[type="checkbox"] + label:before {content:''; position:absolute; top:-13px; left:2px; width:15px; height:15px; line-height:15px; text-align:center; border:1px solid #868999; border-radius:2px; box-sizing:border-box; background:#fff; z-index:5;}
+div.tree-multiselect div.selections input[type="checkbox"]:checked + label:before {content:'\f00c'; font-family:'Font Awesome 5 Free'; color:#7a7cfb; font-size:10px; font-weight:900; line-height:13px; text-align:center; display:block; padding:0 0 0 1px; border:1px solid #7a7cfb;}
+div.tree-multiselect div.item input[type="checkbox"] + label:before {top:6px;}
+div.tree-multiselect div.section > div.section:before {content:''; display:block; position:absolute; top:-10px; left:33px; width:1px; height:100%; border-left:1px dotted #000;}
+div.tree-multiselect div.section > div.section:last-child:after {content:''; display:block; position:absolute; bottom:8px; left:33px; width:22px; height:1px; border-top:1px dotted #000;}
 
 /* tblBox */
 .tblBox {overflow:hidden; border:1px solid #e0e0ed; border-radius:4px; box-shadow:1px 1px 6px 0 rgba(101, 101, 101, 0.1);}
@@ -300,6 +352,7 @@ input[type="file"] + label .btn_file_add {display:inline-block; padding:0 12px; 
 .tblBox.admin table tbody tr:last-child th {border-bottom:none;}
 .tblBox.admin table tbody tr td {padding:0 10px; border-bottom:1px solid #e0e0ed; background:#fff;}
 .tblBox.admin table tbody tr td.empty {text-align:center;}
+.tblBox.admin table tbody tr td .fa-user-cog {color:#7a7cfb; font-size:14px;}
 .tblBox.admin table tbody tr:last-child td {border-bottom:none;}
 .tblBox.admin table tbody tr td .ipt_txt {width:100%; border-radius:4px;}
 
@@ -316,6 +369,8 @@ input[type="file"] + label .btn_file_add {display:inline-block; padding:0 12px; 
 .pagingArea .btnBox {margin:-8px 0 0;}
 
 .admin_dptmt .fr {width:calc(100% - 310px);}
+.admin_dptmt .fr .tblBox table thead tr th,
+.admin_dptmt .fr .tblBox table tbody tr th {padding:0 40px; text-align:left;}
 .admin_dptmt .btnBox {margin:15px 0 0; text-align:right;}
 .admin_dptmt .tblBox table tbody tr td {text-align:left;}
 
@@ -323,7 +378,8 @@ input[type="file"] + label .btn_file_add {display:inline-block; padding:0 12px; 
 .admin_user .tblBox table tbody tr td {font-size:12px;}
 
 .fake_chk .tblBox table thead tr th,
-.fake_chk .tblBox table tbody tr td {padding:0 40px; text-align:left;}
+.fake_chk .tblBox table tbody tr td {padding:0 40px; text-align:left; transition:background-color 0.3s ease-out;}
+.fake_chk .tblBox table tbody tr.active td {background:#f1f3f9;}
 .fake_chk .tblBox table tbody tr td .radioBox input[type="radio"] + label {padding:0 0 0 50px;}
 .fake_chk .tblBox table tbody tr td .desc {margin:0 0 0 50px;}
 .fake_chk .tblBox table tbody tr td .status {display:inline-block; position:relative; padding:0 0 0 24px;}

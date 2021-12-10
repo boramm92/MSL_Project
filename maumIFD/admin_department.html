@@ -14,6 +14,7 @@
 
 <!---------------------- General Resources ---------------------->
 <!-- General CSS -->
+<link rel="stylesheet" href="resources/css/jquery.tree-multiselect.min.css">
 <link rel="stylesheet" type="text/css" href="resources/css/maumIFD_common.css">
 
 <!-- General Script -->
@@ -35,7 +36,7 @@
                     <span class="hide">전체 메뉴</span>
                     <em class="fas fa-bars"></em>
                 </button>
-                <h1 class="logo"><a href="detect_verify_check.html">maum IFD</a></h1>
+                <h1 class="logo"><a href="detect_result_check.html">maum IFD</a></h1>
             </div>
             <ul class="nav">
                 <li>
@@ -89,12 +90,16 @@
                 </div>
 
                 <div class="fl">
-                    <div class="tree_view_wrap">
+                    <div class="list_box">
                         <div class="tit">부서 목록</div>
-                        <div class="tree_list_box">
-                            <ul class="department_list">
-                                <li>부서목록</li>
-                            </ul>
+                        <div class="tree_view_wrap prtmt">
+                            <!-- [D] data-section으로 카테고리 분류 -->
+                            <select id="treeSelector" multiple="multiple">
+                                <option value="1" data-section="부서 목록">IT팀</option>
+                                <option value="1" data-section="부서 목록">심사팀</option>
+                                <option value="1" data-section="부서 목록">서비스관리</option>
+                                <option value="1" data-section="부서 목록">준법감시팀</option>
+                            </select>
                         </div>
                     </div>
                     <div class="btnBox">
@@ -237,43 +242,23 @@
 <!-- //상세보기 -->
 
 <!---------------------- Local Resources ---------------------->
-<!-- Local CSS -->
-<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="resources/css/bootstrap-datetimepicker.css">
-
 <!-- Local Script Library -->
-<script type="text/javascript" src="resources/js/bootstrap-datetimepicker.js"></script>
+<script src="resources/js/jquery.tree-multiselect.js"></script>
 
 <!-- Local Script -->
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-        // datepicker
-        var thisFromDate = $(this).find('.fromDate'),
-            thisToDate = $(this).find('.toDate');
-
-        thisFromDate.datetimepicker({
-            format: 'yyyy-mm-dd', 
-            minView: 'month',
-            pickTime : false, 
-            autoclose: 1,
-        }).on('changeDate', function(selected){
-            var startDate = new Date(selected.date.valueOf());
-            thisToDate.datetimepicker('setStartDate', startDate);
-        }).on('clearDate', function(selected){
-            thisToDate.datetimepicker('setStartDate', null);
+        // tree multiselect
+        $('#treeSelector').treeMultiselect({
+            startCollapsed: 'false',
+            sectionDelimiter: '-',
         });
 
-        thisToDate.datetimepicker({
-            format: 'yyyy-mm-dd', 
-            minView: 'month',
-            pickTime : false, 
-            autoclose: 1,
-        }).on('changeDate', function(selected){
-            var endDate = new Date(selected.date.valueOf());
-            thisFromDate.datetimepicker('setEndDate', endDate);
-        }).on('clearDate', function(selected){
-            thisFromDate.datetimepicker('setEndDate', null);
+        // ie 호환 체크박스
+        $('input.section').each(function(i){
+            $(this).attr('id', 'chkbox' + i + 1);
+            $(this).siblings('label').attr('for', 'chkbox' + i + 1);
         });
     });
 });

@@ -14,6 +14,7 @@
 
 <!---------------------- General Resources ---------------------->
 <!-- General CSS -->
+<link rel="stylesheet" href="resources/css/jquery.tree-multiselect.min.css">
 <link rel="stylesheet" type="text/css" href="resources/css/maumIFD_common.css">
 
 <!-- General Script -->
@@ -35,7 +36,7 @@
                     <span class="hide">전체 메뉴</span>
                     <em class="fas fa-bars"></em>
                 </button>
-                <h1 class="logo"><a href="detect_verify_check.html">maum IFD</a></h1>
+                <h1 class="logo"><a href="detect_result_check.html">maum IFD</a></h1>
             </div>
             <ul class="nav">
                 <li>
@@ -92,7 +93,7 @@
                     <table summary="시스템 사용여부, 조건 선택으로 구성">
                         <caption class="hide">검색조건</caption>
                         <colgroup>
-                            <col width="150px"><col><col width="150px"><col>
+                            <col width="140px"><col><col width="140px"><col>
                         </colgroup>
                         <tbody>
                             <tr>
@@ -110,7 +111,7 @@
                                 <th>조건 선택</th>
                                 <td>
                                     <select class="select">
-                                        <option value="">이름</option>
+                                        <option value="">부서명</option>
                                     </select>
                                     <input type="text" class="ipt_txt" placeholder="검색어를 입력해주세요.">
                                     <button type="button" class="btn_primary">검색</button>
@@ -121,134 +122,45 @@
                 </div>
 
                 <div class="btnBox">
-                    <button type="button" class="btn_primary btn_lyr_open" data-lyr-name="add_user">등록</button>
-                    <button type="button" class="btn_primary line">삭제</button>
+                    <button type="button" class="btn_primary">등록</button>
                 </div>
 
-                <div class="tblBox icld_chk admin">
-                    <table summary="No. 이름, 아이디, 부서ID, 부서명, 부서명(영문), 연락처, 등록일, 수정일로 구성">
+                <div class="tblBox admin">
+                    <table summary="No, 부서 ID, 부서 명, 연락처, 시스템 사용여부, 등록일, 권한관리로 구성">
                         <caption class="hide">사용자 관리</caption>
                         <colgroup>
-                            <col width="50px"><col><col><col><col><col><col width="12%"><col width="12%"><col width="11%"><col width="11%">
+                            <col><col><col><col><col><col><col>
                         </colgroup>
                         <thead>
                             <tr>
-                                <th scope="col">
-                                    <div class="chkBoxOnly">
-                                        <input type="checkbox" class="allChk">
-                                    </div>
-                                </th>
                                 <th scope="col">No.</th>
-                                <th scope="col">이름</th>
-                                <th scope="col">아이디</th>
-                                <th scope="col">부서ID</th>
-                                <th scope="col">부서명</th>
-                                <th scope="col">부서명(영문)</th>
+                                <th scope="col">부서 ID</th>
+                                <th scope="col">부서 명</th>
                                 <th scope="col">연락처</th>
+                                <th scope="col">시스템 사용여부</th>
                                 <th scope="col">등록일</th>
-                                <th scope="col">수정일</th>
+                                <th scope="col">권한관리</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="empty" scope="row" colspan="10">데이터가 없습니다.</td>
+                                <td class="empty" scope="row" colspan="7">데이터가 없습니다.</td>
                             </tr>
                             <tr>
-                                <td scope="row">
-                                    <div class="chkBoxOnly">
-                                        <input type="checkbox" class="eachChk">
-                                    </div>
-                                </td>
                                 <td>1</td>
                                 <td>fast01</td>
-                                <td><span class="user_id">fast01</span></td>
-                                <td>001</td>
-                                <td>mindslab</td>
-                                <td>mindslab</td>
+                                <td><span class="ft_point_blue">fast01</span></td>
                                 <td>01022220000</td>
+                                <td>사용</td>
                                 <td>2020-02-20</td>
-                                <td>2020-02-20</td>
-                            </tr>
-                            <tr>
-                                <td scope="row">
-                                    <div class="chkBoxOnly">
-                                        <input type="checkbox" class="eachChk">
-                                    </div>
+                                <td>
+                                    <button type="button" class="btn_auth_set btn_lyr_open" data-lyr-name="auth_set">
+                                        <span class="hide">권한관리</span>
+                                        <em class="fas fa-user-cog"></em>
+                                    </button>
                                 </td>
-                                <td>1</td>
-                                <td>fast01</td>
-                                <td><span class="user_id">fast01</span></td>
-                                <td>001</td>
-                                <td>mindslab</td>
-                                <td>mindslab</td>
-                                <td>01022220000</td>
-                                <td>2020-02-20</td>
-                                <td>2020-02-20</td>
                             </tr>
-                            <tr>
-                                <td scope="row">
-                                    <div class="chkBoxOnly">
-                                        <input type="checkbox" class="eachChk">
-                                    </div>
-                                </td>
-                                <td>1</td>
-                                <td>fast01</td>
-                                <td><span class="user_id">fast01</span></td>
-                                <td>001</td>
-                                <td>mindslab</td>
-                                <td>mindslab</td>
-                                <td>01022220000</td>
-                                <td>2020-02-20</td>
-                                <td>2020-02-20</td>
-                            </tr>
-                            <tr>
-                                <td scope="row">
-                                    <div class="chkBoxOnly">
-                                        <input type="checkbox" class="eachChk">
-                                    </div>
-                                </td>
-                                <td>1</td>
-                                <td>fast01</td>
-                                <td><span class="user_id">fast01</span></td>
-                                <td>001</td>
-                                <td>mindslab</td>
-                                <td>mindslab</td>
-                                <td>01022220000</td>
-                                <td>2020-02-20</td>
-                                <td>2020-02-20</td>
-                            </tr>
-                            <tr>
-                                <td scope="row">
-                                    <div class="chkBoxOnly">
-                                        <input type="checkbox" class="eachChk">
-                                    </div>
-                                </td>
-                                <td>1</td>
-                                <td>fast01</td>
-                                <td><span class="user_id">fast01</span></td>
-                                <td>001</td>
-                                <td>mindslab</td>
-                                <td>mindslab</td>
-                                <td>01022220000</td>
-                                <td>2020-02-20</td>
-                                <td>2020-02-20</td>
-                            </tr>
-                            <tr>
-                                <td scope="row">
-                                    <div class="chkBoxOnly">
-                                        <input type="checkbox" class="eachChk">
-                                    </div>
-                                </td>
-                                <td>1</td>
-                                <td>fast01</td>
-                                <td><span class="user_id">fast01</span></td>
-                                <td>001</td>
-                                <td>mindslab</td>
-                                <td>mindslab</td>
-                                <td>01022220000</td>
-                                <td>2020-02-20</td>
-                                <td>2020-02-20</td>
-                            </tr>
+ 
                         </tbody>
                     </table>
                 </div>
@@ -294,318 +206,56 @@
 <!-- //#wrap -->
 
 <!---------------------- layer popup ---------------------->
-<!-- 사용자 관리 -->
-<div id="add_user" class="lyrWrap modify">
+<!-- 권한 관리 -->
+<div id="auth_set" class="lyrWrap">
     <div class="lyrCont">
         <div class="lyr_top">
-            <p class="tit">사용자 관리</p>
+            <p class="tit">권한 관리</p>
             <button type="button" class="btn_lyr_close"><span class="hide">닫기버튼</span></button>
         </div>
         <div class="lyr_mid">
-           <div class="tblBox">
-               <table summary="부서 코드, 사용자 ID, 비밀번호, 이름, 성별, 이메일, 생년월일, 직급, 휴대폰, 주소, 사용여부, 부서로 구성">
-                    <caption class="hide">사용자 관리</caption>
-                    <colgroup>
-                        <col width="114px"><col width="253px"><col width="114px"><col>
-                    </colgroup>
-                    <tbody>
-                        <tr>
-                            <th rowspan="2">*부서 코드</th>
-                            <td colspan="3">
-                                <input type="text" class="ipt_txt">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">
-                                <input type="text" class="ipt_txt dptmt_code">
-                                <button type="button" class="btn_primary line btn_lyr_open" data-lyr-name="srch_dptmt">조회</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>*사용자 ID</th>
-                            <td>
-                                <input type="text" class="ipt_txt user_id">
-                                <button type="button" class="btn_primary line">중복확인</button>
-                            </td>
-                            <th>비밀번호</th>
-                            <td>
-                                <button type="button" class="btn_primary line">비밀번호 초기화</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>*이름</th>
-                            <td>
-                                <input type="text" class="ipt_txt">
-                            </td>
-                            <th>성별</th>
-                            <td>
-                                <div class="radioBox">   
-                                    <!-- [D] input[type="radio"]의 id와 label의 for값이 동일해야 합니다. -->
-                                    <input type="radio" name="radio" id="male" checked>
-                                    <label for="male">남</label>    
-                                    <!-- [D] input[type="radio"]의 id와 label의 for값이 동일해야 합니다. -->                      
-                                    <input type="radio" name="radio" id="female">
-                                    <label for="female">여</label>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>이메일</th>
-                            <td>
-                                <input type="text" class="ipt_txt email">
-                                @
-                                <input type="text" class="ipt_txt email">
-                                <select class="select">
-                                    <option value="">직접입력</option>
-                                </select>
-                            </td>
-                            <th>생년월일</th>
-                            <td>
-                                <input type="text" class="ipt_txt">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>직급</th>
-                            <td>
-                                <input type="text" class="ipt_txt">
-                            </td>
-                            <th>휴대폰</th>
-                            <td>
-                                <input type="text" class="ipt_txt">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th rowspan="2">주소</th>
-                            <td colspan="3">
-                                <input type="text" class="ipt_txt address">
-                                <button type="button" class="btn_primary line">검색</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">
-                                <input type="text" class="ipt_txt address">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>*사용여부</th>
-                            <td>
-                                <div class="radioBox">   
-                                    <!-- [D] input[type="radio"]의 id와 label의 for값이 동일해야 합니다. -->
-                                    <input type="radio" name="radio2" id="use" checked>
-                                    <label for="use">사용</label>    
-                                    <!-- [D] input[type="radio"]의 id와 label의 for값이 동일해야 합니다. -->                      
-                                    <input type="radio" name="radio2" id="unuse">
-                                    <label for="unuse">미사용</label>
-                                </div>
-                            </td>
-                            <th>부서</th>
-                            <td>
-                                <input type="text" class="ipt_txt">
-                            </td>
-                        </tr>
-                    </tbody>
-               </table>
-           </div>
-        </div>
-        <div class="lyr_btm">
-            <button type="button" class="btn_primary line btn_lyr_close">취소</button>
-            <button type="button" class="btn_primary">저장</button>
-        </div>
-    </div>
-</div>
-<!-- //사용자 관리 -->
-
-<!-- 부서 명/부서 ID 검색 -->
-<div id="srch_dptmt" class="lyrWrap">
-    <div class="lyrCont">
-        <div class="lyr_top">
-            <p class="tit">부서 명/부서 ID 검색</p>
-            <button type="button" class="btn_lyr_close"><span class="hide">닫기버튼</span></button>
-        </div>
-        <div class="lyr_mid">
-           <div class="tblBox">
-               <table summary="부서 코드, 사용자 ID, 비밀번호, 이름, 성별, 이메일, 생년월일, 직급, 휴대폰, 주소, 사용여부, 부서로 구성">
-                    <caption class="hide">사용자 관리</caption>
-                    <colgroup>
-                        <col width="114px"><col width="253px"><col width="114px"><col>
-                    </colgroup>
-                    <tbody>
-                        <tr>
-                            <th rowspan="2">*부서 코드</th>
-                            <td colspan="3">
-                                <input type="text" class="ipt_txt">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">
-                                <input type="text" class="ipt_txt dptmt_code">
-                                <button type="button" class="btn_primary line">조회</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>*사용자 ID</th>
-                            <td>
-                                <input type="text" class="ipt_txt user_id">
-                                <button type="button" class="btn_primary line">중복확인</button>
-                            </td>
-                            <th>비밀번호</th>
-                            <td>
-                                <button type="button" class="btn_primary line">비밀번호 초기화</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>*이름</th>
-                            <td>
-                                <input type="text" class="ipt_txt">
-                            </td>
-                            <th>성별</th>
-                            <td>
-                                <div class="radioBox">   
-                                    <!-- [D] input[type="radio"]의 id와 label의 for값이 동일해야 합니다. -->
-                                    <input type="radio" name="radio" id="male" checked>
-                                    <label for="male">남</label>    
-                                    <!-- [D] input[type="radio"]의 id와 label의 for값이 동일해야 합니다. -->                      
-                                    <input type="radio" name="radio" id="female">
-                                    <label for="female">여</label>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>이메일</th>
-                            <td>
-                                <input type="text" class="ipt_txt email">
-                                @
-                                <input type="text" class="ipt_txt email">
-                                <select class="select">
-                                    <option value="">직접입력</option>
-                                </select>
-                            </td>
-                            <th>생년월일</th>
-                            <td>
-                                <input type="text" class="ipt_txt">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>직급</th>
-                            <td>
-                                <input type="text" class="ipt_txt">
-                            </td>
-                            <th>휴대폰</th>
-                            <td>
-                                <input type="text" class="ipt_txt">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th rowspan="2">주소</th>
-                            <td colspan="3">
-                                <input type="text" class="ipt_txt address">
-                                <button type="button" class="btn_primary line">검색</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">
-                                <input type="text" class="ipt_txt address">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>*사용여부</th>
-                            <td>
-                                <div class="radioBox">   
-                                    <!-- [D] input[type="radio"]의 id와 label의 for값이 동일해야 합니다. -->
-                                    <input type="radio" name="radio2" id="use" checked>
-                                    <label for="use">사용</label>    
-                                    <!-- [D] input[type="radio"]의 id와 label의 for값이 동일해야 합니다. -->                      
-                                    <input type="radio" name="radio2" id="unuse">
-                                    <label for="unuse">미사용</label>
-                                </div>
-                            </td>
-                            <th>부서</th>
-                            <td>
-                                <input type="text" class="ipt_txt">
-                            </td>
-                        </tr>
-                    </tbody>
-               </table>
-           </div>
-
-           <div class="pagingArea">
-            <div class="paging">
-                <a href="#none" class="btn_paging first">
-                    <span class="hide">처음 페이지</span>
-                    <em class="fas fa-angle-double-left"></em>
-                </a>
-                <a href="#none" class="btn_paging prev">
-                    <span class="hide">이전 페이지</span>
-                    <em class="fas fa-angle-left"></em>
-                </a>
-                <!-- [D] 현재 페이지 인덱스에 addClass('current') 해주면 활성화됨 -->
-                <a href="#none" class="current">1</a>
-                <a href="#none">2</a>
-                <a href="#none">3</a>
-                <a href="#none">4</a>
-                <a href="#none">5</a>
-                <a href="#none">6</a>
-                <a href="#none">7</a>
-                <a href="#none">8</a>
-                <a href="#none">9</a>
-                <a href="#none">10</a>
-                <a href="#none" class="btn_paging next">
-                    <span class="hide">다음 페이지</span>
-                    <em class="fas fa-angle-right"></em>
-                </a>
-                <a href="#none" class="btn_paging last">
-                    <span class="hide">마지막 페이지</span>
-                    <em class="fas fa-angle-double-right"></em>
-                </a>
+            <p class="desc">사용할 시스템(메뉴)를 선택하세요.</p>
+            <div class="tree_view_wrap">
+                <!-- [D] data-section으로 카테고리 분류 -->
+                <select id="treeSelector" multiple="multiple">
+                    <option value="1" data-section="탐지 및 제어">진위확인 결과 조회</option>
+                    <option value="2" data-section="탐지 및 제어">진위확인 즉시 검증</option>
+                    <option value="3" data-section="모니터링">모니터링</option>
+                    <option value="4" data-section="통계">통계</option>
+                    <option value="5" data-section="Admin-조직 관리">부서 관리</option>
+                    <option value="6" data-section="Admin-조직 관리">사용자 관리</option>
+                    <option value="7" data-section="Admin">권한 관리</option>
+                    <option value="8" data-section="Admin">메뉴 관리</option>
+                    <option value="9" data-section="Admin">진위확인 기능 설정</option>
+                </select>
             </div>
         </div>
-        </div>
         <div class="lyr_btm">
             <button type="button" class="btn_primary line btn_lyr_close">취소</button>
             <button type="button" class="btn_primary">저장</button>
         </div>
     </div>
 </div>
-<!-- //부서 명/부서 ID 검색 -->
+<!-- //권한 관리 -->
 
 <!---------------------- Local Resources ---------------------->
-<!-- Local CSS -->
-<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="resources/css/bootstrap-datetimepicker.css">
-
 <!-- Local Script Library -->
-<script type="text/javascript" src="resources/js/bootstrap-datetimepicker.js"></script>
+<script src="resources/js/jquery.tree-multiselect.js"></script>
 
 <!-- Local Script -->
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-        // datepicker
-        var thisFromDate = $(this).find('.fromDate'),
-            thisToDate = $(this).find('.toDate');
-
-        thisFromDate.datetimepicker({
-            format: 'yyyy-mm-dd', 
-            minView: 'month',
-            pickTime : false, 
-            autoclose: 1,
-        }).on('changeDate', function(selected){
-            var startDate = new Date(selected.date.valueOf());
-            thisToDate.datetimepicker('setStartDate', startDate);
-        }).on('clearDate', function(selected){
-            thisToDate.datetimepicker('setStartDate', null);
+        // tree multiselect
+        $('#treeSelector').treeMultiselect({
+            startCollapsed: 'false',
+            sectionDelimiter: '-',
         });
 
-        thisToDate.datetimepicker({
-            format: 'yyyy-mm-dd', 
-            minView: 'month',
-            pickTime : false, 
-            autoclose: 1,
-        }).on('changeDate', function(selected){
-            var endDate = new Date(selected.date.valueOf());
-            thisFromDate.datetimepicker('setEndDate', endDate);
-        }).on('clearDate', function(selected){
-            thisFromDate.datetimepicker('setEndDate', null);
+        // ie 호환 체크박스
+        $('input.section').each(function(i){
+            $(this).attr('id', 'chkbox' + i + 1);
+            $(this).siblings('label').attr('for', 'chkbox' + i + 1);
         });
     });
 });

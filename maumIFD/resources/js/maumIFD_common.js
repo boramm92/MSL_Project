@@ -12,8 +12,8 @@ $(document).ready(function(){
         
         // close 
         $('.btn_lyr_close').on('click',function(){
-            $(popId).css('display', 'none'); 
-            $('.lyr_bg').remove(); 
+            $(this).parents(popId).css('display', 'none'); 
+            $(this).parents(popId).find('.lyr_bg').remove(); 
         });	
     });	
 

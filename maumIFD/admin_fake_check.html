@@ -35,7 +35,7 @@
                     <span class="hide">전체 메뉴</span>
                     <em class="fas fa-bars"></em>
                 </button>
-                <h1 class="logo"><a href="detect_verify_check.html">maum IFD</a></h1>
+                <h1 class="logo"><a href="detect_result_check.html">maum IFD</a></h1>
             </div>
             <ul class="nav">
                 <li>
@@ -100,7 +100,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr class="active">
                                 <td scope="row">
                                     <div class="radioBox">   
                                         <!-- [D] input[type="radio"]의 id와 label의 for값이 동일해야 합니다. -->                   
@@ -161,105 +161,14 @@
 </div>
 <!-- //#wrap -->
 
-<!---------------------- layer popup ---------------------->
-<!-- 상세보기 -->
-<div id="detect_result_detail" class="lyrWrap">
-    <div class="lyrCont">
-        <div class="lyr_top">
-            <p class="tit">진위확인 결과</p>
-            <button type="button" class="btn_lyr_close"><span class="hide">닫기버튼</span></button>
-        </div>
-        <div class="lyr_mid">
-            <div class="detect_img">
-                <!-- [D] 진위확인 결과에 따라 .stateBox p에 addClass('on')해주시면 됩니다. -->
-                <div class="stateBox">
-                    <p class="state fake on">위조</p>
-                    <p class="state real">진본</p>
-                </div>
-                <ul>
-                    <li class="input_img">
-                        <img src="resources/images/img_idCard_sample.png" alt="대상 이미지">
-                    </li>
-                    <li class="result_img">
-                        <img src="resources/images/img_idCard_detect_sample.png" alt="진위 확인 이미지">
-                    </li>
-                </ul>
-            </div>
-            <div class="result_detail">
-                <table summary="분류, paper로 구성">
-                    <caption class="hide">진위확인 상세결과</caption>
-                    <colgroup>
-                        <col width="134px"><col>
-                    </colgroup>
-                    <tbody>
-                        <tr>
-                            <th>분류</th>
-                            <th>Paper</th>
-                        </tr>
-                        <tr>
-                            <th>Real</th>
-                            <td>0</td>
-                        </tr>
-                        <tr>
-                            <th>Paper</th>
-                            <td>11</td>
-                        </tr>
-                        <tr>
-                            <th>Monitor</th>
-                            <td>1</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <button type="button" class="btn_prev_result">
-                <span class="hide">이전 상세결과</span>
-            </button>
-            <button type="button" class="btn_next_result">
-                <span class="hide">다음 상세결과</span>
-            </button>
-        </div>
-    </div>
-</div>
-<!-- //상세보기 -->
-
-<!---------------------- Local Resources ---------------------->
-<!-- Local CSS -->
-<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="resources/css/bootstrap-datetimepicker.css">
-
-<!-- Local Script Library -->
-<script type="text/javascript" src="resources/js/bootstrap-datetimepicker.js"></script>
-
 <!-- Local Script -->
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-        // datepicker
-        var thisFromDate = $(this).find('.fromDate'),
-            thisToDate = $(this).find('.toDate');
-
-        thisFromDate.datetimepicker({
-            format: 'yyyy-mm-dd', 
-            minView: 'month',
-            pickTime : false, 
-            autoclose: 1,
-        }).on('changeDate', function(selected){
-            var startDate = new Date(selected.date.valueOf());
-            thisToDate.datetimepicker('setStartDate', startDate);
-        }).on('clearDate', function(selected){
-            thisToDate.datetimepicker('setStartDate', null);
-        });
-
-        thisToDate.datetimepicker({
-            format: 'yyyy-mm-dd', 
-            minView: 'month',
-            pickTime : false, 
-            autoclose: 1,
-        }).on('changeDate', function(selected){
-            var endDate = new Date(selected.date.valueOf());
-            thisFromDate.datetimepicker('setEndDate', endDate);
-        }).on('clearDate', function(selected){
-            thisFromDate.datetimepicker('setEndDate', null);
+        // 선택 Level에 따른 row 활성화 효과
+        $('input[name="fake_chk_set"]').on('click', function(){
+            $('input[name="fake_chk_set"]').parents('tr').removeClass('active');
+            $(this).parents('tr').addClass('active');
         });
     });
 });

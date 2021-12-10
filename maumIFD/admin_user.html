@@ -35,7 +35,7 @@
                     <span class="hide">전체 메뉴</span>
                     <em class="fas fa-bars"></em>
                 </button>
-                <h1 class="logo"><a href="detect_verify_check.html">maum IFD</a></h1>
+                <h1 class="logo"><a href="detect_result_check.html">maum IFD</a></h1>
             </div>
             <ul class="nav">
                 <li>
@@ -314,7 +314,7 @@
                             <th>*사용자 ID</th>
                             <td>
                                 <input type="text" class="ipt_txt user_id">
-                                <button type="button" class="btn_primary line">중복확인</button>
+                                <button type="button" class="btn_primary line btn_lyr_open" data-lyr-name="id_chk">중복확인</button>
                             </td>
                             <th>비밀번호</th>
                             <td>
@@ -367,7 +367,7 @@
                             <th rowspan="2">주소</th>
                             <td colspan="3">
                                 <input type="text" class="ipt_txt address">
-                                <button type="button" class="btn_primary line">검색</button>
+                                <button type="button" class="btn_primary line btn_lyr_open" data-lyr-name="srch_address">검색</button>
                             </td>
                         </tr>
                         <tr>
@@ -412,112 +412,51 @@
             <button type="button" class="btn_lyr_close"><span class="hide">닫기버튼</span></button>
         </div>
         <div class="lyr_mid">
-           <div class="tblBox">
-               <table summary="부서 코드, 사용자 ID, 비밀번호, 이름, 성별, 이메일, 생년월일, 직급, 휴대폰, 주소, 사용여부, 부서로 구성">
-                    <caption class="hide">사용자 관리</caption>
+            <div class="srchArea">
+                <select class="select">
+                    <option value="">이름</option>
+                </select>
+                <input type="text" class="ipt_txt" placeholder="검색어를 입력해주세요.">
+                <button type="button" class="btn_primary line">검색</button>
+            </div>
+
+            <div class="tblBox icld_chk admin">
+                <table summary="부서 명, 부서 명(영문), 부서 ID로 구성">
+                    <caption class="hide">부서 검색 결과</caption>
                     <colgroup>
-                        <col width="114px"><col width="253px"><col width="114px"><col>
+                        <col width="50px"><col><col><col>
                     </colgroup>
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                <div class="chkBoxOnly">
+                                    <input type="checkbox" class="allChk">
+                                </div>
+                            </th>
+                            <th scope="col">부서 명</th>
+                            <th scope="col">부서 명(영문)</th>
+                            <th scope="col">부서 ID</th>
+                        </tr>
+                    </thead>
                     <tbody>
                         <tr>
-                            <th rowspan="2">*부서 코드</th>
-                            <td colspan="3">
-                                <input type="text" class="ipt_txt">
-                            </td>
+                            <td class="empty" scope="row" colspan="4">데이터가 없습니다.</td>
                         </tr>
                         <tr>
-                            <td colspan="3">
-                                <input type="text" class="ipt_txt dptmt_code">
-                                <button type="button" class="btn_primary line">조회</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>*사용자 ID</th>
-                            <td>
-                                <input type="text" class="ipt_txt user_id">
-                                <button type="button" class="btn_primary line">중복확인</button>
-                            </td>
-                            <th>비밀번호</th>
-                            <td>
-                                <button type="button" class="btn_primary line">비밀번호 초기화</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>*이름</th>
-                            <td>
-                                <input type="text" class="ipt_txt">
-                            </td>
-                            <th>성별</th>
-                            <td>
-                                <div class="radioBox">   
-                                    <!-- [D] input[type="radio"]의 id와 label의 for값이 동일해야 합니다. -->
-                                    <input type="radio" name="radio03" id="dptmt_male" checked>
-                                    <label for="dptmt_male">남</label>    
-                                    <!-- [D] input[type="radio"]의 id와 label의 for값이 동일해야 합니다. -->                      
-                                    <input type="radio" name="radio03" id="dptmt_female">
-                                    <label for="dptmt_female">여</label>
+                            <td scope="row">
+                                <div class="chkBoxOnly">
+                                    <input type="checkbox" class="eachChk">
                                 </div>
                             </td>
-                        </tr>
-                        <tr>
-                            <th>이메일</th>
-                            <td>
-                                <input type="text" class="ipt_txt email">
-                                @
-                                <input type="text" class="ipt_txt email">
-                                <select class="select">
-                                    <option value="">직접입력</option>
-                                </select>
-                            </td>
-                            <th>생년월일</th>
-                            <td>
-                                <input type="text" class="ipt_txt">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>직급</th>
-                            <td>
-                                <input type="text" class="ipt_txt">
-                            </td>
-                            <th>휴대폰</th>
-                            <td>
-                                <input type="text" class="ipt_txt">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th rowspan="2">주소</th>
-                            <td colspan="3">
-                                <input type="text" class="ipt_txt address">
-                                <button type="button" class="btn_primary line">검색</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">
-                                <input type="text" class="ipt_txt address">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>*사용여부</th>
-                            <td>
-                                <div class="radioBox">   
-                                    <!-- [D] input[type="radio"]의 id와 label의 for값이 동일해야 합니다. -->
-                                    <input type="radio" name="radio04" id="dptmt_use" checked>
-                                    <label for="dptmt_use">사용</label>    
-                                    <!-- [D] input[type="radio"]의 id와 label의 for값이 동일해야 합니다. -->                      
-                                    <input type="radio" name="radio04" id="dptmt_unuse">
-                                    <label for="dptmt_unuse">미사용</label>
-                                </div>
-                            </td>
-                            <th>부서</th>
-                            <td>
-                                <input type="text" class="ipt_txt">
-                            </td>
+                            <td>mindslab</td>
+                            <td>mindslab</td>
+                            <td>001</td>
                         </tr>
                     </tbody>
-               </table>
-           </div>
+                </table>
+            </div>
 
-           <div class="pagingArea">
+            <div class="pagingArea">
             <div class="paging">
                 <a href="#none" class="btn_paging first">
                     <span class="hide">처음 페이지</span>
@@ -557,45 +496,46 @@
 </div>
 <!-- //부서 명/부서 ID 검색 -->
 
-<!---------------------- Local Resources ---------------------->
-<!-- Local CSS -->
-<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="resources/css/bootstrap-datetimepicker.css">
+<!-- 중복확인 -->
+<div id="id_chk" class="lyrWrap">
+    <div class="lyrCont">
+        <div class="lyr_top">
+            <p class="tit">중복확인</p>
+            <button type="button" class="btn_lyr_close"><span class="hide">닫기버튼</span></button>
+        </div>
+        <div class="lyr_mid">
+            <p class="info">dd는 사용 가능한 아이디 입니다.</p>
+        </div>
+        <div class="lyr_btm">
+            <button type="button" class="btn_primary btn_lyr_close">확인</button>
+        </div>
+    </div>
+</div>
+<!-- //중복확인 -->
 
-<!-- Local Script Library -->
-<script type="text/javascript" src="resources/js/bootstrap-datetimepicker.js"></script>
+<!-- 주소 검색 -->
+<div id="srch_address" class="lyrWrap">
+    <div class="lyrCont">
+        <div class="lyr_top">
+            <p class="tit">주소 검색</p>
+            <button type="button" class="btn_lyr_close"><span class="hide">닫기버튼</span></button>
+        </div>
+        <div class="lyr_mid">
+            <!-- [D] 해당 영역 안에 주소 검색 API 넣어주시면 됩니다. -->
+        </div>
+        <div class="lyr_btm">
+            <button type="button" class="btn_primary line btn_lyr_close">취소</button>
+            <button type="button" class="btn_primary">저장</button>
+        </div>
+    </div>
+</div>
+<!-- //주소 검색 -->
 
 <!-- Local Script -->
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-        // datepicker
-        var thisFromDate = $(this).find('.fromDate'),
-            thisToDate = $(this).find('.toDate');
-
-        thisFromDate.datetimepicker({
-            format: 'yyyy-mm-dd', 
-            minView: 'month',
-            pickTime : false, 
-            autoclose: 1,
-        }).on('changeDate', function(selected){
-            var startDate = new Date(selected.date.valueOf());
-            thisToDate.datetimepicker('setStartDate', startDate);
-        }).on('clearDate', function(selected){
-            thisToDate.datetimepicker('setStartDate', null);
-        });
-
-        thisToDate.datetimepicker({
-            format: 'yyyy-mm-dd', 
-            minView: 'month',
-            pickTime : false, 
-            autoclose: 1,
-        }).on('changeDate', function(selected){
-            var endDate = new Date(selected.date.valueOf());
-            thisFromDate.datetimepicker('setEndDate', endDate);
-        }).on('clearDate', function(selected){
-            thisFromDate.datetimepicker('setEndDate', null);
-        });
+        
     });
 });
 </script>
