@@ -14,11 +14,13 @@
 
 <!---------------------- General Resources ---------------------->
 <!-- General CSS -->
+<link rel="stylesheet" href="resources/css/jquery.tree-multiselect.min.css">
 <link rel="stylesheet" type="text/css" href="resources/css/maumIFD_common.css">
 
 <!-- General Script -->
 <script type="text/javascript" src="resources/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="resources/js/jquery-migrate-3.3.1.min.js"></script>
+<script type="text/javascript" src="resources/js/jquery.tree-multiselect.js"></script>
 <script type="text/javascript" src="resources/js/maumIFD_common.js"></script>
 
 <title>탐지 및 제어(진위확인 즉시 검증) || maum IFD</title>
@@ -290,45 +292,11 @@
 </div>
 <!-- //상세보기 -->
 
-<!---------------------- Local Resources ---------------------->
-<!-- Local CSS -->
-<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="resources/css/bootstrap-datetimepicker.css">
-
-<!-- Local Script Library -->
-<script type="text/javascript" src="resources/js/bootstrap-datetimepicker.js"></script>
-
 <!-- Local Script -->
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-        // datepicker
-        var thisFromDate = $(this).find('.fromDate'),
-            thisToDate = $(this).find('.toDate');
-
-        thisFromDate.datetimepicker({
-            format: 'yyyy-mm-dd', 
-            minView: 'month',
-            pickTime : false, 
-            autoclose: 1,
-        }).on('changeDate', function(selected){
-            var startDate = new Date(selected.date.valueOf());
-            thisToDate.datetimepicker('setStartDate', startDate);
-        }).on('clearDate', function(selected){
-            thisToDate.datetimepicker('setStartDate', null);
-        });
-
-        thisToDate.datetimepicker({
-            format: 'yyyy-mm-dd', 
-            minView: 'month',
-            pickTime : false, 
-            autoclose: 1,
-        }).on('changeDate', function(selected){
-            var endDate = new Date(selected.date.valueOf());
-            thisFromDate.datetimepicker('setEndDate', endDate);
-        }).on('clearDate', function(selected){
-            thisFromDate.datetimepicker('setEndDate', null);
-        });
+        
     });
 });
 </script>
