@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- Cache reset -->
+    <meta http-equiv="Expires" content="Mon, 06 Jan 2016 00:00:01 GMT">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+
+    <!---------------------- General Resources ---------------------->
+    <!-- General CSS -->
+    <link rel="stylesheet" type="text/css" href="resources/css/kb_tts_admin.css">
+
+    <!-- General Script -->
+    <script type="text/javascript" src="resources/js/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="resources/js/jquery-migrate-3.3.1.min.js"></script>
+    <script type="text/javascript" src="resources/js/kb_tts_admin.js"></script>
+
+    <title>TTS 음성 생성 || KB TTS Admin</title>
+</head>
+<body>
+    <!-- #wrap -->
+    <div id="wrap">
+        <!-- #header -->
+        <div id="header">
+            <h1><a href="ttsMaker.html"><img src="resources/images/logo_kbTTS_admin.svg" alt="KB TTS Admin"></a></h1>
+            <div class="etc">
+                <ul>
+                    <li class="ico_user">
+                        <a href="#none" title="사용자 메뉴">
+                            <span class="hide">사용자 메뉴</span>
+                        </a>
+                        <div class="user_cont">
+                            <div class="user_info">
+                                <span class="thumb">
+                                    <img src="" alt="">
+                                </span>
+                                <span class="userLevel">시스템관리자</span>
+                                <span class="userId">Kb-admin</span>
+                            </div>
+                            <ul class="user_nav">
+                                <li><a href="accountSet.html">계정 설정</a></li>
+                                <li class="logout"><a href="#none">로그아웃</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- //#header -->
+
+        <!-- #container -->
+        <div id="container">
+            <!-- #gnb -->
+            <div id="gnb">
+                <ul class="nav">
+                    <li class="active"><a href="ttsMaker.html">TTS 음성 생성</a></li>                
+                    <li><a href="userManagement.html">사용자 관리</a></li>                
+                    <li><a href="accountSet.html">계정 설정</a></li>                
+                </ul>
+            </div>
+            <!-- //#gnb -->
+
+            <!-- #contents -->
+            <div id="contents">
+                <!-- .content -->
+                <div class="content">
+                    <!-- .titArea -->
+                    <div class="titArea">
+                        <h3>TTS 음성 생성</h3>
+                    </div>
+                    <!-- //.titArea -->
+
+                    <div class="stn">
+                        <div class="tit">
+                            <h4>TTS 생성</h4>
+                        </div>
+                        <div class="lineBox voice_gnrtn">
+                            <dl>
+                                <dt>보이스</dt>
+                                <dd>
+                                    <div class="radioBox">
+                                        <!-- [D] input[type="radio"]의 id와 label의 for값을 동일하게 부여해야 합니다. -->
+                                        <input type="radio" name="tts_voice" id="voice01" checked>
+                                        <label for="voice01">정직한 여성 목소리</label>
+                                    </div>
+                                    <div class="radioBox">
+                                        <!-- [D] input[type="radio"]의 id와 label의 for값을 동일하게 부여해야 합니다. -->
+                                        <input type="radio" name="tts_voice" id="voice02">
+                                        <label for="voice02">밝은 여성 목소리</label>
+                                    </div>
+                                    <div class="radioBox">  
+                                        <!-- [D] input[type="radio"]의 id와 label의 for값을 동일하게 부여해야 합니다. -->
+                                        <input type="radio" name="tts_voice" id="voice03">
+                                        <label for="voice03">차분한 남성 목소리</label>
+                                    </div>
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="lineBox voice_gnrtn">
+                            <div class="tts_ipt_txt">
+                                <div class="textarea" contenteditable="true" placeholder="여기를 눌러 텍스트를 입력하세요."></div>
+                                <div class="txtCount">(<span class="current">0</span>/1000)</div>
+                            </div>
+                            <div class="btnBox">
+                                <p class="desc fl">최대 1000자 까지 입력가능합니다.</p>
+                                <button type="button" class="btn_primary">TTS 실행</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stn">
+                        <div class="tit">
+                            <h4>TTS 음성확인</h4>
+                        </div>
+                        <div class="lineBox">
+                            <!-- .audioArea -->
+                            <div class="audioArea">
+                                <div class="audioBox">
+                                    <audio class="audio" src="resources/audio/aekukka.mp3"></audio>
+                                </div>
+                                <!-- [D] 재생바, 재생, 일시정지, 비디오 시간 세팅은 기능 추가완료 / audioPlayer.js 파일 참고 -->
+                                <div class="player">
+                                    <button type="button" class="btn_play">
+                                        <span class="hide">재생</span>
+                                    </button>
+                                    <span class="player_time current">00:00</span>
+                                    <div class="player_bar">
+                                        <div class="slider_bar"></div>
+                                    </div>
+                                    <span class="player_time duration">00:00</span>
+                                </div>
+                            </div>
+                            <!-- //.audioArea -->
+                            <!-- .downloadArea -->
+                            <div class="downloadArea">
+                                <dl class="fl">
+                                    <dt>포맷</dt>
+                                    <dd>
+                                        <select class="select">
+                                            <option value="">8khz, 8bit, a-law, mono</option>
+                                        </select>
+                                    </dd>
+                                    <dt>확장자</dt>
+                                    <dd>
+                                        <select class="select">
+                                            <option value="">wav</option>
+                                        </select>
+                                    </dd>
+                                </dl>
+                                <button type="button" class="btn_primary">다운로드</button>
+                            </div>
+                            <!-- //.downloadArea -->
+                        </div>
+                    </div>
+
+                    <div class="stn">
+                        <div class="tit">
+                            <h4>TTS 음성편집</h4>
+                        </div>
+                        <div class="lineBox">
+                            
+                        </div>
+                    </div>
+
+                    <div class="stn">
+                        <div class="tit">
+                            <h4>변환음성확인</h4>
+                        </div>
+                        <div class="lineBox">
+                            <!-- .audioArea -->
+                            <div class="audioArea">
+                                <div class="audioBox">
+                                    <audio class="audio" src="resources/audio/aekukka.mp3"></audio>
+                                </div>
+                                <!-- [D] 재생바, 재생, 일시정지, 비디오 시간 세팅은 기능 추가완료 / audioPlayer.js 파일 참고 -->
+                                <div class="player">
+                                    <button type="button" class="btn_play">
+                                        <span class="hide">재생</span>
+                                    </button>
+                                    <span class="player_time current">00:00</span>
+                                    <div class="player_bar">
+                                        <div class="slider_bar"></div>
+                                    </div>
+                                    <span class="player_time duration">00:00</span>
+                                </div>
+                            </div>
+                            <!-- //.audioArea -->
+                            <!-- .downloadArea -->
+                            <div class="downloadArea">
+                                <dl class="fl">
+                                    <dt>포맷</dt>
+                                    <dd>
+                                        <select class="select">
+                                            <option value="">8khz, 8bit, a-law, mono</option>
+                                        </select>
+                                    </dd>
+                                    <dt>확장자</dt>
+                                    <dd>
+                                        <select class="select">
+                                            <option value="">wav</option>
+                                        </select>
+                                    </dd>
+                                </dl>
+                                <button type="button" class="btn_primary">다운로드</button>
+                            </div>
+                            <!-- //.downloadArea -->
+                        </div>
+                    </div>
+                </div>
+                <!-- //.content -->
+            </div>
+            <!-- //#contents -->
+        </div>
+        <!-- //#container -->        
+    </div>
+    <!-- //#wrap -->
+
+    <!---------------------- Local Resources ---------------------->
+    <!-- Local Script Library -->
+    <script type="text/javascript" src="resources/js/audioPlayer.js"></script>
+
+    <!-- Local Script -->
+    <script type="text/javascript">
+     jQuery.event.add(window,"load",function(){
+        $(document).ready(function(){
+            // TTS 생성 텍스트 1000자 입력 제한
+            $('.tts_ipt_txt .textarea').keyup(function(e){
+                var content = $(this).text();
+                $('.txtCount .current').html(content.length);
+
+                if(!$(this).text() == ''){
+                    $(this).addClass('active');
+                    if(content.length > 1000){
+                        $(this).text(content.substring(0, 1000));
+                        $('.txtCount .current').html(1000);
+                    }
+                }else{
+                    $(this).removeClass('active');
+                }                
+            });
+        });
+    });      
+    </script>
+</body>
+</html>

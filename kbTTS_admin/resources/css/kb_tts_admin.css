@@ -1,0 +1,119 @@
+@charset "UTF-8";
+/* MINDsLab. NBR. 20211214 */
+
+/* 공통 CSS */
+@import url("reset.css"); 
+@import url("font.css");
+
+
+/* -------------------- common -------------------- */
+/* scroll bar */
+::-webkit-scrollbar {width: 6px; height: 6px; border-radius: 3px;}  /* 스크롤바의 width */
+::-webkit-scrollbar-track {background: transparent;}  /* 스크롤바의 전체 배경색 */
+::-webkit-scrollbar-thumb {border-radius: 3px; background: rgb(174, 176, 179);}  /* 스크롤바 색 */
+::-webkit-scrollbar-button {display: none;}  /* 위 아래 버튼 (버튼 없애기를 함) */
+
+/* float */
+.fl {float:left;}
+.fr {float:right;}
+
+/* hide */
+.hide {display:inline-block; overflow:hidden; text-indent:-9999px; line-height:0; white-space:nowrap;}
+
+/* select */
+.select {overflow:hidden; min-width:200px; height:38px; padding:0 30px 0 10px; border:1px solid #e8e8e8; border-radius:4px; box-sizing:border-box; background:#fff url('../images/ico_caretDown_bk.svg') top 50% right 10px no-repeat; color:#111111; font-size:14px; letter-spacing:-0.14px; white-space:nowrap; text-overflow:ellipsis;}
+
+/* radioBox */
+.radioBox {display:inline-block;}
+.radioBox input[type="radio"] {overflow:hidden; position:absolute; width:0; height:0; margin:0; padding:0; border:none;}
+.radioBox input[type="radio"] + label {position:relative; padding:0 0 0 28px; color:#111111; font-size:16px; letter-spacing:-0.16px; vertical-align:middle; transition:all 0.2s ease-out; cursor:pointer;}
+.radioBox input[type="radio"] + label:before {content:''; display:inline-block; position:absolute; top:3px; left:0; width:18px; height:18px; border:1px solid #bababa; border-radius:50%; box-sizing:border-box; background:#fff; transition:all 0.2s ease-out;}
+.radioBox input[type="radio"]:checked + label:after {content:''; display:inline-block; position:absolute; top:8px; left:5px; width:8px; height:8px; border-radius:50%; background:#14adea; transition:all 0.2s ease-out;}
+
+/* button */
+.btn_primary {height:38px; padding:0 30px; border-radius:4px; background:#14adea; color:#fff; font-size:14px; font-weight:500; letter-spacing:-0.14px;}
+
+
+/* -------------------- layout -------------------- */
+#wrap {min-width:1280px; height:100%; background:#fff;}
+#header {display:table; table-layout:fixed; position:relative; width:100%; height:80px; padding:0 40px; box-sizing:border-box; background:#1a1a1c;}
+#container {display:table; table-layout:fixed; width:100%; height:calc(100% - 80px);}
+#gnb {display:table-cell; width:240px; border-right:1px solid #efefef; box-sizing:border-box; background:#fcfcfc; vertical-align:top;}
+#contents {display:table-cell; width:calc(100% - 240px); padding:40px; vertical-align:top;}
+
+
+/* -------------------- header -------------------- */
+#header h1 {display:table-cell; width:200px; vertical-align:middle;}
+#header h1 a {float:left; height:20px;}
+#header .etc {display:table-cell; text-align:right; vertical-align:middle;}
+#header .etc ul li {display:inline-block; position:relative;}
+#header .etc ul li.ico_user > a {display:inline-block; width:50px; height:30px; background-image:url('../images/ico_user_w.svg'), url('../images/ico_caretBtm_w.svg'); background-position:0 50%, 100% 50%; background-repeat:no-repeat;}
+#header .etc ul li.ico_user .user_cont {display:none; position:absolute; top:46px; right:0; width:216px; padding:10px 20px; border-radius:4px; box-shadow:0 3px 6px 0 rgba(0, 0, 0, 0.1); box-sizing:border-box; background:#fff; z-index:999;}
+#header .etc ul li.ico_user .user_cont .user_info {padding:10px 0 18px;}
+#header .etc ul li.ico_user .user_cont .user_info .thumb {display:block; float:left; position:relative; width:30px; height:30px; margin:6px 14px 0 0; background:url('../images/ico_user_bk.svg') 50% 50% no-repeat;}
+#header .etc ul li.ico_user .user_cont .user_info .userLevel {display:block; color:#111111; font-size:14px; font-weight:700; letter-spacing:-0.14px; text-align:left;}
+#header .etc ul li.ico_user .user_cont .user_info .userId {display:block; overflow:hidden; color:#909090; font-size:16px; letter-spacing:-0.16px; text-align:left; text-overflow:ellipsis; white-space:nowrap;} 
+#header .etc ul li.ico_user .user_cont .user_nav li {display:block; border-top:1px solid #e5e5e5;}
+#header .etc ul li.ico_user .user_cont .user_nav li a {display:block; padding:10px 0; color:#111111; font-size:16px; letter-spacing:-0.16px; line-height:24px; text-align:left;}
+#header .etc ul li.ico_user .user_cont .user_nav li.logout a {color:#ea145e;}
+#header .etc ul li.ico_user.open > a {background-image:url('../images/ico_user_w.svg'), url('../images/ico_caretTop_w.svg');}
+#header .etc ul li.ico_user.open .user_cont {display:block;}
+
+
+/* -------------------- gnb -------------------- */
+#gnb .nav {margin:40px 0 0;}
+#gnb .nav li {line-height:40px; transition:background-color 0.3s ease-out;}
+#gnb .nav li a {display:block; padding:0 0 0 78px; box-sizing:border-box; color:#111111; font-size:16px;}
+#gnb .nav li:nth-child(1) a {background:url('../images/ico_mic.svg') 50px 50% no-repeat;}
+#gnb .nav li:nth-child(2) a {background:url('../images/ico_users.svg') 50px 50% no-repeat;}
+#gnb .nav li:nth-child(3) a {background:url('../images/ico_setting.svg') 50px 50% no-repeat;}
+#gnb .nav li:hover,
+#gnb .nav li.active {background-color:#efefef;}
+#gnb .nav li.active a {font-weight:700;}
+
+
+/* -------------------- content -------------------- */
+/* tit */
+.titArea h3 {color:#111111; font-size:28px; font-weight:500; letter-spacing:-0.28px; line-height:26px;}
+.tit {margin:0 0 16px;}
+.tit h4 {color:#111111; font-size:18px; font-weight:700; letter-spacing:-0.18px; line-height:18px;}
+
+/* stn */
+.stn {margin:40px 0 0;}
+
+/* lineBox */
+.lineBox {padding:30px; border:1px solid #e8e8e8; border-radius:4px; box-sizing:border-box; background:#fff;}
+.lineBox + .lineBox {margin:30px 0 0;}
+.lineBox dl {display:flex; align-items:center; box-sizing:border-box;}
+.lineBox dl dt {margin:0 12px 0 0; color:#111111; font-size:16px; font-weight:500; letter-spacing:-0.16px; line-height:24px; white-space:nowrap;}
+.lineBox dl dd {display:flex; align-items:center;}
+.lineBox dl dd + dt {margin:0 12px 0 20px;}
+.lineBox dl dd .radioBox {margin:13px 0;}
+.lineBox.voice_gnrtn {padding:0;}
+.lineBox.voice_gnrtn dl {padding:0 30px;}
+.lineBox.voice_gnrtn dl dt {margin:0 30px 0 0;}
+.lineBox.voice_gnrtn dl dd {justify-content:space-between; width:100%;}
+
+/* disabled */
+.disabled {opacity:0.5; cursor:default; pointer-events:none;}
+.disabled .btn_primary {background:#b5b5b5;}
+
+/* tts_ipt_txt */
+.tts_ipt_txt {padding:0 20px; border-bottom:1px solid #e8e8e8; box-sizing:border-box;}
+.tts_ipt_txt .textarea {position:relative; width:100%; min-height:46px; height:auto; margin:20px 0 40px; color:#111111; font-size:14px; font-weight:500; letter-spacing:-0.14px; line-height:24px; outline:none; cursor:text;}
+.tts_ipt_txt .textarea:before {content:'여기를 눌러 텍스트를 입력하세요.'; display:block; position:absolute; top:0; left:0; color:#9a9a9a; font-size:14px; font-weight:500; letter-spacing:-0.14px;}
+.tts_ipt_txt .textarea.active:before {content:none;}
+.tts_ipt_txt .txtCount {padding:0 0 12px; color:#9a9a9a; font-size:14px; font-weight:500; letter-spacing:-0.14px; text-align:right;} 
+.tts_ipt_txt + .btnBox {display:flex; justify-content:space-between; align-items:center; padding:12px 30px;}
+.tts_ipt_txt + .btnBox .desc {color:#9a9a9a; font-size:14px; font-weight:500; letter-spacing:-0.14px;}
+
+/* audioArea */
+.audioArea .player {display:flex; align-items:center; padding:10px 20px; border:1px solid #e8e8e8; border-radius:4px; box-sizing:border-box; background:#f6f7f8;}
+.audioArea .player .btn_play {width:40px; height:40px; margin:0 30px 0 0; background:url('../images/ico_play.svg') 50% 50% no-repeat; background-size:contain;}
+.audioArea .player .btn_play.pause {background:url('../images/ico_pause.svg') 50% 50% no-repeat;}
+.audioArea .player .player_time {color:#111111; font-size:14px; letter-spacing:-0.14px;}
+.audioArea .player .player_bar {position:relative; width:calc(95% - 150px); height:6px; margin:0 20px; background:#e1e1e1; cursor:pointer;}
+.audioArea .player .player_bar .slider_bar {position:absolute; top:0; left:0; width:0; height:100%; background:#14adea;}
+
+/* downloadArea */
+.downloadArea {margin:20px 0 0; text-align:right;}
