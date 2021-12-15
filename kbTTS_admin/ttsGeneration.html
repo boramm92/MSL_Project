@@ -59,7 +59,7 @@
             <!-- #gnb -->
             <div id="gnb">
                 <ul class="nav">
-                    <li class="active"><a href="ttsMaker.html">TTS 음성 생성</a></li>                
+                    <li class="active"><a href="ttsGeneration.html">TTS 음성 생성</a></li>                
                     <li><a href="userManagement.html">사용자 관리</a></li>                
                     <li><a href="accountSet.html">계정 설정</a></li>                
                 </ul>
@@ -214,7 +214,7 @@
 
                             <div class="rangeBox">
                                 <div class="range_slider"> 
-                                    <label>속도</label>
+                                    <label>높낮이</label>
                                     <input class="slide_bar" type="range" value="-20" min="-20" max="20" step="0.01">
                                     <ul class="range_value">
                                         <li>-20st</li>
@@ -321,6 +321,26 @@
                     $(this).removeClass('active');
                 }                
             });
+
+            // input[type="range"] slide bar
+            var settings = {
+                fill: '#14adea',
+                background: '#e1e1e1'
+            }
+
+            const sliders01 = document.querySelector('.range_slider .slide_bar');
+
+
+            sliders01.querySelector('input').addEventListener('input', (event) => {
+                applyFill01(event.target);
+            });
+            applyFill01(sliders01.querySelector('input'));
+
+            function applyFill01(sliders01) {
+                const percentage = 100*(sliders01.value-sliders01.min)/(sliders01.max-sliders01.min);
+                const bg = `linear-gradient(90deg, ${settings.fill} ${percentage}%, ${settings.background} ${percentage+0.1}%)`;
+                sliders01.style.background = bg;
+            }
         });
     });      
     </script>
