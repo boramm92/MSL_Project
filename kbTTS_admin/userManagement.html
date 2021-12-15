@@ -19,18 +19,299 @@
     <!-- General Script -->
     <script type="text/javascript" src="resources/js/jquery-3.5.1.min.js"></script>
     <script type="text/javascript" src="resources/js/jquery-migrate-3.3.1.min.js"></script>
+    <script type="text/javascript" src="resources/js/kb_tts_admin.js"></script>
 
     <title>사용자 관리 || KB TTS Admin</title>
 </head>
 <body>
-    
+    <!-- #wrap -->
+    <div id="wrap">
+        <!-- #header -->
+        <div id="header">
+            <h1><a href="ttsMaker.html"><img src="resources/images/logo_kbTTS_admin.svg" alt="KB TTS Admin"></a></h1>
+            <div class="etc">
+                <ul>
+                    <li class="ico_user">
+                        <a href="#none" title="사용자 메뉴">
+                            <span class="hide">사용자 메뉴</span>
+                        </a>
+                        <div class="user_cont">
+                            <div class="user_info">
+                                <span class="thumb">
+                                    <img src="" alt="">
+                                </span>
+                                <span class="userLevel">시스템관리자</span>
+                                <span class="userId">Kb-admin</span>
+                            </div>
+                            <ul class="user_nav">
+                                <li><a href="accountSet.html">계정 설정</a></li>
+                                <li class="logout"><a href="#none">로그아웃</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- //#header -->
 
+        <!-- #container -->
+        <div id="container">
+            <!-- #gnb -->
+            <div id="gnb">
+                <ul class="nav">
+                    <li><a href="ttsMaker.html">TTS 음성 생성</a></li>                
+                    <li class="active"><a href="userManagement.html">사용자 관리</a></li>                
+                    <li><a href="accountSet.html">계정 설정</a></li>                
+                </ul>
+            </div>
+            <!-- //#gnb -->
+
+            <!-- #contents -->
+            <div id="contents">
+                <!-- .content -->
+                <div class="content">
+                    <!-- .titArea -->
+                    <div class="titArea">
+                        <h3>사용자 관리</h3>
+                    </div>
+                    <!-- //.titArea -->
+
+                    <div class="stn">
+                        <div class="filterArea">
+                            <div class="btnBox fl">
+                                <button type="button" class="btn_primary btn_lyr_open" data-lyr-name="user_mngmt">추가</button>
+                                <button type="button" class="btn_primary btn_list_remove" disabled>삭제</button>
+                            </div>
+                            <select class="select">
+                                <option value="">사용자 ID</option>
+                                <option value="">Role</option>
+                                <option value="">Name</option>
+                            </select>
+                            <div class="srchBox">
+                                <input type="text" placeholder="검색어를 입력해주세요.">
+                                <button type="button" class="btn_srch" title="검색">
+                                    <span class="hide">검색</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="tblBox icld_chk">
+                            <table summary="User ID, Role, Name, Activate, Created Date, Edit">
+                                <caption class="hide">사용자 관리</caption>
+                                <colgroup>
+                                    <col width="80px"><col><col><col width="20%"><col width="13%"><col width="16%"><col width="100px">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">
+                                            <div class="chkBoxOnly">
+                                                <input type="checkbox" class="allChk">
+                                            </div>
+                                        </th>
+                                        <th scope="col">User ID</th>
+                                        <th scope="col">Role</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Activate</th>
+                                        <th scope="col">Created Date</th>
+                                        <th scope="col">Edit</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="empty" scope="row" colspan="7">데이터가 없습니다.</td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">
+                                            <div class="chkBoxOnly">
+                                                <input type="checkbox" class="eachChk">
+                                            </div>
+                                        </td>
+                                        <td>admin</td>
+                                        <td>시스템관리자</td>
+                                        <td>유아인과장</td>
+                                        <td>Y</td>
+                                        <td>2021-07-01</td>
+                                        <td>
+                                            <button type="button" class="btn_edit btn_lyr_open" data-lyr-name="user_mngmt" title="사용자 정보 수정">
+                                                <span class="hide">사용자 정보 수정</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">
+                                            <div class="chkBoxOnly">
+                                                <input type="checkbox" class="eachChk">
+                                            </div>
+                                        </td>
+                                        <td>admin</td>
+                                        <td>시스템관리자</td>
+                                        <td>유아인과장</td>
+                                        <td>Y</td>
+                                        <td>2021-07-01</td>
+                                        <td>
+                                            <button type="button" class="btn_edit btn_lyr_open" data-lyr-name="user_mngmt" title="사용자 정보 수정">
+                                                <span class="hide">사용자 정보 수정</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">
+                                            <div class="chkBoxOnly">
+                                                <input type="checkbox" class="eachChk">
+                                            </div>
+                                        </td>
+                                        <td>admin</td>
+                                        <td>시스템관리자</td>
+                                        <td>유아인과장</td>
+                                        <td>Y</td>
+                                        <td>2021-07-01</td>
+                                        <td>
+                                            <button type="button" class="btn_edit btn_lyr_open" data-lyr-name="user_mngmt" title="사용자 정보 수정">
+                                                <span class="hide">사용자 정보 수정</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">
+                                            <div class="chkBoxOnly">
+                                                <input type="checkbox" class="eachChk">
+                                            </div>
+                                        </td>
+                                        <td>admin</td>
+                                        <td>시스템관리자</td>
+                                        <td>유아인과장</td>
+                                        <td>Y</td>
+                                        <td>2021-07-01</td>
+                                        <td>
+                                            <button type="button" class="btn_edit btn_lyr_open" data-lyr-name="user_mngmt" title="사용자 정보 수정">
+                                                <span class="hide">사용자 정보 수정</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="pagingArea">        
+                            <div class="paging">
+                                <a href="#none" class="btn_paging first">
+                                    <span class="hide">처음 페이지</span>
+                                </a>
+                                <a href="#none" class="btn_paging prev">
+                                    <span class="hide">이전 페이지</span>
+                                </a>
+                                <a href="#none" class="current">1</a>
+                                <a href="#none">2</a>
+                                <a href="#none">3</a>
+                                <a href="#none">4</a>
+                                <a href="#none">5</a>
+                                <a href="#none" class="btn_paging next">
+                                    <span class="hide">다음 페이지</span>
+                                </a>
+                                <a href="#none" class="btn_paging last">
+                                    <span class="hide">마지막 페이지</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- //.content -->
+            </div>
+            <!-- //#contents -->
+        </div>
+        <!-- //#container -->        
+    </div>
+    <!-- //#wrap -->
+
+    <!---------------------- layer popup ---------------------->
+    <!-- 사용자 추가 / 수정 -->
+    <div id="user_mngmt" class="lyrWrap">
+        <div class="lyrCont">
+            <div class="lyr_top">
+                <!-- [D] 사용자 추가 또는 수정에 따라 .tit 텍스트 수정 해주세요. -->
+                <p class="tit">사용자 추가</p>
+                <button type="button" class="btn_lyr_close"><span class="hide">닫기버튼</span></button>
+            </div>
+            <div class="lyr_mid">
+                <dl>
+                    <dt>Role</dt>
+                    <dd>
+                        <!-- [D] 수정 모드일 경우 .select addClass('disabled')하면 비활성화 됩니다. -->
+                        <select class="select disabled">
+                            <option value="">Role 선택</option>
+                        </select>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>User ID</dt>
+                    <dd>
+                        <!-- [D] 수정 모드일 경우 .iptBox에 addClass('disabled')하면 비활성화 됩니다. -->
+                        <div class="iptBox disabled">
+                            <input type="text" class="ipt_txt userId">
+                            <div class="txtCount">(<span class="current">0</span>/40)</div>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>Name</dt>
+                    <dd>
+                        <div class="iptBox">
+                            <input type="text" class="ipt_txt name">
+                            <div class="txtCount">(<span class="current">0</span>/10)</div>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>Password</dt>
+                    <dd>
+                        <!-- [D] 비밀번호 오류 시 .ipt_txt에 addClass('error')하면 에러효과, 문구 활성화 됩니다. -->
+                        <input type="text" class="ipt_txt error">
+                        <p class="alert_txt">*영문, 숫자, 특수문자 필수 (8-15자)입니다.</p>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>Activate</dt>
+                    <dd>
+                        <div class="radioBox">
+                            <!-- [D] input[type="radio"]의 id와 label의 for값을 동일하게 부여해야 합니다. -->
+                            <input type="radio" name="activate" id="atvt_yes" checked>
+                            <label for="atvt_yes">Yes</label>
+                            <!-- [D] input[type="radio"]의 id와 label의 for값을 동일하게 부여해야 합니다. -->
+                            <input type="radio" name="activate" id="atvt_no">
+                            <label for="atvt_no">No</label>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <div class="lyr_btm">
+                <button tyle="button" class="btn_primary btn_lyr_close">취소</button>
+                <button tyle="button" class="btn_primary">저장</button>
+            </div>
+        </div>
+    </div>
+    <!-- //사용자 추가 / 수정 -->
 
     <!-- Local Script -->
     <script type="text/javascript">
      jQuery.event.add(window,"load",function(){
         $(document).ready(function(){
-            
+            // input별 텍스트 입력 제한
+            $('.ipt_txt').keyup(function(e){
+                if(!$(this).val() == ''){
+                    var content = $(this).val(),
+                        currentTextNum = $(this).next('.txtCount').find('.current');
+
+                    currentTextNum.html(content.length);
+
+                    if($(this).is('.userId') && content.length > 40){
+                        $(this).val(content.substring(0, 40));
+                        currentTextNum.html(40);
+                    }else if($(this).is('.name') && content.length > 10){
+                        $(this).val(content.substring(0, 10));
+                        currentTextNum.html(10);
+                    }
+                }                 
+            });
         });
     });      
     </script>
