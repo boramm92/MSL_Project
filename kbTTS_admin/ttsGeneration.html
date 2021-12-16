@@ -28,7 +28,7 @@
     <div id="wrap">
         <!-- #header -->
         <div id="header">
-            <h1><a href="ttsMaker.html"><img src="resources/images/logo_kbTTS_admin.svg" alt="KB TTS Admin"></a></h1>
+            <h1><a href="ttsGeneration.html"><img src="resources/images/logo_kbTTS_admin.svg" alt="KB TTS Admin"></a></h1>
             <div class="etc">
                 <ul>
                     <li class="ico_user">
@@ -110,7 +110,7 @@
                             <!-- [D] 초기 화면 진입 시 비활성화 상태인 경우 .btnBox addClass('disabled')해주세요. -->
                             <div class="btnBox disabled">
                                 <p class="desc fl">최대 1000자 까지 입력가능합니다.</p>
-                                <button type="button" class="btn_primary">TTS 실행</button>
+                                <button type="button" class="btn_primary btn_tts_start">TTS 실행</button>
                             </div>
                         </div>
                     </div>
@@ -120,7 +120,7 @@
                             <h4>TTS 음성확인</h4>
                         </div>
                         <!-- [D] 비활성화 상태인 경우 .lineBox에 addClass('disabled')해주세요. -->
-                        <div class="lineBox disabled">
+                        <div class="lineBox voice_chk disabled">
                             <!-- .audioArea -->
                             <div class="audioArea">
                                 <div class="audioBox">
@@ -166,7 +166,7 @@
                             <h4>TTS 음성편집</h4>
                         </div>
                         <!-- [D] 비활성화 상태인 경우 .lineBox에 addClass('disabled')해주세요. -->
-                        <div class="lineBox voice_edit">
+                        <div class="lineBox voice_edit disabled">
                             <div class="range_wrap">
                                 <div class="rangeBox">
                                     <div class="range_slider"> 
@@ -197,7 +197,8 @@
                                         </button>
                                         <!-- [D] 최소, 최댓값을 초과하여 입력 시 .ipt_txt에 addClass('error')해주면 에러표시 활성화됩니다. -->
                                         <!-- [D] 위 경우 '유효한 값이 아닙니다.' 시스템 팝업 띄워지며, 팝업창 확인 시 각 최소, 최대값으로 자동 조정 필요 -->
-                                        <input type="number" class="ipt_txt error">
+                                        <!-- [D] 상단 input[type="range"] value 값을 .ipt_txt에 실시간 반영 필요합니다. -->
+                                        <input type="number" class="ipt_txt error" value="1">
                                         <button type="button" class="btn_vol btn_vol_up" title="증가">
                                             <span class="hide">증가</span>
                                         </button>
@@ -222,7 +223,8 @@
                                         </button>
                                         <!-- [D] 최소, 최댓값을 초과하여 입력 시 .ipt_txt에 addClass('error')해주면 에러표시 활성화됩니다. -->
                                         <!-- [D] 위 경우 '유효한 값이 아닙니다.' 시스템 팝업 띄워지며, 팝업창 확인 시 각 최소, 최대값으로 자동 조정 필요 -->
-                                        <input type="number" class="ipt_txt">
+                                        <!-- [D] 상단 input[type="range"] value 값을 .ipt_txt에 실시간 반영 필요합니다. -->
+                                        <input type="number" class="ipt_txt" value="0">
                                         <button type="button" class="btn_vol btn_vol_up" title="증가">
                                             <span class="hide">증가</span>
                                         </button>
@@ -251,7 +253,8 @@
                                         </button>
                                         <!-- [D] 최소, 최댓값을 초과하여 입력 시 .ipt_txt에 addClass('error')해주면 에러표시 활성화됩니다. -->
                                         <!-- [D] 위 경우 '유효한 값이 아닙니다.' 시스템 팝업 띄워지며, 팝업창 확인 시 각 최소, 최대값으로 자동 조정 필요 -->
-                                        <input type="number" class="ipt_txt">
+                                        <!-- [D] 상단 input[type="range"] value 값을 .ipt_txt에 실시간 반영 필요합니다. -->
+                                        <input type="number" class="ipt_txt" value="0">
                                         <button type="button" class="btn_vol btn_vol_up" title="증가">
                                             <span class="hide">증가</span>
                                         </button>
@@ -260,7 +263,7 @@
                             </div>                           
 
                             <div class="btnBox">
-                                <button type="button" class="btn_primary">음성변환</button>
+                                <button type="button" class="btn_primary btn_voice_trsf">음성변환</button>
                             </div>
                         </div>
                     </div>
@@ -270,7 +273,7 @@
                             <h4>변환음성확인</h4>
                         </div>
                         <!-- [D] 비활성화 상태인 경우 .lineBox에 addClass('disabled')해주세요. -->
-                        <div class="lineBox disabled">
+                        <div class="lineBox trsf_voice_chk disabled">
                             <!-- .audioArea -->
                             <div class="audioArea">
                                 <div class="audioBox">
@@ -327,20 +330,35 @@
     <script type="text/javascript">
      jQuery.event.add(window,"load",function(){
         $(document).ready(function(){
-            // TTS 생성 텍스트 1000자 입력 제한
+            // TTS 생성 텍스트 1000자 입력 제한 & TTS 실행 버튼 활성화
             $('.tts_ipt_txt .textarea').keyup(function(e){
                 var content = $(this).text();
                 $('.txtCount .current').html(content.length);
 
                 if(!$(this).text() == ''){
                     $(this).addClass('active');
+                    $(this).parent().next().removeClass('disabled');
+                    $(this).parent().next().find('button').prop('disabled', false);
                     if(content.length > 1000){
                         $(this).text(content.substring(0, 1000));
                         $('.txtCount .current').html(1000);
                     }
                 }else{
                     $(this).removeClass('active');
+                    $(this).parent().next().find('button').prop('disabled', true);
                 }                
+            });
+
+            // TTS 실행 버튼 클릭 시 TTS 음성확인, TTS 음성편집 영역 활성화
+            $('.btn_tts_start').on('click', function(){
+                $('.lineBox.voice_chk, .lineBox.voice_edit').removeClass('disabled');
+                $('.lineBox.voice_chk, .lineBox.voice_edit').find('select, input, button').prop('disabled', false);
+            });
+
+            // 음성변환 버튼 클릭 시 변환음성확인 영역 활성화
+            $('.btn_voice_trsf').on('click', function(){
+                $('.lineBox.trsf_voice_chk').removeClass('disabled');
+                $('.lineBox.trsf_voice_chk').find('select, input, button').prop('disabled', false);
             });
 
             // TTS 음성편집 slide bar
