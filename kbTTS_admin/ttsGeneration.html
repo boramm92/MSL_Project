@@ -67,7 +67,7 @@
             <!-- //#gnb -->
 
             <!-- #contents -->
-            <div id="contents">
+            <div id="contents" class="tts_gnrtn">
                 <!-- .content -->
                 <div class="content">
                     <!-- .titArea -->
@@ -107,7 +107,7 @@
                                 <div class="textarea" contenteditable="true" placeholder="여기를 눌러 텍스트를 입력하세요."></div>
                                 <div class="txtCount">(<span class="current">0</span>/1000)</div>
                             </div>
-                            <div class="btnBox">
+                            <div class="btnBox disabled">
                                 <p class="desc fl">최대 1000자 까지 입력가능합니다.</p>
                                 <button type="button" class="btn_primary">TTS 실행</button>
                             </div>
@@ -118,7 +118,8 @@
                         <div class="tit">
                             <h4>TTS 음성확인</h4>
                         </div>
-                        <div class="lineBox">
+                        <!-- [D] 비활성화 상태인 경우 .lineBox에 addClass('disabled')해주세요. -->
+                        <div class="lineBox disabled">
                             <!-- .audioArea -->
                             <div class="audioArea">
                                 <div class="audioBox">
@@ -163,81 +164,99 @@
                         <div class="tit">
                             <h4>TTS 음성편집</h4>
                         </div>
+                        <!-- [D] 비활성화 상태인 경우 .lineBox에 addClass('disabled')해주세요. -->
                         <div class="lineBox voice_edit">
-                            <div class="rangeBox">
-                                <div class="range_slider"> 
-                                    <label>속도</label>
-                                    <input class="slide_bar" type="range" value="0.25" min="0.25" max="4" step="0.01">
-                                    <ul class="range_value">
-                                        <li>0.25x</li>
-                                        <li>0.5x</li>
-                                        <li>0.75x</li>
-                                        <li>1.0x</li>
-                                        <li>2.0x</li>
-                                        <li>3.0x</li>
-                                        <li>4.0x</li>
-                                    </ul>
+                            <div class="range_wrap">
+                                <div class="rangeBox">
+                                    <div class="range_slider"> 
+                                        <label>속도</label>
+                                        <input class="slide_bar" type="range" value="1" min="0.25" max="4" step="0.01">
+                                        <ul class="range_value">
+                                            <li>0.25x</li>
+                                            <li>0.5x</li>
+                                            <li>0.75x</li>
+                                            <li>1.0x</li>
+                                            <li>1.25x</li>
+                                            <li>1.5x</li>
+                                            <li>1.75x</li>
+                                            <li>2.0x</li>
+                                            <li>2.25x</li>
+                                            <li>2.5x</li>
+                                            <li>2.75x</li>
+                                            <li>3.0x</li>
+                                            <li>3.25x</li>
+                                            <li>3.5x</li>
+                                            <li>3.75x</li>
+                                            <li>4.0x</li>
+                                        </ul>
+                                    </div>
+                                    <div class="range_view">
+                                        <button type="button" class="btn_vol btn_vol_down" title="감소">
+                                            <span class="hide">감소</span>
+                                        </button>
+                                        <!-- [D] 최소, 최댓값을 초과하여 입력 시 .ipt_txt에 addClass('error')해주면 에러표시 활성화됩니다. -->
+                                        <!-- [D] 위 경우 '유효한 값이 아닙니다.' 시스템 팝업 띄워지며, 팝업창 확인 시 각 최소, 최대값으로 자동 조정 필요 -->
+                                        <input type="number" class="ipt_txt error">
+                                        <button type="button" class="btn_vol btn_vol_up" title="증가">
+                                            <span class="hide">증가</span>
+                                        </button>
+                                    </div>  
                                 </div>
-                                <div class="range_view">
-                                    <button type="button" class="btn_vol btn_minus" title="감소">
-                                        <span class="hide">감소</span>
-                                    </button>
-                                    <input type="number" class="ipt_txt">
-                                    <button type="button" class="btn_vol btn_plus" title="증가">
-                                        <span class="hide">증가</span>
-                                    </button>
-                                </div>  
-                            </div>
-
-                            <div class="rangeBox">
-                                <div class="range_slider"> 
-                                    <label>볼륨</label>
-                                    <input class="slide_bar" type="range" value="-10" min="-10" max="10" step="0.01">
-                                    <ul class="range_value">
-                                        <li>-10dB</li>
-                                        <li>-5db</li>
-                                        <li>0dB</li>
-                                        <li>5db</li>
-                                        <li>10dB</li>
-                                    </ul>
+    
+                                <div class="rangeBox">
+                                    <div class="range_slider"> 
+                                        <label>볼륨</label>
+                                        <input class="slide_bar" type="range" value="0" min="-10" max="10" step="0.01">
+                                        <ul class="range_value">
+                                            <li>-10dB</li>
+                                            <li>-5db</li>
+                                            <li>0dB</li>
+                                            <li>5db</li>
+                                            <li>10dB</li>
+                                        </ul>
+                                    </div>
+                                    <div class="range_view">
+                                        <button type="button" class="btn_vol btn_vol_down" title="감소">
+                                            <span class="hide">감소</span>
+                                        </button>
+                                        <!-- [D] 최소, 최댓값을 초과하여 입력 시 .ipt_txt에 addClass('error')해주면 에러표시 활성화됩니다. -->
+                                        <!-- [D] 위 경우 '유효한 값이 아닙니다.' 시스템 팝업 띄워지며, 팝업창 확인 시 각 최소, 최대값으로 자동 조정 필요 -->
+                                        <input type="number" class="ipt_txt">
+                                        <button type="button" class="btn_vol btn_vol_up" title="증가">
+                                            <span class="hide">증가</span>
+                                        </button>
+                                    </div>  
                                 </div>
-                                <div class="range_view">
-                                    <button type="button" class="btn_vol btn_minus" title="감소">
-                                        <span class="hide">감소</span>
-                                    </button>
-                                    <input type="number" class="ipt_txt">
-                                    <button type="button" class="btn_vol btn_plus" title="증가">
-                                        <span class="hide">증가</span>
-                                    </button>
-                                </div>  
-                            </div>
-
-                            <div class="rangeBox">
-                                <div class="range_slider"> 
-                                    <label>높낮이</label>
-                                    <input class="slide_bar" type="range" value="-20" min="-20" max="20" step="0.01">
-                                    <ul class="range_value">
-                                        <li>-20st</li>
-                                        <li>-15st</li>
-                                        <li>-10st</li>
-                                        <li>-5st</li>
-                                        <li>0st</li>
-                                        <li>5st</li>
-                                        <li>10st</li>
-                                        <li>15st</li>
-                                        <li>20st</li>
-                                    </ul>
+    
+                                <div class="rangeBox">
+                                    <div class="range_slider"> 
+                                        <label>높낮이</label>
+                                        <input class="slide_bar" type="range" value="0" min="-20" max="20" step="0.01">
+                                        <ul class="range_value">
+                                            <li>-20st</li>
+                                            <li>-15st</li>
+                                            <li>-10st</li>
+                                            <li>-5st</li>
+                                            <li>0st</li>
+                                            <li>5st</li>
+                                            <li>10st</li>
+                                            <li>15st</li>
+                                            <li>20st</li>
+                                        </ul>
+                                    </div>
+                                    <div class="range_view">
+                                        <button type="button" class="btn_vol btn_vol_down" title="감소">
+                                            <span class="hide">감소</span>
+                                        </button>
+                                        <!-- [D] 최소, 최댓값을 초과하여 입력 시 .ipt_txt에 addClass('error')해주면 에러표시 활성화됩니다. -->
+                                        <!-- [D] 위 경우 '유효한 값이 아닙니다.' 시스템 팝업 띄워지며, 팝업창 확인 시 각 최소, 최대값으로 자동 조정 필요 -->
+                                        <input type="number" class="ipt_txt">
+                                        <button type="button" class="btn_vol btn_vol_up" title="증가">
+                                            <span class="hide">증가</span>
+                                        </button>
+                                    </div>  
                                 </div>
-                                <div class="range_view">
-                                    <button type="button" class="btn_vol btn_minus" title="감소">
-                                        <span class="hide">감소</span>
-                                    </button>
-                                    <input type="number" class="ipt_txt">
-                                    <button type="button" class="btn_vol btn_plus" title="증가">
-                                        <span class="hide">증가</span>
-                                    </button>
-                                </div>  
-                            </div>
+                            </div>                           
 
                             <div class="btnBox">
                                 <button type="button" class="btn_primary">음성변환</button>
@@ -249,7 +268,8 @@
                         <div class="tit">
                             <h4>변환음성확인</h4>
                         </div>
-                        <div class="lineBox">
+                        <!-- [D] 비활성화 상태인 경우 .lineBox에 addClass('disabled')해주세요. -->
+                        <div class="lineBox disabled">
                             <!-- .audioArea -->
                             <div class="audioArea">
                                 <div class="audioBox">
@@ -322,24 +342,25 @@
                 }                
             });
 
-            // input[type="range"] slide bar
-            var settings = {
+            // TTS 음성편집 slide bar
+            const settings = {
                 fill: '#14adea',
                 background: '#e1e1e1'
             }
 
-            const sliders01 = document.querySelector('.range_slider .slide_bar');
+            const sliders = document.querySelectorAll('.range_slider');
 
-
-            sliders01.querySelector('input').addEventListener('input', (event) => {
-                applyFill01(event.target);
+            Array.prototype.forEach.call(sliders, function(slider){
+                slider.querySelector('input').addEventListener('input', function(event){
+                    applyFill(event.target);
+                });
+                applyFill(slider.querySelector('input'));
             });
-            applyFill01(sliders01.querySelector('input'));
 
-            function applyFill01(sliders01) {
-                const percentage = 100*(sliders01.value-sliders01.min)/(sliders01.max-sliders01.min);
-                const bg = `linear-gradient(90deg, ${settings.fill} ${percentage}%, ${settings.background} ${percentage+0.1}%)`;
-                sliders01.style.background = bg;
+            function applyFill(slider) {
+            const percentage = 100*(slider.value-slider.min)/(slider.max-slider.min);
+            const bg = 'linear-gradient(90deg,' + settings.fill + ' ' + percentage + '%,' + settings.background + ' ' + (percentage + 0.1) + '%';
+            slider.style.background = bg;
             }
         });
     });      
