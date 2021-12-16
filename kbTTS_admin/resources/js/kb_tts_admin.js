@@ -77,4 +77,8 @@ $(document).ready(function(){
             thisTableBox.find('.allChk').prop('checked', false);
         }       
     });
+
+
+    // disabled 내부 요소들 disabled 처리 (ie 10버전 때문에 작성)
+    $('.disabled').find('input, select, button').prop('disabled', true);
 });
