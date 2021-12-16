@@ -343,12 +343,12 @@
             });
 
             // TTS 음성편집 slide bar
-            const settings = {
+            var settings = {
                 fill: '#14adea',
                 background: '#e1e1e1'
             }
 
-            const sliders = document.querySelectorAll('.range_slider');
+            var sliders = document.querySelectorAll('.range_slider');
 
             Array.prototype.forEach.call(sliders, function(slider){
                 slider.querySelector('input').addEventListener('input', function(event){
@@ -358,8 +358,8 @@
             });
 
             function applyFill(slider) {
-            const percentage = 100*(slider.value-slider.min)/(slider.max-slider.min);
-            const bg = 'linear-gradient(90deg,' + settings.fill + ' ' + percentage + '%,' + settings.background + ' ' + (percentage + 0.1) + '%';
+            var percentage = 100*(slider.value-slider.min)/(slider.max-slider.min);
+            var bg = 'linear-gradient(90deg,' + settings.fill + ' ' + percentage + '%,' + settings.background + ' ' + (percentage + 0.1) + '%';
             slider.style.background = bg;
             }
         });
