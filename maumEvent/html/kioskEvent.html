@@ -46,7 +46,7 @@
 <div id="wrap" class="event">
     <!-- #contents -->
     <div id="contents">
-        <div class="stn intro">
+        <!-- <div class="stn intro">
             <div class="contWrap">
                 <div class="cont">
                     <div class="txtArea">
@@ -69,7 +69,7 @@
                 </div>
             </div>           
             <div class="diagonal_line"></div>                    
-        </div>
+        </div> -->
 
         <div class="stn main">
             <div class="contWrap">
@@ -77,8 +77,8 @@
                     <div class="txtArea">
                         <img src="../resources/images/kiosk/img_theAgeOfAiKiosk.svg" alt="THE AGE OF AI KIOSK">
                         <p>사람처럼 대화하고 사람처럼 응대합니다.</p>
-                        <!-- [D] 21.10.12 - '마음 AI 스토어' 버튼 추가 해주세요. -->
-                        <a href="https://store.maum.ai/" class="btn_link">마음 AI 스토어</a>
+                        <!-- [D] 21.12.17 기존 .btn_link 버튼 제거하고 .btn_go_contact 버튼 추가 -->
+                        <a href="#none" class="btn_go_contact">AI 키오스크 문의하기</a>
                     </div>  
                     <div class="imgArea">
                         <img src="../resources/images/kiosk/img_stn_main.png" title="새창으로 열기" target="_blank" alt="kiosk image">
@@ -355,8 +355,6 @@
                         <p class="desc">기본형 상품 외에도 고객님의 필요와 용도에 맞는<br> 맞춤형 AI 키오스크도 제작이 가능합니다.</p>
                     </div>
 
-                    <!-- [D] 21.09.08 .contactForm 영역 기존에 <div>태그에서 <form>태그로 변경됨 -->
-                    <!-- [D] 21.09.08 <fieldset>, <legend>태그 추가됨 -->
                     <form class="contactform">
                         <fieldset>
                             <legend class="hide">문의하기</legend>
@@ -369,12 +367,10 @@
                                 <dt>연락처<span>(필수)</span></dt>
                                 <dd><input type="tel" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" id="userTel" class="ipt_tel" placeholder="'‐'없이 연락처를 입력해 주세요."></dd>
                             </dl>
-                            <!-- [D] 21.09.08 이메일 입력 폼 추가 -->
                             <dl>
                                 <dt>이메일<span>(필수)</span></dt>
                                 <dd><input type="text" id="userEmail" class="ipt_txt" autocomplete="off" placeholder="이메일을 입력해 주세요."></dd>
                             </dl>
-                            <!-- //[D] 21.09.08 이메일 입력 폼 추가 -->
                             <dl>
                                 <dt>키오스크가 필요한 업종</dt>
                                 <dd><input type="text" id="business" class="ipt_txt" autocomplete="off" placeholder="예) 은행, 회사, 식당 등"></dd>
@@ -397,7 +393,8 @@
                             </dl>
                             
                             <!-- [D] 문의하기 버튼 클릭 시 성공적으로 문의접수 된 경우 alert 등장 (문의가 완료되었습니다. 버튼:확인 -> 확인버튼 클릭 시에는 maum.ai 홈페이지로 이동) -->
-                            <!-- [D] 21.09.08 '문의하기' 버튼 type이 button에서 submit으로 변경됨 -->
+                            <!-- [D] 21.12.17 'maum.ai 바로가기' 버튼 추가 -->
+                            <a href="https://maum.ai/" target="_blank" title="새창으로 열기" class="btn_link">maum.ai 바로가기</a>
                             <button type="submit" id="inquireBtn" disabled="true">문의하기</button>
                         </fieldset>
                     </form>
@@ -497,6 +494,13 @@ jQuery.event.add(window,"load",function(){
             $('.float_banner').show();
         });  
 
+        // [D] 21.12.17 문의 영역으로 이동 script 추가
+        // 문의 영역으로 이동
+        $('.btn_go_contact').on('click', function(){       
+            var contactOffset = $('.contact').offset();                                 
+            $('html').animate({scrollTop : contactOffset.top + 300}, 0);
+        });
+
         // innovation - 말풍선 애니메이션
         function speechAnimation(){
             if($(window).outerWidth() <= 768){
@@ -552,7 +556,6 @@ jQuery.event.add(window,"load",function(){
             $(this).val($(this).val().replace(/[^0-9]/g,''));
         });
 
-        // [D] 21.09.08 해당 script 영역 전체 덮어쓰기 해주세요.
         // 문의하기 필수 내용 입력, 동의체크 시 버튼 컬러 활성화       
         $('#userName').on('input', checkInput);
         $('#userTel').on('input', checkInput);
@@ -573,7 +576,6 @@ jQuery.event.add(window,"load",function(){
                 inquireButton.prop('disabled', false);
             }
         }
-        // //[D] 21.09.08 해당 script 영역 전체 덮어쓰기 해주세요.
     });       
 });
 </script>
