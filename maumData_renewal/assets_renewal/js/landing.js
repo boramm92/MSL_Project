@@ -20,56 +20,56 @@ window.addEventListener('load', headerScrollFunc);
 window.addEventListener('scroll', headerScrollFunc);
 
 // header 언어선택 (웹, 모바일 별 기능)
-var langSelectWrap = document.querySelector('.lang_slt_wrap'),
-    langSelectBox = document.querySelector('.slt_box'),
-    langSelectBtn = document.getElementsByClassName('btn_lang_slt');
+// var langSelectWrap = document.querySelector('.lang_slt_wrap'),
+//     langSelectBox = document.querySelector('.slt_box'),
+//     langSelectBtn = document.getElementsByClassName('btn_lang_slt');
 
-function webLangSeleceFunc(){
-    langSelectBox.addEventListener('click', function(){
-        langSelectWrap.classList.add('open');
-        for(var i = 0; i < langSelectBtn.length; i++){
-            langSelectBtn[i].classList.add('on');
-            langSelectBtn[i].addEventListener('click', function(e){
-                var target = e.target;
-                langSelectWrap.classList.remove('open');
-                if(target.classList.contains('lang_ko')){
-                    document.querySelector('.lang_en').classList.remove('on');
-                }else{
-                    document.querySelector('.lang_ko').classList.remove('on');
-                }
-            });
-        }    
-    });
-}
-function mobileLangSeleceFunc(){
-    function btnClick(i){
-        langSelectBtn[i].addEventListener('click', function(){
-            langSelectBtn[i].classList.add('on');
-            if(langSelectBtn[i].classList.contains('lang_ko')){
-                document.querySelector('.lang_en').classList.remove('on');
-            }else{
-                document.querySelector('.lang_ko').classList.remove('on');
-            }
-        });
-    }
-    for(var i = 0; i < langSelectBtn.length; i++){
-        btnClick(i);  
-    }   
-}
-window.addEventListener('load', function(){
-    if(window.innerWidth <= 768){
-        mobileLangSeleceFunc();
-    }else{
-        webLangSeleceFunc();
-    }
-});
-window.addEventListener('resize', function(){
-    if(window.innerWidth <= 768){
-        mobileLangSeleceFunc();
-    }else{
-        webLangSeleceFunc();
-    }
-});   
+// function webLangSeleceFunc(){
+//     langSelectBox.addEventListener('click', function(){
+//         langSelectWrap.classList.add('open');
+//         for(var i = 0; i < langSelectBtn.length; i++){
+//             langSelectBtn[i].classList.add('on');
+//             langSelectBtn[i].addEventListener('click', function(e){
+//                 var target = e.target;
+//                 langSelectWrap.classList.remove('open');
+//                 if(target.classList.contains('lang_ko')){
+//                     document.querySelector('.lang_en').classList.remove('on');
+//                 }else{
+//                     document.querySelector('.lang_ko').classList.remove('on');
+//                 }
+//             });
+//         }    
+//     });
+// }
+// function mobileLangSeleceFunc(){
+//     function btnClick(i){
+//         langSelectBtn[i].addEventListener('click', function(){
+//             langSelectBtn[i].classList.add('on');
+//             if(langSelectBtn[i].classList.contains('lang_ko')){
+//                 document.querySelector('.lang_en').classList.remove('on');
+//             }else{
+//                 document.querySelector('.lang_ko').classList.remove('on');
+//             }
+//         });
+//     }
+//     for(var i = 0; i < langSelectBtn.length; i++){
+//         btnClick(i);  
+//     }   
+// }
+// window.addEventListener('load', function(){
+//     if(window.innerWidth <= 768){
+//         mobileLangSeleceFunc();
+//     }else{
+//         webLangSeleceFunc();
+//     }
+// });
+// window.addEventListener('resize', function(){
+//     if(window.innerWidth <= 768){
+//         mobileLangSeleceFunc();
+//     }else{
+//         webLangSeleceFunc();
+//     }
+// });   
 
 // header 모바일 메뉴 햄버거 버튼
 var hamBtn = document.querySelector('.btn_ham'),
