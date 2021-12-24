@@ -643,13 +643,15 @@
 
 /* service */
 #container.builerMain .service {background:#f0f2f5;}
-/* #container.builerMain .service .contBox .service_list_wrap {width:1195px;} */
-#container.builerMain .service .contBox .service_list_wrap {padding:50px 60px;}
+#container.builerMain .contents .stn.service .contBox {position:relative; width:1240px;}
+#container.builerMain .service .contBox .service_list_wrap {padding:50px 20px;}
 #container.builerMain .service .contBox .service_list_wrap ul li {width:378px; height:434px; border-radius:10px; box-shadow:0 5px 10px 0 rgba(157, 171, 190, 0.3); background:#fff;}
 #container.builerMain .service .contBox .service_list_wrap ul li .imgBox {width:100%;}
 #container.builerMain .service .contBox .service_list_wrap ul li .imgBox img {width:100%;}
 #container.builerMain .service .contBox .service_list_wrap ul li .svc_tit {margin:20px 0 10px; color:#2c2c44; font-size:1rem; font-weight:700; letter-spacing:-0.6px;}
 #container.builerMain .service .contBox .service_list_wrap ul li .svc_desc {color:#2c2c44; font-size:0.67rem; letter-spacing:-0.16px; line-height:1.5;}
+#container.builerMain .service .contBox .swiper-button-prev {top:400px; left:0 !important;}
+#container.builerMain .service .contBox .swiper-button-next {top:400px; right:0 !important;}
 
 /* banner */
 #container.builerMain .stn.banner {padding:60px 0; background:#060843;}
@@ -671,7 +673,10 @@
 /* -------------------- media query -------------------- */
 @media screen and (max-width:768px) {
     /* common */
-    #container.builerMain .contents .stn .contBox {padding:0 40px;}
+    #container.builerMain .contents .stn:not(.visual) {padding:50px 0;}
+    #container.builerMain .contents .stn .stn_tit {font-size:1.57rem;}
+    #container.builerMain .contBox .stn_desc {margin:12px 0 38px; font-size:1rem; word-break:keep-all;}
+    #container.builerMain .contents .stn .contBox {width:100%; padding:0 20px; box-sizing:border-box;}
 
     /* visual */
     #container.builerMain .contents .visual {padding:0; height:100vh; background-image:url('../images/landing/bg_stn_builderVisual_m.png'), linear-gradient(1deg, #0d0b15 77%, #0f152d 91%, #181b40 99%, #000000 106%); background-size:98% auto, cover; background-position:top 10vh right -22px, 50% 50%;}
@@ -679,6 +684,36 @@
     #container.builerMain .visual .contBox .txtArea .visual_tit {display:none;}
     #container.builerMain .visual .contBox .txtArea .visual_desc {font-size:1.14rem; text-align:center;}
     #container.builerMain .visual .contBox .txtArea .btn_link {display:block; margin:0 auto;}
+
+    #container.builerMain .features .contBox .stn_txt {text-align:center;}
+    #container.builerMain .features .contBox .stn_txt .stn_desc {margin:12px 0 38px;}
+    #container.builerMain .features .contBox .imgBox {float:none; width:100%;}
+
+    #container.builerMain .stn.banner {padding:34px 0;}
+    #container.builerMain .banner .contBox .btn_link:hover {border:1px solid #fff; box-shadow:none; background:none; color:#fff;}
+
+    #container.builerMain .contents .faq .contBox {padding:0}
+    #container.builerMain .faq .contBox .tabArea .tab_lst {display:flex; height:48px;}
+    #container.builerMain .faq .contBox .tabArea .tab_lst li {flex:1; height:48px; padding:30px 0 0; border:none; border-radius:0; color:#6d7783; font-size:0.93rem; line-height:12px; text-align:center;}
+    #container.builerMain .faq .contBox .tabArea .tab_lst li + li {margin:0;}
+    #container.builerMain .faq .contBox .tabArea .tab_lst li.active {border:1px solid #e2ebf4; border-bottom:none; box-shadow:none; color:#1054b2;}
+    #container.builerMain .faq .contBox .tabArea .tab_lst li.active:before {content:''; display:block; position:absolute; top:-1px; left:-1px; width:calc(100% + 2px); height:2px; background:#1054b2;}
+    #container.builerMain .faq .contBox .tabArea .tab_lst li:nth-child(1) {padding:30px 0 0; background-position:50% 6px; background-size:auto 20px;}
+    #container.builerMain .faq .contBox .tabArea .tab_lst li:nth-child(1).active {border-left:none;}
+    #container.builerMain .faq .contBox .tabArea .tab_lst li:nth-child(2) {padding:30px 0 0; background-position:50% 6px; background-size:auto 20px;}
+    #container.builerMain .faq .contBox .tabArea .tab_lst li:nth-child(3) {padding:30px 0 0; background-position:50% 6px; background-size:auto 20px;}
+    #container.builerMain .faq .contBox .tabArea .tab_lst li:nth-child(4) {padding:30px 0 0; background-position:50% 6px; background-size:auto 20px;}
+    #container.builerMain .faq .contBox .tabArea .tab_lst li:nth-child(4).active {border-right:none;}
+    #container.builerMain .faq .contBox .tabArea .tab_cont {height:auto; border:none; border-top:1px solid #e2ebf4; box-shadow:none;}
+    #container.builerMain .faq .contBox .tabArea .tab_cont li .faq_lst {padding:20px;}
+    #container.builerMain .faq .contBox .tabArea .tab_cont > li .sub_lst_wrap {overflow-x:auto; -ms-overflow-style:none; scrollbar-width:none; float:none; width:100%; padding:0; border-radius:0; background:none; text-align:left; }
+    #container.builerMain .faq .contBox .tabArea .tab_cont > li .sub_lst {width:auto; height:auto; white-space:nowrap;}
+    #container.builerMain .faq .contBox .tabArea .tab_cont > li .sub_lst li {display:inline-block; padding:0 10px; border:1px solid #c1d5e8; border-radius:15px; color:#98a8ce; font-size:0.86rem; line-height:30px;}
+    #container.builerMain .faq .contBox .tabArea .tab_cont > li .sub_lst li.active {border-radius:15px;}
+    #container.builerMain .faq .contBox .tabArea .tab_cont > li .sub_lst li + li {margin:0 0 0 6px;}
+    #container.builerMain .faq .contBox .tabArea .tab_cont > li .sub_cont {float:none; width:100%; margin:11px 0 0; border-radius:6px;}
+    #container.builerMain .faq .contBox .tabArea .tab_cont > li .sub_cont li {padding-top:58%;}
+    #container.builerMain .faq .contBox .tabArea .tab_cont > li .sub_cont li p {padding:11px 9px;}
 }
 
 @media screen and (max-width:480px) {
