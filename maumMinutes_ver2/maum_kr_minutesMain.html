@@ -11,7 +11,6 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Cache-Control" content="no-cache">
 <!-- icon_favicon -->
-<!-- [D] 21.12.17 파비콘 수정 부탁드립니다. -->
 <link rel="apple-touch-icon-precomposed" href="resources/images/apple-icon.png">
 <link rel="shortcut icon" type="image/x-icon" href="resources/images/favicon.ico">
 <!-- Open Graph Tag -->
@@ -23,6 +22,8 @@
 
 <!---------------------- General Resources ---------------------->
 <!-- General CSS -->
+<!-- [D] 22.01.04 maum_common.css 파일 추가 부탁드립니다. -->
+<link rel="stylesheet" type="text/css" href="resources/css/maum_common.css">
 <link rel="stylesheet" type="text/css" href="resources/css/new_common_minutes.css">
 <!-- General Script -->
 <script type="text/javascript" src="resources/js/jquery-3.5.1.min.js"></script>
@@ -44,28 +45,191 @@
 </div>
 <!-- //.page loading -->
     
+<!-- [D] 22.01.04 #wrap에 class="maumUI top_banner visual_header" 추가 부탁드립니다. -->
 <!-- #wrap -->
-<div id="wrap">
+<div id="wrap" class="maumUI top_banner visual_header">
+    <!-- [D] 22.01.04 .maum_aside.logged_in 영역 추가 부탁드립니다. -->
+    <!-- [D] 22.01.04 로그인 후 .maum_aside.logged_in에 addClass('user_login') 해주세요. -->
+	<div class="maum_aside logged_in">
+		<!-- .aside_top -->
+		<div class="aside_top">			
+			<a class="btn_sign login_pop_m" href="#none">로그인</a>			
+		</div>
+		<!-- //.aside_top -->
+
+		<!-- .aside_mid -->
+		<div class="aside_mid">
+			<ul class="m_nav">	
+				<li class="userNav">
+                    <h2>
+						<a href="#none">boramm@mindslab.ai</a>
+					</h2>
+                    <ul class="m_lst">
+                        <li>
+                            <h3><a href="/user/profileMain" target="_blank" title="프로필" class="layer_m_btn">프로필</a></h3>
+                            <h3><a href="/user/apiAccountMain" target="_blank" title="API 정보" class="layer_m_btn">API 정보</a></h3>
+                            <h3><a href="/user/paymentInfoMain" target="_blank" title="결제정보" class="layer_m_btn">결제정보</a></h3>
+                        </li>
+                    </ul>
+                </li>
+				<li class="aiHuman">
+					<h2><a href="#none">AI Human</a></h2>
+					<ul class="m_lst">
+						<li>
+							<h3><a href="/main/krMainHome">서비스 소개</a></h3>
+						</li>
+						<li>
+							<h3><a href="https://builder.maum.ai/">인공인간 키오스크</a></h3>
+						</li>
+						<li>
+							<h3><a href="https://minutes.maum.ai">인공인간 견적</a></h3>
+						</li>
+						<li>
+							<h3><a href="https://fast-aicc.maum.ai">인공인간 구매</a></h3>
+						</li>
+					</ul>
+				</li>	
+				<li>
+					<h2><a href="#none">AICC</a></h2>
+				</li>	
+				<li>
+					<h2><a href="#none">SMART-X</a></h2>
+				</li>
+				<li>
+					<h2><a href="#none">MAUM 회의록</a></h2>
+				</li>
+				<li>
+					<h2><a href="#none">CLOUD API</a></h2>
+				</li>
+				<li>
+					<h2><a href="#none">MAUM DATA</a></h2>
+				</li>
+				<li>
+					<h2><a href="/home/pricingPage?lang=ko">가격정책</a></h2>
+				</li>	
+				<li>
+					<h2><a href="#none" class="move_inquiry">문의하기</a></h2>
+				</li>
+				<li class="maum_logout">
+					<h2><a href="#none" onclick="document.getElementById('logout-form').submit();">로그아웃</a></h2>
+				</li>
+			</ul>
+		</div>
+		<!-- //.aside_mid -->
+	
+		<!-- .aside_btm -->
+		<div class="aside_btm">			
+			<ul>
+				<li class=""><span>한국어</span></li>
+				<li class=""><span><a href="/?lang=en">English</a></span></li>
+			</ul>			
+		</div>
+		<!-- //.aside_btm -->
+	</div>
+
+    <!-- [D] 22.01.04 #header 영역 통으로 현재 마크업으로 수정 부탁드립니다. -->
     <!-- #header -->
-    <div id="header">            
-        <div class="sta">  
-            <h1><a href="maum_kr_minutesMain.html">마음회의록</a></h1>
-            <div class="gnb">
-                <ul class="nav">
-                    <li><a href="maum_kr_minutesEvent.html" target="_black">이벤트</a></li>
-                    <li><a href="https://maum.ai/home/pricingPage" target="_blank">가격정책</a></li>
-                    <li><a href="maum_kr_minutesContactUs.html">문의하기</a></li>
-                </ul> 
-                <ul class="nav_etc">
-                    <li><a class="btn_sign_in" href="/minutes/manage/minutesList" target="_parent">로그인</a></li>
-                </ul>                            
+    <div id="header">
+        <!-- .maum_sta -->
+        <div class="maum_sta">
+            <h1><a href="/">maum.ai</a></h1>
+            <!-- .maum_gnb -->
+            <div class="maum_gnb">
+                <ul class="nav">                   
+                    <li>
+                        <a href="https://maum.ai/home/pricingPage?lang=ko">가격정책</a>
+                    </li>
+                </ul>
             </div>
-            <a class="btn_ham" href="#none" title="모바일 버튼">
-                <span></span>
-                <span></span>
-                <span></span>
+            <!-- //.maum_gnb -->
+
+            <!-- .maum_etc -->
+            <div class="maum_etc">
+                <ul class="nav">                   
+                    <li>
+                        <a class="btn_sign login_pop" href="#none">로그인</a>
+                    </li>                    
+                    <li>
+                        <a class="btn_ico lang" href="#none"><i class="fas fa-globe"></i><span>언어</span></a>
+                        <div class="lstBox">
+                            <ul class="lst">
+                                <li class="lang_li"><a href="#none">한국어</a></li>
+                                <li class="lang_li"><a href="/?lang=en" target="_self" title="English">English</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="btn_ico app" href="#none"><span>웹 앱 및 서비스</span></a>
+                        <div class="appBox">
+                            <div class="tit">웹 앱 및 서비스</div>
+                            <ul class="lst">
+                                <li>
+                                    <a href="/main/krMainHome" target="_blank" title="Cloud API">
+                                        <span class="ico"></span>
+                                        <em>Cloud API</em>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://builder.maum.ai/?lang=ko" target="_blank" title="AI Builder">
+                                        <span class="ico"></span>
+                                        <em>AI Builder</em>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://minutes.maum.ai/" target="_blank" title="maum 회의록">
+                                        <span class="ico"></span>
+                                        <em>maum 회의록</em>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://fast-aicc.maum.ai/login?lang=ko" target="_blank" title="FAST 대화형 AI">
+                                        <span class="ico"></span>
+                                        <em>FAST 대화형 AI</em>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://ava.maum.ai/login" target="_blank">
+                                        <span class="ico"></span>
+                                        <em>AVA</em>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://edge.maum.ai/" target="_blank">
+                                        <span class="ico"></span>
+                                        <em>Edge AI Platform</em>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://data.maum.ai/?lang=ko" target="_blank" title="maum DATA">
+                                        <span class="ico"></span>
+                                        <em>maum DATA</em>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/home/krEcomindsMain" target="_blank" title="eco MINDs">
+                                        <span class="ico"></span>
+                                        <em>eco MINDs</em>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://store.maum.ai" target="_blank" title="maum AI store">
+                                        <span class="ico"></span>
+                                        <em>maum AI store</em>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- //.maum_etc -->
+            <a class="btn_maum_ham" href="#none">모바일 전체메뉴
+                <span class="line_top"></span>
+                <span class="line_mid"></span>
+                <span class="line_btm"></span>
             </a>
         </div>
+        <!-- //.maum_sta -->
     </div>
     <!-- //#header -->
 
@@ -94,7 +258,6 @@
                 </div>
             </div>
 
-            <!-- [D] 21.12.17 .successCase 영역 통으로 현재 마크업으로 수정해주세요 -->
             <div class="stn successCase">
                 <div class="contBox">
                     <h3>성공 사례</h3>
@@ -156,7 +319,6 @@
                 </div>
             </div>
 
-            <!-- [D] 21.12.17 .strength 영역 통으로 현재 마크업으로 수정해주세요 -->
             <div class="stn strength">
                 <div class="contBox">
                     <h3>마음 회의록 핵심 기능</h3>
@@ -744,7 +906,6 @@
                 </div>
             </div>
 
-            <!-- [D] 21.12.17 .contactUs 영역 해당 위치에 추가해주세요. -->
             <div class="stn contactUs">
                 <div class="contBox">
                     <h3>CONTACT US</h3>
@@ -794,7 +955,6 @@
     <!-- //#container -->
 
     <!-- #footer -->
-    <!-- [D] 21.12.17 기존의 #footer 영역 제거, #footerLanding 영역 통으로 추가해주세요. -->
     <div id="footerLanding">
         <div class="footer_inner">
             <div class="col">
@@ -904,7 +1064,6 @@ jQuery.event.add(window,"load",function(){
             }
         });
 
-        // [D] 21.12.17 .scs_case_wrap 영역 swiper 해당 옵션으로 수정해주세요.
         // swiper
         new Swiper('.scs_case_wrap', {
             slidesPerGroup : 2,
