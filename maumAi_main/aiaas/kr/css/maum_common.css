@@ -423,7 +423,7 @@
 .maumUI.transform .maum_sta .maum_etc .nav>li>a.btn_ico.app {background-size: 19px;}
 
 /* 모바일 메뉴 */
-.maumUI .maum_aside {display:block; overflow:hidden; position:fixed; top:0; right:0; width:0; height:100%; z-index:2000; background-color: #fff; box-shadow:3px 0 7px #000;}
+.maumUI .maum_aside {display:none !important; overflow:hidden; position:fixed; top:0; right:0; width:0; height:100%; z-index:3000; background-color: #fff; box-shadow:3px 0 7px #000;}
 .maumUI .maum_aside .aside_top {display:block; border-bottom: 1px solid rgba(182,197,209,0.5); box-sizing: border-box;}
 .maumUI .maum_aside .aside_top h1 {display:block; text-align:center;height:46px;}
 .maumUI .maum_aside .aside_top h1 img {height:100%;}
@@ -438,8 +438,11 @@
 .maumUI .maum_aside .aside_mid .m_nav > li {border-bottom:1px solid rgba(182, 197, 209, 0.5);}
 .maumUI .maum_aside .aside_mid .m_nav li h2 {display:block;}
 .maumUI .maum_aside .aside_mid .m_nav li h2 a {display:block; height: 60px; padding: 0 37px; line-height: 60px; font-size:1rem; font-weight: 500; color: #333b60; text-align:right;}
-.maumUI .maum_aside .aside_mid .m_nav > li:nth-child(1) h2 a {background:url('../images/landing/ico_arw_down_g.svg') top 50% right 16px no-repeat;}
-.maumUI .maum_aside .aside_mid .m_nav > li:nth-child(1) h2 a.slideChk {background:url('../images/landing/ico_arw_top_b.svg') top 50% right 16px no-repeat; color:#5b6ae2;}
+.maumUI .maum_aside .aside_mid .m_nav > li.userNav h2 a,
+.maumUI .maum_aside .aside_mid .m_nav > li.aiHuman h2 a {background:url('../images/landing/ico_arw_down_g.svg') top 50% right 16px no-repeat;}
+.maumUI .maum_aside .aside_mid .m_nav > li.userNav h2 a.slideChk,
+.maumUI .maum_aside .aside_mid .m_nav > li.aiHuman h2 a.slideChk {background:url('../images/landing/ico_arw_top_b.svg') top 50% right 16px no-repeat; color:#5b6ae2;}
+.maumUI .maum_aside .aside_mid .m_nav > li h2 a.maum_logout {color:rgba(31, 46, 59, 0.7);}
 .maumUI .maum_aside .aside_mid .m_nav li h2 span {display:block; color:#999; font-size:15px; font-weight:500; line-height:45px; text-align:center;}
 .maumUI .maum_aside .aside_mid .m_nav li h2 a svg {font-size: 1rem; margin-right: 10px; color: #1db6cc;}
 .maumUI .maum_aside .aside_mid .m_nav li h2 a .fa-chevron-down {font-size: 0.95rem; margin-left: 5px; color: #333b60;}
@@ -457,6 +460,9 @@
 .maumUI .maum_aside .aside_mid .m_nav li ul.m_lst li ul.m_lst_sub li a.active {color:#3375fa;}
 .maumUI .maum_aside .aside_mid .m_nav li ul.m_lst li ul.m_lst_sub li a em.new {display:inline-block; padding:3px 5px; color:#fff; font-size:10px; line-height:10px;  border-radius:3px; background:#23c5de;}
 .maumUI .maum_aside .aside_mid .m_nav li ul.m_lst li ul.m_lst_sub li b {display:block; min-height:30px; color:#999; font-size:13px; line-height:22px; font-weight:normal;}
+.maumUI .maum_aside .aside_mid .m_nav li.userNav,
+.maumUI .maum_aside .aside_mid .m_nav li.maum_logout {display:none;}
+.maumUI .maum_aside .aside_mid .m_nav li.maum_logout h2 a {color:rgba(31, 46, 59, 0.7);}
 .maumUI .maum_aside .aside_btm {display:block; border-top:1px solid rgba(182, 197, 209, 0.5);}
 .maumUI .maum_aside .aside_btm ul {clear:both; overflow:hidden; line-height:60px; text-align:center;}
 .maumUI .maum_aside .aside_btm ul li {display:inline-block; margin-right:28px; text-align:center;}
@@ -467,28 +473,34 @@
 .maumUI .maum_aside .aside_btm .maum_logout a .fa-sign-out-alt {display: inline-block;}
 
 .maumUI .maum_aside.logged_in .aside_mid {height: calc(100% - 120px);}
+.maumUI .maum_aside.user_login .aside_top {display:none;}
+.maumUI .maum_aside.user_login .aside_mid {height: calc(100% - 60px);}
+.maumUI .maum_aside.user_login .aside_mid .m_nav li.userNav,
+.maumUI .maum_aside.user_login .aside_mid .m_nav li.maum_logout {display:block;}
 
 .bg_aside {display:none; position:fixed; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,1.0); opacity:1.0; z-index:100;}
 
 /* -------------------- mobile -------------------- */
 @media screen and (max-width:768px) {
-    .fp-enabled body, html.fp-enabled {overflow:visible !important;}
+    /* .fp-enabled body, html.fp-enabled {overflow:visible !important;} */
     .maumUI {min-width:320px;}
     .maumUI #header h1 {width:68px; height: 28px; margin: 13px 0 0 20px;}
     .maumUI #header .maum_sta {height:50px;}
     .maumUI #header .maum_sta .maum_gnb {display:none;}
     .maumUI #header .maum_sta .maum_etc {display:none;}
     .maumUI #header .maum_sta .btn_maum_ham {display:block;}
-
+    .maumUI .maum_aside {display:block;}
     .maumUI #header h1 {margin-top: 12px;}
     .maumUI.transform #header .maum_sta {min-width: auto; height: 50px;}
     #wrap.maum_aside_open #header .maum_sta {width:44px; height:60px;}
     #wrap.maum_aside_open #header .maum_sta h1 {display:none;}
-    #wrap.maum_aside_open:before {content:''; display:block; position:fixed; top:0; right:0; bottom:0; left:0; width:100%; height:100%; background:rgba(0, 0, 0, 0.7); z-index:10;}
+    /* #wrap.maum_aside_open:before {content:''; display:block; position:fixed; top:0; right:0; bottom:0; left:0; width:100%; height:100%; background:rgba(0, 0, 0, 0.7); z-index:10;} */
     #wrap.maum_aside_open .maum_aside {width:calc(100% - 44px) !important;}
 
     .maumUI #footer {padding:0;}
     .stn_inquiry .cont_box .inquiry_box {top:320px;}
+    .maum_aside_open .maum_aside {display:block !important;}
+    .maum_aside_open > .bg_aside {display:block;}
 }
 
 /* 헤더 style : .maumUI.visual_header */

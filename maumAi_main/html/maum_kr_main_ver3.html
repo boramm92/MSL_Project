@@ -51,18 +51,30 @@
 
 <!-- #wrap -->
 <div id="wrap" class="maumUI top_banner visual_header">
+	<!-- [D] 로그인 후 .maum_aside addClass('user_login') 해주세요. -->
 	<div class="maum_aside logged_in">
 		<!-- .aside_top -->
 		<div class="aside_top">			
 			<a class="btn_sign login_pop_m" href="#none">로그인</a>			
 		</div>
 		<!-- //.aside_top -->
-	
-		<!-- //.aside_top -->
+
 		<!-- .aside_mid -->
 		<div class="aside_mid">
 			<ul class="m_nav">	
-				<li>
+				<li class="userNav">
+                    <h2>
+						<a href="#none">boramm@mindslab.ai</a>
+					</h2>
+                    <ul class="m_lst">
+                        <li>
+                            <h3><a href="/user/profileMain" target="_blank" title="프로필" class="layer_m_btn">프로필</a></h3>
+                            <h3><a href="/user/apiAccountMain" target="_blank" title="API 정보" class="layer_m_btn">API 정보</a></h3>
+                            <h3><a href="/user/paymentInfoMain" target="_blank" title="결제정보" class="layer_m_btn">결제정보</a></h3>
+                        </li>
+                    </ul>
+                </li>
+				<li class="aiHuman">
 					<h2><a href="#none">AI Human</a></h2>
 					<ul class="m_lst">
 						<li>
@@ -99,6 +111,9 @@
 				</li>	
 				<li>
 					<h2><a href="#none" class="move_inquiry">문의하기</a></h2>
+				</li>
+				<li class="maum_logout">
+					<h2><a href="#none" onclick="document.getElementById('logout-form').submit();">로그아웃</a></h2>
 				</li>
 			</ul>
 		</div>
@@ -1029,90 +1044,91 @@
 		$('.maumUI.transform .maum_sta').css('left', 0 - $(this).scrollLeft());
 	});
 
-	// [D] 기존에 있던 script 입니다.
+	// [D] 기존에 있던 script이나 현재 코드로 수정 부탁드립니다.
 	// aside menu
 	var clicked = false;
 	var asideWidth = '100%';
 	$('.maum_aside').show();
 
 	$('a.btn_maum_ham').click(function(){
-		console.log(clicked);
-		if (!clicked) {
+		if(!clicked){
 			$(this).addClass('active');
 			$('#wrap').addClass('maum_aside_open');
+			$('#wrap').prepend('<div class="bg_aside"></div>');
+			// $('.bg_aside').css('display', 'block');
 			$('.maum_aside').animate({
-				width : asideWidth
-			},{duration:100,queue:false});
+				width: asideWidth
+			},{duration: 100, queue: false});
 
 			$('.bg_aside').animate({
-				opacity : 0.7,
-				display : 'block'
-			},{duration:100,queue:false});
+				opacity: 0.7,
+				display: 'block'
+			},{duration: 100, queue: false});
 
 			$('body').css({
-				overflow : 'hidden'
+				overflow: 'hidden'
 			});
 
-			clicked=true;
-		} else {
+			clicked = true;
+		}else{
 			$(this).removeClass('active');
 			$('#wrap').removeClass('maum_aside_open');
+			$('.bg_aside').remove();
 			$('.maum_aside').animate({
 				width: '0'
-			},{duration:100,queue:false});
+			},{duration: 100, queue: false});
 
 			$('.bg_aside').animate({
-				opacity : 0,
-				display : 'none'
-			},{duration:100,queue:false});
+				opacity: 0,
+				display: 'none'
+			},{duration: 100, queue: false});
 
 			$('body').css({
-				overflow : ''
+				overflow: 'visible'
 			});
 
-			clicked=false;
+			clicked = false;
 		}
 
 		// 모바일 메뉴 '문의하기' 클릭 시 영역 이동
 		$('.move_inquiry').on('click', function(){
 			$('a.btn_maum_ham').removeClass('active');
 			$('#wrap').removeClass('maum_aside_open');
+			$('.bg_aside').remove();
 			$('.maum_aside').animate({
 				width: '0'
-			},{duration:100,queue:false});
+			},{duration: 100, queue: false});
 
 			$('.bg_aside').animate({
-				opacity : 0,
-				display : 'none'
-			},{duration:100,queue:false});
+				opacity: 0,
+				display: 'none'
+			},{duration: 100, queue: false});
 
 			var contactOffset = $('#contact').offset();                                 
-            $('html').animate({scrollTop : contactOffset.top}, 0);
+            $('html').animate({scrollTop: contactOffset.top}, 0);
 
 			$('body').css({
-				overflow : ''
+				overflow: 'visible'
 			});
 
-			clicked=false;
+			clicked = false;
 		});
-	});
 
-	$('.bg_aside').on('click',function(){
-		$('a.btn_maum_ham').removeClass('active');
-		$('.maum_aside').animate({
-			width: '0'
-		},{duration:200,queue:false});
-		$('.btn_goTop').show();
+		// bg_aside 클릭 시 모바일 메뉴 닫기
+		$('.bg_aside').on('click',function(){
+			$('a.btn_maum_ham').removeClass('active');
+			$('#wrap').removeClass('maum_aside_open');
+			$(this).remove();
+			$('.maum_aside').animate({
+				width: '0'
+			},{duration: 100, queue: false});
 
-		$('.bg_aside').animate({
-			opacity : 0,
-			display : 'none'
-		},{duration:150,queue:false});
+			$('body').css({
+				overflow: 'visible'
+			});
 
-		$('body').css({
-			overflow : ''
+			clicked = false;
 		});
-		clicked=false;
 	});
 </script>
 <!-- AMR //공통으로 적용되는 script -->
