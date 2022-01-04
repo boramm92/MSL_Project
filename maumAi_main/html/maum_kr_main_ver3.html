@@ -63,14 +63,7 @@
 		<div class="aside_mid">
 			<ul class="m_nav">	
 				<li>
-					<h2>
-						<a href="#none" class="">
-							AI Human 
-							<em class="" data-fa-i2svg=""><svg class="svg-inline--fa fa-chevron-down fa-w-14" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="">
-							<path fill="currentColor" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z">
-							</path></svg></em>
-						</a>
-					</h2>
+					<h2><a href="#none">AI Human</a></h2>
 					<ul class="m_lst">
 						<li>
 							<h3><a href="/main/krMainHome">서비스 소개</a></h3>
@@ -105,7 +98,7 @@
 					<h2><a href="/home/pricingPage?lang=ko">가격정책</a></h2>
 				</li>	
 				<li>
-					<h2><a href="#none">문의하기</a></h2>
+					<h2><a href="#none" class="move_inquiry">문의하기</a></h2>
 				</li>
 			</ul>
 		</div>
@@ -332,12 +325,12 @@
 										</a>
 									</div>
 									<!-- [D] 현재는 해당 페이지 없어 주석 처리 -->
-									<!-- <div class="stepBox">
+									<div class="stepBox">
 										<a href="#none" target="_blank" title="새창으로 열기">
 											<p class="tit">AI Kiosk App</p>
 											<p class="desc">인공인간 App</p>
 										</a>
-									</div> -->
+									</div>
 								</dd>
 							</dl>
 						</li>
@@ -424,7 +417,7 @@
 							</dl>
 						</li>
 						<!-- [D] 현재는 해당 페이지 없어 주석 처리 -->
-						<!-- <li class="swiper-slide">
+						<li class="swiper-slide">
 							<dl>
 								<dt>STEP 4</dt>
 								<dd>
@@ -436,7 +429,7 @@
 									</div>
 								</dd>
 							</dl>
-						</li> -->
+						</li>
 						<li class="swiper-slide">
 							<dl>
 								<dt>STEP 5</dt>
@@ -1049,13 +1042,12 @@
 			$('#wrap').addClass('maum_aside_open');
 			$('.maum_aside').animate({
 				width : asideWidth
-			},{duration:200,queue:false});
-			$('.btn_goTop').hide();
+			},{duration:100,queue:false});
 
 			$('.bg_aside').animate({
 				opacity : 0.7,
 				display : 'block'
-			},{duration:200,queue:false});
+			},{duration:100,queue:false});
 
 			$('body').css({
 				overflow : 'hidden'
@@ -1067,13 +1059,12 @@
 			$('#wrap').removeClass('maum_aside_open');
 			$('.maum_aside').animate({
 				width: '0'
-			},{duration:200,queue:false});
-			$('.btn_goTop').show();
+			},{duration:100,queue:false});
 
 			$('.bg_aside').animate({
 				opacity : 0,
 				display : 'none'
-			},{duration:150,queue:false});
+			},{duration:100,queue:false});
 
 			$('body').css({
 				overflow : ''
@@ -1081,6 +1072,29 @@
 
 			clicked=false;
 		}
+
+		// 모바일 메뉴 '문의하기' 클릭 시 영역 이동
+		$('.move_inquiry').on('click', function(){
+			$('a.btn_maum_ham').removeClass('active');
+			$('#wrap').removeClass('maum_aside_open');
+			$('.maum_aside').animate({
+				width: '0'
+			},{duration:100,queue:false});
+
+			$('.bg_aside').animate({
+				opacity : 0,
+				display : 'none'
+			},{duration:100,queue:false});
+
+			var contactOffset = $('#contact').offset();                                 
+            $('html').animate({scrollTop : contactOffset.top}, 0);
+
+			$('body').css({
+				overflow : ''
+			});
+
+			clicked=false;
+		});
 	});
 
 	$('.bg_aside').on('click',function(){
@@ -1169,7 +1183,6 @@
 				slidesPerGroup: 1,
 				slidesPerView: 1.8,
 				spaceBetween: 24,
-				allowTouchMove: true,
 			}
 		}
 	});
