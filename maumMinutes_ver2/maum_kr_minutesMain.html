@@ -145,10 +145,32 @@
 
             <!-- .maum_etc -->
             <div class="maum_etc">
-                <ul class="nav">                   
+                <ul class="nav">  
+                    <!-- [D] 22.01.04 로그인 X인 경우 -->
                     <li>
                         <a class="btn_sign login_pop" href="#none">로그인</a>
-                    </li>                    
+                    </li> 
+                    <!-- //[D] 22.01.04 로그인 X인 경우 --> 
+                    <!-- [D] 22.01.04 로그인 O인 경우 -->
+                    <li>
+                        <a class="btn_ico user" href="#none"><i class="fas fa-user-circle"></i><span>사용자</span></a>
+                        <div class="lstBox">
+                            <ul class="lst">
+                                <li class="userInfo">
+                                    <span class="thumb"><img src="resources/images/ico_user_g.svg" alt="사용자"></span>
+                                    <span class="txt">
+                                    <em class="userName">노보람</em>
+                                    <em class="loginID">boramm@mindslab.ai</em>
+                                    </span>
+                                </li>
+                                <li><a href="/user/profileMain" target="_self" title="프로필">프로필</a></li>
+                                <li><a href="/user/apiAccountMain" target="_self" title="API 정보">API 정보</a></li>
+                                <li><a href="/user/paymentInfoMain" target="_self" title="결제정보">결제정보</a></li>
+                                <li><a href="#none" onclick="document.getElementById('logout-form').submit();" title="로그아웃">로그아웃</a></li>
+                            </ul>
+                        </div>
+                    </li> 
+                    <!-- //[D] 22.01.04 로그인 O인 경우 -->
                     <li>
                         <a class="btn_ico lang" href="#none"><i class="fas fa-globe"></i><span>언어</span></a>
                         <div class="lstBox">
@@ -164,7 +186,7 @@
                             <div class="tit">웹 앱 및 서비스</div>
                             <ul class="lst">
                                 <li>
-                                    <a href="/main/krMainHome" target="_blank" title="Cloud API">
+                                    <a href="https://maum.ai/main/krMainHome" target="_blank" title="Cloud API">
                                         <span class="ico"></span>
                                         <em>Cloud API</em>
                                     </a>
@@ -176,7 +198,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://minutes.maum.ai/" target="_blank" title="maum 회의록">
+                                    <a href="https://minutes.maum.ai/minutes/manage/minutesList?lang=ko" target="_blank" title="maum 회의록">
                                         <span class="ico"></span>
                                         <em>maum 회의록</em>
                                     </a>
@@ -188,13 +210,13 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://ava.maum.ai/login" target="_blank">
+                                    <a href="https://fast-aicc.maum.ai/storeLicense" target="_blank" title="AVA">
                                         <span class="ico"></span>
                                         <em>AVA</em>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://edge.maum.ai/" target="_blank">
+                                    <a href="https://edge.maum.ai/" target="_blank" title="Edge AI Platform">
                                         <span class="ico"></span>
                                         <em>Edge AI Platform</em>
                                     </a>
@@ -206,13 +228,13 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/home/krEcomindsMain" target="_blank" title="eco MINDs">
+                                    <a href="https://maum.ai/home/krEcomindsMain" target="_blank" title="eco MINDs">
                                         <span class="ico"></span>
                                         <em>eco MINDs</em>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://store.maum.ai" target="_blank" title="maum AI store">
+                                    <a href="https://store.maum.ai/" target="_blank" title="maum AI store">
                                         <span class="ico"></span>
                                         <em>maum AI store</em>
                                     </a>
@@ -1021,6 +1043,157 @@ $(window).load(function() {
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
+        // [D] 22.01.04 fixed된 header 가로스크롤 script 추가 부탁드립니다.
+        // fixed된 header에 가로스크롤을 적용하기 위한 코드
+        $(window).scroll(function () {
+            $('.maumUI.transform .maum_sta').css('left', 0 - $(this).scrollLeft());
+        });
+
+        // [D] 22.01.04 aside menu script 추가 부탁드립니다.
+        // aside menu
+        var clicked = false;
+        var asideWidth = '100%';
+        $('.maum_aside').show();
+
+        $('a.btn_maum_ham').click(function(){
+            if(!clicked){
+                $(this).addClass('active');
+                $('#wrap').addClass('maum_aside_open');
+                $('#wrap').prepend('<div class="bg_aside"></div>');
+                $('.maum_aside').animate({
+                    width: asideWidth
+                },{duration: 100, queue: false});
+
+                $('.bg_aside').animate({
+                    opacity: 0.7,
+                    display: 'block'
+                },{duration: 100, queue: false});
+
+                $('body').css({
+                    overflow: 'hidden'
+                });
+
+                clicked = true;
+            }else{
+                $(this).removeClass('active');
+                $('#wrap').removeClass('maum_aside_open');
+                $('.bg_aside').remove();
+                $('.maum_aside').animate({
+                    width: '0'
+                },{duration: 100, queue: false});
+
+                $('.bg_aside').animate({
+                    opacity: 0,
+                    display: 'none'
+                },{duration: 100, queue: false});
+
+                $('body').css({
+                    overflow: 'visible'
+                });
+
+                clicked = false;
+            }
+
+            // 모바일 메뉴 '문의하기' 클릭 시 영역 이동
+            $('.move_inquiry').on('click', function(){
+                $('a.btn_maum_ham').removeClass('active');
+                $('#wrap').removeClass('maum_aside_open');
+                $('.bg_aside').remove();
+                $('.maum_aside').animate({
+                    width: '0'
+                },{duration: 100, queue: false});
+
+                $('.bg_aside').animate({
+                    opacity: 0,
+                    display: 'none'
+                },{duration: 100, queue: false});
+
+                var contactOffset = $('#contact').offset();                                 
+                $('html').animate({scrollTop: contactOffset.top}, 0);
+
+                $('body').css({
+                    overflow: 'visible'
+                });
+
+                clicked = false;
+            });
+
+            // bg_aside 클릭 시 모바일 메뉴 닫기
+            $('.bg_aside').on('click',function(){
+                $('a.btn_maum_ham').removeClass('active');
+                $('#wrap').removeClass('maum_aside_open');
+                $(this).remove();
+                $('.maum_aside').animate({
+                    width: '0'
+                },{duration: 100, queue: false});
+
+                $('body').css({
+                    overflow: 'visible'
+                });
+
+                clicked = false;
+            }); 
+        });
+        
+        // [D] 22.01.04 aside nav script 추가 부탁드립니다.
+        // aside nav
+        $('.maum_aside .aside_mid .m_nav li h2 a').on('click', function () {
+            if($(this).hasClass('slideChk')){
+                $('.maum_aside .aside_mid ul.m_lst').slideUp();
+                $('.maum_aside .aside_mid ul.m_lst_sub').slideUp();
+                $('.maum_aside .aside_mid .m_nav li h2 a').removeClass('slideChk');
+                return;
+            }
+            $('.maum_aside .aside_mid ul.m_lst').slideUp();
+            $('.maum_aside .aside_mid ul.m_lst_sub').slideUp();
+            $(this).parent().parent().children('.m_lst').slideDown();
+            $('.maum_aside .aside_mid .m_nav li h2 a').removeClass('slideChk');
+            $(this).addClass('slideChk');
+        });
+        $('.maum_aside .aside_mid .m_nav li h3 a').on('click', function () {
+            if($(this).hasClass('active')){
+                $('.maum_aside .aside_mid ul.m_lst_sub').slideUp();
+                $('.maum_aside .aside_mid ul.m_lst li h3 a').removeClass('active');
+                return;
+            }
+            $('.maum_aside .aside_mid ul.m_lst_sub').slideUp();
+            $(this).parent().parent().children('.m_lst_sub').slideDown();
+            $('.maum_aside .aside_mid ul.m_lst li h3 a').removeClass('active');
+            $(this).addClass('active');	
+        });	
+
+        //scroll event
+        var wrapOffset = $('#wrap').offset();
+
+        if ($(document).scrollTop() > wrapOffset.top) {
+            $('#wrap').addClass('transform');
+        } else {
+            $('#wrap').removeClass('transform');
+        }
+
+        $(window).scroll(function() {
+            if ($(document).scrollTop() > wrapOffset.top) {
+                $('#wrap').addClass('transform');
+            } else {
+                $('#wrap').removeClass('transform');
+            }
+        });
+
+        //etc layer open
+        $('.maum_etc .nav>li>a.btn_ico').on('click',function(){
+            $(this).parent().toggleClass('active');
+            return false;
+        });
+
+        //etc layer close
+        $(document).mouseup(function (e){
+            var container = $('.maum_etc .nav>li.active');
+            if( container.has(e.target).length === 0){
+                container.removeClass('active');
+            }
+        });
+
+
         // 동영상 레이어 팝업
         $('.btn_video_play').on('click', function(){
             $('body').css('overflow', 'hidden');
