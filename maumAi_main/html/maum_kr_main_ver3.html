@@ -1097,16 +1097,33 @@
     });
 
 	// AI HUMAN 영역 step list 활성화
-	// var windowWidth = $(window).outerWidth();
-	// if(windowWidth <= 768){
-	// 	$('.svc_use_case .svc_list li').removeClass('active');	
-	// }
-	// $(window).resize(function(){
-	// 	var windowWidth = $(window).outerWidth();
-	// 	if(windowWidth <= 768){
-	// 		$('.use_step .step_list li').removeClass('active');
-	// 	}
-	// });
+	var windowWidth = $(window).outerWidth();
+	$('.svc_use_case .svc_list li').hover(function(){
+		if(windowWidth > 768){
+			$('.svc_use_case .svc_list li').removeClass('active');
+			$(this).addClass('active');
+		}
+	});
+	if(windowWidth <= 768){
+		$('.svc_use_case .svc_list li').removeClass('active');
+	}else if(windowWidth > 768){
+		$('.svc_use_case .svc_list li').eq(0).addClass('active');
+	}
+
+	$(window).resize(function(){
+		var windowWidth = $(window).outerWidth();
+		$('.svc_use_case .svc_list li').hover(function(){
+			if(windowWidth > 768){
+				$('.svc_use_case .svc_list li').removeClass('active');
+				$(this).addClass('active');
+			}
+		});
+		if(windowWidth <= 768){
+			$('.svc_use_case .svc_list li').removeClass('active');
+		}else if(windowWidth > 768){
+			$('.svc_use_case .svc_list li').eq(0).addClass('active');
+		}
+	});
 	
 
 	// AI HUMAN 영역 swiper
