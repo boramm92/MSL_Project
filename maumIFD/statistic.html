@@ -75,7 +75,7 @@
         <!-- #contents -->
         <div id="contents">
             <!-- .content -->
-            <div class="content">
+            <div class="content statistic">
                 <div class="etcArea">
                     <div class="user_menu">
                         <ul>
@@ -90,8 +90,125 @@
                     <h3>통계</h3>
                 </div>
 
-                <!-- [D] iframe영역은 .workArea 안에 넣어주시면 됩니다. -->
-                <div class="workArea"></div>
+                <div class="srchArea">
+                    <table summary="조회 기간, 주기, 실행 조건으로 구성">
+                        <caption class="hide">조건 선택</caption>
+                        <colgroup>
+                            <col width="100px"><col width="250px"><col width="100px"><col><col width="100px"><col>
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th>조회 기간</th>
+                                <td>
+                                    <div class="iptBox date">
+                                        <input type="text" class="ipt_txt fromDate">
+                                    </div>                            
+                                    <em class="tilde">~</em>
+                                    <div class="iptBox date">
+                                        <input type="text" class="ipt_txt toDate">
+                                    </div>
+                                </td>
+                                <th>주기</th>
+                                <td>
+                                    <select class="select">
+                                        <option value="">월별</option>
+                                        <option value="">일별</option>
+                                    </select>
+                                </td>
+                                <th>실행 조건</th>
+                                <td>
+                                    <select class="select">
+                                        <option value="">전체</option>
+                                        <option value="">배치</option>
+                                        <option value="">즉시</option>
+                                    </select>
+                                    <button type="button" class="btn_primary">검색</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="btnBox">
+                    <button type="button" class="btn_primary line fr">통계정보 다운로드</button>
+                </div>
+
+                <div class="chartBox">
+                    <canvas id="myChart"></canvas>
+                </div>
+
+                <div class="tblBox admin">
+                    <table summary="전체, 진본, 위조로 구성">
+                        <caption class="hide">통계정보</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">구분</th>
+                                <th scope="col">1월</th>
+                                <th scope="col">2월</th>
+                                <th scope="col">3월</th>
+                                <th scope="col">4월</th>
+                                <th scope="col">5월</th>
+                                <th scope="col">6월</th>
+                                <th scope="col">7월</th>
+                                <th scope="col">8월</th>
+                                <th scope="col">9월</th>
+                                <th scope="col">10월</th>
+                                <th scope="col">11월</th>
+                                <th scope="col">12월</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="empty" scope="row" colspan="13">데이터가 없습니다.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">전체</th>
+                                <td>256</td>
+                                <td>303</td>
+                                <td>256</td>
+                                <td>303</td>
+                                <td>256</td>
+                                <td>303</td>
+                                <td>256</td>
+                                <td>303</td>
+                                <td>256</td>
+                                <td>303</td>
+                                <td>256</td>
+                                <td>303</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">진본</th>
+                                <td>256</td>
+                                <td>303</td>
+                                <td>256</td>
+                                <td>303</td>
+                                <td>256</td>
+                                <td>303</td>
+                                <td>256</td>
+                                <td>303</td>
+                                <td>256</td>
+                                <td>303</td>
+                                <td>256</td>
+                                <td>303</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">위조</th>
+                                <td>256</td>
+                                <td>303</td>
+                                <td>256</td>
+                                <td>303</td>
+                                <td>256</td>
+                                <td>303</td>
+                                <td>256</td>
+                                <td>303</td>
+                                <td>256</td>
+                                <td>303</td>
+                                <td>256</td>
+                                <td>303</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <!-- //.content -->
         </div> 
@@ -101,13 +218,234 @@
 </div>
 <!-- //#wrap -->
 
+<!---------------------- Local Resources ---------------------->
+<!-- Local CSS -->
+<link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="resources/css/bootstrap-datetimepicker.css">
+<link rel="stylesheet" href="resources/css/Chart.min.css"/>
+
+<!-- Local Script Library -->
+<script type="text/javascript" src="resources/js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="resources/js/Chart.min.js"></script>
+
 <!-- Local Script -->
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-        
+        // datepicker
+        var thisFromDate = $(this).find('.fromDate'),
+            thisToDate = $(this).find('.toDate');
+
+        thisFromDate.datetimepicker({
+            format: 'yyyy-mm-dd', 
+            minView: 'month',
+            pickTime : false, 
+            autoclose: 1,
+        }).on('changeDate', function(selected){
+            var startDate = new Date(selected.date.valueOf());
+            thisToDate.datetimepicker('setStartDate', startDate);
+        }).on('clearDate', function(selected){
+            thisToDate.datetimepicker('setStartDate', null);
+        });
+
+        thisToDate.datetimepicker({
+            format: 'yyyy-mm-dd', 
+            minView: 'month',
+            pickTime : false, 
+            autoclose: 1,
+        }).on('changeDate', function(selected){
+            var endDate = new Date(selected.date.valueOf());
+            thisFromDate.datetimepicker('setEndDate', endDate);
+        }).on('clearDate', function(selected){
+            thisFromDate.datetimepicker('setEndDate', null);
+        });
     });
 });
+</script>
+
+<script type="text/javascript">
+    // chart rendering
+    (function(global) {
+        var Samples = global.Samples || (global.Samples = {});
+
+        Samples.utils = {
+            // Samples.utils = {
+            srand: function(seed) {
+                this._seed = seed;
+            },
+
+            rand: function(min, max) {
+                var seed = this._seed;
+                min = min === undefined ? 0 : min;
+                max = max === undefined ? 1 : max;
+                this._seed = (seed * 9301 + 49297) % 233280;
+                return min + (this._seed / 233280) * (max - min);
+            },
+
+            numbers: function(config) {
+                var cfg = config || {};
+                var min = cfg.min || 0;
+                var max = cfg.max || 1;
+                var from = cfg.from || [];
+                var count = cfg.count || 8;
+                var decimals = cfg.decimals || 8;
+                var continuity = cfg.continuity || 1;
+                var dfactor = Math.pow(10, decimals) || 0;
+                var data = [];
+                var i, value;
+
+                for (i = 0; i < count; ++i) {
+                    value = (from[i] || 0) + this.rand(min, max);
+                    if (this.rand() <= continuity) {
+                        data.push(Math.round(dfactor * value) / dfactor);
+                    } else {
+                        data.push(null);
+                    }
+                }
+
+                return data;
+            },
+
+            labels: function(config) {
+                var cfg = config || {};
+                var min = cfg.min || 0;
+                var max = cfg.max || 100;
+                var count = cfg.count || 8;
+                var step = (max - min) / count;
+                var decimals = cfg.decimals || 8;
+                var dfactor = Math.pow(10, decimals) || 0;
+                var prefix = cfg.prefix || '';
+                var values = [];
+                var i;
+
+                for (i = min; i < max; i += step) {
+                    values.push(prefix + Math.round(dfactor * i) / dfactor);
+                }
+
+                return values;
+            },
+
+            months: function(config) {
+                var cfg = config || {};
+                var count = cfg.count || 12;
+                var section = cfg.section;
+                var values = [];
+                var i, value;
+
+                for (i = 0; i < count; ++i) {
+                    value = Months[Math.ceil(i) % 12];
+                    values.push(value.substring(0, section));
+                }
+
+                return values;
+            },
+
+            color: function(index) {
+                return COLORS[index % COLORS.length];
+            },
+
+            transparentize: function(color, opacity) {
+                var alpha = opacity === undefined ? 0.5 : 1 - opacity;
+                return Color(color).alpha(alpha).rgbString();
+            }
+        };
+
+        // DEPRECATED
+        window.randomScalingFactor = function() {
+            return Math.round(Samples.utils.rand(0, 100));
+        };
+
+        // INITIALIZATION
+
+        Samples.utils.srand(Date.now());
+
+    }(this));  
+
+    var chartData = {
+        labels: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+        datasets: [{
+            type: 'line',
+            label: '전체',
+            backgroundColor: '#ddd',
+            borderColor: '#555',
+            borderWidth: 2,
+            fill: false,
+            data: [
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor()
+            ]
+        }, 
+            {
+            type: 'bar',
+            label: '진본',
+            backgroundColor: '#7a7cfb',
+            data: [
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor()
+            ]
+        }, {
+            type: 'bar',
+            label: '위조',
+            backgroundColor: '#ec7876',
+            data: [
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor(),
+                randomScalingFactor()
+            ]
+        }]
+    };
+
+    window.onload = function() {
+        var ctx = document.getElementById("myChart").getContext("2d");
+        window.myMixedChart = new Chart(ctx, {
+            type: 'bar',
+            data: chartData,
+            options: {
+                responsive: true,
+                title: {
+                    display: false,
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: true
+                },
+                maintainAspectRatio: false,
+                xAxes: [{ 
+                    categoryPercentage: 0.9, 
+                    barPercentage: 0.5, 
+                }]
+            }
+        });
+    };
 </script>
 </body>
 </html>

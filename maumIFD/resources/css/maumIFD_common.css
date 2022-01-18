@@ -103,8 +103,13 @@ input[type="file"] + label .btn_file_add {display:inline-block; padding:0 12px; 
 #detect_result_detail .lyrCont .lyr_mid .detect_img .stateBox .state.real {background:#7a7cfb;}
 #detect_result_detail .lyrCont .lyr_mid .detect_img .stateBox .state.on {display:block;}
 #detect_result_detail .lyrCont .lyr_mid .detect_img ul {display:flex; justify-content:space-between; padding:18px 40px;}
-#detect_result_detail .lyrCont .lyr_mid .detect_img ul li {width:230px; height:150px;}
+#detect_result_detail .lyrCont .lyr_mid .detect_img ul li {position:relative; width:230px; height:150px;}
 #detect_result_detail .lyrCont .lyr_mid .detect_img ul li img {width:100%;}
+#detect_result_detail .lyrCont .lyr_mid .detect_img ul li .detect_cell {display:flex; flex-wrap:wrap; position:absolute; top:0; left:0; width:100%; height:100%; border:1px solid #000; box-sizing:border-box; background:rgba(209, 206, 78, 0.5);}
+#detect_result_detail .lyrCont .lyr_mid .detect_img ul li .detect_cell > div {width:calc(25% - 1px);}
+#detect_result_detail .lyrCont .lyr_mid .detect_img ul li .detect_cell > div:not(:nth-child(-n+4)) {border-top:1px solid #000;}
+#detect_result_detail .lyrCont .lyr_mid .detect_img ul li .detect_cell > div:not(:nth-child(4n)) {border-right:1px solid #000;}
+#detect_result_detail .lyrCont .lyr_mid .detect_img ul li .detect_cell > div.monitor {background:rgba(217, 14, 32, 0.5);}
 #detect_result_detail .lyrCont .lyr_mid .result_detail {overflow:hidden; margin:10px 0 0; border:1px solid #e0e0ed; border-radius:4px;}
 #detect_result_detail .lyrCont .lyr_mid .result_detail table {width:100%;}
 #detect_result_detail .lyrCont .lyr_mid .result_detail table tbody tr th {height:30px; border-bottom:1px solid #e0e0ed; background:#f1f3f9; color:#353a55; font-size:14px; letter-spacing:-0.19px; text-align:center;}
@@ -289,7 +294,8 @@ input[type="file"] + label .btn_file_add {display:inline-block; padding:0 12px; 
 .filterArea dl dd .iptBox.date .ipt_txt {background:#fff;}
 .filterArea dl dd .iptBox.date:before {content:'\f073'; font-family:'Font Awesome 5 Free'; color:rgba(53, 58, 85, 0.6); font-size:14px; display:block; position:absolute; top:56%; right:16px; transform:translate(0, -50%);}
 .filterArea dl dd .tilde {margin:0 4px; color:#353a55; font-size:15px;}
-.filterArea .btn_primary {margin-left:auto;}
+.filterArea .btn_primary {margin-left:30px;}
+.filterArea .btn_primary.fr {margin-left:auto;}
 
 /* srchArea */
 .srchArea {overflow:hidden; border:1px solid #e0e0ed; border-radius:4px; box-shadow:1px 1px 6px 0 rgba(101, 101, 101, 0.1); background:#fff;}
@@ -300,8 +306,19 @@ input[type="file"] + label .btn_file_add {display:inline-block; padding:0 12px; 
 .srchArea table tbody tr td .ipt_txt::placeholder {color:rgba(53, 58, 85, 0.6);}
 .srchArea table tbody tr td .btn_primary {vertical-align:top;}
 
+/* chartBox */
+.chartBox {min-width:910px; width:calc(100vw - 340px); height:300px; margin:30px 0;}
+
+/* statusBox */
+.statusBox {padding:0 20px;}
+.statusBox p {display:none; position:relative; padding:0 0 0 24px; color:#353a55; font-size:16px; font-weight:500; letter-spacing:-0.19px; line-height:33px;}
+.statusBox p:before {content:''; display:block; position:absolute; top:10px; left:0; width:14px; height:14px; border-radius:50%; box-sizing:border-box;}
+.statusBox p.success:before {background:#3bd53b;}
+.statusBox p.error:before {background:#ff0f0f;}
+.statusBox p.active {display:inline-block;}
+
 /* srchArea + btnBox */
-.srchArea + .btnBox {margin:30px 0 10px;}
+.srchArea + .btnBox {overflow:hidden; margin:30px 0 10px;}
 
 /* tree_view_wrap */
 .list_box {overflow:hidden; width:280px; border:1px solid #e0e0ed; border-radius:4px; box-shadow:1px 1px 6px 0 rgba(101, 101, 101, 0.1); box-sizing:border-box; background:#fff;}
@@ -392,3 +409,8 @@ div.tree-multiselect div.section > div.section:last-child:after {content:''; dis
 
 .profile .tblBox table tbody tr th {padding:0 40px;}
 .profile .tblBox table tbody tr td {padding:0 20px; text-align:left;}
+
+.statistic .srchArea table tbody tr td .iptBox {display:inline-block;}
+.statistic .srchArea table tbody tr td .ipt_txt {width:100px;}
+.statistic .srchArea table tbody tr td .select {width:100px;}
+.statistic .tblBox table tbody tr th {text-align:center;}
