@@ -27,14 +27,15 @@ socket.addEventListener("close", () => {
 function handleSubmit(e){
     e.preventDefault(); 
     const input = messageForm.querySelector('input');
-    socket.send(makeMessage("new message:", input.value));
+    socket.send(makeMessage("message", input.value));
     input.value = '';
 }
 
 function handleNickSubmit(e){
     e.preventDefault();
     const input = nickForm.querySelector('input');
-    socket.send(makeMessage("nickname:", input.value));
+    socket.send(makeMessage("nickname", input.value));
+    input.value = '';
 }
 
 messageForm.addEventListener("submit", handleSubmit);
