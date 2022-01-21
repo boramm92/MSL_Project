@@ -111,8 +111,37 @@
                     </table>
                 </div>
 
-                <!-- [D] .monitoringBox 영역에 모니터링 툴 불러와주시면 됩니다. -->
-                <div class="monitoringBox"></div>
+                <!-- [D] 22.01.21 chart 추가 -->
+                <div class="monitoringBox">
+                    <div class="stn">
+                        <div class="item">
+                            <div class="tit">태스크 진행상태</div>
+                            <div class="chartBox">
+                                <canvas id="taskStatus"></canvas>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="tit">태스크 계획 실적</div>
+                            <div class="chartBox">
+                                <canvas id="taskResult"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stn">
+                        <div class="item">
+                            <div class="tit">이슈 진행상태</div>
+                            <div class="chartBox">
+                                <canvas id="issueStatus"></canvas>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="tit">리스크 진행상태</div>
+                            <div class="chartBox">
+                                <canvas id="riskStatus"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- //.content -->
         </div> 
@@ -122,13 +151,299 @@
 </div>
 <!-- //#wrap -->
 
-<!-- Local Script -->
+<!---------------------- Local Resources ---------------------->
+<!-- Local CSS -->
+<link rel="stylesheet" href="resources/css/Chart.min.css"/>
+
+<!-- Local Script Library -->
+<script type="text/javascript" src="resources/js/Chart.min.js"></script>
+
+<!-- 태스크 진행상태 차트 -->
 <script type="text/javascript">
-jQuery.event.add(window,"load",function(){
-    $(document).ready(function(){
-        
-    });
-});
+    var randomScalingFactor = function() {
+        return Math.round(Math.random() * 100);
+    };
+
+    var config = {
+        type: 'doughnut',
+        data: {
+            datasets: [{
+                data: [
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                ],
+                borderWidth: 0,
+                backgroundColor: [
+                    '#7a7cfb',
+                    '#ec7876',
+                    '#ddd',
+                ],
+                label: 'Dataset 1'
+            }],
+            labels: [
+                '완료',
+                '지연진행',
+                '시작전',
+            ],
+            fontColor: '#f7778a',
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+                labels: {
+                    padding: 30,
+					fontColor: '#002b49',
+					fontSize: 13,
+					fontStyle: 500,
+                    boxWidth: 30,
+                    cornerRadius: 3,
+				},
+                position: 'top',
+            },
+            cutoutPercentage: 50,
+            animation: {
+                animateScale: true,
+                animateRotate: true
+            },
+            tooltips: {
+                backgroundColor: '#ffffff',
+                cornerRadius: 3,
+                borderWidth: 1,
+                borderColor: '#cfd5eb',
+                caretSize: 0,
+                titleFontColor: '#cfd5eb',
+                bodyFontColor: '#002b49',
+                bodyFontSize: 14,
+            }
+        }
+    };
+
+    var ctx = document.getElementById('taskStatus').getContext('2d');
+    window.myDoughnut = new Chart(ctx, config);
 </script>
+
+<!-- 태스크 계획 실적 차트 -->
+<script type="text/javascript">
+    var randomScalingFactor = function() {
+        return Math.round(Math.random() * 100);
+    };
+
+    var config2 = {
+        type: 'line',
+        data: {
+            labels: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+            datasets: [{
+                label: "계획 M/D",
+                fill: true,
+                backgroundColor: 'rgba(153, 102, 255, 0.5)',
+                borderColor: '#9966ff',
+                data: [
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor()
+                ],
+            }, {
+                label: "실적 M/D",
+                fill: true,
+                backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                borderColor: '#4bc0c0',
+                data: [
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor()
+                ],
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+                labels: {
+                    padding: 30,
+				},
+            },
+            tooltips: {
+                mode: 'index',
+                intersect: false,
+            },
+            hover: {
+                mode: 'nearest',
+                intersect: true
+            }
+        }
+    };
+
+    var ctx2 = document.getElementById("taskResult").getContext("2d");
+    window.myLine = new Chart(ctx2, config2);
+</script>
+
+<!-- 이슈 진행상태 차트 -->
+<script type="text/javascript">
+    var randomScalingFactor = function() {
+        return Math.round(Math.random() * 100);
+    };
+
+    var config = {
+        type: 'doughnut',
+        data: {
+            datasets: [{
+                data: [
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor()
+                ],
+                borderWidth: 0,
+                backgroundColor: [
+                    '#36a2eb',
+                    '#4bc0c0',
+                    '#c9cbcf',
+                    '#ff9f40',
+                    '#ff3242'
+                ],
+                label: 'Dataset 1'
+            }],
+            labels: [
+                '오픈',
+                '진행',
+                '홀드',
+                '취소',
+                '종료'
+            ],
+            fontColor: '#f7778a',
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+                labels: {
+                    padding: 30,
+					fontColor: '#002b49',
+					fontSize: 13,
+					fontStyle: 500,
+                    boxWidth: 30,
+					// boxHeight: 15,
+                    cornerRadius: 3,
+				},
+                position: 'top',
+            },
+            cutoutPercentage: 50,
+            animation: {
+                animateScale: true,
+                animateRotate: true
+            },
+            tooltips: {
+                backgroundColor: '#ffffff',
+                cornerRadius: 3,
+                borderWidth: 1,
+                borderColor: '#cfd5eb',
+                caretSize: 0,
+                titleFontColor: '#cfd5eb',
+                bodyFontColor: '#002b49',
+                bodyFontSize: 14,
+            }
+        }
+    };
+
+    var ctx3 = document.getElementById('issueStatus').getContext('2d');
+    window.myDoughnut = new Chart(ctx3, config);
+    
+    var ctx4 = document.getElementById('riskStatus').getContext('2d');
+    window.myDoughnut = new Chart(ctx4, config);
+</script>
+
+<!-- 리스크 진행상태 차트 -->
+<!-- <script type="text/javascript">
+    var randomScalingFactor = function() {
+        return Math.round(Math.random() * 100);
+    };
+
+    var config = {
+        type: 'doughnut',
+        data: {
+            datasets: [{
+                data: [
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor(),
+                    randomScalingFactor()
+                ],
+                borderWidth: 0,
+                backgroundColor: [
+                    '#36a2eb',
+                    '#4bc0c0',
+                    '#c9cbcf',
+                    '#ff9f40',
+                    '#ff3242'
+                ],
+                label: 'Dataset 1'
+            }],
+            labels: [
+                '오픈',
+                '진행',
+                '홀드',
+                '취소',
+                '종료'
+            ],
+            fontColor: '#f7778a',
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+                labels: {
+                    padding: 30,
+					fontColor: '#002b49',
+					fontSize: 13,
+					fontStyle: 500,
+                    boxWidth: 30,
+					// boxHeight: 15,
+                    cornerRadius: 3,
+				},
+                position: 'top',
+            },
+            cutoutPercentage: 50,
+            animation: {
+                animateScale: true,
+                animateRotate: true
+            },
+            tooltips: {
+                backgroundColor: '#ffffff',
+                cornerRadius: 3,
+                borderWidth: 1,
+                borderColor: '#cfd5eb',
+                caretSize: 0,
+                titleFontColor: '#cfd5eb',
+                bodyFontColor: '#002b49',
+                bodyFontSize: 14,
+            }
+        }
+    };
+
+    var ctx4 = document.getElementById('riskStatus').getContext('2d');
+    window.myDoughnut = new Chart(ctx4, config);
+</script> -->
 </body>
 </html>
