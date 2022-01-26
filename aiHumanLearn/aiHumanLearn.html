@@ -135,10 +135,23 @@
                             </div>
                             <div class="contArea">
                                 <button type="button" class="btn_sample_dwld">샘플 파일 다운로드</button>
-                                <div class="uploadBox init">
+                                <div class="uploadBox">
                                     <input type="file" id="fileUpload1" name="file-upload1" accept=".xlsx,.json,">
-                                    <label for="fileUpload1">파일 업로드</label>
-                                    <ul class="file_list"></ul>
+                                    <label for="fileUpload1">
+                                        <img src="assets/images/ico_upload_file.svg" alt="file icon">
+                                        <br>
+                                        <p>파일을 업로드 하시려면 클릭하세요.</p>
+                                    </label>
+                                    <ul class="file_list">
+                                        <li>
+                                            <span class="fileName">scenario_based_Chatbot-챗봇.xlsxscenario_based_Chatbot-챗봇.xlsx</span>
+                                            <span class="fileVol">53.0KB</span>
+                                            <button type="button" class="btn_file_delete" title="파일 삭제"></button>
+                                        </li>
+                                    </ul>
+                                    <div class="btnBox">
+                                        <button type="button"></button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -161,18 +174,21 @@
                             </div>
 
                             <div class="user_chat">
-                                <input type="text">
+                                <input type="text" placeholder="질문을 입력해 보세요.">
                                 <button type="button" class="btn_send" title="질문 하기"></button>
                             </div>
 
                             <div class="chat_slt_box">
-                                <ul class="chat_type_slt">
-                                    <li data-chat-type="all">모든 엔진으로</li>
-                                    <li data-chat-type="chat01">챗봇</li>
-                                    <li data-chat-type="news01">뉴스</li>
-                                    <li data-chat-type="wiki01">위키</li>
-                                    <li data-chat-type="hara01">AI 하라</li>
-                                </ul>
+                                <div class="chat_type_slt">
+                                    <div class="slt_type">모든 엔진으로</div>
+                                    <ul>
+                                        <li data-chat-type="all">모든 엔진으로</li>
+                                        <li data-chat-type="chat01">챗봇</li>
+                                        <li data-chat-type="news01">뉴스</li>
+                                        <li data-chat-type="wiki01">위키</li>
+                                        <li data-chat-type="hara01">AI 하라</li>
+                                    </ul>
+                                </div>
                                 <span>대화하기</span>
                             </div>
                         </div>
@@ -193,34 +209,17 @@
 <script type="text/javascript">
 jQuery.event.add(window,"load",function(){
     $(document).ready(function(){
-        // aiHuman_filter
-        $('.aiHuman_filter ul li').on('click', function(){
-            $('.aiHuman_filter ul li').removeClass('active');
-            $(this).addClass('active');
+        // chat_type_slt
+        $('.chat_type_slt').on('click', function(){
+            $(this).toggleClass('focus');
+            $(this).find('ul').slideToggle(200);
         });
 
-        // aiHuman_list swiper
-        let options = {};
-        if($('.aiHuman_list .swiper-slide').length == 5){ 
-            options = { 
-                slidesPerGroup: 1,
-                slidesPerView: 4,
-                centeredSlides: true, 
-                spaceBetween: 20, 
-                navigation: {
-                    nextEl: '.btn_slide_next',
-                    prevEl: '.btn_slide_prev',
-                },
-            } 
-        }else{ 
-            options = { 
-                slidesPerGroup: 1,
-                slidesPerView: 4,
-                centeredSlides: false,
-                navigation: false 
-            } 
-        } 
-        var swiper = new Swiper('.aiHuman_list', options); 
+        $('.chat_type_slt ul li').on('click', function(){
+            let selectChatType = $(this).text();
+            $(this).parent('ul').prev('.slt_type').text(selectChatType);
+            console.log(selectChatType)
+        });
     });
 });
 </script>
