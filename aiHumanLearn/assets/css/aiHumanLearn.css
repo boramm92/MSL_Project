@@ -1,0 +1,111 @@
+@charset "UTF-8";
+/* MINDsLab. NBR. 20220107 */
+
+/* -------------------- common -------------------- */
+/* scroll bar */
+::-webkit-scrollbar {width: 6px; height: 6px; border-radius: 3px;}  /* 스크롤바의 width */
+::-webkit-scrollbar-track {background: transparent;}  /* 스크롤바의 전체 배경색 */
+::-webkit-scrollbar-thumb {border-radius: 3px; background: rgb(174, 176, 179);}  /* 스크롤바 색 */
+::-webkit-scrollbar-button {display: none;}  /* 위 아래 버튼 (버튼 없애기를 함) */
+
+/* float */
+.fl {float:left;}
+.fr {float:right;}
+
+/* hide */
+.hide {display:inline-block; overflow:hidden; position:absolute; text-indent:-9999px; line-height:0; white-space:nowrap;}
+
+/* input[type="file"] */
+input[type="file"] {overflow:hidden; position:absolute; width:1px; height:1px; margin:1px; padding:0; border:none;}
+input[type="file"] + label {display:block; width:100%; height:100%; cursor:pointer; font-size:14px; text-align:center;}
+
+
+/* -------------------- layer popup -------------------- */
+/* common */
+.lyrWrap {display:none; position:fixed; top:0; right:0; bottom:0; left:0; width:100%; height:100%; z-index:9999;}
+.lyr_bg {position:absolute; top:0; right:0; bottom:0; left:0; width:100%; height:100%; background:rgba(0, 0, 0, 0.65);}
+.lyrCont {overflow:hidden; position:absolute; top:90px; left:50%; min-width:340px; border-radius:10px; background:#fff; transform:translate(-50%, 0);}
+.lyrCont .lyr_top {position:relative; padding:20px; border-bottom:1px solid #e8e8e8;}
+.lyrCont .lyr_top .tit {margin:0; color:#111111; font-size:16px; font-weight:500; letter-spacing:-0.16px; line-height:20px;}
+.lyrCont .lyr_top .btn_lyr_close {position:absolute; top:20px; right:20px; width:20px; height:20px; background:url('../images/ico_close.svg') 50% 50% no-repeat;}
+.lyrCont .lyr_top .btn_lyr_close span {display:block; overflow:hidden; text-indent:-9999px; white-space:nowrap;}
+.lyrCont .lyr_mid {position:relative; padding:20px;}
+.lyrCont .lyr_btm {padding:0 20px 20px; text-align:center;}
+.lyrCont .lyr_btm button {height:32px;}
+.lyrCont .lyr_btm button.btn_lyr_close {border:1px solid #def5ff; background:#def5ff; color:#21adea;}
+
+
+/* -------------------- layout -------------------- */
+#wrap {width:100%; min-width:1240px; height:100%; min-height:768px;}
+#header {display:table; width:100%; height:74px; background:#fff;}
+#container {display:table; width:100%; height:100%;}
+#gnb {display:table-cell; width:260px; height:100%; min-height:768px; box-sizing:border-box; background:#2c2c2c;}
+#contents {display:table-cell; width:calc(100% - 200px); height:100%; margin:0 0 0 200px; padding:40px; box-sizing:border-box; background:#fcfcfc; vertical-align:top;}
+
+
+/* -------------------- header -------------------- */
+#header h1 {display:table-cell; width:260px; border-bottom:1px solid #1c2426; background:#2c2c2c; vertical-align:middle;}
+#header h1 a {font-family:'NanumSquareRound', sans-serif; color:#fff; font-size:16px; font-weight:400;}
+#header h1 a strong {font-family:'NanumSquareRound', sans-serif; color:#fff; font-size:16px; font-weight:800;}
+
+
+/* -------------------- gnb -------------------- */
+#gnb .nav li {line-height:40px; transition:background-color 0.3s ease-out;}
+#gnb .nav li a {display:block; padding:0 20px; box-sizing:border-box; color:#111111; font-size:14px;}
+#gnb .nav li:hover,
+#gnb .nav li.active {background-color:#efefef;}
+#gnb .nav li.active a {font-weight:700;}
+
+
+/* -------------------- content -------------------- */
+/* tit */
+.titArea h3 {color:#111111; font-size:28px; font-weight:500; letter-spacing:-0.28px; line-height:26px;}
+.tit {margin:0 0 16px;}
+.tit h4 {color:#111111; font-size:18px; font-weight:700; letter-spacing:-0.18px; line-height:18px;}
+
+/* stn */
+.stn {padding:30px 0;}
+
+/* avatarViewer */
+.avatarViewer {display:flex; flex-direction:column; justify-content:space-between; width:357px; height:700px; border:1px solid #d4d7e2; border-radius:6px; box-shadow:1px 2px 4px 0 rgba(0, 0, 0, 0.1); background:#fff;}
+.avatarViewer .avatarInfo {height:60px; border-bottom:1px solid #d4d7e2; text-align:center;}
+.avatarViewer .avatarInfo span {line-height:60px;}
+.avatarViewer .videoBox {position:relative; height:calc(100% - 290px);}
+.avatarViewer .videoBox video {width:100%; height:100%; object-fit:contain;}
+.avatarViewer .videoBox .btn_play {position:absolute; top:0; left:0; width:0; height:0;}
+.avatarViewer .answer_txt {height:30px; margin:10px 0;}
+.avatarViewer .answer_txt span {font-size:14px;}
+.avatarViewer .textarea {width:calc(100% - 20px); height:100px; margin:10px; padding:12px 10px; border:1px solid #d4d7e2; border-radius:4px; box-sizing:border-box;}
+.avatarViewer .btnBox {height:60px; border-top:1px solid #d4d7e2; text-align:center;}
+
+/* learnArea */
+.learnArea {width:calc(100% - 400px); height:700px;}
+.learnArea .learn_type_list {display:flex;}
+.learnArea .learn_type_list li {flex:1; min-width:128px; height:40px; border:1px solid #d4d7e2; border-radius:4px; background:#fff; font-size:14px; line-height:40px; text-align:center; cursor:pointer;}
+.learnArea .learn_type_list li:nth-child(2) {margin:0 15px;}
+.learnArea .learn_type_list li.active {background:#ffe9c0; font-weight:500;}
+.learnArea .learn_cont {height:calc(100% - 60px); margin:20px 0 0; padding:20px; border:1px solid #d4d7e2; border-radius:6px; box-shadow:1px 2px 4px 0 rgba(0, 0, 0, 0.1); box-sizing:border-box; background:#fff;}
+.learnArea .learn_cont > div {display:none; height:100%;}
+.learnArea .learn_cont > div.active {display:block;}
+
+/* learn cont - chatbot */
+.learn_cont .chatbot .fileUpload {height:calc(50% - 36px);}
+.learn_cont .chatbot .fileUpload .titArea {overflow:hidden; border-bottom:1px solid #ddd; text-align:right;}
+.learn_cont .chatbot .fileUpload .titArea .tit {float:left; margin:0; padding:10px 0 0; font-size:14px; font-weight:500;}
+.learn_cont .chatbot .fileUpload .titArea .btn_sample_dwld {font-size:12px;}
+.learn_cont .chatbot .fileUpload .uploadBox {display:table; width:100%; overflow:auto; height:calc(100% - 85px); margin:10px 0 0; border:1px solid #d4d7e2; border-radius:4px;}
+.learn_cont .chatbot .fileUpload .uploadBox input[type="file"] + label {display:none; vertical-align:middle;}
+.learn_cont .chatbot .fileUpload .uploadBox.init input[type="file"] + label {display:table-cell;}
+.learn_cont .chatbot .fileUpload .uploadBox .file_list li {display:table; width:100%;}
+.learn_cont .chatbot .fileUpload .uploadBox .file_list li > * {display:table-cell; padding:0 10px; font-size:13px;}
+.learn_cont .chatbot .fileUpload .uploadBox .file_list li .fileDelete {color:red; font-weight:700;}
+.learn_cont .chatbot .fileUpload + .fileUpload {margin:35px 0 0; padding:20px 0 0; border-top:1px solid #000;}
+.learn_cont .chatbot .fileUpload .status_group {margin:10px 0 0;}
+.learn_cont .chatbot .fileUpload .status_group .statusBox {display:none; height:40px;}
+.learn_cont .chatbot .fileUpload .status_group .statusBox button {flex:1; width:100%; height:40px; border:1px solid #ddd; border-radius:4px; font-size:13px;}
+.learn_cont .chatbot .fileUpload .status_group .statusBox .status_label {display:block; width:100%; height:40px; border:1px solid #ddd; border-radius:4px; background:#ddd; font-size:13px; line-height:40px; text-align:center;}
+.learn_cont .chatbot .fileUpload .status_group.step01 .statusBox.step01,
+.learn_cont .chatbot .fileUpload .status_group.step02 .statusBox.step02,
+.learn_cont .chatbot .fileUpload .status_group.step03 .statusBox.step03,
+.learn_cont .chatbot .fileUpload .status_group.step04 .statusBox.step04 {display:flex;}
+.learn_cont .chatbot .fileUpload .status_group.step04 .statusBox.step04 button:nth-child(2) {margin:0 15px;}
