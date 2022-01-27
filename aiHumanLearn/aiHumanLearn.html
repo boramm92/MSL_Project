@@ -32,6 +32,7 @@
 <script type="text/javascript" src="assets/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="assets/js/jquery-migrate-3.3.1.min.js"></script>
 <script type="text/javascript" src="assets/js/swiper-4.5.1.min.js"></script>
+<script type="text/javascript" src="assets/js/aiHumanLearn.js"></script>
 
 <title>AI-HUMAN 조회 || AI-HUMAN 학습 플랫폼</title>
 </head>
@@ -93,11 +94,13 @@
                             <p class="desc">단계를 따라 챗봇을 학습시켜보세요.</p>
                             <div class="step_list_wrap">
                                 <ul>
-                                    <li class="current">
+                                    <!-- [D] 완료된 학습 단계는 addClass('done') 해주세요. -->
+                                    <li class="done">
                                         <span class="stepNum">1</span>
                                         <span class="stepTxt">시나리오 만들기</span>
                                     </li>
-                                    <li>
+                                    <!-- [D] 현재 학습 단계는 addClass('current') 해주세요. -->
+                                    <li class="current">
                                         <span class="stepNum">2</span>
                                         <span class="stepTxt">NQA 만들기</span>
                                     </li>
@@ -135,6 +138,7 @@
                             </div>
                             <div class="contArea">
                                 <button type="button" class="btn_sample_dwld">샘플 파일 다운로드</button>
+                                <!-- [D] 파일 업로드 후 목록을 불러올 때 .uploadBox에 removeClass('init') 해주세요. -->
                                 <div class="uploadBox">
                                     <input type="file" id="fileUpload1" name="file-upload1" accept=".xlsx,.json,">
                                     <label for="fileUpload1">
@@ -145,12 +149,22 @@
                                     <ul class="file_list">
                                         <li>
                                             <span class="fileName">scenario_based_Chatbot-챗봇.xlsxscenario_based_Chatbot-챗봇.xlsx</span>
+                                            <div class="progress">
+                                                <!-- [D] .current에 width값으로 조절하시거나, addClass('half') 하시면 50%가 됩니다. -->
+                                                <span class="current half"></span>
+                                                <span class="status">파일 업로드 중</span>
+                                                <span class="per">50%</span>
+                                            </div>
                                             <span class="fileVol">53.0KB</span>
                                             <button type="button" class="btn_file_delete" title="파일 삭제"></button>
                                         </li>
                                     </ul>
-                                    <div class="btnBox">
-                                        <button type="button"></button>
+                                    <!-- [D] .status_group에 해당 step 클래스를 추가하면 보여짐 (초기 클래스는 step01 입니다.) -->
+                                    <div class="status_group step01">
+                                        <div class="statusBox step01"><button type="button" class="btn_learnFile_rgst">학습 파일 등록</button></div>
+                                        <div class="statusBox step02"><button type="button" class="btn_start_learn">학습 하기</button></div>
+                                        <div class="statusBox step03"><span class="status_label">학습 중</span></div>
+                                        <div class="statusBox step04"><button type="button" class="btn_restart_learn btn_lyr_open" data-lyr-name="relearnAlert">다시 학습하기</button></div>
                                     </div>
                                 </div>
                             </div>
@@ -204,6 +218,26 @@
 </div>
 <!-- //#wrap -->
 
+<!---------------------- layer popup ---------------------->
+<!-- 알림 팝업 -->
+<div id="relearnAlert" class="lyrWrap">
+    <div class="lyrCont">
+        <div class="lyr_top">
+            <img src="assets/images/ico_warning.svg" alt="warning icon">
+            <p class="tit">알림</p>
+            <button type="button" class="btn_lyr_close"><span class="hide">닫기버튼</span></button>
+        </div>
+        <div class="lyr_mid">
+            <p class="alert_txt">현재 적용된 내용이 사라집니다.<br> 다시 학습하시겠습니까?</p>
+        </div>
+        <div class="lyr_btm">
+            <button tyle="button" class="btn_primary btn_lyr_close">취소</button>
+            <button tyle="button" class="btn_primary">다시 학습하기</button>
+        </div>
+    </div>
+</div>
+<!-- //알림 팝업 -->
+
 <!---------------------- Local Resources ---------------------->
 <!-- Local Script -->
 <script type="text/javascript">
@@ -219,6 +253,26 @@ jQuery.event.add(window,"load",function(){
             let selectChatType = $(this).text();
             $(this).parent('ul').prev('.slt_type').text(selectChatType);
             console.log(selectChatType)
+        });
+
+        // 학습 버튼 flow
+        $('.btn_learnFile_rgst').on('click', function(){
+            $('.status_group').removeClass('step01');
+            $('.status_group').addClass('step02');
+        });
+        $('.btn_start_learn').on('click', function(){
+            $('.status_group').removeClass('step02');
+            $('.status_group').addClass('step03');
+
+            setTimeout(function(){
+                $('.status_group').removeClass('step03');
+                $('.status_group').addClass('step04');
+            }, 1000);
+        });
+
+        // 알림 팝업
+        $('.btn_restart_learn').on('click', function(){
+
         });
     });
 });
