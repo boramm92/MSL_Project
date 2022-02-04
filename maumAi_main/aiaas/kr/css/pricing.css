@@ -1,0 +1,185 @@
+@charset "utf-8";
+/* MINDsLab UX/UI. NBR. 2022.02.04 */
+
+/* ---------------------------------------- common ---------------------------------------- */
+/* 팝업 API*/
+.price_detail {display:none; overflow:hidden; position:fixed; bottom:0; left:0; width:100%; height:100%; text-align:center; z-index:1000;}
+.price_detail .lyr_bg {display:none; position:absolute; top:0; left:0; width:100%; height:100%; background:#101113; opacity:0.4; z-index:-10;}
+.price_detail .lyrBox {position:relative; display:block; width:484px; height:539px; letter-spacing:-0.5px; font-weight:500; border-radius:5px; box-shadow:0 2px 20px 0 rgba(0,43,73,0.2); border:1px solid #cfd5eb; background-color:#ffffff; -webkit-animation:lyr_show 0.3s 0s ease-out; animation:lyr_show 0.3s 0s ease-out;}
+.price_detail .lyrBox .lyr_top {position:relative; display:block; text-align:center; padding:0;}
+.price_detail .lyrBox .lyr_top h3 {float:none; font-size:15px; font-weight:500; line-height:42px; letter-spacing:-0.47px; color:#002b49;}
+.price_detail .lyrBox .lyr_top em {position:absolute; top:12px; right:15px; color:#97a2bc; font-size:15px; cursor:pointer;}
+.price_detail .lyrBox .lyr_mid {height:476px; overflow:auto; padding:0 10px 0 13px; box-sizing:border-box; margin:10px 7px;}
+.price_detail .lyrBox .lyr_mid .tbl_view {width:100%;}
+.price_detail .lyrBox .lyr_mid .tbl_view tr {border-bottom:1px solid #cfd5eb;}
+.price_detail .lyrBox .lyr_mid .tbl_view th {text-align:left; font-size:13px; padding:0 16px; box-sizing:border-box; height:30px; font-weight:500; letter-spacing:-0.41px; color:#002b49;}
+.price_detail .lyrBox .lyr_mid .tbl_view td {height:22px; padding:0 16px; box-sizing:border-box; font-size:13px; text-align:left; font-weight:400; letter-spacing:-0.41px; color:rgba(0,43,73,0.7);}
+.price_detail .lyrBox .lyr_mid .tbl_view tbody th{font-size:14px;}
+.price_detail .lyrBox .lyr_mid .tbl_view tbody tr {border-bottom:1px dotted #cfd5eb;}
+.price_detail .lyrBox .lyr_mid .tbl_view tbody tr .col_1 {width:160px;}
+.price_detail .lyrBox .lyr_mid .tbl_view tbody tr .col_2 {width:110px;}
+
+
+/* ---------------------------------------- layout ---------------------------------------- */
+#container {width:100%;}
+.contents {width:100%;}
+.price_cont {width:100%; height:100%;}
+.price_cont .stn {padding:100px 0;}
+.price_cont .stn .cont {width:1240px; margin:0 auto; padding:0 20px; box-sizing:border-box;}
+
+
+/* ---------------------------------------- contents ---------------------------------------- */
+/* common */
+.stn_tit {color:#303030; font-size:36px; font-weight:700; letter-spacing:-0.36px; line-height:38px; text-align:center;}
+.stn_desc {margin:24px 0 80px; color:#303030; font-size:20px; font-weight:500; letter-spacing:-0.2px; line-height:30px; text-align:center;}
+.stn_desc a {border-bottom:1px solid #345ccd; color:#345ccd; font-weight:700;}
+
+/* price */
+.stn.price {background:#f4f4f4;}
+.stn.price .desc_list {margin:30px 0 50px;}
+.stn.price .desc_list li {list-style:disc; list-style-position:inside; color:#777777; font-size:16px; letter-spacing:-0.16px; line-height:16px;}
+.stn.price .desc_list li + li {margin-top:10px;}
+.stn.price .desc_list li strong {color:#303030; font-weight:500;}
+
+.maum_price_wrap {overflow:visible;}
+.maum_price_wrap .price_list > li {width:582px; height:607px; padding:40px; border:1px solid #f0f0f0; box-sizing:border-box; background:#fff; text-align:center;}
+.maum_price_wrap .price_list > li dl dt {padding-bottom:20px; border-bottom:1px solid #eeeeee;}
+.maum_price_wrap .price_list > li dl dt span {display:inline-block; padding:0 25px; border-radius:6px; font-size:28px; font-weight:700; letter-spacing:-0.56px; line-height:46px;}
+.maum_price_wrap .price_list > li dl dd .contBox {padding:0 30px; box-sizing:border-box;}
+.maum_price_wrap .price_list > li dl dd .contBox + .contBox {padding-top:40px; border-top:1px solid #eeeeee;}
+.maum_price_wrap .price_list > li dl dd .contBox .price {margin:30px 0;}
+.maum_price_wrap .price_list > li dl dd .contBox .price img {width:27px; margin-right:4px;}
+.maum_price_wrap .price_list > li dl dd .contBox .price strong {font-size:30px; font-weight:700; letter-spacing:-0.3px;}
+.maum_price_wrap .price_list > li dl dd .contBox .desc {color:#303030; font-size:18px; font-weight:700; letter-spacing:-0.18px; line-height:1.67;}
+.maum_price_wrap .price_list > li dl dd .contBox .btn_link {display:inline-block; width:360px; margin:30px 0 40px; border-radius:3px; box-sizing:border-box; background:#fff; font-size:18px; font-weight:700; letter-spacing:-0.18px; line-height:54px; transition:background-color 0.2s ease-out;}
+.maum_price_wrap .price_list > li dl dd .contBox .tit {margin-bottom:20px; color:#303030; font-size:16px; font-weight:700; letter-spacing:-0.16px; line-height:1; text-align:left;}
+.maum_price_wrap .price_list > li dl dd .contBox ul li {list-style:disc; list-style-position:inside; color:#303030; font-size:16px; letter-spacing:-0.16px; line-height:18px; text-align:left;}
+.maum_price_wrap .price_list > li dl dd .contBox ul li + li {margin-top:12px;}
+
+.maum_price_wrap .price_list > li.business dl .ft_point {color:#1faac1;}
+.maum_price_wrap .price_list > li.business dl dt span {background:#def3f7;}
+.maum_price_wrap .price_list > li.business dl dd .contBox .price {color:#2c2c44; font-size:20px; letter-spacing:-0.2px;}
+.maum_price_wrap .price_list > li.business dl dd .contBox .price strong span {font-size:24px; letter-spacing:-0.24px;}
+.maum_price_wrap .price_list > li.business dl dd .contBox .desc .ft_point {color:#1faac1;}
+.maum_price_wrap .price_list > li.business dl dd .contBox .btn_link {border:1px solid #1faac1;}
+.maum_price_wrap .price_list > li.business dl dd .contBox .btn_link:hover {background:#1faac1; color:#fff;}
+.maum_price_wrap .price_list > li.enterprise dl .ft_point {color:#0b3fa0;}
+.maum_price_wrap .price_list > li.enterprise dl dt span {background:#c6daff;}
+.maum_price_wrap .price_list > li.enterprise dl dd .contBox .btn_link {border:1px solid #0b3fa0;}
+.maum_price_wrap .price_list > li.enterprise dl dd .contBox .btn_link:hover {background:#0b3fa0; color:#fff;}
+.maum_price_wrap .price_list > li.enterprise dl dd .contBox ul li {font-weight:500;}
+.maum_price_wrap .price_list > li.enterprise dl dd .contBox ul li p {margin-top:12px; padding-left:23px; color:#303030; font-size:16px; font-weight:400; letter-spacing:-0.16px; line-height:24px; text-align:left; line-break:anywhere;}
+
+.minutes_price_wrap {padding:40px 70px; border:1px solid #f0f0f0; box-sizing:border-box; background:#fff;}
+.minutes_price_wrap .tit {color:#303030; font-size:18px; font-weight:700; letter-spacing:-0.18px; line-height:27px; text-align:center;}
+.minutes_price_wrap ul {display:flex; margin-top:24px;}
+.minutes_price_wrap ul li + li {margin-left:40px;}
+.minutes_price_wrap ul li .sub_tit {color:#303030; font-size:16px; font-weight:700; letter-spacing:-0.16px; line-height:16px;}
+.minutes_price_wrap ul li .sub_desc {margin:20px 0; color:#303030; font-size:16px; letter-spacing:-0.16px; line-height:27px;}
+.minutes_price_wrap ul li .sub_desc span {font-weight:500;}
+.minutes_price_wrap ul li .btn_link {color:#345ccd; font-size:16px; letter-spacing:-0.16px; line-height:24px;}
+.minutes_price_wrap ul li .btn_link {border-bottom:1px solid #345ccd; color:#345ccd; font-size:16px; letter-spacing:-0.16px; line-height:24px;}
+
+/* swiper */
+.swiper-pagination {display:none;}
+
+
+/* media query */
+@media screen and (max-width:768px) {
+	/* -------------------- common -------------------- */
+	/* 팝업 API*/
+    .price_detail .lyr_bg {display:block;}
+	.price_detail .lyrBox {width:95%; height:auto; max-height:400px; margin:0; animation:none; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);}
+	.price_detail .lyrBox .lyr_mid {height:335px;}
+	.price_detail .lyrBox .lyr_mid .tbl_view {position:relative; margin:40px 0 0 0;}
+	.price_detail .lyrBox .lyr_mid .tbl_view tbody {border-top:1px solid #9da4b4; border-bottom:1px solid #cfd5eb;}
+	.price_detail .lyrBox .lyr_mid .tbl_view:before {content:''; position:absolute; top:-26px; left:0; width:100%; margin:0 0 10px 0; font-size:14px; font-weight:500; letter-spacing:-0.44px;}
+	.price_detail .lyrBox .lyr_mid .tbl_view:first-child:before {content:'음성'}
+	.price_detail .lyrBox .lyr_mid .tbl_view:nth-child(2):before {content:'시각'}
+	.price_detail .lyrBox .lyr_mid .tbl_view:nth-child(3):before {content:'언어'}
+	.price_detail .lyrBox .lyr_mid .tbl_view:nth-child(4):before {content:'분석'}
+	.price_detail .lyrBox .lyr_mid .tbl_view:nth-child(5):before {content:'챗봇'}
+	.price_detail .lyrBox .lyr_mid .tbl_view:nth-child(6):before {content:'영어교육'}
+	.price_detail .lyrBox .lyr_mid .tbl_view thead{display:none;}
+	.price_detail .lyrBox .lyr_mid .tbl_view tbody th {display:none;}
+	.price_detail .lyrBox .lyr_mid .tbl_view tbody tr th {display:none;}
+	.price_detail .lyrBox .lyr_mid .tbl_view td {padding:0}
+	.price_detail .lyrBox .lyr_mid .tbl_view tbody tr .col_1 {width:110px;}
+	.price_detail .lyrBox .lyr_mid .tbl_view tbody tr .col_2 {width:80px;}
+
+
+	/* -------------------- layout -------------------- */
+	.price_cont .stn .cont {width:100%;}
+
+
+	/* -------------------- contents -------------------- */
+	/* swiper */
+	.swiper-pagination {top:-22px; bottom:auto !important; display:block; margin:0;}
+	.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {background:#dedede; vertical-align:top; opacity:1;}
+	.swiper-pagination-bullet-active {width:24px; border-radius:4px; background:#1faac1 !important;}
+}
+
+
+/* ---------------------------------------- footer ---------------------------------------- */
+/* 공통 footer */
+iframe[name="footerFrame"] {width:100%;}
+
+/* footerLanding */
+#footerLanding {height:auto !important; padding:0; background:#1e2027; text-align:center;}
+#footerLanding .fp-tableCell {height:auto !important;}
+#footerLanding .footer_inner {display:inline-block; position:relative; width:1240px; padding:30px 20px; box-sizing:border-box; text-align:left; vertical-align:top;}
+#footerLanding .footer_inner .col {position:relative;}
+#footerLanding .footer_inner .col:last-child {text-align:left;}
+#footerLanding .footer_inner .col .col_inner {overflow:hidden;}
+#footerLanding .footer_inner .sns {float:right;}
+#footerLanding .footer_inner .company {width:50%;}
+#footerLanding .footer_inner address {color:#777777; font-size:15px; letter-spacing:-0.15px; line-height:22px;}
+#footerLanding .footer_inner .copyright {margin-top:27px; color:#535353; font-size:12px; letter-spacing:-0.12px; line-height:18px;}
+#footerLanding .footer_inner .contact {position:absolute; top:113px; right:20px; z-index:50;}
+#footerLanding .footer_inner .contact a {display:inline-block; width:200px; padding:10px 0; border-radius:20px; background:rgba(255, 255, 255, 0.06); color:#777777; font-size:15px; letter-spacing:-0.15px; text-align:center;}
+#footerLanding .footer_inner .contact br + a {margin-left:10px;}
+#footerLanding .footer_inner .contact a img,
+#footerLanding .footer_inner .contact a span {vertical-align:middle;}
+#footerLanding .footer_inner .contact a img {display:inline-block; margin-right:6px;}
+#footerLanding .footer_inner .contact br {display:none;}
+#footerLanding .footer_inner .cs_info {margin:20px 0 0; color:#fff; font-size:14px; font-weight:400; line-height:20px; word-break:keep-all;}
+#footerLanding .footer_inner .cs_info dt {display:inline-block;}
+#footerLanding .footer_inner .cs_info dd {display:inline-block;}
+/* #footerLanding .footer_inner .sns {margin-top:16px; margin-left:26px;} */
+#footerLanding .footer_inner .sns a {display:inline-block; width:40px; height:40px; border-radius:50%; box-sizing:border-box; background:rgba(255, 255, 255, 0.06); text-align:center; vertical-align:baseline;}
+#footerLanding .footer_inner .sns a + a {margin-left:15px;}
+#footerLanding .footer_inner .links {margin:10px 0;}
+#footerLanding .footer_inner .links a {display:inline-block; margin-right:30px; color:#d5d5d5; font-size:15px; letter-spacing:-0.15px; line-height:22px;}
+
+#footerLanding .ft_top {border-bottom:1px solid #303237;}
+#footerLanding .ft_top .footer_inner {padding:20px;}
+
+/* media query */
+@media screen and (max-width:768px) {
+    #footerLanding {text-align:left;}
+    #footerLanding .footer_inner {width:100%; padding:30px;}
+    #footerLanding .footer_inner .col {float:none; width:auto; text-align:left;}
+    #footerLanding .footer_inner .cs_info dt {vertical-align:top;}
+    #footerLanding .footer_inner .cs_info dd {width:calc(100% - 60px);}
+    #footerLanding .footer_inner .cs_info dd span {display:inline-block;}
+    #footerLanding .footer_inner .sns {float:none; margin-top:20px; margin-left:0; text-align:center !important;}
+    #footerLanding .footer_inner .links {float:none; margin:0; text-align:center;}
+    #footerLanding .footer_inner .links a:last-child {margin-right:0;}
+    #footerLanding .footer_inner .contact {position:static; margin:20px 0 0; text-align:center;}
+    #footerLanding .footer_inner .contact a {width:auto; padding:5px 15px; font-size:13px; margin:0 16px 0 0;}
+    #footerLanding .footer_inner .contact br + a {margin:0;}
+    #footerLanding .footer_inner .links a {font-size:15px;}
+    #footerLanding .footer_inner address {position:static; font-size:0.825rem; line-height:1.25rem; word-break:keep-all;}
+    #footerLanding .footer_inner .copyright {margin-top:30px; font-size:12px; text-align:center;}
+
+    #footerLanding .ft_top {padding:0 20px; border:none;}
+    #footerLanding .ft_top .footer_inner {padding:30px 0; border-bottom:1px solid #303237;}
+    #footerLanding .ft_btm .footer_inner {padding:30px 20px 40px;}
+}
+
+@media screen and (max-width:359px) {
+    #footerLanding .footer_inner .links a {margin-right:20px;}
+    #footerLanding .footer_inner .contact {text-align:left;}
+    #footerLanding .footer_inner .contact br {display:block;}
+    #footerLanding .footer_inner .contact br + a {margin:16px 0 0;}
+}
