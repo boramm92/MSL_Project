@@ -933,27 +933,54 @@
                 </div>
             </div>
 
-            <div class="stn contactUs">
+            <div id="contact" class="stn contactUs">
                 <div class="contBox">
                     <h3>CONTACT US</h3>
                     <p class="desc">이미 많은 기업들이 마음회의록을 통해 인공지능을 성공적으로 도입했습니다.<br> 상담 문의를 남겨주시면 담당 컨설턴트가 빠른 시일 내로 연락을 드리겠습니다.</p>
                     <div class="contactform">
                         <div class="row">
                             <dl>
-                                <dt>이름<span>(필수)</span></dt>
+                                <dt>이름 <span>(필수)</span></dt>
                                 <dd><input type="text" id="userName" class="ipt_txt" autocomplete="off"></dd>
                             </dl>
                             <dl>
-                                <dt>연락처<span>(필수)</span></dt>
+                                <dt>연락처 <span>(필수)</span></dt>
                                 <dd><input type="text" id="userNumber" class="ipt_txt" autocomplete="off"></dd>
                             </dl>
                             <dl>
-                                <dt>이메일<span>(필수)</span></dt>
+                                <dt>이메일 <span>(필수)</span></dt>
                                 <dd><input type="text" id="userMail" class="ipt_txt" autocomplete="off"></dd>
                             </dl>
-                        </div>                        
+                        </div> 
+                        <!-- [D] 22.02.03 해당 위치에 '문의 유형' 폼 추가 부탁드립니다. -->
                         <dl>
-                            <dt>문의 <span>(선택)</span></dt>
+                            <dt>문의 유형 <span>(필수)</span></dt>
+                            <dd>
+                                <!-- [D] 동일한 선택범위의 radio로 name값을 모두 동일하게 줘야 함 -->
+                                <div class="radioBox">
+                                    <!-- [D] input[type="radio"]의 id와 label의 for값은 동일해야함 -->
+                                    <input type="radio" name="inquiry_type" id="undetermined" checked>
+                                    <label for="undetermined">미정</label>
+                                </div>
+                                <div class="radioBox">
+                                    <!-- [D] input[type="radio"]의 id와 label의 for값은 동일해야함 -->
+                                    <input type="radio" name="inquiry_type" id="cloud">
+                                    <label for="cloud">Cloud 회의록</label>
+                                </div>
+                                <div class="radioBox">
+                                    <!-- [D] input[type="radio"]의 id와 label의 for값은 동일해야함 -->
+                                    <input type="radio" name="inquiry_type" id="onDevice">
+                                    <label for="onDevice">On-Device 회의록</label>
+                                </div>
+                                <div class="radioBox">
+                                    <!-- [D] input[type="radio"]의 id와 label의 for값은 동일해야함 -->
+                                    <input type="radio" name="inquiry_type" id="onSite">
+                                    <label for="onSite">On-Site 회의록</label>
+                                </div>
+                            </dd>
+                        </dl>                       
+                        <dl>
+                            <dt>문의내용 <span>(필수)</span></dt>
                             <dd><textarea id="userTxt" class="textArea" rows="10" autocomplete="off"></textarea></dd>
                         </dl>
                         <dl>
