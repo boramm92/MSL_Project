@@ -357,21 +357,32 @@ div.tree-multiselect div.section > div.section:last-child:after {content:''; dis
 /* jqtree-tree - 22.01.24 NBR 추가 */
 ul.jqtree-tree li.jqtree-selected > .jqtree-element, ul.jqtree-tree li.jqtree-selected > .jqtree-element:hover {background:none; font-weight:700; text-shadow:none; outline:none;}
 ul.jqtree-tree .jqtree-title {position:relative; margin-left:20px; padding:0 10px; color:#353a55; font-size:14px; letter-spacing:-0.19px; line-height:25px; outline:none;}
+ul.jqtree-tree input[type=checkbox] {position:absolute; overflow:hidden; width:1px; height:1px; margin:-1px; padding:0; clip:rect(0,0,0,0); border:0;}
+ul.jqtree-tree input[type="checkbox"] + label {display:inline-block; position:relative; padding:0 0 0 23px; color:#353a55; font-size:14px; letter-spacing:-0.19px; cursor:pointer; z-index:9999999999;}
+ul.jqtree-tree input[type="checkbox"] + label:before {content:''; position:absolute; top:5px; left:24px; width:15px; height:15px; line-height:15px; text-align:center; border:1px solid #868999; border-radius:2px; box-sizing:border-box; background:#fff; z-index:5;}
+ul.jqtree-tree input[type="checkbox"]:checked + label:before {content:'\f00c'; font-family:'Font Awesome 5 Free'; color:#7a7cfb; font-size:10px; font-weight:900; line-height:13px; text-align:center; display:block; padding:0 0 0 1px; border:1px solid #7a7cfb;}
 ul.jqtree-tree .jqtree-toggler {position:relative; width:15px; height:15px; color:transparent; font-size:0;}
 ul.jqtree-tree .jqtree-toggler:hover {color:transparent; font-size:0;}
 ul.jqtree-tree .jqtree-toggler:before {content:'\f146'; display:block; position:absolute; top:5px; left:10px; background:#fff; font-family:'Font Awesome 5 Free'; color:#868999; font-size:15px; font-weight:400 !important; line-height:15px;}
 ul.jqtree-tree .jqtree-toggler.jqtree-closed:before {content:'\f0fe';}
 ul.jqtree-tree .jqtree-toggler.jqtree-toggler-left {margin-right:5px;}
+/* ul.jqtree-tree .jqtree-title-button-left.jqtree-title-folder {margin-left:20px;} */
+ul.jqtree-tree li.jqtree-folder.jqtree-closed > .jqtree-element > input[type="checkbox"] + label:before {left:10px;}
 ul.jqtree-tree > li > .jqtree-element > span.jqtree-title {}
 ul.jqtree-tree ul.jqtree_common {position:relative; margin-left:18px;}
 
 .tree_view_wrap > ul.jqtree-tree {position:relative;}
 .tree_view_wrap > ul.jqtree-tree:before {content:''; position:absolute; top:12px; left:16px; width:1px; height:calc(100% - 24px); border-left:1px dotted #868999;}
-.tree_view_wrap > ul.jqtree-tree > li.jqtree_common > div.jqtree_common:before {content:''; position:absolute; top:12px; left:16px; width:8px; height:1px; border-top:1px dotted #868999;}
+.tree_view_wrap > ul.jqtree-tree > li.jqtree_common > div.jqtree_common:before {content:''; position:absolute; top:12px; left:16px; width:12px; height:1px; border-top:1px dotted #868999;}
+.tree_view_wrap > ul.jqtree-tree > li.jqtree_common > div.jqtree_common > input[type="checkbox"] + label:before {left:28px;}
 .tree_view_wrap > ul.jqtree-tree > li.jqtree_common.jqtree-folder > div.jqtree_common:before {border:none;}
+.tree_view_wrap > ul.jqtree-tree > li.jqtree_common.jqtree-folder > div.jqtree_common > input[type="checkbox"] + label:before {left:8px;}
 .tree_view_wrap > ul.jqtree-tree > li.jqtree-folder > ul.jqtree_common > li.jqtree_common > div.jqtree-element:before {content:''; position:absolute; top:12px; left:-2px; width:24px; height:1px; border-top:1px dotted #868999;}
+.tree_view_wrap > ul.jqtree-tree > li.jqtree-folder > ul.jqtree_common > li.jqtree_common > div.jqtree-element > input[type="checkbox"] + label:before {left:22px;}
 .tree_view_wrap > ul.jqtree-tree > li.jqtree-folder > ul.jqtree_common > li.jqtree-folder > ul.jqtree_common:before {content:''; position:absolute; top:-7px; left:-2px; width:1px; height:calc(100% - 5px); border-left:1px dotted #868999;}
 .tree_view_wrap > ul.jqtree-tree > li.jqtree-folder > ul.jqtree_common > li.jqtree-folder > ul.jqtree_common > li.jqtree_common > div.jqtree-element:before {content:''; position:absolute; top:12px; left:-2px; width:24px; height:1px; border-top:1px dotted #868999;}
+.tree_view_wrap > ul.jqtree-tree > li.jqtree-folder > ul.jqtree_common > li.jqtree-folder > ul.jqtree_common > li.jqtree_common > div.jqtree-element > input[type="checkbox"] + label:before {left:22px;}
+.tree_view_wrap > ul.jqtree-tree > li.jqtree-folder > ul.jqtree_common > li.jqtree_common.jqtree-folder > div.jqtree_common > input[type="checkbox"] + label:before {left:8px;}
 
 /* tblBox */
 .tblBox {overflow:hidden; border:1px solid #e0e0ed; border-radius:4px; box-shadow:1px 1px 6px 0 rgba(101, 101, 101, 0.1);}

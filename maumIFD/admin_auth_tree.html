@@ -275,7 +275,15 @@ jQuery.event.add(window,"load",function(){
         // [D] 22.01.25 jq tree rendering script 추가
         // jq tree rendering
         $('#menuList').tree({
-            data: data
+            data: data,
+            onCreateLi: function(node, li) {
+                li.find('.jqtree-title').before('<input type="checkbox" id="chkbox"><label for="chkbox"></label>');
+                // ie 호환 체크박스
+                $('.jqtree-tree input[type=checkbox]').each(function(i){
+                    $(this).attr('id', 'chkbox' + i + 1);
+                    $(this).siblings('label').attr('for', 'chkbox' + i + 1);
+                });
+            }
         });
     });
 });
