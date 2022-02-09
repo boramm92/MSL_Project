@@ -1105,7 +1105,26 @@
 				thisFaqCont.style.height = '0px';      
 			}   
 		});
-	}       
+	}  
+	
+	// 상품 상세 비교 hover 효과
+	$('.cont_dropdown > div > div').on('mouseenter', function(){
+		let thisContIndex = $(this).parents('.cont').index();
+		let thisIndex = $(this).parent('.drop_tit').index();
+
+		console.log(thisContIndex)
+
+		// $('.cont_dropdown').eq(thisContIndex).find('.drop_tit').eq(thisIndex).find('div').addClass('hover');
+
+		$('.cont_dropdown').each(function(){
+			$(this).parents('.cont').find('.drop_tit').eq(thisIndex).find('div').addClass('hover');
+			// $('.cont_dropdown').eq(thisContIndex).find('.drop_tit').eq(thisIndex).find('div').addClass('hover');
+		});
+	});
+
+	$('.cont_dropdown > div > div').on('mouseleave', function(){
+		$('.cont_dropdown > div > div').removeClass('hover');
+	});   
 </script>
 </body>
 </html>
