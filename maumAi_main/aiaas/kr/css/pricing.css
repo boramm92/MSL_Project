@@ -42,15 +42,17 @@
 
 /* detail_desc */
 .detail_desc {display:inline-block; position:relative; margin-left:5px; line-height:16px; cursor:pointer;}
-.detail_desc .descBox {display:none; position:absolute; bottom:36px; left:-28px; width:300px; padding:20px; border:1px solid #dddddd; border-radius:4px; box-sizing:border-box; background:#fff; color:#303030; font-size:12px; letter-spacing:-0.12px; line-height:15px; white-space:normal; word-break:keep-all;}
-.detail_desc .descBox:before {content:''; display:block; position:absolute; bottom:-14px; left:25px; width:20px; height:14px; background:url('../images/pricing/ico_tipPoint.svg') 50% 50% no-repeat;}
+.detail_desc:before {content:''; display:none; position:absolute; bottom:23px; left:-2px; width:20px; height:14px; background:url('../images/pricing/ico_tipPoint.svg') 50% 50% no-repeat; z-index:10;}
 .detail_desc img {vertical-align:middle;}
-.detail_desc:hover .descBox {display:block;}
+.detail_desc .descBox {display:none; position:absolute; bottom:36px; left:-135px; width:300px; padding:20px; border:1px solid #dddddd; border-radius:4px; box-sizing:border-box; background:#fff; color:#303030; font-size:12px; letter-spacing:-0.12px; line-height:15px; white-space:normal; word-break:keep-all;}
+.detail_desc.show:before,
+.detail_desc.show .descBox {display:block;}
 
 /* price */
 .price_cont .stn.price {background:#f4f4f4;}
 .price_cont .stn.price .desc_list {margin:30px 0 50px;}
-.price_cont .stn.price .desc_list li {list-style:disc; list-style-position:inside; color:#777777; font-size:16px; letter-spacing:-0.16px; line-height:16px; word-break:keep-all;}
+.price_cont .stn.price .desc_list li {position:relative; padding-left:20px; color:#777777; font-size:16px; letter-spacing:-0.16px; line-height:16px; word-break:keep-all;}
+.price_cont .stn.price .desc_list li:before {content:''; display:block; position:absolute; top:7px; left:0; width:2px; height:2px; border-radius:50%; background:#909090;}
 .price_cont .stn.price .desc_list li + li {margin-top:10px;}
 .price_cont .stn.price .desc_list li a {border-bottom:1px solid #303030; color:#303030; font-weight:500;}
 
@@ -67,7 +69,8 @@
 .price_cont .maum_price_wrap .price_list > li dl dd .contBox .desc {color:#303030; font-size:18px; font-weight:700; letter-spacing:-0.18px; line-height:1.67; white-space:normal; word-break:keep-all;}
 .price_cont .maum_price_wrap .price_list > li dl dd .contBox .btn_link {display:inline-block; width:360px; margin:30px 0 40px; border-radius:3px; box-sizing:border-box; background:#fff; font-size:18px; font-weight:700; letter-spacing:-0.18px; line-height:52px; transition:background-color 0.2s ease-out;}
 .price_cont .maum_price_wrap .price_list > li dl dd .contBox .tit {margin-bottom:20px; color:#303030; font-size:16px; font-weight:700; letter-spacing:-0.16px; line-height:1; text-align:left;}
-.price_cont .maum_price_wrap .price_list > li dl dd .contBox ul li {overflow:visible; list-style:disc; list-style-position:inside; color:#303030; font-size:16px; letter-spacing:-0.16px; line-height:18px; text-align:left;}
+.price_cont .maum_price_wrap .price_list > li dl dd .contBox ul li {position:relative; padding-left:20px; color:#303030; font-size:16px; letter-spacing:-0.16px; line-height:18px; text-align:left;}
+.price_cont .maum_price_wrap .price_list > li dl dd .contBox ul li:before {content:''; display:block; position:absolute; top:7px; left:0; width:4px; height:4px; border-radius:50%; background:#050505;}
 .price_cont .maum_price_wrap .price_list > li dl dd .contBox ul li + li {margin-top:12px;}
  
 .price_cont .maum_price_wrap .price_list > li.business dl .ft_point {color:#1faac1;}
@@ -82,7 +85,7 @@
 .price_cont .maum_price_wrap .price_list > li.enterprise dl dd .contBox .btn_link {border:1px solid #0b3fa0;}
 .price_cont .maum_price_wrap .price_list > li.enterprise dl dd .contBox .btn_link:hover {background:#0b3fa0; color:#fff;}
 .price_cont .maum_price_wrap .price_list > li.enterprise dl dd .contBox ul li {font-weight:500;}
-.price_cont .maum_price_wrap .price_list > li.enterprise dl dd .contBox ul li p {margin-top:12px; padding-left:23px; color:#303030; font-size:16px; font-weight:400; letter-spacing:-0.16px; line-height:24px; text-align:left; white-space:normal; word-break:keep-all;}
+.price_cont .maum_price_wrap .price_list > li.enterprise dl dd .contBox ul li p {margin-top:12px; color:#303030; font-size:16px; font-weight:400; letter-spacing:-0.16px; line-height:24px; text-align:left; white-space:normal; word-break:keep-all;}
 
 .price_cont .minutes_price_wrap {overflow:hidden; padding:40px 70px; border:1px solid #f0f0f0; box-sizing:border-box; background:#fff;}
 .price_cont .minutes_price_wrap .tit {color:#303030; font-size:18px; font-weight:700; letter-spacing:-0.18px; line-height:27px; text-align:center;}
@@ -95,7 +98,6 @@
 .price_cont .minutes_price_wrap .btn_link {display:block; float:right; border-bottom:1px solid #345ccd; color:#345ccd; font-size:16px; letter-spacing:-0.16px; line-height:24px;}
 
 /* compare */
-/* .price_cont .compareBox {margin-top:40px;} */
 .price_cont .compareBox .rate_tit_mobile {display:none; margin-bottom:40px; text-align:center; white-space:nowrap;}
 .price_cont .compareBox .rate_tit_mobile button {margin:0 15px; padding:0; color:#303030; font-size:16px; font-weight:700; letter-spacing:-0.16px; line-height:36px;}
 .price_cont .compareBox .rate_tit_mobile button.active {border-bottom:3px solid #1faac1;}
@@ -111,22 +113,15 @@
 .price_cont .compareBox .cont_tit div {padding:18px 0;}
 .price_cont .compareBox .cont_tit div:first-child {float:left; width:336px; padding-left:35px; box-sizing:border-box; background:#f4f4f4; color:#303030; font-size:16px; font-weight:700; letter-spacing:-0.16px; text-align:left;}
 .price_cont .compareBox .cont_tit div:last-child {float:right; width:412px; background:#f4f4f4;}
-.price_cont .compareBox .cont_dropdown {}
-/* .price_cont .compareBox .cont_dropdown > div {overflow:hidden;} */
-/* .price_cont .compareBox .cont_dropdown > div {clear:both; display:inline-block;} */
 .price_cont .compareBox .cont_dropdown > div > div {display:flex; align-items:center; transition:background-color 0.2s ease-out;}
 .price_cont .compareBox .cont_dropdown > div > div:hover,
 .price_cont .compareBox .cont_dropdown > div > div.hover {background:#f4f4f4 !important;}
-/* .price_cont .compareBox .cont_dropdown > div div:first-child {float:left; width:336px; padding-left:35px; box-sizing:border-box; color:#414853; text-align:left; text-indent:12px; line-height:30px;} */
 .price_cont .compareBox .cont_dropdown > div div:first-child {width:336px; padding-left:35px; box-sizing:border-box; color:#414853; text-align:left; text-indent:12px;}
-/* .price_cont .compareBox .cont_dropdown > div div:last-child {float:right; width:412px; background:#f4f6f8; text-align:center;} */
 .price_cont .compareBox .cont_dropdown > div div:last-child {width:412px; background:#f4f6f8; text-align:center;}
 .price_cont .compareBox .cont_dropdown .drop_tit {display:flex; transition:background-color 0.2s ease-out;}
 .price_cont .compareBox .cont_dropdown .drop_tit:hover {background:#f4f4f4 !important;}
-/* .price_cont .compareBox .cont_dropdown .drop_tit div:first-child {float:left; width:336px; padding-left:35px; box-sizing:border-box; color:#303030; font-size:16px; letter-spacing:-0.16px; text-align:left; text-indent:0;} */
 .price_cont .compareBox .cont_dropdown .drop_tit div:first-child {width:336px; height:54px; padding-left:35px; box-sizing:border-box; color:#303030; font-size:16px; letter-spacing:-0.16px; text-align:left; text-indent:0;}
 .price_cont .compareBox .cont_dropdown .drop_tit div:first-child small {font-size:10px; letter-spacing:-0.1px; line-height:14px;}
-/* .price_cont .compareBox .cont_dropdown .drop_tit div:last-child {float:right; width:412px; background:#f8f8f8;} */
 .price_cont .compareBox .cont_dropdown .drop_tit div:last-child {justify-content:space-around; width:412px; height:54px; background:#f8f8f8;}
 .price_cont .compareBox li .rate_tit div:first-child,
 .price_cont .compareBox li .cont_tit div:first-child,
@@ -137,8 +132,6 @@
 .price_cont .compareBox li:first-child .cont_dropdown > div div:first-child,
 .price_cont .compareBox li:first-child .cont_dropdown .drop_tit div:first-child {display:flex; flex-wrap:wrap; align-content:center}
 
-/* .price_cont .compareBox .cont_dropdown .drop_tit:first-child div:first-child {padding:5px 0 5px 35px;} */
-
 /* faq */
 .price_cont .stn.faq {background:#f8f8f8;}
 .price_cont .stn.faq .faqBox {margin:50px 0 0;}
@@ -147,9 +140,9 @@
 .price_cont .stn.faq .faqBox .faq_type a.active {border-bottom:4px solid #1faac1;}
 .price_cont .stn.faq .faqBox .faq_cont .faq_lst {display:none; width:100%; margin:30px 0 0; border-top:2px solid #707070;}
 .price_cont .stn.faq .faqBox .faq_cont .faq_lst.active {display:block;}
-.price_cont .stn.faq .faqBox .faq_cont .faq_lst li dl {overflow:hidden; width:100%; height:auto; border-bottom:1px solid #dddddd; box-sizing:border-box; transition:all 0.2s ease-out;}
+.price_cont .stn.faq .faqBox .faq_cont .faq_lst li dl {overflow:hidden; width:100%; height:auto; border-bottom:1px solid #dddddd; box-sizing:border-box; transition:all 0.1s ease-out;}
 .price_cont .stn.faq .faqBox .faq_cont .faq_lst li dl dt {position:relative; width:100%; padding:35px 70px 35px 30px; box-sizing:border-box; background-image:url('../images/pricing/arw_btm_g.svg'); background-position:top 50% right 30px; background-repeat:no-repeat; color:#303030; font-size:20px; font-weight:700; letter-spacing:-0.2px; line-height:29px; text-align:left; word-break:keep-all; cursor:pointer;}
-.price_cont .stn.faq .faqBox .faq_cont .faq_lst li dl dd {width:100%; height:0 !important; padding:0 30px; box-sizing:border-box; color:#777777; font-size:20px; letter-spacing:-0.2px; line-height:30px; text-align:left; word-break:keep-all; transform-origin:50% 0; transform:scaleY(0); transition:all 0.2s ease-out;}
+.price_cont .stn.faq .faqBox .faq_cont .faq_lst li dl dd {width:100%; height:0 !important; padding:0 30px; box-sizing:border-box; color:#777777; font-size:20px; letter-spacing:-0.2px; line-height:30px; text-align:left; word-break:keep-all; transform-origin:50% 0; transform:scaleY(0); transition:all 0.1s ease-out;}
 
 .price_cont .stn.faq .faqBox .faq_cont .faq_lst li.open dl dt {background-image:url('../images/pricing/arw_top_g.svg');}
 .price_cont .stn.faq .faqBox .faq_cont .faq_lst li.open dl dd {height:auto !important; padding:0 30px 26px; transform:scaleY(1);}
@@ -203,28 +196,41 @@
 	.price_cont .stn_tit {font-size:30px; letter-spacing:-0.3px; line-height:32px;}
 	.price_cont .stn_desc {font-size:16px; letter-spacing:-0.16px; line-height:26px;}
 
+	/* detail_desc */
+	.detail_desc:before {left:-4px;}
+	.detail_desc img {width:12px;}
+	.detail_desc .descBox {width:100%; min-width:240px; max-width:300px;}
+
 	/* price */
-	.price_cont .stn.price .desc_list {margin:30px 0 20px; padding:0 20px; box-sizing:border-box;}
-	.price_cont .stn.price .desc_list li {list-style-position:outside; font-size:12px; letter-spacing:-0.12px; line-height:19px;}
+	.price_cont .stn.price .desc_list {margin:30px 0 20px; box-sizing:border-box;}
+	.price_cont .stn.price .desc_list li {padding-left:12px; font-size:12px; letter-spacing:-0.12px; line-height:19px;}
 	.price_cont .stn.price .desc_list li + li {margin-top:12px;}
 
 	.price_cont .maum_price_wrap .price_list > li {height:auto; padding:40px 20px 30px;}
 	.price_cont .maum_price_wrap .price_list > li dl dt {padding-bottom:30px;}
 	.price_cont .maum_price_wrap .price_list > li dl dt span {padding:0 16px; font-size:24px; letter-spacing:-0.48px; line-height:40px;}
 	.price_cont .maum_price_wrap .price_list > li dl dd .contBox {padding:0;}
-	.price_cont .maum_price_wrap .price_list > li dl dd .contBox + .contBox {padding-top:30px;}
+	.price_cont .maum_price_wrap .price_list > li dl dd .contBox + .contBox {padding:30px 0 0;}
 	.price_cont .maum_price_wrap .price_list > li dl dd .contBox .price {margin:30px 0 12px;}
 	.price_cont .maum_price_wrap .price_list > li dl dd .contBox .price strong {font-size:24px; letter-spacing:-0.24px;}
 	.price_cont .maum_price_wrap .price_list > li.business dl dd .contBox .price strong span {font-size:20px;}
 	.price_cont .maum_price_wrap .price_list > li dl dd .contBox .price img:nth-child(3) {top:-40px; right:-38px; bottom:auto; width:40px;}
 	.price_cont .maum_price_wrap .price_list > li dl dd .contBox .desc {font-size:16px; letter-spacing:-0.16px; white-space:normal; word-break:keep-all;}
 	.price_cont .maum_price_wrap .price_list > li dl dd .contBox .btn_link {width:100%; margin:20px 0 30px;}
-	.price_cont .maum_price_wrap .price_list > li dl dd .contBox .tit {margin-bottom:17px; font-size:12px; letter-spacing:-0.12px;}
-	.price_cont .maum_price_wrap .price_list > li dl dd .contBox ul li {font-size:12px; letter-spacing:-0.12px;}
-	.price_cont .maum_price_wrap .price_list > li dl dd .contBox ul li + li {margin-top:22px;}
+	.price_cont .maum_price_wrap .price_list > li dl dd .contBox .tit {margin-bottom:6px; font-size:12px; letter-spacing:-0.12px;}
+	.price_cont .maum_price_wrap .price_list > li dl dd .contBox ul li {padding-left:6px; font-size:12px; letter-spacing:-0.12px; line-height:36px;}
+	.price_cont .maum_price_wrap .price_list > li dl dd .contBox ul li:before {top:18px; width:2px; height:2px;}
+	.price_cont .maum_price_wrap .price_list > li dl dd .contBox ul li + li {margin-top:0;}
+
+	.price_cont .maum_price_wrap .price_list > li dl dd .contBox ul li:nth-child(1) .detail_desc .descBox {left:-178px;}
+	.price_cont .maum_price_wrap .price_list > li dl dd .contBox ul li:nth-child(2) .detail_desc .descBox {left:-200px;}
+	.price_cont .maum_price_wrap .price_list > li dl dd .contBox ul li:nth-child(3) .detail_desc .descBox {left:-129px;}
 
 	.price_cont .maum_price_wrap .price_list > li.business dl dd .contBox .price {font-size:14px; letter-spacing:-0.14px;}
-	.price_cont .maum_price_wrap .price_list > li.enterprise dl dd .contBox ul li p {padding-left:18px; font-size:12px; letter-spacing:-0.12px;}
+	.price_cont .maum_price_wrap .price_list > li.enterprise dl dd .contBox ul li {line-height:14px;}
+	.price_cont .maum_price_wrap .price_list > li.enterprise dl dd .contBox ul li:before {top:7px;}
+	.price_cont .maum_price_wrap .price_list > li.enterprise dl dd .contBox .tit {margin-bottom:22px;}
+	.price_cont .maum_price_wrap .price_list > li.enterprise dl dd .contBox ul li p {font-size:12px; letter-spacing:-0.12px;}
 
 	.price_cont .minutes_price_wrap {padding:20px;}
 	.price_cont .minutes_price_wrap .tit {font-size:12px; letter-spacing:-0.12px; line-height:14px;}
@@ -236,12 +242,11 @@
 	.price_cont .minutes_price_wrap .btn_link {margin:20px 0 0; font-size:11px; letter-spacing:-0.11px; line-height:17px;}
 
 	/* compare */
-	/* .price_cont .compareBox {margin-top:24px;} */
 	.price_cont .compareBox .rate_tit {display:none;}
 	.price_cont .compareBox .rate_tit_mobile {display:block;}
 	.price_cont .compareBox li {float:none; display:none;}
 	.price_cont .compareBox li.active {display:block;}
-	.price_cont .compareBox li .cont_dropdown {height:0; transform-origin:50% 0; transform:scaleY(0); transition:all 0.2s ease-out;}
+	.price_cont .compareBox li .cont_dropdown {height:0; transform-origin:50% 0; transform:scaleY(0); transition:all 0.1s ease-out;}
 	.price_cont .compareBox li .cont_tit.active + .cont_dropdown {height:auto; transform:scaleY(1);}
 	.price_cont .compareBox li .cont_tit div:last-child {background:url('../../kr/images/pricing/arw_btm_g.svg') no-repeat 0 50%;}
 	.price_cont .compareBox li .cont_tit.active div:last-child {background:url('../../kr/images/pricing/arw_top_g.svg') no-repeat 0 50%;}
