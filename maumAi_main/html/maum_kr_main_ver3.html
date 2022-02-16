@@ -78,26 +78,13 @@
 					<h2><a href="#none">AI Human</a></h2>
 					<ul class="m_lst">
 						<li>
-							<h3><a href="https://human.maum.ai/event/">서비스 소개</a></h3>
+							<h3><a href="https://human.maum.ai/event/">인공인간 제작 의뢰</a></h3>
+						</li>	
+						<li>
+							<h3><a href="https://store.maum.ai/">인공인간 영상 제작</a></h3>
 						</li>
 						<li>
-							<h3><a href="https://maum.ai/event/kiosk">인공인간 키오스크</a></h3>
-						</li>
-						<li>
-							<h3><a href="https://maum.ai/home/estimate/krAhb2">인공인간 견적</a></h3>
-						</li>
-						<li>
-							<h3><a href="https://store.maum.ai/">인공인간 구매</a></h3>
-						</li>
-						<li>
-							<h3><a href="http://studio.maum.ai/login">인공인간 영상제작</a></h3>
-						</li>
-						<!-- [D] 현재는 해당 페이지 없어 우선 주석 처리 해주시고 추후 페이지 생성 시 추가 부탁드립니다. -->
-						<!-- <li>
-							<h3><a href="#none">인공인간 App</a></h3>
-						</li> -->
-						<li>
-							<h3><a href="https://maum.ai/home/orcttsMain">인공인간 업그레이드</a></h3>
+							<h3><a href="/home/estimate/krAhb2">인공인간 디바이스 구매</a></h3>
 						</li>
 					</ul>
 				</li>	
@@ -150,8 +137,9 @@
 					<li>
                         <a href="http://maumacademy.maum.ai" class="">아카데미</a>
                     </li>
+					<!-- [D] 22.02.10 '가격정책' -> '요금안내' 메뉴명 변경 -->
                     <li>
-                        <a href="/home/pricingPage?lang=ko" class="">가격정책</a>
+                        <a href="/home/pricingPage?lang=ko" class="">요금안내</a>
                     </li>
                 </ul>
             </div>
@@ -187,10 +175,11 @@
                                         <em>Cloud API</em>
                                     </a>
                                 </li>
+                                <!-- [D] 22.02.10 해당 위치에 있던 'AI Builder' 메뉴 삭제 및 'M Studio' 메뉴 추가 부탁드립니다. -->
                                 <li>
-                                    <a href="https://builder.maum.ai/?lang=ko" target="_blank" title="AI Builder">
+                                    <a href="http://studio.maum.ai/login" target="_blank" title="M Studio">
                                         <span class="ico"></span>
-                                        <em>AI Builder</em>
+                                        <em>M Studio</em>
                                     </a>
                                 </li>
                                 <li>
@@ -206,15 +195,15 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://ava.maum.ai/login" target="_blank">
+                                    <a href="https://ava.maum.ai/login" target="_blank" title="AVA">
                                         <span class="ico"></span>
                                         <em>AVA</em>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://edge.maum.ai/" target="_blank">
+                                    <a href="https://edge.maum.ai/" target="_blank" title="Edge AI">
                                         <span class="ico"></span>
-                                        <em>Edge AI Platform</em>
+                                        <em>Edge AI</em>
                                     </a>
                                 </li>
                                 <li>
@@ -900,7 +889,6 @@
 		$('.maumUI.transform .maum_sta').css('left', 0 - $(this).scrollLeft());
 	});
 
-	// [D] 기존에 있던 script이나 현재 코드로 수정 부탁드립니다.
 	// aside menu
 	var clicked = false;
 	var asideWidth = '100%';
@@ -985,12 +973,24 @@
 			clicked = false;
 		});
 	});
+
+	// etc layer open
+	$('.maum_etc .nav>li>a.btn_ico').on('click',function(){
+		$(this).parent().toggleClass('active');
+		return false;
+	});
+	// etc layer close
+	$(document).mouseup(function (e){
+		var container = $('.maum_etc .nav>li.active');
+		if( container.has(e.target).length === 0){
+			container.removeClass('active');
+		}
+	});
 </script>
 <!-- AMR //공통으로 적용되는 script -->
 
 <!-- NBR /팝업 닫기 -->
 <script type="text/javascript">
-	// [D] 22.01.24 팝업 닫기 기능 수정
 	// 팝업 닫기 기능
 	$('.btn_pop_close').on('click', function(){
 		$('#aiIndustry').hide();
@@ -1162,7 +1162,6 @@
 			slidesPerGroup: 1,
 			slidesPerView: 3,
 			allowTouchMove: false,	
-			// loop: false,
 			pagination: {
 				el: $('.instance-' + index).find('.swiper-pagination'),
 				clickable: true,
@@ -1177,7 +1176,6 @@
 					slidesPerView: 1,
 					spaceBetween: 65,
 					allowTouchMove: true,
-					// loop: true,
 				}
 			}
 		});
