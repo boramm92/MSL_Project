@@ -366,37 +366,43 @@
 						<p class="stn_desc">Compare functions of your price plans<br> <a href="#none" class="btn_go_faq">View more</a> FAQ</p>
 
 						<div class="compareBox">
-							<!-- [D] .rate_tit_mobile에서 버튼을 클릭하면 "active"가 addClass 되어야 합니다.
-							  .rate_tit_mobile 버튼과 rate_list li의 동일한 index에 "active"가 addClass 되어야 합니다.
-							-->
 							<div class="rate_tit_mobile">
-							  <!-- 첫번째 버튼이 active 되면 .rate_list의 첫번째 리스트도 active가 되어야 합니다. -->
 							  <button type="button" class="active">Individual &bull; <br>Enterprise</button>
 							  <button type="button">Enterprise</button>
 							</div>
 				
 							<ul class="rate_list">
-							  <!-- 첫번째 버튼이 active 되면 .rate_list의 첫번째 리스트도 active가 되어야 합니다. -->
 							  <li class="active">
 								<div class="rate_tit">
 								  <div class="text_hide">empty</div>
 								  <div>Individual &bull; Enterprise</div>
 								</div>
 								<div class="cont">
-								  <!-- [D] .cont_tit을 클릭하면 "active"가 toggle 되어야 합니다.
-									상업적 이용이 active 되어있는게 defualt입니다.  -->
 								  <div class="cont_tit active">
 									<div>Functions for work task expansion</div>
 									<div class="text_hide">empty</div>
 								  </div>
 								  <div class="cont_dropdown">
 									<div class="drop_tit">
-									  <div>30+AI algorithm Guideline <small>(voice, visual, language, analysis, and conversation)</small></div>
+									  	<div>
+										  	30+AI algorithm Guideline 
+										  	<span class="detail_desc">
+												<img src="../aiaas/kr/images/pricing/ico_question.svg" alt="question mark">
+												<span class="descBox">Each AI engine can be used in a variety of ways by providing the usage method.</span>
+											</span>
+										  	<small>(voice, visual, language, analysis, and conversation)</small>
+										</div>
 									  <div><img src="../aiaas/kr/images/pricing/ico_chk_grn.svg" alt="possible"></div>
 									</div>
 									<div class="drop_tit">
-									  <div>REST API Id, Key and documents</div>
-									  <div><img src="../aiaas/kr/images/pricing/ico_chk_grn.svg" alt="possible"></div>
+									  	<div>
+											REST API Id, Key and documents
+											<span class="detail_desc">
+												<img src="../aiaas/kr/images/pricing/ico_question.svg" alt="question mark">
+												<span class="descBox">We provide a guide that can be used on web servers in various environments by issuing IDs and Keys pre-paid from MINDsLab.</span>
+											</span>
+										</div>
+									  	<div><img src="../aiaas/kr/images/pricing/ico_chk_grn.svg" alt="possible"></div>
 									</div>
 									<div class="drop_tit">
 										<div>Download result files</div>
@@ -451,20 +457,31 @@
 								  <div>Enterprise</div>
 								</div>
 								<div class="cont">
-								  <!-- [D] .cont_tit을 클릭하면 "active"가 toggle 되어야 합니다.
-									상업적 이용이 active 되어있는게 defualt입니다.  -->
 								  <div class="cont_tit active">
 									<div>Functions for work task expansion</div>
 									<div class="text_hide">empty</div>
 								  </div>
 								  <div class="cont_dropdown">
 									<div class="drop_tit">
-									  <div>Guideline for how to use 30+ AI algorithm <small>(voice, visual, language, analysis, and conversation)</small></div>
-									  <div><img src="../aiaas/kr/images/pricing/ico_chk_grn.svg" alt="possible"></div>
+										<div>
+											30+AI algorithm Guideline 
+											<span class="detail_desc">
+												<img src="../aiaas/kr/images/pricing/ico_question.svg" alt="question mark">
+												<span class="descBox">Each AI engine can be used in a variety of ways by providing the usage method.</span>
+											</span>
+											<small>(voice, visual, language, analysis, and conversation)</small>
+										</div>
+									  	<div><img src="../aiaas/kr/images/pricing/ico_chk_grn.svg" alt="possible"></div>
 									</div>
 									<div class="drop_tit">
-									  <div>Provide REST API Id, Key and documents</div>
-									  <div><img src="../aiaas/kr/images/pricing/ico_chk_grn.svg" alt="possible"></div>
+										<div>
+											REST API Id, Key and documents
+											<span class="detail_desc">
+												<img src="../aiaas/kr/images/pricing/ico_question.svg" alt="question mark">
+												<span class="descBox">We provide a guide that can be used on web servers in various environments by issuing IDs and Keys pre-paid from MINDsLab.</span>
+											</span>
+										</div>
+										<div><img src="../aiaas/kr/images/pricing/ico_chk_grn.svg" alt="possible"></div>
 									</div>
 									<div class="drop_tit">
 										<div>Download result files</div>
@@ -527,7 +544,7 @@
 						<div class="faqBox">
 							<div class="faq_type">
 								<a href="#none" class="active">Subscription</a>
-								<a href="#none">Maun Meeting Minutes service</a>
+								<a href="#none">Maum Minutes</a>
 							</div>
 
 							<div class="faq_cont">
@@ -989,6 +1006,7 @@
 
 		if(windowWidth > 768){
 			$('.price_cont .maum_price_wrap .price_list > li dl dd .contBox ul li').off('click');
+			$('.cont_dropdown .drop_tit > div').off('click');
 			$('.detail_desc').on('mouseenter', function(){
 				$('.detail_desc').removeClass('show');
 				$(this).addClass('show');
@@ -997,12 +1015,13 @@
 				$('.detail_desc').removeClass('show');
 			});
 		}else if(windowWidth <= 768){
-			let thisList = $('.price_cont .maum_price_wrap .price_list > li dl dd .contBox ul li');
+			let thisList = $('.price_cont .maum_price_wrap .price_list > li dl dd .contBox ul li, .cont_dropdown .drop_tit > div');
 
 			$('.detail_desc').off('mouseenter');
 			$('.detail_desc').off('mouseleave');
 
-			thisList.on('click', function(){
+			thisList.on('click', function(e){
+				e.stopPropagation();
 				$('.detail_desc').removeClass('show');
 				$(this).find('.detail_desc').addClass('show');
 			});
