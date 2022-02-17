@@ -1038,13 +1038,10 @@
 	handleDetailDescBox();	
 
 	// '문의하기' 클릭 시 영역 이동
-	function moveFaqStn(headerHeight){
-		let contactOffset = $('.faq').offset(); 
-		$('html').animate({scrollTop: contactOffset.top - headerHeight}, 100);
-	}
 	$('.btn_go_faq').on('click', function(){
 		let headerHeight = $('#header .maum_sta').outerHeight(); 
-		moveFaqStn(headerHeight);                             
+		let contactOffset = $('.faq').offset(); 
+		$('html').animate({scrollTop: contactOffset.top - headerHeight}, 100);                         
 	});
 
 	// 윈도우 resize 시 이벤트 실행
