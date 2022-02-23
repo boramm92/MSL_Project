@@ -2,7 +2,7 @@
 /* MINDsLab UX/UI. NBR. 20211230 */
 
 /* ---------------------------------------- reset ---------------------------------------- */
-html,body {overflow-x:visible !important; font-size:16px; line-height:normal;}
+html,body {overflow-x:visible !important; position:relative; font-size:16px; line-height:normal;}
 body > * {font-family:'Noto Sans KR','Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','돋움','dotum', sans-serif;}
 div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td, legend, em, span {font-family:'Noto Sans KR','Malgun Gothic','맑은 고딕','Apple SD Gothic Neo','돋움','dotum', sans-serif; letter-spacing:-0.6px;}
 
@@ -48,7 +48,7 @@ div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input,
 
 /* ---------------------------------------- main page content ---------------------------------------- */
 /* stn_menu */
-#stn_menu {position:fixed; top:50%; left:5vw; font-family:'Roboto', sans-serif; transform:translateY(-50%); z-index:50;}
+#stn_menu {position:absolute; top:50%; left:5vw; font-family:'Roboto', sans-serif; transform:translateY(-50%); z-index:50;}
 #stn_menu li:not(:first-child) {margin-top:11px;}
 #stn_menu li a {display:block; position:relative; padding-left:20px; color:rgba(255, 255, 255, 0.7); font-size:16px; font-weight:500; text-transform:uppercase; transition:all 0.3s ease-out;}
 #stn_menu li a:before {content:''; display:block; position:absolute; top:50%; left:0; width:3px; height:3px; border-radius:1.5px; background:#1db6cc; transition:height 0.3s ease-out; transform:translateY(-50%); opacity:0.5;}
@@ -57,7 +57,7 @@ div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input,
 
 /* titArea */
 .titArea .main_tit {font-family:'Roboto', sans-serif; color:#fff; font-size:75px; font-weight:900; letter-spacing:46px; line-height:1; text-transform:uppercase;}
-.titArea .sub_tit {margin:16px 0 53px; font-family:'Roboto', sans-serif; color:#fff; font-size:18px; font-weight:100; letter-spacing:13.71px; line-height:1; text-transform:uppercase;}
+.titArea .sub_tit {margin:16px 0 53px; font-family:'Roboto', sans-serif; color:#fff; font-size:18px; font-weight:100; letter-spacing:14.26px; line-height:1; text-transform:uppercase;}
 
 /* descArea */
 .descArea .svc_name {color:#e4eef7; font-size:32px; font-weight:500; letter-spacing:-0.43px; line-height:1; word-break:keep-all;}
@@ -75,10 +75,9 @@ div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input,
 .figure_wrap + .btnBox .btn_link + .btn_link {margin-left:12px;}
 
 /* stn - aiHuman */
-#aiHuman {background:#232531;}
+#aiHuman {overflow:hidden; background:url('../images/landing/bg_stn_aiHuman.png') 50% 50% no-repeat; background-size:cover;}
+#aiHuman .fp-tableCell {padding:11.5vh 0; box-sizing:border-box; vertical-align:top;}
 #aiHuman .descArea .svc_desc {margin:16px 0 40px;}
-#aiHuman .videoBox {overflow:hidden; position:absolute; top:0; left:0; width:100%; height:100%;}
-#aiHuman .videoBox video {display:block; position:absolute; top:50%; left:50%; width:100%; transform:translate(-50%, -50%);}
 #aiHuman .svc_use_case {max-width:540px; margin:0;}
 #aiHuman .svc_use_case .svc_list li {width:160px; height:210px;}
 #aiHuman .svc_use_case .svc_list li a {display:block; width:100%; height:100%; padding:88px 0 0; border-radius:4px; background-color:rgba(0, 0, 0, 0.2); box-sizing:border-box; transition:background-color 0.2s ease-out; background-position:50% 20px; background-repeat:no-repeat; text-align:center;}
@@ -90,6 +89,28 @@ div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input,
 #aiHuman .svc_use_case .svc_list li:nth-child(3) a {background-image:url('../../kr/images/landing/ico_step_aiKiosk.svg');}
 #aiHuman .svc_use_case .svc_list li.active a,
 #aiHuman .svc_use_case .svc_list li.active a:hover {background-color:rgba(91, 106, 226, 0.9);}
+#aiHuman .svcBox {position:absolute; top:270px; left:29.5vw; min-width:1082px; width:56.4vw; height:75vh; background:url('../images/landing/img_aiHuman_place.png') 50% 50% no-repeat; background-size:contain; z-index:50;}
+#aiHuman .svcBox .svc_nav li a {display:block; position:absolute;}
+#aiHuman .svcBox .svc_nav li a span {display:block; position:absolute; padding-left:50px; color:#fff; font-size:18px; letter-spacing:-0.18px; line-height:40px; text-align:right; white-space:nowrap; transition:padding 0.2s ease-out;}
+#aiHuman .svcBox .svc_nav li a span:before {content:''; display:block; position:absolute; top:0; left:0; width:40px; height:40px; background-position:50% 50%; background-repeat:no-repeat; background-size:contain;}
+#aiHuman .svcBox .svc_nav li a span:after {content:''; display:block; position:absolute;}
+#aiHuman .svcBox .svc_nav li a:hover span {padding-left:56px;}
+#aiHuman .svcBox .svc_nav li:nth-child(1) a {top:85px; right:105px; width:400px; height:300px;}
+#aiHuman .svcBox .svc_nav li:nth-child(2) a {top:20px; left:270px; width:260px; height:180px;}
+#aiHuman .svcBox .svc_nav li:nth-child(3) a {bottom:90px; left:200px; width:400px; height:300px;}
+#aiHuman .svcBox .svc_nav li:nth-child(4) a {top:145px; left:35px; width:260px; height:180px;}
+#aiHuman .svcBox .svc_nav li:nth-child(1) a span {bottom:-80px; left:176px;}
+#aiHuman .svcBox .svc_nav li:nth-child(2) a span {top:6px; left:230px;}
+#aiHuman .svcBox .svc_nav li:nth-child(3) a span {bottom:-16px; left:-68px;}
+#aiHuman .svcBox .svc_nav li:nth-child(4) a span {bottom:-44px; left:-86px;}
+#aiHuman .svcBox .svc_nav li:nth-child(1) a span:before {background-image:url('../images/landing/ico_aiHuman_svc01.svg');}
+#aiHuman .svcBox .svc_nav li:nth-child(2) a span:before {background-image:url('../images/landing/ico_aiHuman_svc02.svg');}
+#aiHuman .svcBox .svc_nav li:nth-child(3) a span:before {background-image:url('../images/landing/ico_aiHuman_svc03.svg');}
+#aiHuman .svcBox .svc_nav li:nth-child(4) a span:before {background-image:url('../images/landing/ico_aiHuman_svc04.svg');}
+#aiHuman .svcBox .svc_nav li:nth-child(1) a span:after {top:-40px; left:20px; height:42px; border-left:1px solid #fff;}
+#aiHuman .svcBox .svc_nav li:nth-child(2) a span:after {bottom:-40px; left:20px; height:42px; border-left:1px solid #fff;}
+#aiHuman .svcBox .svc_nav li:nth-child(3) a span:after {top:-22px; left:20px; width:176px; height:22px; border-top:1px solid #fff; border-left:1px solid #fff;}
+#aiHuman .svcBox .svc_nav li:nth-child(4) a span:after {top:-22px; left:20px; width:198px; height:22px; border-top:1px solid #fff; border-left:1px solid #fff;}
 
 /* stn - AICC */
 #AICC {background:url('../images/landing/bg_stn_AICC.png') 50% 50% no-repeat; background-size:cover;}
@@ -193,10 +214,6 @@ div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input,
 .swiper-button-next {right:-3px !important; background:url('../images/landing/ico_arw_right_w.svg') 50% 50% no-repeat !important;}
 
 /* media query */
-@media screen and (max-width:1920px) {
-    #aiHuman .videoBox video {width:auto;}
-}
-
 @media screen and (max-width:768px) {
     /*
     10px - 0.6rem
@@ -239,6 +256,8 @@ div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input,
     #aiIndustry .popWrap .pop_ft .checkBox {font-size:16px;}
 
     /* -------------------- main page content -------------------- */
+    .maumUI #header .maum_sta {border-bottom:none;}
+
     /* stn_menu */
     #stn_menu {display:none;}
 
@@ -262,6 +281,10 @@ div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input,
     .descArea .svc_desc {margin:12px 0 45px; font-size:20px; letter-spacing:-0.9px;}
 
     /* stn - aiHuman */
+    #aiHuman .fp-tableCell {padding:0; vertical-align:middle;}
+    #aiHuman .titArea {margin:0;}
+    #aiHuman .titArea .sub_tit {margin:0 0 12px;}
+    #aiHuman .descArea .svc_desc {margin:2px 0 30px;}
     #aiHuman .videoBox video {top:0; left:calc(50% - 388px); transform:translate(-50%, 0);}
     #aiHuman .svc_use_case {min-width:auto; max-width:100%; width:100%;}
     #aiHuman .svc_use_case .svc_list li {min-width:148px; width:100%; margin:0 auto;}
@@ -269,6 +292,14 @@ div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input,
     #aiHuman .svc_use_case.swiper-container {padding:0 0 32px;}
     #aiHuman .svc_use_case .svc_list li.swiper-slide-active a,
     #aiHuman .svc_use_case .svc_list li.swiper-slide-active a:hover {background-color:#5b6ae2;}
+
+    #aiHuman .svcBox {position:static; background:none; min-width:auto; width:100%; height:auto; padding:0 20px; box-sizing:border-box;}
+    #aiHuman .svcBox .svc_nav li {border:1px solid #fff; border-radius:4px; box-sizing:border-box; background:rgba(255, 255, 255, 0.1);}
+    #aiHuman .svcBox .svc_nav li + li {margin-top:20px;}
+    #aiHuman .svcBox .svc_nav li a {display:flex; align-items:center; position:static; width:100% !important; min-height:50px; height:9vh !important; padding:0 20px; box-sizing:border-box;}
+    #aiHuman .svcBox .svc_nav li a span {display:inline-block; position:relative; top:auto !important; bottom:auto !important; left:auto !important; font-size:16px; letter-spacing:-0.16px; line-height:30px;}
+    #aiHuman .svcBox .svc_nav li a span:before {width:30px; height:30px;}
+    #aiHuman .svcBox .svc_nav li a span:after {content:none;}
 
     /* stn - AICC */
     #AICC {background-position:57% 50%;}
